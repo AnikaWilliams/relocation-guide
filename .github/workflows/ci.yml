@@ -1,0 +1,60 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [develop, main]
+  push:
+    branches: [develop, main]
+
+# Cancel superseded runs on the same ref.
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-test:
+    name: Build, type-check & test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Type check
+        run: npm run check
+
+      - name: Unit tests (provenance gate)
+        run: npm test
+
+      - name: Build (runs the provenance build gate)
+        run: npm run build
+
+  roadmap-sync:
+    name: ROADMAP.md kept in sync
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Require ROADMAP.md update when src/ or tests/ change
+        run: |
+          base="${{ github.event.pull_request.base.sha }}"
+          head="${{ github.event.pull_request.head.sha }}"
+          changed="$(git diff --name-only "$base" "$head")"
+          echo "Changed files in this PR:"
+          echo "$changed"
+          progress="$(echo "$changed" | grep -E '^(src|tests)/' || true)"
+          roadmap="$(echo "$changed" | grep -E '(^|/)ROADMAP\.md$' || true)"
+          if [ -n "$progress" ] && [ -z "$roadmap" ]; then
+            echo "::error::Code/tests changed (src/ or tests/) but ROADMAP.md was not updated in this PR. Update ROADMAP.md (status table / phase checklist / corridor coverage) so the progress tracker stays in sync."
+            exit 1
+          fi
+          echo "ROADMAP sync check passed."

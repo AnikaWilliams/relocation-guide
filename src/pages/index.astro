@@ -1,0 +1,50 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getPublishedCorridors, countryName, corridorSlug } from '../utils/corridors';
+
+const corridors = await getPublishedCorridors();
+corridors.sort((a, b) => corridorSlug(a).localeCompare(corridorSlug(b)));
+---
+
+<BaseLayout
+  title="Relocation Guide — moving to Western Europe"
+  description="Step-by-step relocation guidance by origin and destination country, sourced from official authorities."
+>
+  <section class="space-y-4">
+    <h1 class="text-3xl font-bold">Relocation Guide</h1>
+    <p class="max-w-2xl text-slate-600">
+      Practical, source-backed guidance for relocating to Western Europe, organised by
+      your origin and destination country. Every fact is traced to an official source
+      and dated.
+    </p>
+  </section>
+
+  <section class="mt-10">
+    <h2 class="text-xl font-semibold">Available corridors</h2>
+    {
+      corridors.length === 0 ? (
+        <p class="mt-3 rounded-md border border-slate-200 bg-slate-50 p-4 text-slate-600">
+          No corridors are published yet. Content is in preparation and will appear here
+          once it has passed verification and founder review.
+        </p>
+      ) : (
+        <ul class="mt-4 grid gap-3 sm:grid-cols-2">
+          {corridors.map((entry) => (
+            <li>
+              <a
+                href={`/${entry.data.originIso2}/${entry.data.destinationIso2}/`}
+                class="block rounded-lg border border-slate-200 p-4 hover:border-slate-400 hover:shadow-sm transition"
+              >
+                <span class="font-medium">
+                  {countryName(entry.data.originIso2)} &rarr;{' '}
+                  {countryName(entry.data.destinationIso2)}
+                </span>
+                <span class="mt-1 block text-sm text-slate-600">{entry.data.description}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      )
+    }
+  </section>
+</BaseLayout>
