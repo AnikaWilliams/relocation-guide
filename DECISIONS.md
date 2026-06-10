@@ -1,0 +1,114 @@
+# DECISIONS.md — Architecture Decision Records
+
+> Append-only. Never edit past decisions; supersede them with new entries.
+> Format: ADR-NNNN | date | status | decision
+
+---
+
+## ADR-0001 — Framework & content architecture
+
+**Date:** 2026-06-10
+**Status:** Accepted
+**Decided by:** Founder (Anika Williams)
+
+### Context
+Building a relocation-guidance site covering origin→destination corridors. Primary constraints: (1) best possible SEO / Core Web Vitals for AdSense eligibility; (2) provenance-enforced data model (accuracy system); (3) solo operator budget; (4) existing React flowchart component to preserve.
+
+### Decision
+**Astro 4.x + React islands + Astro Content Collections (Zod schemas) + Tailwind CSS, deployed on Cloudflare Pages.**
+
+### Rationale
+- Astro ships zero JS by default → best Lighthouse scores → AdSense review easier → better organic ranking
+- Zod content collection schema makes `sourceUrl` / `lastVerified` / `reviewBy` / `status` **required at compile time** — provenance cannot be omitted
+- Build fails automatically on stale/unverified claims (QA gate)
+- React island pattern preserves the existing `@xyflow/react` flowchart with no rewrite
+- Cloudflare Pages: free tier, global CDN, trivial preview deploys, no server costs
+- Astro built-in i18n routing: English-only at launch, expansion-ready
+
+### Rejected alternatives
+- **Next.js:** Heavier default JS payload; SSR runtime cost; better only if logged-in personalization is needed at launch (it isn't)
+- **Gatsby:** Slower builds at scale; ecosystem maturity concerns
+- **Plain React SPA (current prototype):** No SSG, poor SEO, no content model, no provenance enforcement
+
+### Consequences
+- Migration cost if server-rendered personalization is needed later → accepted risk
+- Astro learning curve for future contributors → mitigated by CLAUDE.md docs
+
+---
+
+## ADR-0002 — Repository migration strategy
+
+**Date:** 2026-06-10
+**Status:** Accepted
+**Decided by:** Founder (Anika Williams)
+
+### Context
+Source code currently lives as a guest on a personal portfolio repo (`AnikaWilliams/AnikaWilliams.github.io`). The `.git` object store is 53 MB, inflated by: a 21 MB base64-embedded portfolio HTML file, 6 stale JS build bundles, and repeated large blobs of `germany.ts`/`switzerland.ts` as they grew.
+
+### Decision
+**Clean `git init` in a new dedicated repository, seeded only from the `relocation-app/src` tree on branch `claude/relocation-flowchart-9o6knk`.** No mirror of the old history.
+
+### Rationale
+- Zero personal-portfolio data in the business repo
+- No stale build artifacts in git history
+- Secret-free from commit #1 (full scan confirmed no secrets in old repo, but no reason to carry personal commit metadata into a business context)
+- Resulting repo starts at ~200 KB, not 53 MB
+- Old prototype commit log has no business value: it is ~90% portfolio commits interspersed with relocation work
+
+### What is preserved
+- All source files under `relocation-app/src/` (components, data, types, hooks, utils) — migrated verbatim
+- `package.json`, `vite.config.ts`, `tailwind.config.js`, `tsconfig.json` — migrated and adapted for the new Astro setup
+- Content data (`germany.ts`, `switzerland.ts`) — migrated as seed data through the researcher→verifier pipeline (not grandfathered in as verified — Phase 3 requires re-verification)
+
+### Consequences
+- Prototype commit history is not preserved → accepted; history lives in old repo if ever needed
+- Existing data must pass through the accuracy pipeline before publishing → required by Phase 3 anyway
+
+---
+
+## ADR-0003 — Content scope: origin countries
+
+**Date:** 2026-06-10
+**Status:** Accepted
+**Decided by:** Founder (Anika Williams)
+
+### Decision
+**Wave 1 origins (with Switzerland + Germany destinations):** India, USA, UK, Canada, Australia, Philippines, China
+
+**Wave 2 origins (with expanded destinations):** Serbia, Russia, Ukraine (Ukraine as dedicated temporary-protection track, not a standard skilled-relocation corridor)
+
+### Data basis
+- India: 192k EU permits 2024 (#2 origin); #1 EU Blue Card recipient (24%); 240k to UK. Clear anchor.
+- Turkey: omitted from Wave 1 at founder preference despite #2 data ranking; added to Wave 2 if needed
+- USA/Canada/Australia: lower raw flows but high-income Anglophone buyer cohort; strong ability scores
+- UK: post-Brexit non-EU; significant EU-outbound interest; Anglophone
+- Philippines: purpose-built bilateral health-worker channels (DE/AT/IE); high English; distinct feasibility story
+- China: ~78k to UK; strong study→work pipeline; #3 EU permit origin for education
+- Russia: #2 EU Blue Card origin (11%); sanction/banking blockers must be flagged prominently on all Russia-origin content
+- Serbia: Germany's Western Balkans Regulation (no quota cap for skilled workers); largest WB economy
+- Ukraine: 295k EU permits 2024 but driven by temporary protection → separate dedicated track
+
+### Rejected from priority list
+- Japan, South Korea: low EU-bound flow; lowest-tier English (EPI #92/#91); small content market
+- Morocco, Egypt, Tunisia: real flows but Francophone/Maghreb-specific → revisit for French-destination wave
+- Belarus: flow largely conflict-proxy-driven via Poland; not the target audience
+
+---
+
+## ADR-0004 — Analytics and consent
+
+**Date:** 2026-06-10
+**Status:** Pending founder decision before implementation
+
+### Context
+AdSense requires Google Consent Mode v2 in EEA/UK/CH. GA4 integrates natively. Plausible is privacy-friendlier but optimizes AdSense revenue less well.
+
+### Options
+1. **GA4 + CMP (Google Consent Mode v2)** — required for full AdSense revenue in EU/CH. More data, more privacy surface.
+2. **Plausible Analytics** — GDPR-compliant by default, no consent banner needed, EUR 9/month. Loses some AdSense optimization signal.
+3. **Both** — Plausible for site analytics (no consent friction), GA4 behind consent gate for AdSense signals.
+
+### Recommendation
+Option 3: Plausible primary + GA4 behind CMP consent gate. Minimises consent friction for pure traffic analytics while satisfying AdSense requirements.
+
+**Decision:** ⏳ Awaiting founder approval before implementation.
