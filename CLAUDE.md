@@ -175,3 +175,23 @@ Privacy policy, cookie policy, and ToU are **draft only** — must be reviewed b
 4. All ADRs go in `DECISIONS.md`. All verifications go in `VERIFICATION_LOG.md`.
 5. No agent merges to `main` autonomously, ever.
 6. Conventional commits: `feat:`, `fix:`, `chore:`, `content:`, `docs:`, `test:`, `refactor:`.
+
+---
+
+## FOUNDER-TLDR.md — writing rules
+
+`FOUNDER-TLDR.md` is the founder's plain-English changelog. After any session that
+changes the product, add a new entry following these rules:
+
+- **Audience:** a smart but non-technical founder. Explain like I'm 5. No jargon.
+  Any unavoidable technical term must be defined in plain words in parentheses
+  right after it — e.g. "the build (the step that turns our files into the live website)".
+- **Use everyday analogies** (restaurants, mail, filing cabinets, receipts) instead
+  of technical descriptions.
+- **Each entry is dated, newest at the top, and under 200 words**, with these four parts:
+  1. **What changed** — in plain English.
+  2. **Why it matters** — in business terms.
+  3. **What you'd notice using the app today** — or "nothing visible yet — this is plumbing".
+  4. **What's next** — one sentence.
+- **Never explain the code.** Explain what the *product* can now do that it couldn't
+  before. Be honest if something broke or got slower.

@@ -112,3 +112,36 @@ AdSense requires Google Consent Mode v2 in EEA/UK/CH. GA4 integrates natively. P
 Option 3: Plausible primary + GA4 behind CMP consent gate. Minimises consent friction for pure traffic analytics while satisfying AdSense requirements.
 
 **Decision:** ⏳ Awaiting founder approval before implementation.
+
+---
+
+## ADR-0005 — Phase 1 technical foundation: content layout & build gate
+
+**Date:** 2026-06-09
+**Status:** Accepted (implemented on `feat/phase-1-foundation`). Schema **additions** below flagged for founder confirmation.
+**Decided by:** Founder (Anika Williams), implemented this session
+
+### Context
+Phase 0 delivered only governance docs. Phase 1 scaffolds the Astro 4.x application that implements ADR-0001 (framework) and the Phase 3 accuracy system. This ADR records the concrete decisions made while building the foundation, including necessary additions to the architect's draft schema.
+
+### Decisions
+
+**1. Content-collection layout.** Corridors are an Astro **data collection** (`type: 'data'`), one file per corridor under `src/content/corridors/`, named `{originIso2}-{destinationIso2}.yaml` (e.g. `in-de.yaml`). Adding a corridor = adding a file; zero code changes. This implements the CLAUDE.md "folder per corridor" intent as a flat file-per-corridor (simpler, same zero-code property).
+
+**2. Schema split for testability.** The canonical Zod schema lives in `src/content/schema.ts` (imports the standalone `zod` package, no Astro runtime), and `src/content/config.ts` wires it into the collection. This lets the build gate and schema be unit-tested under Vitest without booting Astro.
+
+**3. Build gate = render-time assertion.** `src/utils/provenance.ts` holds pure functions (`evaluateClaim`, `findCorridorViolations`, `assertCorridorPublishable`). The corridor page's `getStaticPaths` calls `getPublishedCorridors()`, which runs the gate on every published corridor and **throws during `astro build`** if any rendered claim has `status !== 'VERIFIED'` or a past `reviewBy`. This is the technical enforcement of CLAUDE.md rule 5 / qa-engineer's content-regression rule. Covered by `tests/provenance.test.ts`.
+
+### Additions to the architect's draft schema (need founder confirmation)
+- **`published: boolean` (default `false`)** on `CorridorSchema`. Drafts can live in the repo without tripping the gate; only `published: true` corridors render and are gated. This is the technical hook for the human approval gate (CLAUDE.md rule 8).
+- **`title` / `description`** added to `CorridorSchema` (needed for page `<title>`, meta description, and the corridor index card).
+- **`CategoryEnum`** concrete values defined (the draft referenced `CategoryEnum` without listing members): `visa-permit, employment, housing, finance-banking, healthcare-insurance, registration-bureaucracy, taxes, family-dependents, education, transport-logistics, language-integration, other`.
+- A `VERIFIED` claim is treated as **not publishable** if it is missing `lastVerified`/`verifiedBy`, or if `reviewBy` is absent/past — stricter than the draft, matching the accuracy rules.
+
+### Also fixed in this phase
+- **Phase 0 scaffold defect:** `setup.py` wrote `gitignore` and `claude/agents/` with the leading dots stripped. Renamed to `.gitignore` (now active) and moved agent definitions to `.claude/agents/` (where Claude Code loads sub-agents). The `.gitignore` also now excludes `.claude/settings.local.json`.
+
+### Consequences
+- No real corridor content ships in Phase 1 (founder instruction); the corridors dir is empty but documented (`README.md`). The gate is proven by unit tests, not by fake data.
+- `astro.config.mjs` `site` is a placeholder (`SITE_URL` env) until the production domain exists — must be set before launch for correct canonical URLs and sitemap.
+- ADR-0004 (analytics) remains pending; no analytics/ads code added yet.

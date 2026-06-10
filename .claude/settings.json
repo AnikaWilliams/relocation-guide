@@ -1,0 +1,32 @@
+{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "shell": "bash",
+            "if": "Bash(git*)",
+            "command": "bash \"${CLAUDE_PROJECT_DIR:-.}/.claude/hooks/check-roadmap.sh\"",
+            "timeout": 15,
+            "statusMessage": "Checking ROADMAP.md is in sync…"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "shell": "bash",
+            "command": "bash \"${CLAUDE_PROJECT_DIR:-.}/.claude/hooks/founder-tldr.sh\"",
+            "timeout": 15,
+            "statusMessage": "Checking the founder changelog…"
+          }
+        ]
+      }
+    ]
+  }
+}
