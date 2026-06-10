@@ -27,6 +27,7 @@ The Astro application and the accuracy-enforcement machinery (no content yet).
 - [x] Unit tests for the gate (14 cases); `astro check` clean
 - [x] Project on GitHub (`develop`, `feat/phase-1-foundation` pushed)
 - [x] `ROADMAP.md` + README progress tracking, with commit-time enforcement
+- [x] CI on PRs (GitHub Actions): build, type-check, tests, provenance gate + ROADMAP-sync check
 
 ### Phase 2 — First corridors & launch readiness ⏳
 Get real, verified content live and the site launchable.
