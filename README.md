@@ -13,27 +13,20 @@ shown to the reader. The build **fails** if any published claim is unverified or
 
 ## Status & progress
 
+**Full roadmap and corridor coverage:** see [`ROADMAP.md`](ROADMAP.md) — the canonical
+progress tracker. Snapshot:
+
 | Phase | Scope | Status |
 |---|---|---|
 | **Phase 0** | Governance scaffold: `CLAUDE.md`, ADRs, agent definitions | ✅ Done |
 | **Phase 1** | Technical foundation: Astro app, content schema, **provenance build gate**, UI shell, tests | ✅ Done |
-| **Phase 2** | First corridors through the content pipeline; SEO metadata; compliance pages | ⏳ Planned |
+| **Phase 2** | First corridors through the content pipeline; SEO; compliance pages; analytics | ⏳ Planned |
 | **Phase 3** | Accuracy system (provenance rules) — enforced continuously from Phase 1 onward | 🔁 Ongoing |
-| Later | Analytics + consent (ADR-0004), AdSense, more corridors/destinations | 🗓️ Backlog |
+| **Phase 4** | Monetisation (AdSense) + scale to more corridors/destinations | 🗓️ Backlog |
 
 **Right now:** the application builds, type-checks, and passes tests, but **no corridor content
 is published yet** — the accuracy gate is proven by tests and an end-to-end build check. Real
 content enters only through the verification pipeline below.
-
-### Phase 1 checklist
-- [x] Astro 4 + React islands + Tailwind + sitemap, static output (Cloudflare Pages)
-- [x] Canonical content schema (`Claim` / `Task` / `Corridor`) with Zod
-- [x] Build gate: fails the build on any non-`VERIFIED` or stale rendered claim
-- [x] Base layout, legal disclaimer, visible provenance, corridor flowchart island
-- [x] Home page + corridor route (`/{origin}/{destination}/`)
-- [x] Unit tests for the gate (14 cases) + `astro check` clean
-- [ ] First real corridor published (Phase 2)
-- [ ] Analytics/consent decision implemented (ADR-0004)
 
 ---
 
