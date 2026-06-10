@@ -10,6 +10,25 @@ coming next. Newest updates are at the top.
 
 ---
 
+## 2026-06-09 — The "keep-the-changelog-honest" reminder is now live
+
+**What changed.** The automatic nudge we built earlier — the one meant to stop me
+from wrapping up a work session without updating this page — switched on for the
+first time today and did its job: it noticed a code change and made me come back to
+write an update (this one).
+
+**Why it matters.** It means this changelog can't quietly fall behind what's actually
+being built. The safety net is now genuinely working, not just installed — like a
+smoke alarm you've finally tested and heard beep.
+
+**What you'd notice today.** Nothing visible on the website — this is behind-the-
+scenes plumbing. You'd only notice that updates here keep showing up alongside the
+real work, without anyone having to remember.
+
+**What's next.** Write and verify the first real country guide (India → Germany).
+
+---
+
 ## 2026-06-09 — The site now has its "front-of-house" pages
 
 **What changed.** We added the standard pages every real website needs: **About**,
