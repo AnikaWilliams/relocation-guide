@@ -1,0 +1,59 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import DraftNotice from '../../components/DraftNotice.astro';
+import { SITE } from '../../config/site';
+---
+
+<BaseLayout
+  title={`Terms of Use (Draft) — ${SITE.name}`}
+  description="Draft terms of use for this informational website."
+  noindex={true}
+>
+  <article class="space-y-6">
+    <DraftNotice />
+
+    <header class="space-y-1">
+      <h1 class="text-3xl font-bold">Terms of Use</h1>
+      <p class="text-sm text-slate-500">Draft last updated: {SITE.policiesLastUpdated}</p>
+    </header>
+
+    <section class="space-y-2">
+      <h2 class="text-xl font-semibold">Information only — not advice</h2>
+      <p class="text-slate-700">
+        {SITE.name} provides general information about relocating between countries. It is
+        <strong>not legal, immigration, tax, or financial advice</strong>. Immigration rules
+        change frequently and vary by individual circumstances. Always confirm requirements with
+        the relevant official authority or a licensed adviser before acting.
+      </p>
+    </section>
+
+    <section class="space-y-2">
+      <h2 class="text-xl font-semibold">No warranty</h2>
+      <p class="text-slate-700">
+        We work hard to keep information accurate and sourced, but we make no warranty that it is
+        complete, current, or error-free. The site is provided "as is".
+      </p>
+    </section>
+
+    <section class="space-y-2">
+      <h2 class="text-xl font-semibold">Limitation of liability</h2>
+      <p class="text-slate-700">
+        To the extent permitted by law, the operator is not liable for any loss arising from
+        reliance on this site or on third-party (including official) sources we link to.
+      </p>
+    </section>
+
+    <section class="space-y-2">
+      <h2 class="text-xl font-semibold">External links</h2>
+      <p class="text-slate-700">
+        We link to official government and other sources. We are not responsible for the content
+        or availability of external sites.
+      </p>
+    </section>
+
+    <section class="space-y-2">
+      <h2 class="text-xl font-semibold">Contact</h2>
+      <p class="text-slate-700">Questions about these terms: {SITE.operator.email}.</p>
+    </section>
+  </article>
+</BaseLayout>

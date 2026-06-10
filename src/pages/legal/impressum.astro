@@ -1,0 +1,50 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import DraftNotice from '../../components/DraftNotice.astro';
+import { SITE } from '../../config/site';
+---
+
+<BaseLayout
+  title={`Impressum / Legal Notice (Draft) — ${SITE.name}`}
+  description="Draft legal notice (Impressum) with operator and contact details, as required in Germany and Switzerland."
+  noindex={true}
+>
+  <article class="space-y-6">
+    <DraftNotice />
+
+    <header class="space-y-1">
+      <h1 class="text-3xl font-bold">Impressum / Legal Notice</h1>
+      <p class="text-sm text-slate-500">Draft last updated: {SITE.policiesLastUpdated}</p>
+    </header>
+
+    <p class="text-slate-700">
+      A legal notice (Impressum) is required for sites targeting Germany (§5 DDG, formerly TMG)
+      and Switzerland. The operator details below must be completed with real information before
+      launch.
+    </p>
+
+    <section class="space-y-2">
+      <h2 class="text-xl font-semibold">Operator</h2>
+      <dl class="space-y-1 text-slate-700">
+        <div><dt class="inline font-medium">Name:</dt> <dd class="inline">{SITE.operator.legalName}</dd></div>
+        <div><dt class="inline font-medium">Address:</dt> <dd class="inline">{SITE.operator.address}</dd></div>
+        <div><dt class="inline font-medium">Email:</dt> <dd class="inline">{SITE.operator.email}</dd></div>
+      </dl>
+    </section>
+
+    <section class="space-y-2">
+      <h2 class="text-xl font-semibold">Responsible for content</h2>
+      <p class="text-slate-700">{SITE.operator.responsibleForContent}</p>
+    </section>
+
+    <section class="space-y-2">
+      <h2 class="text-xl font-semibold">Disclaimer</h2>
+      <p class="text-slate-700">
+        Despite careful review, we accept no liability for the content of external links; their
+        operators are solely responsible. See our
+        <a href="/legal/terms/" class="text-blue-700 underline">Terms of Use</a> and
+        <a href="/legal/privacy/" class="text-blue-700 underline">Privacy Policy</a>.
+      </p>
+    </section>
+  </article>
+</BaseLayout>

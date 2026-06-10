@@ -1,0 +1,34 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE } from '../config/site';
+---
+
+<BaseLayout
+  title={`Contact — ${SITE.name}`}
+  description="How to get in touch with the team behind the relocation guide."
+>
+  <article class="space-y-6">
+    <header class="space-y-1">
+      <h1 class="text-3xl font-bold">Contact</h1>
+      <p class="text-slate-600">We'd love to hear corrections, questions, and suggestions.</p>
+    </header>
+
+    <section class="space-y-2">
+      <h2 class="text-xl font-semibold">Email</h2>
+      <p class="text-slate-700">
+        Reach us at <strong>{SITE.contactEmail}</strong>.
+        {SITE.contactEmail.startsWith('[TBD') && (
+          <span class="text-slate-500"> (A real contact address will be set before launch.)</span>
+        )}
+      </p>
+    </section>
+
+    <section class="space-y-2">
+      <h2 class="text-xl font-semibold">Spotted an error?</h2>
+      <p class="text-slate-700">
+        Accuracy is the whole point of this site. If a fact looks wrong or out of date, please
+        tell us which page and what you saw — it helps us fix it fast.
+      </p>
+    </section>
+  </article>
+</BaseLayout>

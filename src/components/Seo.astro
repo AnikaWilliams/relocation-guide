@@ -1,0 +1,59 @@
+---
+import { SITE } from '../config/site';
+
+/**
+ * Centralised <head> SEO metadata (seo-analyst domain). Owns title, description,
+ * canonical URL, robots, Open Graph / Twitter cards, and optional JSON-LD.
+ * BaseLayout renders this; pages pass props through BaseLayout.
+ */
+interface Props {
+  title: string;
+  description: string;
+  /** When true, emit robots noindex (e.g. for DRAFT legal pages). */
+  noindex?: boolean;
+  /** Open Graph type. Defaults to "website". */
+  ogType?: string;
+  /** Optional JSON-LD structured data object, serialised into a script tag. */
+  structuredData?: Record<string, unknown>;
+}
+
+const { title, description, noindex = false, ogType = 'website', structuredData } = Astro.props;
+
+// Astro.site may be undefined in some contexts; fall back gracefully.
+const canonical = Astro.site
+  ? new URL(Astro.url.pathname, Astro.site).href
+  : Astro.url.pathname;
+---
+
+<title>{title}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonical} />
+{
+  noindex ? (
+    <meta name="robots" content="noindex, nofollow" />
+  ) : (
+    <meta name="robots" content="index, follow" />
+  )
+}
+
+<!-- Open Graph -->
+<meta property="og:type" content={ogType} />
+<meta property="og:site_name" content={SITE.name} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonical} />
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+
+{
+  structuredData && (
+    <script
+      is:inline
+      type="application/ld+json"
+      set:html={JSON.stringify(structuredData)}
+    />
+  )
+}

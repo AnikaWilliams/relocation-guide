@@ -1,0 +1,53 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import DraftNotice from '../../components/DraftNotice.astro';
+import { SITE } from '../../config/site';
+---
+
+<BaseLayout
+  title={`Cookie Policy (Draft) — ${SITE.name}`}
+  description="Draft cookie policy describing the cookies and similar technologies this site uses."
+  noindex={true}
+>
+  <article class="space-y-6">
+    <DraftNotice />
+
+    <header class="space-y-1">
+      <h1 class="text-3xl font-bold">Cookie Policy</h1>
+      <p class="text-sm text-slate-500">Draft last updated: {SITE.policiesLastUpdated}</p>
+    </header>
+
+    <section class="space-y-2">
+      <h2 class="text-xl font-semibold">What cookies we use</h2>
+      <p class="text-slate-700">
+        Cookies are small files a website stores on your device. Right now this site uses
+        <strong>only strictly necessary cookies</strong> required to serve pages securely. We do
+        not currently run analytics or advertising cookies.
+      </p>
+    </section>
+
+    <section class="space-y-2">
+      <h2 class="text-xl font-semibold">Analytics &amp; advertising (planned)</h2>
+      <p class="text-slate-700">
+        We plan to add privacy-respecting analytics and, later, advertising. When we do, any
+        non-essential cookies will load <strong>only after you consent</strong> through a cookie
+        banner (consent management), in line with GDPR/ePrivacy and Google Consent Mode v2. The
+        specific tools are still being decided, and this policy will be updated with the details
+        before any such cookies are used.
+      </p>
+    </section>
+
+    <section class="space-y-2">
+      <h2 class="text-xl font-semibold">Managing cookies</h2>
+      <p class="text-slate-700">
+        You can control or delete cookies through your browser settings. Once a consent banner is
+        in place, you will also be able to change your choice at any time.
+      </p>
+    </section>
+
+    <section class="space-y-2">
+      <h2 class="text-xl font-semibold">Questions</h2>
+      <p class="text-slate-700">Contact {SITE.operator.email}.</p>
+    </section>
+  </article>
+</BaseLayout>

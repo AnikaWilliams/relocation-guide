@@ -34,10 +34,11 @@ The Astro application and the accuracy-enforcement machinery (no content yet).
 Get real, verified content live and the site launchable.
 - [ ] First corridor (`in-de` India → Germany) through the full pipeline
 - [ ] Second corridor (`us-ch` USA → Switzerland)
-- [ ] Compliance pages: privacy policy, cookie policy, terms (draft, lawyer review pending)
-- [ ] Impressum for Germany & Switzerland
-- [ ] Contact / About page
-- [ ] SEO metadata + JSON-LD per corridor (seo-analyst)
+- [x] Compliance pages: privacy policy, cookie policy, terms (DRAFT, noindex, lawyer review pending)
+- [x] Impressum for Germany & Switzerland (DRAFT — operator details TBD before launch)
+- [x] Contact / About page
+- [x] SEO metadata component (`Seo.astro`: canonical, OG, robots/noindex, JSON-LD) + WebSite schema on home
+- [ ] Per-corridor SEO metadata + JSON-LD (pending corridor content) (seo-analyst)
 - [ ] Analytics + consent decision implemented (resolve **ADR-0004**)
 - [ ] Founder approval of first corridors (human gate)
 - [ ] Decide flowchart island CWV budget (~59 KB gz > 50 KB target)

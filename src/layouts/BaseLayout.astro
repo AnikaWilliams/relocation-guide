@@ -1,14 +1,20 @@
 ---
 import '../styles/global.css';
+import Seo from '../components/Seo.astro';
 import Disclaimer from '../components/Disclaimer.astro';
+import { SITE } from '../config/site';
 
 interface Props {
   title: string;
   description: string;
+  /** Emit robots noindex (used by DRAFT legal pages). */
+  noindex?: boolean;
+  ogType?: string;
+  structuredData?: Record<string, unknown>;
 }
 
-const { title, description } = Astro.props;
-const canonical = new URL(Astro.url.pathname, Astro.site).href;
+const { title, description, noindex = false, ogType = 'website', structuredData } = Astro.props;
+const year = new Date().getFullYear();
 ---
 
 <!doctype html>
@@ -16,25 +22,24 @@ const canonical = new URL(Astro.url.pathname, Astro.site).href;
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{title}</title>
-    <meta name="description" content={description} />
-    <link rel="canonical" href={canonical} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-
-    <!-- Open Graph -->
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content={title} />
-    <meta property="og:description" content={description} />
-    <meta property="og:url" content={canonical} />
-    <meta name="twitter:card" content="summary" />
     <meta name="generator" content={Astro.generator} />
+    <Seo
+      title={title}
+      description={description}
+      noindex={noindex}
+      ogType={ogType}
+      structuredData={structuredData}
+    />
   </head>
   <body class="min-h-screen bg-white text-slate-900 antialiased flex flex-col">
     <header class="border-b border-slate-200">
       <div class="mx-auto max-w-5xl px-4 py-4 flex items-center justify-between">
-        <a href="/" class="font-semibold text-lg">Relocation Guide</a>
-        <nav class="text-sm text-slate-600">
+        <a href="/" class="font-semibold text-lg">{SITE.name}</a>
+        <nav class="flex gap-4 text-sm text-slate-600">
           <a href="/" class="hover:text-slate-900">Corridors</a>
+          <a href="/about/" class="hover:text-slate-900">About</a>
+          <a href="/contact/" class="hover:text-slate-900">Contact</a>
         </nav>
       </div>
     </header>
@@ -44,9 +49,17 @@ const canonical = new URL(Astro.url.pathname, Astro.site).href;
     </main>
 
     <footer class="border-t border-slate-200 mt-12">
-      <div class="mx-auto max-w-5xl px-4 py-8 space-y-4 text-sm text-slate-600">
+      <div class="mx-auto max-w-5xl px-4 py-8 space-y-6 text-sm text-slate-600">
         <Disclaimer />
-        <p>&copy; {new Date().getFullYear()} Relocation Guide. Informational use only.</p>
+        <nav aria-label="Footer" class="flex flex-wrap gap-x-6 gap-y-2">
+          <a href="/about/" class="hover:text-slate-900">About</a>
+          <a href="/contact/" class="hover:text-slate-900">Contact</a>
+          <a href="/legal/privacy/" class="hover:text-slate-900">Privacy</a>
+          <a href="/legal/cookies/" class="hover:text-slate-900">Cookies</a>
+          <a href="/legal/terms/" class="hover:text-slate-900">Terms</a>
+          <a href="/legal/impressum/" class="hover:text-slate-900">Impressum</a>
+        </nav>
+        <p>&copy; {year} {SITE.name}. Informational use only.</p>
       </div>
     </footer>
   </body>

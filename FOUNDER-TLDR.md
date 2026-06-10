@@ -10,6 +10,28 @@ coming next. Newest updates are at the top.
 
 ---
 
+## 2026-06-09 — The site now has its "front-of-house" pages
+
+**What changed.** We added the standard pages every real website needs: **About**,
+**Contact**, and the legal pages — privacy policy, cookie policy, terms, and an
+**Impressum** (a "who runs this site" legal notice that Germany and Switzerland
+require). The legal pages are clearly stamped **DRAFT** and hidden from Google for
+now, because a real lawyer still needs to review them. We also added a behind-the-
+scenes helper that tells search engines each page's title and summary.
+
+**Why it matters.** These are entry requirements, not nice-to-haves: Google's ad
+program won't approve a site without a privacy policy and a contact page, and the
+Impressum is legally required for our German/Swiss audience. It also makes us look
+legitimate to visitors.
+
+**What you'd notice today.** New "About" and "Contact" links in the top menu, and a
+footer linking to the legal pages. The legal text is clearly marked as a draft and
+has blanks (like our business address) to fill in before launch.
+
+**What's next.** Write and verify the first real country guide (India → Germany).
+
+---
+
 ## 2026-06-09 — The foundation is built, and the "kitchen" has safety rules
 
 **What changed.** We built the skeleton of the website — think of it as constructing

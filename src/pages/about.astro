@@ -1,0 +1,55 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE } from '../config/site';
+---
+
+<BaseLayout
+  title={`About — ${SITE.name}`}
+  description="What this site is, who it's for, and how we keep relocation information accurate."
+>
+  <article class="space-y-6">
+    <header class="space-y-1">
+      <h1 class="text-3xl font-bold">About {SITE.name}</h1>
+      <p class="text-slate-600">{SITE.tagline}</p>
+    </header>
+
+    <section class="space-y-2">
+      <h2 class="text-xl font-semibold">What this is</h2>
+      <p class="text-slate-700">
+        {SITE.name} helps people moving from one country to another understand the practical
+        steps — visas and permits, registration, housing, banking, healthcare, and more —
+        organised by your <strong>origin</strong> and <strong>destination</strong> country.
+      </p>
+    </section>
+
+    <section class="space-y-2">
+      <h2 class="text-xl font-semibold">How we keep it accurate</h2>
+      <p class="text-slate-700">
+        Relocation decisions are high-stakes, so we hold every fact to a strict standard:
+      </p>
+      <ul class="list-disc pl-6 text-slate-700 space-y-1">
+        <li>Every claim (a fee, a deadline, a threshold) is traced to a <strong>primary official
+          source</strong> and dated.</li>
+        <li>Facts are <strong>independently verified</strong> before they are published, and
+          re-checked on a schedule so they don't go stale.</li>
+        <li>Sources and the last-verified date are <strong>shown on every page</strong>.</li>
+      </ul>
+    </section>
+
+    <section class="space-y-2">
+      <h2 class="text-xl font-semibold">Important</h2>
+      <p class="text-slate-700">
+        This site provides general information only — it is not legal or immigration advice.
+        Always confirm requirements with the official authority or a licensed adviser before
+        acting.
+      </p>
+    </section>
+
+    <section class="space-y-2">
+      <h2 class="text-xl font-semibold">Contact</h2>
+      <p class="text-slate-700">
+        Questions or corrections? <a href="/contact/" class="text-blue-700 underline">Get in touch</a>.
+      </p>
+    </section>
+  </article>
+</BaseLayout>

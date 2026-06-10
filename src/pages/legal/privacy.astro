@@ -1,0 +1,97 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import DraftNotice from '../../components/DraftNotice.astro';
+import { SITE } from '../../config/site';
+---
+
+<BaseLayout
+  title={`Privacy Policy (Draft) — ${SITE.name}`}
+  description="Draft privacy policy describing how this site handles personal data."
+  noindex={true}
+>
+  <article class="space-y-6">
+    <DraftNotice />
+
+    <header class="space-y-1">
+      <h1 class="text-3xl font-bold">Privacy Policy</h1>
+      <p class="text-sm text-slate-500">Draft last updated: {SITE.policiesLastUpdated}</p>
+    </header>
+
+    <section class="space-y-2">
+      <h2 class="text-xl font-semibold">Who we are</h2>
+      <p class="text-slate-700">
+        This site ({SITE.name}) is operated by <strong>{SITE.operator.legalName}</strong>,
+        {SITE.operator.address}. For privacy questions, contact {SITE.operator.email}. The
+        operator is the data controller for personal data processed through this site.
+      </p>
+    </section>
+
+    <section class="space-y-2">
+      <h2 class="text-xl font-semibold">What we collect</h2>
+      <ul class="list-disc pl-6 text-slate-700 space-y-1">
+        <li><strong>Information you send us</strong> — e.g. if you email us, we receive your
+          email address and message.</li>
+        <li><strong>Technical logs</strong> — our hosting provider records standard server
+          access data (such as IP address, browser type, and pages requested) to operate and
+          secure the site.</li>
+        <li><strong>Cookies</strong> — currently only strictly necessary cookies are used.
+          Optional analytics are not yet enabled; see the
+          <a href="/legal/cookies/" class="text-blue-700 underline">Cookie Policy</a>.</li>
+      </ul>
+    </section>
+
+    <section class="space-y-2">
+      <h2 class="text-xl font-semibold">Why we process it (legal bases)</h2>
+      <p class="text-slate-700">
+        Under the GDPR we rely on <strong>legitimate interests</strong> (operating and securing
+        the site) and, where applicable, your <strong>consent</strong> (for any optional
+        analytics or advertising, which would only run after you agree).
+      </p>
+    </section>
+
+    <section class="space-y-2">
+      <h2 class="text-xl font-semibold">Sharing</h2>
+      <p class="text-slate-700">
+        We do not sell personal data. We use service providers (such as our hosting/CDN
+        provider) that process data on our behalf under appropriate agreements. Outbound links
+        to official government sources are governed by those sites' own policies.
+      </p>
+    </section>
+
+    <section class="space-y-2">
+      <h2 class="text-xl font-semibold">International transfers &amp; retention</h2>
+      <p class="text-slate-700">
+        Where data is transferred outside your region, we rely on appropriate safeguards (such
+        as Standard Contractual Clauses). We keep personal data only as long as needed for the
+        purposes above or as required by law.
+      </p>
+    </section>
+
+    <section class="space-y-2">
+      <h2 class="text-xl font-semibold">Your rights</h2>
+      <p class="text-slate-700">
+        Depending on where you live, you may have rights to access, correct, delete, restrict,
+        or object to processing of your data, and to data portability. To exercise them, contact
+        {SITE.operator.email}.
+      </p>
+      <ul class="list-disc pl-6 text-slate-700 space-y-1">
+        <li><strong>EEA / UK:</strong> you may lodge a complaint with your data protection
+          authority (GDPR / UK GDPR &amp; PECR).</li>
+        <li><strong>Switzerland:</strong> processing follows the revised Federal Act on Data
+          Protection (FADP).</li>
+        <li><strong>California (CCPA/CPRA):</strong> rights to know, delete, correct, and opt out
+          of "sale"/"sharing" — we do not sell or share personal information.</li>
+        <li><strong>Canada (PIPEDA)</strong> and <strong>Brazil (LGPD):</strong> equivalent
+          access and correction rights apply.</li>
+      </ul>
+    </section>
+
+    <section class="space-y-2">
+      <h2 class="text-xl font-semibold">Changes &amp; contact</h2>
+      <p class="text-slate-700">
+        We may update this policy; material changes will be noted here. Questions:
+        {SITE.operator.email}.
+      </p>
+    </section>
+  </article>
+</BaseLayout>

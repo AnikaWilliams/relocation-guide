@@ -1,14 +1,24 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { getPublishedCorridors, countryName, corridorSlug } from '../utils/corridors';
+import { SITE } from '../config/site';
 
 const corridors = await getPublishedCorridors();
 corridors.sort((a, b) => corridorSlug(a).localeCompare(corridorSlug(b)));
+
+const websiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: SITE.name,
+  description: SITE.tagline,
+  url: Astro.site?.href,
+};
 ---
 
 <BaseLayout
   title="Relocation Guide — moving to Western Europe"
   description="Step-by-step relocation guidance by origin and destination country, sourced from official authorities."
+  structuredData={websiteSchema}
 >
   <section class="space-y-4">
     <h1 class="text-3xl font-bold">Relocation Guide</h1>
