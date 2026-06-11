@@ -57,18 +57,6 @@ tasks:
       - "Valid US passport"
       - "Employer's justification of recruitment efforts / labour-market priority (prepared by the employer)"
       - "Passport photos as specified by the cantonal authority"
-    timeline:
-      text: "Confirm with the competent cantonal migration authority and SEM. Processing of the work/residence authorisation is decided at cantonal level and depends on the canton, the role and quota availability; no single official federal figure applies to all cantons."
-      sourceUrl: "https://www.sem.admin.ch/sem/en/home/themen/arbeit/nicht-eu_efta-angehoerige.html"
-      sourceName: "State Secretariat for Migration (SEM) — Non-EU/EFTA nationals"
-      # FLAGGED 2026-06-09 (fact-verifier): page loads (curl, browser UA, HTTP 200, title "Non-EU/EFTA nationals") but contains NO processing-time figure. Claim text is an honest "Confirm with the competent cantonal migration authority and SEM" statement with no checkable fact to verify character-for-character. Per protocol, "Confirm with [authority]" claims are FLAGGED (no verifiable number). Not a source error — there is genuinely no fixed federal figure.
-      status: FLAGGED
-    cost:
-      text: "Confirm with the competent cantonal migration authority. Permit/authorisation fees are set at cantonal level and are not a single fixed federal amount."
-      sourceUrl: "https://www.sem.admin.ch/sem/en/home/themen/arbeit/nicht-eu_efta-angehoerige.html"
-      sourceName: "State Secretariat for Migration (SEM) — Non-EU/EFTA nationals"
-      # FLAGGED 2026-06-09 (fact-verifier): page loads (curl, browser UA, HTTP 200) but states no permit/authorisation fee. Claim text is an honest "Confirm with the competent cantonal migration authority" statement with no checkable fee figure. Per protocol, "Confirm with [authority]" claims are FLAGGED. Not a source error — fees are genuinely cantonal/variable.
-      status: FLAGGED
     warning: >
       Annual quotas (maximum numbers) for third-country nationals are reset each year by the
       Federal Council in the Ordinance on Admission, Period of Stay and Employment (ASEO).
@@ -196,12 +184,6 @@ tasks:
       lastVerified: "2026-06-09"
       verifiedBy: "fact-verifier"
       reviewBy: "2026-09-07"
-    cost:
-      text: "Confirm with your commune of residence. Registration/administrative fees are set at communal/cantonal level and are not a single fixed federal amount."
-      sourceUrl: "https://www.ch.ch/en/housing/moving/notification-of-departure-and-registration/"
-      sourceName: "ch.ch — Notification of departure and registration (official federal portal)"
-      # FLAGGED 2026-06-09 (fact-verifier): page loads (curl, browser UA, HTTP 200, title "Notifying a change of address") but states no registration/administrative fee. Claim text is an honest "Confirm with your commune of residence" statement with no checkable fee figure. Per protocol, "Confirm with [authority]" claims are FLAGGED. Not a source error — fees are genuinely communal/cantonal.
-      status: FLAGGED
     dependsOn:
       - national-d-visa
 
@@ -240,12 +222,6 @@ tasks:
       - "Valid US passport (used to verify identity)"
       - "Confirmation of commune registration"
       - "Cantonal authorisation / approval reference"
-    timeline:
-      text: "Confirm with your cantonal migration office. The application procedure and issuance of the biometric residence permit are decided by the canton of residence; production and delivery times are not a single fixed federal figure."
-      sourceUrl: "https://www.sem.admin.ch/sem/en/home/themen/aufenthalt/biometr_auslaenderausweis.html"
-      sourceName: "State Secretariat for Migration (SEM) — Biometric residence permits"
-      # FLAGGED 2026-06-09 (fact-verifier): SEM biometric page loads (curl, browser UA, HTTP 200) and supports the canton-decides assertion (verified elsewhere in this task), but states NO production/delivery time. Claim text is an honest "Confirm with your cantonal migration office" statement with no checkable processing-time figure. Per protocol, "Confirm with [authority]" claims are FLAGGED. Not a source error — no fixed federal time exists.
-      status: FLAGGED
     cost:
       text: "Confirm with your cantonal migration office. The fee covers application processing, issuance of the residence permit and capture of biometric data; the exact amount is set at cantonal level."
       sourceUrl: "https://www.sem.admin.ch/sem/en/home/themen/aufenthalt/biometr_auslaenderausweis.html"
@@ -364,12 +340,6 @@ tasks:
     documents:
       - "Swiss employment contract"
       - "Valid US passport / residence permit"
-    timeline:
-      text: "Confirm with your cantonal compensation office. OASI is handled through your employer's compensation office once employment begins; no single fixed federal processing time for issuing the number is published."
-      sourceUrl: "https://www.ch.ch/en/retirement/old-age-pension/the-first-pillar/oasi-contributions/"
-      sourceName: "ch.ch — Paying OASI contributions in Switzerland (official federal portal)"
-      # FLAGGED 2026-06-09 (fact-verifier): ch.ch "Paying OASI contributions" page loads (curl, browser UA, HTTP 200) and supports the employer/compensation-fund mechanism, but states NO processing time for issuing the OASI number. Claim text is an honest "Confirm with your cantonal compensation office" statement with no checkable timing figure. Per protocol, "Confirm with [authority]" claims are FLAGGED. Not a source error — no fixed federal time is published.
-      status: FLAGGED
     cost:
       text: "Getting the OASI number itself involves no fee for you; ongoing OASI contributions are shared — as an employee you pay half of your OASI contributions (8.7% of salary) and your employer pays the other half, deducted from your gross salary by the employer."
       sourceUrl: "https://www.ch.ch/en/retirement/old-age-pension/the-first-pillar/oasi-contributions/"

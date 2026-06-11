@@ -172,3 +172,34 @@ This narrows **immediate priority only**. The broader approved scope (ADR-0003 w
 - `corridor/in-de` stays parked (do not merge); revisit after `us-ch`.
 - ROADMAP Phase 2 reorganised around `us-ch`.
 - No code changes required — the architecture already supports any corridor by adding one content file.
+
+---
+
+## ADR-0007 — Optional timeline/cost fields in TaskSchema
+
+**Date:** 2026-06-11
+**Status:** Accepted
+**Decided by:** Founder (Anika Williams)
+
+### Context
+The us-ch corridor verification round produced 22 VERIFIED claims and 5 FLAGGED ones. All 5 FLAGGED claims are `timeline` or `cost` fields on tasks where no single official federal figure exists — these numbers are set at cantonal or communal level and vary. The verifier correctly FLAGGED them rather than publishing a misleading figure.
+
+Options considered:
+1. **Publish "Confirm with [authority]" as a claim** — requires a claim type exempt from the build gate, complicating the accuracy model.
+2. **Make timeline/cost optional; omit when unverifiable** — smallest change; the build gate is unaffected.
+3. **Add a new "varies by canton" meta-claim type** — larger schema surface, more maintenance.
+
+### Decision
+**Make `timeline` and `cost` optional fields in `TaskSchema`.** When no verifiable figure exists, the field is omitted from the corridor YAML. The corridor page renders timeline/cost sections only when both the field and its value are present.
+
+### Rationale
+- Accuracy rule preserved: no unverified or unverifiable figure is published.
+- Build gate unchanged: absent fields are simply not collected by `collectClaims`.
+- Smallest viable change: two `.optional()` calls in schema.ts, one guard in provenance.ts, conditional rendering in the corridor page.
+- Users are better served by a missing field than a misleading "varies" figure.
+
+### Consequences
+- Tasks may now omit `timeline`, `cost`, or both; all other Task fields remain required.
+- The corridor page must render gracefully when either field is absent (conditional render).
+- Future corridors should document *why* a field is omitted (e.g. "cantonal/communal — no federal figure") in a YAML comment alongside the omission.
+- The 5 previously FLAGGED claims are removed from us-ch.yaml; all 22 remaining claims are VERIFIED.

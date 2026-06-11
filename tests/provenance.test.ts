@@ -110,11 +110,22 @@ function corridor(overrides: Partial<Corridor> = {}): Corridor {
 }
 
 describe('collectClaims', () => {
-  it('collects summary, timeline, cost, and step links', () => {
+  it('collects summary, timeline, cost, and step links when all present', () => {
     const claims = collectClaims(corridor());
     // 1 summary + 1 timeline + 1 cost + 1 step link = 4
     expect(claims).toHaveLength(4);
     expect(claims.map((c) => c.location)).toContain('tasks[work-visa].steps[0].links[0]');
+  });
+
+  it('skips absent optional timeline and cost fields', () => {
+    const c = corridor();
+    delete (c.tasks[0] as Record<string, unknown>).timeline;
+    delete (c.tasks[0] as Record<string, unknown>).cost;
+    const claims = collectClaims(c);
+    // 1 summary + 0 timeline + 0 cost + 1 step link = 2
+    expect(claims).toHaveLength(2);
+    expect(claims.map((lc) => lc.location)).not.toContain('tasks[work-visa].timeline');
+    expect(claims.map((lc) => lc.location)).not.toContain('tasks[work-visa].cost');
   });
 });
 
@@ -177,5 +188,29 @@ describe('CorridorSchema defaults', () => {
     expect(parsed.published).toBe(false);
     expect(parsed.tasks[0].summary.status).toBe('UNVERIFIED');
     expect(parsed.tasks[0].dependsOn).toEqual([]);
+  });
+
+  it('accepts tasks without timeline or cost (both are optional)', () => {
+    const parsed = CorridorSchema.parse({
+      originIso2: 'us',
+      destinationIso2: 'ch',
+      title: 'USA to Switzerland',
+      description: 'desc',
+      lastReviewed: '2026-06-01',
+      reviewedBy: 'content-researcher',
+      tasks: [
+        {
+          id: 't1',
+          title: 'Task',
+          category: 'housing',
+          summary: { text: 'x', sourceUrl: 'https://official.example/x', sourceName: 'Auth' },
+          detail: '',
+          steps: [],
+          documents: [],
+        },
+      ],
+    });
+    expect(parsed.tasks[0].timeline).toBeUndefined();
+    expect(parsed.tasks[0].cost).toBeUndefined();
   });
 });

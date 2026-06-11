@@ -10,6 +10,18 @@ coming next. Newest updates are at the top.
 
 ---
 
+## 2026-06-11 — USA → Switzerland guide is clean and ready for your approval
+
+**What changed.** The guide had 5 facts that our checker correctly refused to confirm — things like "how long does the permit card take?" — because Switzerland doesn't publish a single answer: each region sets its own timing and fees. Rather than publishing a misleading number or a fudged "it varies", we simply leave those fields blank on tasks where no official figure exists. Think of it like a restaurant menu that shows "market price" instead of guessing a number that might be wrong. This required a small update to our publishing rules (so the site doesn't treat a blank field as a mistake) and the guide now has 22 facts, all 22 confirmed against official Swiss government sources.
+
+**Why it matters.** The guide can now be published. Every visible fact has an official link behind it. Nothing is made up.
+
+**What you'd notice today.** Still nothing live — the guide is held as a draft, waiting for you to say go. Some tasks (work permit, commune registration, permit card, social security) won't show a timeline or cost row because no one can honestly quote a single number.
+
+**What's next.** Your approval: once you say go, we flip one switch and the guide goes live.
+
+---
+
 ## 2026-06-09 — First full country guide drafted & fact-checked: USA → Switzerland
 
 **What changed.** We wrote the first real country guide — moving from the USA to

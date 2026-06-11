@@ -6,7 +6,7 @@
 >
 > Legend: ✅ done · 🚧 in progress · ⏳ planned · 🔁 ongoing · 🗓️ backlog
 
-Last updated: 2026-06-09
+Last updated: 2026-06-11
 
 > **Current focus:** USA → Switzerland (`us-ch`) **only**, until it is perfected end-to-end.
 > All other corridors are deferred (see DECISIONS.md **ADR-0006**). India → Germany (`in-de`)
@@ -37,9 +37,9 @@ The Astro application and the accuracy-enforcement machinery (no content yet).
 ### Phase 2 — First corridors & launch readiness ⏳
 Get real, verified content live and the site launchable.
 - [ ] **Sole active corridor: USA → Switzerland (`us-ch`)** through the full pipeline — perfect before any other (ADR-0006)
-  - [x] Drafted + independently verified (two-agent): **22/27 claims VERIFIED**, `published: false`
-  - [ ] Decide how to render the 5 "varies by canton" items (local fees / processing times) so the corridor can publish (see ADR-0007 proposal)
-  - [ ] Founder approval, then publish
+  - [x] Drafted + independently verified (two-agent): **22/22 claims VERIFIED** (5 cantonal-variable fields omitted per ADR-0007), `published: false`
+  - [x] Schema updated: `timeline`/`cost` optional (ADR-0007)
+  - [ ] Founder approval, then flip `published: true`
 - [ ] _(deferred)_ India → Germany (`in-de`) — parked WIP on `corridor/in-de`; resume after `us-ch`
 - [ ] _(deferred)_ all other corridors until `us-ch` is published
 - [ ] Compliance pages: privacy policy, cookie policy, terms (draft, lawyer review pending)
@@ -73,7 +73,7 @@ Status per corridor: ⬜ not started · ✏️ drafted (`UNVERIFIED`) · 🔎 in
 | Origin ↓ \ Dest → | Switzerland (`ch`) | Germany (`de`) |
 |---|---|---|
 | India (`in`) | ⬜ | ✏️ (parked) |
-| USA (`us`) | 🔎 22/27 verified — publish pending | ⬜ |
+| USA (`us`) | ✅ 22/22 verified — awaiting founder approval | ⬜ |
 | UK (`gb`) | ⬜ | ⬜ |
 | Canada (`ca`) | ⬜ | ⬜ |
 | Australia (`au`) | ⬜ | ⬜ |

@@ -127,8 +127,8 @@ export function collectClaims(corridor: Corridor): LocatedClaim[] {
   for (const task of corridor.tasks) {
     const base = `tasks[${task.id}]`;
     out.push({ claim: task.summary, location: `${base}.summary` });
-    out.push({ claim: task.timeline, location: `${base}.timeline` });
-    out.push({ claim: task.cost, location: `${base}.cost` });
+    if (task.timeline) out.push({ claim: task.timeline, location: `${base}.timeline` });
+    if (task.cost) out.push({ claim: task.cost, location: `${base}.cost` });
     task.steps.forEach((step, si) => {
       step.links?.forEach((link, li) => {
         out.push({ claim: link, location: `${base}.steps[${si}].links[${li}]` });

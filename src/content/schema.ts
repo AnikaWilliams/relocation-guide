@@ -71,8 +71,8 @@ export const TaskSchema = z.object({
   detail: z.string(),
   steps: z.array(StepSchema),
   documents: z.array(z.string()),
-  timeline: ClaimSchema, // Timeline is a verifiable claim
-  cost: ClaimSchema, // Cost is a verifiable claim
+  timeline: ClaimSchema.optional(),
+  cost: ClaimSchema.optional(),
   warning: z.string().optional(),
   dependsOn: z.array(z.string()).default([]),
   appliesIf: z.string().optional(), // Expression evaluated at runtime
