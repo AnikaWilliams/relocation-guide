@@ -10,6 +10,18 @@ coming next. Newest updates are at the top.
 
 ---
 
+## 2026-06-11 — The app now looks like your original product
+
+**What changed.** We polished the visual design so it matches the app you already built at anikawilliams.com/relocation-app/. Three specific things changed: (1) the website's generic navigation bar ("Relocation Guide / Corridors") no longer appears — the app has its own header that says "Relocation Flowchart" with a subtitle, exactly like the original. (2) The progress bar (the row of little lines showing which step you're on) now sits above the white card, not inside it. (3) The "Continue" button is now full-width at the bottom of the card, matching the original. Step 1 also now shows the corridor as a pre-selected card ("United States → Switzerland") so users instantly know they're in the right place.
+
+**Why it matters.** The visual experience is now consistent with the product you've already tested and validated with real users. Someone familiar with the original app would feel at home immediately.
+
+**What you'd notice today.** Open `http://localhost:4321/us/ch/` — no site navigation bar, "Relocation Flowchart" header, progress bar above the card, and a wide blue Continue button. Still local only.
+
+**What's next.** Your approval to publish, then Cloudflare Pages to put it on a live web address.
+
+---
+
 ## 2026-06-11 — The guide is now a fully interactive app, not a static page
 
 **What changed.** The USA → Switzerland guide has been completely redesigned. When you open it, instead of a wall of text, you're greeted by a short 3-step questionnaire (like checking in for a flight): it asks whether you have a job offer, who's coming with you, and how long you plan to stay. Once you answer, it generates your personalised relocation flowchart. Every step on the flowchart is clickable — tap any box and a panel slides open on the right with everything you need: what documents to gather, the exact steps to follow, how long it takes, what it costs, and a direct link to the official Swiss government source. This matches the experience at anikawilliams.com/relocation-app/, which is the product you built and validated.
