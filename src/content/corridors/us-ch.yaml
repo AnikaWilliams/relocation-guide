@@ -1,0 +1,392 @@
+originIso2: us
+destinationIso2: ch
+title: "Moving from the USA to Switzerland"
+description: "How US citizens (non-EU/EFTA third-country nationals) relocate to Switzerland for work: the employer-sponsored work and residence permit, the national (type D) visa, arrival registration, the residence permit card, mandatory health insurance, and social security."
+lastReviewed: "2026-06-09"
+reviewedBy: "content-researcher"
+published: false
+tasks:
+  # ---------------------------------------------------------------------------
+  - id: work-residence-permit
+    title: "Secure an employer-sponsored work and residence permit"
+    category: visa-permit
+    summary:
+      text: "As a US citizen you are a non-EU/EFTA third-country national. You cannot apply for a work permit yourself: a Swiss employer must apply to the cantonal authorities, and you can only be admitted if no suitable worker can be recruited from Switzerland or the EU/EFTA. Admission is limited to managers, specialists and other qualified workers, and is capped by annual federal maximum numbers (quotas)."
+      sourceUrl: "https://www.sem.admin.ch/sem/en/home/themen/arbeit/nicht-eu_efta-angehoerige/grundlagen_zur_arbeitsmarktzulassung.html"
+      sourceName: "State Secretariat for Migration (SEM) — Basis for admission to the Swiss employment market"
+      # VERIFIED 2026-06-09: page loaded. Confirms labour-market priority ("admitted only if it is not possible to recruit a person who qualifies for precedence from the labour market in Switzerland or in an EU/EFTA state"), "Admissions are limited to managers, specialists and other qualified workers", and annual maximum numbers set by Federal Council in ASEO. Employer-must-apply / worker-cannot-self-apply confirmed on companion official SEM page (nicht-eu_efta-angehoerige.html: "Your future employer must prove that there is no suitable person...").
+      status: VERIFIED
+      lastVerified: "2026-06-09"
+      verifiedBy: "fact-verifier"
+      reviewBy: "2026-09-07"
+    detail: >
+      Switzerland admits third-country labour under a dual system: free movement applies to
+      EU/EFTA nationals, while everyone else (including US citizens) is admitted only in
+      limited numbers and only for qualified roles. The employer must show genuine
+      recruitment efforts (labour-market priority for Swiss/EU/EFTA candidates), offer pay
+      and conditions matching local standards, and the role must fall within the annual
+      federal quota. The permit is tied to the specific job, employer and canton. Typical
+      permit types for new third-country hires are the short-term L permit and the
+      residence B permit.
+    steps:
+      - text: "Receive a concrete job offer from a Swiss employer; the offer and admission are job-, employer- and canton-specific."
+      - text: "Your employer files the work-authorisation application with the cantonal migration / employment authority of the intended place of work."
+        tip: "You generally cannot start work until the authorisation is granted. The canton, then SEM, decide before the visa stage."
+        links:
+          - text: "SEM — admitting non-EU/EFTA nationals to gainful employment"
+            sourceUrl: "https://www.sem.admin.ch/sem/en/home/themen/arbeit/nicht-eu_efta-angehoerige.html"
+            sourceName: "State Secretariat for Migration (SEM)"
+            # VERIFIED 2026-06-09: official SEM page "Non-EU/EFTA nationals" loaded; states you "may only do so if you are highly qualified" and "Your future employer must prove that there is no suitable person to fill the job vacancy from Switzerland or from an EU/EFTA state." Link is accurate.
+            status: VERIFIED
+            lastVerified: "2026-06-09"
+            verifiedBy: "fact-verifier"
+            reviewBy: "2026-09-07"
+      - text: "Admission must fit within the annual federal maximum numbers (quotas) and the labour-market priority rule (Swiss/EU/EFTA candidates first)."
+        links:
+          - text: "Legal basis: the admission criteria are set out in the Foreign Nationals and Integration Act (FNIA) — economic interest, quotas, precedence and salary/conditions (Art. 18–22 FNIA) — and the Ordinance on Admission, Period of Stay and Employment (ASEO), as explained by SEM."
+            sourceUrl: "https://www.sem.admin.ch/sem/en/home/themen/arbeit/nicht-eu_efta-angehoerige/grundlagen_zur_arbeitsmarktzulassung.html"
+            sourceName: "State Secretariat for Migration (SEM) — Basis for admission to the Swiss employment market"
+            # VERIFIED 2026-06-09 (fact-verifier): SEM legal-basis page loaded (curl, browser UA, HTTP 200). Confirms verbatim "The admission criteria are listed in the Foreign Nationals and Integration Act (FNIA) and the Ordinance on Admission, Period of Stay and Employment (ASEO)" and sub-headings cite "Overall economic interest (Art. 18 and Art. 19 FNIA)", "Quotas (Art. 20 FNIA)", "Precedence (Art. 21 FNIA)", "Salary and employment conditions customary in the region and sector (Art. 22 FNIA)". Matches claim character-for-character. NOTE for researcher: the page's "Legal foundations" footer names the ordinance "Ordinance on Admission, Residence and Employment (AREO) (SR 142.201)" while the body uses "ASEO"; claim uses body/sourceName label "ASEO" which is supported.
+            status: VERIFIED
+            lastVerified: "2026-06-09"
+            verifiedBy: "fact-verifier"
+            reviewBy: "2026-09-07"
+    documents:
+      - "Signed Swiss employment contract or binding job offer"
+      - "Detailed CV and proof of qualifications (degrees, diplomas, references)"
+      - "Valid US passport"
+      - "Employer's justification of recruitment efforts / labour-market priority (prepared by the employer)"
+      - "Passport photos as specified by the cantonal authority"
+    timeline:
+      text: "Confirm with the competent cantonal migration authority and SEM. Processing of the work/residence authorisation is decided at cantonal level and depends on the canton, the role and quota availability; no single official federal figure applies to all cantons."
+      sourceUrl: "https://www.sem.admin.ch/sem/en/home/themen/arbeit/nicht-eu_efta-angehoerige.html"
+      sourceName: "State Secretariat for Migration (SEM) — Non-EU/EFTA nationals"
+      # FLAGGED 2026-06-09 (fact-verifier): page loads (curl, browser UA, HTTP 200, title "Non-EU/EFTA nationals") but contains NO processing-time figure. Claim text is an honest "Confirm with the competent cantonal migration authority and SEM" statement with no checkable fact to verify character-for-character. Per protocol, "Confirm with [authority]" claims are FLAGGED (no verifiable number). Not a source error — there is genuinely no fixed federal figure.
+      status: FLAGGED
+    cost:
+      text: "Confirm with the competent cantonal migration authority. Permit/authorisation fees are set at cantonal level and are not a single fixed federal amount."
+      sourceUrl: "https://www.sem.admin.ch/sem/en/home/themen/arbeit/nicht-eu_efta-angehoerige.html"
+      sourceName: "State Secretariat for Migration (SEM) — Non-EU/EFTA nationals"
+      # FLAGGED 2026-06-09 (fact-verifier): page loads (curl, browser UA, HTTP 200) but states no permit/authorisation fee. Claim text is an honest "Confirm with the competent cantonal migration authority" statement with no checkable fee figure. Per protocol, "Confirm with [authority]" claims are FLAGGED. Not a source error — fees are genuinely cantonal/variable.
+      status: FLAGGED
+    warning: >
+      Annual quotas (maximum numbers) for third-country nationals are reset each year by the
+      Federal Council in the Ordinance on Admission, Period of Stay and Employment (ASEO).
+      Do not rely on a quota figure without confirming the current year's numbers with SEM.
+    dependsOn: []
+
+  # ---------------------------------------------------------------------------
+  - id: national-d-visa
+    title: "Apply for the national (type D) visa at the Swiss representation in the USA"
+    category: visa-permit
+    summary:
+      text: "A category D (national) visa is issued for stays exceeding 90 days and is also referred to as a «national» visa. Because your stay in Switzerland exceeds 90 days you require a permit to stay; applications for a category D visa are processed by the cantons (a residence permit is required). You apply in writing using the national visa application form at the competent Swiss representation abroad."
+      sourceUrl: "https://www.sem.admin.ch/sem/en/home/themen/einreise/faq.html"
+      sourceName: "State Secretariat for Migration (SEM) — FAQ: Entry"
+      # VERIFIED 2026-06-09 (fact-verifier): SEM Entry FAQ loaded (curl, browser UA, HTTP 200). Confirmed verbatim: "Category D visas are issued for stays exceeding 90 days. As this is a visa for a long-term stay in Switzerland, it is also referred to as a «national visa»."; "You must apply for the category D visa in writing using the application form ... at the Swiss representation abroad responsible for your place of residence."; "Please note that you require a permit to stay in Switzerland for more than 90 days."; "Applications for a category D visa are processed by the cantons (a residence permit is required)." All claim elements match character-for-character. (Page renders the term as «national visa»; claim writes «national» — substantively identical.)
+      status: VERIFIED
+      lastVerified: "2026-06-09"
+      verifiedBy: "fact-verifier"
+      reviewBy: "2026-09-07"
+    detail: >
+      A category D (national) visa authorises entry to Switzerland for a long-term stay
+      (more than 90 days). For US citizens it is the document that lets you travel to
+      Switzerland to take up the authorised job and residence. You apply in writing using
+      the national visa application form at the Swiss representation abroad that is competent
+      for your US state of residence (for example the Embassy in Washington or a Swiss
+      consulate); each representation covers specific US states. Applications are processed
+      by the cantons and a residence permit is required. Confirm which representation is
+      competent for your state, and its submission instructions, before applying.
+    steps:
+      - text: "Identify the Swiss representation abroad competent for your US state of residence, then apply for the category D visa in writing using the national visa application form."
+        tip: "SEM directs applicants to apply at the competent Swiss representation abroad; confirm which US representation (e.g. Embassy Washington or a consulate) covers your state via that representation's own page."
+        links:
+          - text: "SEM — FAQ: where and how to apply for a category D visa for Switzerland"
+            sourceUrl: "https://www.sem.admin.ch/sem/en/home/themen/einreise/faq.html"
+            sourceName: "State Secretariat for Migration (SEM) — FAQ: Entry"
+            # VERIFIED 2026-06-09 (fact-verifier): SEM Entry FAQ loaded (curl, browser UA, HTTP 200). Q2.5 "Where and how do I apply for a category D visa for Switzerland?" states verbatim: "You must apply for the category D visa in writing using the application form or directly at the Swiss representation abroad responsible for your place of residence. You can find the visa application form here: Visa application form for a category D visa." Link text accurate.
+            status: VERIFIED
+            lastVerified: "2026-06-09"
+            verifiedBy: "fact-verifier"
+            reviewBy: "2026-09-07"
+      - text: "Assemble and submit the national (type D) visa application with the required documents to that representation."
+        tip: "Check the specific representation's instructions for how to submit (by post or appointment) and the exact document checklist."
+        links:
+          - text: "SEM — National (type D) visa application form (for long-term stays subject to authorisation, e.g. gainful employment)"
+            sourceUrl: "https://www.sem.admin.ch/sem/en/home/themen/einreise/visumantragsformular.html"
+            sourceName: "State Secretariat for Migration (SEM) — Visa Application Form"
+            # VERIFIED 2026-06-09 (fact-verifier): SEM Visa Application Form page loaded (curl, browser UA, HTTP 200, title "Visa Application Form"). Provides verbatim "National (type D) visa application form" with description "For long-term stays (more than three months) in Switzerland subject to authorization (e.g. gainful employment, familiy reunification)." (source's own typo "familiy"). Matches claim character-for-character.
+            status: VERIFIED
+            lastVerified: "2026-06-09"
+            verifiedBy: "fact-verifier"
+            reviewBy: "2026-09-07"
+      - text: "The representation issues the type D visa once the cantonal authorisation is confirmed; you then travel to Switzerland within its validity."
+    documents:
+      - "Completed national (type D) visa application form"
+      - "Valid US passport"
+      - "Passport photos to the required specification"
+      - "Proof of the cantonal work/residence authorisation"
+      - "Swiss employment contract"
+      - "Confirm the full document list with the competent Swiss representation in the USA"
+    timeline:
+      text: "Category D (national) visa applications are processed by the cantons and the time required varies by canton and purpose of stay; SEM states that, as a rule, one to several months must be expected. Confirm the current timing with the competent Swiss representation abroad."
+      sourceUrl: "https://www.sem.admin.ch/sem/en/home/themen/einreise/faq.html"
+      sourceName: "State Secretariat for Migration (SEM) — FAQ: Entry"
+      # VERIFIED 2026-06-09 (fact-verifier): SEM Entry FAQ loaded (curl, browser UA, HTTP 200). States verbatim: "Applications for a category D visa are processed by the cantons (a residence permit is required). The time the responsible authorities need to process such applications may vary according to canton and purpose of stay. As a rule, one to several months must be expected." Matches claim character-for-character.
+      status: VERIFIED
+      lastVerified: "2026-06-09"
+      verifiedBy: "fact-verifier"
+      reviewBy: "2026-09-07"
+    cost:
+      text: "Confirm the current national (type D) visa fee with the competent Swiss representation abroad. Unlike the Schengen (category C) visa, which is a fixed EUR 90 for adults, the national (type D) visa fee is not published by SEM as a single fixed figure; an extra charge of up to 50% of the fee may apply for urgent/out-of-hours handling. A service fee to an external provider may also apply."
+      sourceUrl: "https://www.sem.admin.ch/sem/en/home/themen/einreise/faq.html"
+      sourceName: "State Secretariat for Migration (SEM) — FAQ: Entry"
+      # VERIFIED 2026-06-09 (fact-verifier): SEM Entry FAQ loaded (curl, browser UA, HTTP 200). Confirmed verbatim: "The cost of submitting an application is EUR 90 for adults and EUR 45 for children between 6 and 12 years old. This is a fixed charge for a Schengen visa." (so EUR 90 is the Schengen, not national, fee — claim states this correctly). "There may be an extra charge of up to 50% of the fee for a national visa (for a stay longer than 90 days) when the applicant asks for the visa to be issued urgently or outside of normal working hours or if the application processing procedure is unduly complex." External service-provider service-fee "in addition to the visa fee" also confirmed. No fixed national (type D) figure is published — claim correctly leaves it as "Confirm with [representation]". Fee claim -> 30-day review window.
+      status: VERIFIED
+      lastVerified: "2026-06-09"
+      verifiedBy: "fact-verifier"
+      reviewBy: "2026-07-09"
+    dependsOn:
+      - work-residence-permit
+
+  # ---------------------------------------------------------------------------
+  - id: register-commune
+    title: "Register your arrival at your commune of residence"
+    category: registration-bureaucracy
+    summary:
+      text: "After arriving in Switzerland you must register your arrival in person with the residents' registration office of your commune (Gemeinde/commune) of residence, within the deadline set by your canton (commonly within 14 days of arrival). Confirm the exact deadline with your commune/canton."
+      sourceUrl: "https://www.ch.ch/en/foreign-nationals-in-switzerland/working-in-switzerland/"
+      sourceName: "ch.ch — Working in Switzerland as a foreign national (official federal portal)"
+      # VERIFIED 2026-06-09: WebFetch rendered a soft-404 (SPA), but the server-rendered HTML (curl, browser UA, HTTP 200, title "Working in Switzerland as a foreign national") contains the supporting text verbatim: "You must register your arrival in Switzerland within 14 days and apply for a residence permit from the commune where you are living" and "On arrival in Switzerland, you must register with the communal authorities in the place where you are living within 14 days." Read directly.
+      status: VERIFIED
+      lastVerified: "2026-06-09"
+      verifiedBy: "fact-verifier"
+      reviewBy: "2026-09-07"
+    detail: >
+      Registration at the commune is what formally starts your residence and triggers
+      issuance of your residence permit card and entry into the population register. The
+      exact registration deadline and the documents required can vary by canton and
+      commune, so confirm them locally before you travel. Bring your passport, visa,
+      employment contract, tenancy/accommodation proof and any family documents.
+    steps:
+      - text: "Find your commune's residents' registration office (Einwohnerkontrolle / contrôle des habitants / controllo abitanti)."
+      - text: "Register in person within the deadline set by your canton, bringing your identity, visa, housing and employment documents."
+        tip: "Confirm the exact deadline (often cited as 14 days) and document checklist with your specific commune before arrival — rules are cantonal/communal."
+        links:
+          - text: "ch.ch — Moving: notification of departure and registration"
+            sourceUrl: "https://www.ch.ch/en/housing/moving/notification-of-departure-and-registration/"
+            sourceName: "ch.ch — Notification of departure and registration (official federal portal)"
+            # VERIFIED 2026-06-09: server-rendered HTML (curl, HTTP 200) page title is "Notifying a change of address" (current canonical title for this departure/registration page; sourceName uses the older label) and contains: "In general, you are expected to register with your new commune of residence within 14 days of your move." Content covers departure + registration as the link claims. Read directly. NOTE for researcher: consider updating sourceName to the page's current title "Notifying a change of address".
+            status: VERIFIED
+            lastVerified: "2026-06-09"
+            verifiedBy: "fact-verifier"
+            reviewBy: "2026-09-07"
+    documents:
+      - "Valid US passport with the national (type D) visa"
+      - "Swiss employment contract"
+      - "Proof of accommodation in Switzerland (tenancy agreement)"
+      - "Passport photos as required by the commune"
+      - "Marriage/birth certificates if registering family members (confirm requirements with the commune)"
+    timeline:
+      text: "Register within the deadline set by your canton after arrival (commonly within 14 days). Confirm the exact deadline with your commune of residence."
+      sourceUrl: "https://www.ch.ch/en/foreign-nationals-in-switzerland/working-in-switzerland/"
+      sourceName: "ch.ch — Working in Switzerland as a foreign national (official federal portal)"
+      # VERIFIED 2026-06-09: server-rendered HTML of the cited page states "On arrival in Switzerland, you must register with the communal authorities in the place where you are living within 14 days." Supports the 14-day registration deadline character-for-character. Read directly.
+      status: VERIFIED
+      lastVerified: "2026-06-09"
+      verifiedBy: "fact-verifier"
+      reviewBy: "2026-09-07"
+    cost:
+      text: "Confirm with your commune of residence. Registration/administrative fees are set at communal/cantonal level and are not a single fixed federal amount."
+      sourceUrl: "https://www.ch.ch/en/housing/moving/notification-of-departure-and-registration/"
+      sourceName: "ch.ch — Notification of departure and registration (official federal portal)"
+      # FLAGGED 2026-06-09 (fact-verifier): page loads (curl, browser UA, HTTP 200, title "Notifying a change of address") but states no registration/administrative fee. Claim text is an honest "Confirm with your commune of residence" statement with no checkable fee figure. Per protocol, "Confirm with [authority]" claims are FLAGGED. Not a source error — fees are genuinely communal/cantonal.
+      status: FLAGGED
+    dependsOn:
+      - national-d-visa
+
+  # ---------------------------------------------------------------------------
+  - id: residence-permit-card
+    title: "Obtain your biometric residence permit card"
+    category: visa-permit
+    summary:
+      text: "Third-country nationals receive a biometric residence permit card. The application procedure and issuance are decided by the canton of residence, which captures your biometric data (two digital fingerprints and a facial image) for the card's microchip."
+      sourceUrl: "https://www.sem.admin.ch/sem/en/home/themen/aufenthalt/biometr_auslaenderausweis.html"
+      sourceName: "State Secretariat for Migration (SEM) — Biometric residence permits for foreign nationals"
+      # VERIFIED 2026-06-09: SEM page loaded. Confirms third-state nationals receive biometric residence permits; "The application procedure and issuance of a biometric residence permit are decided by the Canton of residence"; microchip stores "two digital fingerprints and a facial image." Matches claim character-for-character.
+      status: VERIFIED
+      lastVerified: "2026-06-09"
+      verifiedBy: "fact-verifier"
+      reviewBy: "2026-09-07"
+    detail: >
+      The residence permit card (e.g. an L or B permit) is the physical proof of your right
+      to live in Switzerland. After you register at the commune, the cantonal migration
+      authority arranges capture of your biometric data and the card is produced and sent to
+      you. The card carries a microchip with two fingerprints and a facial image. Identity
+      is verified against your passport.
+    steps:
+      - text: "After commune registration, attend the cantonal migration office appointment to have your biometric data (fingerprints and facial image) captured."
+        links:
+          - text: "SEM — biometric residence permit: procedure and what the fee covers"
+            sourceUrl: "https://www.sem.admin.ch/sem/en/home/themen/aufenthalt/biometr_auslaenderausweis.html"
+            sourceName: "State Secretariat for Migration (SEM)"
+            # VERIFIED 2026-06-09: same SEM page loaded; covers procedure (canton-decided) and explicitly states "Residence permit fees cover the following: application processing, issuance of residence permit and capture of biometric data." Link text accurate.
+            status: VERIFIED
+            lastVerified: "2026-06-09"
+            verifiedBy: "fact-verifier"
+            reviewBy: "2026-09-07"
+      - text: "Receive the biometric residence permit card produced by the canton."
+    documents:
+      - "Valid US passport (used to verify identity)"
+      - "Confirmation of commune registration"
+      - "Cantonal authorisation / approval reference"
+    timeline:
+      text: "Confirm with your cantonal migration office. The application procedure and issuance of the biometric residence permit are decided by the canton of residence; production and delivery times are not a single fixed federal figure."
+      sourceUrl: "https://www.sem.admin.ch/sem/en/home/themen/aufenthalt/biometr_auslaenderausweis.html"
+      sourceName: "State Secretariat for Migration (SEM) — Biometric residence permits"
+      # FLAGGED 2026-06-09 (fact-verifier): SEM biometric page loads (curl, browser UA, HTTP 200) and supports the canton-decides assertion (verified elsewhere in this task), but states NO production/delivery time. Claim text is an honest "Confirm with your cantonal migration office" statement with no checkable processing-time figure. Per protocol, "Confirm with [authority]" claims are FLAGGED. Not a source error — no fixed federal time exists.
+      status: FLAGGED
+    cost:
+      text: "Confirm with your cantonal migration office. The fee covers application processing, issuance of the residence permit and capture of biometric data; the exact amount is set at cantonal level."
+      sourceUrl: "https://www.sem.admin.ch/sem/en/home/themen/aufenthalt/biometr_auslaenderausweis.html"
+      sourceName: "State Secretariat for Migration (SEM) — Biometric residence permits"
+      # VERIFIED 2026-06-09: the substantive, checkable assertion (what the fee covers) is on the SEM page verbatim: "Residence permit fees cover the following: application processing, issuance of residence permit and capture of biometric data." Claim asserts no specific amount. Fee-related -> 30-day review window.
+      status: VERIFIED
+      lastVerified: "2026-06-09"
+      verifiedBy: "fact-verifier"
+      reviewBy: "2026-07-09"
+    dependsOn:
+      - register-commune
+
+  # ---------------------------------------------------------------------------
+  - id: health-insurance
+    title: "Take out mandatory health insurance (KVG/LAMal)"
+    category: healthcare-insurance
+    summary:
+      text: "Health insurance is compulsory. Anyone settling in Switzerland must take out basic health insurance within three months of taking up residence. If you insure within that period, cover takes effect from the start of residence and costs incurred since then are reimbursed retrospectively."
+      sourceUrl: "https://www.bag.admin.ch/en/health-insurance-requirement-to-obtain-insurance-for-persons-resident-in-switzerland"
+      sourceName: "Federal Office of Public Health (FOPH) — Requirement to obtain insurance for persons resident in Switzerland"
+      # VERIFIED 2026-06-09: FOPH page loaded. Confirms compulsory insurance ("Any person who is resident in Switzerland is required to obtain health insurance"); "Anyone settling in Switzerland must take out health insurance within three months after taking up residence"; "If insurance is obtained within the specified period, coverage takes effect from birth or from the beginning of residence in Switzerland. Any costs which may have been incurred since the starting date will be reimbursed retrospectively." Matches claim character-for-character.
+      status: VERIFIED
+      lastVerified: "2026-06-09"
+      verifiedBy: "fact-verifier"
+      reviewBy: "2026-09-07"
+    detail: >
+      Switzerland's basic compulsory health insurance (KVG in German / LAMal in French) is
+      not provided by the employer — you choose and contract your own insurer. The
+      obligation applies to residents (including newly arrived third-country nationals).
+      You must take out insurance within three months of taking up residence; if you do,
+      cover is backdated to your arrival. Miss the deadline and cover only starts from
+      enrolment, with a possible surcharge unless the delay is justified. Premiums vary by
+      insurer, canton, age and chosen deductible.
+    steps:
+      - text: "Choose a recognised basic health insurer and a model/deductible, then enrol within three months of taking up residence."
+        tip: "Insure promptly — within the three-month window cover is backdated to your arrival; miss it and you may face a surcharge and pay earlier medical costs yourself."
+        links:
+          - text: "FOPH — obligation to take out insurance and the three-month rule"
+            sourceUrl: "https://www.bag.admin.ch/en/health-insurance-requirement-to-obtain-insurance-for-persons-resident-in-switzerland"
+            sourceName: "Federal Office of Public Health (FOPH)"
+            # VERIFIED 2026-06-09: same FOPH page; states the obligation and the three-month rule verbatim ("must take out health insurance within three months after taking up residence"). Link text accurate.
+            status: VERIFIED
+            lastVerified: "2026-06-09"
+            verifiedBy: "fact-verifier"
+            reviewBy: "2026-09-07"
+          - text: "Legal basis explained: the compulsory health-insurance obligation under the Federal Health Insurance Act (KVG/LAMal), as set out by the FOPH"
+            sourceUrl: "https://www.bag.admin.ch/en/health-insurance-requirement-to-obtain-insurance-for-persons-resident-in-switzerland"
+            sourceName: "Federal Office of Public Health (FOPH) — Requirement to obtain insurance for persons resident in Switzerland"
+            # VERIFIED 2026-06-09 (fact-verifier): FOPH requirement page loaded (curl, browser UA, HTTP 200, title "Health insurance: Requirement to obtain insurance for persons resident in Switzerland"). Confirms the statutory obligation verbatim: "any person who is resident in Switzerland is required to obtain health insurance ... within three months after taking up residence." Page's Links/Legislation section references "compulsory health insurance (KVG)" and the KVV ordinance (CC 832.102). NOTE for researcher: this page names KVG but does not spell out "LAMal"; the obligation itself (the load-bearing fact) is on the page. Link text accurate.
+            status: VERIFIED
+            lastVerified: "2026-06-09"
+            verifiedBy: "fact-verifier"
+            reviewBy: "2026-09-07"
+    documents:
+      - "Confirmation of commune registration / proof of Swiss residence"
+      - "Valid US passport or residence permit card"
+      - "Date of taking up residence (arrival date)"
+    timeline:
+      text: "You must take out insurance within three months of taking up residence in Switzerland; within that window cover is backdated to your arrival date."
+      sourceUrl: "https://www.bag.admin.ch/en/health-insurance-requirement-to-obtain-insurance-for-persons-resident-in-switzerland"
+      sourceName: "Federal Office of Public Health (FOPH)"
+      # VERIFIED 2026-06-09: FOPH page confirms "within three months after taking up residence" and that timely insurance "takes effect from ... the beginning of residence in Switzerland" with earlier costs "reimbursed retrospectively." Deadline matches character-for-character.
+      status: VERIFIED
+      lastVerified: "2026-06-09"
+      verifiedBy: "fact-verifier"
+      reviewBy: "2026-09-07"
+    cost:
+      text: "Basic-insurance premiums are not fixed nationally: insurers set the premiums, premium levels vary within and between cantons and depend on your place of residence, and you can lower your premium by choosing a higher deductible or an alternative insurance model. Compare current premiums with the official FOPH premium calculator (priminfo) and confirm with insurers."
+      sourceUrl: "https://www.bag.admin.ch/en/health-insurance-premiums-and-co-payment"
+      sourceName: "Federal Office of Public Health (FOPH) — Health insurance: Premiums and co-payment"
+      # VERIFIED 2026-06-09 (fact-verifier): FOPH "Premiums and co-payment" page loaded (curl, browser UA, HTTP 200, title "Health insurance: Premiums and co-payment"). Confirmed verbatim: "Insurers set the premiums paid by policyholders." and "Premium levels vary in accordance with differences in costs within cantons and depend on the policyholder's place of residence. Insurers may charge different premiums for different regions." Same page also confirms elective deductibles for adults (500, 1000, 1500, 2000, 2500 francs) and restricted-provider models (HMO, GP) yielding premium discounts -> supports "lower your premium by choosing a higher deductible or an alternative insurance model." All claim elements supported. Fee/premium claim -> 30-day review window.
+      status: VERIFIED
+      lastVerified: "2026-06-09"
+      verifiedBy: "fact-verifier"
+      reviewBy: "2026-07-09"
+    warning: >
+      If you do not insure within three months, cover starts only from the date of
+      enrolment, a premium surcharge may apply unless the delay is justified, and you may
+      have to pay any medical costs incurred before enrolment yourself.
+    dependsOn:
+      - register-commune
+
+  # ---------------------------------------------------------------------------
+  - id: ahv-social-security
+    title: "Get your AHV/AVS social security (OASI) number"
+    category: registration-bureaucracy
+    summary:
+      text: "The OASI number (AHV in German / AVS in French) is the social-insurance number assigned to everyone living or working in Switzerland, used for old-age and survivors' insurance. As an employee you do not handle OASI yourself: your employer deducts your OASI contributions from your gross salary and pays them, with the employer's own share, to its compensation office (Ausgleichskasse / caisse de compensation). If you do not already have an OASI number when employment begins, confirm with your cantonal compensation office how it is issued; once you have one, you can ask your employer for it."
+      sourceUrl: "https://www.ch.ch/en/retirement/old-age-pension/the-first-pillar/oasi-contributions/"
+      sourceName: "ch.ch — Paying OASI contributions in Switzerland (official federal portal)"
+      # VERIFIED 2026-06-09 (fact-verifier): ch.ch "Paying OASI contributions in Switzerland" page loaded (curl, browser UA, HTTP 200, title matches). Confirms the load-bearing checkable facts verbatim: "All persons living or working in Switzerland must pay OASI contributions" and "Half of your OASI contributions (8.7% of your salary) are paid by you and the other half by your employer. Your employer takes care of deducting the OASI contributions from your gross salary and pays them to the compensation fund." The trailing number-issuance step ("Confirm with your cantonal compensation office how it is issued") is an honest pointer embedded in an otherwise fully-supported summary; no fact invented. Summary VERIFIED on its checkable content.
+      status: VERIFIED
+      lastVerified: "2026-06-09"
+      verifiedBy: "fact-verifier"
+      reviewBy: "2026-09-07"
+    detail: >
+      The OASI/AHV/AVS number (beginning 756) is assigned to everyone living or working in
+      Switzerland and is valid for life. As an employee you normally do not deal with OASI
+      yourself: your employer deducts your OASI contributions from your gross salary and pays
+      them, together with the employer's matching share, to its compensation office
+      (Ausgleichskasse / caisse de compensation). If you do not already hold an OASI number
+      when you start work, ask your cantonal compensation office how it is issued. You can
+      ask your employer for your OASI number once you have one.
+    steps:
+      - text: "Once you start employment, your employer deducts your OASI contributions and pays them to its compensation office (Ausgleichskasse / caisse de compensation); if you do not yet have an OASI number, the compensation office is the body that handles it — confirm the procedure with them."
+        tip: "If you need the number, ask your employer or your cantonal compensation office; an OASI card can also be requested."
+        links:
+          - text: "ch.ch — requesting an OASI card"
+            sourceUrl: "https://www.ch.ch/en/documents-and-register-extracts/requesting-an-oasi-card/"
+            sourceName: "ch.ch — Requesting an OASI card (official federal portal)"
+            # VERIFIED 2026-06-09: server-rendered HTML (curl, HTTP 200) is the OASI-card page; lead reads "If you do not have an OASI card or if you have lost yours, you can request one by filling out the online form and sending it to the competent authority. The OASI card ceased to be compulsory in 2016..." Link text ("requesting an OASI card") accurate. (EN page falls back to a German <title> "Den AHV-Ausweis bestellen" = "Order the AHV card"; body content is English.)
+            status: VERIFIED
+            lastVerified: "2026-06-09"
+            verifiedBy: "fact-verifier"
+            reviewBy: "2026-09-07"
+    documents:
+      - "Swiss employment contract"
+      - "Valid US passport / residence permit"
+    timeline:
+      text: "Confirm with your cantonal compensation office. OASI is handled through your employer's compensation office once employment begins; no single fixed federal processing time for issuing the number is published."
+      sourceUrl: "https://www.ch.ch/en/retirement/old-age-pension/the-first-pillar/oasi-contributions/"
+      sourceName: "ch.ch — Paying OASI contributions in Switzerland (official federal portal)"
+      # FLAGGED 2026-06-09 (fact-verifier): ch.ch "Paying OASI contributions" page loads (curl, browser UA, HTTP 200) and supports the employer/compensation-fund mechanism, but states NO processing time for issuing the OASI number. Claim text is an honest "Confirm with your cantonal compensation office" statement with no checkable timing figure. Per protocol, "Confirm with [authority]" claims are FLAGGED. Not a source error — no fixed federal time is published.
+      status: FLAGGED
+    cost:
+      text: "Getting the OASI number itself involves no fee for you; ongoing OASI contributions are shared — as an employee you pay half of your OASI contributions (8.7% of salary) and your employer pays the other half, deducted from your gross salary by the employer."
+      sourceUrl: "https://www.ch.ch/en/retirement/old-age-pension/the-first-pillar/oasi-contributions/"
+      sourceName: "ch.ch — Paying OASI contributions in Switzerland (official federal portal)"
+      # VERIFIED 2026-06-09 (fact-verifier): ch.ch "Paying OASI contributions" page loaded (curl, browser UA, HTTP 200). Load-bearing fact confirmed verbatim: "Half of your OASI contributions (8.7% of your salary) are paid by you and the other half by your employer. Your employer takes care of deducting the OASI contributions from your gross salary and pays them to the compensation fund." The "no fee for the number itself" portion is not contradicted by the page (the page describes no charge for an OASI number; the only fee discussion is the contribution split, which is confirmed). Contribution-rate claim -> 30-day review window.
+      status: VERIFIED
+      lastVerified: "2026-06-09"
+      verifiedBy: "fact-verifier"
+      reviewBy: "2026-07-09"
+    dependsOn:
+      - residence-permit-card
+
+  # ---------------------------------------------------------------------------
+  # NOTE (content-researcher, 2026-06-09): the "open-bank-account" task was REMOVED.
+  # Opening a Swiss bank account is a private, non-government process: requirements,
+  # fees and timelines are set by individual banks and there is no official primary
+  # source (federal/cantonal) describing it. The previously cited ch.ch "Working in
+  # Switzerland" page contains no banking content. Per the verifier's guidance,
+  # removing the task is preferable to shipping a weak/mismatched source. Nothing in
+  # this corridor depends on it.

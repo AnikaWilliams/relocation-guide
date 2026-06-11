@@ -145,3 +145,30 @@ Phase 0 delivered only governance docs. Phase 1 scaffolds the Astro 4.x applicat
 - No real corridor content ships in Phase 1 (founder instruction); the corridors dir is empty but documented (`README.md`). The gate is proven by unit tests, not by fake data.
 - `astro.config.mjs` `site` is a placeholder (`SITE_URL` env) until the production domain exists — must be set before launch for correct canonical URLs and sitemap.
 - ADR-0004 (analytics) remains pending; no analytics/ads code added yet.
+
+---
+
+## ADR-0006 — Narrow initial focus to USA → Switzerland
+
+**Date:** 2026-06-09
+**Status:** Accepted
+**Decided by:** Founder (Anika Williams)
+
+### Context
+Phase 2 began with India → Germany (`in-de`). The founder has refocused: perfect a single corridor end-to-end before expanding to the rest.
+
+### Decision
+The **sole active corridor is USA → Switzerland (`us-ch`)**. All other corridors are deferred until `us-ch` is "perfected" — fully VERIFIED content, founder-approved, published, with SEO + compliance complete. India → Germany (`in-de`) is **parked as WIP** on branch `corridor/in-de` (currently not build-clean; 23/29 claims verified) and will resume later.
+
+### Rationale
+- Depth before breadth: prove the full researcher → verifier → publish pipeline on one corridor.
+- Smaller verification surface → faster path to a genuinely trustworthy live page.
+- USA → Switzerland is a strong test case: high-value Anglophone origin; Switzerland's non-EU/EFTA quota + cantonal rules exercise the hard parts of the model.
+
+### Scope note
+This narrows **immediate priority only**. The broader approved scope (ADR-0003 waves of origins/destinations) is unchanged for the long term — "once this is perfected we move on to the others."
+
+### Consequences
+- `corridor/in-de` stays parked (do not merge); revisit after `us-ch`.
+- ROADMAP Phase 2 reorganised around `us-ch`.
+- No code changes required — the architecture already supports any corridor by adding one content file.
