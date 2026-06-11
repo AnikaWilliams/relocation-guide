@@ -5,9 +5,11 @@ import Disclaimer from '../components/Disclaimer.astro';
 interface Props {
   title: string;
   description: string;
+  /** Remove all padding and hide the footer — for full-bleed app-style pages. */
+  fullBleed?: boolean;
 }
 
-const { title, description } = Astro.props;
+const { title, description, fullBleed = false } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
 ---
 
@@ -39,15 +41,17 @@ const canonical = new URL(Astro.url.pathname, Astro.site).href;
       </div>
     </header>
 
-    <main class="mx-auto w-full max-w-5xl flex-1 px-4 py-8">
+    <main class={fullBleed ? 'flex-1 flex flex-col overflow-hidden' : 'mx-auto w-full max-w-5xl flex-1 px-4 py-8'}>
       <slot />
     </main>
 
-    <footer class="border-t border-slate-200 mt-12">
-      <div class="mx-auto max-w-5xl px-4 py-8 space-y-4 text-sm text-slate-600">
-        <Disclaimer />
-        <p>&copy; {new Date().getFullYear()} Relocation Guide. Informational use only.</p>
-      </div>
-    </footer>
+    {!fullBleed && (
+      <footer class="border-t border-slate-200 mt-12">
+        <div class="mx-auto max-w-5xl px-4 py-8 space-y-4 text-sm text-slate-600">
+          <Disclaimer />
+          <p>&copy; {new Date().getFullYear()} Relocation Guide. Informational use only.</p>
+        </div>
+      </footer>
+    )}
   </body>
 </html>

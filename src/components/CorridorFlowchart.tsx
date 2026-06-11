@@ -6,18 +6,10 @@ import {
   MarkerType,
   type Edge,
   type Node,
+  type NodeMouseHandler,
 } from '@xyflow/react';
 import '@xyflow/react/dist/style.css';
 
-/**
- * Corridor flowchart React island (ADR-0001: React islands via @astrojs/react).
- * Renders the corridor's tasks as nodes, laid out in dependency layers, with
- * edges from each task's `dependsOn`. Loaded lazily (`client:visible`) to keep
- * the zero-JS default intact on first paint (seo-analyst CWV budget).
- *
- * This component renders structure only — it never invents copy or facts; all
- * task titles come from VERIFIED content.
- */
 export interface FlowTask {
   id: string;
   title: string;
@@ -27,6 +19,8 @@ export interface FlowTask {
 
 interface Props {
   tasks: FlowTask[];
+  onNodeClick?: (id: string) => void;
+  selectedId?: string | null;
 }
 
 const NODE_WIDTH = 220;
@@ -34,7 +28,6 @@ const NODE_HEIGHT = 64;
 const X_GAP = 80;
 const Y_GAP = 28;
 
-/** Assign each task to a layer = longest dependency chain depth (simple DAG layering). */
 function computeLayers(tasks: FlowTask[]): Map<string, number> {
   const byId = new Map(tasks.map((t) => [t.id, t]));
   const depth = new Map<string, number>();
@@ -46,7 +39,6 @@ function computeLayers(tasks: FlowTask[]): Map<string, number> {
       depth.set(id, 0);
       return 0;
     }
-    // Cycle guard: treat a back-edge as depth 0 contribution.
     if (stack.has(id)) return 0;
     stack.add(id);
     const d =
@@ -63,7 +55,7 @@ function computeLayers(tasks: FlowTask[]): Map<string, number> {
   return depth;
 }
 
-export default function CorridorFlowchart({ tasks }: Props) {
+export default function CorridorFlowchart({ tasks, onNodeClick, selectedId }: Props) {
   const { nodes, edges } = useMemo(() => {
     const layers = computeLayers(tasks);
     const perLayerCount = new Map<number, number>();
@@ -72,6 +64,7 @@ export default function CorridorFlowchart({ tasks }: Props) {
       const layer = layers.get(t.id) ?? 0;
       const indexInLayer = perLayerCount.get(layer) ?? 0;
       perLayerCount.set(layer, indexInLayer + 1);
+      const isSelected = selectedId === t.id;
       return {
         id: t.id,
         position: {
@@ -82,10 +75,12 @@ export default function CorridorFlowchart({ tasks }: Props) {
         style: {
           width: NODE_WIDTH,
           fontSize: 13,
-          border: '1px solid #cbd5e1',
+          border: isSelected ? '2px solid #3b82f6' : '1px solid #cbd5e1',
           borderRadius: 8,
           padding: 8,
-          background: '#ffffff',
+          background: isSelected ? '#eff6ff' : '#ffffff',
+          cursor: onNodeClick ? 'pointer' : 'default',
+          fontWeight: isSelected ? 600 : 400,
         },
       };
     });
@@ -105,7 +100,8 @@ export default function CorridorFlowchart({ tasks }: Props) {
     }
 
     return { nodes, edges };
-  }, [tasks]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [tasks, selectedId]);
 
   if (tasks.length === 0) {
     return (
@@ -113,8 +109,12 @@ export default function CorridorFlowchart({ tasks }: Props) {
     );
   }
 
+  const handleNodeClick: NodeMouseHandler = (_e, node) => {
+    onNodeClick?.(node.id);
+  };
+
   return (
-    <div style={{ width: '100%', height: 480 }} role="img" aria-label="Corridor task flowchart">
+    <div style={{ width: '100%', height: '100%' }} role="img" aria-label="Corridor task flowchart">
       <ReactFlow
         nodes={nodes}
         edges={edges}
@@ -122,6 +122,7 @@ export default function CorridorFlowchart({ tasks }: Props) {
         nodesDraggable={false}
         nodesConnectable={false}
         elementsSelectable={false}
+        onNodeClick={onNodeClick ? handleNodeClick : undefined}
         proOptions={{ hideAttribution: true }}
       >
         <Background />

@@ -10,6 +10,42 @@ coming next. Newest updates are at the top.
 
 ---
 
+## 2026-06-11 — The guide is now a fully interactive app, not a static page
+
+**What changed.** The USA → Switzerland guide has been completely redesigned. When you open it, instead of a wall of text, you're greeted by a short 3-step questionnaire (like checking in for a flight): it asks whether you have a job offer, who's coming with you, and how long you plan to stay. Once you answer, it generates your personalised relocation flowchart. Every step on the flowchart is clickable — tap any box and a panel slides open on the right with everything you need: what documents to gather, the exact steps to follow, how long it takes, what it costs, and a direct link to the official Swiss government source. This matches the experience at anikawilliams.com/relocation-app/, which is the product you built and validated.
+
+**Why it matters.** A static document is something people skim and close. An interactive tool is something people return to, share with their partner, and use throughout a move — which is how you build a loyal audience and a product worth paying for.
+
+**What you'd notice today.** Open `http://localhost:4321/us/ch/` and you'll see the 3-step questionnaire immediately. Fill it in, hit "Generate my relocation plan →", and the flowchart appears. Click any task to see the full detail panel on the right. Nothing is publicly live yet.
+
+**What's next.** Your approval, then connecting the "printing press" (Cloudflare Pages) to put it live on a real web address.
+
+---
+
+## 2026-06-11 — You can now preview the guide on your own computer
+
+**What changed.** We set up a local preview — think of it like opening the finished book on your desk before sending it to the printer. The full USA → Switzerland guide is now viewable at `http://localhost:4321/us/ch/` on your machine. All six steps appear (work permit, type D visa, commune registration, residence permit card, health insurance, social security), the interactive flowchart loads, and the provenance section lists all 22 verified official sources at the bottom. Tasks where no single official figure exists (e.g. cantonal permit fees) correctly show no cost or timeline row rather than a made-up number.
+
+**Why it matters.** You can read the guide exactly as a user would before deciding whether to publish it.
+
+**What you'd notice today.** Opening `http://localhost:4321/us/ch/` in your browser shows the live guide. Nothing is publicly accessible — this only works on your own computer while the preview server is running.
+
+**What's next.** Once you're happy with what you see, say the word and we'll commit the approval and set up Cloudflare Pages so it goes live.
+
+---
+
+## 2026-06-11 — You approved the guide; now we need to connect the "printing press"
+
+**What changed.** You flipped the switch to publish the USA → Switzerland guide. That's the founder approval our safety rules require — no guide goes live without it. We also discovered that the "printing press" (the service that takes our files and puts them on the internet, called Cloudflare Pages) hasn't been connected to the project yet. Right now the guide builds and passes every check, but it isn't being delivered to an actual web address anyone can visit.
+
+**Why it matters.** Publishing is a two-part job: (1) saying "this is approved" (done — you did that), and (2) having a delivery service pointed at the right place (not yet set up). We have part 1 but not part 2.
+
+**What you'd notice today.** No live link yet. The guide exists and is approved, but there's no web address to share.
+
+**What's next.** Connect the GitHub repo to Cloudflare Pages (a one-time, ~5-minute step in their dashboard) and the guide will appear at a live web address automatically.
+
+---
+
 ## 2026-06-11 — USA → Switzerland guide is clean and ready for your approval
 
 **What changed.** The guide had 5 facts that our checker correctly refused to confirm — things like "how long does the permit card take?" — because Switzerland doesn't publish a single answer: each region sets its own timing and fees. Rather than publishing a misleading number or a fudged "it varies", we simply leave those fields blank on tasks where no official figure exists. Think of it like a restaurant menu that shows "market price" instead of guessing a number that might be wrong. This required a small update to our publishing rules (so the site doesn't treat a blank field as a mistake) and the guide now has 22 facts, all 22 confirmed against official Swiss government sources.

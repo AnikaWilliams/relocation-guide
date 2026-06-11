@@ -6,7 +6,7 @@
 >
 > Legend: ✅ done · 🚧 in progress · ⏳ planned · 🔁 ongoing · 🗓️ backlog
 
-Last updated: 2026-06-11
+Last updated: 2026-06-11 (interactive app redesign)
 
 > **Current focus:** USA → Switzerland (`us-ch`) **only**, until it is perfected end-to-end.
 > All other corridors are deferred (see DECISIONS.md **ADR-0006**). India → Germany (`in-de`)
@@ -39,6 +39,7 @@ Get real, verified content live and the site launchable.
 - [ ] **Sole active corridor: USA → Switzerland (`us-ch`)** through the full pipeline — perfect before any other (ADR-0006)
   - [x] Drafted + independently verified (two-agent): **22/22 claims VERIFIED** (5 cantonal-variable fields omitted per ADR-0007), `published: false`
   - [x] Schema updated: `timeline`/`cost` optional (ADR-0007)
+  - [x] Redesigned as interactive app: 3-step wizard + clickable flowchart + task detail panel (matches anikawilliams.com/relocation-app/)
   - [ ] Founder approval, then flip `published: true`
 - [ ] _(deferred)_ India → Germany (`in-de`) — parked WIP on `corridor/in-de`; resume after `us-ch`
 - [ ] _(deferred)_ all other corridors until `us-ch` is published
