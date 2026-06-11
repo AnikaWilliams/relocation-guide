@@ -39,7 +39,7 @@ Get real, verified content live and the site launchable.
 - [ ] **Sole active corridor: USA → Switzerland (`us-ch`)** through the full pipeline — perfect before any other (ADR-0006)
   - [x] Drafted + independently verified (two-agent): **22/22 claims VERIFIED** (5 cantonal-variable fields omitted per ADR-0007), `published: false`
   - [x] Schema updated: `timeline`/`cost` optional (ADR-0007)
-  - [x] Redesigned as interactive app: 3-step wizard + clickable flowchart + task detail panel (matches anikawilliams.com/relocation-app/)
+  - [x] Redesigned as interactive app: 3-step wizard + clickable flowchart + task detail panel; visual design matches anikawilliams.com/relocation-app/ (app header, progress bar outside card, full-width button)
   - [ ] Founder approval, then flip `published: true`
 - [ ] _(deferred)_ India → Germany (`in-de`) — parked WIP on `corridor/in-de`; resume after `us-ch`
 - [ ] _(deferred)_ all other corridors until `us-ch` is published

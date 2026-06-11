@@ -53,8 +53,8 @@ interface CorridorAppProps {
 const TOTAL_STEPS = 3;
 
 function canContinue(step: number, answers: Answers): boolean {
-  if (step === 1) return answers.hasJobOffer !== null;
-  if (step === 2) return answers.partnerStatus !== null && answers.hasChildren !== null;
+  if (step === 1) return true; // corridor is pre-selected
+  if (step === 2) return answers.hasJobOffer !== null;
   if (step === 3) return answers.durationIntent !== null;
   return false;
 }
@@ -76,15 +76,15 @@ function OptionCard({
     <button
       type="button"
       onClick={onClick}
-      className={`w-full border-2 rounded-lg p-4 text-left transition-colors ${
+      className={`w-full border rounded-xl p-4 text-left transition-all ${
         selected
-          ? 'border-blue-500 bg-blue-50 text-blue-900'
-          : 'border-slate-200 bg-white hover:border-slate-300 text-slate-800'
+          ? 'border-blue-500 bg-blue-50'
+          : 'border-slate-200 bg-white hover:border-blue-300'
       }`}
     >
-      <span className="font-medium">{label}</span>
+      <span className="font-medium text-slate-900">{label}</span>
       {description && (
-        <span className="block text-sm mt-0.5 text-slate-500">{description}</span>
+        <span className="block text-sm text-slate-500 mt-0.5">{description}</span>
       )}
     </button>
   );
@@ -282,132 +282,124 @@ export default function CorridorApp({ tasks, corridorTitle, originName, destinat
   }
 
   if (phase === 'wizard') {
+    const ready = canContinue(step, answers);
     return (
       <div className="flex-1 flex flex-col overflow-hidden">
-        {/* Reuse Wizard but wire the Continue button correctly */}
-        <div className="flex-1 flex flex-col bg-slate-50 items-center justify-center p-6">
-          <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-8 w-full max-w-lg space-y-6">
-            <div className="flex gap-1.5">
+        {/* App header */}
+        <div className="shrink-0 bg-white border-b border-slate-200 px-8 py-5">
+          <p className="text-xl font-bold text-slate-900">Relocation Flowchart</p>
+          <p className="text-sm text-slate-500 mt-0.5">Dependency-aware guide to every legal and administrative step</p>
+        </div>
+
+        {/* Scrollable body */}
+        <div className="flex-1 bg-slate-50 overflow-y-auto">
+          <div className="flex flex-col items-center py-10 px-6">
+            {/* Progress bar — outside the card */}
+            <div className="flex gap-2 w-full max-w-xl mb-6">
               {Array.from({ length: TOTAL_STEPS }, (_, i) => (
                 <div
                   key={i}
-                  className={`h-1 flex-1 rounded-full transition-colors ${i < step ? 'bg-blue-600' : 'bg-slate-200'}`}
+                  className={`h-1 flex-1 rounded-full transition-colors ${i < step ? 'bg-blue-500' : 'bg-slate-200'}`}
                 />
               ))}
             </div>
 
-            <div className="text-xs font-medium text-slate-500 uppercase tracking-wide">
-              Step {step} of {TOTAL_STEPS}
-            </div>
+            {/* Card */}
+            <div className="w-full max-w-xl bg-white rounded-2xl shadow-sm border border-slate-100 p-8">
+              <p className="text-xs font-bold text-blue-600 uppercase tracking-widest mb-4">
+                Step {step} of {TOTAL_STEPS}
+              </p>
 
-            {step === 1 && (
-              <div className="space-y-4">
-                <h2 className="text-2xl font-bold text-slate-900">Your move</h2>
-                <p className="text-slate-500 text-sm">Help us personalise your {originName} → {destinationName} plan.</p>
-                <fieldset className="space-y-2">
-                  <legend className="text-sm font-semibold text-slate-700 mb-2">Do you have a job offer in Switzerland?</legend>
-                  <OptionCard
-                    label="Yes, I have a job offer"
-                    description="Your employer will sponsor your work permit"
-                    selected={answers.hasJobOffer === true}
-                    onClick={() => handleWizardUpdate({ hasJobOffer: true })}
-                  />
-                  <OptionCard
-                    label="Not yet"
-                    description="I'm planning to find work after arriving"
-                    selected={answers.hasJobOffer === false}
-                    onClick={() => handleWizardUpdate({ hasJobOffer: false })}
-                  />
-                </fieldset>
-              </div>
-            )}
+              {step === 1 && (
+                <div>
+                  <h2 className="text-2xl font-bold text-slate-900 mb-1">Where are you coming from?</h2>
+                  <p className="text-sm text-slate-500 mb-6">We have verified data for this corridor.</p>
+                  <div className="space-y-3">
+                    <OptionCard
+                      label={`${originName} → ${destinationName}`}
+                      selected={true}
+                      onClick={() => {}}
+                    />
+                  </div>
+                  <p className="mt-3 text-xs text-slate-400">More corridors coming soon — we verify every fact before publishing.</p>
+                </div>
+              )}
 
-            {step === 2 && (
-              <div className="space-y-6">
-                <h2 className="text-2xl font-bold text-slate-900">Your family</h2>
-                <fieldset className="space-y-2">
-                  <legend className="text-sm font-semibold text-slate-700 mb-2">Are you moving with a partner or spouse?</legend>
-                  <OptionCard
-                    label="Moving solo"
-                    selected={answers.partnerStatus === 'solo'}
-                    onClick={() => handleWizardUpdate({ partnerStatus: 'solo' })}
-                  />
-                  <OptionCard
-                    label="With a partner (unmarried)"
-                    selected={answers.partnerStatus === 'partner'}
-                    onClick={() => handleWizardUpdate({ partnerStatus: 'partner' })}
-                  />
-                  <OptionCard
-                    label="With a spouse (married)"
-                    selected={answers.partnerStatus === 'spouse'}
-                    onClick={() => handleWizardUpdate({ partnerStatus: 'spouse' })}
-                  />
-                </fieldset>
-                <fieldset className="space-y-2">
-                  <legend className="text-sm font-semibold text-slate-700 mb-2">Do you have children under 18 coming with you?</legend>
-                  <OptionCard
-                    label="No"
-                    selected={answers.hasChildren === false}
-                    onClick={() => handleWizardUpdate({ hasChildren: false })}
-                  />
-                  <OptionCard
-                    label="Yes"
-                    selected={answers.hasChildren === true}
-                    onClick={() => handleWizardUpdate({ hasChildren: true })}
-                  />
-                </fieldset>
-              </div>
-            )}
+              {step === 2 && (
+                <div>
+                  <h2 className="text-2xl font-bold text-slate-900 mb-1">Your situation</h2>
+                  <p className="text-sm text-slate-500 mb-6">Help us personalise your plan.</p>
+                  <div className="space-y-3">
+                    <p className="text-sm font-semibold text-slate-700">Do you have a job offer in Switzerland?</p>
+                    <OptionCard
+                      label="Yes, I have a job offer"
+                      description="Your employer will sponsor your work permit"
+                      selected={answers.hasJobOffer === true}
+                      onClick={() => handleWizardUpdate({ hasJobOffer: true })}
+                    />
+                    <OptionCard
+                      label="Not yet"
+                      description="I'm planning to find work after arriving"
+                      selected={answers.hasJobOffer === false}
+                      onClick={() => handleWizardUpdate({ hasJobOffer: false })}
+                    />
+                  </div>
+                </div>
+              )}
 
-            {step === 3 && (
-              <div className="space-y-4">
-                <h2 className="text-2xl font-bold text-slate-900">How long?</h2>
-                <p className="text-slate-500 text-sm">Your intended stay determines which permit you'll apply for.</p>
-                <fieldset className="space-y-2">
-                  <OptionCard
-                    label="Less than 1 year"
-                    description="Short-stay L permit path"
-                    selected={answers.durationIntent === 'short'}
-                    onClick={() => handleWizardUpdate({ durationIntent: 'short' })}
-                  />
-                  <OptionCard
-                    label="1 year or more"
-                    description="Standard B permit path"
-                    selected={answers.durationIntent === 'long'}
-                    onClick={() => handleWizardUpdate({ durationIntent: 'long' })}
-                  />
-                  <OptionCard
-                    label="Indefinitely — planning to settle"
-                    description="B permit now, C permit possible after 5–10 years"
-                    selected={answers.durationIntent === 'permanent'}
-                    onClick={() => handleWizardUpdate({ durationIntent: 'permanent' })}
-                  />
-                </fieldset>
-              </div>
-            )}
+              {step === 3 && (
+                <div>
+                  <h2 className="text-2xl font-bold text-slate-900 mb-1">How long are you staying?</h2>
+                  <p className="text-sm text-slate-500 mb-6">Your intended stay determines which permit you'll need.</p>
+                  <div className="space-y-3">
+                    <OptionCard
+                      label="Less than 1 year"
+                      description="Short-stay L permit path"
+                      selected={answers.durationIntent === 'short'}
+                      onClick={() => handleWizardUpdate({ durationIntent: 'short' })}
+                    />
+                    <OptionCard
+                      label="1 year or more"
+                      description="Standard B permit path"
+                      selected={answers.durationIntent === 'long'}
+                      onClick={() => handleWizardUpdate({ durationIntent: 'long' })}
+                    />
+                    <OptionCard
+                      label="Indefinitely — planning to settle"
+                      description="B permit now; C permit possible after 5–10 years"
+                      selected={answers.durationIntent === 'permanent'}
+                      onClick={() => handleWizardUpdate({ durationIntent: 'permanent' })}
+                    />
+                  </div>
+                </div>
+              )}
 
-            <div className="flex items-center justify-between pt-2">
+              {step > 1 && (
+                <button
+                  type="button"
+                  onClick={handleWizardBack}
+                  className="mt-6 text-sm text-slate-500 hover:text-slate-700"
+                >
+                  ← Back
+                </button>
+              )}
+
               <button
                 type="button"
-                onClick={handleWizardBack}
-                className={`text-sm text-slate-500 hover:text-slate-700 px-2 py-1 rounded ${step === 1 ? 'invisible' : ''}`}
-              >
-                ← Back
-              </button>
-              <button
-                type="button"
-                disabled={!canContinue(step, answers)}
+                disabled={!ready}
                 onClick={handleWizardContinue}
-                className="bg-blue-600 text-white rounded-lg px-6 py-2.5 text-sm font-medium hover:bg-blue-700 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+                className={`w-full mt-4 rounded-xl py-3.5 font-medium text-white transition-colors ${
+                  ready ? 'bg-blue-500 hover:bg-blue-600' : 'bg-blue-300 cursor-not-allowed'
+                }`}
               >
-                {step === TOTAL_STEPS ? 'Generate my relocation plan →' : 'Continue →'}
+                {step === TOTAL_STEPS ? 'Generate my relocation plan' : 'Continue'}
               </button>
             </div>
-          </div>
 
-          <p className="mt-6 text-xs text-slate-400 text-center max-w-md">
-            General guidance only — not legal advice. Always verify with official Swiss authorities.
-          </p>
+            <p className="text-xs text-slate-400 text-center mt-8 max-w-md">
+              This tool provides general guidance only — not legal advice. Rules change; always verify with official government sources.
+            </p>
+          </div>
         </div>
       </div>
     );
@@ -416,11 +408,11 @@ export default function CorridorApp({ tasks, corridorTitle, originName, destinat
   // ── App phase ────────────────────────────────────────────────────────────
   return (
     <div className="flex-1 flex flex-col overflow-hidden">
-      {/* App toolbar */}
-      <div className="shrink-0 px-6 py-3 border-b border-slate-200 bg-white flex items-center justify-between gap-4">
+      {/* App header — same style as wizard header */}
+      <div className="shrink-0 bg-white border-b border-slate-200 px-8 py-5 flex items-start justify-between gap-4">
         <div>
-          <h1 className="text-base font-semibold text-slate-900">{corridorTitle}</h1>
-          <p className="text-xs text-slate-500">Click any step to see details and next actions</p>
+          <p className="text-xl font-bold text-slate-900">Relocation Flowchart</p>
+          <p className="text-sm text-slate-500 mt-0.5">{corridorTitle} · click any step to see details</p>
         </div>
         <button
           type="button"
@@ -430,7 +422,7 @@ export default function CorridorApp({ tasks, corridorTitle, originName, destinat
             setSelectedTaskId(null);
             setAnswers({ hasJobOffer: null, partnerStatus: null, hasChildren: null, durationIntent: null });
           }}
-          className="shrink-0 text-xs text-slate-500 hover:text-slate-700 border border-slate-200 rounded-lg px-3 py-1.5 hover:bg-slate-50 transition-colors"
+          className="shrink-0 mt-1 text-sm text-blue-600 hover:text-blue-700 font-medium"
         >
           ← Edit preferences
         </button>
