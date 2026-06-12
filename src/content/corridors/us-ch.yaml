@@ -1,14 +1,14 @@
 originIso2: us
 destinationIso2: ch
 title: "Moving from the USA to Switzerland"
-description: "How US citizens (non-EU/EFTA third-country nationals) relocate to Switzerland for work: the employer-sponsored work and residence permit, the national (type D) visa, arrival registration, the residence permit card, mandatory health insurance, and social security."
-lastReviewed: "2026-06-09"
+description: "How US citizens (non-EU/EFTA third-country nationals) relocate to Switzerland for work or to join family: the employer-sponsored work and residence permit or the family-reunification permit, the national (type D) visa, arrival registration, the residence permit card, mandatory health insurance, and social security."
+lastReviewed: "2026-06-12"
 reviewedBy: "content-researcher"
 published: true
-# This guide documents the employer-sponsored work route only (per the
-# description above). Family/study/other routes need their own researched and
-# verified content before being added here.
-coversMotivations: [work]
+# Covered routes: work (employer-sponsored, verified 2026-06-09) and family
+# reunification (verified 2026-06-12, 27/27 claims). Study/other routes still
+# need their own researched and verified content before being added here.
+coversMotivations: [work, family]
 tasks:
   # ---------------------------------------------------------------------------
   - id: work-residence-permit
@@ -66,6 +66,16 @@ tasks:
       Federal Council in the Ordinance on Admission, Period of Stay and Employment (ASEO).
       Do not rely on a quota figure without confirming the current year's numbers with SEM.
     dependsOn: []
+    # appliesIf added 2026-06-12 (content-researcher): this task describes the
+    # employer-sponsored labour-market admission only (FNIA Art. 18-22); it does
+    # not apply to family-reunification entrants.
+    # appliesIf APPROVED 2026-06-12 (fact-verifier, ADR-0009 §4): correct.
+    # Family-reunification entrants are admitted under FNIA Art. 42-44, not the
+    # Art. 18-22 labour-market admission, and Art. 46 FNIA (verified this run)
+    # expressly lets the spouse and children of Swiss nationals, C- and
+    # B-permit holders "work on a salaried or self-employed basis anywhere in
+    # Switzerland" — no separate labour-market permit step applies to them.
+    appliesIf: "motivation == 'work'"
 
   # ---------------------------------------------------------------------------
   - id: national-d-visa
@@ -140,6 +150,15 @@ tasks:
       reviewBy: "2026-07-09"
     dependsOn:
       - work-residence-permit
+    # appliesIf added 2026-06-12 (content-researcher): this task's claims are
+    # framed around the employer-sponsored work route (work authorisation as
+    # the precondition). Family-route users get the family-d-visa task instead.
+    # appliesIf APPROVED 2026-06-12 (fact-verifier, ADR-0009 §4): correct.
+    # The D-visa requirement itself is route-independent (SEM Entry FAQ), but
+    # this task's steps/documents presuppose the cantonal WORK authorisation;
+    # family users are served by family-d-visa, which carries the
+    # family-reunification documents and dependencies instead.
+    appliesIf: "motivation == 'work'"
 
   # ---------------------------------------------------------------------------
   - id: register-commune
@@ -189,7 +208,11 @@ tasks:
       verifiedBy: "fact-verifier"
       reviewBy: "2026-09-07"
     dependsOn:
+      # Entry tasks from BOTH routes are listed; at runtime a dependsOn id that
+      # is filtered out by appliesIf is ignored, so each user's journey only
+      # sees the entry task for their own route (ADR-0009 mechanics).
       - national-d-visa
+      - family-d-visa
 
   # ---------------------------------------------------------------------------
   - id: residence-permit-card
@@ -364,3 +387,485 @@ tasks:
   # Switzerland" page contains no banking content. Per the verifier's guidance,
   # removing the task is preferable to shipping a weak/mismatched source. Nothing in
   # this corridor depends on it.
+
+  # ===========================================================================
+  # FAMILY-REUNIFICATION ROUTE (drafted 2026-06-12, content-researcher).
+  # VERIFICATION RUN 2026-06-12 (fact-verifier, independent session per
+  # two-agent rule): all 27 claims below checked against the sources as
+  # served and tagged VERIFIED. FNIA text was read from the official Fedlex
+  # filestore consolidated EN HTML (in-force version 2026-02-01) because
+  # www.fedlex.admin.ch renders that same document client-side (JS SPA).
+  # Statutory references are to the Federal Act on
+  # Foreign Nationals and Integration (FNIA, SR 142.20); the Fedlex English
+  # translation is marked "provided for information purposes only and has no
+  # legal force" — the fact-verifier should check against the page as served.
+  # The legal basis differs by sponsor: Swiss citizen (Art. 42 — entitlement),
+  # settled C-permit holder (Art. 43 — entitlement with conditions), B-permit
+  # holder (Art. 44 — discretionary), so each sponsor type is its own task.
+  # ===========================================================================
+
+  # ---------------------------------------------------------------------------
+  - id: family-permit-spouse-swiss
+    title: "Family reunification as the spouse or registered partner of a Swiss citizen"
+    category: family-dependents
+    appliesIf: "motivation == 'family' && familyJoineeStatus == 'citizen' && familyRelationship != 'unmarried-partner' && familyRelationship != 'parent'"
+    summary:
+      text: "The foreign spouse (and unmarried children under 18) of a Swiss citizen who live with the Swiss citizen are entitled to be granted a residence permit and to have it extended (Art. 42 para. 1 FNIA). The provisions on foreign spouses apply mutatis mutandis to registered partnerships of same-sex couples (Art. 52 FNIA). After a law-abiding and uninterrupted stay of five years, the spouse is entitled to a settlement permit if the integration criteria of Art. 58a FNIA are met."
+      sourceUrl: "https://www.fedlex.admin.ch/eli/cc/2007/758/en#art_42"
+      sourceName: "Foreign Nationals and Integration Act (FNIA, SR 142.20), Art. 42 and 52 — Fedlex, the official publication platform of Swiss law"
+      # VERIFIED 2026-06-12 (fact-verifier): cited www.fedlex.admin.ch URL resolves (HTTP 200) but renders client-side; text read from the SAME official Fedlex platform's static consolidated HTML (fedlex.data.admin.ch filestore, ELI cc/2007/758, in-force version 2026-02-01, English; anchor id "art_42" present). Art. 42 para. 1 verbatim: "The foreign spouse and unmarried children under 18 of a Swiss national who live with the Swiss national are entitled to be granted a residence permit and to have their residence permit extended." Art. 52 verbatim: "The provisions of this Chapter on foreign spouses apply mutatis mutandis to registered partnerships of same-sex couples." Art. 42 para. 3: after "a law-abiding and uninterrupted period of stay of five years, a foreign spouse is entitled to be granted a settlement permit if the integration criteria set out in Article 58a are met." Entitlement ("are entitled") language matches character-for-character. Doc header confirms the EN translation "has no legal force" — claim/detail state this.
+      status: VERIFIED
+      lastVerified: "2026-06-12"
+      verifiedBy: "fact-verifier"
+      reviewBy: "2026-09-10"
+    detail: >
+      Joining a Swiss-citizen spouse or registered partner is a statutory entitlement, not a
+      discretionary admission: it is not subject to the third-country labour-market quotas
+      that govern the work route. The requirement is that you live together (Art. 42 para. 1
+      FNIA; Art. 49 allows an exemption where good cause is shown for living separately and
+      the family household continues to exist). Your marriage or registered partnership must
+      be recognised by Switzerland. Once admitted, the spouse and children of a Swiss
+      citizen may work, salaried or self-employed, anywhere in Switzerland (Art. 46 FNIA).
+      Note that the English text of the FNIA is an official translation provided for
+      information only and has no legal force; the German, French and Italian versions are
+      authoritative.
+    steps:
+      - text: "Check that your marriage or registered partnership is recognised by Switzerland — recognition is a precondition for family reunification."
+        links:
+          - text: "ch.ch — conditions for family reunification: the marriage or registered partnership must be recognised by Switzerland"
+            sourceUrl: "https://www.ch.ch/en/foreign-nationals-in-switzerland/living-in-switzerland/family-reunification/"
+            sourceName: "ch.ch — Application for family reunification in Switzerland (official federal portal)"
+            # VERIFIED 2026-06-12 (fact-verifier): ch.ch page loaded (curl, browser UA, HTTP 200, title "Application for family reunification in Switzerland"). Under "Conditions to be met for family reunification in Switzerland", verbatim: "Your marriage or a registered partnership must be recognised by Switzerland." Link text accurate.
+            status: VERIFIED
+            lastVerified: "2026-06-12"
+            verifiedBy: "fact-verifier"
+            reviewBy: "2026-09-10"
+      - text: "Apply for family reunification via the cantonal immigration authority of the canton where your spouse or partner lives — the cantons handle family-reunification applications."
+        tip: "Procedures, forms and document checklists are cantonal. Contact the competent cantonal migration office before assembling documents."
+        links:
+          - text: "ch.ch — where to apply for family reunification: contact the cantonal immigration authorities"
+            sourceUrl: "https://www.ch.ch/en/foreign-nationals-in-switzerland/living-in-switzerland/family-reunification/"
+            sourceName: "ch.ch — Application for family reunification in Switzerland (official federal portal)"
+            # VERIFIED 2026-06-12 (fact-verifier): same ch.ch page (HTTP 200); section "Where to apply for family reunification" states verbatim: "You need to contact the following cantonal immigration authorities." Link text accurate.
+            status: VERIFIED
+            lastVerified: "2026-06-12"
+            verifiedBy: "fact-verifier"
+            reviewBy: "2026-09-10"
+          - text: "SEM — addresses of the cantonal immigration and employment market authorities"
+            sourceUrl: "https://www.sem.admin.ch/sem/en/home/sem/kontakt/kantonale_behoerden/adressen_kantone_und.html"
+            sourceName: "State Secretariat for Migration (SEM) — Cantonal immigration and employment market authorities"
+            # VERIFIED 2026-06-12 (fact-verifier): SEM page loaded (curl, browser UA, HTTP 200, title "Cantonal immigration and employment market authorities"). Page is the official per-canton address directory (entries for all cantons incl. their Migrationsamt / Amt für Migration offices). Link text accurate.
+            status: VERIFIED
+            lastVerified: "2026-06-12"
+            verifiedBy: "fact-verifier"
+            reviewBy: "2026-09-10"
+      - text: "Observe the statutory time limit: the right to family reunification must be exercised within five years (children over 12: within twelve months)."
+        links:
+          - text: "FNIA Art. 47 — time limit for family reunification (five years; twelve months for children over twelve)"
+            sourceUrl: "https://www.fedlex.admin.ch/eli/cc/2007/758/en#art_47"
+            sourceName: "Foreign Nationals and Integration Act (FNIA, SR 142.20), Art. 47 — Fedlex"
+            # VERIFIED 2026-06-12 (fact-verifier): FNIA EN consolidated HTML read from the official Fedlex filestore (in-force 2026-02-01; anchor "art_47" present). Art. 47 para. 1 verbatim: "The right to family reunification must be exercised within five years. Children over twelve must be reunified with their family within twelve months." Matches link text character-for-character.
+            status: VERIFIED
+            lastVerified: "2026-06-12"
+            verifiedBy: "fact-verifier"
+            reviewBy: "2026-09-10"
+    documents:
+      - "Valid US passport"
+      - "Marriage certificate or registered-partnership certificate (certificate from the country of origin proving the relationship; ch.ch document list)"
+      - "Visa if necessary (see the family national (type D) visa task)"
+      - "Certificate of enrolment in a language course if you cannot make yourself understood in the national language of the place of residence (A1 level at least orally) — listed by ch.ch; confirm applicability for spouses of Swiss citizens with the cantonal authority"
+      - "Confirm the full cantonal document checklist with the competent cantonal migration office"
+    # timeline omitted (ADR-0007): processing of family-reunification applications
+    # is cantonal; no official federal processing-time figure exists for this step.
+    # cost omitted (ADR-0007): permit fees are set at cantonal level; no official
+    # federal fee figure exists. Confirm with the cantonal migration office.
+    warning: >
+      The right to family reunification must be exercised within five years (Art. 47 FNIA);
+      for children over 12 the limit is twelve months. A subsequent (late) reunification is
+      authorised only if there are important family reasons.
+    dependsOn: []
+
+  # ---------------------------------------------------------------------------
+  - id: family-permit-spouse-settled
+    title: "Family reunification as the spouse or registered partner of a settled person (C permit)"
+    category: family-dependents
+    appliesIf: "motivation == 'family' && familyJoineeStatus == 'settled' && familyRelationship != 'unmarried-partner' && familyRelationship != 'parent'"
+    summary:
+      text: "The foreign spouse (and unmarried children under 18) of a person holding a settlement permit (C permit) are entitled to a residence permit and its extension provided they live with that person, suitable accommodation is available, they do not depend on social assistance, they are able to communicate in the national language spoken at the place of residence, and the person they are joining is not claiming (and would not become entitled to claim) supplementary benefits (Art. 43 para. 1 FNIA). Registering for a language support programme is sufficient as an alternative to the language requirement (Art. 43 para. 2). The provisions on foreign spouses apply mutatis mutandis to registered partnerships of same-sex couples (Art. 52 FNIA)."
+      sourceUrl: "https://www.fedlex.admin.ch/eli/cc/2007/758/en#art_43"
+      sourceName: "Foreign Nationals and Integration Act (FNIA, SR 142.20), Art. 43 and 52 — Fedlex, the official publication platform of Swiss law"
+      # VERIFIED 2026-06-12 (fact-verifier): FNIA EN consolidated HTML read from the official Fedlex filestore (in-force 2026-02-01; anchor "art_43" present). Art. 43 para. 1 verbatim: "are entitled to be granted a residence permit and to have their residence permit extended provided: a. they live with that person; b. suitable accommodation is available; c. they do not depend on social assistance; d. they are able to communicate in the national language spoken at their place of residence; and e. the family member they are joining is not claiming supplementary benefits under the [SBA] or would not be entitled to claim such benefits due to family reunification." Para. 2 verbatim: "it is sufficient to register for a language support programme as an alternative to meeting the requirement set out in paragraph 1 letter d." Art. 52 mutatis-mutandis confirmed. All five conditions and the entitlement language match character-for-character.
+      status: VERIFIED
+      lastVerified: "2026-06-12"
+      verifiedBy: "fact-verifier"
+      reviewBy: "2026-09-10"
+    detail: >
+      Joining a spouse or registered partner who holds a Swiss settlement permit (C permit)
+      is a statutory entitlement under Art. 43 FNIA, subject to the conditions listed in the
+      summary. The official federal portal ch.ch summarises the practical conditions: large
+      enough accommodation by Swiss standards, no dependence on social assistance, and —
+      where the sponsor is self-employed or unemployed — proof of sufficient financial
+      resources. After a law-abiding and uninterrupted stay of five years, the spouse is
+      entitled to a settlement permit if the integration criteria of Art. 58a FNIA are met
+      (Art. 43 para. 5). Once admitted, the spouse and children may work, salaried or
+      self-employed, anywhere in Switzerland (Art. 46 FNIA). The English text of the FNIA
+      is provided for information only and has no legal force.
+    steps:
+      - text: "Check the conditions together with your partner in Switzerland: living together, suitable accommodation, no dependence on social assistance, and no claim to supplementary benefits by the person you are joining."
+        links:
+          - text: "ch.ch — conditions to be met for family reunification (accommodation, social assistance, financial resources)"
+            sourceUrl: "https://www.ch.ch/en/foreign-nationals-in-switzerland/living-in-switzerland/family-reunification/"
+            sourceName: "ch.ch — Application for family reunification in Switzerland (official federal portal)"
+            # VERIFIED 2026-06-12 (fact-verifier): ch.ch page loaded (HTTP 200). Verbatim: "you must have large enough accommodation (according to Swiss standards) to house the whole family. You must not depend on social assistance. If you are self-employed or unemployed, you must also provide proof of sufficient financial resources to support your family members." All three condition categories in the link text are on the page.
+            status: VERIFIED
+            lastVerified: "2026-06-12"
+            verifiedBy: "fact-verifier"
+            reviewBy: "2026-09-10"
+      - text: "If you cannot yet communicate in the national language of the intended place of residence, register for a language course: a certificate of enrolment in a language support programme satisfies the language condition for the residence permit (A1 level at least orally, per ch.ch)."
+        links:
+          - text: "FNIA Art. 43 para. 2 — registration for a language support programme suffices for obtaining the residence permit"
+            sourceUrl: "https://www.fedlex.admin.ch/eli/cc/2007/758/en#art_43"
+            sourceName: "Foreign Nationals and Integration Act (FNIA, SR 142.20), Art. 43 — Fedlex"
+            # VERIFIED 2026-06-12 (fact-verifier): Fedlex filestore FNIA EN (in-force 2026-02-01). Art. 43 para. 2 verbatim: "In order to obtain a residence permit, it is sufficient to register for a language support programme as an alternative to meeting the requirement set out in paragraph 1 letter d." The step text's "(A1 level at least orally, per ch.ch)" attribution is on the ch.ch page document list verbatim ("A1 level at least orally"). Link text accurate.
+            status: VERIFIED
+            lastVerified: "2026-06-12"
+            verifiedBy: "fact-verifier"
+            reviewBy: "2026-09-10"
+      - text: "Apply via the cantonal immigration authority of the canton where your spouse or partner lives, within the statutory time limit (five years; twelve months for children over 12)."
+        links:
+          - text: "SEM — addresses of the cantonal immigration and employment market authorities"
+            sourceUrl: "https://www.sem.admin.ch/sem/en/home/sem/kontakt/kantonale_behoerden/adressen_kantone_und.html"
+            sourceName: "State Secretariat for Migration (SEM) — Cantonal immigration and employment market authorities"
+            # VERIFIED 2026-06-12 (fact-verifier): SEM cantonal address directory loaded (HTTP 200, title matches). Per-canton migration-office entries present. The step text's time limits (five years; twelve months for children over 12) are Art. 47 para. 1 FNIA, confirmed verbatim on the Fedlex filestore text this run. Link text accurate.
+            status: VERIFIED
+            lastVerified: "2026-06-12"
+            verifiedBy: "fact-verifier"
+            reviewBy: "2026-09-10"
+    documents:
+      - "Valid US passport"
+      - "Marriage certificate or registered-partnership certificate (certificate from the country of origin proving the relationship; ch.ch document list)"
+      - "Certificate of enrolment in a language course if you cannot make yourself understood in the national language of the place of residence (A1 level at least orally)"
+      - "Sponsor-side evidence as requested by the canton (e.g. accommodation, financial situation) — confirm the checklist with the cantonal migration office"
+    # timeline omitted (ADR-0007): cantonal processing; no federal figure.
+    # cost omitted (ADR-0007): cantonal permit fees; no federal figure.
+    warning: >
+      The right to family reunification must be exercised within five years (Art. 47 FNIA);
+      for children over 12 the limit is twelve months. A subsequent (late) reunification is
+      authorised only if there are important family reasons.
+    dependsOn: []
+
+  # ---------------------------------------------------------------------------
+  - id: family-permit-spouse-b-holder
+    title: "Family reunification as the spouse or registered partner of a residence (B) permit holder"
+    category: family-dependents
+    appliesIf: "motivation == 'family' && familyJoineeStatus == 'permit-holder' && familyRelationship != 'unmarried-partner' && familyRelationship != 'parent'"
+    summary:
+      text: "The foreign spouse (and unmarried children under 18) of a person holding a residence permit (B permit) MAY be granted a residence permit — this is a discretionary decision, not an entitlement — if they live with the permit holder, suitable housing is available, they do not depend on social assistance, they are able to communicate in the national language spoken at the place of residence (registration for a language support programme suffices), and the person they are joining is not claiming (and would not become entitled to claim) supplementary benefits (Art. 44 FNIA). The provisions on foreign spouses apply mutatis mutandis to registered partnerships of same-sex couples (Art. 52 FNIA)."
+      sourceUrl: "https://www.fedlex.admin.ch/eli/cc/2007/758/en#art_44"
+      sourceName: "Foreign Nationals and Integration Act (FNIA, SR 142.20), Art. 44 and 52 — Fedlex, the official publication platform of Swiss law"
+      # VERIFIED 2026-06-12 (fact-verifier): Fedlex filestore FNIA EN (in-force 2026-02-01; anchor "art_44" present). Art. 44 para. 1 verbatim: "The foreign spouse and unmarried children under 18 of a person with a residence permit MAY BE GRANTED a residence permit or an extension thereof if: a. they live with the permit holder; b. suitable housing is available; c. they do not depend on social assistance; d. they are able to communicate in the national language spoken at their place of residence; and e. the family member they are joining is not claiming supplementary benefits according to the SBA or would not be entitled to claim such benefits due to family reunification." Para. 2 language-support-programme alternative verbatim. Art. 52 mutatis-mutandis confirmed. The entitlement-vs-discretion contrast is exactly right: Art. 42/43 say "are entitled", Art. 44 says "may be granted"; the discretion reading is independently confirmed by ch.ch verbatim ("Unlike the C permit, the B permit does not necessarily give you the right to family reunification, which may, however, also be granted by the authorities.").
+      status: VERIFIED
+      lastVerified: "2026-06-12"
+      verifiedBy: "fact-verifier"
+      reviewBy: "2026-09-10"
+    detail: >
+      This is the key legal difference from the Swiss-citizen and C-permit cases: Art. 42
+      and Art. 43 FNIA create entitlements ("are entitled to be granted a residence
+      permit"), whereas Art. 44 FNIA says the spouse and children of a B-permit holder
+      "may be granted" a permit — the decision lies with the cantonal authorities. The
+      official federal portal ch.ch puts it plainly: unlike the C permit, the B permit does
+      not necessarily give the right to family reunification, which may, however, also be
+      granted by the authorities. Once admitted under family reunification, the spouse and
+      children of a B-permit holder may work, salaried or self-employed, anywhere in
+      Switzerland (Art. 46 FNIA). The English text of the FNIA is provided for information
+      only and has no legal force.
+    steps:
+      - text: "Understand that admission is discretionary: meeting the Art. 44 conditions makes reunification possible, not guaranteed. Discuss your case with the competent cantonal migration office before relocating."
+        links:
+          - text: "ch.ch — «Unlike the C permit, the B permit does not necessarily give you the right to family reunification, which may, however, also be granted by the authorities.»"
+            sourceUrl: "https://www.ch.ch/en/foreign-nationals-in-switzerland/living-in-switzerland/family-reunification/"
+            sourceName: "ch.ch — Application for family reunification in Switzerland (official federal portal)"
+            # VERIFIED 2026-06-12 (fact-verifier): ch.ch page loaded (HTTP 200). The quoted sentence appears verbatim: "Unlike the C permit, the B permit does not necessarily give you the right to family reunification, which may, however, also be granted by the authorities." Quote matches character-for-character.
+            status: VERIFIED
+            lastVerified: "2026-06-12"
+            verifiedBy: "fact-verifier"
+            reviewBy: "2026-09-10"
+      - text: "Check the conditions: living together, suitable housing, no dependence on social assistance, language (or enrolment in a language course), and no claim to supplementary benefits by the person you are joining."
+        links:
+          - text: "FNIA Art. 44 — spouses and children of persons with a residence permit (conditions a–e and the language-course alternative)"
+            sourceUrl: "https://www.fedlex.admin.ch/eli/cc/2007/758/en#art_44"
+            sourceName: "Foreign Nationals and Integration Act (FNIA, SR 142.20), Art. 44 — Fedlex"
+            # VERIFIED 2026-06-12 (fact-verifier): Fedlex filestore FNIA EN (in-force 2026-02-01). Art. 44 para. 1 letters a–e and para. 2 (register for a language support programme as alternative to letter d) confirmed verbatim. Link text accurate.
+            status: VERIFIED
+            lastVerified: "2026-06-12"
+            verifiedBy: "fact-verifier"
+            reviewBy: "2026-09-10"
+      - text: "Apply via the cantonal immigration authority of the canton where your spouse or partner lives."
+        links:
+          - text: "SEM — addresses of the cantonal immigration and employment market authorities"
+            sourceUrl: "https://www.sem.admin.ch/sem/en/home/sem/kontakt/kantonale_behoerden/adressen_kantone_und.html"
+            sourceName: "State Secretariat for Migration (SEM) — Cantonal immigration and employment market authorities"
+            # VERIFIED 2026-06-12 (fact-verifier): SEM cantonal address directory loaded (HTTP 200, title "Cantonal immigration and employment market authorities"); per-canton migration-office entries present. Link text accurate.
+            status: VERIFIED
+            lastVerified: "2026-06-12"
+            verifiedBy: "fact-verifier"
+            reviewBy: "2026-09-10"
+    documents:
+      - "Valid US passport"
+      - "Marriage certificate or registered-partnership certificate (certificate from the country of origin proving the relationship; ch.ch document list)"
+      - "Certificate of enrolment in a language course if you cannot make yourself understood in the national language of the place of residence (A1 level at least orally)"
+      - "Sponsor-side evidence as requested by the canton (accommodation, financial situation) — confirm the checklist with the cantonal migration office"
+    # timeline omitted (ADR-0007): cantonal, discretionary procedure; no federal figure.
+    # cost omitted (ADR-0007): cantonal permit fees; no federal figure.
+    warning: >
+      There is no entitlement in this constellation: the cantonal authorities decide at
+      their discretion (Art. 44 FNIA: "may be granted"). Do not make irreversible
+      relocation arrangements before the cantonal decision. Statutory time limits
+      (Art. 47 FNIA: five years; twelve months for children over 12) still apply.
+    dependsOn: []
+
+  # ---------------------------------------------------------------------------
+  - id: family-permit-unmarried-partner
+    title: "Joining an unmarried partner (concubinage): no general right — cantonal discretion"
+    category: family-dependents
+    appliesIf: "motivation == 'family' && familyRelationship == 'unmarried-partner'"
+    summary:
+      text: "Swiss law gives unmarried (cohabiting) partners no general right to family reunification: the FNIA reunification provisions cover spouses, registered partners and unmarried children under 18, and the official federal portal states that in a bi-national couple you cannot bring your partner with you if you are not officially married. A residence permit for a cohabiting partner is possible only as a discretionary derogation from the admission requirements in serious cases of personal hardship (Art. 30 para. 1 let. b FNIA; Art. 50 para. 4 FNIA refers to cohabiting partners granted a permit on this basis), decided by the cantonal migration authority."
+      sourceUrl: "https://www.ch.ch/en/foreign-nationals-in-switzerland/living-in-switzerland/family-reunification/"
+      sourceName: "ch.ch — Application for family reunification in Switzerland (official federal portal)"
+      # VERIFIED 2026-06-12 (fact-verifier): ch.ch page loaded (HTTP 200). Confirms verbatim: "If you are part of a bi-national couple, you cannot bring your partner with you if you are not officially married." and, for third-country citizens, the eligible list is "your spouse or registered partner; your unmarried children under the age of 18" — i.e. no general reunification right for cohabiting partners. The statutory elements are confirmed on the official Fedlex FNIA text (cited as links in this task and read this run from the Fedlex filestore, in-force 2026-02-01): Art. 30 para. 1 let. b verbatim ("take account of serious cases of personal hardship or important public interests") and Art. 50 para. 4 verbatim ("apply mutatis mutandis to cohabiting partners who have been granted a residence permit to remain with their cohabitee in accordance with Article 30 paragraph 1 letter b because of serious personal hardship"). "Only" is correctly scoped to partner-based admission; "decided by the cantonal migration authority" is supported by ch.ch ("You need to contact the following cantonal immigration authorities").
+      status: VERIFIED
+      lastVerified: "2026-06-12"
+      verifiedBy: "fact-verifier"
+      reviewBy: "2026-09-10"
+    detail: >
+      This is the honest position: there is no concubinage "track" you can simply apply
+      for. Family reunification under Arts. 42-44 FNIA requires a marriage or a registered
+      partnership recognised by Switzerland. For unmarried couples, the only opening in
+      the Act is Art. 30 para. 1 let. b FNIA, which permits derogations from the admission
+      requirements "to take account of serious cases of personal hardship or important
+      public interests"; Art. 50 para. 4 FNIA confirms that cohabiting partners can be
+      granted a residence permit on that basis. Whether a canton grants such a permit, and
+      on what evidence (e.g. proof of a stable long-term relationship), is decided case by
+      case by the cantonal migration authority — there is no federal entitlement, no
+      federal checklist and no published federal criteria threshold. The authority to
+      contact is the migration office of the canton where your partner lives. Note also
+      that Swiss law otherwise treats cohabiting partners as two single individuals. The
+      English text of the FNIA is provided for information only and has no legal force.
+    steps:
+      - text: "Before making any relocation plans, contact the migration office of the canton where your partner lives and ask whether, and under what conditions, a residence permit for a cohabiting partner can be considered in your case."
+        tip: "Put the question in writing and keep the answer: cantonal practice differs and the decision is discretionary."
+        links:
+          - text: "SEM — addresses of the cantonal immigration and employment market authorities (the competent authorities for such requests)"
+            sourceUrl: "https://www.sem.admin.ch/sem/en/home/sem/kontakt/kantonale_behoerden/adressen_kantone_und.html"
+            sourceName: "State Secretariat for Migration (SEM) — Cantonal immigration and employment market authorities"
+            # VERIFIED 2026-06-12 (fact-verifier): SEM cantonal address directory loaded (HTTP 200, title matches); per-canton migration-office entries present. Link text accurate.
+            status: VERIFIED
+            lastVerified: "2026-06-12"
+            verifiedBy: "fact-verifier"
+            reviewBy: "2026-09-10"
+      - text: "Know the legal basis being applied: a permit for a cohabiting partner is a hardship-based derogation under Art. 30 para. 1 let. b FNIA, not family reunification under Arts. 42-44."
+        links:
+          - text: "FNIA Art. 30 para. 1 let. b — derogations from the admission requirements to take account of serious cases of personal hardship"
+            sourceUrl: "https://www.fedlex.admin.ch/eli/cc/2007/758/en#art_30"
+            sourceName: "Foreign Nationals and Integration Act (FNIA, SR 142.20), Art. 30 — Fedlex"
+            # VERIFIED 2026-06-12 (fact-verifier): Fedlex filestore FNIA EN (in-force 2026-02-01; anchor "art_30" present). Art. 30 para. 1 verbatim: "Derogations from the admission requirements (Art. 18-29) are permitted in order to: ... b. take account of serious cases of personal hardship or important public interests". Link text accurate.
+            status: VERIFIED
+            lastVerified: "2026-06-12"
+            verifiedBy: "fact-verifier"
+            reviewBy: "2026-09-10"
+          - text: "FNIA Art. 50 para. 4 — refers to cohabiting partners granted a residence permit in accordance with Art. 30 para. 1 let. b because of serious personal hardship"
+            sourceUrl: "https://www.fedlex.admin.ch/eli/cc/2007/758/en#art_50"
+            sourceName: "Foreign Nationals and Integration Act (FNIA, SR 142.20), Art. 50 — Fedlex"
+            # VERIFIED 2026-06-12 (fact-verifier): Fedlex filestore FNIA EN (in-force 2026-02-01; anchor "art_50" present). Art. 50 para. 4 verbatim: "Paragraphs 1-3 apply mutatis mutandis to cohabiting partners who have been granted a residence permit to remain with their cohabitee in accordance with Article 30 paragraph 1 letter b because of serious personal hardship." (Para. 4 inserted by FA of 14 June 2024, in force since 1 Jan. 2025.) Link text accurate.
+            status: VERIFIED
+            lastVerified: "2026-06-12"
+            verifiedBy: "fact-verifier"
+            reviewBy: "2026-09-10"
+      - text: "If you marry or your partnership becomes one recognised by Switzerland, the spouse / registered-partner provisions (Arts. 42-44 FNIA) apply instead — see the corresponding task for your partner's status."
+        links:
+          - text: "ch.ch — family reunification requires a marriage or registered partnership recognised by Switzerland"
+            sourceUrl: "https://www.ch.ch/en/foreign-nationals-in-switzerland/living-in-switzerland/family-reunification/"
+            sourceName: "ch.ch — Application for family reunification in Switzerland (official federal portal)"
+            # VERIFIED 2026-06-12 (fact-verifier): ch.ch page loaded (HTTP 200). Verbatim: "Your marriage or a registered partnership must be recognised by Switzerland." and "you cannot bring your partner with you if you are not officially married." Link text accurate.
+            status: VERIFIED
+            lastVerified: "2026-06-12"
+            verifiedBy: "fact-verifier"
+            reviewBy: "2026-09-10"
+    documents:
+      - "There is no federal document checklist for cohabiting partners — confirm the required evidence (e.g. proof of a stable long-term relationship, joint household) directly with the cantonal migration authority"
+      - "Valid US passport"
+    # timeline omitted (ADR-0007): hardship-based cantonal discretion; no official
+    # federal processing-time figure exists for Art. 30 para. 1 let. b cases.
+    # cost omitted (ADR-0007): cantonal fees; no official federal fee figure exists.
+    warning: >
+      Do not relocate on the assumption that a cohabiting-partner permit will be granted.
+      There is no legal entitlement; the cantonal decision is discretionary and may be
+      negative. Obtain the canton's position in writing first.
+    dependsOn: []
+
+  # ---------------------------------------------------------------------------
+  - id: family-permit-children
+    title: "Family reunification for minor children"
+    category: family-dependents
+    # Deliberately motivation-independent: children also accompany work-route
+    # users. Pure-|| rule (no parentheses needed, ADR-0009 grammar): applies if
+    # the user is bringing children OR is themselves joining a parent/child
+    # (the intake's 'parent' relationship option covers both directions).
+    # appliesIf APPROVED 2026-06-12 (fact-verifier, ADR-0009 §4): motivation-
+    # independence is legally correct — a work-route B-permit holder's children
+    # are admitted via Art. 44 FNIA family reunification (verified this run),
+    # so this task must also reach work-route users with hasChildren == true.
+    # Routing familyRelationship == 'parent' here is acceptable because the
+    # task's detail honestly states that adult-child/parent constellations fall
+    # outside the Art. 42-44 minor-children scope (supported by ch.ch).
+    appliesIf: "hasChildren == true || familyRelationship == 'parent'"
+    summary:
+      text: "Unmarried children under 18 qualify for family reunification: children of a Swiss citizen who live with them are entitled to a residence permit (Art. 42 para. 1 FNIA), children of a settlement (C) permit holder are entitled to one subject to the Art. 43 conditions, and children of a residence (B) permit holder may be granted one at the authorities' discretion (Art. 44). Children under 12 of a Swiss citizen or of a C-permit holder are entitled to a settlement permit directly (Art. 42 para. 4 and Art. 43 para. 6). The language requirement does not apply to unmarried children under 18 (Art. 43 para. 3 and Art. 44 para. 3)."
+      sourceUrl: "https://www.fedlex.admin.ch/eli/cc/2007/758/en#art_42"
+      sourceName: "Foreign Nationals and Integration Act (FNIA, SR 142.20), Art. 42-44 — Fedlex, the official publication platform of Swiss law"
+      # VERIFIED 2026-06-12 (fact-verifier): Fedlex filestore FNIA EN (in-force 2026-02-01; one document covers Arts. 42-44, anchor "art_42" present). Each element verbatim: Art. 42 para. 1 "unmarried children under 18 of a Swiss national who live with the Swiss national are entitled to be granted a residence permit"; Art. 43 para. 1 children of settlement-permit holders "are entitled ... provided" conditions a-e; Art. 44 para. 1 children of residence-permit holders "may be granted"; Art. 42 para. 4 and Art. 43 para. 6 identically "Children under twelve are entitled to be granted a settlement permit."; Art. 43 para. 3 and Art. 44 para. 3 — the para. 1 let. d language requirement "does not apply" to unmarried children under 18. All ages, article/paragraph numbers and entitlement-vs-discretion language match character-for-character.
+      status: VERIFIED
+      lastVerified: "2026-06-12"
+      verifiedBy: "fact-verifier"
+      reviewBy: "2026-09-10"
+    detail: >
+      Children's claims track the status of the parent in Switzerland, with the same
+      entitlement-versus-discretion split as for spouses. Two age thresholds matter:
+      reunification covers unmarried children under 18, and children under 12 of a Swiss
+      citizen or C-permit holder receive a settlement permit directly. Timing is stricter
+      for older children: the right must be exercised within five years, but children over
+      12 must be reunified within twelve months (Art. 47 FNIA) — ch.ch explains this is so
+      they can integrate more rapidly. If you are an adult intending to join a parent in
+      Switzerland (or a parent intending to join an adult child), be aware that the FNIA
+      reunification provisions for third-country nationals cover spouses, registered
+      partners and unmarried children under 18 only; ch.ch states that a Swiss citizen's
+      dependent parents (and children up to 21) can join only if they already hold a
+      residence permit from an EU/EFTA country. For any case outside the
+      minor-children scope, confirm options with the cantonal migration authority. The
+      English text of the FNIA is provided for information only and has no legal force.
+    steps:
+      - text: "Include the children in the family-reunification application to the cantonal immigration authority, with documents proving the parent-child relationship."
+        links:
+          - text: "ch.ch — third-country nationals may bring their spouse or registered partner and their unmarried children under the age of 18"
+            sourceUrl: "https://www.ch.ch/en/foreign-nationals-in-switzerland/living-in-switzerland/family-reunification/"
+            sourceName: "ch.ch — Application for family reunification in Switzerland (official federal portal)"
+            # VERIFIED 2026-06-12 (fact-verifier): ch.ch page loaded (HTTP 200). Verbatim under "If you are a citizen from a third country": "You may bring the following family members to Switzerland: your spouse or registered partner; your unmarried children under the age of 18." Link text accurate.
+            status: VERIFIED
+            lastVerified: "2026-06-12"
+            verifiedBy: "fact-verifier"
+            reviewBy: "2026-09-10"
+      - text: "Mind the deadlines: five years in general, but children over 12 must be reunified within twelve months."
+        links:
+          - text: "FNIA Art. 47 — time limit for family reunification; subsequent reunification only for important family reasons; children over 14 are consulted if necessary"
+            sourceUrl: "https://www.fedlex.admin.ch/eli/cc/2007/758/en#art_47"
+            sourceName: "Foreign Nationals and Integration Act (FNIA, SR 142.20), Art. 47 — Fedlex"
+            # VERIFIED 2026-06-12 (fact-verifier): Fedlex filestore FNIA EN (in-force 2026-02-01; anchor "art_47" present). Art. 47 para. 1 verbatim ("within five years. Children over twelve must be reunified with their family within twelve months."); para. 4 verbatim: "A subsequent family reunification shall be authorised only if there are important family reasons therefor. If necessary, children over 14 shall be consulted on family reunification." All three elements of the link text match.
+            status: VERIFIED
+            lastVerified: "2026-06-12"
+            verifiedBy: "fact-verifier"
+            reviewBy: "2026-09-10"
+      - text: "Plan for school: children who join you in Switzerland are required to attend free compulsory schooling at least until the age of 16; the system varies from canton to canton."
+        links:
+          - text: "ch.ch — children who join you are required to attend free compulsory schooling in Switzerland at least until the age of 16"
+            sourceUrl: "https://www.ch.ch/en/foreign-nationals-in-switzerland/living-in-switzerland/family-reunification/"
+            sourceName: "ch.ch — Application for family reunification in Switzerland (official federal portal)"
+            # VERIFIED 2026-06-12 (fact-verifier): ch.ch page loaded (HTTP 200). Verbatim: "Children who join you in Switzerland are required to attend free compulsory schooling in Switzerland at least until the age of 16. The system varies from canton to canton." Step text and link text match character-for-character.
+            status: VERIFIED
+            lastVerified: "2026-06-12"
+            verifiedBy: "fact-verifier"
+            reviewBy: "2026-09-10"
+    documents:
+      - "Children's valid US passports"
+      - "Birth certificates (certificates from the country of origin proving the relationship; ch.ch document list)"
+      - "For dependants: certificate from the authorities of the country of origin proving dependence or shared household (ch.ch document list)"
+      - "Custody/consent documentation where only one parent relocates — confirm requirements with the cantonal migration office"
+    # timeline omitted (ADR-0007): cantonal processing; no federal figure. (The
+    # statutory five-year / twelve-month deadlines are claims in summary/steps,
+    # not a processing-time estimate.)
+    # cost omitted (ADR-0007): cantonal permit fees; no federal figure.
+    warning: >
+      Children over 12 must be reunified within twelve months (Art. 47 FNIA). A subsequent
+      (late) reunification is authorised only if there are important family reasons.
+    dependsOn: []
+
+  # ---------------------------------------------------------------------------
+  - id: family-d-visa
+    title: "Apply for the national (type D) visa for family reunification at the Swiss representation in the USA"
+    category: visa-permit
+    appliesIf: "motivation == 'family'"
+    summary:
+      text: "A category D (national) visa is issued for stays exceeding 90 days. SEM's national (type D) visa application form is expressly for long-term stays subject to authorisation, citing family reunification as an example purpose. You apply in writing using the national visa application form at the Swiss representation abroad responsible for your place of residence; applications for a category D visa are processed by the cantons (a residence permit is required)."
+      sourceUrl: "https://www.sem.admin.ch/sem/en/home/themen/einreise/faq.html"
+      sourceName: "State Secretariat for Migration (SEM) — FAQ: Entry"
+      # VERIFIED 2026-06-12 (fact-verifier): SEM Entry FAQ loaded (curl, browser UA, HTTP 200, title "FAQ - Entry"). Verbatim: "Category D visas are issued for stays exceeding 90 days"; the FAQ expressly lists "family reunification" among the reasons a category D visa is required; "You must apply for the category D visa in writing using the application form or directly at the Swiss representation abroad responsible for your place of residence."; "Applications for a category D visa are processed by the cantons (a residence permit is required)." The form-specific sentence is confirmed on the companion official SEM page cited in this task's links (visumantragsformular.html, HTTP 200): "National (type D) visa application form — For long-term stays (more than three months) in Switzerland subject to authorization (e.g. gainful employment, familiy reunification)." (source's own typo "familiy"). All claim elements supported on official SEM pages.
+      status: VERIFIED
+      lastVerified: "2026-06-12"
+      verifiedBy: "fact-verifier"
+      reviewBy: "2026-09-10"
+    detail: >
+      The type D visa is the entry document for the family route, exactly as for the work
+      route: it lets you travel to Switzerland to take up the residence the canton has
+      authorised on family-reunification grounds. SEM's visa application form page lists
+      «familiy reunification» (sic — the source's own typo) alongside gainful employment as
+      an example of the long-term stays the national (type D) form covers. Apply at the
+      Swiss representation competent for your US state of residence (for example the
+      Embassy in Washington or a Swiss consulate); each representation covers specific US
+      states — confirm which one covers yours, and its submission procedure, on that
+      representation's own page before applying.
+    steps:
+      - text: "Identify the Swiss representation abroad competent for your US state of residence, then apply for the category D visa in writing using the national visa application form, indicating family reunification as the purpose of stay."
+        links:
+          - text: "SEM — FAQ: where and how to apply for a category D visa for Switzerland"
+            sourceUrl: "https://www.sem.admin.ch/sem/en/home/themen/einreise/faq.html"
+            sourceName: "State Secretariat for Migration (SEM) — FAQ: Entry"
+            # VERIFIED 2026-06-12 (fact-verifier): SEM Entry FAQ loaded (HTTP 200). FAQ "Where and how do I apply for a category D visa for Switzerland?" states verbatim: "You must apply for the category D visa in writing using the application form or directly at the Swiss representation abroad responsible for your place of residence." Link text accurate.
+            status: VERIFIED
+            lastVerified: "2026-06-12"
+            verifiedBy: "fact-verifier"
+            reviewBy: "2026-09-10"
+          - text: "SEM — National (type D) visa application form (for long-term stays subject to authorisation, e.g. gainful employment, family reunification)"
+            sourceUrl: "https://www.sem.admin.ch/sem/en/home/themen/einreise/visumantragsformular.html"
+            sourceName: "State Secretariat for Migration (SEM) — Visa Application Form"
+            # VERIFIED 2026-06-12 (fact-verifier): SEM Visa Application Form page loaded (HTTP 200, title "Visa Application Form"). Verbatim: "National (type D) visa application form — For long-term stays (more than three months) in Switzerland subject to authorization (e.g. gainful employment, familiy reunification)." (source's own typo "familiy"; link text normalises the spelling). Matches claim.
+            status: VERIFIED
+            lastVerified: "2026-06-12"
+            verifiedBy: "fact-verifier"
+            reviewBy: "2026-09-10"
+      - text: "Submit the visa application together with the family-reunification supporting documents required by the representation and the canton."
+        tip: "Check the specific representation's instructions for how to submit (by post or appointment) and the exact document checklist."
+      - text: "The representation issues the type D visa once the cantonal decision on family reunification is confirmed; you then travel to Switzerland within its validity."
+    documents:
+      - "Completed national (type D) visa application form"
+      - "Valid US passport"
+      - "Passport photos to the required specification"
+      - "Marriage / registered-partnership / birth certificates proving the family relationship"
+      - "Reference to the cantonal family-reunification application or authorisation"
+      - "Confirm the full document list with the competent Swiss representation in the USA"
+    timeline:
+      text: "Category D (national) visa applications are processed by the cantons and the time required varies by canton and purpose of stay; SEM states that, as a rule, one to several months must be expected. Confirm the current timing with the competent Swiss representation abroad."
+      sourceUrl: "https://www.sem.admin.ch/sem/en/home/themen/einreise/faq.html"
+      sourceName: "State Secretariat for Migration (SEM) — FAQ: Entry"
+      # VERIFIED 2026-06-12 (fact-verifier): SEM Entry FAQ loaded (HTTP 200). Verbatim: "Applications for a category D visa are processed by the cantons (a residence permit is required). The time the responsible authorities need to process such applications may vary according to canton and purpose of stay. As a rule, one to several months must be expected." Matches claim character-for-character.
+      status: VERIFIED
+      lastVerified: "2026-06-12"
+      verifiedBy: "fact-verifier"
+      reviewBy: "2026-09-10"
+    cost:
+      text: "Confirm the current national (type D) visa fee with the competent Swiss representation abroad. Unlike the Schengen (category C) visa, which is a fixed EUR 90 for adults, the national (type D) visa fee is not published by SEM as a single fixed figure; an extra charge of up to 50% of the fee may apply for urgent/out-of-hours handling. A service fee to an external provider may also apply."
+      sourceUrl: "https://www.sem.admin.ch/sem/en/home/themen/einreise/faq.html"
+      sourceName: "State Secretariat for Migration (SEM) — FAQ: Entry"
+      # VERIFIED 2026-06-12 (fact-verifier): SEM Entry FAQ loaded (HTTP 200). Verbatim: "The cost of submitting an application is EUR 90 for adults and EUR 45 for children between 6 and 12 years old. This is a fixed charge for a Schengen visa." (EUR 90 is the Schengen fee, exactly as the claim frames it); "There may be an extra charge of up to 50% of the fee for a national visa (for a stay longer than 90 days) when the applicant asks for the visa to be issued urgently or outside of normal working hours or if the application processing procedure is unduly complex."; external-service-provider fee "in addition to the visa fee" confirmed. No fixed national (type D) figure published — claim correctly says confirm with the representation. Fee claim -> 30-day review window.
+      status: VERIFIED
+      lastVerified: "2026-06-12"
+      verifiedBy: "fact-verifier"
+      reviewBy: "2026-07-12"
+    # dependsOn lists ALL family route tasks; at runtime the ids filtered out by
+    # appliesIf for a given user are ignored (ADR-0009 mechanics), so each user
+    # sees only their own route task as the prerequisite.
+    dependsOn:
+      - family-permit-spouse-swiss
+      - family-permit-spouse-settled
+      - family-permit-spouse-b-holder
+      - family-permit-unmarried-partner
+      - family-permit-children
