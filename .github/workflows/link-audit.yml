@@ -11,6 +11,12 @@ name: Link audit
 # redirects, content drift, reviews due within 14 days, manual-check domains
 # like eda.admin.ch) keep the run green but appear as workflow annotations
 # and in the uploaded report artifact.
+#
+# NOTE: www.ch.ch serves an error shell to datacenter IPs (incl. GitHub
+# runners) while serving real content to normal traffic — in CI those URLs
+# are downgraded to manual-check warnings and excluded from drift comparison
+# (see DATACENTER_BLOCKED_DOMAINS in scripts/check-links.mjs). True coverage
+# for ch.ch comes from local `npm run links` runs.
 
 on:
   schedule:
@@ -36,12 +42,15 @@ jobs:
   link-audit:
     name: Check source URLs, staleness & drift
     runs-on: ubuntu-latest
+    env:
+      # GitHub forces JS actions onto Node 24 from 2026-06-16; opt in early.
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: 'true'
     steps:
       - uses: actions/checkout@v4
 
       - uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '22'
           cache: npm
 
       - name: Install dependencies

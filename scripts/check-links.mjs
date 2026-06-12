@@ -42,6 +42,22 @@ import { parse } from 'yaml';
 const MANUAL_CHECK_DOMAINS = ['www.eda.admin.ch', 'eda.admin.ch'];
 
 /**
+ * Domains that serve an error shell (or block) requests from datacenter IPs
+ * (GitHub-hosted runners) while serving real content to normal traffic.
+ * Evidence 2026-06-12: every www.ch.ch URL returned HTTP 200 with an
+ * "Error Page (404)" h1 from a GitHub runner, while the same URLs returned
+ * full content — and passed independent fact-verification — from a local
+ * machine within the same hour.
+ *
+ * IN CI ONLY these are downgraded to manual-check warnings and excluded from
+ * drift comparison (CI literally cannot see the real page). Local runs
+ * (`npm run links`) audit them fully — that is the true coverage for these
+ * domains; CI red would be permanent false alarm.
+ */
+const DATACENTER_BLOCKED_DOMAINS = ['www.ch.ch', 'ch.ch'];
+// (CI detection: IS_CI is declared once, further down, as GITHUB_ACTIONS === 'true'.)
+
+/**
  * Single-page-app domains whose HTML shell carries no readable content
  * (e.g. fedlex.admin.ch renders everything client-side). For these we trust
  * the HTTP status, skip the soft-404 "near-empty body" heuristic, and note
@@ -245,7 +261,9 @@ async function fetchOnce(url) {
  */
 async function probeUrl(url) {
   const host = new URL(url).hostname;
-  const manualCheck = MANUAL_CHECK_DOMAINS.includes(host);
+  const manualCheck =
+    MANUAL_CHECK_DOMAINS.includes(host) ||
+    (IS_CI && DATACENTER_BLOCKED_DOMAINS.includes(host));
   const isSpa = SPA_DOMAINS.includes(host);
   const downgrade = (verdict, detail) =>
     manualCheck
@@ -369,6 +387,9 @@ function checkDrift(probeResults, baseline, today) {
   const nextUrls = { ...baseline.urls };
   for (const [url, r] of probeResults) {
     if (!r.textHash) continue; // only hash pages we actually read
+    if (IS_CI && DATACENTER_BLOCKED_DOMAINS.includes(new URL(url).hostname)) {
+      continue; // CI sees a blocked/error variant, not the real page — local runs own drift here
+    }
     const base = baseline.urls[url];
     if (!base) {
       notes.push(`no baseline entry yet for ${url} (run \`npm run links -- --update-baseline\` and commit scripts/link-baseline.json)`);
