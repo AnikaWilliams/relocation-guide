@@ -1,0 +1,120 @@
+{
+  "generatedAt": "2026-06-12T18:19:33.291Z",
+  "urls": {
+    "https://www.ch.ch/en/foreign-nationals-in-switzerland/working-in-switzerland/": {
+      "sha256": "0fa3514b150b506a752ca03b972931b8cfb1e8742ae732b8b1dcebda1a2b5b02",
+      "capturedAt": "2026-06-12",
+      "httpStatus": 200
+    },
+    "https://www.sem.admin.ch/sem/en/home/themen/arbeit/nicht-eu_efta-angehoerige/grundlagen_zur_arbeitsmarktzulassung.html": {
+      "sha256": "45ee8ee0c3c0be6997ebea852cb527210f81a8570b655c51ef9b37c4b3629cab",
+      "capturedAt": "2026-06-12",
+      "httpStatus": 200
+    },
+    "https://www.fedlex.admin.ch/eli/cc/2007/758/en#art_42": {
+      "sha256": "9ae0b575e1680427fa6f69a521a6e6baff3ce6bde0ac0e15f1b5d6a4644b529f",
+      "capturedAt": "2026-06-12",
+      "httpStatus": 200
+    },
+    "https://www.ch.ch/en/housing/moving/notification-of-departure-and-registration/": {
+      "sha256": "f2cdcfdc1abb3dc8f0fb7bd09d17d9778868948e898f6a395b8eff7dfc0fc410",
+      "capturedAt": "2026-06-12",
+      "httpStatus": 200
+    },
+    "https://www.bag.admin.ch/en/health-insurance-requirement-to-obtain-insurance-for-persons-resident-in-switzerland": {
+      "sha256": "27e0171be449b998382ce80cbe23028b4bfb81aaa9adf7bd2160b2b42a2b6e5e",
+      "capturedAt": "2026-06-12",
+      "httpStatus": 200
+    },
+    "https://www.sem.admin.ch/sem/en/home/themen/arbeit/nicht-eu_efta-angehoerige.html": {
+      "sha256": "9995e673ef70fed4175a35e46ccc2f6662bfcade29494016d64595192702aaf4",
+      "capturedAt": "2026-06-12",
+      "httpStatus": 200
+    },
+    "https://www.fedlex.admin.ch/eli/cc/2007/758/en#art_47": {
+      "sha256": "9ae0b575e1680427fa6f69a521a6e6baff3ce6bde0ac0e15f1b5d6a4644b529f",
+      "capturedAt": "2026-06-12",
+      "httpStatus": 200
+    },
+    "https://www.ch.ch/en/retirement/old-age-pension/the-first-pillar/oasi-contributions/": {
+      "sha256": "751a541d1e1a6edff5410350e9d5f877468037321cdc8b8513fef7f04808a6cb",
+      "capturedAt": "2026-06-12",
+      "httpStatus": 200
+    },
+    "https://www.bag.admin.ch/en/health-insurance-premiums-and-co-payment": {
+      "sha256": "6cc3f33af4110b55fba3163c6970c80dd757c78734de85c6e0a00a4facf8e3e3",
+      "capturedAt": "2026-06-12",
+      "httpStatus": 200
+    },
+    "https://www.fedlex.admin.ch/eli/cc/2007/758/en#art_43": {
+      "sha256": "9ae0b575e1680427fa6f69a521a6e6baff3ce6bde0ac0e15f1b5d6a4644b529f",
+      "capturedAt": "2026-06-12",
+      "httpStatus": 200
+    },
+    "https://www.sem.admin.ch/sem/en/home/themen/einreise/faq.html": {
+      "sha256": "ce482b4fd616c44cac6d3ba1572d90d296de07578c8b43134c5b6a24d378df5d",
+      "capturedAt": "2026-06-12",
+      "httpStatus": 200
+    },
+    "https://www.ch.ch/en/documents-and-register-extracts/requesting-an-oasi-card/": {
+      "sha256": "213a269650a546bd81c96293511a694991c3bc838c0d99ec1d95924921f68037",
+      "capturedAt": "2026-06-12",
+      "httpStatus": 200
+    },
+    "https://www.fedlex.admin.ch/eli/cc/2007/758/en#art_44": {
+      "sha256": "9ae0b575e1680427fa6f69a521a6e6baff3ce6bde0ac0e15f1b5d6a4644b529f",
+      "capturedAt": "2026-06-12",
+      "httpStatus": 200
+    },
+    "https://www.sem.admin.ch/sem/en/home/themen/einreise/visumantragsformular.html": {
+      "sha256": "bc2733e10e55c6ba8e8f6611bf973d5cee1dac9bfa273db0d5d5ea3d0023244c",
+      "capturedAt": "2026-06-12",
+      "httpStatus": 200
+    },
+    "https://www.ch.ch/en/foreign-nationals-in-switzerland/living-in-switzerland/family-reunification/": {
+      "sha256": "988e11bff033a52d0b1fe73bbcb8f3bb122f21e147d02531cf9280e4c6159444",
+      "capturedAt": "2026-06-12",
+      "httpStatus": 200
+    },
+    "https://www.fedlex.admin.ch/eli/cc/2007/758/en#art_30": {
+      "sha256": "9ae0b575e1680427fa6f69a521a6e6baff3ce6bde0ac0e15f1b5d6a4644b529f",
+      "capturedAt": "2026-06-12",
+      "httpStatus": 200
+    },
+    "https://www.sem.admin.ch/sem/en/home/themen/aufenthalt/biometr_auslaenderausweis.html": {
+      "sha256": "7ae718ceea22411fe880d1780d5c9cd37678586cb17d19212def473f6c8e89bb",
+      "capturedAt": "2026-06-12",
+      "httpStatus": 200
+    },
+    "https://www.ch.ch/en/foreign-nationals-in-switzerland/entry-and-stay-in-switzerland/living-in-switzerland-without-gainful-employment/": {
+      "sha256": "17b5757d193cd0ad0dbd12c3f97d7fec4e51b0aa6aa2bc178ba43f627dace269",
+      "capturedAt": "2026-06-12",
+      "httpStatus": 200
+    },
+    "https://www.fedlex.admin.ch/eli/cc/2007/758/en#art_50": {
+      "sha256": "9ae0b575e1680427fa6f69a521a6e6baff3ce6bde0ac0e15f1b5d6a4644b529f",
+      "capturedAt": "2026-06-12",
+      "httpStatus": 200
+    },
+    "https://www.sem.admin.ch/sem/en/home/sem/kontakt/kantonale_behoerden/adressen_kantone_und.html": {
+      "sha256": "2fcae78c80dc8444478fd6358c16a4b029b7e8714d1e27c560274abc8155beaf",
+      "capturedAt": "2026-06-12",
+      "httpStatus": 200
+    },
+    "https://www.fedlex.admin.ch/eli/cc/2007/758/en#art_28": {
+      "sha256": "9ae0b575e1680427fa6f69a521a6e6baff3ce6bde0ac0e15f1b5d6a4644b529f",
+      "capturedAt": "2026-06-12",
+      "httpStatus": 200
+    },
+    "https://www.fedlex.admin.ch/eli/cc/2007/759/de#art_25": {
+      "sha256": "9ae0b575e1680427fa6f69a521a6e6baff3ce6bde0ac0e15f1b5d6a4644b529f",
+      "capturedAt": "2026-06-12",
+      "httpStatus": 200
+    },
+    "https://www.fedlex.admin.ch/eli/cc/2015/518/de#art_2": {
+      "sha256": "9ae0b575e1680427fa6f69a521a6e6baff3ce6bde0ac0e15f1b5d6a4644b529f",
+      "capturedAt": "2026-06-12",
+      "httpStatus": 200
+    }
+  }
+}

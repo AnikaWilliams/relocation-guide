@@ -24,6 +24,9 @@ npm-debug.log*
 # Testing
 /coverage
 
+# Link-audit run output (CI artifact; baseline scripts/link-baseline.json IS committed)
+/link-audit-report.md
+
 # Claude Code local settings (per-developer, not shared)
 .claude/settings.local.json
 

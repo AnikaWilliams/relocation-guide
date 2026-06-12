@@ -15,7 +15,8 @@
     "astro": "astro",
     "check": "astro check",
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "links": "node scripts/check-links.mjs"
   },
   "dependencies": {
     "@astrojs/react": "^3.6.2",

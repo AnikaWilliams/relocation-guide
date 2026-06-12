@@ -101,8 +101,8 @@ _Founder direction: drop the visual flowchart from the UI; make the whole produc
 The non-negotiable provenance rules — enforced continuously, not a one-off phase.
 - [x] Provenance fields required at compile time; build gate at render time
 - [ ] Two-agent verification practised on every corridor (researcher ≠ verifier)
-- [ ] `link-auditor` CI: weekly source-URL + soft-404 + content-drift checks
-- [ ] Automated staleness flagging (90-day / 30-day review windows) surfaced in CI
+- [x] `link-auditor` CI (2026-06-12): `scripts/check-links.mjs` + weekly `link-audit.yml` (also runs on PRs touching corridor content). Checks every claim sourceUrl: dead links/soft-404s/redirect-loops = red (opens a tracking issue); permanent redirects + content drift (sha256 baseline in `scripts/link-baseline.json`) = warnings. Handles fedlex SPA shells and the eda.admin.ch bot-block (manual-check allowlist). First run: **23/23 URLs OK, 0 errors**
+- [x] Automated staleness flagging surfaced in CI (same job): past-due `reviewBy` = red; due within 14 days = warning; VERIFIED claims missing provenance = red. Earliest current reviewBy: 2026-07-09 (30-day fee claims start warning ~2026-06-25)
 
 ### Phase 4 — Monetisation & scale 🗓️
 - [ ] AdSense readiness (15+ pages, policy pages, HTTPS) + review submission

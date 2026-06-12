@@ -1,0 +1,93 @@
+name: Link audit
+
+# Weekly source-URL health check (link-auditor, Phase 3):
+#   - schedule:          every Sunday 00:00 UTC
+#   - workflow_dispatch: on demand
+#   - pull_request:      any PR touching the content collection or this tooling,
+#                        so new sourceUrls are checked before merge.
+#
+# Run is RED when there are hard failures (dead links, soft-404s, past-due
+# reviewBy dates, VERIFIED claims missing provenance). Warnings (permanent
+# redirects, content drift, reviews due within 14 days, manual-check domains
+# like eda.admin.ch) keep the run green but appear as workflow annotations
+# and in the uploaded report artifact.
+
+on:
+  schedule:
+    - cron: '0 0 * * 0' # Sundays 00:00 UTC
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'src/content/corridors/**'
+      - 'scripts/check-links.mjs'
+      - 'scripts/link-baseline.json'
+      - '.github/workflows/link-audit.yml'
+
+permissions:
+  contents: read
+  issues: write
+
+# Cancel superseded runs on the same ref.
+concurrency:
+  group: link-audit-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  link-audit:
+    name: Check source URLs, staleness & drift
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run link audit
+        id: audit
+        run: npm run links -- --report link-audit-report.md
+
+      - name: Upload report artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: link-audit-report
+          path: link-audit-report.md
+          if-no-files-found: ignore
+
+      # Maintain a single open tracking issue (label: link-audit) on scheduled
+      # / manual runs. Skipped on pull_request: PR runs already surface the
+      # failure on the PR itself, and fork PR tokens cannot write issues.
+      - name: Open or update tracking issue on failure
+        if: failure() && github.event_name != 'pull_request'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          gh label create link-audit --repo "$REPO" \
+            --description "Automated link-audit failures" --color D93F0B 2>/dev/null || true
+
+          title="Link audit: failures detected"
+          body_file=issue-body.md
+          {
+            echo "Automated link audit failed. Run: $RUN_URL"
+            echo
+            cat link-audit-report.md 2>/dev/null || echo "_Report file missing — see the run log._"
+            echo
+            echo "Affected claims must be set to FLAGGED and re-verified by fact-verifier (link-auditor may not edit content)."
+          } > "$body_file"
+
+          existing="$(gh issue list --repo "$REPO" --label link-audit --state open \
+            --search "$title in:title" --json number --jq '.[0].number')"
+          if [ -n "$existing" ]; then
+            gh issue comment "$existing" --repo "$REPO" --body-file "$body_file"
+            echo "Updated tracking issue #$existing"
+          else
+            gh issue create --repo "$REPO" --title "$title" \
+              --label link-audit --body-file "$body_file"
+          fi

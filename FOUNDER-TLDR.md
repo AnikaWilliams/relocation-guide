@@ -10,6 +10,18 @@ coming next. Newest updates are at the top.
 
 ---
 
+## 2026-06-12 — The source watchdog is on duty: all 23 official links checked weekly from now on
+
+**What changed.** The watchdog for our sources is built and switched on. Every week (and on every content change), it automatically re-visits all the official Swiss government pages our 69 facts cite and raises the alarm if a link has died, a page has quietly moved, or its content has changed since we verified it (it keeps a fingerprint of each page to spot edits). It also watches the calendar: every fact carries a "re-check by" date, and the watchdog flags anything overdue or coming due within two weeks. Its first patrol came back perfectly clean — all 23 links healthy, no facts near their deadline (the first fee facts come up for routine re-checking around June 25). When something does break, it automatically files a to-do ticket so nothing relies on a human noticing.
+
+**Why it matters.** Government websites reorganise constantly. Without a watchdog, a moved page silently turns a verified fact into an unverifiable one. Now "every fact is still true today" enforces itself — and the protection scales automatically as routes and corridors are added.
+
+**What you'd notice using the app today.** Nothing — this is guard duty behind the scenes.
+
+**What's next.** Study-route research is still in progress; when it lands, same assembly line.
+
+---
+
 ## 2026-06-12 — Retirement is live: the third route, fact-checked 20 for 20
 
 **What changed.** The fact-checker confirmed all 20 retirement facts — none rejected — and the route is switched on. It even re-checked the law against versions current *as of today* (one Swiss statute changed this very morning; our articles were unaffected). "Retirement" now appears as its own answer in the questionnaire, and a retiree gets a six-step plan: the special retiree permit (with the honest framing that it's the authorities' choice, not a right — age 55+, real ties to Switzerland, ample means, no working anywhere), the long-stay visa, town-hall registration, the permit card, health insurance, and a step most people would never guess — non-working residents under Swiss retirement age still owe yearly state-pension contributions (minimum CHF 530). The fact-checker also approved swapping out the employee pension step for retirees, since the retiree permit forbids working. The guide now holds 69 verified facts across three routes; the assembly line did this one in hours, as predicted.
