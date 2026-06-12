@@ -3,10 +3,10 @@
  *
  * Loads the REAL us-ch corridor YAML and asserts, for representative intake
  * profiles, exactly which task ids the verified `appliesIf` rules admit.
- * This locks the two-route behaviour (work + family, ADR-0009) against
- * future content edits: adding, removing, or re-gating a task in
- * `src/content/corridors/us-ch.yaml` will fail here until the expected set
- * is consciously updated alongside a fact-verifier review.
+ * This locks the three-route behaviour (work + family + retirement,
+ * ADR-0009) against future content edits: adding, removing, or re-gating a
+ * task in `src/content/corridors/us-ch.yaml` will fail here until the
+ * expected set is consciously updated alongside a fact-verifier review.
  *
  * Uses the production evaluator (`evaluateAppliesIf`) and the production
  * schema (`CorridorSchema`) — no mocks, no re-implementation of the grammar.
@@ -49,12 +49,18 @@ function applicableIds(c: AppliesIfContext): string[] {
 const sorted = (ids: string[]) => [...ids].sort();
 
 /** Tasks with no appliesIf — apply to every route. */
-const SHARED = [
+const SHARED_CORE = [
   'register-commune',
   'residence-permit-card',
   'health-insurance',
-  'ahv-social-security',
 ];
+/**
+ * The employee-framed OASI task applies to every route EXCEPT retirement
+ * (appliesIf "motivation != 'retirement'", fact-verifier approved 2026-06-12 —
+ * Art. 28 retirees may not work, so retirees get retirement-ahv-contributions
+ * instead).
+ */
+const SHARED = [...SHARED_CORE, 'ahv-social-security'];
 const WORK = ['work-residence-permit', 'national-d-visa'];
 const ALL_FAMILY_PERMITS = [
   'family-permit-spouse-swiss',
@@ -63,16 +69,21 @@ const ALL_FAMILY_PERMITS = [
   'family-permit-unmarried-partner',
   'family-permit-children',
 ];
+const RETIREMENT = [
+  'retirement-residence-permit',
+  'retirement-d-visa',
+  'retirement-ahv-contributions',
+];
 
 describe('us-ch corridor content (preconditions)', () => {
   it('contains exactly the known task ids (update the route expectations when this changes)', () => {
     expect(corridor.tasks.map((t) => t.id).sort()).toEqual(
-      sorted([...WORK, ...SHARED, ...ALL_FAMILY_PERMITS, 'family-d-visa']),
+      sorted([...WORK, ...SHARED, ...ALL_FAMILY_PERMITS, 'family-d-visa', ...RETIREMENT]),
     );
   });
 
-  it('covers the work and family motivations', () => {
-    expect(corridor.coversMotivations).toEqual(['work', 'family']);
+  it('covers the work, family, and retirement motivations', () => {
+    expect(corridor.coversMotivations).toEqual(['work', 'family', 'retirement']);
   });
 
   it('every appliesIf expression parses cleanly (no silent fail-open)', () => {
@@ -150,6 +161,19 @@ describe('route personalisation — applicable task ids per intake profile', () 
   it('unanswered intake (fresh wizard) → only unconditional shared tasks apply', () => {
     expect(applicableIds(ctx({ durationIntent: null, hasChildren: null }))).toEqual(sorted(SHARED));
   });
+
+  it('retirement → retirement tasks + shared core, employee OASI task excluded', () => {
+    const ids = applicableIds(ctx({ motivation: 'retirement' }));
+    expect(ids).toEqual(sorted([...RETIREMENT, ...SHARED_CORE]));
+    expect(ids).not.toContain('ahv-social-security');
+    expect(ids).not.toContain('work-residence-permit');
+    expect(ids).not.toContain('family-d-visa');
+  });
+
+  it('retirement + children → adds the (motivation-independent) children task', () => {
+    const ids = applicableIds(ctx({ motivation: 'retirement', hasChildren: true }));
+    expect(ids).toEqual(sorted([...RETIREMENT, ...SHARED_CORE, 'family-permit-children']));
+  });
 });
 
 describe('route personalisation — journey ordering over the filtered set', () => {
@@ -171,5 +195,15 @@ describe('route personalisation — journey ordering over the filtered set', () 
     const order = topoOrder(applicable).map((t) => t.id);
     expect(order.indexOf('family-permit-spouse-swiss')).toBeLessThan(order.indexOf('family-d-visa'));
     expect(order.indexOf('family-d-visa')).toBeLessThan(order.indexOf('register-commune'));
+  });
+
+  it('retirement route: permit → D visa → commune registration → OASI contributions', () => {
+    const applicable = corridor.tasks.filter(
+      (t) => evaluateAppliesIf(t.appliesIf, ctx({ motivation: 'retirement' })).applies,
+    );
+    const order = topoOrder(applicable).map((t) => t.id);
+    expect(order.indexOf('retirement-residence-permit')).toBeLessThan(order.indexOf('retirement-d-visa'));
+    expect(order.indexOf('retirement-d-visa')).toBeLessThan(order.indexOf('register-commune'));
+    expect(order.indexOf('register-commune')).toBeLessThan(order.indexOf('retirement-ahv-contributions'));
   });
 });

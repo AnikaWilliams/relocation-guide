@@ -77,12 +77,12 @@ interface CorridorAppProps {
   /** Origin/destination pairs of every published corridor — drives which countries are selectable. */
   availableCorridors: CorridorPair[];
   /** Routes this corridor's verified content covers; answers outside it get an honest "not covered yet" notice. */
-  coversMotivations?: ('work' | 'family' | 'study' | 'other')[];
+  coversMotivations?: ('work' | 'family' | 'study' | 'retirement' | 'other')[];
 }
 
 // ── Intake model ─────────────────────────────────────────────────────────────
 
-type Motivation = 'work' | 'family' | 'study' | 'other';
+type Motivation = 'work' | 'family' | 'study' | 'retirement' | 'other';
 
 interface Intake {
   origin: string | null;
@@ -116,7 +116,8 @@ const MOTIVATIONS: Opt[] = [
   { value: 'work', label: 'Work or employment', description: 'A job, job-seeking, or self-employment' },
   { value: 'family', label: 'Joining family', description: 'Joining a partner or relative who lives there' },
   { value: 'study', label: 'Study', description: 'University or another programme' },
-  { value: 'other', label: 'Another reason', description: 'Retirement, remote work, and more' },
+  { value: 'retirement', label: 'Retirement', description: 'Moving without taking up work' },
+  { value: 'other', label: 'Another reason', description: 'Remote work, investment, and more' },
 ];
 
 const WORK_STATUS: Opt[] = [
@@ -450,7 +451,7 @@ function CountryMultiGrid({
 // ── Answer recap (for the sidebar) ───────────────────────────────────────────
 
 function motivationLabel(m: Motivation): string {
-  return { work: 'Work', family: 'Family', study: 'Study', other: 'Other' }[m];
+  return { work: 'Work', family: 'Family', study: 'Study', retirement: 'Retirement', other: 'Other' }[m];
 }
 
 function buildRecap(a: Intake): { label: ReactNode; stepId: string }[] {

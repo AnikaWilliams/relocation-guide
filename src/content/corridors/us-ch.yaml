@@ -1,14 +1,15 @@
 originIso2: us
 destinationIso2: ch
 title: "Moving from the USA to Switzerland"
-description: "How US citizens (non-EU/EFTA third-country nationals) relocate to Switzerland for work or to join family: the employer-sponsored work and residence permit or the family-reunification permit, the national (type D) visa, arrival registration, the residence permit card, mandatory health insurance, and social security."
+description: "How US citizens (non-EU/EFTA third-country nationals) relocate to Switzerland for work, family reunification, or retirement: the right permit for your route (employer-sponsored, family-reunification, or retiree residence), the national (type D) visa, arrival registration, the residence permit card, mandatory health insurance, and social security."
 lastReviewed: "2026-06-12"
 reviewedBy: "content-researcher"
 published: true
-# Covered routes: work (employer-sponsored, verified 2026-06-09) and family
-# reunification (verified 2026-06-12, 27/27 claims). Study/other routes still
-# need their own researched and verified content before being added here.
-coversMotivations: [work, family]
+# Covered routes: work (employer-sponsored, verified 2026-06-09), family
+# reunification (verified 2026-06-12, 27/27), retirement / non-gainful Art. 28
+# (verified 2026-06-12, 20/20). Study/other routes still need their own
+# researched and verified content before being added here.
+coversMotivations: [work, family, retirement]
 tasks:
   # ---------------------------------------------------------------------------
   - id: work-residence-permit
@@ -208,11 +209,15 @@ tasks:
       verifiedBy: "fact-verifier"
       reviewBy: "2026-09-07"
     dependsOn:
-      # Entry tasks from BOTH routes are listed; at runtime a dependsOn id that
+      # Entry tasks from ALL routes are listed; at runtime a dependsOn id that
       # is filtered out by appliesIf is ignored, so each user's journey only
       # sees the entry task for their own route (ADR-0009 mechanics).
+      # retirement-d-visa added 2026-06-12 (content-researcher) for the
+      # retirement route draft — same pattern as family-d-visa; claims above
+      # untouched.
       - national-d-visa
       - family-d-visa
+      - retirement-d-visa
 
   # ---------------------------------------------------------------------------
   - id: residence-permit-card
@@ -378,6 +383,30 @@ tasks:
       reviewBy: "2026-07-09"
     dependsOn:
       - residence-permit-card
+    # appliesIf added 2026-06-12 (content-researcher, retirement-route draft;
+    # PENDING fact-verifier approval per ADR-0009 §4 — claims above untouched):
+    # this task describes the EMPLOYEE OASI mechanics (employer deducts and
+    # pays contributions). Retirees admitted under Art. 28 FNIA may not work
+    # at all (VZAE Art. 25 para. 3), so the employee framing can never apply
+    # to them; they get the dedicated retirement-ahv-contributions task
+    # instead. Without this rule, retirement-route users would see BOTH OASI
+    # tasks, one of which is wrong for them. Work and family users are
+    # unaffected ("motivation != 'retirement'" is true for them, and
+    # 'retirement' is not yet offered by the intake anyway).
+    # appliesIf APPROVED 2026-06-12 (fact-verifier, ADR-0009 §4): correct
+    # against the legal sources. VZAE Art. 25 para. 3 (verified this run in
+    # the consolidation in force 2026-06-12) bans ALL gainful activity in
+    # Switzerland or abroad except managing one's own assets, so an Art. 28
+    # retiree can never be the employee this task's verified claims describe;
+    # their actual obligation (non-employed contributions, min. CHF 530/yr
+    # until the reference retirement age, ch.ch) is covered by the dedicated
+    # retirement-ahv-contributions task. Excluding retirement here prevents
+    # showing a factually inapplicable task. KNOWN RESIDUAL GAP (reported,
+    # out of verifier remit): non-working family-route spouses still see this
+    # employee-framed task; its claims are true of employees but do not
+    # describe a non-working spouse's liability (non-employed minimum, or
+    # CHF 1,060 spouse-coverage exemption). Researcher follow-up recommended.
+    appliesIf: "motivation != 'retirement'"
 
   # ---------------------------------------------------------------------------
   # NOTE (content-researcher, 2026-06-09): the "open-bank-account" task was REMOVED.
@@ -869,3 +898,364 @@ tasks:
       - family-permit-spouse-b-holder
       - family-permit-unmarried-partner
       - family-permit-children
+
+  # ===========================================================================
+  # RETIREMENT / NON-GAINFUL RESIDENCE ROUTE (drafted 2026-06-12,
+  # content-researcher).
+  # VERIFICATION RUN 2026-06-12 (fact-verifier, independent session per
+  # two-agent rule): all 20 claims below checked against the sources as
+  # served and tagged VERIFIED. CONSOLIDATION UPDATES found this run (claim
+  # texts unaffected — the cited provisions are verbatim unchanged):
+  #  - FNIA: an amendment entered force 2026-06-12 (no EN manifestation yet);
+  #    Art. 28 checked in the authoritative DE consolidation of 2026-06-12 —
+  #    unchanged vs the EN 2026-02-01 text cited.
+  #  - VZAE: current consolidation is now in force 2026-06-12 (researcher
+  #    read 2026-01-01); Art. 25 unchanged.
+  #  - ZV-EJPD: current consolidation is in force 2025-04-01 (researcher
+  #    read 2023-02-01); Art. 2 let. c unchanged.
+  #
+  # Legal position established from primary sources:
+  #  - FNIA Art. 28 (SR 142.20): retired persons "MAY be admitted" if they
+  #    (a) have reached a minimum age set by the Federal Council, (b) have
+  #    special personal relations to Switzerland, and (c) have the required
+  #    financial means. This is DISCRETION, not an entitlement — the same
+  #    "may be granted" vs "are entitled" distinction that separates Art. 44
+  #    from Art. 42/43 on the family route.
+  #  - VZAE/ASEO Art. 25 (SR 142.201) implements Art. 28: minimum age 55;
+  #    special personal ties defined (previous longer stays, or close
+  #    relatives in Switzerland); NO gainful activity in Switzerland OR
+  #    abroad except managing one's own assets; financial means must exceed
+  #    the ELG supplementary-benefits entitlement threshold (no fixed CHF
+  #    figure exists — ADR-0007 pattern applied below).
+  #  - ZV-EJPD Art. 2 let. c (SR 142.201.1): the cantonal permit for retired
+  #    persons under Art. 28 FNIA must be submitted to SEM for approval.
+  #
+  # Researcher reading notes for the fact-verifier (www.fedlex.admin.ch is a
+  # client-side SPA; read the filestore consolidated HTML, as in the
+  # family-route verification):
+  #  - FNIA EN: Fedlex filestore ELI cc/2007/758, in-force 2026-02-01. EN
+  #    translation "has no legal force" (header disclaimer).
+  #  - VZAE DE: Fedlex filestore ELI cc/2007/759, in-force 2026-01-01. The
+  #    VZAE has NO official English translation on Fedlex; German cited.
+  #  - ZV-EJPD DE: Fedlex filestore ELI cc/2015/518, in-force 2023-02-01 —
+  #    verifier: please confirm that is still the current consolidation.
+  #
+  # Out of scope of this draft (founder scope): lump-sum taxation, remote
+  # work, self-employment.
+  #
+  # NOTE: the intake wizard does not yet offer motivation == 'retirement', so
+  # these tasks are dormant-but-ready by design (appliesIf can never match
+  # until the orchestrator adds the intake option after verification).
+  # coversMotivations is deliberately NOT touched in this draft; note that
+  # MotivationEnum in src/content/schema.ts also has no 'retirement' value
+  # yet — the architect must extend the enum and the wizard together.
+  # ===========================================================================
+
+  # ---------------------------------------------------------------------------
+  - id: retirement-residence-permit
+    title: "Apply for a retired person's residence permit (residence without gainful employment, Art. 28 FNIA)"
+    category: visa-permit
+    # appliesIf APPROVED 2026-06-12 (fact-verifier, ADR-0009 §4): correct.
+    # Art. 28 FNIA admission is specific to retired persons no longer
+    # gainfully employed; it has no bearing on work/family entrants. Dormant
+    # until the intake offers motivation == 'retirement' — by design.
+    appliesIf: "motivation == 'retirement'"
+    summary:
+      text: "Foreign nationals who are no longer gainfully employed may be admitted to Switzerland if they have reached a minimum age set by the Federal Council, have special personal relations to Switzerland, and have the required financial means (Art. 28 FNIA). This is a discretionary admission — the law says «may be admitted», not «are entitled» — so there is no legal right to a retired person's permit; the cantonal authorities decide, and US citizens are not covered by EU/EFTA free movement."
+      sourceUrl: "https://www.fedlex.admin.ch/eli/cc/2007/758/en#art_28"
+      sourceName: "Foreign Nationals and Integration Act (FNIA, SR 142.20), Art. 28 — Fedlex, the official publication platform of Swiss law"
+      # VERIFIED 2026-06-12 (fact-verifier): cited www.fedlex.admin.ch URL resolves (HTTP 200) but renders client-side; statute read from the SAME official Fedlex platform's static consolidated HTML (fedlex.data.admin.ch filestore). EN text (latest available EN consolidation, in-force 2026-02-01; anchor "art_28" present) Art. 28 verbatim: "Foreign nationals who are no longer gainfully employed may be admitted if: a. they have reached a minimum age set by the Federal Council; b. they have special personal relations to Switzerland; and c. they have the required financial means." NOTE: an FNIA amendment entered force TODAY (2026-06-12) with no EN manifestation yet (confirmed via Fedlex SPARQL version list); Art. 28 was therefore additionally checked in the authoritative DE consolidation in force 2026-06-12 — "können zugelassen werden, wenn ..." — substantively identical, Art. 28 unchanged. The discretion reading ("may be admitted", NOT "are entitled") matches character-for-character; "cantonal authorities decide" supported by ch.ch (apply to the cantonal authorities before arrival) and ZV-EJPD Art. 2 let. c (canton grants, SEM approves), both read this run. EN-translation-has-no-legal-force disclaimer confirmed in the document header.
+      status: VERIFIED
+      lastVerified: "2026-06-12"
+      verifiedBy: "fact-verifier"
+      reviewBy: "2026-09-10"
+    detail: >
+      Switzerland has a dedicated admission category for retired third-country nationals
+      who will not work: Art. 28 of the Foreign Nationals and Integration Act (FNIA),
+      implemented by Art. 25 of the Ordinance on Admission, Period of Stay and Employment
+      (VZAE/ASEO, SR 142.201). The ordinance sets the minimum age at 55, defines the
+      special personal ties to Switzerland the canton looks for (longer previous stays —
+      holidays, education or work — or close relatives living in Switzerland), bars any
+      gainful activity in Switzerland or abroad apart from managing your own assets, and
+      ties "sufficient financial means" to the threshold for supplementary benefits under
+      the ELG rather than to a fixed franc amount. You apply to the cantonal immigration
+      authority of the canton where you intend to live, before you arrive; the cantonal
+      decision must additionally be submitted to the State Secretariat for Migration (SEM)
+      for approval. Admission is discretionary throughout. Note that the English text of
+      the FNIA is an official translation with no legal force, and the VZAE and ZV-EJPD
+      exist only in the official German, French and Italian versions.
+    steps:
+      - text: "Check the minimum age: the Federal Council has set the minimum age for admission of retired persons at 55."
+        links:
+          - text: "VZAE/ASEO Art. 25 para. 1 — «Das Mindestalter für die Zulassung von Rentnerinnen und Rentnern beträgt 55 Jahre.» (The minimum age for the admission of retired persons is 55.)"
+            sourceUrl: "https://www.fedlex.admin.ch/eli/cc/2007/759/de#art_25"
+            sourceName: "Ordinance on Admission, Period of Stay and Employment (VZAE/ASEO, SR 142.201), Art. 25 — Fedlex (official German text)"
+            # VERIFIED 2026-06-12 (fact-verifier): cited www.fedlex.admin.ch URL resolves (HTTP 200, client-side SPA); German text read from the official Fedlex filestore consolidated DE HTML (ELI cc/2007/759, SR 142.201). CONSOLIDATION UPDATE: current version is "Stand am 12. Juni 2026" (in-force 2026-06-12, NEWER than the researcher's 2026-01-01 read; confirmed via Fedlex SPARQL version list) — Art. 25 is unchanged in the current text. Para. 1 verbatim: "Das Mindestalter für die Zulassung von Rentnerinnen und Rentnern beträgt 55 Jahre." Minimum age 55 and the EN rendering in the link text match character-for-character. Section heading "3. Abschnitt: Rentnerinnen und Rentner (Art. 28 AIG)" confirms the Art. 28 FNIA linkage. No official EN translation of the VZAE exists on Fedlex — German correctly cited.
+            status: VERIFIED
+            lastVerified: "2026-06-12"
+            verifiedBy: "fact-verifier"
+            reviewBy: "2026-09-10"
+      - text: "Gather evidence of your special personal ties to Switzerland. The ordinance says such ties exist in particular where longer previous stays in Switzerland (holidays, education or gainful activity) can be shown, or where close relationships to close relatives in Switzerland exist (parents, children, grandchildren or siblings)."
+        tip: "US citizens with no previous Swiss stays and no close relatives in Switzerland will struggle to show the required ties — discuss your case with the cantonal migration office before committing to anything."
+        links:
+          - text: "VZAE/ASEO Art. 25 para. 2 — definition of «besondere persönliche Beziehungen zur Schweiz» (special personal ties to Switzerland): previous longer stays, or close relatives in Switzerland"
+            sourceUrl: "https://www.fedlex.admin.ch/eli/cc/2007/759/de#art_25"
+            sourceName: "Ordinance on Admission, Period of Stay and Employment (VZAE/ASEO, SR 142.201), Art. 25 — Fedlex (official German text)"
+            # VERIFIED 2026-06-12 (fact-verifier): Fedlex filestore VZAE DE (current consolidation in force 2026-06-12). Para. 2 verbatim: "Besondere persönliche Beziehungen zur Schweiz liegen insbesondere vor, wenn: a. längere frühere Aufenthalte in der Schweiz, namentlich Ferien, Ausbildung oder Erwerbstätigkeit, nachgewiesen werden; b. enge Beziehungen zu nahen Verwandten in der Schweiz bestehen (Eltern, Kinder, Enkelkinder oder Geschwister)." The step text's "in particular" correctly preserves the non-exhaustive "insbesondere"; the holidays/education/gainful-activity examples and the relatives list (parents, children, grandchildren or siblings) match character-for-character.
+            status: VERIFIED
+            lastVerified: "2026-06-12"
+            verifiedBy: "fact-verifier"
+            reviewBy: "2026-09-10"
+      - text: "Understand the work ban: with this permit no gainful activity may be carried out in Switzerland OR abroad, with the sole exception of managing your own assets."
+        links:
+          - text: "VZAE/ASEO Art. 25 para. 3 — no gainful activity in Switzerland or abroad except the management of one's own assets"
+            sourceUrl: "https://www.fedlex.admin.ch/eli/cc/2007/759/de#art_25"
+            sourceName: "Ordinance on Admission, Period of Stay and Employment (VZAE/ASEO, SR 142.201), Art. 25 — Fedlex (official German text)"
+            # VERIFIED 2026-06-12 (fact-verifier): Fedlex filestore VZAE DE (current consolidation in force 2026-06-12). Para. 3 verbatim: "Im In- oder Ausland darf mit Ausnahme der Verwaltung des eigenen Vermögens keine Erwerbstätigkeit ausgeübt werden." The step text's "in Switzerland OR abroad" ("Im In- oder Ausland") and the sole exception "managing your own assets" ("Verwaltung des eigenen Vermögens") match character-for-character. The researcher's reading that remote work for a US employer is incompatible with this permit follows directly from the in-/Ausland wording.
+            status: VERIFIED
+            lastVerified: "2026-06-12"
+            verifiedBy: "fact-verifier"
+            reviewBy: "2026-09-10"
+      - text: "Prepare proof of the required financial means. The ordinance sets no fixed franc amount: the necessary financial means exist if they exceed the amount that would entitle a Swiss national (and, where applicable, their family members) to supplementary benefits under the Supplementary Benefits Act (ELG). Ask the cantonal migration authority how that threshold is assessed in your case."
+        links:
+          - text: "VZAE/ASEO Art. 25 para. 4 — financial means must exceed the ELG supplementary-benefits entitlement threshold"
+            sourceUrl: "https://www.fedlex.admin.ch/eli/cc/2007/759/de#art_25"
+            sourceName: "Ordinance on Admission, Period of Stay and Employment (VZAE/ASEO, SR 142.201), Art. 25 — Fedlex (official German text)"
+            # VERIFIED 2026-06-12 (fact-verifier): Fedlex filestore VZAE DE (current consolidation in force 2026-06-12). Para. 4 verbatim: "Die notwendigen finanziellen Mittel liegen vor, wenn sie den Betrag übersteigen, der einen Schweizer oder eine Schweizerin und allenfalls seine oder ihre Familienangehörigen zum Bezug von Ergänzungsleistungen nach dem Bundesgesetz vom 6. Oktober 2006 über Ergänzungsleistungen zur Alters-, Hinterlassenen- und Invalidenversicherung (ELG) berechtigt." The ELG-threshold criterion and the absence of any fixed CHF figure match the step text exactly; deliberately stating no franc amount is correct (ADR-0007). No contribution/fee amount asserted -> 90-day window.
+            status: VERIFIED
+            lastVerified: "2026-06-12"
+            verifiedBy: "fact-verifier"
+            reviewBy: "2026-09-10"
+          - text: "ch.ch — to settle in Switzerland without gainful employment you must have sufficient financial resources to support yourself, not be dependent on social welfare assistance, and have adequate accident and health insurance"
+            sourceUrl: "https://www.ch.ch/en/foreign-nationals-in-switzerland/entry-and-stay-in-switzerland/living-in-switzerland-without-gainful-employment/"
+            sourceName: "ch.ch — Living in Switzerland without gainful employment (official federal portal)"
+            # VERIFIED 2026-06-12 (fact-verifier): ch.ch page loaded (curl, browser UA, HTTP 200, title "Living as a foreign national in Switzerland without work"; SPA soft-404s in default fetchers, server-rendered HTML read directly). In the "Citizens of non EU/EFTA countries" section verbatim: "Like citizens of EU/EFTA countries, you must: have sufficient financial resources to support yourself and not be dependent on social welfare assistance, have adequate accident and health insurance." All three elements of the link text match character-for-character. Researcher's accident-cover caveat (no employer to provide accident insurance on this route) is well taken — noted for the frontend/researcher, no claim change needed.
+            status: VERIFIED
+            lastVerified: "2026-06-12"
+            verifiedBy: "fact-verifier"
+            reviewBy: "2026-09-10"
+      - text: "Apply to the cantonal immigration authority of the canton where you intend to live — before you arrive in Switzerland."
+        tip: "Procedures, forms and document checklists are cantonal. Contact the competent cantonal migration office and get its requirements in writing before assembling documents."
+        links:
+          - text: "ch.ch — «If you wish to settle in Switzerland without taking up gainful employment, you must apply for a residence permit from the cantonal immigration and employment market authorities before you arrive in Switzerland.»"
+            sourceUrl: "https://www.ch.ch/en/foreign-nationals-in-switzerland/entry-and-stay-in-switzerland/living-in-switzerland-without-gainful-employment/"
+            sourceName: "ch.ch — Living in Switzerland without gainful employment (official federal portal)"
+            # VERIFIED 2026-06-12 (fact-verifier): same ch.ch page (HTTP 200, server-rendered HTML read directly). Quoted sentence verbatim in the "Citizens of non EU/EFTA countries" section: "If you wish to settle in Switzerland without taking up gainful employment, you must apply for a residence permit from the cantonal immigration and employment market authorities before you arrive in Switzerland." Immediately followed by "Depending on your nationality, you must also obtain a visa from your local Swiss representation abroad." Quote matches character-for-character.
+            status: VERIFIED
+            lastVerified: "2026-06-12"
+            verifiedBy: "fact-verifier"
+            reviewBy: "2026-09-10"
+          - text: "SEM — addresses of the cantonal immigration and employment market authorities"
+            sourceUrl: "https://www.sem.admin.ch/sem/en/home/sem/kontakt/kantonale_behoerden/adressen_kantone_und.html"
+            sourceName: "State Secretariat for Migration (SEM) — Cantonal immigration and employment market authorities"
+            # VERIFIED 2026-06-12 (fact-verifier): SEM page loaded fresh this run (curl, browser UA, HTTP 200, title "Cantonal immigration and employment market authorities"). Official per-canton address directory confirmed (Migrationsamt / Amt für Migration / Service de la population entries present for the cantons). Link text accurate.
+            status: VERIFIED
+            lastVerified: "2026-06-12"
+            verifiedBy: "fact-verifier"
+            reviewBy: "2026-09-10"
+      - text: "Be aware of the federal second stage: the canton's decision to grant a retired person's residence permit must be submitted to the State Secretariat for Migration (SEM) for approval."
+        links:
+          - text: "ZV-EJPD Art. 2 let. c — residence permits for retired persons (Art. 28 FNIA/AIG) granted to non-EU/EFTA nationals must be submitted to SEM for approval"
+            sourceUrl: "https://www.fedlex.admin.ch/eli/cc/2015/518/de#art_2"
+            sourceName: "Ordinance of the FDJP on residence permits subject to the approval procedure (ZV-EJPD, SR 142.201.1), Art. 2 — Fedlex (official German text)"
+            # VERIFIED 2026-06-12 (fact-verifier): cited www.fedlex.admin.ch URL resolves (HTTP 200, client-side SPA); German text read from the official Fedlex filestore consolidated DE HTML (ELI cc/2015/518, SR 142.201.1). CONSOLIDATION UPDATE: the researcher's question is answered — 2023-02-01 is NOT current; the current consolidation is "Stand am 1. April 2025" (in-force 2025-04-01, confirmed via Fedlex SPARQL version list + filestore). Art. 2 is verbatim UNCHANGED in the current text: title "Aufenthalt ohne Erwerbstätigkeit von Staatsangehörigen von Nichtmitgliedstaaten der EU oder der EFTA"; chapeau "Dem SEM ist die Erteilung folgender Bewilligungen an Staatsangehörige von Nichtmitgliedstaaten der EU oder der EFTA zur Zustimmung zu unterbreiten:"; let. c "Aufenthaltsbewilligungen für Rentnerinnen und Rentner (Art. 28 AIG);". Non-EU/EFTA scope and SEM-approval requirement match the link text character-for-character. No official EN translation exists — German correctly cited.
+            status: VERIFIED
+            lastVerified: "2026-06-12"
+            verifiedBy: "fact-verifier"
+            reviewBy: "2026-09-10"
+    documents:
+      - "Valid US passport"
+      - "Evidence of special personal ties to Switzerland (e.g. proof of previous longer stays — holidays, education or work — and/or close relatives resident in Switzerland: parents, children, grandchildren, siblings)"
+      - "Proof of financial means (pension statements, asset statements) — the canton assesses these against the ELG supplementary-benefits threshold; confirm the exact evidence required with the cantonal migration office"
+      - "Proof of adequate health and accident insurance cover (or a declaration of how you will insure on arrival — confirm what the canton accepts)"
+      - "Confirm the full cantonal document checklist with the competent cantonal migration office"
+    # timeline omitted (ADR-0007): the procedure is cantonal plus a federal
+    # SEM-approval stage; no official processing-time figure is published for
+    # Art. 28 FNIA admissions.
+    # cost omitted (ADR-0007): permit fees are set at cantonal level; no
+    # official federal fee figure exists. Confirm with the cantonal migration
+    # office.
+    warning: >
+      There is no entitlement to this permit: Art. 28 FNIA says retired persons "may be
+      admitted" — the canton decides at its discretion and SEM must approve. Do not sell
+      property, give notice or make other irreversible arrangements before you have the
+      cantonal decision (and SEM approval) in writing. The permit excludes all gainful
+      activity in Switzerland or abroad except managing your own assets.
+    dependsOn: []
+
+  # ---------------------------------------------------------------------------
+  - id: retirement-d-visa
+    title: "Apply for the national (type D) visa for residence without gainful employment at the Swiss representation in the USA"
+    category: visa-permit
+    # appliesIf APPROVED 2026-06-12 (fact-verifier, ADR-0009 §4): correct.
+    # Same pattern as family-d-visa: the D-visa requirement is route-
+    # independent, but this task's steps/documents presuppose the Art. 28
+    # cantonal authorisation; work/family users have their own D-visa tasks.
+    appliesIf: "motivation == 'retirement'"
+    summary:
+      text: "A category D (national) visa is issued for stays exceeding 90 days; because your retirement stay exceeds 90 days you require a permit to stay in Switzerland. You apply in writing using the national visa application form at the Swiss representation abroad responsible for your place of residence; applications for a category D visa are processed by the cantons (a residence permit is required)."
+      sourceUrl: "https://www.sem.admin.ch/sem/en/home/themen/einreise/faq.html"
+      sourceName: "State Secretariat for Migration (SEM) — FAQ: Entry"
+      # VERIFIED 2026-06-12 (fact-verifier): SEM Entry FAQ loaded fresh this run (curl, browser UA, HTTP 200, title "FAQ – Entry"). Verbatim: "Category D visas are issued for stays exceeding 90 days"; "you require a permit to stay in Switzerland for more than 90 days"; "You must apply for the category D visa in writing using the application form or directly at the Swiss representation abroad responsible for your place of residence."; "Applications for a category D visa are processed by the cantons (a residence permit is required)." All claim elements match character-for-character (independently re-checked, not carried over from prior routes).
+      status: VERIFIED
+      lastVerified: "2026-06-12"
+      verifiedBy: "fact-verifier"
+      reviewBy: "2026-09-10"
+    detail: >
+      The type D visa is the entry document for the retirement route, exactly as for the
+      work and family routes: it lets you travel to Switzerland to take up the residence
+      the canton has authorised (with SEM approval) under Art. 28 FNIA. The official
+      federal portal ch.ch confirms that, depending on your nationality, settling in
+      Switzerland without gainful employment also requires a visa from your local Swiss
+      representation abroad. Apply at the Swiss representation competent for your US state
+      of residence (for example the Embassy in Washington or a Swiss consulate); each
+      representation covers specific US states — confirm which one covers yours, and its
+      submission procedure, on that representation's own page before applying.
+    steps:
+      - text: "Identify the Swiss representation abroad competent for your US state of residence, then apply for the category D visa in writing using the national visa application form, indicating residence without gainful employment (retirement) as the purpose of stay."
+        links:
+          - text: "SEM — FAQ: where and how to apply for a category D visa for Switzerland"
+            sourceUrl: "https://www.sem.admin.ch/sem/en/home/themen/einreise/faq.html"
+            sourceName: "State Secretariat for Migration (SEM) — FAQ: Entry"
+            # VERIFIED 2026-06-12 (fact-verifier): SEM Entry FAQ loaded fresh this run (HTTP 200). "Where and how do I apply for a category D visa for Switzerland?" answer verbatim: "You must apply for the category D visa in writing using the application form or directly at the Swiss representation abroad responsible for your place of residence." Link text accurate.
+            status: VERIFIED
+            lastVerified: "2026-06-12"
+            verifiedBy: "fact-verifier"
+            reviewBy: "2026-09-10"
+          - text: "SEM — National (type D) visa application form (for long-term stays of more than three months in Switzerland subject to authorisation)"
+            sourceUrl: "https://www.sem.admin.ch/sem/en/home/themen/einreise/visumantragsformular.html"
+            sourceName: "State Secretariat for Migration (SEM) — Visa Application Form"
+            # VERIFIED 2026-06-12 (fact-verifier): SEM Visa Application Form page loaded (HTTP 200, title "Visa Application Form"). Verbatim: "National (type D) visa application form — For long-term stays (more than three months) in Switzerland subject to authorization (e.g. gainful employment, familiy reunification)" (source's own typo "familiy"). Researcher's framing CHECKED AND ACCEPTED: retirement is not named on the form page, but the "e.g." list is expressly non-exhaustive and the form covers long-term stays subject to authorisation generally; an Art. 28 retirement stay is such a stay (ch.ch, read this run: permit must be applied for before arrival, and "Depending on your nationality, you must also obtain a visa"). Link text omitting the examples is accurate and not misleading.
+            status: VERIFIED
+            lastVerified: "2026-06-12"
+            verifiedBy: "fact-verifier"
+            reviewBy: "2026-09-10"
+          - text: "ch.ch — «Depending on your nationality, you must also obtain a visa from your local Swiss representation abroad.» (residence without gainful employment)"
+            sourceUrl: "https://www.ch.ch/en/foreign-nationals-in-switzerland/entry-and-stay-in-switzerland/living-in-switzerland-without-gainful-employment/"
+            sourceName: "ch.ch — Living in Switzerland without gainful employment (official federal portal)"
+            # VERIFIED 2026-06-12 (fact-verifier): ch.ch "Living as a foreign national in Switzerland without work" page loaded (curl, browser UA, HTTP 200; SPA, server-rendered HTML read directly). Sentence verbatim in the "Citizens of non EU/EFTA countries" section: "Depending on your nationality, you must also obtain a visa from your local Swiss representation abroad." Quote matches character-for-character.
+            status: VERIFIED
+            lastVerified: "2026-06-12"
+            verifiedBy: "fact-verifier"
+            reviewBy: "2026-09-10"
+      - text: "Submit the visa application together with the supporting documents required by the representation and the canton (reference to the cantonal Art. 28 authorisation / pending application)."
+        tip: "Check the specific representation's instructions for how to submit (by post or appointment) and the exact document checklist."
+      - text: "The representation issues the type D visa once the cantonal authorisation (with SEM approval) is confirmed; you then travel to Switzerland within its validity."
+    documents:
+      - "Completed national (type D) visa application form"
+      - "Valid US passport"
+      - "Passport photos to the required specification"
+      - "Reference to the cantonal authorisation or pending application for the retired person's residence permit"
+      - "Proof of financial means and insurance as requested by the representation"
+      - "Confirm the full document list with the competent Swiss representation in the USA"
+    timeline:
+      text: "Category D (national) visa applications are processed by the cantons and the time required varies by canton and purpose of stay; SEM states that, as a rule, one to several months must be expected. Confirm the current timing with the competent Swiss representation abroad."
+      sourceUrl: "https://www.sem.admin.ch/sem/en/home/themen/einreise/faq.html"
+      sourceName: "State Secretariat for Migration (SEM) — FAQ: Entry"
+      # VERIFIED 2026-06-12 (fact-verifier): SEM Entry FAQ loaded fresh this run (HTTP 200). Verbatim: "Applications for a category D visa are processed by the cantons (a residence permit is required). The time the responsible authorities need to process such applications may vary according to canton and purpose of stay. As a rule, one to several months must be expected." Matches claim character-for-character.
+      status: VERIFIED
+      lastVerified: "2026-06-12"
+      verifiedBy: "fact-verifier"
+      reviewBy: "2026-09-10"
+    cost:
+      text: "Confirm the current national (type D) visa fee with the competent Swiss representation abroad. Unlike the Schengen (category C) visa, which is a fixed EUR 90 for adults, the national (type D) visa fee is not published by SEM as a single fixed figure; an extra charge of up to 50% of the fee may apply for urgent/out-of-hours handling. A service fee to an external provider may also apply."
+      sourceUrl: "https://www.sem.admin.ch/sem/en/home/themen/einreise/faq.html"
+      sourceName: "State Secretariat for Migration (SEM) — FAQ: Entry"
+      # VERIFIED 2026-06-12 (fact-verifier): SEM Entry FAQ loaded fresh this run (HTTP 200). Verbatim: "The cost of submitting an application is EUR 90 for adults and EUR 45 for children between 6 and 12 years old. This is a fixed charge for a Schengen visa." (EUR 90 is the Schengen fee, exactly as the claim frames it); "There may be an extra charge of up to 50% of the fee for a national visa (for a stay longer than 90 days) when the applicant asks for the visa to be issued urgently or outside of normal working hours or if the application processing procedure is unduly complex."; external service-provider fee "in addition to the visa fee" confirmed. No fixed national (type D) figure published — claim correctly says confirm with the representation. Fee claim -> 30-day review window.
+      status: VERIFIED
+      lastVerified: "2026-06-12"
+      verifiedBy: "fact-verifier"
+      reviewBy: "2026-07-12"
+    dependsOn:
+      - retirement-residence-permit
+
+  # ---------------------------------------------------------------------------
+  - id: retirement-ahv-contributions
+    title: "Clarify your OASI (AHV/AVS) contribution obligation as a non-employed resident"
+    category: registration-bureaucracy
+    # appliesIf APPROVED 2026-06-12 (fact-verifier, ADR-0009 §4): correct.
+    # An Art. 28 retiree may not work (VZAE Art. 25 para. 3, verified this
+    # run), so only the non-employed OASI rules on this task's cited ch.ch
+    # page can apply to them. Pairs with the approved exclusion rule on
+    # ahv-social-security.
+    appliesIf: "motivation == 'retirement'"
+    # This task exists because the shared ahv-social-security task is
+    # employee-framed (employer deducts contributions) and does not cover the
+    # contribution obligation of residents who do NOT work — the known gap
+    # flagged on the family route. Retirees admitted under Art. 28 FNIA may
+    # not work at all, so the non-employed rules are the only ones that can
+    # apply to them.
+    summary:
+      text: "All persons living or working in Switzerland must pay OASI (old-age and survivors' insurance, AHV/AVS) contributions from 1 January following their 20th birthday until the reference retirement age — including residents who are not working. If you are not working, you must pay an OASI contribution of at least CHF 530 per year; the exact amount depends on your situation. If you take up residence in Switzerland before reaching the reference retirement age, contact the OASI compensation office (Ausgleichskasse / caisse de compensation) of your canton of residence to clarify your liability."
+      sourceUrl: "https://www.ch.ch/en/retirement/old-age-pension/the-first-pillar/oasi-contributions/"
+      sourceName: "ch.ch — Paying OASI contributions in Switzerland (official federal portal)"
+      # VERIFIED 2026-06-12 (fact-verifier): ch.ch "Paying OASI contributions in Switzerland" page loaded (curl, browser UA, HTTP 200, title matches; SPA, server-rendered HTML read directly). Verbatim: "All persons living or working in Switzerland must pay OASI contributions from 1 January following their 20th birthday until retirement age."; the page's own lead sentence verbatim: "you are obliged to pay OASI contributions until the reference retirement age in order to secure an old-age pension" — the claim's "reference retirement age" is the page's own lead term for the same threshold. Under the heading "If you are not working": "you must pay a OASI contribution of minimum CHF 530 per year (depending on your situation)" — CHF 530 matches character-for-character. "Including residents who are not working" is supported by "living or working" + the not-working section. Closing compensation-office sentence is an honest pointer, supported by the page's "Contact your local OASI office for more information" (linking to the cantonal compensation offices on ahv-iv.ch). The "(AHV/AVS)" naming gloss is standard official terminology not spelled out on this EN page (same accepted pattern as the VERIFIED ahv-social-security summary). Contribution amount (CHF 530) -> 30-day review window.
+      status: VERIFIED
+      lastVerified: "2026-06-12"
+      verifiedBy: "fact-verifier"
+      reviewBy: "2026-07-12"
+    detail: >
+      Switzerland's first-pillar old-age insurance is contribution-based for residents,
+      not only for workers: simply living in Switzerland below the reference retirement
+      age creates a contribution obligation, even with no Swiss income. A US retiree
+      admitted at 55 under Art. 28 FNIA can therefore owe non-employed OASI contributions
+      for years before reaching the Swiss reference retirement age. The minimum is
+      CHF 530 per year and the actual amount depends on your situation; the cantonal
+      compensation office assesses and collects it. If your spouse or registered partner
+      works and pays at least twice the minimum annual contribution, you may owe nothing
+      yourself. Missing contribution years can also reduce any later Swiss pension
+      entitlement. Ask the compensation office how your liability is assessed in your
+      specific case, including whether any international social-security agreement is
+      relevant to you.
+    steps:
+      - text: "After registering at your commune, contact the OASI compensation office (Ausgleichskasse / caisse de compensation) of your canton of residence and ask how your contribution liability as a non-employed resident is assessed."
+        tip: "Do this proactively — the obligation arises from residence, not from a payslip, so no employer will handle it for you on this route."
+        links:
+          - text: "ch.ch — if you are not working you must pay an OASI contribution of minimum CHF 530 per year (depending on your situation); contributions can be calculated online at the Federal Social Insurance Office's website"
+            sourceUrl: "https://www.ch.ch/en/retirement/old-age-pension/the-first-pillar/oasi-contributions/"
+            sourceName: "ch.ch — Paying OASI contributions in Switzerland (official federal portal)"
+            # VERIFIED 2026-06-12 (fact-verifier): same ch.ch page (HTTP 200). Both elements verbatim: "you must pay a OASI contribution of minimum CHF 530 per year (depending on your situation)" and "You can calculate your contributions online (webpage available in German, French and Italian) at the Federal Social Insurance Office's website." Contribution amount (CHF 530) -> 30-day review window.
+            status: VERIFIED
+            lastVerified: "2026-06-12"
+            verifiedBy: "fact-verifier"
+            reviewBy: "2026-07-12"
+      - text: "If your spouse or registered partner lives with you and works in Switzerland: check whether their contributions cover you. If you are not working but your spouse or partner (in a registered partnership) is working and pays at least twice the minimum annual contribution (CHF 530 × 2 = CHF 1,060), you are not required to pay anything."
+        links:
+          - text: "ch.ch — non-working spouse/registered partner owes nothing if the working partner pays at least twice the minimum annual contribution (CHF 1,060)"
+            sourceUrl: "https://www.ch.ch/en/retirement/old-age-pension/the-first-pillar/oasi-contributions/"
+            sourceName: "ch.ch — Paying OASI contributions in Switzerland (official federal portal)"
+            # VERIFIED 2026-06-12 (fact-verifier): same ch.ch page (HTTP 200). Verbatim: "Please note: if you are not working, but your spouse or partner (in the case of a registered partnership) is working and pays at least twice the minimum annual contribution (CHF 530 x 2 = CHF 1,060), you are not required to pay anything." CHF 1,060 and the 2x-coverage mechanics match character-for-character. Contribution amount -> 30-day review window.
+            status: VERIFIED
+            lastVerified: "2026-06-12"
+            verifiedBy: "fact-verifier"
+            reviewBy: "2026-07-12"
+      - text: "Once you reach the reference retirement age, the contribution obligation as a non-employed person ends; contributions continue beyond that age only for people who remain gainfully employed (which this permit does not allow)."
+        links:
+          - text: "ch.ch — the OASI contribution obligation runs until the reference retirement age and continues after it only if you remain gainfully employed"
+            sourceUrl: "https://www.ch.ch/en/retirement/old-age-pension/the-first-pillar/oasi-contributions/"
+            sourceName: "ch.ch — Paying OASI contributions in Switzerland (official federal portal)"
+            # VERIFIED 2026-06-12 (fact-verifier): same ch.ch page (HTTP 200). Verbatim: "All persons living or working in Switzerland must pay OASI contributions from 1 January following their 20th birthday until retirement age. This obligation begins at age 17 if you are already working and continues after retirement age if you remain gainfully employed."; also "If you continue working after retirement age, you must continue to pay OASI contributions." The page's lead uses "reference retirement age" for the same threshold, supporting the claim's terminology. No numeric age asserted — correct (ADR-0007). The parenthetical "(which this permit does not allow)" rests on VZAE Art. 25 para. 3, verified this run against the consolidation in force 2026-06-12.
+            status: VERIFIED
+            lastVerified: "2026-06-12"
+            verifiedBy: "fact-verifier"
+            reviewBy: "2026-09-10"
+    documents:
+      - "Valid US passport / residence permit card"
+      - "Confirmation of commune registration"
+      - "Evidence of your financial situation as requested by the compensation office (e.g. pension and asset statements) — the office assesses non-employed contributions individually"
+    cost:
+      text: "If you are not working, the OASI contribution is a minimum of CHF 530 per year and depends on your situation; the cantonal compensation office assesses the exact amount. Contributions can be estimated with the Federal Social Insurance Office's online calculator (available in German, French and Italian); confirm your assessment with the compensation office."
+      sourceUrl: "https://www.ch.ch/en/retirement/old-age-pension/the-first-pillar/oasi-contributions/"
+      sourceName: "ch.ch — Paying OASI contributions in Switzerland (official federal portal)"
+      # VERIFIED 2026-06-12 (fact-verifier): same ch.ch page (HTTP 200). Minimum verbatim: "you must pay a OASI contribution of minimum CHF 530 per year (depending on your situation)"; calculator sentence verbatim: "You can calculate your contributions online (webpage available in German, French and Italian) at the Federal Social Insurance Office's website." No upper figure asserted — correct, the non-employed scale is assessed individually (ADR-0007). Contribution amount (CHF 530) -> 30-day review window.
+      status: VERIFIED
+      lastVerified: "2026-06-12"
+      verifiedBy: "fact-verifier"
+      reviewBy: "2026-07-12"
+    warning: >
+      Do not assume that being retired means no Swiss social-security liability: below the
+      reference retirement age, residence alone makes you liable for non-employed OASI
+      contributions, assessed on your circumstances. Contact the cantonal compensation
+      office promptly after arrival.
+    dependsOn:
+      - register-commune

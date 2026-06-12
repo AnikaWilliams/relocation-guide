@@ -35,6 +35,11 @@ from ~59 kB to ~9 kB gzip (the dead `CorridorFlowchart.tsx` + `@xyflow/react` co
 removed from the repo). Country choices are gated to published corridors. Plans are shareable and
 bookmarkable (F-08): answers ride in the URL fragment — never sent to our servers, free-typed text
 never included, per the compliance share-link ruling. Ready for founder approval.
+A third route — **retirement / residence without gainful employment** (FNIA Art. 28) — is
+**live**: 20/20 claims independently verified, "Retirement" added to the intake, and retirees
+get their own non-employed pension task in place of the employee-framed one. The corridor now
+holds **69 verified claims across 15 tasks and 3 routes**; a study-route research lane and a
+weekly source-link watchdog (CI) are in progress.
 
 ---
 

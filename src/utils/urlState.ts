@@ -44,7 +44,7 @@ export interface PlanIntake {
   origin: string | null;
   destination: string | null;
   passports: string[];
-  motivation: 'work' | 'family' | 'study' | 'other' | null;
+  motivation: 'work' | 'family' | 'study' | 'retirement' | 'other' | null;
   workStatus: 'has-offer' | 'job-seeking' | null;
   familyRelationship: 'spouse' | 'registered-partner' | 'unmarried-partner' | 'parent' | null;
   familyJoineeStatus: 'citizen' | 'settled' | 'permit-holder' | 'other' | null;
@@ -57,7 +57,7 @@ export interface PlanIntake {
 export const INTAKE_PARAM_KEYS = ['pp', 'm', 'ws', 'rel', 'fs', 'ss', 'dur', 'kids'] as const;
 
 // Allowed values per enum param (decode validation — junk values are dropped).
-const MOTIVATION_VALUES = ['work', 'family', 'study', 'other'] as const;
+const MOTIVATION_VALUES = ['work', 'family', 'study', 'retirement', 'other'] as const;
 const WORK_STATUS_VALUES = ['has-offer', 'job-seeking'] as const;
 const FAMILY_REL_VALUES = ['spouse', 'registered-partner', 'unmarried-partner', 'parent'] as const;
 const FAMILY_STATUS_VALUES = ['citizen', 'settled', 'permit-holder', 'other'] as const;

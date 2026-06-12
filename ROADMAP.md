@@ -6,7 +6,7 @@
 >
 > Legend: ✅ done · 🚧 in progress · ⏳ planned · 🔁 ongoing · 🗓️ backlog
 
-Last updated: 2026-06-12 (ADR-0011 indexable guide + copy-link; retirement-route research lane running)
+Last updated: 2026-06-12 (retirement route live, 69/69; study lane + link-auditor running)
 
 > **Current focus:** USA → Switzerland (`us-ch`) **only**, until it is perfected end-to-end.
 > All other corridors are deferred (see DECISIONS.md **ADR-0006**). India → Germany (`in-de`)
@@ -66,7 +66,7 @@ _Founder direction: drop the visual flowchart from the UI; make the whole produc
 - [x] **Route-coverage honesty** (ADR-0010, founder bug report): corridors declare `coversMotivations`; us-ch = `[work]`. A family/study/other user now sees "your route isn't covered yet" on the motivation step and on the plan (header no longer claims "personalised") instead of being silently handed the work-route plan
 - [x] **Family-reunification route for us-ch** (2026-06-12, two-agent): 6 new tasks (spouse/registered partner split by sponsor status citizen/settled/B-holder per FNIA Art. 42/43/44, unmarried partner = honest cantonal-discretion path, children, family D visa); **27/27 claims independently VERIFIED** (VERIFICATION_LOG.md), all `appliesIf` rules approved by the verifier; `coversMotivations: [work, family]` flipped — family users now get a real personalised plan, work-entry tasks gated to work users. Total corridor: **49 verified claims, 12 tasks, 2 routes.** _Follow-ups flagged: `familyJoineeStatus == 'other'` catch-all task; `ahv-social-security` + `register-commune` presume employment (need family-aware variants); `hashchange` listener for same-page profile links_
 - [ ] **Alternative & non-traditional routes** (founder, 2026-06-12): research tracks beyond work/family/study so "Another reason" stops being a dead end — each lands as verified content + a `coversMotivations` entry + explicit intake options replacing the free-text "other" box:
-  - retirement / financially-independent residence (non-gainful)
+  - [x] retirement / financially-independent residence (non-gainful) — **LIVE 2026-06-12**: 3 tasks / 20 claims verified 20/20 (FNIA Art. 28 + VZAE Art. 25, discretion stated plainly; non-employed OASI task replaces the employee one via verifier-approved `appliesIf`); "Retirement" added to intake + URL codec; corridor now **69 verified claims, 15 tasks, 3 routes**
   - remote work for a foreign employer (verify whether Switzerland recognises any digital-nomad-style provision, or whether it falls under standard permits)
   - self-employment / starting a business
   - lump-sum taxation ("forfait fiscal") / wealth-based residence
@@ -120,7 +120,7 @@ Status per corridor: ⬜ not started · ✏️ drafted (`UNVERIFIED`) · 🔎 in
 | Origin ↓ \ Dest → | Switzerland (`ch`) | Germany (`de`) |
 |---|---|---|
 | India (`in`) | ⬜ | ✏️ (parked) |
-| USA (`us`) | ✅ 49/49 verified (work + family routes) — awaiting founder approval | ⬜ |
+| USA (`us`) | ✅ 69/69 verified (work + family + retirement) — awaiting founder approval | ⬜ |
 | UK (`gb`) | ⬜ | ⬜ |
 | Canada (`ca`) | ⬜ | ⬜ |
 | Australia (`au`) | ⬜ | ⬜ |

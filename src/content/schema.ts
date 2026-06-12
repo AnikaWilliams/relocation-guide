@@ -39,7 +39,7 @@ export type ClaimStatus = z.infer<typeof ClaimStatusEnum>;
  * Relocation motivations the intake wizard can capture. Keep in sync with the
  * wizard's motivation step in `CorridorApp.tsx`.
  */
-export const MotivationEnum = z.enum(['work', 'family', 'study', 'other']);
+export const MotivationEnum = z.enum(['work', 'family', 'study', 'retirement', 'other']);
 export type Motivation = z.infer<typeof MotivationEnum>;
 
 /**

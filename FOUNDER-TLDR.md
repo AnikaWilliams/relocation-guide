@@ -10,6 +10,66 @@ coming next. Newest updates are at the top.
 
 ---
 
+## 2026-06-12 — Retirement is live: the third route, fact-checked 20 for 20
+
+**What changed.** The fact-checker confirmed all 20 retirement facts — none rejected — and the route is switched on. It even re-checked the law against versions current *as of today* (one Swiss statute changed this very morning; our articles were unaffected). "Retirement" now appears as its own answer in the questionnaire, and a retiree gets a six-step plan: the special retiree permit (with the honest framing that it's the authorities' choice, not a right — age 55+, real ties to Switzerland, ample means, no working anywhere), the long-stay visa, town-hall registration, the permit card, health insurance, and a step most people would never guess — non-working residents under Swiss retirement age still owe yearly state-pension contributions (minimum CHF 530). The fact-checker also approved swapping out the employee pension step for retirees, since the retiree permit forbids working. The guide now holds 69 verified facts across three routes; the assembly line did this one in hours, as predicted.
+
+**Why it matters.** Three routes, every fact double-checked, each user seeing only their own steps — the product promise is now demonstrably repeatable.
+
+**What you'd notice using the app today.** Pick "Retirement" in the questionnaire: a six-step retiree plan, honestly framed.
+
+**What's next.** Study route research is underway; the link watchdog is being fitted; three routes await your approval.
+
+---
+
+## 2026-06-12 — Checkpoint: the machine is built — launch now mostly waits on your decisions
+
+**What changed.** Nothing in the product this time — this is an honest stock-take of the road ahead, because the balance of work just shifted. The factory side is humming: routes move through research → independent fact-check → switch-on like an assembly line, a watchdog is being fitted to re-test every official source weekly, and the remaining route research (remote work, self-employment, study, wealth-based residence) is queued work the helpers can grind through without you. What's left before launch is mostly a cluster of decisions only you can make: approving the family and retirement routes, filling in the Impressum (your name and address), choosing the analytics approach, buying the web address, and — the big practical one — connecting the "printing press" (Cloudflare Pages, the service that puts our files on the real internet; a one-time ~5-minute setup that has never been done).
+
+**Why it matters.** Right now the bottleneck is no longer engineering — it's the founder checklist. Clearing it while the helpers finish the content routes puts a real, public launch within reach.
+
+**What you'd notice using the app today.** Nothing new — this entry is the map, not a change.
+
+**What's next.** Retirement goes live after its fact-check; study research starts; your decision list above.
+
+---
+
+## 2026-06-12 — A watchdog for our sources is being built, and the study route is queued
+
+**What changed.** Two more work streams started. First, a specialist is building an automated watchdog for our facts: every fact in the guide points at an official Swiss government webpage, and webpages move or change without warning. The watchdog will re-test every one of those links automatically every week — like a smoke detector that checks its own battery — and raise a red flag if a link dies, a page moves, or a fact passes its "re-check by" date (every fact carries one: 90 days normally, 30 days for fees). It's also running a health check on all current links right now. Second, the study route (university students) is queued as the next research job — it starts automatically the moment the retirement fact-check finishes, because two helpers must never edit the same guide file at once (that's how careful records get scrambled).
+
+**Why it matters.** Our promise isn't just "checked once" — it's "still true today." The watchdog makes that promise self-enforcing as the guide grows.
+
+**What you'd notice using the app today.** Nothing yet — both are behind-the-scenes.
+
+**What's next.** Retirement fact-check lands → retirement goes live and the study research starts, same assembly line.
+
+---
+
+## 2026-06-12 — "Retirement" is ready to join the questionnaire the moment the facts clear
+
+**What changed.** While the fact-checker works through the 20 retirement facts, we prepared everything on the questionnaire side so there's no waiting afterwards: "Retirement — moving without taking up work" now exists as a proper answer choice (instead of hiding inside "Another reason"), the shareable-link format understands it, and the catch-all "Another reason" option was reworded so it no longer mentions retirement. Think of it as setting the table before dinner arrives: the moment the fact-checker says "all 20 confirmed", we flip one switch and retirees get their own route — until then the new option stays out of sight and nothing unverified can possibly reach a user (the publishing gate physically blocks it).
+
+**Why it matters.** The route-adding process is becoming a repeatable assembly line: research → independent check → switch on. The family route took a full day; retirement is on track for hours.
+
+**What you'd notice using the app today.** Nothing yet — the new answer choice appears only once the facts pass checking.
+
+**What's next.** Fact-check results land, then the switch: retirement becomes the third live route, ready for your review.
+
+---
+
+## 2026-06-12 — The retirement route is drafted: 20 new facts await the independent fact-check
+
+**What changed.** The researcher finished drafting the third route: retiring to Switzerland without working. Three new steps were written — getting the special retiree residence permit, the long-stay visa, and a step nobody thinks of: even non-working residents under Swiss retirement age must pay into the Swiss state pension every year. Every fact comes straight from Swiss federal law or official government portals, and the honest headline is that this route is hard: you must be at least 55, prove genuine personal ties to Switzerland (past stays or close family there), show ample money, and even then the authorities *may* say yes — it's their choice, not your right. All 20 new facts are stamped "unverified" (like invoices waiting for the auditor), so nothing shows to users yet.
+
+**Why it matters.** Retirees are a high-value audience, and being straight about a hard route is exactly the trust we're selling.
+
+**What you'd notice using the app today.** Nothing visible yet — the questionnaire doesn't offer "Retirement" until the facts pass checking.
+
+**What's next.** The independent fact-checker re-examines all 20 facts, then "Retirement" gets added to the questionnaire.
+
+---
+
 ## 2026-06-12 — Google can now actually read the guide, and plans have a "Copy link" button
 
 **What changed.** Three things from the combo you approved. First, the structural fix: each guide page is now an interactive planner *on top* with the complete written guide *underneath* — like a shop with a demo station up front and the full catalogue on the shelves behind it. Scroll past the app and every step, document list, and official source is right there as a normal readable page. Search engines index real text now instead of an empty app shell. Second, plans now have a "Copy link to this plan" button, with the privacy warning the compliance specialist required ("This link contains your answers…") shown before anything is copied. Third, because guide pages are normal pages again, the site footer — with the legally required Impressum link — now appears on them too. Separately, a researcher helper is currently drafting the retirement route (moving to Switzerland without working), our first "other reason" track.
