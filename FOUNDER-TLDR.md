@@ -10,6 +10,18 @@ coming next. Newest updates are at the top.
 
 ---
 
+## 2026-06-12 — The watchdog's first false alarm — investigated and fixed within the hour
+
+**What changed.** The new link watchdog raised its first alarm: from the automated checker's computers, six pages on ch.ch (the Swiss portal we cite most after SEM) appeared to be broken. We investigated before believing it — and the pages are fine: ch.ch shows an error page to traffic from data centres (where the automated checker runs) while serving normal visitors perfectly; we confirmed the same pages load fine from a normal connection, the same day the fact-checker had used them. It's like a shop that won't open the door for couriers but welcomes walk-in customers. The watchdog now knows this about ch.ch: in its automated weekly round it marks those pages "check by hand" instead of crying wolf, while full checks of ch.ch still happen from a normal connection. We also future-proofed the watchdog's machinery for an upcoming change GitHub announced for June 16.
+
+**Why it matters.** An alarm system that cries wolf gets ignored — and then misses the real fire. First instinct stayed right: investigate the alarm, never just silence it.
+
+**What you'd notice using the app today.** Nothing — all sources were healthy the whole time.
+
+**What's next.** Confirm the re-run is green; the study-route fact-check is the next pipeline step.
+
+---
+
 ## 2026-06-12 — Small polish while the study research runs: share links work without a refresh, and screen readers get announcements
 
 **What changed.** Three small improvements landed while the study-route researcher works. First, pasting a shared plan link into a tab that already has the guide open now switches to that plan instantly — before, the page quietly ignored it unless you refreshed (a known leftover from the share-link work). Second, screen-reader users now *hear* it when their plan changes — "6 of 15 steps apply to your situation" is announced out loud instead of only appearing visually. Third, the sidebar's section titles ("Your answers", "Your journey") are now proper headings, which lets screen-reader users jump straight to them the way sighted users skim.
