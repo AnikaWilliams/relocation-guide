@@ -278,3 +278,32 @@ The founder completed the intake as a family-route user (joining an unmarried pa
 - Schema gains `MotivationEnum` + optional `coversMotivations`; the wizard's motivation values must stay in sync with the enum.
 - Each new route a corridor gains (via researched + verified content and `appliesIf` rules) adds its motivation to `coversMotivations`, which retires the notice for those users automatically.
 - The intake keys (`work`/`family`/`study`/`other`) are now load-bearing across schema, content, and UI.
+
+---
+
+## ADR-0011 — Corridor pages: app hero + always-visible indexable guide (progressive enhancement)
+
+**Date:** 2026-06-12
+**Status:** Accepted
+**Decided by:** Founder (approved the recommended combo), implemented by architect session
+
+### Context
+The seo-analyst audit (2026-06-12) found the corridor page's verified content existed only as serialized island props — not crawlable markup. Its interim fix (JSON-LD + a `<noscript>` guide) didn't solve indexing: Googlebot executes JavaScript and indexes the rendered DOM, which was still just the wizard, and noscript content carries little weight. For a business that depends on organic search, an app-shell-only money page is a structural risk.
+
+### Decision
+1. **Corridor pages are normal scrollable documents again.** The `fullBleed` layout no longer locks the body to `h-screen`; it now only hides the marketing header. The interactive app sits in a **viewport-height hero wrapper** (`h-screen` with an inline `100dvh` override) and keeps all its internal scrolling.
+2. **The complete guide renders below the app as real, always-visible markup** (`<section id="full-guide">`): every task with summary, detail, steps, documents, timeline/cost, warnings, per-claim sources and last-verified dates, plus the canonical disclaimer. Built 1:1 from the same VERIFIED corridor data the app receives — zero hand-written facts. Headings: sr-only `h1` (page) → `h2` (guide) → `h3` (tasks) → `h4` (subsections).
+3. **The old `<noscript>` overlay is replaced** by a one-line noscript banner pointing to the guide (the guide itself no longer needs a JS-off variant — it's always there).
+4. **The site footer now renders on fullBleed pages too**, making Impressum/legal links reachable from corridor pages (closes the compliance review's availability defect at the layout level).
+5. **"Copy link to this plan"** button in the plan sidebar with the compliance-required pre-share warning; clipboard failure falls back to a prompt showing the URL.
+
+### Rationale
+- Crawlers index what renders: the guide is now genuinely visible content for every visitor — identical HTML to all user agents, no hidden-text or cloaking pattern.
+- Users gain a skimmable long-form version of the plan (useful for printing, ctrl-F, reading before committing to the wizard).
+- The app experience is unchanged above the fold; the page simply continues below it.
+
+### Consequences
+- `BaseLayout`'s `fullBleed` contract changed: no viewport lock, footer always shown. Any future fullBleed page gets a scrollable document with footer by default.
+- The corridor page now ships ~2× the HTML (guide markup is real instead of noscript-inert); zero added JS.
+- Verified in the hydrated DOM: guide section visible with all 12 task headings and sources while the app stays interactive above it.
+- The guide section renders ALL corridor tasks (not filtered by `appliesIf`) — correct for a reference document; the app remains the personalised view.

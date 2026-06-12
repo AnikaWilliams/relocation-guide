@@ -10,6 +10,18 @@ coming next. Newest updates are at the top.
 
 ---
 
+## 2026-06-12 — Google can now actually read the guide, and plans have a "Copy link" button
+
+**What changed.** Three things from the combo you approved. First, the structural fix: each guide page is now an interactive planner *on top* with the complete written guide *underneath* — like a shop with a demo station up front and the full catalogue on the shelves behind it. Scroll past the app and every step, document list, and official source is right there as a normal readable page. Search engines index real text now instead of an empty app shell. Second, plans now have a "Copy link to this plan" button, with the privacy warning the compliance specialist required ("This link contains your answers…") shown before anything is copied. Third, because guide pages are normal pages again, the site footer — with the legally required Impressum link — now appears on them too. Separately, a researcher helper is currently drafting the retirement route (moving to Switzerland without working), our first "other reason" track.
+
+**Why it matters.** The business depends on people finding these guides through Google. Until today, Google saw the questionnaire, not the 49 verified facts behind it.
+
+**What you'd notice using the app today.** Scroll down on the guide page: the full written guide is there. A "Copy link to this plan" button sits in the plan sidebar.
+
+**What's next.** Fact-check the retirement route when the draft lands, then add "Retirement" as a questionnaire option.
+
+---
+
 ## 2026-06-12 — The app now works properly for keyboard and screen-reader users, and the personalisation is locked by automated tests
 
 **What changed.** The quality engineer (the last of the parallel helpers) finished its pass. Two deliverables. First, keyboard and screen-reader accessibility: the worst problem was that moving between questions silently "dropped" a keyboard user's place on the page — like a receptionist walking off mid-conversation — leaving them to hunt for where they were. Now focus lands on each new question's title, which also makes screen readers read it aloud. Selected answers, locked steps, finished steps, and the "this country isn't available yet" explanations are all now properly announced instead of being conveyed only by colour and icons. Second, a safety net: 16 new automated tests that check, for ten different user profiles (spouse of a citizen, unmarried partner, worker with children…), exactly which steps appear in their plan. If a future edit ever scrambles who sees what, the tests fail before anything reaches users.

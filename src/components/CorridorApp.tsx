@@ -507,6 +507,38 @@ function StatusDot({ status }: { status: TaskStatus }) {
   return <span className="shrink-0 w-5 h-5 rounded-full bg-slate-100 text-slate-400 flex items-center justify-center text-[10px]" aria-hidden="true">🔒</span>;
 }
 
+/**
+ * Share the current plan URL (answers ride in the URL fragment — never sent to
+ * servers). The pre-copy warning is compliance-required: the link encodes the
+ * user's answers, so they must understand what they're handing out.
+ */
+function CopyLinkButton() {
+  const [copied, setCopied] = useState(false);
+  async function copy() {
+    const ok = window.confirm(
+      'This link contains your answers (countries, reason for moving, family situation). Anyone with the link can read them.\n\nCopy the link?'
+    );
+    if (!ok) return;
+    try {
+      await navigator.clipboard.writeText(window.location.href);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch {
+      // Clipboard API unavailable (e.g. insecure context) — show the URL instead.
+      window.prompt('Copy this link:', window.location.href);
+    }
+  }
+  return (
+    <button
+      type="button"
+      onClick={copy}
+      className="w-full flex items-center justify-center gap-1.5 rounded-lg border border-slate-200 px-3 py-2 text-sm font-medium text-slate-600 hover:bg-slate-50"
+    >
+      {copied ? 'Link copied ✓' : 'Copy link to this plan'}
+    </button>
+  );
+}
+
 function Sidebar({
   orderedTasks, statusFor, activeId, onSelect, recap, onEdit, doneCount, total,
 }: {
@@ -531,6 +563,8 @@ function Sidebar({
           <div className="h-full rounded-full bg-emerald-500 transition-all duration-500" style={{ width: `${pct}%` }} />
         </div>
       </div>
+
+      <CopyLinkButton />
 
       <div>
         <p className="text-xs text-slate-500 mb-2">Your answers</p>

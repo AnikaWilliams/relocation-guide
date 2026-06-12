@@ -6,7 +6,7 @@
 >
 > Legend: ✅ done · 🚧 in progress · ⏳ planned · 🔁 ongoing · 🗓️ backlog
 
-Last updated: 2026-06-12 (family route verified + live; parallel agent lanes landed)
+Last updated: 2026-06-12 (ADR-0011 indexable guide + copy-link; retirement-route research lane running)
 
 > **Current focus:** USA → Switzerland (`us-ch`) **only**, until it is perfected end-to-end.
 > All other corridors are deferred (see DECISIONS.md **ADR-0006**). India → Germany (`in-de`)
@@ -74,7 +74,8 @@ _Founder direction: drop the visual flowchart from the UI; make the whole produc
 - [ ] **Canton-aware path shaping (Switzerland)**: replace the free-text "canton or city" intake field with a canton picker, and let the chosen canton shape next steps — link the exact cantonal migration office, and (longer-term) reinstate the 5 cantonal-variable fee/timeline fields omitted under ADR-0007 as per-canton verified claims. _Content-heavy: every per-canton fact needs the full two-agent pipeline (26 cantons), so machinery first, cantons added incrementally starting with Zürich/Geneva/Vaud/Basel-Stadt/Zug._
 - [ ] **EU/EFTA passport branching**: switch the path on a free-movement passport (deferred to capture-only for now — ADR-0008)
 - [x] **F-08** URL state encoding (2026-06-12): plan-affecting answers encoded in the URL **fragment** (`/us/ch/#pp=us&m=work&ws=has-offer&dur=long&kids=0`) for shareable/bookmarkable profiles. Fragment, not search params, per the compliance share-link ruling — the fragment is never sent in HTTP requests, so answers can't land in server/CDN logs or analytics; free-text answers are never encoded. Restore precedence: URL > localStorage > defaults; a URL with intake params fully determines the plan (codec: `src/utils/urlState.ts`, 15 tests)
-- [ ] **F-08 follow-up**: explicit "Copy link to this plan" button with the compliance-required pre-share warning (today the link only lives in the address bar)
+- [x] **F-08 follow-up** (2026-06-12): "Copy link to this plan" button in the plan sidebar with the compliance-required pre-share warning ("This link contains your answers…"); clipboard-API failure falls back to a URL prompt
+- [x] **SEO progressive enhancement** (ADR-0011, 2026-06-12): corridor pages are scrollable documents again — app as a viewport-height hero, the complete guide rendered below as real always-visible markup (all tasks, steps, documents, sources, last-verified dates). Googlebot now indexes the actual verified content instead of the wizard; footer (with Impressum) now reachable from corridor pages; noscript overlay retired
 - [x] **F-10** Keyboard accessibility pass (qa-engineer, 2026-06-12): focus management on step/task transitions (focus moves to the new heading — fixes focus stranded on `<body>`), `aria-pressed` on option/country/passport cards, `aria-expanded` on the mobile journey toggle, `aria-current="step"` + sr-only Done/Locked prefixes in the sidebar, sr-only "Edit answer:" on recap buttons, disabled-country explanation in accessible names. Plus 16 route-personalisation regression tests pinning exact applicable-task sets per intake profile against the real YAML (68 tests total)
 - [x] Removed the unused `CorridorFlowchart.tsx` and uninstalled `@xyflow/react` (2026-06-12) — pivot confirmed stable; 20 npm packages dropped
 - [ ] Destination-specific labels for family/permit options (currently Swiss-specific; see ADR-0008)
