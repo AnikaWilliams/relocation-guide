@@ -6,7 +6,7 @@
 >
 > Legend: ✅ done · 🚧 in progress · ⏳ planned · 🔁 ongoing · 🗓️ backlog
 
-Last updated: 2026-06-12 (route-coverage honesty — ADR-0010)
+Last updated: 2026-06-12 (family route verified + live; parallel agent lanes landed)
 
 > **Current focus:** USA → Switzerland (`us-ch`) **only**, until it is perfected end-to-end.
 > All other corridors are deferred (see DECISIONS.md **ADR-0006**). India → Germany (`in-de`)
@@ -64,7 +64,7 @@ _Founder direction: drop the visual flowchart from the UI; make the whole produc
 **Next — high-value before scaling to more corridors (this month):**
 - [x] **Wire answers → task path** (`appliesIf` evaluation, ADR-0009): safe mini-grammar evaluator (`src/utils/appliesIf.ts`, fail-open, 9 tests) filters tasks by intake answers; "Personalised for you" banner lists skipped steps (**covers F-12**). _Machinery only — per-task `appliesIf` rules are legal judgements and go through the content pipeline; `us-ch.yaml` has none yet, so all 6 tasks still apply to everyone._
 - [x] **Route-coverage honesty** (ADR-0010, founder bug report): corridors declare `coversMotivations`; us-ch = `[work]`. A family/study/other user now sees "your route isn't covered yet" on the motivation step and on the plan (header no longer claims "personalised") instead of being silently handed the work-route plan
-- [ ] **Family-reunification route for us-ch** via content-researcher → fact-verifier: spouse / registered partner / unmarried partner (concubinage) / children, differentiated by the sponsor's status (citizen vs settled vs permit holder), plus the `appliesIf` rules that route work vs family users — first corridor to exercise the personalisation machinery; retires the "route not covered" notice for family users (ADR-0010)
+- [x] **Family-reunification route for us-ch** (2026-06-12, two-agent): 6 new tasks (spouse/registered partner split by sponsor status citizen/settled/B-holder per FNIA Art. 42/43/44, unmarried partner = honest cantonal-discretion path, children, family D visa); **27/27 claims independently VERIFIED** (VERIFICATION_LOG.md), all `appliesIf` rules approved by the verifier; `coversMotivations: [work, family]` flipped — family users now get a real personalised plan, work-entry tasks gated to work users. Total corridor: **49 verified claims, 12 tasks, 2 routes.** _Follow-ups flagged: `familyJoineeStatus == 'other'` catch-all task; `ahv-social-security` + `register-commune` presume employment (need family-aware variants); `hashchange` listener for same-page profile links_
 - [ ] **Alternative & non-traditional routes** (founder, 2026-06-12): research tracks beyond work/family/study so "Another reason" stops being a dead end — each lands as verified content + a `coversMotivations` entry + explicit intake options replacing the free-text "other" box:
   - retirement / financially-independent residence (non-gainful)
   - remote work for a foreign employer (verify whether Switzerland recognises any digital-nomad-style provision, or whether it falls under standard permits)
@@ -73,9 +73,10 @@ _Founder direction: drop the visual flowchart from the UI; make the whole produc
   - study-adjacent stays (language stay, sabbatical, internship/trainee agreements with the US)
 - [ ] **Canton-aware path shaping (Switzerland)**: replace the free-text "canton or city" intake field with a canton picker, and let the chosen canton shape next steps — link the exact cantonal migration office, and (longer-term) reinstate the 5 cantonal-variable fee/timeline fields omitted under ADR-0007 as per-canton verified claims. _Content-heavy: every per-canton fact needs the full two-agent pipeline (26 cantons), so machinery first, cantons added incrementally starting with Zürich/Geneva/Vaud/Basel-Stadt/Zug._
 - [ ] **EU/EFTA passport branching**: switch the path on a free-movement passport (deferred to capture-only for now — ADR-0008)
-- [ ] **F-08** URL state encoding: encode intake answers as search params for shareable/bookmarkable profiles
+- [x] **F-08** URL state encoding (2026-06-12): plan-affecting answers encoded in the URL **fragment** (`/us/ch/#pp=us&m=work&ws=has-offer&dur=long&kids=0`) for shareable/bookmarkable profiles. Fragment, not search params, per the compliance share-link ruling — the fragment is never sent in HTTP requests, so answers can't land in server/CDN logs or analytics; free-text answers are never encoded. Restore precedence: URL > localStorage > defaults; a URL with intake params fully determines the plan (codec: `src/utils/urlState.ts`, 15 tests)
+- [ ] **F-08 follow-up**: explicit "Copy link to this plan" button with the compliance-required pre-share warning (today the link only lives in the address bar)
 - [ ] **F-10** Keyboard accessibility pass over the new form + sidebar
-- [ ] Remove the now-unused `CorridorFlowchart.tsx` and `@xyflow/react` dependency once the pivot is confirmed stable
+- [x] Removed the unused `CorridorFlowchart.tsx` and uninstalled `@xyflow/react` (2026-06-12) — pivot confirmed stable; 20 npm packages dropped
 - [ ] Destination-specific labels for family/permit options (currently Swiss-specific; see ADR-0008)
 
 **Later — polish (backlog):**
@@ -117,7 +118,7 @@ Status per corridor: ⬜ not started · ✏️ drafted (`UNVERIFIED`) · 🔎 in
 | Origin ↓ \ Dest → | Switzerland (`ch`) | Germany (`de`) |
 |---|---|---|
 | India (`in`) | ⬜ | ✏️ (parked) |
-| USA (`us`) | ✅ 22/22 verified — awaiting founder approval | ⬜ |
+| USA (`us`) | ✅ 49/49 verified (work + family routes) — awaiting founder approval | ⬜ |
 | UK (`gb`) | ⬜ | ⬜ |
 | Canada (`ca`) | ⬜ | ⬜ |
 | Australia (`au`) | ⬜ | ⬜ |

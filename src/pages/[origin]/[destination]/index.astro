@@ -1,7 +1,9 @@
 ---
 import type { GetStaticPaths } from 'astro';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Disclaimer from '../../../components/Disclaimer.astro';
 import CorridorApp, { type TaskData, type CorridorPair } from '../../../components/CorridorApp.tsx';
+import type { Corridor } from '../../../content/schema';
 import { getPublishedCorridors, getPublishedCorridorPairs } from '../../../utils/corridors';
 
 export const getStaticPaths = (async () => {
@@ -14,7 +16,7 @@ export const getStaticPaths = (async () => {
 }) satisfies GetStaticPaths;
 
 const { corridor, availableCorridors } = Astro.props as {
-  corridor: (typeof Astro.props)['corridor'];
+  corridor: Corridor;
   availableCorridors: CorridorPair[];
 };
 
@@ -37,9 +39,63 @@ const appTasks: TaskData[] = corridor.tasks.map((t) => ({
   appliesIf: t.appliesIf,
 }));
 
+/**
+ * SEO: structured data (seo-analyst owned).
+ *
+ * Built ONLY from VERIFIED corridor content already rendered to this page
+ * (corridor title/description, task titles, task summary claims).
+ *
+ * Schema choice (vs Article / FAQPage):
+ * - `HowTo` is the semantically honest type — the corridor IS an ordered,
+ *   step-by-step procedure. Google retired HowTo *rich results* (2023), so we
+ *   claim no SERP feature; the markup is purely descriptive, not spam bait.
+ * - `FAQPage` is rejected: the content is not Q&A, and Google restricts FAQ
+ *   rich results to gov/health sites — marking this up as FAQ would be spam.
+ */
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
+const homeUrl = new URL('/', Astro.site).href;
+
+const howToJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'HowTo',
+  name: corridor.title,
+  description: corridor.description,
+  inLanguage: 'en',
+  dateModified: corridor.lastReviewed,
+  mainEntityOfPage: canonical,
+  step: corridor.tasks.map((t, i) => ({
+    '@type': 'HowToStep',
+    position: i + 1,
+    name: t.title,
+    text: t.summary.text,
+  })),
+};
+
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Relocation Guide', item: homeUrl },
+    { '@type': 'ListItem', position: 2, name: corridor.title, item: canonical },
+  ],
+};
+
+/** Serialize for a JSON-LD <script>, escaping `<` so content can never close the tag. */
+const jsonLd = (data: unknown) => JSON.stringify(data).replace(/</g, '\\u003c');
+
 ---
 
 <BaseLayout title={corridor.title} description={corridor.description} fullBleed>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={jsonLd(howToJsonLd)} />
+    <script type="application/ld+json" set:html={jsonLd(breadcrumbJsonLd)} />
+  </Fragment>
+
+  {/* The page's primary heading. The app island renders its own visual header,
+      so this is screen-reader-only — a standard a11y pattern, same text as
+      <title>, not hidden keyword stuffing. */}
+  <h1 class="sr-only">{corridor.title}</h1>
+
   <CorridorApp
     tasks={appTasks}
     corridorTitle={corridor.title}
@@ -49,4 +105,92 @@ const appTasks: TaskData[] = corridor.tasks.map((t) => ({
     coversMotivations={corridor.coversMotivations}
     client:load
   />
+
+  {/* No-JS fallback (white-hat: same HTML for every visitor, genuinely shown
+      to users without JavaScript, content identical to what the app renders
+      from the same VERIFIED corridor data). Without JS the island's SSR'd
+      wizard is a dead form inside an unscrollable h-screen body, so this
+      overlay replaces it with the full readable guide. */}
+  <noscript>
+    <div class="fixed inset-0 z-50 overflow-y-auto bg-white">
+      <article class="mx-auto max-w-3xl px-4 py-10">
+        <header class="mb-8 space-y-4">
+          <h1 class="text-3xl font-bold text-slate-900">{corridor.title}</h1>
+          <p class="text-slate-600">{corridor.description}</p>
+          <Disclaimer />
+          <p class="text-sm text-slate-500">
+            This guide is interactive when JavaScript is enabled. The full
+            verified content is below. Content last reviewed: {corridor.lastReviewed}.
+          </p>
+        </header>
+
+        {corridor.tasks.map((task, i) => (
+          <section class="mb-10 border-t border-slate-200 pt-8">
+            <h2 class="text-xl font-semibold text-slate-900">
+              {i + 1}. {task.title}
+            </h2>
+            <p class="mt-3 text-slate-700">{task.summary.text}</p>
+            <p class="mt-3 text-slate-700">{task.detail}</p>
+
+            {task.warning && (
+              <p class="mt-3 rounded-md border border-amber-300 bg-amber-50 p-3 text-sm text-amber-900">
+                {task.warning}
+              </p>
+            )}
+
+            <h3 class="mt-4 font-semibold text-slate-900">Steps</h3>
+            <ol class="mt-2 list-decimal space-y-2 pl-6 text-slate-700">
+              {task.steps.map((step) => (
+                <li>
+                  {step.text}
+                  {step.tip && <span class="block text-sm text-slate-500">Tip: {step.tip}</span>}
+                  {step.links && step.links.length > 0 && (
+                    <span class="block text-sm">
+                      {step.links.map((link, j) => (
+                        <>
+                          {j > 0 && ' · '}
+                          <a
+                            href={link.sourceUrl}
+                            rel="noopener"
+                            class="text-blue-700 underline"
+                          >{link.text} ({link.sourceName})</a>
+                        </>
+                      ))}
+                    </span>
+                  )}
+                </li>
+              ))}
+            </ol>
+
+            {task.documents.length > 0 && (
+              <>
+                <h3 class="mt-4 font-semibold text-slate-900">Documents</h3>
+                <ul class="mt-2 list-disc space-y-1 pl-6 text-slate-700">
+                  {task.documents.map((doc) => <li>{doc}</li>)}
+                </ul>
+              </>
+            )}
+
+            {task.timeline && (
+              <p class="mt-4 text-slate-700">
+                <strong>Timeline:</strong> {task.timeline.text}{' '}
+                (<a href={task.timeline.sourceUrl} rel="noopener" class="text-blue-700 underline">{task.timeline.sourceName}</a>)
+              </p>
+            )}
+            {task.cost && (
+              <p class="mt-2 text-slate-700">
+                <strong>Cost:</strong> {task.cost.text}{' '}
+                (<a href={task.cost.sourceUrl} rel="noopener" class="text-blue-700 underline">{task.cost.sourceName}</a>)
+              </p>
+            )}
+
+            <p class="mt-4 text-sm text-slate-500">
+              Source: <a href={task.summary.sourceUrl} rel="noopener" class="underline">{task.summary.sourceName}</a>
+              {task.summary.lastVerified && <> · Last verified {task.summary.lastVerified}</>}
+            </p>
+          </section>
+        ))}
+      </article>
+    </div>
+  </noscript>
 </BaseLayout>

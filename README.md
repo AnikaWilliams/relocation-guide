@@ -24,12 +24,17 @@ progress tracker. Snapshot:
 | **Phase 3** | Accuracy system (provenance rules) — enforced continuously from Phase 1 onward | 🔁 Ongoing |
 | **Phase 4** | Monetisation (AdSense) + scale to more corridors/destinations | 🗓️ Backlog |
 
-**Right now:** USA → Switzerland (`us-ch`) is content-complete (22/22 claims verified). The
+**Right now:** USA → Switzerland (`us-ch`) covers **two verified routes — work and family
+reunification — with 49/49 claims independently verified** (12 tasks; `appliesIf` rules route
+each user to their own plan, approved by the fact-verifier). The
 corridor app was reshaped into a **guided form** (ADR-0008): a branching intake (origin,
 destination, passports, motivation + follow-ups, stay, children) followed by a one-task-at-a-time
 plan with a journey/answer-history sidebar. The dependency graph is now backend-only
 (`src/utils/journey.ts`); the visual flowchart was retired from the UI, cutting the island bundle
-from ~59 kB to ~9 kB gzip. Country choices are gated to published corridors. Ready for founder approval.
+from ~59 kB to ~9 kB gzip (the dead `CorridorFlowchart.tsx` + `@xyflow/react` code is now fully
+removed from the repo). Country choices are gated to published corridors. Plans are shareable and
+bookmarkable (F-08): answers ride in the URL fragment — never sent to our servers, free-typed text
+never included, per the compliance share-link ruling. Ready for founder approval.
 
 ---
 
@@ -63,7 +68,7 @@ for the file shape.
 ## Tech stack
 
 - **Framework:** Astro 4.x (zero-JS by default for SEO / Core Web Vitals)
-- **Interactivity:** React islands (`@astrojs/react`) — corridor flowchart (`@xyflow/react`)
+- **Interactivity:** React islands (`@astrojs/react`) — guided intake + plan app (`CorridorApp`)
 - **Content:** Astro Content Collections + Zod (provenance enforced at compile + build time)
 - **Styling:** Tailwind CSS
 - **Hosting:** Cloudflare Pages (static output)
@@ -82,7 +87,7 @@ relocation-guide/
 ├── VERIFICATION_LOG.md  ← per-claim verification record
 ├── .claude/agents/      ← sub-agent definitions
 ├── src/
-│   ├── components/      ← Disclaimer, Provenance, CorridorFlowchart (island)
+│   ├── components/      ← Disclaimer, Provenance, CorridorApp (island)
 │   ├── content/         ← schema.ts (canonical model), config.ts, corridors/
 │   ├── layouts/         ← BaseLayout
 │   ├── pages/           ← index + [origin]/[destination] corridor route

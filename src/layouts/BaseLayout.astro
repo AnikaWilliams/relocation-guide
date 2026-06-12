@@ -21,15 +21,20 @@ const canonical = new URL(Astro.url.pathname, Astro.site).href;
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
+    <link rel="sitemap" href="/sitemap-index.xml" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Relocation Guide" />
+    <meta property="og:locale" content="en_US" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
     <meta name="twitter:card" content="summary" />
     <meta name="generator" content={Astro.generator} />
+    {/* Per-page head extras (e.g. JSON-LD structured data) */}
+    <slot name="head" />
   </head>
   <body
     class:list={[
@@ -58,7 +63,12 @@ const canonical = new URL(Astro.url.pathname, Astro.site).href;
       <footer class="border-t border-slate-200 mt-12">
         <div class="mx-auto max-w-5xl px-4 py-8 space-y-4 text-sm text-slate-600">
           <Disclaimer />
-          <p>&copy; {new Date().getFullYear()} Relocation Guide. Informational use only.</p>
+          <div class="flex flex-wrap items-center justify-between gap-2">
+            <p>&copy; {new Date().getFullYear()} Relocation Guide. Informational use only.</p>
+            <nav aria-label="Legal" class="flex gap-4">
+              <a href="/impressum" class="hover:text-slate-900 underline">Impressum</a>
+            </nav>
+          </div>
         </div>
       </footer>
     )}

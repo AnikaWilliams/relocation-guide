@@ -3,6 +3,7 @@ import { COUNTRY_OPTIONS, countryName } from '../utils/countries';
 import { flagUrl } from '../utils/flags';
 import { topoOrder, statusOf, currentTaskId, type TaskStatus } from '../utils/journey';
 import { evaluateAppliesIf, type AppliesIfContext } from '../utils/appliesIf';
+import { INTAKE_PARAM_KEYS, readIntakeParams, applyIntakeParams, intakeSearchString } from '../utils/urlState';
 
 /** Self-hosted SVG flag — renders identically on every OS, unlike emoji flags. */
 function Flag({ iso, className = '' }: { iso: string; className?: string }) {
@@ -675,6 +676,10 @@ function TaskCard({
           <p className="mt-2 text-xs text-slate-400 italic">
             General guidance only — not legal advice. Confirm with a licensed immigration professional or the relevant authority.
           </p>
+          <p className="mt-2 text-xs text-slate-400 italic">
+            Marking a step done only records your own progress on this site — it is not confirmation
+            that a legal requirement has been met or an application approved.
+          </p>
         </div>
       </div>
 
@@ -709,20 +714,50 @@ export default function CorridorApp({ tasks, corridorTitle, originIso2, destinat
   const isMobile = useIsMobile();
 
   // Load persisted state once, after the first (server-matching) render.
+  // Browser state (URL, localStorage) must never be read during the initial
+  // render — the server HTML and the first client render have to be identical.
+  //
+  // Restore precedence (F-08): URL params > localStorage > defaults.
+  // When the URL carries intake params (a shared/bookmarked plan), it is the
+  // sole source of truth for every plan-affecting answer and we land directly
+  // in the app phase, so the link reproduces the sharer's plan even if this
+  // browser has different saved answers. localStorage still contributes the
+  // non-plan extras (free text) and task progress.
   useEffect(() => {
+    let saved: {
+      phase?: 'wizard' | 'app';
+      stepId?: string;
+      answers?: Partial<Intake>;
+      doneIds?: unknown;
+      activeTaskId?: string;
+    } | null = null;
     try {
       const raw = localStorage.getItem(STORAGE_KEY);
-      if (raw) {
-        const saved = JSON.parse(raw);
-        if (saved.phase) setPhase(saved.phase);
-        if (saved.stepId) setStepId(saved.stepId);
-        if (saved.answers) setAnswers(saved.answers);
-        if (Array.isArray(saved.doneIds)) setDoneIds(new Set(saved.doneIds));
-        if (saved.activeTaskId) setActiveTaskId(saved.activeTaskId);
-      }
+      if (raw) saved = JSON.parse(raw);
     } catch {
       // ignore unreadable storage
     }
+
+    // Canonical carrier is the URL fragment (compliance: answers must never
+    // reach our servers); the query string is accepted for hand-built links.
+    const params = readIntakeParams(window.location);
+
+    let nextAnswers = defaultIntake(originIso2, destinationIso2);
+    if (saved?.answers) nextAnswers = { ...nextAnswers, ...saved.answers };
+    if (params) {
+      // Origin/destination come from the page path, not from saved state.
+      nextAnswers = applyIntakeParams(
+        { ...nextAnswers, origin: originIso2, destination: destinationIso2 },
+        params,
+      );
+    }
+    setAnswers(nextAnswers);
+
+    if (params) setPhase('app');
+    else if (saved?.phase) setPhase(saved.phase);
+    if (saved?.stepId) setStepId(saved.stepId);
+    if (Array.isArray(saved?.doneIds)) setDoneIds(new Set(saved.doneIds));
+    if (saved?.activeTaskId) setActiveTaskId(saved.activeTaskId);
     setHydrated(true);
   }, []);
 
@@ -738,6 +773,28 @@ export default function CorridorApp({ tasks, corridorTitle, originIso2, destinat
       // storage unavailable — silent
     }
   }, [hydrated, phase, stepId, answers, doneIds, activeTaskId]);
+
+  // F-08: mirror the intake into the URL fragment while the plan is showing,
+  // so the URL is shareable/bookmarkable; strip it in the wizard so a
+  // half-finished intake isn't shareable as a plan. The fragment (never the
+  // query string) carries the answers — browsers don't send it to servers,
+  // per the compliance ruling on share links. Any intake keys in the query
+  // string (hand-built links) are removed here; foreign params (e.g. utm_*)
+  // are kept. Uses replaceState — it rewrites the current entry in place and
+  // never adds history entries, so it can't fight the pushState step
+  // navigation below. The history.state object is preserved for the same reason.
+  useEffect(() => {
+    if (!hydrated) return;
+    const url = new URL(window.location.href);
+    const foreign = new URLSearchParams(url.search);
+    for (const k of INTAKE_PARAM_KEYS) foreign.delete(k);
+    const search = foreign.toString() ? `?${foreign.toString()}` : '';
+    const intake = phase === 'app' ? intakeSearchString(answers) : '';
+    const next = `${url.pathname}${search}${intake ? `#${intake}` : ''}`;
+    if (next !== `${url.pathname}${url.search}${url.hash}`) {
+      window.history.replaceState(window.history.state, '', next);
+    }
+  }, [hydrated, phase, answers]);
 
   // Browser back restores phase/step.
   useEffect(() => {
@@ -831,9 +888,13 @@ export default function CorridorApp({ tasks, corridorTitle, originIso2, destinat
       pushHistory('wizard', next);
       return;
     }
-    // Last step → enter the app. Redirect if the chosen corridor isn't this page.
+    // Last step → enter the app. Redirect if the chosen corridor isn't this
+    // page — carrying the intake in the URL fragment so the target corridor
+    // lands straight on the personalised plan (F-08), without the answers
+    // ever appearing in the HTTP request.
     if (answers.origin && answers.destination && (answers.origin !== originIso2 || answers.destination !== destinationIso2)) {
-      window.location.assign(`/${answers.origin}/${answers.destination}/`);
+      const qs = intakeSearchString(answers);
+      window.location.assign(`/${answers.origin}/${answers.destination}/${qs ? `#${qs}` : ''}`);
       return;
     }
     const first = currentTaskId(orderedTasks, doneIds) ?? orderedTasks[0]?.id ?? null;
@@ -1028,8 +1089,10 @@ export default function CorridorApp({ tasks, corridorTitle, originIso2, destinat
             </div>
           </div>
 
-          <p className="shrink-0 text-xs text-slate-400 text-center mt-3 max-w-md px-4">
-            This tool provides general guidance only — not legal advice. Rules change; always verify with official government sources.
+          <p className="shrink-0 text-xs text-slate-600 text-center mt-3 max-w-md px-4">
+            General guidance only — not legal advice. Rules change frequently; always verify with
+            the official authority or a licensed immigration adviser before acting.{' '}
+            <a href="/impressum" className="underline hover:text-slate-800">Impressum</a>
           </p>
         </div>
       </div>
@@ -1066,6 +1129,10 @@ export default function CorridorApp({ tasks, corridorTitle, originIso2, destinat
       </div>
       <h2 className="text-2xl font-bold text-slate-900">You've completed every step</h2>
       <p className="text-slate-500 mt-2 max-w-sm">All {applicableTasks.length} tasks in your {corridorTitle} plan are marked done. You can revisit any step from your journey on the left.</p>
+      <p className="text-xs text-slate-400 mt-4 max-w-sm">
+        This checklist tracks your progress only. Final decisions always rest with the
+        authorities — keep official confirmations for every step.
+      </p>
     </div>
   ) : activeTask && activeStatus ? (
     <TaskCard
@@ -1084,10 +1151,12 @@ export default function CorridorApp({ tasks, corridorTitle, originIso2, destinat
     <div className="flex-1 flex flex-col overflow-hidden">
       <div className="shrink-0 bg-white border-b border-slate-200 px-4 sm:px-8 py-3 sm:py-5 flex items-center justify-between gap-3 min-w-0">
         <div className="min-w-0">
-          <p className="text-base sm:text-xl font-bold text-slate-900 truncate inline-flex items-center gap-1.5">
-            {answers.origin && <Flag iso={answers.origin} />} {answers.origin ? countryName(answers.origin) : ''}
-            <span className="text-slate-400">→</span>
-            {answers.destination && <Flag iso={answers.destination} />} {answers.destination ? countryName(answers.destination) : ''}
+          <p className="text-base sm:text-xl font-bold text-slate-900 flex items-center gap-1.5 min-w-0">
+            {answers.origin && <Flag iso={answers.origin} className="shrink-0" />}
+            {answers.origin && <span className="truncate">{countryName(answers.origin)}</span>}
+            <span className="shrink-0 text-slate-400">→</span>
+            {answers.destination && <Flag iso={answers.destination} className="shrink-0" />}
+            {answers.destination && <span className="truncate">{countryName(answers.destination)}</span>}
           </p>
           <p className="text-xs sm:text-sm text-slate-500 mt-0.5 truncate">
             {routeCovered ? 'Your personalised relocation plan' : `${coveredLabel.charAt(0).toUpperCase()}${coveredLabel.slice(1)} route guide — your route isn't covered yet`}
@@ -1099,7 +1168,9 @@ export default function CorridorApp({ tasks, corridorTitle, originIso2, destinat
       <div className="shrink-0 bg-amber-50 border-b border-amber-100 px-4 py-2">
         <p className="text-xs text-amber-800">
           <strong>General guidance only — not legal advice.</strong>{' '}
-          Rules change frequently. Always verify with official sources before acting.
+          Rules change frequently; always verify with the official authority or a licensed
+          immigration adviser before acting.{' '}
+          <a href="/impressum" className="underline hover:text-amber-900">Impressum</a>
         </p>
       </div>
 
@@ -1109,8 +1180,9 @@ export default function CorridorApp({ tasks, corridorTitle, originIso2, destinat
             <strong>Your route isn't covered yet.</strong>{' '}
             Your answers point to the {motivationLabel(answers.motivation).toLowerCase()} route, but this
             guide's verified content covers the {coveredLabel} route only. The steps below describe
-            the {coveredLabel} route and may not match your situation — treat them as background
-            reading, not your plan, until we add your route.
+            the {coveredLabel} route and may not apply to your situation — treat them as background
+            reading, not a plan you can rely on. For your route, go directly to the official
+            authority or a licensed immigration adviser.
           </p>
         </div>
       )}

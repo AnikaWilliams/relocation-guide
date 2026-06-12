@@ -10,6 +10,78 @@ coming next. Newest updates are at the top.
 
 ---
 
+## 2026-06-12 — The family route is live: all 27 new facts passed the independent fact-check
+
+**What changed.** The fact-checker finished re-examining every one of the 27 new family-route facts — opening each official Swiss source itself, character by character — and confirmed all 27, rejecting none. The crucial legal distinction survived checking: joining a Swiss citizen or permanent resident is a legal *right*; joining someone on an ordinary permit is at the authorities' *discretion*; joining an unmarried partner has *no general route at all* — only a case-by-case cantonal exception, and the guide says so plainly. With the check complete, the family route is switched on: someone who answers "joining family" now gets family steps (the work-permit steps disappear from their plan), and the old "your route isn't covered" warning is gone for them. We re-tested your exact original case — joining an unmarried partner — and the plan now opens on the honest answer instead of telling you to get a work permit. The guide now holds 49 verified facts across two routes.
+
+**Why it matters.** This is the first time the questionnaire genuinely changes someone's plan — the personalisation promise, working, with every fact independently checked.
+
+**What you'd notice using the app today.** Answer "joining family": family steps, correctly matched to your relationship and your partner's status.
+
+**What's next.** Your review and approval of the family route (the human gate), then the study and "other" routes.
+
+---
+
+## 2026-06-12 — Fixed: on small phones, the page title no longer crashes into the "Start over" button
+
+**What changed.** On narrow phone screens, the heading at the top of a plan ("United States → Switzerland" with the two little flags) was running into the "← Start over" button next to it — the words printed right over the button, and the Swiss flag got squeezed to nothing, like two people forced to share one bus seat. Now, when space runs short, each country name politely shortens itself with "…" (think "Unite… → Switz…"), the flags keep their full size, and the button always has clear space around it. We checked the fix in a real browser at phone width and took before/after pictures, and all 52 automated checks still pass.
+
+**Why it matters.** Most visitors will find us on their phones. A page where text piles on top of a button looks broken and untrustworthy — a bad first impression for people making serious life decisions.
+
+**What you'd notice using the app today.** On a phone (or a narrow browser window), the plan page header now looks tidy: shortened country names, full flags, button untouched.
+
+**What's next.** Once the fact-checker confirms the 27 new family-route facts, that route switches on and we can re-check this page live end to end.
+
+---
+
+## 2026-06-12 — The family route is drafted: joining a spouse, partner or parent in Switzerland
+
+**What changed.** The researcher helper finished drafting the second route through our USA→Switzerland guide: moving to join family. It found that Swiss law treats these cases very differently depending on who you're joining — joining a Swiss citizen is a legal *right*, joining a permanent resident is a right with conditions (like enrolling in a language course), but joining an ordinary permit holder is up to the authorities, and unmarried partners have *no* general right at all (we say that plainly and point people to the exact office to ask, rather than pretending there's a form to fill in). There's also a section for children, with the strict deadline for kids over 12. Every statement cites an official Swiss government source — the law itself, the federal portal, or the migration office.
+
+**Why it matters.** Until now, someone moving for love saw a guide written for someone moving for a job. This was our biggest honesty gap.
+
+**What you'd notice using the app today.** Nothing yet — every new fact is marked "unverified," and the gate keeps unverified facts off the live site until the independent fact-checker confirms each one.
+
+**What's next.** The fact-checker re-verifies all 27 new facts; then the family route switches on.
+
+---
+
+## 2026-06-12 — Plans are now shareable by link, built the privacy-safe way
+
+**What changed.** Two things. First, a finished plan can now be shared or bookmarked: the app writes your answers into the web address (the part after a `#` symbol), so anyone opening that link sees the exact same plan. We followed the compliance specialist's rules from today to the letter: that part of the address stays inside the visitor's browser and is never sent to our computers (so it can't end up in any logs), and anything someone typed freely — like an employer's name — is never put in the link at all. Second, we threw out the old flowchart diagram code. It was retired from the screen weeks ago but still sitting in the box; deleting it removed 20 third-party software packages we no longer have to maintain or worry about.
+
+**Why it matters.** A shared link is free word-of-mouth — someone sending "here's your plan" to a friend is our cheapest way to get new visitors. And less leftover code means fewer things that can break or carry security holes.
+
+**What you'd notice using the app today.** Finish the questionnaire, copy the address from the browser bar, open it in a private window: the same plan appears with the same steps, no questionnaire to redo.
+
+**What's next.** A proper "Copy link" button with the warning the compliance specialist requires before sharing.
+
+---
+
+## 2026-06-12 — The search-engine check found a real problem: Google can't read our guide
+
+**What changed.** The search specialist finished its audit of the new app-style guide page, and the headline finding is serious: all the carefully verified content — the six tasks, their steps, documents, and official sources — was invisible to search engines. It was packed inside the app's machinery (like shipping a book as a locked suitcase: the reader has to open it in person; a librarian cataloguing from the outside sees nothing). The specialist fixed what could be fixed safely: proper labels search engines understand (structured data describing the guide as a step-by-step procedure), and a full readable version of the guide that appears for anyone whose browser can't run the app. Build checks all pass; the app itself is unchanged.
+
+**Why it matters.** This business plans to live on people finding guides through Google. A page Google can't read is a shop with the lights off.
+
+**What you'd notice using the app today.** Nothing different — the fixes are for search engines and no-JavaScript visitors.
+
+**What's next.** A structural decision for you: re-plumb the page so the full guide is always present underneath the app (the durable fix the specialist recommends); meanwhile the engineer and researcher helpers are still working.
+
+---
+
+## 2026-06-12 — The legal check came back: one important catch about share links
+
+**What changed.** The first of our four parallel helpers finished: the compliance specialist. It drafted the "who runs this site" page that Swiss and German law require (called an Impressum — like the publisher's box in a newspaper), with blanks for you to fill in your name and address, clearly marked as a draft until a real lawyer reviews it. More importantly, it caught something before it became a problem: we're building a feature that lets people share their relocation plan as a link, and if built the obvious way, the link would quietly copy people's answers — which passports they hold, who their partner is — into our server records and analytics. Some of those answers are genuinely sensitive (a "registered partner" answer can reveal someone's sexual orientation). The specialist set binding rules: build the link so the answers never reach our servers, never include free-typed text, and warn people before they share.
+
+**Why it matters.** Catching this *before* the feature ships is exactly why the compliance role exists — privacy mistakes are trust-killers and can carry fines.
+
+**What you'd notice using the app today.** Nothing yet — the Impressum page needs your details, and the other three helpers are still working.
+
+**What's next.** Review the remaining three helpers' work as it lands, applying these privacy rules.
+
+---
+
 ## 2026-06-12 — Today's work is safely backed up, and four specialists are now working at once
 
 **What changed.** Two things. First, everything built today — the new questionnaire, the guided checklist, the honesty notices — is committed and pushed to GitHub (our off-site safe: even if this computer died, nothing is lost, and every change is reviewable). Second, instead of doing tasks one after another, we put four specialist helpers to work *simultaneously*, like stations in a restaurant kitchen instead of one cook doing everything: (1) a researcher drafting the family-reunification route (joining a spouse or partner) with official Swiss sources; (2) an engineer making plans shareable by link and removing leftover old code; (3) a compliance specialist drafting the legally required "who runs this site" page (Impressum) and reviewing our wording; (4) a search specialist checking whether Google can actually read our new app-style pages.

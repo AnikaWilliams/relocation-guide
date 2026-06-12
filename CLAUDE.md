@@ -130,7 +130,7 @@ See `.claude/agents/` for full definitions. Summary:
 ## Tech stack (ADR-0001, approved 2026-06-10)
 
 - **Framework:** Astro 4.x (zero-JS default for SEO/CWV)
-- **Interactivity:** React islands (`@astrojs/react`) — flowchart component
+- **Interactivity:** React islands (`@astrojs/react`) — guided intake + plan app (ADR-0008)
 - **Content:** Astro Content Collections + Zod schemas (provenance enforced at compile time)
 - **Styling:** Tailwind CSS
 - **Hosting:** Cloudflare Pages

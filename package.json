@@ -21,7 +21,6 @@
     "@astrojs/react": "^3.6.2",
     "@astrojs/sitemap": "3.2.1",
     "@astrojs/tailwind": "^5.1.2",
-    "@xyflow/react": "^12.3.5",
     "astro": "^4.16.10",
     "flag-icons": "^7.5.0",
     "react": "^18.3.1",
