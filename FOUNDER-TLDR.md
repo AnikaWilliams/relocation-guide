@@ -10,6 +10,18 @@ coming next. Newest updates are at the top.
 
 ---
 
+## 2026-06-12 — Today's work is safely backed up, and four specialists are now working at once
+
+**What changed.** Two things. First, everything built today — the new questionnaire, the guided checklist, the honesty notices — is committed and pushed to GitHub (our off-site safe: even if this computer died, nothing is lost, and every change is reviewable). Second, instead of doing tasks one after another, we put four specialist helpers to work *simultaneously*, like stations in a restaurant kitchen instead of one cook doing everything: (1) a researcher drafting the family-reunification route (joining a spouse or partner) with official Swiss sources; (2) an engineer making plans shareable by link and removing leftover old code; (3) a compliance specialist drafting the legally required "who runs this site" page (Impressum) and reviewing our wording; (4) a search specialist checking whether Google can actually read our new app-style pages.
+
+**Why it matters.** Parallel work means the launch checklist shrinks four times faster — and every fact still goes through the independent fact-checker before it can publish.
+
+**What you'd notice using the app today.** Nothing new yet — the four work streams haven't landed.
+
+**What's next.** Review each helper's work as it comes back, fact-check the family route, then your approval.
+
+---
+
 ## 2026-06-12 — The app no longer pretends: if we don't cover your route, it says so
 
 **What changed.** You caught a real problem: you answered the questionnaire as someone joining an unmarried partner, and the app handed you a "get a work permit through your employer" plan labelled as *personalised*. The truth is our USA → Switzerland guide only covers the work route so far — the family route hasn't been researched and verified yet. Rather than quietly serving the wrong plan, the app is now honest about it in three places: a note appears the moment you pick a reason we don't cover yet ("we haven't verified the family route yet"); the plan's title changes from "Your personalised relocation plan" to "Work route guide — your route isn't covered yet"; and a clear notice on the plan says the steps describe the work route and should be treated as background reading, not your plan. Each guide now carries a label saying which routes it covers, so this works automatically for every future guide.
