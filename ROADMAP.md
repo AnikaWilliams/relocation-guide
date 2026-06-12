@@ -84,7 +84,8 @@ _Founder direction: drop the visual flowchart from the UI; make the whole produc
 - [ ] **F-11** Link "Data reviewed" date to provenance log / `VERIFICATION_LOG.md`
 - [ ] Run axe-core in CI to catch colour-contrast regressions
 - [ ] Lighter Serbia flag asset (the `flag-icons` `rs.svg` is ~50 kB gz; only loaded lazily on the passports step today)
-- [ ] Structural a11y (QA findings, 2026-06-12, non-blocking): single-select steps as `role="radiogroup"` with arrow keys; `aria-live` announcements for the personalised banner + progress count; sidebar section labels as headings/landmarks
+- [ ] Structural a11y (QA findings, 2026-06-12, non-blocking): single-select steps as `role="radiogroup"` with arrow keys _(remaining)_. Done 2026-06-12: `role="status"` announcements on the personalised + route-coverage banners and the progress count; sidebar section labels are now real `h2` headings
+- [x] `hashchange` listener (2026-06-12): pasting/clicking a share link on an already-open corridor page now applies the profile without a reload (plain anchors like `#full-guide` ignored)
 
 #### 2c — Launch readiness ⏳
 - [ ] **Sole active corridor: USA → Switzerland (`us-ch`)** — founder approval + flip `published: true` _(blocked on 2b blockers above)_

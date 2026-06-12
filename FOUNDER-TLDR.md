@@ -10,6 +10,18 @@ coming next. Newest updates are at the top.
 
 ---
 
+## 2026-06-12 — Small polish while the study research runs: share links work without a refresh, and screen readers get announcements
+
+**What changed.** Three small improvements landed while the study-route researcher works. First, pasting a shared plan link into a tab that already has the guide open now switches to that plan instantly — before, the page quietly ignored it unless you refreshed (a known leftover from the share-link work). Second, screen-reader users now *hear* it when their plan changes — "6 of 15 steps apply to your situation" is announced out loud instead of only appearing visually. Third, the sidebar's section titles ("Your answers", "Your journey") are now proper headings, which lets screen-reader users jump straight to them the way sighted users skim.
+
+**Why it matters.** Each is small, but they're the difference between "works in a demo" and "works for everyone, every time" — and accessibility is a legal expectation in our markets.
+
+**What you'd notice using the app today.** Probably nothing visible — these are correctness improvements for sharing and assistive technology.
+
+**What's next.** The study-route draft has just landed (six new steps, including work-alongside-studies rules); the independent fact-check is next.
+
+---
+
 ## 2026-06-12 — The source watchdog is on duty: all 23 official links checked weekly from now on
 
 **What changed.** The watchdog for our sources is built and switched on. Every week (and on every content change), it automatically re-visits all the official Swiss government pages our 69 facts cite and raises the alarm if a link has died, a page has quietly moved, or its content has changed since we verified it (it keeps a fingerprint of each page to spot edits). It also watches the calendar: every fact carries a "re-check by" date, and the watchdog flags anything overdue or coming due within two weeks. Its first patrol came back perfectly clean — all 23 links healthy, no facts near their deadline (the first fee facts come up for routine re-checking around June 25). When something does break, it automatically files a to-do ticket so nothing relies on a human noticing.

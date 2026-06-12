@@ -3,7 +3,7 @@ import { COUNTRY_OPTIONS, countryName } from '../utils/countries';
 import { flagUrl } from '../utils/flags';
 import { topoOrder, statusOf, currentTaskId, type TaskStatus } from '../utils/journey';
 import { evaluateAppliesIf, type AppliesIfContext } from '../utils/appliesIf';
-import { INTAKE_PARAM_KEYS, readIntakeParams, applyIntakeParams, intakeSearchString } from '../utils/urlState';
+import { INTAKE_PARAM_KEYS, readIntakeParams, applyIntakeParams, intakeSearchString, hasIntakeParams } from '../utils/urlState';
 
 /** Self-hosted SVG flag — renders identically on every OS, unlike emoji flags. */
 function Flag({ iso, className = '' }: { iso: string; className?: string }) {
@@ -557,8 +557,8 @@ function Sidebar({
     <div className="flex flex-col gap-5">
       <div>
         <div className="flex items-center justify-between mb-1.5">
-          <span className="text-xs text-slate-500">Your progress</span>
-          <span className="text-xs font-medium text-slate-700">{doneCount} of {total}</span>
+          <h2 className="text-xs font-normal text-slate-500">Your progress</h2>
+          <span role="status" className="text-xs font-medium text-slate-700">{doneCount} of {total}</span>
         </div>
         <div className="h-1.5 rounded-full bg-slate-200 overflow-hidden">
           <div className="h-full rounded-full bg-emerald-500 transition-all duration-500" style={{ width: `${pct}%` }} />
@@ -568,7 +568,7 @@ function Sidebar({
       <CopyLinkButton />
 
       <div>
-        <p className="text-xs text-slate-500 mb-2">Your answers</p>
+        <h2 className="text-xs font-normal text-slate-500 mb-2">Your answers</h2>
         <div className="flex flex-col gap-1.5">
           {recap.map((r) => (
             <button
@@ -586,7 +586,7 @@ function Sidebar({
       </div>
 
       <div className="border-t border-slate-200 pt-4">
-        <p className="text-xs text-slate-500 mb-2.5">Your journey</p>
+        <h2 className="text-xs font-normal text-slate-500 mb-2.5">Your journey</h2>
         <div className="flex flex-col">
           {orderedTasks.map((t) => {
             const status = statusFor(t.id);
@@ -886,6 +886,25 @@ export default function CorridorApp({ tasks, corridorTitle, originIso2, destinat
     window.addEventListener('popstate', handler);
     return () => window.removeEventListener('popstate', handler);
   }, []);
+
+  // F-08 follow-up: same-page profile links. Browsers don't reload on a
+  // hash-only navigation, so applying a share link to an already-open page
+  // needs an explicit listener. Our own fragment-sync uses replaceState,
+  // which never fires hashchange — no feedback loop. Plain anchors (e.g.
+  // #full-guide) carry no intake params and are ignored.
+  useEffect(() => {
+    const handler = () => {
+      const params = new URLSearchParams(window.location.hash.replace(/^#/, ''));
+      if (!hasIntakeParams(params)) return;
+      setAnswers((a) =>
+        applyIntakeParams({ ...a, origin: originIso2, destination: destinationIso2 }, params),
+      );
+      setActiveTaskId(null); // the auto-focus effect picks the new profile's current task
+      setPhase('app');
+    };
+    window.addEventListener('hashchange', handler);
+    return () => window.removeEventListener('hashchange', handler);
+  }, [originIso2, destinationIso2]);
 
   // Selectable country sets, derived from published corridors.
   const originSelectable = useMemo(() => new Set(availableCorridors.map((c) => c.origin)), [availableCorridors]);
@@ -1256,7 +1275,7 @@ export default function CorridorApp({ tasks, corridorTitle, originIso2, destinat
 
       {!routeCovered && answers.motivation && (
         <div className="shrink-0 bg-rose-50 border-b border-rose-100 px-4 py-2.5">
-          <p className="text-xs text-rose-800">
+          <p role="status" className="text-xs text-rose-800">
             <strong>Your route isn't covered yet.</strong>{' '}
             Your answers point to the {motivationLabel(answers.motivation).toLowerCase()} route, but this
             guide's verified content covers the {coveredLabel} route only. The steps below describe
@@ -1269,7 +1288,7 @@ export default function CorridorApp({ tasks, corridorTitle, originIso2, destinat
 
       {routeCovered && excludedTasks.length > 0 && (
         <div className="shrink-0 bg-blue-50 border-b border-blue-100 px-4 py-2">
-          <p className="text-xs text-blue-800">
+          <p role="status" className="text-xs text-blue-800">
             <strong>Personalised for you:</strong> {applicableTasks.length} of {tasks.length} steps apply to
             your situation. Skipped: {excludedTasks.map((t) => t.title).join(' · ')}.
           </p>
