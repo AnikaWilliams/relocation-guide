@@ -75,7 +75,7 @@ _Founder direction: drop the visual flowchart from the UI; make the whole produc
 - [ ] **EU/EFTA passport branching**: switch the path on a free-movement passport (deferred to capture-only for now — ADR-0008)
 - [x] **F-08** URL state encoding (2026-06-12): plan-affecting answers encoded in the URL **fragment** (`/us/ch/#pp=us&m=work&ws=has-offer&dur=long&kids=0`) for shareable/bookmarkable profiles. Fragment, not search params, per the compliance share-link ruling — the fragment is never sent in HTTP requests, so answers can't land in server/CDN logs or analytics; free-text answers are never encoded. Restore precedence: URL > localStorage > defaults; a URL with intake params fully determines the plan (codec: `src/utils/urlState.ts`, 15 tests)
 - [ ] **F-08 follow-up**: explicit "Copy link to this plan" button with the compliance-required pre-share warning (today the link only lives in the address bar)
-- [ ] **F-10** Keyboard accessibility pass over the new form + sidebar
+- [x] **F-10** Keyboard accessibility pass (qa-engineer, 2026-06-12): focus management on step/task transitions (focus moves to the new heading — fixes focus stranded on `<body>`), `aria-pressed` on option/country/passport cards, `aria-expanded` on the mobile journey toggle, `aria-current="step"` + sr-only Done/Locked prefixes in the sidebar, sr-only "Edit answer:" on recap buttons, disabled-country explanation in accessible names. Plus 16 route-personalisation regression tests pinning exact applicable-task sets per intake profile against the real YAML (68 tests total)
 - [x] Removed the unused `CorridorFlowchart.tsx` and uninstalled `@xyflow/react` (2026-06-12) — pivot confirmed stable; 20 npm packages dropped
 - [ ] Destination-specific labels for family/permit options (currently Swiss-specific; see ADR-0008)
 
@@ -83,6 +83,7 @@ _Founder direction: drop the visual flowchart from the UI; make the whole produc
 - [ ] **F-11** Link "Data reviewed" date to provenance log / `VERIFICATION_LOG.md`
 - [ ] Run axe-core in CI to catch colour-contrast regressions
 - [ ] Lighter Serbia flag asset (the `flag-icons` `rs.svg` is ~50 kB gz; only loaded lazily on the passports step today)
+- [ ] Structural a11y (QA findings, 2026-06-12, non-blocking): single-select steps as `role="radiogroup"` with arrow keys; `aria-live` announcements for the personalised banner + progress count; sidebar section labels as headings/landmarks
 
 #### 2c — Launch readiness ⏳
 - [ ] **Sole active corridor: USA → Switzerland (`us-ch`)** — founder approval + flip `published: true` _(blocked on 2b blockers above)_

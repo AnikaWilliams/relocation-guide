@@ -10,6 +10,18 @@ coming next. Newest updates are at the top.
 
 ---
 
+## 2026-06-12 — The app now works properly for keyboard and screen-reader users, and the personalisation is locked by automated tests
+
+**What changed.** The quality engineer (the last of the parallel helpers) finished its pass. Two deliverables. First, keyboard and screen-reader accessibility: the worst problem was that moving between questions silently "dropped" a keyboard user's place on the page — like a receptionist walking off mid-conversation — leaving them to hunt for where they were. Now focus lands on each new question's title, which also makes screen readers read it aloud. Selected answers, locked steps, finished steps, and the "this country isn't available yet" explanations are all now properly announced instead of being conveyed only by colour and icons. Second, a safety net: 16 new automated tests that check, for ten different user profiles (spouse of a citizen, unmarried partner, worker with children…), exactly which steps appear in their plan. If a future edit ever scrambles who sees what, the tests fail before anything reaches users.
+
+**Why it matters.** Accessibility is both the right thing and a legal expectation in our markets — and the tests mean the personalisation we just verified can't silently break later.
+
+**What you'd notice using the app today.** Try it with the Tab key only — you can complete the whole questionnaire without touching the mouse.
+
+**What's next.** All four helper lanes plus QA are done; the batch is yours to review (family route approval, Impressum details, the Google-readability decision).
+
+---
+
 ## 2026-06-12 — The family route is live: all 27 new facts passed the independent fact-check
 
 **What changed.** The fact-checker finished re-examining every one of the 27 new family-route facts — opening each official Swiss source itself, character by character — and confirmed all 27, rejecting none. The crucial legal distinction survived checking: joining a Swiss citizen or permanent resident is a legal *right*; joining someone on an ordinary permit is at the authorities' *discretion*; joining an unmarried partner has *no general route at all* — only a case-by-case cantonal exception, and the guide says so plainly. With the check complete, the family route is switched on: someone who answers "joining family" now gets family steps (the work-permit steps disappear from their plan), and the old "your route isn't covered" warning is gone for them. We re-tested your exact original case — joining an unmarried partner — and the plan now opens on the honest answer instead of telling you to get a work permit. The guide now holds 49 verified facts across two routes.

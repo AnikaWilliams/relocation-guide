@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo, type ReactNode } from 'react';
+import { useState, useEffect, useMemo, useRef, type ReactNode } from 'react';
 import { COUNTRY_OPTIONS, countryName } from '../utils/countries';
 import { flagUrl } from '../utils/flags';
 import { topoOrder, statusOf, currentTaskId, type TaskStatus } from '../utils/journey';
@@ -344,6 +344,7 @@ function OptionCard({
     <button
       type="button"
       disabled={disabled}
+      aria-pressed={selected}
       onClick={onClick}
       className={`w-full border rounded-xl p-4 text-left transition-all ${
         disabled
@@ -393,6 +394,7 @@ function CountryGrid({
             key={c.iso2}
             type="button"
             disabled={!selectable}
+            aria-pressed={selected}
             onClick={() => onSelect(c.iso2)}
             title={selectable ? undefined : 'No verified corridor for this country yet'}
             className={`flex items-center gap-2 border rounded-lg px-2.5 py-2 text-left text-sm transition-all ${
@@ -404,7 +406,10 @@ function CountryGrid({
             }`}
           >
             {selectable ? <Flag iso={c.iso2} className="text-xl" /> : <IsoChip iso={c.iso2} />}
-            <span className={`font-medium ${selectable ? 'text-slate-900' : 'text-slate-400'}`}>{c.name}</span>
+            <span className={`font-medium ${selectable ? 'text-slate-900' : 'text-slate-400'}`}>
+              {c.name}
+              {!selectable && <span className="sr-only"> (no verified corridor yet)</span>}
+            </span>
             {selected && <span className="ml-auto text-blue-500" aria-hidden="true">✓</span>}
           </button>
         );
@@ -424,6 +429,7 @@ function CountryMultiGrid({
           <button
             key={c.iso2}
             type="button"
+            aria-pressed={isOn}
             onClick={() => onToggle(c.iso2)}
             className={`flex items-center gap-2 border rounded-lg px-2.5 py-2 text-left text-sm transition-all ${
               isOn ? 'border-blue-500 bg-blue-50' : 'border-slate-200 bg-white hover:border-blue-300'
@@ -536,6 +542,7 @@ function Sidebar({
               onClick={() => onEdit(r.stepId)}
               className="group flex items-center justify-between gap-2 rounded-lg bg-slate-50 hover:bg-slate-100 px-3 py-2 text-left"
             >
+              <span className="sr-only">Edit answer: </span>
               <span className="text-sm text-slate-700 truncate">{r.label}</span>
               <span className="text-slate-400 group-hover:text-slate-600 text-xs shrink-0" aria-hidden="true">✎</span>
             </button>
@@ -555,6 +562,7 @@ function Sidebar({
                 key={t.id}
                 type="button"
                 disabled={locked}
+                aria-current={isActive ? 'step' : undefined}
                 onClick={() => onSelect(t.id)}
                 className={`flex items-center gap-2.5 rounded-lg px-2 py-2 text-left transition-colors ${
                   isActive ? 'bg-blue-50' : locked ? 'cursor-not-allowed' : 'hover:bg-slate-50'
@@ -563,7 +571,11 @@ function Sidebar({
                 <StatusDot status={status} />
                 <span className={`text-sm leading-snug ${
                   isActive ? 'font-medium text-blue-700' : locked ? 'text-slate-400' : status === 'done' ? 'text-slate-500' : 'text-slate-700'
-                }`}>{t.title}</span>
+                }`}>
+                  {status === 'done' && <span className="sr-only">Done: </span>}
+                  {locked && <span className="sr-only">Locked (finish earlier steps first): </span>}
+                  {t.title}
+                </span>
               </button>
             );
           })}
@@ -576,7 +588,7 @@ function Sidebar({
 // ── Task card (one task at a time) ───────────────────────────────────────────
 
 function TaskCard({
-  task, status, hasPrev, onBack, onMarkDone, onNext,
+  task, status, hasPrev, onBack, onMarkDone, onNext, headingRef,
 }: {
   task: TaskData;
   status: TaskStatus;
@@ -584,6 +596,7 @@ function TaskCard({
   onBack: () => void;
   onMarkDone: () => void;
   onNext: () => void;
+  headingRef?: React.Ref<HTMLHeadingElement>;
 }) {
   const done = status === 'done';
   return (
@@ -591,7 +604,10 @@ function TaskCard({
       <div className="flex-1 overflow-y-auto px-6 sm:px-8 py-6 space-y-5">
         <div className="space-y-2">
           <CategoryBadge category={task.category} />
-          <h2 className="text-2xl font-bold text-slate-900 leading-snug">{task.title}</h2>
+          {/* tabIndex={-1}: focus lands here when the active task changes, so
+              keyboard/screen-reader users hear the new task and never lose
+              focus to <body> (e.g. when the Back button unmounts). */}
+          <h2 ref={headingRef} tabIndex={-1} className="text-2xl font-bold text-slate-900 leading-snug focus:outline-none">{task.title}</h2>
           <span className={`inline-flex items-center gap-1.5 text-sm font-medium ${
             done ? 'text-green-600' : 'text-blue-600'
           }`}>
@@ -712,6 +728,34 @@ export default function CorridorApp({ tasks, corridorTitle, originIso2, destinat
   const [hydrated, setHydrated] = useState(false);
 
   const isMobile = useIsMobile();
+
+  // F-10 focus management. Moving between wizard steps (or into the plan)
+  // would otherwise drop keyboard focus to <body>: the focused Continue
+  // button becomes disabled on the next step, and the wizard unmounts
+  // entirely when the plan opens. Focus the current question/task heading
+  // instead — this also makes screen readers announce the change. The
+  // initial render (and the localStorage/URL restore right after mount)
+  // must NOT steal focus, so nothing happens until a key has been recorded.
+  const stepHeadingRef = useRef<HTMLHeadingElement | null>(null);
+  const taskHeadingRef = useRef<HTMLHeadingElement | null>(null);
+  const prevFocusKey = useRef<string | null>(null);
+  useEffect(() => {
+    // The done-flag keeps the key changing when the LAST task is marked done:
+    // activeTaskId stays put then, but the card is replaced by the all-done
+    // panel and the focused button unmounts.
+    const key = phase === 'wizard'
+      ? `w:${stepId}`
+      : `a:${activeTaskId ?? ''}:${activeTaskId ? doneIds.has(activeTaskId) : false}`;
+    const prev = prevFocusKey.current;
+    // `a::false` -> `a:<id>:...` is the automatic first-task selection right
+    // after a shared-link/restore load lands in the app phase — not a user
+    // action, so it must not steal focus either.
+    const isAutoSelect = prev === 'a::false' && key.startsWith('a:');
+    if (prev !== null && prev !== key && !isAutoSelect) {
+      (phase === 'wizard' ? stepHeadingRef : taskHeadingRef).current?.focus();
+    }
+    prevFocusKey.current = hydrated ? key : null;
+  }, [hydrated, phase, stepId, activeTaskId, doneIds]);
 
   // Load persisted state once, after the first (server-matching) render.
   // Browser state (URL, localStorage) must never be read during the initial
@@ -991,7 +1035,7 @@ export default function CorridorApp({ tasks, corridorTitle, originIso2, destinat
                 <p className="text-xs font-bold text-blue-600 uppercase tracking-widest mb-2 sm:mb-3">
                   Step {currentIndex + 1} of {visibleSteps.length}
                 </p>
-                <h2 className="text-xl sm:text-2xl font-bold text-slate-900 mb-1">{resolve(currentStep.title)}</h2>
+                <h2 ref={stepHeadingRef} tabIndex={-1} className="text-xl sm:text-2xl font-bold text-slate-900 mb-1 focus:outline-none">{resolve(currentStep.title)}</h2>
                 {currentStep.subtitle && <p className="text-sm text-slate-500">{resolve(currentStep.subtitle)}</p>}
               </div>
 
@@ -1127,7 +1171,7 @@ export default function CorridorApp({ tasks, corridorTitle, originIso2, destinat
       <div className="w-14 h-14 rounded-full bg-green-100 flex items-center justify-center mb-4">
         <svg className="w-7 h-7 text-green-600" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" /></svg>
       </div>
-      <h2 className="text-2xl font-bold text-slate-900">You've completed every step</h2>
+      <h2 ref={taskHeadingRef} tabIndex={-1} className="text-2xl font-bold text-slate-900 focus:outline-none">You've completed every step</h2>
       <p className="text-slate-500 mt-2 max-w-sm">All {applicableTasks.length} tasks in your {corridorTitle} plan are marked done. You can revisit any step from your journey on the left.</p>
       <p className="text-xs text-slate-400 mt-4 max-w-sm">
         This checklist tracks your progress only. Final decisions always rest with the
@@ -1138,6 +1182,7 @@ export default function CorridorApp({ tasks, corridorTitle, originIso2, destinat
     <TaskCard
       task={activeTask}
       status={activeStatus}
+      headingRef={taskHeadingRef}
       hasPrev={activeIdx > 0 && statusFor(orderedTasks[activeIdx - 1].id) !== 'locked'}
       onBack={() => gotoAdjacentTask(-1)}
       onMarkDone={() => handleMarkDone(activeTask.id)}
@@ -1199,7 +1244,7 @@ export default function CorridorApp({ tasks, corridorTitle, originIso2, destinat
       {isMobile ? (
         <div className="flex-1 flex flex-col overflow-hidden">
           <div className="shrink-0 border-b border-slate-200 bg-white px-4 py-3">
-            <button type="button" onClick={() => setMobilePanelOpen((v) => !v)} className="w-full flex items-center justify-between text-sm font-medium text-slate-700">
+            <button type="button" aria-expanded={mobilePanelOpen} onClick={() => setMobilePanelOpen((v) => !v)} className="w-full flex items-center justify-between text-sm font-medium text-slate-700">
               <span>Your journey · {doneCount}/{applicableTasks.length} done</span>
               <span aria-hidden="true">{mobilePanelOpen ? '▲' : '▼'}</span>
             </button>
