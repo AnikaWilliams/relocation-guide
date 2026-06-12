@@ -203,3 +203,78 @@ Options considered:
 - The corridor page must render gracefully when either field is absent (conditional render).
 - Future corridors should document *why* a field is omitted (e.g. "cantonal/communal — no federal figure") in a YAML comment alongside the omission.
 - The 5 previously FLAGGED claims are removed from us-ch.yaml; all 22 remaining claims are VERIFIED.
+
+---
+
+## ADR-0008 — Guided-form experience: retire the flowchart UI; expand the intake
+
+**Date:** 2026-06-12
+**Status:** Accepted
+**Decided by:** Founder (Anika Williams)
+
+### Context
+The corridor app shipped as a 3-step wizard followed by a visual dependency flowchart (`@xyflow/react`). A UX audit and founder review identified two problems: (1) the node-graph was the worst-performing surface (largest JS bundle, dead canvas space, unusable on mobile), and (2) the intake captured too little to personalise the path. The founder chose to reframe the whole product as a guided form rather than a diagram, and to expand intake to drive future path-filtering.
+
+### Decision
+1. **Retire the flowchart from the user-facing UI.** The dependency graph's logic (topological ordering, lock/unlock state) moves into a headless module, `src/utils/journey.ts`. The user now sees a one-task-at-a-time guided card plus a "journey + answer history" sidebar. `CorridorFlowchart.tsx` and `@xyflow/react` are no longer in the render path (left in-repo, pending removal).
+2. **Expand the intake into a config-driven, branching wizard.** Steps are declared as data (`WizardStep[]` with `visibleIf`/`isComplete` predicates) so motivation-specific follow-ups (work / family / study / other) are added without routing changes. Page 1's single country button is split into separate origin and destination questions; a passports multi-select is added; intended-stay and children questions are retained.
+3. **Country selection is gated by published corridors.** The wizard reads the published `{origin,destination}` pairs and makes only those countries selectable; unsupported countries render greyed-out and unselectable. Choosing a different published corridor navigates to that corridor's static route.
+4. **Self-hosted SVG flags via individual `flag-icons` asset imports** (not the full stylesheet), to render flags identically on Windows (emoji flags fail there) with no third-party runtime request and minimal bundle cost.
+
+### Rationale
+- Removing `@xyflow/react` from the render path cut the island bundle from ~59 kB gz to ~9 kB gz and resolved the mobile blocker.
+- A config-driven step list keeps the branching logic in one place and satisfies the "extensible mapping from motivation to follow-ups" requirement.
+- Gating countries by published corridors prevents users from reaching unverified/empty corridors while still showing the roadmap of what's coming.
+- Importing only the ~18 in-scope flag SVGs (vs the full `flag-icons` CSS) keeps CSS at ~17 kB and avoids shipping ~260 flags; greyed countries show an ISO chip rather than loading a flag image, avoiding the heavy Serbia flag on the intake screen.
+
+### Consequences
+- New modules: `src/utils/countries.ts` (framework-agnostic country data + display names, re-exported by `corridors.ts`), `src/utils/flags.ts` (per-country SVG asset map), `src/utils/journey.ts` (ordering + status). New dependency: `flag-icons`.
+- The corridor route passes `originIso2`, `destinationIso2`, and `availableCorridors` to `CorridorApp` (previously pre-resolved display names).
+- Intake answers are **captured but not yet consumed** by task-filtering (no `appliesIf` evaluation yet); EU/EFTA passport branching is explicitly deferred (capture-only). Wiring answers to the task path is the next ADR.
+- `CorridorFlowchart.tsx` and `@xyflow/react` are unused and should be removed in a follow-up once the direction is confirmed stable.
+- Intake state is persisted under a new `localStorage` key (`relocation-intake-v2`); the schema changed, so prior `relocation-wizard-v1` state is ignored.
+
+---
+
+## ADR-0009 — `appliesIf` evaluation: tiny expression grammar, fail-open
+
+**Date:** 2026-06-12
+**Status:** Accepted
+**Decided by:** Architect (session), under founder direction to personalise the path
+
+### Context
+`Task.appliesIf` has existed in the schema since ADR-0005 ("expression evaluated at runtime") but nothing evaluated it — every task rendered for every user. The guided-form pivot (ADR-0008) captures rich intake answers expressly so the path can be personalised. We need an evaluator that is safe (corridor YAML is content, not code) and that can never hide a legally required step by accident.
+
+### Decision
+1. **A deliberately tiny expression grammar**, parsed by a hand-written tokenizer/evaluator in `src/utils/appliesIf.ts` — never `eval`/`new Function`. Supported: bare truthy test (`hasChildren`), negation (`!hasChildren`), `==`/`!=` against quoted strings or `true`/`false`, `includes` for list fields (`passports includes 'ch'`), combined with `&&`/`||` (no parentheses — split complex rules into separate tasks instead).
+2. **Fail-open.** A malformed expression or unknown field name means the task **stays visible** (with a dev console warning). Showing an unneeded step is an annoyance; hiding a required one is catastrophic and would silently violate the accuracy promise.
+3. **Evaluation context** is the flattened intake: `origin`, `destination`, `passports[]`, `motivation`, `workStatus`, `familyRelationship`, `familyJoineeStatus`, `studyStatus`, `durationIntent`, `hasChildren`.
+4. **Authoring `appliesIf` rules is content-pipeline work.** Which situations a task applies to is a legal-accuracy judgement: rules are written by `content-researcher`, independently checked by `fact-verifier` against official sources, like any claim. No rules were added to `us-ch.yaml` in this change — the machinery ships first; today all 6 tasks apply to everyone, unchanged.
+5. **Visible personalisation:** when any task is filtered out, the plan shows a "Personalised for you: N of M steps apply — skipped: …" banner, so users always see *that* and *what* was excluded.
+
+### Consequences
+- New module `src/utils/appliesIf.ts` + 9 unit tests (`tests/appliesIf.test.ts`), including fail-open cases.
+- `CorridorApp` filters tasks through the evaluator before ordering; progress counts, completion state, and the journey sidebar operate on applicable tasks only. `doneIds` may retain excluded tasks (harmless; re-included if answers change back).
+- The grammar is intentionally not extensible by content authors (no arbitrary code); extending it (e.g. parentheses, numeric comparison) requires an architect change here.
+- EU/EFTA passport branching remains deferred — `passports includes` makes it expressible once the free-movement content track exists (verified content is the blocker, not machinery).
+
+---
+
+## ADR-0010 — Corridor route-coverage metadata and the honest-mismatch notice
+
+**Date:** 2026-06-12
+**Status:** Accepted
+**Decided by:** Architect (session), prompted by founder bug report
+
+### Context
+The founder completed the intake as a family-route user (joining an unmarried partner) and was recommended "Secure an employer-sponsored work and residence permit" — presented under a "Your personalised relocation plan" heading. The us-ch corridor's verified content covers only the employer-sponsored work route, and with no `appliesIf` rules yet (ADR-0009), every user gets that plan regardless of answers. Showing the wrong route *as if personalised* is a trust failure of exactly the kind CLAUDE.md exists to prevent.
+
+### Decision
+1. **Corridors declare coverage.** New optional `coversMotivations: Motivation[]` field on `CorridorSchema` (with a shared `MotivationEnum`: work/family/study/other). `us-ch.yaml` sets `[work]` — this restates the corridor's own verified description ("…relocate to Switzerland for work"), not a new factual claim. Omitted field = no coverage check (legacy behaviour).
+2. **Honest mismatch UX.** When the user's motivation falls outside coverage: (a) an inline note appears immediately on the wizard's motivation step ("we haven't verified the family route yet…"); (b) the plan header reads "Work route guide — your route isn't covered yet" instead of "Your personalised relocation plan"; (c) a prominent notice explains the steps describe the covered route and may not match, "treat them as background reading, not your plan". The personalised-skip banner (ADR-0009) is suppressed in this state.
+3. **The plan is shown, not hidden.** The covered-route content is still legitimate verified information; we label it honestly rather than blanking the page.
+
+### Consequences
+- Schema gains `MotivationEnum` + optional `coversMotivations`; the wizard's motivation values must stay in sync with the enum.
+- Each new route a corridor gains (via researched + verified content and `appliesIf` rules) adds its motivation to `coversMotivations`, which retires the notice for those users automatically.
+- The intake keys (`work`/`family`/`study`/`other`) are now load-bearing across schema, content, and UI.

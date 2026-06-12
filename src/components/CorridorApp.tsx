@@ -1,7 +1,40 @@
-import { useState } from 'react';
-import CorridorFlowchart, { type FlowTask } from './CorridorFlowchart';
+import { useState, useEffect, useMemo, type ReactNode } from 'react';
+import { COUNTRY_OPTIONS, countryName } from '../utils/countries';
+import { flagUrl } from '../utils/flags';
+import { topoOrder, statusOf, currentTaskId, type TaskStatus } from '../utils/journey';
+import { evaluateAppliesIf, type AppliesIfContext } from '../utils/appliesIf';
 
-// ── Types ──────────────────────────────────────────────────────────────────
+/** Self-hosted SVG flag — renders identically on every OS, unlike emoji flags. */
+function Flag({ iso, className = '' }: { iso: string; className?: string }) {
+  const src = flagUrl(iso);
+  if (!src) return null;
+  return (
+    <img
+      src={src}
+      alt=""
+      aria-hidden="true"
+      loading="lazy"
+      decoding="async"
+      className={`inline-block rounded-sm align-[-0.1em] ${className}`}
+      style={{ width: '1.33em', height: '1em', objectFit: 'cover' }}
+    />
+  );
+}
+
+/** Muted ISO chip used in place of a flag for not-yet-supported countries. */
+function IsoChip({ iso }: { iso: string }) {
+  return (
+    <span
+      className="inline-flex items-center justify-center rounded-sm bg-slate-200 text-slate-400 font-semibold"
+      style={{ width: '1.66rem', height: '1.25rem', fontSize: '0.6rem' }}
+      aria-hidden="true"
+    >
+      {iso.toUpperCase()}
+    </span>
+  );
+}
+
+// ── Content types (mirror the corridor schema, passed in from the Astro page) ─
 
 interface ClaimData {
   text: string;
@@ -30,76 +63,312 @@ export interface TaskData {
   appliesIf?: string;
 }
 
-type HasJobOffer = boolean | null;
-type PartnerStatus = 'solo' | 'partner' | 'spouse' | null;
-type DurationIntent = 'short' | 'long' | 'permanent' | null;
-
-interface Answers {
-  hasJobOffer: HasJobOffer;
-  partnerStatus: PartnerStatus;
-  hasChildren: boolean | null;
-  durationIntent: DurationIntent;
+export interface CorridorPair {
+  origin: string;
+  destination: string;
 }
 
 interface CorridorAppProps {
   tasks: TaskData[];
   corridorTitle: string;
-  originName: string;
-  destinationName: string;
+  originIso2: string;
+  destinationIso2: string;
+  /** Origin/destination pairs of every published corridor — drives which countries are selectable. */
+  availableCorridors: CorridorPair[];
+  /** Routes this corridor's verified content covers; answers outside it get an honest "not covered yet" notice. */
+  coversMotivations?: ('work' | 'family' | 'study' | 'other')[];
 }
 
-// ── Wizard helpers ─────────────────────────────────────────────────────────
+// ── Intake model ─────────────────────────────────────────────────────────────
 
-const TOTAL_STEPS = 3;
+type Motivation = 'work' | 'family' | 'study' | 'other';
 
-function canContinue(step: number, answers: Answers): boolean {
-  if (step === 1) return true; // corridor is pre-selected
-  if (step === 2) return answers.hasJobOffer !== null;
-  if (step === 3) return answers.durationIntent !== null;
-  return false;
+interface Intake {
+  origin: string | null;
+  destination: string | null;
+  passports: string[];
+  motivation: Motivation | null;
+  // work branch
+  workStatus: 'has-offer' | 'job-seeking' | null;
+  employerName: string;
+  employerLocation: string;
+  // family branch
+  familyRelationship: 'spouse' | 'registered-partner' | 'unmarried-partner' | 'parent' | null;
+  familyJoineeStatus: 'citizen' | 'settled' | 'permit-holder' | 'other' | null;
+  // study branch
+  studyStatus: 'admitted' | 'applying' | null;
+  studyInstitution: string;
+  // other branch
+  otherDescription: string;
+  // common tail
+  durationIntent: 'short' | 'long' | 'permanent' | null;
+  hasChildren: boolean | null;
 }
 
-// ── Shared UI atoms ─────────────────────────────────────────────────────────
+const STORAGE_KEY = 'relocation-intake-v2';
+
+// ── Option sets ──────────────────────────────────────────────────────────────
+
+type Opt = { value: string; label: string; description?: string };
+
+const MOTIVATIONS: Opt[] = [
+  { value: 'work', label: 'Work or employment', description: 'A job, job-seeking, or self-employment' },
+  { value: 'family', label: 'Joining family', description: 'Joining a partner or relative who lives there' },
+  { value: 'study', label: 'Study', description: 'University or another programme' },
+  { value: 'other', label: 'Another reason', description: 'Retirement, remote work, and more' },
+];
+
+const WORK_STATUS: Opt[] = [
+  { value: 'has-offer', label: 'I have a job offer', description: 'An employer is ready to hire me' },
+  { value: 'job-seeking', label: "I'm still job-seeking", description: 'Looking for work first' },
+];
+
+const FAMILY_REL: Opt[] = [
+  { value: 'spouse', label: 'Spouse', description: "We're married" },
+  { value: 'registered-partner', label: 'Registered partner' },
+  { value: 'unmarried-partner', label: 'Unmarried partner', description: 'Long-term partner (concubinage)' },
+  { value: 'parent', label: 'Parent or child' },
+];
+
+const STUDY_STATUS: Opt[] = [
+  { value: 'admitted', label: 'Admitted to a programme' },
+  { value: 'applying', label: 'Still applying' },
+];
+
+const DURATION: Opt[] = [
+  { value: 'short', label: 'Less than a year', description: 'Short-stay (L permit) path' },
+  { value: 'long', label: 'A year or more', description: 'Standard (B permit) path' },
+  { value: 'permanent', label: 'Indefinitely — planning to settle', description: 'B permit now; C permit later' },
+];
+
+function defaultIntake(originIso2: string, destinationIso2: string): Intake {
+  return {
+    origin: originIso2,
+    destination: destinationIso2,
+    passports: [originIso2],
+    motivation: null,
+    workStatus: null,
+    employerName: '',
+    employerLocation: '',
+    familyRelationship: null,
+    familyJoineeStatus: null,
+    studyStatus: null,
+    studyInstitution: '',
+    otherDescription: '',
+    durationIntent: null,
+    hasChildren: null,
+  };
+}
+
+// ── Wizard field/step config (extensible: add a motivation = add steps) ──────
+
+type Field =
+  | { kind: 'country'; scope: 'origin' | 'destination' }
+  | { kind: 'countryMulti' }
+  | { kind: 'single'; get: (a: Intake) => string | null; set: (a: Intake, v: string) => Intake; options: Opt[] | ((a: Intake) => Opt[]) }
+  | { kind: 'boolean'; get: (a: Intake) => boolean | null; set: (a: Intake, v: boolean) => Intake; yes?: string; no?: string }
+  | { kind: 'text'; get: (a: Intake) => string; set: (a: Intake, v: string) => Intake; label?: string; placeholder?: string; textarea?: boolean; optional?: boolean };
+
+interface WizardStep {
+  id: string;
+  title: string | ((a: Intake) => string);
+  subtitle?: string | ((a: Intake) => string);
+  fields: Field[];
+  visibleIf?: (a: Intake) => boolean;
+  isComplete: (a: Intake) => boolean;
+}
+
+const STEPS: WizardStep[] = [
+  {
+    id: 'origin',
+    title: 'Where are you moving from?',
+    subtitle: 'Only corridors we have verified data for are selectable today.',
+    fields: [{ kind: 'country', scope: 'origin' }],
+    isComplete: (a) => !!a.origin,
+  },
+  {
+    id: 'destination',
+    title: 'Where are you moving to?',
+    subtitle: 'More destinations unlock as we verify them.',
+    fields: [{ kind: 'country', scope: 'destination' }],
+    isComplete: (a) => !!a.destination,
+  },
+  {
+    id: 'passports',
+    title: 'Which passport(s) do you hold?',
+    subtitle: 'Select all that apply — citizenship affects your entry rules.',
+    fields: [{ kind: 'countryMulti' }],
+    isComplete: (a) => a.passports.length > 0,
+  },
+  {
+    id: 'motivation',
+    title: "What's your main reason for moving?",
+    subtitle: 'This shapes which path we build for you.',
+    fields: [
+      {
+        kind: 'single',
+        options: MOTIVATIONS,
+        get: (a) => a.motivation,
+        set: (a, v) => ({ ...a, motivation: v as Motivation }),
+      },
+    ],
+    isComplete: (a) => !!a.motivation,
+  },
+  // ── Work branch ──
+  {
+    id: 'work-status',
+    visibleIf: (a) => a.motivation === 'work',
+    title: 'Do you already have a job offer?',
+    fields: [
+      { kind: 'single', options: WORK_STATUS, get: (a) => a.workStatus, set: (a, v) => ({ ...a, workStatus: v as Intake['workStatus'] }) },
+    ],
+    isComplete: (a) => !!a.workStatus,
+  },
+  {
+    id: 'work-employer',
+    visibleIf: (a) => a.motivation === 'work' && a.workStatus === 'has-offer',
+    title: 'Tell us about the role',
+    subtitle: 'Optional — helps tailor your steps.',
+    fields: [
+      { kind: 'text', label: 'Employer name', placeholder: 'e.g. Acme AG', optional: true, get: (a) => a.employerName, set: (a, v) => ({ ...a, employerName: v }) },
+      { kind: 'text', label: 'Location (canton or city)', placeholder: 'e.g. Zürich', optional: true, get: (a) => a.employerLocation, set: (a, v) => ({ ...a, employerLocation: v }) },
+    ],
+    isComplete: () => true,
+  },
+  // ── Family branch ──
+  {
+    id: 'family-rel',
+    visibleIf: (a) => a.motivation === 'family',
+    title: 'Who are you joining?',
+    fields: [
+      { kind: 'single', options: FAMILY_REL, get: (a) => a.familyRelationship, set: (a, v) => ({ ...a, familyRelationship: v as Intake['familyRelationship'] }) },
+    ],
+    isComplete: (a) => !!a.familyRelationship,
+  },
+  {
+    id: 'family-status',
+    visibleIf: (a) => a.motivation === 'family',
+    title: (a) => `Their status in ${a.destination ? countryName(a.destination) : 'the destination'}`,
+    fields: [
+      {
+        kind: 'single',
+        get: (a) => a.familyJoineeStatus,
+        set: (a, v) => ({ ...a, familyJoineeStatus: v as Intake['familyJoineeStatus'] }),
+        options: (a) => {
+          const d = a.destination ? countryName(a.destination) : 'the country';
+          return [
+            { value: 'citizen', label: `${d === 'Switzerland' ? 'Swiss' : d} citizen` },
+            { value: 'settled', label: 'Settled (permanent resident)' },
+            { value: 'permit-holder', label: 'Resident permit holder' },
+            { value: 'other', label: 'Something else / not sure' },
+          ];
+        },
+      },
+    ],
+    isComplete: (a) => !!a.familyJoineeStatus,
+  },
+  // ── Study branch ──
+  {
+    id: 'study-status',
+    visibleIf: (a) => a.motivation === 'study',
+    title: 'Where are you in the process?',
+    fields: [
+      { kind: 'single', options: STUDY_STATUS, get: (a) => a.studyStatus, set: (a, v) => ({ ...a, studyStatus: v as Intake['studyStatus'] }) },
+    ],
+    isComplete: (a) => !!a.studyStatus,
+  },
+  {
+    id: 'study-inst',
+    visibleIf: (a) => a.motivation === 'study' && a.studyStatus === 'admitted',
+    title: 'Which institution?',
+    subtitle: 'Optional.',
+    fields: [
+      { kind: 'text', label: 'Institution', placeholder: 'e.g. ETH Zürich', optional: true, get: (a) => a.studyInstitution, set: (a, v) => ({ ...a, studyInstitution: v }) },
+    ],
+    isComplete: () => true,
+  },
+  // ── Other branch ──
+  {
+    id: 'other-desc',
+    visibleIf: (a) => a.motivation === 'other',
+    title: 'Tell us your main reason',
+    subtitle: 'A sentence is plenty — it helps us point you to the right path.',
+    fields: [
+      { kind: 'text', textarea: true, placeholder: 'e.g. retiring, remote work for a US employer, investment…', get: (a) => a.otherDescription, set: (a, v) => ({ ...a, otherDescription: v }) },
+    ],
+    isComplete: (a) => a.otherDescription.trim().length > 0,
+  },
+  // ── Common tail ──
+  {
+    id: 'duration',
+    title: 'How long do you plan to stay?',
+    subtitle: 'Your intended stay determines which permit you need.',
+    fields: [
+      { kind: 'single', options: DURATION, get: (a) => a.durationIntent, set: (a, v) => ({ ...a, durationIntent: v as Intake['durationIntent'] }) },
+    ],
+    isComplete: (a) => !!a.durationIntent,
+  },
+  {
+    id: 'children',
+    title: 'Are children moving with you?',
+    fields: [
+      { kind: 'boolean', get: (a) => a.hasChildren, set: (a, v) => ({ ...a, hasChildren: v }), yes: 'Yes, children are coming', no: 'No' },
+    ],
+    isComplete: (a) => a.hasChildren !== null,
+  },
+];
+
+// ── Hooks ────────────────────────────────────────────────────────────────────
+
+function useIsMobile() {
+  // Start `false` so the server and the client's first render agree (no
+  // hydration mismatch); correct it from matchMedia right after mount.
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const mq = window.matchMedia('(max-width: 767px)');
+    setIsMobile(mq.matches);
+    const handler = (e: MediaQueryListEvent) => setIsMobile(e.matches);
+    mq.addEventListener('change', handler);
+    return () => mq.removeEventListener('change', handler);
+  }, []);
+  return isMobile;
+}
+
+// ── Small UI atoms ───────────────────────────────────────────────────────────
 
 function OptionCard({
-  label,
-  description,
-  selected,
-  onClick,
-}: {
-  label: string;
-  description?: string;
-  selected: boolean;
-  onClick: () => void;
-}) {
+  label, description, selected, disabled, onClick,
+}: { label: string; description?: string; selected: boolean; disabled?: boolean; onClick: () => void }) {
   return (
     <button
       type="button"
+      disabled={disabled}
       onClick={onClick}
       className={`w-full border rounded-xl p-4 text-left transition-all ${
-        selected
+        disabled
+          ? 'border-slate-100 bg-slate-50 opacity-50 cursor-not-allowed'
+          : selected
           ? 'border-blue-500 bg-blue-50'
           : 'border-slate-200 bg-white hover:border-blue-300'
       }`}
     >
-      <span className="font-medium text-slate-900">{label}</span>
-      {description && (
-        <span className="block text-sm text-slate-500 mt-0.5">{description}</span>
-      )}
+      <span className={`font-medium ${disabled ? 'text-slate-400' : 'text-slate-900'}`}>{label}</span>
+      {description && <span className="block text-sm text-slate-500 mt-0.5">{description}</span>}
     </button>
   );
 }
 
 function CategoryBadge({ category }: { category: string }) {
   const colors: Record<string, string> = {
-    legal: 'bg-blue-100 text-blue-800',
-    financial: 'bg-green-100 text-green-800',
-    housing: 'bg-purple-100 text-purple-800',
-    health: 'bg-red-100 text-red-800',
-    administrative: 'bg-slate-100 text-slate-700',
-    banking: 'bg-amber-100 text-amber-800',
-    education: 'bg-teal-100 text-teal-800',
+    'visa-permit': 'bg-blue-100 text-blue-800',
     employment: 'bg-orange-100 text-orange-800',
+    housing: 'bg-purple-100 text-purple-800',
+    'healthcare-insurance': 'bg-red-100 text-red-800',
+    'registration-bureaucracy': 'bg-slate-100 text-slate-700',
+    'finance-banking': 'bg-amber-100 text-amber-800',
+    taxes: 'bg-green-100 text-green-800',
+    'family-dependents': 'bg-pink-100 text-pink-800',
+    education: 'bg-teal-100 text-teal-800',
   };
   return (
     <span className={`text-xs rounded px-2 py-0.5 font-medium ${colors[category] ?? 'bg-slate-100 text-slate-700'}`}>
@@ -108,39 +377,230 @@ function CategoryBadge({ category }: { category: string }) {
   );
 }
 
-// ── Task detail panel ───────────────────────────────────────────────────────
+// ── Country pickers ──────────────────────────────────────────────────────────
 
-function TaskDetailPanel({
-  task,
-  onClose,
-}: {
-  task: TaskData;
-  onClose: () => void;
-}) {
+function CountryGrid({
+  selectableIso, selectedIso, onSelect,
+}: { selectableIso: Set<string>; selectedIso: string | null; onSelect: (iso: string) => void }) {
   return (
-    <div className="flex flex-col h-full">
-      <div className="flex items-start justify-between gap-4 px-6 pt-6 pb-4 border-b border-slate-200 shrink-0">
-        <div className="space-y-1">
-          <CategoryBadge category={task.category} />
-          <h2 className="text-xl font-semibold text-slate-900 leading-snug">{task.title}</h2>
+    <div className="grid grid-cols-2 gap-1.5 sm:gap-2">
+      {COUNTRY_OPTIONS.map((c) => {
+        const selectable = selectableIso.has(c.iso2);
+        const selected = selectedIso === c.iso2;
+        return (
+          <button
+            key={c.iso2}
+            type="button"
+            disabled={!selectable}
+            onClick={() => onSelect(c.iso2)}
+            title={selectable ? undefined : 'No verified corridor for this country yet'}
+            className={`flex items-center gap-2 border rounded-lg px-2.5 py-2 text-left text-sm transition-all ${
+              !selectable
+                ? 'border-slate-100 bg-slate-50 opacity-50 cursor-not-allowed'
+                : selected
+                ? 'border-blue-500 bg-blue-50'
+                : 'border-slate-200 bg-white hover:border-blue-300'
+            }`}
+          >
+            {selectable ? <Flag iso={c.iso2} className="text-xl" /> : <IsoChip iso={c.iso2} />}
+            <span className={`font-medium ${selectable ? 'text-slate-900' : 'text-slate-400'}`}>{c.name}</span>
+            {selected && <span className="ml-auto text-blue-500" aria-hidden="true">✓</span>}
+          </button>
+        );
+      })}
+    </div>
+  );
+}
+
+function CountryMultiGrid({
+  selected, onToggle,
+}: { selected: string[]; onToggle: (iso: string) => void }) {
+  return (
+    <div className="grid grid-cols-2 gap-1.5 sm:gap-2">
+      {COUNTRY_OPTIONS.map((c) => {
+        const isOn = selected.includes(c.iso2);
+        return (
+          <button
+            key={c.iso2}
+            type="button"
+            onClick={() => onToggle(c.iso2)}
+            className={`flex items-center gap-2 border rounded-lg px-2.5 py-2 text-left text-sm transition-all ${
+              isOn ? 'border-blue-500 bg-blue-50' : 'border-slate-200 bg-white hover:border-blue-300'
+            }`}
+          >
+            <Flag iso={c.iso2} className="text-xl" />
+            <span className="font-medium text-slate-900">{c.name}</span>
+            <span className={`ml-auto w-5 h-5 rounded border flex items-center justify-center text-xs ${
+              isOn ? 'bg-blue-500 border-blue-500 text-white' : 'border-slate-300 text-transparent'
+            }`} aria-hidden="true">✓</span>
+          </button>
+        );
+      })}
+    </div>
+  );
+}
+
+// ── Answer recap (for the sidebar) ───────────────────────────────────────────
+
+function motivationLabel(m: Motivation): string {
+  return { work: 'Work', family: 'Family', study: 'Study', other: 'Other' }[m];
+}
+
+function buildRecap(a: Intake): { label: ReactNode; stepId: string }[] {
+  const items: { label: ReactNode; stepId: string }[] = [];
+  if (a.origin && a.destination) {
+    items.push({
+      label: (
+        <span className="inline-flex items-center gap-1.5">
+          <Flag iso={a.origin} /> {countryName(a.origin)} <span className="text-slate-400">→</span> <Flag iso={a.destination} /> {countryName(a.destination)}
+        </span>
+      ),
+      stepId: 'origin',
+    });
+  }
+  if (a.passports.length) {
+    items.push({
+      label: (
+        <span className="inline-flex items-center gap-1.5">
+          Passport:{' '}
+          {a.passports.map((p) => (
+            <span key={p} className="inline-flex items-center gap-1"><Flag iso={p} /> {countryName(p)}</span>
+          ))}
+        </span>
+      ),
+      stepId: 'passports',
+    });
+  }
+  if (a.motivation) {
+    let m = motivationLabel(a.motivation);
+    if (a.motivation === 'work' && a.workStatus) m += a.workStatus === 'has-offer' ? ' · has offer' : ' · job-seeking';
+    if (a.motivation === 'family' && a.familyRelationship) m += ` · ${a.familyRelationship.replace('-', ' ')}`;
+    if (a.motivation === 'study' && a.studyStatus) m += a.studyStatus === 'admitted' ? ' · admitted' : ' · applying';
+    items.push({ label: m, stepId: 'motivation' });
+  }
+  if (a.durationIntent) {
+    const d = { short: '<1 year', long: '1 year+', permanent: 'settling' }[a.durationIntent];
+    items.push({ label: `Stay: ${d}`, stepId: 'duration' });
+  }
+  if (a.hasChildren !== null) {
+    items.push({ label: a.hasChildren ? 'With children' : 'No children', stepId: 'children' });
+  }
+  return items;
+}
+
+// ── Journey sidebar (the "map + history") ────────────────────────────────────
+
+function StatusDot({ status }: { status: TaskStatus }) {
+  if (status === 'done') {
+    return <span className="shrink-0 w-5 h-5 rounded-full bg-green-100 text-green-600 flex items-center justify-center text-xs" aria-hidden="true">✓</span>;
+  }
+  if (status === 'available') {
+    return <span className="shrink-0 w-5 h-5 rounded-full bg-blue-500 flex items-center justify-center" aria-hidden="true"><span className="w-1.5 h-1.5 rounded-full bg-white" /></span>;
+  }
+  return <span className="shrink-0 w-5 h-5 rounded-full bg-slate-100 text-slate-400 flex items-center justify-center text-[10px]" aria-hidden="true">🔒</span>;
+}
+
+function Sidebar({
+  orderedTasks, statusFor, activeId, onSelect, recap, onEdit, doneCount, total,
+}: {
+  orderedTasks: TaskData[];
+  statusFor: (id: string) => TaskStatus;
+  activeId: string | null;
+  onSelect: (id: string) => void;
+  recap: { label: ReactNode; stepId: string }[];
+  onEdit: (stepId: string) => void;
+  doneCount: number;
+  total: number;
+}) {
+  const pct = total > 0 ? Math.round((doneCount / total) * 100) : 0;
+  return (
+    <div className="flex flex-col gap-5">
+      <div>
+        <div className="flex items-center justify-between mb-1.5">
+          <span className="text-xs text-slate-500">Your progress</span>
+          <span className="text-xs font-medium text-slate-700">{doneCount} of {total}</span>
         </div>
-        <button
-          type="button"
-          onClick={onClose}
-          aria-label="Close panel"
-          className="shrink-0 mt-1 rounded-full p-1.5 text-slate-400 hover:bg-slate-100 hover:text-slate-600"
-        >
-          <svg className="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
-            <path d="M6.28 5.22a.75.75 0 0 0-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 1 0 1.06 1.06L10 11.06l3.72 3.72a.75.75 0 1 0 1.06-1.06L11.06 10l3.72-3.72a.75.75 0 0 0-1.06-1.06L10 8.94 6.28 5.22Z" />
-          </svg>
-        </button>
+        <div className="h-1.5 rounded-full bg-slate-200 overflow-hidden">
+          <div className="h-full rounded-full bg-emerald-500 transition-all duration-500" style={{ width: `${pct}%` }} />
+        </div>
       </div>
 
-      <div className="flex-1 overflow-y-auto px-6 py-5 space-y-5">
+      <div>
+        <p className="text-xs text-slate-500 mb-2">Your answers</p>
+        <div className="flex flex-col gap-1.5">
+          {recap.map((r) => (
+            <button
+              key={r.stepId}
+              type="button"
+              onClick={() => onEdit(r.stepId)}
+              className="group flex items-center justify-between gap-2 rounded-lg bg-slate-50 hover:bg-slate-100 px-3 py-2 text-left"
+            >
+              <span className="text-sm text-slate-700 truncate">{r.label}</span>
+              <span className="text-slate-400 group-hover:text-slate-600 text-xs shrink-0" aria-hidden="true">✎</span>
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <div className="border-t border-slate-200 pt-4">
+        <p className="text-xs text-slate-500 mb-2.5">Your journey</p>
+        <div className="flex flex-col">
+          {orderedTasks.map((t) => {
+            const status = statusFor(t.id);
+            const isActive = activeId === t.id;
+            const locked = status === 'locked';
+            return (
+              <button
+                key={t.id}
+                type="button"
+                disabled={locked}
+                onClick={() => onSelect(t.id)}
+                className={`flex items-center gap-2.5 rounded-lg px-2 py-2 text-left transition-colors ${
+                  isActive ? 'bg-blue-50' : locked ? 'cursor-not-allowed' : 'hover:bg-slate-50'
+                }`}
+              >
+                <StatusDot status={status} />
+                <span className={`text-sm leading-snug ${
+                  isActive ? 'font-medium text-blue-700' : locked ? 'text-slate-400' : status === 'done' ? 'text-slate-500' : 'text-slate-700'
+                }`}>{t.title}</span>
+              </button>
+            );
+          })}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ── Task card (one task at a time) ───────────────────────────────────────────
+
+function TaskCard({
+  task, status, hasPrev, onBack, onMarkDone, onNext,
+}: {
+  task: TaskData;
+  status: TaskStatus;
+  hasPrev: boolean;
+  onBack: () => void;
+  onMarkDone: () => void;
+  onNext: () => void;
+}) {
+  const done = status === 'done';
+  return (
+    <div className="flex flex-col h-full">
+      <div className="flex-1 overflow-y-auto px-6 sm:px-8 py-6 space-y-5">
+        <div className="space-y-2">
+          <CategoryBadge category={task.category} />
+          <h2 className="text-2xl font-bold text-slate-900 leading-snug">{task.title}</h2>
+          <span className={`inline-flex items-center gap-1.5 text-sm font-medium ${
+            done ? 'text-green-600' : 'text-blue-600'
+          }`}>
+            <span className={`w-1.5 h-1.5 rounded-full ${done ? 'bg-green-500' : 'bg-blue-500'}`} />
+            {done ? 'Completed' : 'Ready to start'}
+          </span>
+        </div>
+
         <p className="text-slate-700 leading-relaxed">{task.summary.text}</p>
-        {task.detail && (
-          <p className="text-sm text-slate-600 leading-relaxed">{task.detail}</p>
-        )}
+        {task.detail && <p className="text-sm text-slate-600 leading-relaxed">{task.detail}</p>}
 
         {(task.timeline || task.cost) && (
           <dl className="grid gap-3 sm:grid-cols-2">
@@ -167,30 +627,19 @@ function TaskDetailPanel({
 
         {task.steps.length > 0 && (
           <div>
-            <h3 className="font-semibold text-slate-900 mb-3">Steps</h3>
+            <h3 className="font-semibold text-slate-900 mb-3">What you'll do</h3>
             <ol className="space-y-3">
-              {task.steps.map((step, i) => (
+              {task.steps.map((s, i) => (
                 <li key={i} className="flex gap-3">
-                  <span className="shrink-0 mt-0.5 w-5 h-5 rounded-full bg-blue-100 text-blue-700 text-xs font-bold flex items-center justify-center">
-                    {i + 1}
-                  </span>
+                  <span className="shrink-0 mt-0.5 w-5 h-5 rounded-full bg-blue-100 text-blue-700 text-xs font-bold flex items-center justify-center">{i + 1}</span>
                   <div className="space-y-1">
-                    <p className="text-sm text-slate-700">{step.text}</p>
-                    {step.tip && (
-                      <p className="text-xs text-slate-500 italic">{step.tip}</p>
-                    )}
-                    {step.links && step.links.length > 0 && (
+                    <p className="text-sm text-slate-700">{s.text}</p>
+                    {s.tip && <p className="text-xs text-slate-500 italic">{s.tip}</p>}
+                    {s.links && s.links.length > 0 && (
                       <ul className="mt-1 space-y-0.5">
-                        {step.links.map((link, li) => (
+                        {s.links.map((link, li) => (
                           <li key={li}>
-                            <a
-                              href={link.sourceUrl}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="text-xs text-blue-600 hover:underline"
-                            >
-                              {link.text} ↗
-                            </a>
+                            <a href={link.sourceUrl} target="_blank" rel="noopener noreferrer" className="text-xs text-blue-600 hover:underline">{link.text} ↗</a>
                           </li>
                         ))}
                       </ul>
@@ -221,241 +670,480 @@ function TaskDetailPanel({
         <div className="border-t border-slate-100 pt-4">
           <p className="text-xs text-slate-400">
             Source:{' '}
-            <a
-              href={task.summary.sourceUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:underline text-slate-500"
-            >
-              {task.summary.sourceName}
-            </a>
+            <a href={task.summary.sourceUrl} target="_blank" rel="noopener noreferrer" className="hover:underline text-slate-500">{task.summary.sourceName}</a>
           </p>
           <p className="mt-2 text-xs text-slate-400 italic">
-            This information is for general guidance only — not legal advice. Confirm requirements with a licensed immigration professional or the relevant Swiss authority.
+            General guidance only — not legal advice. Confirm with a licensed immigration professional or the relevant authority.
           </p>
         </div>
+      </div>
+
+      <div className="shrink-0 px-6 sm:px-8 py-4 border-t border-slate-200 flex gap-3 bg-white">
+        {hasPrev && (
+          <button type="button" onClick={onBack} className="rounded-xl px-4 py-3 text-sm font-medium text-slate-600 hover:bg-slate-100">← Back</button>
+        )}
+        {done ? (
+          <button type="button" onClick={onNext} className="flex-1 rounded-xl py-3 font-medium text-white bg-blue-500 hover:bg-blue-600 transition-colors">Next →</button>
+        ) : (
+          <button type="button" onClick={onMarkDone} className="flex-1 rounded-xl py-3 font-medium text-white bg-emerald-500 hover:bg-emerald-600 transition-colors">Mark done &amp; continue</button>
+        )}
       </div>
     </div>
   );
 }
 
-// ── Main component ──────────────────────────────────────────────────────────
+// ── Main component ───────────────────────────────────────────────────────────
 
-export default function CorridorApp({ tasks, corridorTitle, originName, destinationName }: CorridorAppProps) {
+export default function CorridorApp({ tasks, corridorTitle, originIso2, destinationIso2, availableCorridors, coversMotivations }: CorridorAppProps) {
+  // Deterministic defaults for the first render (must match the server so
+  // hydration succeeds). Persisted state is loaded from localStorage in an
+  // effect after mount — see below.
   const [phase, setPhase] = useState<'wizard' | 'app'>('wizard');
-  const [step, setStep] = useState(1);
-  const [answers, setAnswers] = useState<Answers>({
-    hasJobOffer: null,
-    partnerStatus: null,
-    hasChildren: null,
-    durationIntent: null,
-  });
-  const [selectedTaskId, setSelectedTaskId] = useState<string | null>(null);
+  const [stepId, setStepId] = useState<string>(STEPS[0].id);
+  const [answers, setAnswers] = useState<Intake>(() => defaultIntake(originIso2, destinationIso2));
+  const [doneIds, setDoneIds] = useState<Set<string>>(() => new Set());
+  const [activeTaskId, setActiveTaskId] = useState<string | null>(null);
+  const [mobilePanelOpen, setMobilePanelOpen] = useState(false);
+  const [hydrated, setHydrated] = useState(false);
 
-  const flowTasks: FlowTask[] = tasks.map((t) => ({
-    id: t.id,
-    title: t.title,
-    category: t.category,
-    dependsOn: t.dependsOn,
-  }));
+  const isMobile = useIsMobile();
 
-  const selectedTask = selectedTaskId ? tasks.find((t) => t.id === selectedTaskId) ?? null : null;
-
-  function handleWizardUpdate(patch: Partial<Answers>) {
-    setAnswers((a) => ({ ...a, ...patch }));
-  }
-
-  function handleWizardContinue() {
-    if (step < TOTAL_STEPS) {
-      setStep((s) => s + 1);
-    } else {
-      setPhase('app');
+  // Load persisted state once, after the first (server-matching) render.
+  useEffect(() => {
+    try {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if (raw) {
+        const saved = JSON.parse(raw);
+        if (saved.phase) setPhase(saved.phase);
+        if (saved.stepId) setStepId(saved.stepId);
+        if (saved.answers) setAnswers(saved.answers);
+        if (Array.isArray(saved.doneIds)) setDoneIds(new Set(saved.doneIds));
+        if (saved.activeTaskId) setActiveTaskId(saved.activeTaskId);
+      }
+    } catch {
+      // ignore unreadable storage
     }
+    setHydrated(true);
+  }, []);
+
+  // Persist on every meaningful change — but only after the load above, so we
+  // never overwrite saved state with the initial defaults.
+  useEffect(() => {
+    if (!hydrated) return;
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify({
+        phase, stepId, answers, doneIds: [...doneIds], activeTaskId,
+      }));
+    } catch {
+      // storage unavailable — silent
+    }
+  }, [hydrated, phase, stepId, answers, doneIds, activeTaskId]);
+
+  // Browser back restores phase/step.
+  useEffect(() => {
+    const handler = (e: PopStateEvent) => {
+      if (e.state?.__relocation) {
+        setPhase(e.state.phase);
+        if (e.state.stepId) setStepId(e.state.stepId);
+      }
+    };
+    window.addEventListener('popstate', handler);
+    return () => window.removeEventListener('popstate', handler);
+  }, []);
+
+  // Selectable country sets, derived from published corridors.
+  const originSelectable = useMemo(() => new Set(availableCorridors.map((c) => c.origin)), [availableCorridors]);
+  const destinationSelectable = useMemo(() => {
+    const pool = availableCorridors.filter((c) => !answers.origin || c.origin === answers.origin);
+    return new Set(pool.map((c) => c.destination));
+  }, [availableCorridors, answers.origin]);
+
+  // Personalised path: evaluate each task's `appliesIf` against the intake
+  // answers. Invalid expressions fail OPEN (the task stays visible) — hiding
+  // a legally required step is worse than showing an unneeded one.
+  const appliesCtx = useMemo<AppliesIfContext>(() => ({
+    origin: answers.origin,
+    destination: answers.destination,
+    passports: answers.passports,
+    motivation: answers.motivation,
+    workStatus: answers.workStatus,
+    familyRelationship: answers.familyRelationship,
+    familyJoineeStatus: answers.familyJoineeStatus,
+    studyStatus: answers.studyStatus,
+    durationIntent: answers.durationIntent,
+    hasChildren: answers.hasChildren,
+  }), [answers]);
+
+  const { applicableTasks, excludedTasks } = useMemo(() => {
+    const applicable: TaskData[] = [];
+    const excluded: TaskData[] = [];
+    for (const t of tasks) {
+      const r = evaluateAppliesIf(t.appliesIf, appliesCtx);
+      if (r.error) {
+        console.warn(`appliesIf on task "${t.id}" is invalid (${r.error}); showing the task (fail-open).`);
+      }
+      (r.applies ? applicable : excluded).push(t);
+    }
+    return { applicableTasks: applicable, excludedTasks: excluded };
+  }, [tasks, appliesCtx]);
+
+  // The ordered journey + status helpers (over the applicable tasks only).
+  const orderedTasks = useMemo(() => topoOrder(applicableTasks), [applicableTasks]);
+  const presentIds = useMemo(() => new Set(applicableTasks.map((t) => t.id)), [applicableTasks]);
+  const statusFor = (id: string): TaskStatus => {
+    const t = applicableTasks.find((x) => x.id === id);
+    return t ? statusOf(t, presentIds, doneIds) : 'locked';
+  };
+
+  // Keep a valid focused task: on entry, after a restore, or when editing an
+  // answer changes which tasks apply.
+  useEffect(() => {
+    if (phase !== 'app') return;
+    const stillApplicable = activeTaskId !== null && orderedTasks.some((t) => t.id === activeTaskId);
+    if (!stillApplicable) {
+      setActiveTaskId(currentTaskId(orderedTasks, doneIds) ?? orderedTasks[0]?.id ?? null);
+    }
+  }, [phase, activeTaskId, orderedTasks, doneIds]);
+
+  // Coverage honesty: does this corridor's verified content cover the user's
+  // route? If not, never present the plan as personalised — say so plainly.
+  const routeCovered =
+    !answers.motivation || !coversMotivations || coversMotivations.includes(answers.motivation);
+  const coveredLabel = (coversMotivations ?? []).map((m) => motivationLabel(m).toLowerCase()).join(' / ');
+
+  const visibleSteps = useMemo(() => STEPS.filter((s) => !s.visibleIf || s.visibleIf(answers)), [answers]);
+  const currentIndex = Math.max(0, visibleSteps.findIndex((s) => s.id === stepId));
+  const currentStep = visibleSteps[currentIndex] ?? visibleSteps[0];
+  const ready = currentStep.isComplete(answers);
+
+  function resolve<T>(v: T | ((a: Intake) => T)): T {
+    return typeof v === 'function' ? (v as (a: Intake) => T)(answers) : v;
   }
 
-  function handleWizardBack() {
-    if (step > 1) setStep((s) => s - 1);
+  function pushHistory(nextPhase: 'wizard' | 'app', nextStepId?: string) {
+    window.history.pushState({ __relocation: true, phase: nextPhase, stepId: nextStepId }, '');
   }
 
-  function handleNodeClick(id: string) {
-    setSelectedTaskId((prev) => (prev === id ? null : id));
+  function handleContinue() {
+    if (currentIndex < visibleSteps.length - 1) {
+      const next = visibleSteps[currentIndex + 1].id;
+      setStepId(next);
+      pushHistory('wizard', next);
+      return;
+    }
+    // Last step → enter the app. Redirect if the chosen corridor isn't this page.
+    if (answers.origin && answers.destination && (answers.origin !== originIso2 || answers.destination !== destinationIso2)) {
+      window.location.assign(`/${answers.origin}/${answers.destination}/`);
+      return;
+    }
+    const first = currentTaskId(orderedTasks, doneIds) ?? orderedTasks[0]?.id ?? null;
+    setActiveTaskId(first);
+    setPhase('app');
+    pushHistory('app');
   }
+
+  function handleBack() {
+    if (currentIndex > 0) setStepId(visibleSteps[currentIndex - 1].id);
+  }
+
+  function handleEditAnswer(targetStepId: string) {
+    setPhase('wizard');
+    setStepId(targetStepId);
+    setMobilePanelOpen(false);
+    pushHistory('wizard', targetStepId);
+  }
+
+  function handleMarkDone(id: string) {
+    const nextDone = new Set([...doneIds, id]);
+    setDoneIds(nextDone);
+    const next = currentTaskId(orderedTasks, nextDone);
+    setActiveTaskId(next ?? id);
+  }
+
+  function gotoAdjacentTask(dir: -1 | 1) {
+    if (!activeTaskId) return;
+    const idx = orderedTasks.findIndex((t) => t.id === activeTaskId);
+    const next = orderedTasks[idx + dir];
+    if (next && statusFor(next.id) !== 'locked') setActiveTaskId(next.id);
+  }
+
+  function handleReset() {
+    // Confirm before discarding answers or checklist progress.
+    const hasProgress = phase === 'app' || doneIds.size > 0 || currentIndex > 0;
+    if (hasProgress && typeof window !== 'undefined' &&
+        !window.confirm('Start over? This clears your answers and progress for this corridor.')) {
+      return;
+    }
+    setPhase('wizard');
+    setStepId(STEPS[0].id);
+    setAnswers(defaultIntake(originIso2, destinationIso2));
+    setDoneIds(new Set());
+    setActiveTaskId(null);
+    setMobilePanelOpen(false);
+    try { localStorage.removeItem(STORAGE_KEY); } catch { /* ignore */ }
+  }
+
+  // Country handlers (need cross-field logic, so not closures on the field).
+  function selectOrigin(iso: string) {
+    setAnswers((a) => {
+      const stillValid = availableCorridors.some((c) => c.origin === iso && c.destination === a.destination);
+      return { ...a, origin: iso, destination: stillValid ? a.destination : null };
+    });
+  }
+  function selectDestination(iso: string) {
+    setAnswers((a) => ({ ...a, destination: iso }));
+  }
+  function togglePassport(iso: string) {
+    setAnswers((a) => ({
+      ...a,
+      passports: a.passports.includes(iso) ? a.passports.filter((p) => p !== iso) : [...a.passports, iso],
+    }));
+  }
+
+  // ── Wizard phase ───────────────────────────────────────────────────────────
 
   if (phase === 'wizard') {
-    const ready = canContinue(step, answers);
     return (
       <div className="flex-1 flex flex-col overflow-hidden">
-        {/* App header */}
-        <div className="shrink-0 bg-white border-b border-slate-200 px-8 py-5">
-          <p className="text-xl font-bold text-slate-900">Relocation Flowchart</p>
-          <p className="text-sm text-slate-500 mt-0.5">Dependency-aware guide to every legal and administrative step</p>
+        <div className="shrink-0 bg-white border-b border-slate-200 px-4 sm:px-8 py-3 sm:py-4 flex items-center justify-between gap-3">
+          <div className="min-w-0">
+            <p className="text-lg sm:text-xl font-bold text-slate-900">Relocation Guide</p>
+            <p className="text-xs sm:text-sm text-slate-500 mt-0.5 truncate">A few questions, then a step-by-step plan built for your situation</p>
+          </div>
+          {currentIndex > 0 && (
+            <button type="button" onClick={handleReset} className="shrink-0 text-sm text-slate-500 hover:text-slate-700 font-medium whitespace-nowrap">Start over</button>
+          )}
         </div>
 
-        {/* Scrollable body */}
-        <div className="flex-1 bg-slate-50 overflow-y-auto">
-          <div className="flex flex-col items-center py-10 px-6">
-            {/* Progress bar — outside the card */}
-            <div className="flex gap-2 w-full max-w-xl mb-6">
-              {Array.from({ length: TOTAL_STEPS }, (_, i) => (
-                <div
-                  key={i}
-                  className={`h-1 flex-1 rounded-full transition-colors ${i < step ? 'bg-blue-500' : 'bg-slate-200'}`}
-                />
-              ))}
-            </div>
+        <div className="flex-1 min-h-0 bg-slate-50 flex flex-col items-center px-4 sm:px-6 py-3 sm:py-5">
+          <div className="shrink-0 flex gap-2 w-full max-w-xl mb-3 sm:mb-4">
+            {visibleSteps.map((s, i) => (
+              <div key={s.id} className={`h-1 flex-1 rounded-full transition-colors ${i <= currentIndex ? 'bg-blue-500' : 'bg-slate-200'}`} />
+            ))}
+          </div>
 
-            {/* Card */}
-            <div className="w-full max-w-xl bg-white rounded-2xl shadow-sm border border-slate-100 p-8">
-              <p className="text-xs font-bold text-blue-600 uppercase tracking-widest mb-4">
-                Step {step} of {TOTAL_STEPS}
-              </p>
+          {/* The card caps at the available height: question header and footer
+              stay visible; only the options area scrolls when it must. */}
+          <div className="w-full max-w-xl flex-1 min-h-0 flex flex-col">
+            <div className="w-full max-h-full bg-white rounded-2xl shadow-sm border border-slate-100 flex flex-col overflow-hidden">
+              <div className="shrink-0 px-6 sm:px-8 pt-5 sm:pt-7">
+                <p className="text-xs font-bold text-blue-600 uppercase tracking-widest mb-2 sm:mb-3">
+                  Step {currentIndex + 1} of {visibleSteps.length}
+                </p>
+                <h2 className="text-xl sm:text-2xl font-bold text-slate-900 mb-1">{resolve(currentStep.title)}</h2>
+                {currentStep.subtitle && <p className="text-sm text-slate-500">{resolve(currentStep.subtitle)}</p>}
+              </div>
 
-              {step === 1 && (
-                <div>
-                  <h2 className="text-2xl font-bold text-slate-900 mb-1">Where are you coming from?</h2>
-                  <p className="text-sm text-slate-500 mb-6">We have verified data for this corridor.</p>
-                  <div className="space-y-3">
-                    <OptionCard
-                      label={`${originName} → ${destinationName}`}
-                      selected={true}
-                      onClick={() => {}}
-                    />
+              <div className="flex-1 min-h-0 overflow-y-auto px-6 sm:px-8 py-4 space-y-4">
+                {currentStep.fields.map((field, fi) => {
+                  if (field.kind === 'country') {
+                    const selectable = field.scope === 'origin' ? originSelectable : destinationSelectable;
+                    const selected = field.scope === 'origin' ? answers.origin : answers.destination;
+                    const onSelect = field.scope === 'origin' ? selectOrigin : selectDestination;
+                    return <CountryGrid key={fi} selectableIso={selectable} selectedIso={selected} onSelect={onSelect} />;
+                  }
+                  if (field.kind === 'countryMulti') {
+                    return <CountryMultiGrid key={fi} selected={answers.passports} onToggle={togglePassport} />;
+                  }
+                  if (field.kind === 'single') {
+                    const opts = resolve(field.options);
+                    const val = field.get(answers);
+                    return (
+                      <div key={fi} className="space-y-3">
+                        {opts.map((o) => (
+                          <OptionCard
+                            key={o.value}
+                            label={o.label}
+                            description={o.description}
+                            selected={val === o.value}
+                            onClick={() => setAnswers((a) => field.set(a, o.value))}
+                          />
+                        ))}
+                      </div>
+                    );
+                  }
+                  if (field.kind === 'boolean') {
+                    const val = field.get(answers);
+                    return (
+                      <div key={fi} className="space-y-3">
+                        <OptionCard label={field.yes ?? 'Yes'} selected={val === true} onClick={() => setAnswers((a) => field.set(a, true))} />
+                        <OptionCard label={field.no ?? 'No'} selected={val === false} onClick={() => setAnswers((a) => field.set(a, false))} />
+                      </div>
+                    );
+                  }
+                  const value = field.get(answers);
+                  return (
+                    <div key={fi} className="space-y-1.5">
+                      {field.label && (
+                        <label className="block text-sm font-medium text-slate-700">
+                          {field.label}{field.optional && <span className="text-slate-400 font-normal"> (optional)</span>}
+                        </label>
+                      )}
+                      {field.textarea ? (
+                        <textarea
+                          value={value}
+                          placeholder={field.placeholder}
+                          onChange={(e) => setAnswers((a) => field.set(a, e.target.value))}
+                          rows={3}
+                          className="w-full border border-slate-200 rounded-xl px-4 py-3 text-slate-900 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none resize-none"
+                        />
+                      ) : (
+                        <input
+                          type="text"
+                          value={value}
+                          placeholder={field.placeholder}
+                          onChange={(e) => setAnswers((a) => field.set(a, e.target.value))}
+                          className="w-full border border-slate-200 rounded-xl px-4 py-3 text-slate-900 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none"
+                        />
+                      )}
+                    </div>
+                  );
+                })}
+
+                {currentStep.id === 'motivation' && answers.motivation && !routeCovered && (
+                  <div className="rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-800">
+                    <strong>Heads up:</strong> we haven't verified the{' '}
+                    {motivationLabel(answers.motivation).toLowerCase()} route for this corridor yet.
+                    You can continue, but the current guide covers the {coveredLabel} route only —
+                    we'll flag this again on your plan.
                   </div>
-                  <p className="mt-3 text-xs text-slate-400">More corridors coming soon — we verify every fact before publishing.</p>
-                </div>
-              )}
+                )}
+              </div>
 
-              {step === 2 && (
-                <div>
-                  <h2 className="text-2xl font-bold text-slate-900 mb-1">Your situation</h2>
-                  <p className="text-sm text-slate-500 mb-6">Help us personalise your plan.</p>
-                  <div className="space-y-3">
-                    <p className="text-sm font-semibold text-slate-700">Do you have a job offer in Switzerland?</p>
-                    <OptionCard
-                      label="Yes, I have a job offer"
-                      description="Your employer will sponsor your work permit"
-                      selected={answers.hasJobOffer === true}
-                      onClick={() => handleWizardUpdate({ hasJobOffer: true })}
-                    />
-                    <OptionCard
-                      label="Not yet"
-                      description="I'm planning to find work after arriving"
-                      selected={answers.hasJobOffer === false}
-                      onClick={() => handleWizardUpdate({ hasJobOffer: false })}
-                    />
-                  </div>
-                </div>
-              )}
-
-              {step === 3 && (
-                <div>
-                  <h2 className="text-2xl font-bold text-slate-900 mb-1">How long are you staying?</h2>
-                  <p className="text-sm text-slate-500 mb-6">Your intended stay determines which permit you'll need.</p>
-                  <div className="space-y-3">
-                    <OptionCard
-                      label="Less than 1 year"
-                      description="Short-stay L permit path"
-                      selected={answers.durationIntent === 'short'}
-                      onClick={() => handleWizardUpdate({ durationIntent: 'short' })}
-                    />
-                    <OptionCard
-                      label="1 year or more"
-                      description="Standard B permit path"
-                      selected={answers.durationIntent === 'long'}
-                      onClick={() => handleWizardUpdate({ durationIntent: 'long' })}
-                    />
-                    <OptionCard
-                      label="Indefinitely — planning to settle"
-                      description="B permit now; C permit possible after 5–10 years"
-                      selected={answers.durationIntent === 'permanent'}
-                      onClick={() => handleWizardUpdate({ durationIntent: 'permanent' })}
-                    />
-                  </div>
-                </div>
-              )}
-
-              {step > 1 && (
+              <div className="shrink-0 px-6 sm:px-8 py-3.5 sm:py-4 border-t border-slate-100 flex items-center gap-3">
+                {currentIndex > 0 && (
+                  <button type="button" onClick={handleBack} className="shrink-0 rounded-xl px-4 py-3 text-sm font-medium text-slate-600 hover:bg-slate-100">← Back</button>
+                )}
                 <button
                   type="button"
-                  onClick={handleWizardBack}
-                  className="mt-6 text-sm text-slate-500 hover:text-slate-700"
+                  disabled={!ready}
+                  onClick={handleContinue}
+                  className={`flex-1 rounded-xl py-3 font-medium text-white transition-colors ${
+                    ready ? 'bg-blue-500 hover:bg-blue-600' : 'bg-blue-300 cursor-not-allowed'
+                  }`}
                 >
-                  ← Back
+                  {currentIndex === visibleSteps.length - 1 ? 'Build my relocation plan' : 'Continue'}
                 </button>
-              )}
-
-              <button
-                type="button"
-                disabled={!ready}
-                onClick={handleWizardContinue}
-                className={`w-full mt-4 rounded-xl py-3.5 font-medium text-white transition-colors ${
-                  ready ? 'bg-blue-500 hover:bg-blue-600' : 'bg-blue-300 cursor-not-allowed'
-                }`}
-              >
-                {step === TOTAL_STEPS ? 'Generate my relocation plan' : 'Continue'}
-              </button>
+              </div>
             </div>
-
-            <p className="text-xs text-slate-400 text-center mt-8 max-w-md">
-              This tool provides general guidance only — not legal advice. Rules change; always verify with official government sources.
-            </p>
           </div>
+
+          <p className="shrink-0 text-xs text-slate-400 text-center mt-3 max-w-md px-4">
+            This tool provides general guidance only — not legal advice. Rules change; always verify with official government sources.
+          </p>
         </div>
       </div>
     );
   }
 
-  // ── App phase ────────────────────────────────────────────────────────────
+  // ── App phase (one task at a time + journey sidebar) ─────────────────────────
+
+  const activeTask = activeTaskId ? applicableTasks.find((t) => t.id === activeTaskId) ?? null : null;
+  const activeStatus = activeTask ? statusFor(activeTask.id) : null;
+  const activeIdx = activeTask ? orderedTasks.findIndex((t) => t.id === activeTask.id) : -1;
+  const recap = buildRecap(answers);
+  // Count only applicable done tasks — doneIds may hold tasks excluded by a later answer edit.
+  const doneCount = applicableTasks.filter((t) => doneIds.has(t.id)).length;
+  const allDone = doneCount >= applicableTasks.length && applicableTasks.length > 0;
+
+  const sidebar = (
+    <Sidebar
+      orderedTasks={orderedTasks}
+      statusFor={statusFor}
+      activeId={activeTaskId}
+      onSelect={(id) => { setActiveTaskId(id); setMobilePanelOpen(false); }}
+      recap={recap}
+      onEdit={handleEditAnswer}
+      doneCount={doneCount}
+      total={applicableTasks.length}
+    />
+  );
+
+  const mainPanel = allDone ? (
+    <div className="flex-1 flex flex-col items-center justify-center text-center p-8">
+      <div className="w-14 h-14 rounded-full bg-green-100 flex items-center justify-center mb-4">
+        <svg className="w-7 h-7 text-green-600" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" /></svg>
+      </div>
+      <h2 className="text-2xl font-bold text-slate-900">You've completed every step</h2>
+      <p className="text-slate-500 mt-2 max-w-sm">All {applicableTasks.length} tasks in your {corridorTitle} plan are marked done. You can revisit any step from your journey on the left.</p>
+    </div>
+  ) : activeTask && activeStatus ? (
+    <TaskCard
+      task={activeTask}
+      status={activeStatus}
+      hasPrev={activeIdx > 0 && statusFor(orderedTasks[activeIdx - 1].id) !== 'locked'}
+      onBack={() => gotoAdjacentTask(-1)}
+      onMarkDone={() => handleMarkDone(activeTask.id)}
+      onNext={() => gotoAdjacentTask(1)}
+    />
+  ) : (
+    <div className="flex-1 flex items-center justify-center text-slate-500 p-8">Select a step from your journey to begin.</div>
+  );
+
   return (
     <div className="flex-1 flex flex-col overflow-hidden">
-      {/* App header — same style as wizard header */}
-      <div className="shrink-0 bg-white border-b border-slate-200 px-8 py-5 flex items-start justify-between gap-4">
-        <div>
-          <p className="text-xl font-bold text-slate-900">Relocation Flowchart</p>
-          <p className="text-sm text-slate-500 mt-0.5">{corridorTitle} · click any step to see details</p>
+      <div className="shrink-0 bg-white border-b border-slate-200 px-4 sm:px-8 py-3 sm:py-5 flex items-center justify-between gap-3 min-w-0">
+        <div className="min-w-0">
+          <p className="text-base sm:text-xl font-bold text-slate-900 truncate inline-flex items-center gap-1.5">
+            {answers.origin && <Flag iso={answers.origin} />} {answers.origin ? countryName(answers.origin) : ''}
+            <span className="text-slate-400">→</span>
+            {answers.destination && <Flag iso={answers.destination} />} {answers.destination ? countryName(answers.destination) : ''}
+          </p>
+          <p className="text-xs sm:text-sm text-slate-500 mt-0.5 truncate">
+            {routeCovered ? 'Your personalised relocation plan' : `${coveredLabel.charAt(0).toUpperCase()}${coveredLabel.slice(1)} route guide — your route isn't covered yet`}
+          </p>
         </div>
-        <button
-          type="button"
-          onClick={() => {
-            setPhase('wizard');
-            setStep(1);
-            setSelectedTaskId(null);
-            setAnswers({ hasJobOffer: null, partnerStatus: null, hasChildren: null, durationIntent: null });
-          }}
-          className="shrink-0 mt-1 text-sm text-blue-600 hover:text-blue-700 font-medium"
-        >
-          ← Edit preferences
-        </button>
+        <button type="button" onClick={handleReset} className="shrink-0 text-sm text-blue-600 hover:text-blue-700 font-medium whitespace-nowrap">← Start over</button>
       </div>
 
-      {/* Split view */}
-      <div className="flex-1 flex overflow-hidden">
-        {/* Flowchart panel */}
-        <div className="flex-1 relative bg-slate-50">
-          <CorridorFlowchart
-            tasks={flowTasks}
-            onNodeClick={handleNodeClick}
-            selectedId={selectedTaskId}
-          />
-        </div>
+      <div className="shrink-0 bg-amber-50 border-b border-amber-100 px-4 py-2">
+        <p className="text-xs text-amber-800">
+          <strong>General guidance only — not legal advice.</strong>{' '}
+          Rules change frequently. Always verify with official sources before acting.
+        </p>
+      </div>
 
-        {/* Detail panel */}
-        <div className="w-[420px] shrink-0 border-l border-slate-200 bg-white overflow-hidden flex flex-col">
-          {selectedTask ? (
-            <TaskDetailPanel task={selectedTask} onClose={() => setSelectedTaskId(null)} />
+      {!routeCovered && answers.motivation && (
+        <div className="shrink-0 bg-rose-50 border-b border-rose-100 px-4 py-2.5">
+          <p className="text-xs text-rose-800">
+            <strong>Your route isn't covered yet.</strong>{' '}
+            Your answers point to the {motivationLabel(answers.motivation).toLowerCase()} route, but this
+            guide's verified content covers the {coveredLabel} route only. The steps below describe
+            the {coveredLabel} route and may not match your situation — treat them as background
+            reading, not your plan, until we add your route.
+          </p>
+        </div>
+      )}
+
+      {routeCovered && excludedTasks.length > 0 && (
+        <div className="shrink-0 bg-blue-50 border-b border-blue-100 px-4 py-2">
+          <p className="text-xs text-blue-800">
+            <strong>Personalised for you:</strong> {applicableTasks.length} of {tasks.length} steps apply to
+            your situation. Skipped: {excludedTasks.map((t) => t.title).join(' · ')}.
+          </p>
+        </div>
+      )}
+
+      {isMobile ? (
+        <div className="flex-1 flex flex-col overflow-hidden">
+          <div className="shrink-0 border-b border-slate-200 bg-white px-4 py-3">
+            <button type="button" onClick={() => setMobilePanelOpen((v) => !v)} className="w-full flex items-center justify-between text-sm font-medium text-slate-700">
+              <span>Your journey · {doneCount}/{applicableTasks.length} done</span>
+              <span aria-hidden="true">{mobilePanelOpen ? '▲' : '▼'}</span>
+            </button>
+          </div>
+          {mobilePanelOpen ? (
+            <div className="flex-1 overflow-y-auto px-4 py-4">{sidebar}</div>
           ) : (
-            <div className="flex-1 flex flex-col items-center justify-center p-8 text-center">
-              <div className="w-12 h-12 rounded-full bg-blue-50 flex items-center justify-center mb-4">
-                <svg className="w-6 h-6 text-blue-500" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M15 15l6-6m0 0l-6-6m6 6H9a6 6 0 0 0 0 12h3" />
-                </svg>
-              </div>
-              <p className="font-medium text-slate-700">Select a step to get started</p>
-              <p className="text-sm text-slate-500 mt-1">Click any node in the flowchart to see what's required, how long it takes, and the official forms you'll need.</p>
-            </div>
+            <div className="flex-1 overflow-hidden bg-white">{mainPanel}</div>
           )}
         </div>
-      </div>
+      ) : (
+        <div className="flex-1 flex overflow-hidden">
+          <aside className="w-[300px] shrink-0 border-r border-slate-200 bg-white overflow-y-auto px-5 py-6">{sidebar}</aside>
+          <div className="flex-1 overflow-hidden bg-white">{mainPanel}</div>
+        </div>
+      )}
     </div>
   );
 }

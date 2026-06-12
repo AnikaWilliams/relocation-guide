@@ -36,6 +36,13 @@ export const ClaimStatusEnum = z.enum([
 export type ClaimStatus = z.infer<typeof ClaimStatusEnum>;
 
 /**
+ * Relocation motivations the intake wizard can capture. Keep in sync with the
+ * wizard's motivation step in `CorridorApp.tsx`.
+ */
+export const MotivationEnum = z.enum(['work', 'family', 'study', 'other']);
+export type Motivation = z.infer<typeof MotivationEnum>;
+
+/**
  * A single verifiable factual claim. Every fact a user could act on (a fee, a
  * threshold, a deadline) is a Claim and carries its own provenance.
  *
@@ -96,6 +103,13 @@ export const CorridorSchema = z.object({
   lastReviewed: z.string().date(),
   reviewedBy: z.string().min(1),
   published: z.boolean().default(false),
+  /**
+   * Which relocation routes this corridor's verified content covers. When a
+   * user's intake motivation falls outside this list, the app shows an honest
+   * "your route isn't covered yet" notice instead of presenting the plan as
+   * personalised. Omitted = no coverage check (legacy corridors).
+   */
+  coversMotivations: z.array(MotivationEnum).optional(),
   tasks: z.array(TaskSchema),
 });
 export type Corridor = z.infer<typeof CorridorSchema>;

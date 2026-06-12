@@ -24,9 +24,12 @@ progress tracker. Snapshot:
 | **Phase 3** | Accuracy system (provenance rules) — enforced continuously from Phase 1 onward | 🔁 Ongoing |
 | **Phase 4** | Monetisation (AdSense) + scale to more corridors/destinations | 🗓️ Backlog |
 
-**Right now:** the application builds, type-checks, and passes tests, but **no corridor content
-is published yet** — the accuracy gate is proven by tests and an end-to-end build check. Real
-content enters only through the verification pipeline below.
+**Right now:** USA → Switzerland (`us-ch`) is content-complete (22/22 claims verified). The
+corridor app was reshaped into a **guided form** (ADR-0008): a branching intake (origin,
+destination, passports, motivation + follow-ups, stay, children) followed by a one-task-at-a-time
+plan with a journey/answer-history sidebar. The dependency graph is now backend-only
+(`src/utils/journey.ts`); the visual flowchart was retired from the UI, cutting the island bundle
+from ~59 kB to ~9 kB gzip. Country choices are gated to published corridors. Ready for founder approval.
 
 ---
 

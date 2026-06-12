@@ -10,6 +10,78 @@ coming next. Newest updates are at the top.
 
 ---
 
+## 2026-06-12 — The app no longer pretends: if we don't cover your route, it says so
+
+**What changed.** You caught a real problem: you answered the questionnaire as someone joining an unmarried partner, and the app handed you a "get a work permit through your employer" plan labelled as *personalised*. The truth is our USA → Switzerland guide only covers the work route so far — the family route hasn't been researched and verified yet. Rather than quietly serving the wrong plan, the app is now honest about it in three places: a note appears the moment you pick a reason we don't cover yet ("we haven't verified the family route yet"); the plan's title changes from "Your personalised relocation plan" to "Work route guide — your route isn't covered yet"; and a clear notice on the plan says the steps describe the work route and should be treated as background reading, not your plan. Each guide now carries a label saying which routes it covers, so this works automatically for every future guide.
+
+**Why it matters.** Telling a family-route user to get an employer-sponsored work permit isn't a small bug — it's the kind of confidently-wrong advice that destroys trust in one visit. Saying "we don't know yet" is our core promise.
+
+**What you'd notice using the app today.** Pick "Joining family" and you'll see the warning immediately, and again on the plan. Pick "Work" and nothing changes.
+
+**What's next.** Research and verify the family-reunification route so that warning can come down.
+
+---
+
+## 2026-06-12 — The plan can now skip steps that don't apply to you (and cantons are on the roadmap)
+
+**What changed.** Two things. First, we built the machine (the working part behind the scenes) that lets a user's answers actually change their plan — like a travel agent who, hearing you have no children, quietly removes the "enrol the kids in school" page from your itinerary. When any step is skipped, a banner says exactly which ones and why, so nothing disappears silently. If a skipping rule is ever written incorrectly, the step is *shown anyway* — we'd rather show you an unnecessary step than hide a legally required one. Second, you asked about cantons (Switzerland's 26 regions, each with its own fees and offices): that's now formally on the roadmap — a canton picker in the questionnaire, then canton-specific details added region by region, starting with the big ones like Zürich and Geneva.
+
+**Why it matters.** Personalised plans are the whole promise of the product. But which steps apply to whom is a *legal* question — so the rules themselves will be written and independently fact-checked through our usual two-person pipeline before any step is ever skipped.
+
+**What you'd notice using the app today.** Nothing visible yet — no skipping rules have been written, so all six steps still show for everyone. This is plumbing.
+
+**What's next.** Write and verify the first skipping rules for the USA → Switzerland guide.
+
+---
+
+## 2026-06-12 — Every question now fits on one screen, and there's a "Start over" button
+
+**What changed.** Two usability fixes to the questionnaire. First: on smaller screens you previously had to scroll down to find the Continue button — the question was at the top, the button somewhere below the long country list. Now each question card works like a bank-app form: the question stays pinned at the top, the Continue button stays pinned at the bottom, and only the list of choices in the middle scrolls if it's too long. The country list was also made more compact (two columns) so it usually fits without any scrolling at all. Second: there's now a "Start over" button on every screen, so anyone can wipe their answers and begin again — with an "are you sure?" check first, so one stray tap can't erase someone's progress.
+
+**Why it matters.** A form where the next-step button is hidden below the fold quietly loses people — they assume the page is broken and leave. And without a reset, anyone who answered wrongly (or hands the phone to a partner) was stuck with the old answers.
+
+**What you'd notice using the app today.** On a phone-sized window, every question, its answers, and the Continue button are visible together — no hunting. A small "Start over" sits in the top-right corner.
+
+**What's next.** Make your answers actually change which steps appear in the plan.
+
+---
+
+## 2026-06-12 — The app is now a guided checklist, not a diagram
+
+**What changed.** We reshaped the whole experience around your direction. Instead of ending on a wall-chart diagram, the app now feels like a friendly form from start to finish: it asks a few more questions (where you're moving from and to — as two separate questions now — which passports you hold, and your reason for moving, with smart follow-ups), then walks you through your move one task at a time. Down the side is a "journey" panel — like a table of contents with checkmarks — showing what's done, what's next, and a tidy summary of your answers you can edit anytime. The diagram still exists, but only behind the scenes, deciding the right order of steps. Country choices show a flag; countries we haven't verified yet are greyed out so no one hits a dead end.
+
+**Why it matters.** A checklist you tick through is something people actually use and come back to; a diagram is something they glance at once. It's also much lighter, so it loads faster — especially on phones.
+
+**What you'd notice today.** Open `http://localhost:4321/us/ch/`: more questions up front, then a step-by-step plan with a progress sidebar. United States and Switzerland are the only selectable countries for now.
+
+**What's next.** Make your answers actually change which steps appear (e.g. family vs work paths).
+
+---
+
+## 2026-06-12 — The app now works properly on phones
+
+**What changed.** We fixed the five problems that were blocking your approval of the USA → Switzerland guide. The biggest one: on a phone, the app now shows a proper scrollable to-do list of relocation tasks instead of a miniaturised diagram that nobody could use. Tapping any task on the phone opens a full-screen card with all the details — what to do, what documents to gather, how long it takes — and a green "Mark as done" button so users can track their progress. Checked-off tasks survive a page refresh (we store them in the browser's memory) and the browser back button now moves backwards through the questionnaire steps the way you'd expect.
+
+**Why it matters.** Roughly half your users will be on phones. The previous phone experience — a tiny squashed diagram — would have sent them straight to a competitor. The to-do list format is also something users can actually live with for weeks, tracking their move step by step, which is the kind of sticky product that earns word-of-mouth referrals.
+
+**What you'd notice using the app today.** Open `http://localhost:4321/us/ch/` on your phone: you'll see the questionnaire, then a task list once you finish it. Tap any task to see full details and a "Mark as done" button. On a desktop, the flowchart diagram is unchanged. Also two problems that looked like they needed fixing turned out to already be solved — the browser tab icon and the diagram layout were both fine.
+
+**What's next.** You can now review and approve the guide for publishing.
+
+---
+
+## 2026-06-12 — We found and documented 12 UX problems before you launch
+
+**What changed.** We ran an independent quality check (like a mystery shopper, but for software) of the original app at anikawilliams.com/relocation-app/ using an automated browser that clicks through every screen and takes screenshots. We found 12 specific problems, ranked them by severity, and merged a fix plan into the project roadmap. The full report is at `audit/relocation-app-audit.md`.
+
+**Why it matters.** The two most important findings: (1) on a phone, the interactive task list — the core reason someone would use this — is completely hidden behind another panel. Since roughly half the target audience is on mobile, this is a blocker for launch. (2) If a user accidentally refreshes the page or taps the phone's back button mid-questionnaire, all their answers are lost and they start over. Both are fixable before you approve the corridor.
+
+**What you'd notice using the app today.** The questionnaire works fine on a desktop. On a phone, you can complete the questions but the flowchart screen is broken — buttons overlap the title and the task list is hidden. That will be fixed before you see it for approval.
+
+**What's next.** Fix the 5 pre-launch blockers (mobile layout, state persistence, ReactFlow loading, favicon), then your approval to publish.
+
+---
+
 ## 2026-06-11 — The app now looks like your original product
 
 **What changed.** We polished the visual design so it matches the app you already built at anikawilliams.com/relocation-app/. Three specific things changed: (1) the website's generic navigation bar ("Relocation Guide / Corridors") no longer appears — the app has its own header that says "Relocation Flowchart" with a subtitle, exactly like the original. (2) The progress bar (the row of little lines showing which step you're on) now sits above the white card, not inside it. (3) The "Continue" button is now full-width at the bottom of the card, matching the original. Step 1 also now shows the corridor as a pre-selected card ("United States → Switzerland") so users instantly know they're in the right place.

@@ -4,7 +4,11 @@ title: "Moving from the USA to Switzerland"
 description: "How US citizens (non-EU/EFTA third-country nationals) relocate to Switzerland for work: the employer-sponsored work and residence permit, the national (type D) visa, arrival registration, the residence permit card, mandatory health insurance, and social security."
 lastReviewed: "2026-06-09"
 reviewedBy: "content-researcher"
-published: false
+published: true
+# This guide documents the employer-sponsored work route only (per the
+# description above). Family/study/other routes need their own researched and
+# verified content before being added here.
+coversMotivations: [work]
 tasks:
   # ---------------------------------------------------------------------------
   - id: work-residence-permit

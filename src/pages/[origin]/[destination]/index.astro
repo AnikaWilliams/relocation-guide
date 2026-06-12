@@ -1,18 +1,22 @@
 ---
 import type { GetStaticPaths } from 'astro';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
-import CorridorApp, { type TaskData } from '../../../components/CorridorApp.tsx';
-import { getPublishedCorridors, countryName } from '../../../utils/corridors';
+import CorridorApp, { type TaskData, type CorridorPair } from '../../../components/CorridorApp.tsx';
+import { getPublishedCorridors, getPublishedCorridorPairs } from '../../../utils/corridors';
 
 export const getStaticPaths = (async () => {
   const corridors = await getPublishedCorridors();
+  const availableCorridors = await getPublishedCorridorPairs();
   return corridors.map((entry) => ({
     params: { origin: entry.data.originIso2, destination: entry.data.destinationIso2 },
-    props: { corridor: entry.data },
+    props: { corridor: entry.data, availableCorridors },
   }));
 }) satisfies GetStaticPaths;
 
-const { corridor } = Astro.props;
+const { corridor, availableCorridors } = Astro.props as {
+  corridor: (typeof Astro.props)['corridor'];
+  availableCorridors: CorridorPair[];
+};
 
 const appTasks: TaskData[] = corridor.tasks.map((t) => ({
   id: t.id,
@@ -33,16 +37,16 @@ const appTasks: TaskData[] = corridor.tasks.map((t) => ({
   appliesIf: t.appliesIf,
 }));
 
-const originName = countryName(corridor.originIso2);
-const destinationName = countryName(corridor.destinationIso2);
 ---
 
 <BaseLayout title={corridor.title} description={corridor.description} fullBleed>
   <CorridorApp
     tasks={appTasks}
     corridorTitle={corridor.title}
-    originName={originName}
-    destinationName={destinationName}
+    originIso2={corridor.originIso2}
+    destinationIso2={corridor.destinationIso2}
+    availableCorridors={availableCorridors}
+    coversMotivations={corridor.coversMotivations}
     client:load
   />
 </BaseLayout>
