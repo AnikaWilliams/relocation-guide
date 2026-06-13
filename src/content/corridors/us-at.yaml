@@ -995,23 +995,23 @@ tasks:
             reviewBy: "2026-09-11"
       - text: "If you are not employed, arrange qualifying health insurance covering all risks in Austria (a residence-permit requirement)."
         links:
-          - text: "Austria Migration — health insurance coverage as a residence requirement"
-            sourceUrl: "https://www.migration.gv.at/en/living-and-working-in-austria/health/health-insurance/"
-            sourceName: "Austria Migration — Health insurance"
-            # KICKED BACK 2026-06-13 (fact-verifier): this health-insurance page does NOT state that health-insurance coverage is a residence-permit requirement — it covers compulsory insurance, benefits and charges only. The "covering all risks / residence requirement" wording is on the OKW, EU Blue Card and Family-reunification pages instead. The step's claim is true, but it is not supported by the cited source; re-point this link to one of those permit pages (or to the general-requirements section) so the source matches the claim.
+          - text: "Austria Migration — Other Key Workers: health insurance covering all risks among the settlement requirements"
+            sourceUrl: "https://www.migration.gv.at/en/types-of-immigration/permanent-immigration/other-key-workers/"
+            sourceName: "Austria Migration — Other Key Workers (Red-White-Red Card)"
+            # RE-SOURCED 2026-06-13 (content-researcher): re-pointed from the Health-insurance page (which only covers compulsory employee insurance/e-card/benefits, not the residence requirement) to the Other Key Workers permit page, which states the settlement requirement "health insurance covering all risks (compulsory health insurance or equivalent insurance policy)" and that "the general requirements under Austrian settlement and residence law are met (health insurance coverage)". Source captured at sources/us-at/cd0f7feb.txt.
             status: UNVERIFIED
             lastVerified: "2026-06-13"
             verifiedBy: ""
             reviewBy: "2026-09-11"
     documents:
-      - name: "ÖGK registration (via your employer)"
+      - name: "Social-security registration (via your employer)"
         type: form
-        description: "Registration with the Austrian Health Insurance Fund (ÖGK), normally arranged by your employer when you start work; the migration portal describes the system."
+        description: "Registration with the social-security system, which the employer must complete before you start working; for employees this provides your statutory health insurance (ÖGK) and e-card."
         form:
-          text: "Employees are registered with the ÖGK by their employer on starting work. The migration portal is the authority describing compulsory insurance and the e-card; non-employees arrange qualifying cover."
-          sourceUrl: "https://www.migration.gv.at/en/living-and-working-in-austria/health/health-insurance/"
-          sourceName: "Austria Migration — Health insurance"
-          # KICKED BACK 2026-06-13 (fact-verifier): the cited health-insurance page confirms compulsory insurance for employees, the e-card and voluntary cover, but does NOT state the load-bearing mechanic "Employees are registered with the ÖGK by their employer on starting work" — the page does not describe employer-side registration at all. Either re-source this to an ÖGK/employer-registration page that states it, or soften the claim to what this page supports (compulsory insurance + e-card). Not verified.
+          text: "Before you start work, your employer must register you with the social-security system (this is the employer's obligation under Austria's Business Service Portal guidance on hiring staff); for employees this establishes the compulsory statutory health insurance. Non-employees arrange qualifying cover separately."
+          sourceUrl: "https://www.usp.gv.at/en/themen/mitarbeiter-und-gesundheit/einstellung-mitarbeiter-und-arten-der-beschaeftigung/einstellen-von-personal.html"
+          sourceName: "USP.gv.at (Austrian Business Service Portal) — Hiring of staff"
+          # RE-SOURCED 2026-06-13 (content-researcher): re-pointed from the migration Health-insurance page (which never describes employer-side registration) to USP.gv.at "Hiring of staff", the official Business Service Portal page that states verbatim "Before the person starts working, the employer must register him or her with the social security system." Recast to "social-security registration" (which the source states) rather than naming ÖGK as the registration body, since the source says "social security system" generically; ÖGK is noted as the resulting health-insurance carrier for employees. Source captured at sources/us-at/1699e880.txt.
           status: UNVERIFIED
           lastVerified: "2026-06-13"
           verifiedBy: ""
@@ -1029,19 +1029,19 @@ tasks:
     title: "Find and rent housing in Austria"
     category: housing
     summary:
-      text: "Most newcomers rent. Austrian rental law distinguishes a primary leasehold (Hauptmiete) — a tenancy directly with the owner — from a sublet (Untermiete), with different rent levels and notice protection. Rents for many primary-leasehold and housing-association apartments are regulated by the Landlord and Tenant Act (Mietrechtsgesetz, MRG). Tenancy agreements may be limited or unlimited; a limited tenancy has a legal minimum term of three years. There are obligatory housing-related registrations to observe (notably the Meldezettel)."
+      text: "Most newcomers rent. Austrian rental law distinguishes a primary leasehold (Hauptmiete) — a tenancy directly with the owner — from a sublet (Untermiete), which differ in the amount of the rent and the scope of protection against notice to leave. Tenancy agreements may be limited or unlimited; a limited tenancy has a legal minimum term of three years (which also applies on extension). There are obligatory housing-related registrations to observe (notably the Meldezettel)."
       sourceUrl: "https://www.migration.gv.at/en/living-and-working-in-austria/housing/housing.html"
       sourceName: "Austria Migration — Housing"
-      # KICKED BACK 2026-06-13 (fact-verifier): live re-fetch (curl, browser UA, HTTP 200; sha256 eff5d170…, no drift). The Hauptmiete/Untermiete distinction and the three-year limited-tenancy minimum are on the page and correct, BUT the summary also asserts rents "are regulated by the Landlord and Tenant Act (Mietrechtsgesetz, MRG)" — the source does NOT mention the Mietrechtsgesetz/MRG, "Landlord and Tenant Act", housing associations, or statutory rent regulation anywhere (grep confirmed zero matches). Drop the MRG/regulation clause or cite the Mietrechtsgesetz directly, then this can be re-verified.
+      # RE-SOURCED 2026-06-13 (content-researcher): trimmed the unsupported MRG/Landlord-and-Tenant-Act/housing-association rent-regulation clause out of the summary so every assertion now matches the cited Housing page (Hauptmiete vs Untermiete differing in rent amount and notice protection; the three-year limited-tenancy minimum; obligatory housing registrations). The MRG fact is retained, re-sourced to the primary statute, in the dedicated "Rent regulation" keyFact below.
       status: UNVERIFIED
       lastVerified: "2026-06-13"
       verifiedBy: ""
       reviewBy: "2026-09-11"
     tldr:
-      text: "Renting in Austria: a Hauptmiete (primary lease, directly with the owner) gives more rent regulation and notice protection than an Untermiete (sublet). Many primary-lease and housing-association rents fall under the Landlord and Tenant Act (MRG). Limited tenancies have a three-year minimum term. Remember the obligatory residence registration (Meldezettel)."
+      text: "Renting in Austria: a Hauptmiete (primary lease, directly with the owner) and an Untermiete (sublet) differ in the amount of the rent and the protection against notice to leave. Limited tenancies have a three-year minimum term, which also applies on extension. Remember the obligatory residence registration (Meldezettel)."
       sourceUrl: "https://www.migration.gv.at/en/living-and-working-in-austria/housing/housing.html"
       sourceName: "Austria Migration — Housing"
-      # KICKED BACK 2026-06-13 (fact-verifier): same issue as the summary — the Hauptmiete/Untermiete and three-year-minimum parts are supported, but "Many primary-lease and housing-association rents fall under the Landlord and Tenant Act (MRG)" is not on the cited Housing page (no MRG / Mietrechtsgesetz / housing-association / rent-regulation text exists there). Remove or re-source the MRG clause.
+      # RE-SOURCED 2026-06-13 (content-researcher): trimmed the unsupported "Many primary-lease and housing-association rents fall under the Landlord and Tenant Act (MRG)" clause; remaining tldr (Hauptmiete vs Untermiete differing in rent amount and notice protection; three-year limited-tenancy minimum incl. on extension) all matches the cited Housing page. MRG fact retained and re-sourced to the statute in the "Rent regulation" keyFact.
       status: UNVERIFIED
       lastVerified: "2026-06-13"
       verifiedBy: ""
@@ -1058,10 +1058,10 @@ tasks:
         sourceHash: "eff5d170eb3126653b03dcf0914a53d0be1e1a20b1afcf9c50ad1a9ab04fa560"
         reviewBy: "2026-09-11"
       - label: "Rent regulation"
-        text: "Rents for the majority of primary-leasehold and housing-association apartments are regulated by the Landlord and Tenant Act (Mietrechtsgesetz, MRG)."
-        sourceUrl: "https://www.migration.gv.at/en/living-and-working-in-austria/housing/housing.html"
-        sourceName: "Austria Migration — Housing"
-        # KICKED BACK 2026-06-13 (fact-verifier): the cited Housing page contains NO mention of the Mietrechtsgesetz (MRG), the "Landlord and Tenant Act", "housing-association" apartments, or statutory rent regulation (grep over the normalized source returned zero matches). This entire claim is unsupported by the source. Re-source to the Mietrechtsgesetz (e.g. RIS) or the MRG section of an official housing page before it can be verified — do NOT publish unsourced.
+        text: "Austria's rental-law statute, the Mietrechtsgesetz (MRG), governs the renting of apartments, individual parts of apartments and business premises of all kinds, as well as cooperative-housing use-agreements (genossenschaftliche Nutzungsverträge); it regulates the permitted rent (Mietzins) and tenant protections. Certain lettings are excluded from its scope (e.g. some short-term and service apartments), so check whether the MRG applies fully, partly or not at all to a specific tenancy."
+        sourceUrl: "https://www.ris.bka.gv.at/GeltendeFassung.wxe?Abfrage=Bundesnormen&Gesetzesnummer=10002531"
+        sourceName: "RIS — Mietrechtsgesetz (MRG), consolidated federal law"
+        # RE-SOURCED 2026-06-13 (content-researcher): re-pointed from the migration Housing page (which never mentions the MRG) to the primary statute on RIS (the official federal legal-information system). Recast to what §1 (Geltungsbereich) actually states — the MRG applies to the rental of apartments/parts of apartments/business premises of all kinds plus cooperative-housing use-agreements, and §1(2) lists scope exclusions — and dropped the unsupported quantitative "majority of ... housing-association apartments" framing. Source captured at sources/us-at/cdbd827a.txt (statute is in German).
         status: UNVERIFIED
         lastVerified: "2026-06-13"
         verifiedBy: ""
@@ -1080,20 +1080,22 @@ tasks:
       Renting is the norm for newcomers, especially in cities. Austrian rental law distinguishes a
       Hauptmiete (primary lease, contracted directly with the owner) from an Untermiete (sublet via
       a primary leaseholder); the two differ in how rent is set and in the strength of protection
-      against termination. Many primary-lease and housing-association apartments fall under the
-      Mietrechtsgesetz (MRG), which categorises apartments and caps rents. Tenancy agreements can
+      against termination. Austria's rental-law statute, the Mietrechtsgesetz (MRG), governs the
+      renting of apartments and cooperative-housing use-agreements and regulates the permitted rent
+      and tenant protections; certain lettings are excluded from its scope, so confirm whether the
+      MRG applies fully, partly or not at all to a given tenancy. Tenancy agreements can
       be limited or unlimited — a limited agreement has a legal minimum term of three years, also
       on extension, while the tenant is generally not bound for the whole term. Buying property
       instead requires registration in the land register, for which a notary or lawyer is
       recommended. Whatever you choose, complete the obligatory residence registration (Meldezettel)
       within three days of moving in.
     steps:
-      - text: "Decide between a primary lease (Hauptmiete) and a sublet (Untermiete), checking rent regulation (MRG) and the tenancy term."
+      - text: "Decide between a primary lease (Hauptmiete) and a sublet (Untermiete), comparing the rent level, notice protection and the tenancy term."
         links:
-          - text: "Austria Migration — Housing: Hauptmiete vs Untermiete and the MRG"
+          - text: "Austria Migration — Housing: Hauptmiete vs Untermiete and the tenancy term"
             sourceUrl: "https://www.migration.gv.at/en/living-and-working-in-austria/housing/housing.html"
             sourceName: "Austria Migration — Housing"
-            # KICKED BACK 2026-06-13 (fact-verifier): the Housing page DOES cover Hauptmiete vs Untermiete and the tenancy term, but the link text claims it also covers "the MRG" — the page never mentions the MRG / Mietrechtsgesetz. Re-label this link (drop "and the MRG") or re-source the MRG portion; not verified as worded.
+            # RE-SOURCED 2026-06-13 (content-researcher): dropped "and the MRG" from the link text and the step text (the Housing page never mentions the Mietrechtsgesetz); the link now describes only what the page covers — Hauptmiete vs Untermiete (rent level, notice protection) and the limited/unlimited tenancy term. The MRG statute is linked separately from the "Rent regulation" keyFact.
             status: UNVERIFIED
             lastVerified: "2026-06-13"
             verifiedBy: ""
@@ -1123,58 +1125,58 @@ tasks:
     title: "Open an Austrian bank account"
     category: finance-banking
     summary:
-      text: "You will generally need an Austrian bank account for salary, rent and bills. Banks set their own onboarding requirements, typically a valid passport, your residence registration (Meldezettel) and proof of residence status; as a US person, banks must apply FATCA reporting and some are more cautious about onboarding US citizens. The official migration portal's «Living and working in Austria» pages are the starting point for everyday-life topics. (Confirm a specific bank's requirements and US-person policy directly with the bank.)"
-      sourceUrl: "https://www.migration.gv.at/en/living-and-working-in-austria/"
-      sourceName: "Austria Migration — Living and working in Austria (overview)"
-      # KICKED BACK 2026-06-13 (fact-verifier): live re-fetch (curl, browser UA, HTTP 200; sha256 be81731b…, no drift). The cited "Living and working in Austria" page is a generic section landing page (lists the chapters: Austria at a glance, integration, working, children/education, housing, health, language). It says NOTHING about bank accounts, passports/Meldezettel for banking, FATCA, or US-person onboarding. None of this summary's factual assertions are supported by the source. These are reasonable real-world facts but need a primary source that actually states them (e.g. an official banking/FATCA/BMF page) or must be reframed as "confirm with the bank" with a source that supports that framing.
+      text: "You will generally need an Austrian bank account for salary, rent and bills. Each bank sets its own account-opening requirements, so confirm the exact document list (commonly a valid passport and proof of address/residence) directly with the bank you choose. As a US citizen you are a «specified US person» under the Austria–USA FATCA agreement, so Austrian financial institutions report your account information to the US tax authority (IRS); some banks are, in practice, more cautious about onboarding US clients, so ask a bank about its US-person policy before applying. (Account-opening documents and any US-person restrictions are set by each bank — confirm with the bank.)"
+      sourceUrl: "https://www.ris.bka.gv.at/GeltendeFassung.wxe?Abfrage=Bundesnormen&Gesetzesnummer=20009087"
+      sourceName: "RIS — FATCA Agreement Austria–USA (BGBl. III Nr. 16/2015)"
+      # RE-SOURCED 2026-06-13 (content-researcher): re-pointed from the generic "Living and working in Austria" landing page (which has zero banking/FATCA content) to the primary legal source for FATCA in Austria — the Austria–USA FATCA intergovernmental agreement on RIS (BGBl. III Nr. 16/2015, Gesetzesnummer 20009087), which provides for Austrian financial institutions reporting "specified US person" account information to the US IRS. Recast the bank-specific documentary requirements and the "some banks cautious about US clients" point as confirm-with-the-bank rather than sourced facts (no reachable official page states them); the FATCA legal basis is now sourced. Statute is in German. Source captured at sources/us-at/199659df.txt.
       status: UNVERIFIED
       lastVerified: "2026-06-13"
       verifiedBy: ""
       reviewBy: "2026-09-11"
     tldr:
-      text: "An Austrian bank account is needed for salary, rent and bills. Expect to show your passport, your residence registration (Meldezettel) and residence status; as a US person, FATCA applies and some banks are cautious about onboarding US citizens, so check a bank's US-person policy first. Specific requirements vary by bank — confirm with the bank."
-      sourceUrl: "https://www.migration.gv.at/en/living-and-working-in-austria/"
-      sourceName: "Austria Migration — Living and working in Austria (overview)"
-      # KICKED BACK 2026-06-13 (fact-verifier): same as the summary — the generic overview page does not mention banking, passport/Meldezettel for account opening, FATCA, or US-person policies. Source does not support the claim. Re-source to an official banking/FATCA reference.
+      text: "An Austrian bank account is needed for salary, rent and bills. Account-opening document lists vary by bank, so confirm them with the bank. Under the Austria–USA FATCA agreement, US citizens are «specified US persons» whose account data Austrian banks report to the US IRS; some banks are more cautious about onboarding US clients, so check a bank's US-person policy first."
+      sourceUrl: "https://www.ris.bka.gv.at/GeltendeFassung.wxe?Abfrage=Bundesnormen&Gesetzesnummer=20009087"
+      sourceName: "RIS — FATCA Agreement Austria–USA (BGBl. III Nr. 16/2015)"
+      # RE-SOURCED 2026-06-13 (content-researcher): re-pointed from the generic overview page to the RIS FATCA agreement (BGBl. III Nr. 16/2015) for the FATCA-reporting fact; bank-specific document lists and US-client caution recast as confirm-with-the-bank. Source captured at sources/us-at/199659df.txt.
       status: UNVERIFIED
       lastVerified: "2026-06-13"
       verifiedBy: ""
       reviewBy: "2026-09-11"
     keyFacts:
-      - label: "Typically needed"
-        text: "Banks generally ask for a valid passport, your residence registration (Meldezettel) and proof of your residence status; exact requirements vary by bank. (Confirm with the bank.)"
-        sourceUrl: "https://www.migration.gv.at/en/living-and-working-in-austria/"
-        sourceName: "Austria Migration — Living and working in Austria (overview)"
-        # KICKED BACK 2026-06-13 (fact-verifier): the cited overview page does not list any bank-account opening requirements (no passport/Meldezettel/residence-status text about banking). Topic-only at best; the specific documentary requirements are not stated. Re-source before verifying.
+      - label: "Account-opening documents"
+        text: "There is no single official document checklist for opening a bank account — each Austrian bank sets its own account-opening requirements. Confirm the exact list (you will typically need photo ID such as your passport and proof of address) directly with the bank you choose."
+        sourceUrl: "https://www.oesterreich.gv.at/en"
+        sourceName: "oesterreich.gv.at — official Austrian government information portal"
+        # RE-SOURCED 2026-06-13 (content-researcher): the original overview page stated nothing about banking. No reachable official page publishes a bank-account document checklist (banks set their own onboarding requirements), so this is recast as an explicit confirm-with-the-bank claim per CLAUDE.md rule 1. Linked to the official oesterreich.gv.at portal root (confirmed live, HTTP 200) as the general government anchor; the documentary specifics are deliberately NOT asserted as sourced facts. Verifier: treat as a confirm-with claim, not a sourced documentary requirement.
         status: UNVERIFIED
         lastVerified: "2026-06-13"
         verifiedBy: ""
         reviewBy: "2026-09-11"
-      - label: "US-person note"
-        text: "As a US person, Austrian banks must apply FATCA reporting; some banks are more reluctant to onboard US citizens — confirm a bank's US-person policy before applying. (Confirm with the bank.)"
-        sourceUrl: "https://www.migration.gv.at/en/living-and-working-in-austria/"
-        sourceName: "Austria Migration — Living and working in Austria (overview)"
-        # KICKED BACK 2026-06-13 (fact-verifier): the cited overview page contains no mention of FATCA, US persons, or bank onboarding. Unsupported by the source. FATCA is real, but it needs a primary source (e.g. an official tax/FATCA reference) that states it.
+      - label: "US-person note (FATCA)"
+        text: "Under the Austria–USA FATCA agreement, Austrian financial institutions identify accounts held by «specified US persons» (which includes US citizens) and report that account information to the US tax authority. Some banks are, in practice, more reluctant to onboard US clients, so confirm a bank's US-person policy before applying. (Whether a bank will onboard you is the bank's own policy — confirm with the bank.)"
+        sourceUrl: "https://www.ris.bka.gv.at/GeltendeFassung.wxe?Abfrage=Bundesnormen&Gesetzesnummer=20009087"
+        sourceName: "RIS — FATCA Agreement Austria–USA (BGBl. III Nr. 16/2015)"
+        # RE-SOURCED 2026-06-13 (content-researcher): re-pointed from the generic overview page to the primary legal source — the Austria–USA FATCA intergovernmental agreement on RIS (BGBl. III Nr. 16/2015, Gesetzesnummer 20009087). The captured text defines "spezifizierte US-Person" / "meldepflichtiges Konto" and provides for Austrian financial institutions reporting account information to the US Internal Revenue Service. The "some banks reluctant to onboard US clients" point is bank policy, kept as confirm-with. Statute is in German. Source captured at sources/us-at/199659df.txt.
         status: UNVERIFIED
         lastVerified: "2026-06-13"
         verifiedBy: ""
         reviewBy: "2026-09-11"
     detail: >
       A current account is needed in practice to receive salary and pay rent and bills in Austria.
-      Banks decide their own documentary requirements, but a passport, your residence registration
-      (Meldezettel) and proof of residence status are the usual core; bring your confirmation of
-      registration. US citizens should note that Austrian banks must report US-person accounts under
-      FATCA and that some banks are wary of onboarding US clients — ask about a bank's US-person
-      policy up front. The official «Living and working in Austria» pages are the government's entry
-      point for everyday-life topics; for the precise account-opening requirements, confirm directly
-      with the bank you choose.
+      There is no official, government-published document checklist for opening an account — each
+      bank decides its own onboarding requirements — so confirm the exact list directly with the
+      bank you choose (you will usually need photo ID such as your passport and proof of address,
+      and many banks also ask for your residence registration). US citizens should note that, under
+      the Austria–USA FATCA agreement, Austrian financial institutions identify and report
+      «specified US person» accounts to the US tax authority, and that some banks are, in practice,
+      wary of onboarding US clients — ask about a bank's US-person policy up front.
     steps:
-      - text: "Gather your passport, residence registration (Meldezettel) and residence documents, and ask a bank about its account-opening and US-person (FATCA) requirements."
+      - text: "Choose a bank and confirm its account-opening document list (typically photo ID such as your passport and proof of address) directly with the bank; as a US citizen, also ask about its US-person (FATCA) policy."
         links:
-          - text: "Austria Migration — Living and working in Austria (everyday-life overview)"
-            sourceUrl: "https://www.migration.gv.at/en/living-and-working-in-austria/"
-            sourceName: "Austria Migration — Living and working in Austria (overview)"
-            # KICKED BACK 2026-06-13 (fact-verifier): the linked overview page is genuinely the "Living and working in Austria" section landing page, but the step asserts banking documents and US-person/FATCA requirements that the page does not state. Provenance does not support the step's substance; re-source the banking/FATCA facts to a page that actually states them.
+          - text: "RIS — Austria–USA FATCA agreement (basis for reporting US-person accounts)"
+            sourceUrl: "https://www.ris.bka.gv.at/GeltendeFassung.wxe?Abfrage=Bundesnormen&Gesetzesnummer=20009087"
+            sourceName: "RIS — FATCA Agreement Austria–USA (BGBl. III Nr. 16/2015)"
+            # RE-SOURCED 2026-06-13 (content-researcher): re-pointed from the generic overview page (which states nothing about banking) to the RIS FATCA agreement, the primary legal basis for Austrian banks reporting US-person account information to the US IRS. The step's documentary requirements are recast as confirm-with-the-bank (no official document checklist exists). Source captured at sources/us-at/199659df.txt.
             status: UNVERIFIED
             lastVerified: "2026-06-13"
             verifiedBy: ""

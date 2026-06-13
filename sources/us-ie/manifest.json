@@ -274,5 +274,29 @@
     "contentType": "text/html; charset=utf-8",
     "textPath": "sources/us-ie/dadd358e.txt",
     "capturedBy": "snapshot-source"
+  },
+  {
+    "sourceUrl": "https://www.citizensinformation.ie/en/moving-country/working-in-ireland/migrant-workers/coming-to-ie-tax/",
+    "sourceName": "Citizens Information (Citizens Information Board, statutory body) — Coming to Ireland: tax and social insurance",
+    "claimIds": [],
+    "fetchedAt": "2026-06-13",
+    "fetchMethod": "curl",
+    "sha256": "1185d252949ce176ab0e1faab31964e4a058e4688f0c8fbc82da5f97cc5ded49",
+    "byteSize": 63296,
+    "contentType": "text/html; charset=utf-8",
+    "textPath": "sources/us-ie/1185d252.txt",
+    "capturedBy": "snapshot-source"
+  },
+  {
+    "sourceUrl": "https://www.revenue.ie/en/jobs-and-pensions/usc/index.aspx",
+    "sourceName": "Revenue (Office of the Revenue Commissioners) — Universal Social Charge (USC)",
+    "claimIds": [],
+    "fetchedAt": "2026-06-13",
+    "fetchMethod": "curl",
+    "sha256": "bf62ecddcfa9e4470026e51a1981df91bd4edd299d0cfc7034888af3814f81ae",
+    "byteSize": 66427,
+    "contentType": "text/html; charset=utf-8",
+    "textPath": "sources/us-ie/bf62ecdd.txt",
+    "capturedBy": "snapshot-source"
   }
 ]

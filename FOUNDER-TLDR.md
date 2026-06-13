@@ -10,6 +10,18 @@ coming next. Newest updates are at the top.
 
 ---
 
+## 2026-06-13 — Fixed all 62 flagged facts (re-sourcing pass)
+
+**What changed.** The fact-checkers had flagged 62 of the 732 new facts — not as *wrong*, but as cited to the wrong official page, or to a detail a government site hides behind an interactive form our reader can't see. A clean-up pass went through all 62: most were re-pointed to the correct official page (and re-captured), some trimmed to exactly what the source says, and a handful — where no official page publishes the detail (e.g. a bank's onboarding document list, US-citizen tax quirks) — rewritten as an honest "confirm with [the authority]" instead of a stated fact. Nothing was guessed or invented. (The pass got interrupted twice when the session paused and the helper agents stopped — but their finished work was saved to disk each time, so I just relaunched to finish the rest.)
+
+**Why it matters.** It turns every flagged item into either a properly-sourced fact or an honest "check this yourself" note — both publishable; neither misleading.
+
+**What you'd notice today.** Nothing live yet — still drafts.
+
+**What's next.** A final independent re-check of those 62, then the clean guides come to you to publish.
+
+---
+
 ## 2026-06-13 — Fact-checking progress: USA → Western Europe batch
 
 **What changed.** The independent fact-checking run is underway — separate AI checkers re-fetch every drafted fact's official source *live* and confirm it (or kick it back), with no trust in how it was written. (I'll update this line as they finish.)

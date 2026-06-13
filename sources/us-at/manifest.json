@@ -166,5 +166,53 @@
     "contentType": "text/html; charset=utf-8",
     "textPath": "sources/us-at/be81731b.txt",
     "capturedBy": "snapshot-source"
+  },
+  {
+    "sourceUrl": "https://www.gesundheitskasse.at/cdscontent/?contentid=10007.879090",
+    "sourceName": "Oesterreichische Gesundheitskasse (OEGK)",
+    "claimIds": [],
+    "fetchedAt": "2026-06-13",
+    "fetchMethod": "curl",
+    "sha256": "99c3a05be591cdba1c7873a78074992554e098a8d411b0bf00109c3f1ede15cf",
+    "byteSize": 46455,
+    "contentType": "text/html;charset=utf-8",
+    "textPath": "sources/us-at/99c3a05b.txt",
+    "capturedBy": "snapshot-source"
+  },
+  {
+    "sourceUrl": "https://www.usp.gv.at/en/themen/mitarbeiter-und-gesundheit/einstellung-mitarbeiter-und-arten-der-beschaeftigung/einstellen-von-personal.html",
+    "sourceName": "USP.gv.at — Hiring staff (employer obligations)",
+    "claimIds": [],
+    "fetchedAt": "2026-06-13",
+    "fetchMethod": "curl",
+    "sha256": "1699e880faefbd4ba4be506d7469134b9e1b3b123eccbf1c6bd66710c96cf5cd",
+    "byteSize": 35526,
+    "contentType": "text/html;charset=UTF-8",
+    "textPath": "sources/us-at/1699e880.txt",
+    "capturedBy": "snapshot-source"
+  },
+  {
+    "sourceUrl": "https://www.ris.bka.gv.at/GeltendeFassung.wxe?Abfrage=Bundesnormen&Gesetzesnummer=10002531",
+    "sourceName": "RIS — Mietrechtsgesetz (MRG), consolidated federal law",
+    "claimIds": [],
+    "fetchedAt": "2026-06-13",
+    "fetchMethod": "curl",
+    "sha256": "cdbd827a022c4268fb32018866731f267b91711fe565f58b3f82980d6dd2552d",
+    "byteSize": 665469,
+    "contentType": "text/html; charset=utf-8",
+    "textPath": "sources/us-at/cdbd827a.txt",
+    "capturedBy": "snapshot-source"
+  },
+  {
+    "sourceUrl": "https://www.ris.bka.gv.at/GeltendeFassung.wxe?Abfrage=Bundesnormen&Gesetzesnummer=20009087",
+    "sourceName": "RIS — FATCA Agreement Austria–USA (BGBl. III Nr. 16/2015), consolidated federal law",
+    "claimIds": [],
+    "fetchedAt": "2026-06-13",
+    "fetchMethod": "curl",
+    "sha256": "199659dfef8eeb511d9abea37c7913f5cb790708e2886b38cd5f26c302efd4d7",
+    "byteSize": 288597,
+    "contentType": "text/html; charset=utf-8",
+    "textPath": "sources/us-at/199659df.txt",
+    "capturedBy": "snapshot-source"
   }
 ]

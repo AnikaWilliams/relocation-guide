@@ -208,5 +208,19 @@
     "contentType": "text/html; charset=utf-8",
     "textPath": "sources/us-lu/bdca738a.txt",
     "capturedBy": "snapshot-source"
+  },
+  {
+    "sourceUrl": "https://impotsdirects.public.lu/fr/echanges_electroniques/FATCA.html",
+    "sourceName": "Administration des contributions directes (ACD) — FATCA (échanges électroniques)",
+    "claimIds": [
+      "open-bank-account"
+    ],
+    "fetchedAt": "2026-06-13",
+    "fetchMethod": "curl",
+    "sha256": "504e3689705f5e93000869c5a542a1f20c97587b24f7e20911ff6cfaae210a80",
+    "byteSize": 61059,
+    "contentType": "text/html; charset=utf-8",
+    "textPath": "sources/us-lu/504e3689.txt",
+    "capturedBy": "snapshot-source"
   }
 ]

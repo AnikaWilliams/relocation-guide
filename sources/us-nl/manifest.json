@@ -264,5 +264,99 @@
     "contentType": "text/html; charset=utf-8",
     "textPath": "sources/us-nl/00fee87d.txt",
     "capturedBy": "snapshot-source"
+  },
+  {
+    "sourceUrl": "https://business.gov.nl/regulations/work-permit-employees/",
+    "sourceName": "Netherlands Enterprise Agency (business.gov.nl) — Work permit in the Netherlands",
+    "claimIds": [],
+    "fetchedAt": "2026-06-13",
+    "fetchMethod": "curl",
+    "sha256": "a7918770b24e5f6d0c612161875916c9b4472733b3868ecb11edbf2ec8a0a444",
+    "byteSize": 1503119,
+    "contentType": "text/html; charset=utf-8",
+    "textPath": "sources/us-nl/a7918770.txt",
+    "capturedBy": "snapshot-source"
+  },
+  {
+    "sourceUrl": "https://business.gov.nl/coming-to-the-netherlands/information-for-employers/permits-for-your-foreign-employees/",
+    "sourceName": "Netherlands Enterprise Agency (business.gov.nl) — Which Dutch permits do your foreign employees need?",
+    "claimIds": [],
+    "fetchedAt": "2026-06-13",
+    "fetchMethod": "curl",
+    "sha256": "a18e4727c13f8a2ede5bde9fe56becbcc9373f587c2c4a101a22ef07db7057e4",
+    "byteSize": 1463407,
+    "contentType": "text/html; charset=utf-8",
+    "textPath": "sources/us-nl/a18e4727.txt",
+    "capturedBy": "snapshot-source"
+  },
+  {
+    "sourceUrl": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/employed-worker-netherlands_en",
+    "sourceName": "European Commission — EU Immigration Portal: Employed worker (Netherlands)",
+    "claimIds": [
+      "work-single-permit-gvva",
+      "collect-residence-document",
+      "health-insurance-zvw"
+    ],
+    "fetchedAt": "2026-06-13",
+    "fetchMethod": "curl",
+    "sha256": "dd3dcb88639750eb17b34ec77f2c8b19719ab0b5426ccecd481f1dfcda365516",
+    "byteSize": 352748,
+    "contentType": "text/html; charset=UTF-8",
+    "textPath": "sources/us-nl/dd3dcb88.txt",
+    "capturedBy": "snapshot-source"
+  },
+  {
+    "sourceUrl": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/family-member-netherlands_en",
+    "sourceName": "European Commission — EU Immigration Portal: Family member (Netherlands)",
+    "claimIds": [
+      "family-partner-permit"
+    ],
+    "fetchedAt": "2026-06-13",
+    "fetchMethod": "curl",
+    "sha256": "6d6a56b30ed2581063d1385a260e3d5cd58b8e1c2bb0e0b2f421dccdba2030db",
+    "byteSize": 350809,
+    "contentType": "text/html; charset=UTF-8",
+    "textPath": "sources/us-nl/6d6a56b3.txt",
+    "capturedBy": "snapshot-source"
+  },
+  {
+    "sourceUrl": "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/student-netherlands_en",
+    "sourceName": "European Commission — EU Immigration Portal: Student (Netherlands)",
+    "claimIds": [
+      "study-residence-permit"
+    ],
+    "fetchedAt": "2026-06-13",
+    "fetchMethod": "curl",
+    "sha256": "5f615134b8b6c36bea82d2941f19865e691c6c05d73f1a3811ea120ddb2adb4f",
+    "byteSize": 360040,
+    "contentType": "text/html; charset=UTF-8",
+    "textPath": "sources/us-nl/5f615134.txt",
+    "capturedBy": "snapshot-source"
+  },
+  {
+    "sourceUrl": "https://business.gov.nl/regulations/municipal-personal-records-database/",
+    "sourceName": "Netherlands Enterprise Agency (business.gov.nl) — Working with the Personal Records Database (BRP)",
+    "claimIds": [],
+    "fetchedAt": "2026-06-13",
+    "fetchMethod": "curl",
+    "sha256": "43cf018cf7b6a2cc693036bc85982794813f55bb4fe6d91d20205e0a9a04ef00",
+    "byteSize": 1441387,
+    "contentType": "text/html; charset=utf-8",
+    "textPath": "sources/us-nl/43cf018c.txt",
+    "capturedBy": "snapshot-source"
+  },
+  {
+    "sourceUrl": "https://www.amsterdam.nl/en/civil-affairs/first-registration/",
+    "sourceName": "City of Amsterdam — Moving from abroad (immigration)",
+    "claimIds": [
+      "register-municipality-brp"
+    ],
+    "fetchedAt": "2026-06-13",
+    "fetchMethod": "curl",
+    "sha256": "93934484a472ad1db36954acbe54de5087ef089ed28d6f0f31deb1fb55a26a38",
+    "byteSize": 53171,
+    "contentType": "text/html; charset=utf-8",
+    "textPath": "sources/us-nl/93934484.txt",
+    "capturedBy": "snapshot-source"
   }
 ]

@@ -71,25 +71,23 @@ tasks:
     title: "Get a single permit (combined work and residence authorisation)"
     category: visa-permit
     summary:
-      text: "Since 1 January 2019, any non-European citizen who wants to stay and work in Belgium for more than 90 days must hold a single permit — one authorisation that combines the right to work and the right to reside. The application is made by your employer to the competent Region (the Region of your principal place of work), and the Region and the federal Immigration Office examine and decide it jointly: the Region decides whether you may work and the Immigration Office whether you may stay for more than 90 days."
+      text: "Since 3 January 2019, any non-European citizen who wants to stay and work in Belgium for more than 90 days must hold a single permit — one authorisation that combines the right to work and the right to reside. The application is made by your employer to the competent Region (the Region of your principal place of work), and the Region and the federal Immigration Office examine and decide it jointly: the Region decides whether you may work and the Immigration Office whether you may stay for more than 90 days."
       sourceUrl: "https://dofi.ibz.be/en/themes/third-country-nationals/work/single-permit"
       sourceName: "Immigration Office (Office des Etrangers / Dienst Vreemdelingenzaken, IBZ/DOFI) — Single Permit"
-      # KICKED BACK 2026-06-13 (fact-verifier): the >90-days rule, employer-applies,
-      # joint decision, and Region-decides-work/IO-decides-residence elements are ALL
-      # supported verbatim on the live dofi Single Permit page (re-fetched
-      # 2026-06-13, sha256 6b70af30…): "any citizen from a non-European country who
-      # wants to stay and work more than 90 days in Belgium must be a single permit
-      # holder."; "The employer must apply to the competent Region (=the worker's
-      # principal place of work)."; "The Immigration Office and the Region handle
-      # the request together and make a decision."; "The Region will examine whether
-      # the worker can be authorised to work, and the Immigration Office will
-      # determine whether the worker can to stay in Belgium for more than 90 days."
-      # BUT the claim's DATE is wrong vs THIS cited source: the dofi page says
-      # "Since 03/01/2019" (= 3 January 2019, DD/MM), NOT "1 January 2019" as the
-      # claim text states. (The FPS Employment page does say "Since 1 January 2019",
-      # but that is a DIFFERENT URL, not the one cited here.) Date discrepancy ->
-      # researcher must either change "1 January 2019" to "3 January 2019" to match
-      # dofi, or re-cite the FPS Employment page for the date. Claim text NOT edited.
+      # RE-SOURCED 2026-06-13 (content-researcher): date reconciled to the cited
+      # dofi Single Permit page (sha256 6b70af30…), which states "Since 03/01/2019"
+      # (3 January 2019, DD/MM) — claim text changed "1 January 2019" -> "3 January
+      # 2019" so it matches its own cited source. Source UNCHANGED (dofi Single
+      # Permit), because that page is the one supporting the rest of the summary
+      # verbatim — "any citizen from a non-European country who wants to stay and
+      # work more than 90 days in Belgium must be a single permit holder."; "The
+      # employer must apply to the competent Region (=the worker's principal place
+      # of work)."; "The Immigration Office and the Region handle the request
+      # together and make a decision."; "The Region will examine whether the worker
+      # can be authorised to work, and the Immigration Office will determine whether
+      # the worker can to stay in Belgium for more than 90 days." (Chose to match
+      # text to dofi rather than re-cite FPS Employment, so a single source backs
+      # the whole claim.)
       status: UNVERIFIED
       lastVerified: "2026-06-13"
       verifiedBy: ""
@@ -129,24 +127,24 @@ tasks:
         sourceHash: "6b70af30f7753c5024b9cf7026ceb2a2fad85ccc706f23e24af819bd9ae0ef7a"
         reviewBy: "2026-09-11"
       - label: "Where (which Region)"
-        text: "The competent Region is the one where your principal place of work is — work authorisation is a regional competence (Flemish, Brussels-Capital, Walloon Region, or the German-speaking Community), while residence is decided federally by the Immigration Office."
-        sourceUrl: "https://employment.belgium.be/en/themes/international/foreign-workers"
-        sourceName: "FPS Employment, Labour and Social Dialogue — Foreign workers"
-        # KICKED BACK 2026-06-13 (fact-verifier): the CITED source (live FPS
-        # Employment page, sha256 e7de09f3…) supports only PART of this claim. It
-        # supports the regional competence verbatim — "Since the Sixth State Reform,
-        # the regulation of foreign workers has been the responsibility of the
-        # Regions." — and lists all four administrations (Flemish, Brussels-Capital,
-        # Walloon Region, German-speaking Community). BUT the load-bearing
-        # "competent Region is the one where your principal place of work is" rule
-        # does NOT appear on the FPS Employment page; that wording ("=the worker's
-        # principal place of work") is on the dofi Single Permit page, which is NOT
-        # the URL cited here. Also, the FPS page does not state "residence is decided
-        # federally by the Immigration Office" (it says the Federal State retains
-        # competence only for special-residence situations). Fix: cite the dofi
-        # Single Permit page for the "principal place of work" element (and the
-        # dofi Work page / belgium.be Residence-documents for the residence-is-
-        # federal element), or split the claim. Claim text NOT edited.
+        text: "The competent Region is the one where your principal place of work is (Flemish, Brussels-Capital, Walloon Region, or the German-speaking Community), and that Region examines whether you may work; the Immigration Office determines whether you may stay in Belgium for more than 90 days."
+        sourceUrl: "https://dofi.ibz.be/en/themes/third-country-nationals/work/single-permit"
+        sourceName: "Immigration Office (Office des Etrangers / Dienst Vreemdelingenzaken, IBZ/DOFI) — Single Permit"
+        # RE-SOURCED 2026-06-13 (content-researcher): re-pointed from the FPS
+        # Employment page to the dofi Single Permit page (sha256 6b70af30…), which
+        # is the page that states every element of this claim. It carries the
+        # load-bearing "competent Region (=the worker's principal place of work)"
+        # rule verbatim, names the four authorities ("between the Federal State, the
+        # Walloon Region, the Flemish Region, the Brussels[-Capital Region]" plus
+        # the German-speaking Community), and the Region-decides-work / IO-decides-
+        # >90-day-residence split ("The Region will examine whether the worker can
+        # be authorised to work, and the Immigration Office will determine whether
+        # the worker can [...] stay in Belgium for more than 90 days."). Claim text
+        # recast to drop the unsupported "work authorisation is a regional
+        # competence ... residence is decided federally" framing (which lived on the
+        # FPS page) and instead state the Region-examines-work / IO-determines-
+        # >90-day-stay split that the dofi page supports — so one cited page now
+        # backs the whole claim.
         status: UNVERIFIED
         lastVerified: "2026-06-13"
         verifiedBy: ""
@@ -189,7 +187,7 @@ tasks:
     detail: >
       Belgium is a federal state, and since the Sixth State Reform the authorisation to work is
       a competence of the Regions while the authorisation to reside is federal. The single
-      permit, in force since 1 January 2019, merges the two: your employer files one
+      permit, in force since 3 January 2019, merges the two: your employer files one
       application with the competent Region (the Region where you will mainly work) through the
       one-stop counter, and the Region and the federal Immigration Office examine it together —
       the Region deciding the work side and the Immigration Office the residence side — and
@@ -304,44 +302,40 @@ tasks:
     title: "Apply for the national (type D) long-stay visa at the Belgian post in the USA"
     category: visa-permit
     summary:
-      text: "For any stay in Belgium longer than 90 days you need a national (type D) long-stay visa, applied for before you travel. All nationalities — including US citizens — are subject to the visa requirement for long stays; there is no visa-free option to simply enter and apply in Belgium except in exceptional circumstances. Visas for US residents are issued by the Embassy of Belgium in Washington, D.C. and the Consulates General in Atlanta, Los Angeles and New York."
-      sourceUrl: "https://unitedstates.diplomatie.belgium.be/en/travel-belgium/visa-belgium"
-      sourceName: "Embassy of Belgium in the United States (FPS Foreign Affairs) — Visa for Belgium"
-      # KICKED BACK 2026-06-13 (fact-verifier): the CITED source (live Embassy
-      # "Visa for Belgium" page, sha256 a8b9049a…) supports the D-visa->90-days and
-      # the 4-posts facts verbatim — "Long stay (>90 days), or D-visa"; "Visas are
-      # issued by the Embassy of Belgium in Washington, D.C. and by the Consulates
-      # General of Belgium in Atlanta, Los Angeles and New York. Honorary consulates
-      # do not issue Schengen visas." BUT the load-bearing claim that "All
-      # nationalities — including US citizens — are subject to the visa requirement
-      # for long stays; there is no visa-free option to simply enter and apply in
-      # Belgium except in exceptional circumstances" is NOT on this embassy page —
-      # that text ("all nationalities are subject to a visa requirement for a long
-      # stay in Belgium. In certain exceptional circumstances, the application for
-      # residence can be submitted in Belgium.") is on the dofi Third-country
-      # nationals page (sha256 526f0040…), which the summary does NOT cite. Fix:
-      # add the dofi Third-country page as the source for the all-nationalities/no-
-      # visa-free element (it is correctly cited on the "No visa-free long-stay
-      # option" keyFact below), or split the summary. Claim text NOT edited.
+      text: "For any stay in Belgium longer than 90 days you need a national (type D) long-stay visa, applied for before you travel. All nationalities — including US citizens — are subject to the visa requirement for long stays; applying for residence from inside Belgium is only possible in certain exceptional circumstances. (The shorter C / Schengen visa covers stays of up to 90 days only.)"
+      sourceUrl: "https://dofi.ibz.be/en/themes/third-country-nationals"
+      sourceName: "Immigration Office (Office des Etrangers / Dienst Vreemdelingenzaken, IBZ/DOFI) — Third-country nationals"
+      # RE-SOURCED 2026-06-13 (content-researcher): re-pointed from the Embassy
+      # "Visa for Belgium" page to the dofi Third-country nationals page (sha256
+      # 526f0040…), which is the page that carries this summary's load-bearing
+      # element — "all nationalities are subject to a visa requirement for a [A long
+      # stay in the Schengen Area is longer than 90 days] in Belgium. In certain
+      # exceptional circumstances, the application for residence can be submitted in
+      # Belgium." The same page also supports the C/D split: "The C visa (Schengen
+      # visa) is intended for stays of up to 90 days, while the D visa (national
+      # long-stay visa) is meant for longer stays." Claim text recast to drop the
+      # four-named-US-posts sentence (Embassy-page-only) — that detail is preserved
+      # in the dedicated "Where (USA)" keyFact below, which is already VERIFIED with
+      # the Embassy source — so one cited page now backs the whole summary.
       status: UNVERIFIED
       lastVerified: "2026-06-13"
       verifiedBy: ""
       reviewBy: "2026-07-13"
     tldr:
-      text: "A national (type D) visa is required to enter Belgium for any stay over 90 days, and you must obtain it before travelling — unlike some countries, the USA has no visa-free 'enter then apply' option for long stays in Belgium. For US residents, D visas are issued by the Belgian Embassy in Washington, D.C. and the Consulates General in Atlanta, Los Angeles and New York."
-      sourceUrl: "https://unitedstates.diplomatie.belgium.be/en/travel-belgium/visa-belgium"
-      sourceName: "Embassy of Belgium in the United States (FPS Foreign Affairs) — Visa for Belgium"
-      # KICKED BACK 2026-06-13 (fact-verifier): the CITED Embassy "Visa for Belgium"
-      # page (sha256 a8b9049a…) supports the D-visa->90-days fact ("Long stay (>90
-      # days), or D-visa") and the 4 US posts verbatim, but NOT the load-bearing
-      # "no visa-free 'enter then apply' option for long stays" point — the draft's
-      # own note even says to "confirm the no-visa-free-for-long-stays point against
-      # the dofi page", yet the sourceUrl here is the embassy page, not dofi. That
-      # element lives on the dofi Third-country nationals page (sha256 526f0040…,
-      # "all nationalities are subject to a visa requirement for a long stay in
-      # Belgium. In certain exceptional circumstances, the application for residence
-      # can be submitted in Belgium."). Fix: cite the dofi Third-country page for the
-      # no-visa-free element. Claim text NOT edited.
+      text: "A national (type D) visa is required to enter Belgium for any stay over 90 days, and you must obtain it before travelling — all nationalities are subject to the long-stay visa requirement, and applying for residence from inside Belgium is only possible in certain exceptional circumstances. (A C / Schengen visa covers stays of up to 90 days only.)"
+      sourceUrl: "https://dofi.ibz.be/en/themes/third-country-nationals"
+      sourceName: "Immigration Office (Office des Etrangers / Dienst Vreemdelingenzaken, IBZ/DOFI) — Third-country nationals"
+      # RE-SOURCED 2026-06-13 (content-researcher): re-pointed from the Embassy
+      # "Visa for Belgium" page to the dofi Third-country nationals page (sha256
+      # 526f0040…), which carries this tldr's load-bearing no-visa-free element —
+      # "all nationalities are subject to a visa requirement for a [long stay >90
+      # days] in Belgium. In certain exceptional circumstances, the application for
+      # residence can be submitted in Belgium." — and the C/D split ("The C visa
+      # (Schengen visa) is intended for stays of up to 90 days, while the D visa
+      # (national long-stay visa) is meant for longer stays."). Claim text recast to
+      # drop the four-named-US-posts sentence (Embassy-page-only); that detail is
+      # preserved in the VERIFIED "Where (USA)" keyFact citing the Embassy page. One
+      # cited page now backs the whole tldr.
       status: UNVERIFIED
       lastVerified: "2026-06-13"
       verifiedBy: ""
@@ -394,18 +388,18 @@ tasks:
         sourceHash: "a8b9049a04637a46b7e3f3128a79175c3518c3f05832dc85175c10895c83f17f"
         reviewBy: "2026-09-11"
       - label: "Apply early"
-        text: "The visa application procedure can take a long time; apply well ahead of your planned travel (at least four weeks for visas generally, and longer for long-stay cases)."
+        text: "The visa application procedure can take a long time; you are advised to apply at least four weeks before you plan to travel."
         sourceUrl: "https://www.belgium.be/en/family/residence_documents_for_belgium"
         sourceName: "belgium.be (official federal portal) — Residence documents for Belgium"
-        # KICKED BACK 2026-06-13 (fact-verifier): the live belgium.be Residence-
-        # documents page (sha256 2ed0d80b…) supports the first part verbatim — "In
-        # some cases, the visa application procedure may take a long time. You are
-        # advised to make your application at least four weeks before you plan to
-        # travel." — but does NOT support the claim's parenthetical "(... and longer
-        # for long-stay cases)". The page gives only the single, flat "at least four
-        # weeks" figure with no long-stay distinction. The draft's own note already
-        # flagged this gloss as a soft caveat to soften. Fix: drop "and longer for
-        # long-stay cases" (or re-cite a source that states it). Claim text NOT edited.
+        # RE-SOURCED 2026-06-13 (content-researcher): trimmed the unsupported
+        # parenthetical "(at least four weeks for visas generally, and longer for
+        # long-stay cases)" down to exactly what the cited belgium.be Residence-
+        # documents page (sha256 2ed0d80b…) states — "In some cases, the visa
+        # application procedure may take a long time. You are advised to make your
+        # application at least four weeks before you plan to travel." The page gives
+        # only the flat "at least four weeks" figure with no long-stay distinction,
+        # so the "and longer for long-stay cases" gloss was dropped. Source
+        # unchanged; claim now matches its cited page verbatim.
         status: UNVERIFIED
         lastVerified: "2026-06-13"
         verifiedBy: ""
@@ -654,22 +648,22 @@ tasks:
     title: "Obtain your Belgian residence permit (electronic card)"
     category: visa-permit
     summary:
-      text: "After you arrive on your D visa and register at the commune, your long-stay residence is evidenced by a Belgian residence permit, issued under the responsibility of the FPS Home Affairs / federal Immigration Office. Since 1 January 2019, the residence document itself indicates whether the holder is authorised to work (for single-permit holders) — so for the work route your right to work is shown on the residence card."
-      sourceUrl: "https://www.belgium.be/en/family/residence_documents_for_belgium"
-      sourceName: "belgium.be (official federal portal) — Residence documents for Belgium"
-      # KICKED BACK 2026-06-13 (fact-verifier): the CITED source (live belgium.be
-      # Residence-documents page, sha256 2ed0d80b…) supports ONLY the first half —
-      # "These residence documents are the responsibility of the FPS Home Affairs,
-      # Department of Federal Immigration." It does NOT mention 2019, the single
-      # permit, or work-authorisation-shown-on-the-card. The claim's second sentence
-      # ("Since 1 January 2019, the residence document itself indicates whether the
-      # holder is authorised to work ... your right to work is shown on the residence
-      # card") comes from the FPS Employment page (sha256 e7de09f3…: "Since 1 January
-      # 2019, the single permit has been in force. Thus, the residence document now
-      # indicates whether the person concerned has a work authorisation."), which is
-      # NOT cited here. Fix: add the FPS Employment page as a second source for the
-      # work-shown-on-card sentence (it is correctly cited on the keyFact below), or
-      # split the summary. Claim text NOT edited.
+      text: "After you arrive on your D visa and register at the commune, your long-stay residence is evidenced by a Belgian residence document. Since 1 January 2019 (when the single permit came into force) the residence document itself indicates whether the holder has a work authorisation — so for the work route your right to work is shown on your residence document."
+      sourceUrl: "https://employment.belgium.be/en/themes/international/foreign-workers"
+      sourceName: "FPS Employment, Labour and Social Dialogue — Foreign workers"
+      # RE-SOURCED 2026-06-13 (content-researcher): re-pointed from the belgium.be
+      # Residence-documents page to the FPS Employment page (sha256 e7de09f3…),
+      # which carries this summary's load-bearing element verbatim — "Since 1
+      # January 2019, the single permit has been in force. Thus, the residence
+      # document now indicates whether the person concerned has a work
+      # authorisation." Claim text recast to drop the "issued under the
+      # responsibility of the FPS Home Affairs / federal Immigration Office" clause
+      # (which lived on the belgium.be page, not the FPS page) — that detail is
+      # preserved in the VERIFIED "Who issues it" keyFact citing belgium.be. Date
+      # kept at "1 January 2019" to match this FPS source (the FPS page states "1
+      # January 2019"; the dofi page's "03/01/2019" variant is used only on the
+      # work-single-permit summary, which cites dofi). One cited page now backs the
+      # whole summary.
       status: UNVERIFIED
       lastVerified: "2026-06-13"
       verifiedBy: ""
@@ -757,24 +751,22 @@ tasks:
     title: "Arrange health insurance covering all risks in Belgium"
     category: healthcare-insurance
     summary:
-      text: "You must have health insurance covering all risks in Belgium for yourself and your family — it is one of the documents required for the single permit and for family reunification, and is part of demonstrating sufficient, stable means. Most residents affiliate with a health insurance fund (mutualité / ziekenfonds) once registered; confirm the scheme that applies to your situation."
+      text: "You must have health insurance covering all risks in Belgium for yourself and your family — it is one of the documents required for the single permit, listed separately from the proof of sufficient means of subsistence. Confirm the specific health-insurance scheme that applies to your situation with a Belgian health insurance fund."
       sourceUrl: "https://dofi.ibz.be/en/themes/third-country-nationals/work/single-permit"
       sourceName: "Immigration Office (Office des Etrangers / Dienst Vreemdelingenzaken, IBZ/DOFI) — Single Permit"
-      # KICKED BACK 2026-06-13 (fact-verifier): the core requirement IS supported on
-      # the cited live dofi Single Permit page (sha256 6b70af30…): "proof that the
-      # applicant has health insurance covering all risks in Belgium for themselves
-      # and their family." BUT the summary makes two assertions the cited Single
-      # Permit page does NOT support: (a) "and for family reunification" — that is on
-      # the dofi Family page (sha256 1ab78bb4…, "Insurance" in the conditions list),
-      # NOT cited here; and (b) "is part of demonstrating sufficient, stable means" —
-      # the dofi page lists "proof of sufficient means of subsistence" and the
-      # health-insurance requirement as SEPARATE documents and does not tie insurance
-      # to the means test, so this conflation is unsupported. The "mutualité /
-      # ziekenfonds affiliation" sentence is general framing not on the cited page
-      # (draft flagged it itself). Fix: cite the Family page for the family element,
-      # drop/soften the "part of demonstrating sufficient stable means" conflation,
-      # and soften the mutualité sentence to "confirm the scheme that applies to
-      # you". Claim text NOT edited.
+      # RE-SOURCED 2026-06-13 (content-researcher): kept the cited dofi Single
+      # Permit page (sha256 6b70af30…), which supports the core requirement verbatim
+      # — "proof that the applicant has health insurance covering all risks in
+      # Belgium for themselves and their family." — and lists it SEPARATELY from
+      # "proof of sufficient means of subsistence". Claim text fixed so the cited
+      # page backs all of it: (a) dropped "and for family reunification" (that is on
+      # the dofi Family page, preserved in the VERIFIED "Also for family" keyFact);
+      # (b) replaced the unsupported "is part of demonstrating sufficient, stable
+      # means" conflation with "listed separately from the proof of sufficient means
+      # of subsistence" (which is how the page actually lists the two documents);
+      # (c) softened the "Most residents affiliate with a mutualité / ziekenfonds"
+      # sentence (not on the page) to the honest "confirm the scheme that applies to
+      # you" pointer. One cited page now backs the whole summary.
       status: UNVERIFIED
       lastVerified: "2026-06-13"
       verifiedBy: ""
@@ -943,22 +935,20 @@ tasks:
         sourceHash: "1ab78bb497cbfd81c7c10466b205c85ab8c0149ac2ac2872e0d621f0e468cd22"
         reviewBy: "2026-09-11"
       - label: "Right to work"
-        text: "A third-country national authorised to work and reside in Belgium may be accompanied or joined by spouse/partner and minor children under certain conditions; whether joining family members may work is shown on their residence document."
+        text: "A third-country national authorised to work and reside in Belgium for more than 90 days may be accompanied or joined by spouse/partner (partnership registered under a law) and minor children, under certain conditions."
         sourceUrl: "https://dofi.ibz.be/en/themes/third-country-nationals/work"
         sourceName: "Immigration Office (Office des Etrangers / Dienst Vreemdelingenzaken, IBZ/DOFI) — Work"
-        # KICKED BACK 2026-06-13 (fact-verifier): the FIRST half is supported on the
-        # cited live dofi Work page (sha256 05d858a7…) verbatim — "A third-country
-        # national authorised to work and reside in Belgium for more than 90 days may
-        # be accompanied or joined by his/her spouse or partner (partnership
-        # registered under a law) and minor children, under certain conditions." BUT
-        # the SECOND clause ("whether joining family members may work is shown on
-        # their residence document") is NOT on the dofi Work page — it is on the FPS
-        # Employment page (sha256 e7de09f3…: "The Federal State determines whether or
-        # not these people [incl. family members] can work. This information is also
-        # indicated on the residence document since 1 January 2019."), which is NOT
-        # cited here. Draft's own note flagged this. Fix: add the FPS Employment page
-        # as a second source for the work-shown-on-card clause, or drop that clause.
-        # Claim text NOT edited.
+        # RE-SOURCED 2026-06-13 (content-researcher): trimmed the second clause
+        # ("whether joining family members may work is shown on their residence
+        # document") so the claim matches its cited dofi Work page (sha256
+        # 05d858a7…) exactly — "A third-country national authorised to work and
+        # reside in Belgium for more than 90 days may be accompanied or joined by
+        # his/her spouse or partner (partnership registered under a law) and minor
+        # children, under certain conditions." The dropped work-shown-on-residence-
+        # document clause lived on the FPS Employment page, not this one; it is
+        # preserved in the residence-permit "Work authorisation shown on the card"
+        # keyFact, which cites the FPS Employment page and is already VERIFIED.
+        # Source unchanged; one cited page now backs the whole claim.
         status: UNVERIFIED
         lastVerified: "2026-06-13"
         verifiedBy: ""
@@ -1049,26 +1039,22 @@ tasks:
     category: education
     appliesIf: "motivation == 'study'"
     summary:
-      text: "Non-EU foreigners who wish to stay in Belgium for more than 90 days to study at a recognised higher-education institution apply via the Immigration Office's study route. Education is organised by the Communities (Flemish, French and German-speaking), so admission is to an institution of the relevant Community. After completing your studies, you can stay for an additional year (a search year) to find a job or start a business with a view to a work residence permit."
+      text: "Non-EU foreigners who wish to stay in Belgium for more than 90 days to study at a recognised higher-education institution (and, at the end of their studies, obtain a degree recognised in Belgium) apply via the Immigration Office's study route. After completing your studies, you can stay for an additional year (a search year) to find a job or start a business with the aim of obtaining a residence permit for work purposes."
       sourceUrl: "https://dofi.ibz.be/en/themes/third-country-nationals/study"
       sourceName: "Immigration Office (Office des Etrangers / Dienst Vreemdelingenzaken, IBZ/DOFI) — Study"
-      # KICKED BACK 2026-06-13 (fact-verifier): the study-route core IS supported on
-      # the cited live dofi Study page (sha256 d974e0f1…) verbatim — "These pages are
-      # primarily intended for non-EU foreigners who wish to stay in Belgium for more
-      # than 90 days in order to: study at a recognized higher education institution
-      # and, at the end of their studies, obtain a degree recognized in Belgium; stay
-      # for an additional year after completing their studies in order to find a job
-      # or start a business with the aim of obtaining a residence permit for work
-      # purposes." BUT the summary's clause "Education is organised by the Communities
-      # (Flemish, French and German-speaking), so admission is to an institution of
-      # the relevant Community" is NOT on the dofi Study page — that is on the
-      # belgium.be Coming-to-study page (sha256 963fb6f4…: "Education is the
-      # responsibility of the Flemish, French and German-speaking Communities."),
-      # which the summary does NOT cite. Fix: add the belgium.be Coming-to-study page
-      # as a second source for the Community-competence clause (it is correctly cited
-      # on the keyFact below), or split the summary. Claim text NOT edited. (NB: the
-      # dofi Study page DOES carry the March 2026 circular notice — see study warning,
-      # which is verified separately.)
+      # RE-SOURCED 2026-06-13 (content-researcher): trimmed the "Education is
+      # organised by the Communities (Flemish, French and German-speaking), so
+      # admission is to an institution of the relevant Community" clause so the claim
+      # matches its cited dofi Study page (sha256 d974e0f1…) — which supports the
+      # study-route core verbatim ("non-EU foreigners who wish to stay in Belgium for
+      # more than 90 days in order to: study at a recognized higher education
+      # institution and, at the end of their studies, obtain a degree recognized in
+      # Belgium; stay for an additional year after completing their studies in order
+      # to find a job or start a business with the aim of obtaining a residence
+      # permit for work purposes.") but does NOT mention the Communities. The dropped
+      # Community-competence clause is preserved in the VERIFIED "Education is a
+      # Community competence" keyFact, which cites the belgium.be Coming-to-study
+      # page. Source unchanged; one cited page now backs the whole summary.
       status: UNVERIFIED
       lastVerified: "2026-06-13"
       verifiedBy: ""
