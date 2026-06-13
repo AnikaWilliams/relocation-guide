@@ -12,11 +12,14 @@ name: Link audit
 # like eda.admin.ch) keep the run green but appear as workflow annotations
 # and in the uploaded report artifact.
 #
-# NOTE: www.ch.ch serves an error shell to datacenter IPs (incl. GitHub
-# runners) while serving real content to normal traffic — in CI those URLs
-# are downgraded to manual-check warnings and excluded from drift comparison
-# (see DATACENTER_BLOCKED_DOMAINS in scripts/check-links.mjs). True coverage
-# for ch.ch comes from local `npm run links` runs.
+# NOTE: Swiss federal sites are unreliable from GitHub's datacenter egress —
+# www.ch.ch serves an error shell to datacenter IPs, and *.admin.ch
+# (sem/fedlex/bag) intermittently refuses TCP connections (UND_ERR_CONNECT_TIMEOUT).
+# The auditor retries transient failures, and in CI a connection-level failure
+# (timeout/DNS/refused, after retries) is downgraded to a WARNING — it reflects
+# the runner's reachability, not a dead link. HTTP errors (4xx/5xx/soft-404) and
+# past-due reviews stay RED everywhere. Authoritative full coverage of these
+# domains comes from local `npm run links` runs (residential IP reaches them).
 
 on:
   schedule:

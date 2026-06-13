@@ -235,6 +235,25 @@ function extractTag(html, tag) {
   return m ? htmlToText(m[1]) : '';
 }
 
+const FETCH_RETRIES = 2; // retry transient connection failures before giving up
+const RETRY_BACKOFF_MS = 1500;
+
+/** fetchOnce with retries for transient network errors (HTTP responses are not retried). */
+async function fetchWithRetry(url) {
+  let lastErr;
+  for (let attempt = 0; attempt <= FETCH_RETRIES; attempt++) {
+    try {
+      return await fetchOnce(url);
+    } catch (err) {
+      lastErr = err;
+      if (attempt < FETCH_RETRIES) {
+        await new Promise((r) => setTimeout(r, RETRY_BACKOFF_MS * (attempt + 1)));
+      }
+    }
+  }
+  throw lastErr;
+}
+
 async function fetchOnce(url) {
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), FETCH_TIMEOUT_MS);
@@ -274,7 +293,7 @@ async function probeUrl(url) {
   let movedTo = null;
   try {
     for (let hop = 0; hop <= MAX_REDIRECTS; hop++) {
-      const res = await fetchOnce(current);
+      const res = await fetchWithRetry(current);
       if ([301, 302, 303, 307, 308].includes(res.status)) {
         const loc = res.headers.get('location');
         if (!loc) {
@@ -342,9 +361,23 @@ async function probeUrl(url) {
     };
   } catch (err) {
     const reason = err.name === 'AbortError' ? `timeout after ${FETCH_TIMEOUT_MS}ms` : (err.cause?.code ?? err.message);
-    return downgrade('network-error', reason) ?? {
-      url, verdict: 'network-error', level: 'error', detail: String(reason),
-    };
+    // Per-domain manual-check downgrade first (eda.admin.ch always; ch.ch in CI).
+    const domainWarn = downgrade('network-error', reason);
+    if (domainWarn) return domainWarn;
+    // A connection-level failure (timeout / DNS / refused) AFTER retries means
+    // the host could not be reached at all. In CI this reflects the runner's
+    // datacenter egress — Swiss federal sites (*.admin.ch) time out connections
+    // from datacenter IPs — NOT a dead link. HTTP 4xx/5xx/soft-404 above stay
+    // hard errors everywhere; only connection-level failures are downgraded, and
+    // only in CI. Local runs (residential IP) stay authoritative and fail hard
+    // so a genuine outage still surfaces.
+    if (IS_CI) {
+      return {
+        url, verdict: 'unreachable-from-ci', level: 'warn',
+        detail: `${reason} — host unreachable from CI datacenter egress (not a dead link). Authoritative check: run \`npm run links\` locally.`,
+      };
+    }
+    return { url, verdict: 'network-error', level: 'error', detail: String(reason) };
   }
 }
 
