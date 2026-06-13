@@ -74,16 +74,34 @@ const RETIREMENT = [
   'retirement-d-visa',
   'retirement-ahv-contributions',
 ];
+/** Study tasks that apply to every study user (motivation == 'study'). */
+const STUDY_COMMON = [
+  'study-residence-permit',
+  'study-d-visa',
+  'study-work-alongside',
+  'study-health-insurance-exemption',
+  'study-after-graduation',
+];
+/** Additionally shown only while still applying (studyStatus == 'applying'). */
+const STUDY_APPLYING_ONLY = ['study-admission'];
 
 describe('us-ch corridor content (preconditions)', () => {
   it('contains exactly the known task ids (update the route expectations when this changes)', () => {
     expect(corridor.tasks.map((t) => t.id).sort()).toEqual(
-      sorted([...WORK, ...SHARED, ...ALL_FAMILY_PERMITS, 'family-d-visa', ...RETIREMENT]),
+      sorted([
+        ...WORK,
+        ...SHARED,
+        ...ALL_FAMILY_PERMITS,
+        'family-d-visa',
+        ...RETIREMENT,
+        ...STUDY_COMMON,
+        ...STUDY_APPLYING_ONLY,
+      ]),
     );
   });
 
-  it('covers the work, family, and retirement motivations', () => {
-    expect(corridor.coversMotivations).toEqual(['work', 'family', 'retirement']);
+  it('covers the work, family, retirement, and study motivations', () => {
+    expect(corridor.coversMotivations).toEqual(['work', 'family', 'retirement', 'study']);
   });
 
   it('every appliesIf expression parses cleanly (no silent fail-open)', () => {
@@ -173,6 +191,19 @@ describe('route personalisation — applicable task ids per intake profile', () 
   it('retirement + children → adds the (motivation-independent) children task', () => {
     const ids = applicableIds(ctx({ motivation: 'retirement', hasChildren: true }));
     expect(ids).toEqual(sorted([...RETIREMENT, ...SHARED_CORE, 'family-permit-children']));
+  });
+
+  it('study / admitted → study tasks + shared, no admission task, no work/family entry tasks', () => {
+    const ids = applicableIds(ctx({ motivation: 'study', studyStatus: 'admitted' }));
+    expect(ids).toEqual(sorted([...STUDY_COMMON, ...SHARED]));
+    expect(ids).not.toContain('study-admission');
+    expect(ids).not.toContain('work-residence-permit');
+    expect(ids).not.toContain('family-d-visa');
+  });
+
+  it('study / still applying → adds the admission task', () => {
+    const ids = applicableIds(ctx({ motivation: 'study', studyStatus: 'applying' }));
+    expect(ids).toEqual(sorted([...STUDY_COMMON, ...STUDY_APPLYING_ONLY, ...SHARED]));
   });
 });
 

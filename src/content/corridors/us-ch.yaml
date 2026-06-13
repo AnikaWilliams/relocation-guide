@@ -1,15 +1,15 @@
 originIso2: us
 destinationIso2: ch
 title: "Moving from the USA to Switzerland"
-description: "How US citizens (non-EU/EFTA third-country nationals) relocate to Switzerland for work, family reunification, or retirement: the right permit for your route (employer-sponsored, family-reunification, or retiree residence), the national (type D) visa, arrival registration, the residence permit card, mandatory health insurance, and social security."
+description: "How US citizens (non-EU/EFTA third-country nationals) relocate to Switzerland for work, family reunification, study, or retirement: the right permit for your route, the national (type D) visa, arrival registration, the residence permit card, mandatory health insurance, and social security."
 lastReviewed: "2026-06-12"
 reviewedBy: "content-researcher"
 published: true
 # Covered routes: work (employer-sponsored, verified 2026-06-09), family
 # reunification (verified 2026-06-12, 27/27), retirement / non-gainful Art. 28
-# (verified 2026-06-12, 20/20). Study/other routes still need their own
-# researched and verified content before being added here.
-coversMotivations: [work, family, retirement]
+# (verified 2026-06-12, 20/20), study Art. 27 (verified 2026-06-12, 23/23).
+# "Other" remains uncovered pending its own researched and verified content.
+coversMotivations: [work, family, retirement, study]
 tasks:
   # ---------------------------------------------------------------------------
   - id: work-residence-permit
@@ -24,6 +24,63 @@ tasks:
       lastVerified: "2026-06-09"
       verifiedBy: "fact-verifier"
       reviewBy: "2026-09-07"
+    # ADR-0012 distilled copy (tldr/keyFacts) drafted 2026-06-12
+    # (content-researcher); all new claims UNVERIFIED pending fact-verifier.
+    tldr:
+      text: "As a US citizen you cannot get a Swiss work permit on your own: a Swiss employer must obtain your work and residence authorisation from the cantonal authorities before you move. Admission is limited to qualified workers (managers, specialists and other skilled professionals) and is capped by annual federal maximum numbers (quotas)."
+      sourceUrl: "https://www.sem.admin.ch/sem/en/home/themen/arbeit/nicht-eu_efta-angehoerige/grundlagen_zur_arbeitsmarktzulassung.html"
+      sourceName: "State Secretariat for Migration (SEM) — Basis for admission to the Swiss employment market"
+      # VERIFIED 2026-06-12 (fact-verifier, independent session per two-agent rule): SEM admission-basis page re-fetched (curl, browser UA, HTTP 200, no redirect; re-checked, not carried over from prior runs). Load-bearing checkable facts confirmed verbatim: "Admissions are limited to managers, specialists and other qualified workers" (Personal requirements §, Art. 23 FNIA) and "Admissions of non-EU and non-EFTA state nationals are limited. To this end, the Federal Council determines the maximum numbers in the Ordinance on Admission, Period of Stay and Employment (ASEO) on an annual basis." (Quotas §, Art. 20 FNIA) — supports "limited to qualified workers" and "capped by annual federal maximum numbers (quotas)". The employer-must-obtain-it / cannot-self-apply element is confirmed on the companion SEM nicht-eu_efta page ("Your future employer must prove that there is no suitable person...", cited by the "Who applies" keyFact). No overstatement: the page uses permissive "can be admitted only if" / "Only a limited number ... can be admitted", never "entitled".
+      status: VERIFIED
+      lastVerified: "2026-06-12"
+      verifiedBy: "fact-verifier"
+      reviewBy: "2026-09-10"
+    keyFacts:
+      - label: "Who applies"
+        text: "Your future Swiss employer files the application and must prove that no suitable person from Switzerland or an EU/EFTA state could fill the vacancy — you cannot apply for this admission yourself."
+        sourceUrl: "https://www.sem.admin.ch/sem/en/home/themen/arbeit/nicht-eu_efta-angehoerige.html"
+        sourceName: "State Secretariat for Migration (SEM) — Non-EU/EFTA nationals"
+        # VERIFIED 2026-06-12 (fact-verifier): SEM "Non-EU/EFTA nationals" page re-fetched (curl, browser UA, HTTP 200, no redirect). Verbatim: "Your future employer must prove that there is no suitable person to fill the job vacancy from Switzerland or from an EU/EFTA state." — supports the prove-no-suitable-person element character-for-character. Worker-cannot-self-apply / employer-files framing supported by the same page's worker-side phrasing ("if you ... would like to work in Switzerland, you may only do so if you are highly qualified") and corroborated by the companion grundlagen page (employer must enclose the signed contract with the application). Link accurate.
+        status: VERIFIED
+        lastVerified: "2026-06-12"
+        verifiedBy: "fact-verifier"
+        reviewBy: "2026-09-10"
+      - label: "Where"
+        text: "The cantonal authority of the intended place of work decides first; some cases also need federal approval from SEM. Cantonal worked example (Vaud): the Direction générale de l'emploi et du marché du travail (DGEM) is the authority for salaried-activity work-permit applications."
+        sourceUrl: "https://www.vd.ch/economie/prestations-de-la-direction-generale-de-lemploi-et-du-marche-du-travail-dgem/permis-de-sejour-et-de-travail-pour-etrangers/activite-salariee"
+        sourceName: "Canton de Vaud — Direction générale de l'emploi et du marché du travail (DGEM), Activité salariée"
+        # VERIFIED 2026-06-12 (fact-verifier): Canton de Vaud DGEM "Activité salariée" page fetched (curl, browser UA, HTTP 200, NO redirect; vd.ch reachable from this machine, unlike ch.ch/eda datacenter-IP blocks). Correct page (breadcrumb: vd.ch › Economie › Prestations de la DGEM › Permis de séjour et de travail pour étrangers › Activité salariée). Verbatim: "Pour engager un ressortissant extracommunautaire ... toute entreprise est tenue de solliciter auprès de la Direction générale de l'emploi et du marché du travail une autorisation de travail." → DGEM is the authority for salaried-activity work-permit applications. And under Procédure, verbatim: "une décision préalable sera notifiée à l'employeur par la Direction générale de l'emploi et du marché du travail. Pour certains types de dossiers, il incombera ensuite au Secrétariat d'Etat aux migrations (SEM) de prononcer une approbation fédérale." → supports "cantonal authority decides first; some cases also need federal approval from SEM" character-for-character.
+        status: VERIFIED
+        lastVerified: "2026-06-12"
+        verifiedBy: "fact-verifier"
+        reviewBy: "2026-09-10"
+      - label: "Legal basis"
+        text: "Foreign Nationals and Integration Act (FNIA) Art. 18–22 — overall economic interest, quotas, precedence, and salary and employment conditions customary in the region and sector — together with the ASEO ordinance."
+        sourceUrl: "https://www.sem.admin.ch/sem/en/home/themen/arbeit/nicht-eu_efta-angehoerige/grundlagen_zur_arbeitsmarktzulassung.html"
+        sourceName: "State Secretariat for Migration (SEM) — Basis for admission to the Swiss employment market"
+        # VERIFIED 2026-06-12 (fact-verifier): same SEM admission-basis page (HTTP 200). Verbatim: "The admission criteria are listed in the Foreign Nationals and Integration Act (FNIA) and the Ordinance on Admission, Period of Stay and Employment (ASEO)." The four article-tagged section headings confirm the Art. 18–22 span: "Overall economic interest (Art. 18 and Art. 19 FNIA)", "Quotas (Art. 20 FNIA)", "Precedence (Art. 21 FNIA)", "Salary and employment conditions customary in the region and sector (Art. 22 FNIA)". Matches claim character-for-character. NOTE (carried from prior run, still true): the page's "Legal foundations" footer names the ordinance "Ordinance on Admission, Residence and Employment (AREO) (SR 142.201)" while the body uses "ASEO"; claim uses the body/sourceName term "ASEO", which is supported.
+        status: VERIFIED
+        lastVerified: "2026-06-12"
+        verifiedBy: "fact-verifier"
+        reviewBy: "2026-09-10"
+      - label: "Quota-dependent"
+        text: "Yes — admissions are limited by annual maximum numbers (quotas) set by the Federal Council."
+        sourceUrl: "https://www.sem.admin.ch/sem/en/home/themen/arbeit/nicht-eu_efta-angehoerige/grundlagen_zur_arbeitsmarktzulassung.html"
+        sourceName: "State Secretariat for Migration (SEM) — Basis for admission to the Swiss employment market"
+        # VERIFIED 2026-06-12 (fact-verifier): same SEM admission-basis page (HTTP 200). Quotas § verbatim: "Admissions of non-EU and non-EFTA state nationals are limited. To this end, the Federal Council determines the maximum numbers in the Ordinance on Admission, Period of Stay and Employment (ASEO) on an annual basis." — supports the yes/no fact ("Yes — admissions are limited by annual maximum numbers (quotas) set by the Federal Council") character-for-character. The claim asserts NO quota figure, so the 90-day window is correct (independently, the cited Vaud DGEM page does publish the 2026 figures — 4500 séjour / 4000 courte durée — but no claim in this task quotes a number).
+        status: VERIFIED
+        lastVerified: "2026-06-12"
+        verifiedBy: "fact-verifier"
+        reviewBy: "2026-09-10"
+      - label: "Right or discretion"
+        text: "Discretion: admission is limited to managers, specialists and other qualified workers — there is no entitlement to a third-country work permit."
+        sourceUrl: "https://www.sem.admin.ch/sem/en/home/themen/arbeit/nicht-eu_efta-angehoerige/grundlagen_zur_arbeitsmarktzulassung.html"
+        sourceName: "State Secretariat for Migration (SEM) — Basis for admission to the Swiss employment market"
+        # VERIFIED 2026-06-12 (fact-verifier): same SEM admission-basis page (HTTP 200). "limited to managers, specialists and other qualified workers" appears verbatim. Entitlement-vs-discretion check (the load-bearing point flagged for this task): the page never uses "entitled/right" for third-country labour admission — it states "Only a limited number of highly qualified workers CAN BE admitted" and each criterion is conditional ("can be admitted only if it is in the interests of Switzerland ...", "can be admitted only if it is not possible to recruit ..."). This is the same discretionary "may be admitted" register found in FNIA Arts. 27/28/44 (verified in prior runs), and is correctly contrasted with the Art. 42/43 family "are entitled" register. The claim's "Discretion ... no entitlement to a third-country work permit" does NOT overstate the source. Confirmed.
+        status: VERIFIED
+        lastVerified: "2026-06-12"
+        verifiedBy: "fact-verifier"
+        reviewBy: "2026-09-10"
     detail: >
       Switzerland admits third-country labour under a dual system: free movement applies to
       EU/EFTA nationals, while everyone else (including US citizens) is admitted only in
@@ -56,12 +113,38 @@ tasks:
             lastVerified: "2026-06-09"
             verifiedBy: "fact-verifier"
             reviewBy: "2026-09-07"
+    # documents migrated from legacy strings to ADR-0012 structured entries
+    # 2026-06-12 (content-researcher); all UNVERIFIED pending fact-verifier.
+    # Every requirement from the prior string list is preserved: the
+    # "Employer's justification of recruitment efforts / labour-market priority"
+    # string is no longer a standalone 'provide' item — it is now carried by the
+    # cantonal work-authorisation FORM entry below (in Vaud the recruitment-efforts
+    # evidence is submitted via that application), so nothing is dropped.
     documents:
-      - "Signed Swiss employment contract or binding job offer"
-      - "Detailed CV and proof of qualifications (degrees, diplomas, references)"
-      - "Valid US passport"
-      - "Employer's justification of recruitment efforts / labour-market priority (prepared by the employer)"
-      - "Passport photos as specified by the cantonal authority"
+      - name: "Cantonal work-authorisation application (employer-filed)"
+        type: form
+        description: "The official application the EMPLOYER files with the cantonal labour-market / migration authority of the place of work; it carries the employer's justification of recruitment efforts (labour-market priority). Canton-specific — Vaud is the worked example here."
+        form:
+          text: "Cantonal work-authorisation application for a salaried third-country worker — obtain the current form from the canton's own authority. Vaud worked example: the DGEM 'Activité salariée' page links the current employer application form (Formulaire 1350); we link that authority page rather than a deep PDF so the form is always the current one. For other cantons, find the competent authority via the SEM directory of cantonal immigration and employment-market authorities."
+          sourceUrl: "https://www.vd.ch/economie/prestations-de-la-direction-generale-de-lemploi-et-du-marche-du-travail-dgem/permis-de-sejour-et-de-travail-pour-etrangers/activite-salariee"
+          sourceName: "Canton de Vaud — Direction générale de l'emploi et du marché du travail (DGEM), Activité salariée"
+          # VERIFIED 2026-06-12 (fact-verifier): Canton de Vaud DGEM "Activité salariée" page (HTTP 200, no redirect). The page is the cantonal authority page (NOT a deep PDF) and it DOES carry the current employer application form link: under "Constitution du dossier", verbatim "Le Formulaire 1350 (pdf, 453 Ko) constitue la base du dossier." So the claim's framing is exact — it links the authority page (per the no-self-hosted-PDF rule), and that page links the current Formulaire 1350. It is the EMPLOYER's application: "toute entreprise est tenue de solliciter auprès de la [DGEM] une autorisation de travail", and the dossier requires "preuves de recherches effectuées en vue de trouver un travailleur sur le marché indigène et européen" (the recruitment-efforts / labour-market-priority evidence the description says this form carries). The "find the competent authority via the SEM directory" pointer is honest (that directory was verified in prior runs). Per protocol we verify the authority page is correct and current, not that any specific PDF byte-exists; confirmed.
+          status: VERIFIED
+          lastVerified: "2026-06-12"
+          verifiedBy: "fact-verifier"
+          reviewBy: "2026-09-10"
+      - name: "Signed Swiss employment contract or binding job offer"
+        type: provide
+        description: "The signed contract or a binding written job offer from your Swiss employer; admission is tied to this specific job, employer and canton."
+      - name: "Detailed CV and proof of qualifications"
+        type: provide
+        description: "A detailed CV plus evidence of your qualifications (degrees, diplomas, references) showing you are a manager, specialist or other skilled professional."
+      - name: "Valid US passport"
+        type: provide
+        description: "Your valid US passport (your travel and identity document throughout the process)."
+      - name: "Passport photos as specified by the cantonal authority"
+        type: provide
+        description: "Recent passport photographs to the specification set by the competent cantonal authority."
     warning: >
       Annual quotas (maximum numbers) for third-country nationals are reset each year by the
       Federal Council in the Ordinance on Admission, Period of Stay and Employment (ASEO).
@@ -215,9 +298,12 @@ tasks:
       # retirement-d-visa added 2026-06-12 (content-researcher) for the
       # retirement route draft — same pattern as family-d-visa; claims above
       # untouched.
+      # study-d-visa added 2026-06-12 (content-researcher) for the study route
+      # draft — same pattern again; claims above untouched.
       - national-d-visa
       - family-d-visa
       - retirement-d-visa
+      - study-d-visa
 
   # ---------------------------------------------------------------------------
   - id: residence-permit-card
@@ -1259,3 +1345,597 @@ tasks:
       office promptly after arrival.
     dependsOn:
       - register-commune
+
+  # ===========================================================================
+  # STUDY / EDUCATION ROUTE (drafted 2026-06-12, content-researcher).
+  # VERIFICATION RUN 2026-06-12 (fact-verifier, independent session per
+  # two-agent rule): all 23 claims below checked against the sources as
+  # served and tagged VERIFIED. Statute texts read from the official Fedlex
+  # filestore consolidated HTML with consolidation currency confirmed via the
+  # Fedlex SPARQL endpoint: FNIA EN in-force 2026-02-01 (latest EN
+  # manifestation; the FNIA consolidation in force TODAY, 2026-06-12, has no
+  # EN manifestation — Arts. 21 and 27 cross-checked in the authoritative DE
+  # text of 2026-06-12, both unchanged), VZAE DE in force 2026-06-12
+  # (current), KVV DE in force 2026-01-01 (CONFIRMED current — next version
+  # 2027-01-01). SEM and ch.ch pages fetched with a browser UA (all HTTP
+  # 200, server-rendered HTML read directly).
+  #
+  # Legal position established from primary sources (researcher reading):
+  #  - FNIA Art. 27 (SR 142.20): foreign nationals "MAY be admitted" for
+  #    education or training purposes if (a) the management of the educational
+  #    establishment confirms eligibility, (b) suitable accommodation is
+  #    available, (c) the required financial means are available, and (d) the
+  #    personal and educational requirements for the planned course are
+  #    fulfilled. Para. 2: minors' supervision must be guaranteed. Para. 3:
+  #    continued stay after completion/discontinuation is governed by the
+  #    general admission requirements of the Act. This is DISCRETION, not an
+  #    entitlement — the same "may be admitted" vs "are entitled" distinction
+  #    that was decisive on the family (Art. 44) and retirement (Art. 28)
+  #    routes.
+  #  - VZAE/ASEO Art. 23 (SR 142.201) implements Art. 27: financial means may
+  #    be evidenced namely by a declaration of commitment from a solvent Swiss
+  #    resident, a Swiss-bank confirmation of sufficient assets, or a binding
+  #    assurance of scholarships/loans (para. 1); personal requirements are
+  #    met namely when nothing indicates the education merely serves to
+  #    circumvent admission rules (para. 2); education is authorised AS A RULE
+  #    FOR AT MOST EIGHT YEARS (para. 3); gainful employment is governed by
+  #    Arts. 38-40 (para. 4). Art. 24 VZAE: authorities may restrict admission
+  #    to recognised schools; the school must confirm language/educational
+  #    prerequisites; a language test may be required.
+  #  - Working alongside studies: VZAE Art. 38 — side employment for students
+  #    at a university/university of applied sciences may be authorised AT THE
+  #    EARLIEST SIX MONTHS after the course starts, MAX 15 HOURS/WEEK outside
+  #    holidays, with the school's confirmation and an employer application;
+  #    Art. 39 — mandatory internships (max half the total education
+  #    duration); Art. 40 — work in one's scientific specialist field during
+  #    continuing education at university level. SEM's FAQ "Working" states
+  #    all the Art. 38 elements in official English.
+  #  - After graduation: FNIA Art. 21 para. 3 — six months following
+  #    completion to find work of high academic or economic interest
+  #    (derogation from precedence).
+  #  - D-visa: SEM Entry FAQ expressly lists "education or vocational
+  #    training" among the purposes REQUIRING a category D visa. No
+  #    student-specific processing time is published (same "one to several
+  #    months, varies by canton and purpose" statement as the other routes).
+  #  - Health insurance: KVV Art. 2 para. 4 (SR 832.102) — students can, ON
+  #    REQUEST, be exempted from compulsory insurance for max 3 years
+  #    (extendable once by max 3 years) if they hold equivalent cover.
+  #
+  # Researcher reading notes for the fact-verifier (www.fedlex.admin.ch is a
+  # client-side SPA; read the filestore consolidated HTML, as on the family
+  # and retirement verifications):
+  #  - FNIA EN: Fedlex filestore ELI cc/2007/758, in-force 2026-02-01 (latest
+  #    EN manifestation). NOTE from the retirement verification: an FNIA
+  #    amendment entered force 2026-06-12 with no EN manifestation —
+  #    verifier: please also check Arts. 27 and 21 in the authoritative DE
+  #    consolidation in force 2026-06-12.
+  #  - VZAE DE: Fedlex filestore ELI cc/2007/759, consolidation in force
+  #    2026-06-12 (read this run). No official EN translation exists.
+  #  - KVV DE: Fedlex filestore ELI cc/1995/3867_3867_3867, consolidation
+  #    in force 2026-01-01 (read this run) — verifier: please confirm this is
+  #    still the current consolidation. No official EN translation exists.
+  #  - SEM and ch.ch pages read this run via curl (browser UA, HTTP 200,
+  #    server-rendered HTML).
+  #
+  # ZV-EJPD finding (deliberately NOT drafted as a claim): Art. 2 let. a
+  # ZV-EJPD requires SEM approval for student permits ONLY for nationals of
+  # states on a SEM-maintained elevated-risk list; the list itself is not part
+  # of the published ordinance, so whether the USA is on it cannot be sourced.
+  # No claim is made about SEM approval on this route.
+  #
+  # Intake gating: the wizard already offers motivation == 'study' with
+  # studyStatus 'admitted' | 'applying'. For users still applying, the only
+  # honest pre-admission step is study-admission ("get admitted first") — no
+  # immigration process exists before the institution's confirmation, because
+  # Art. 27 para. 1 let. a FNIA cannot be met without it.
+  # coversMotivations is deliberately NOT touched in this draft; the
+  # orchestrator flips coverage after verification.
+  # ===========================================================================
+
+  # ---------------------------------------------------------------------------
+  - id: study-admission
+    title: "Get admitted: secure the confirmation of a Swiss educational institution first"
+    category: education
+    # appliesIf (content-researcher, 2026-06-12, PENDING fact-verifier approval
+    # per ADR-0009 §4): shown only to study-route users who are still applying.
+    # Admitted users skip it; study-residence-permit's dependsOn reference to
+    # this id is then ignored at runtime (ADR-0009 mechanics, same pattern as
+    # register-commune's multi-route entry dependencies).
+    # appliesIf APPROVED 2026-06-12 (fact-verifier, ADR-0009 §4): correct.
+    # For an admitted user the Art. 27 para. 1 let. a confirmation already
+    # exists, so this task carries no applicable step for them; gating on
+    # studyStatus == 'applying' matches the intake value set in
+    # CorridorApp.tsx ('admitted' | 'applying') and the ADR-0009 grammar.
+    # The dependsOn filtering claim matches the verified register-commune
+    # multi-route pattern.
+    appliesIf: "motivation == 'study' && studyStatus == 'applying'"
+    summary:
+      text: "Admission comes before immigration: the first statutory condition for a residence permit for education purposes is that the management of the educational establishment confirms that you are eligible for the education or training (Art. 27 para. 1 let. a FNIA). Until you hold an admission/confirmation from a Swiss institution there is no Swiss visa or permit application you can usefully make — get admitted first."
+      sourceUrl: "https://www.fedlex.admin.ch/eli/cc/2007/758/en#art_27"
+      sourceName: "Foreign Nationals and Integration Act (FNIA, SR 142.20), Art. 27 — Fedlex, the official publication platform of Swiss law"
+      # VERIFIED 2026-06-12 (fact-verifier): cited www.fedlex.admin.ch URL resolves (HTTP 200) but renders client-side; statute read from the SAME official Fedlex platform's static consolidated HTML (fedlex.data.admin.ch filestore, ELI cc/2007/758, EN in-force 2026-02-01 — latest EN manifestation per SPARQL version list (the consolidation in force TODAY, 2026-06-12, has no EN manifestation; HTTP 404 probe confirmed); anchor "art_27" present). Art. 27 para. 1 let. a verbatim: "the management of the educational establishment confirms that the person concerned is eligible for education or training". Cross-checked in the authoritative DE consolidation in force 2026-06-12: Art. 27 unchanged ("die Schulleitung bestätigt, dass die Aus- oder Weiterbildung aufgenommen werden kann"). Inference FAIRLY STATED: para. 1 conditions a-d are cumulative ("if: a. ... and d. ..."), so without the let. a confirmation no Art. 27 admission can be granted — "get admitted first" follows; no fact invented.
+      status: VERIFIED
+      lastVerified: "2026-06-12"
+      verifiedBy: "fact-verifier"
+      reviewBy: "2026-09-10"
+    detail: >
+      You apply for a study place directly to the institution, not to any immigration
+      authority. The official federal portal ch.ch explains that you can apply directly to
+      a higher education institution, and that the website of swissuniversities (the
+      umbrella organisation of the Swiss universities) provides the contact information of
+      the institutions and the application deadlines for study programmes. Most programmes
+      have no enrolment limit; exceptions exist in particular for medicine (aptitude test
+      required), chiropractic, and sport and physical education, and universities of
+      applied sciences also have enrolment limits in certain fields. Admission requirements,
+      deadlines, language requirements and application fees are set by each institution —
+      confirm them with the institution itself. Once you have the admission confirmation,
+      continue with the residence-permit and visa steps of this route.
+    steps:
+      - text: "Choose a programme and apply directly to the higher education institution; check the institution's own admission requirements and deadlines."
+        tip: "Application fees, language requirements and document checklists are set by each institution — there is no federal application procedure for study places."
+        links:
+          - text: "ch.ch — you can apply directly to a higher education institution; swissuniversities provides the contact information of the institutions and the application deadlines for study programmes"
+            sourceUrl: "https://www.ch.ch/en/school-and-education/higher-education/studying-in-switzerland/"
+            sourceName: "ch.ch — Studying in Switzerland (official federal portal)"
+            # VERIFIED 2026-06-12 (fact-verifier): ch.ch page loaded (curl, browser UA, HTTP 200, title "Education at a university in Switzerland"). Verbatim: "You can apply directly to a higher education institution. The website of the umbrella organisation of the Swiss universities provides the contact information of the higher education institutions (web page available in German, French and Italian) and the application deadlines for study programmes." Also confirmed verbatim for the task detail: "Most programmes do not have an enrolment limit. Exceptions exist in particular for the fields of medicine (access to the programme requires student to have passed an aptitude test), chiropractic and sport and physical education. Universities of applied sciences also have enrolment limits in certain fields of study." Link text accurate.
+            status: VERIFIED
+            lastVerified: "2026-06-12"
+            verifiedBy: "fact-verifier"
+            reviewBy: "2026-09-10"
+      - text: "Wait for the institution's admission/confirmation before starting any visa or permit application — the confirmation is itself the first admission condition of the permit (Art. 27 para. 1 let. a FNIA)."
+    documents:
+      - "Whatever the chosen institution requires for its application (diplomas, transcripts, language certificates) — confirm the checklist with the institution"
+    # timeline omitted (ADR-0007): admission timelines and deadlines are set by
+    # each institution; no federal figure exists. Confirm with the institution
+    # (deadlines are listed via swissuniversities).
+    # cost omitted (ADR-0007): application fees are set by each institution; no
+    # federal figure exists. Confirm with the institution.
+    warning: >
+      Do not apply for a Swiss visa or residence permit before you are admitted: without
+      the educational establishment's confirmation the statutory admission conditions of
+      Art. 27 FNIA cannot be met, and there is no separate "prospective student"
+      immigration track for long-term stays.
+    dependsOn: []
+
+  # ---------------------------------------------------------------------------
+  - id: study-residence-permit
+    title: "Apply for a residence permit for education purposes (Art. 27 FNIA)"
+    category: visa-permit
+    # appliesIf (content-researcher, 2026-06-12, PENDING fact-verifier approval
+    # per ADR-0009 §4): Art. 27 FNIA education admission is specific to the
+    # study route; work/family/retirement entrants have their own admission
+    # tasks under Arts. 18-22, 42-44 and 28 respectively.
+    # appliesIf APPROVED 2026-06-12 (fact-verifier, ADR-0009 §4): correct.
+    # Art. 27 FNIA (verified this run, EN 2026-02-01 + DE 2026-06-12) is the
+    # dedicated education/training admission; the other routes' admission
+    # bases (Arts. 18-22, 42-44, 28 — all previously verified) are distinct,
+    # so this task is wrong for every non-study user.
+    appliesIf: "motivation == 'study'"
+    summary:
+      text: "Foreign nationals may be admitted to Switzerland for education or training purposes if the management of the educational establishment confirms that they are eligible for the education or training, suitable accommodation is available, the required financial means are available, and they fulfil the personal and educational requirements for the planned course (Art. 27 para. 1 FNIA). This is a discretionary admission — the law says «may be admitted», not «are entitled» — so there is no legal right to a student permit; the cantonal authorities decide, and US citizens are not covered by EU/EFTA free movement."
+      sourceUrl: "https://www.fedlex.admin.ch/eli/cc/2007/758/en#art_27"
+      sourceName: "Foreign Nationals and Integration Act (FNIA, SR 142.20), Art. 27 — Fedlex, the official publication platform of Swiss law"
+      # VERIFIED 2026-06-12 (fact-verifier): Fedlex filestore FNIA EN (in-force 2026-02-01, latest EN manifestation per SPARQL; anchor "art_27" present). Art. 27 para. 1 verbatim: "Foreign nationals may be admitted for education or training purposes if: a. the management of the educational establishment confirms that the person concerned is eligible for education or training; b. suitable accommodation is available; c. the required financial means are available; and d. they fulfil the personal and educational requirements for the planned education or training course." All four conditions match character-for-character. DE consolidation in force TODAY (2026-06-12) cross-checked as requested: "können für eine Aus- oder Weiterbildung zugelassen werden" — Art. 27 unchanged. The discretion reading is exactly right: "may be admitted", NOT "are entitled" (same load-bearing distinction as the verified Art. 44 and Art. 28 findings). "Cantonal authorities decide" supported by ch.ch (apply to the cantonal immigration and employment market authorities before arrival, read this run); US-citizens-not-EU/EFTA is the corridor's verified baseline (Art. 2 FNIA scheme, work route). EN-translation-has-no-legal-force disclaimer confirmed in the document header.
+      status: VERIFIED
+      lastVerified: "2026-06-12"
+      verifiedBy: "fact-verifier"
+      reviewBy: "2026-09-10"
+    detail: >
+      Switzerland's admission category for third-country students is Art. 27 of the
+      Foreign Nationals and Integration Act (FNIA), implemented by Arts. 23 and 24 of the
+      Ordinance on Admission, Period of Stay and Employment (VZAE/ASEO, SR 142.201). The
+      ordinance spells out how financial means can be evidenced, requires that nothing
+      indicate the course is merely a means of circumventing immigration rules, and
+      provides that education stays are authorised as a rule for at most eight years in
+      total. The competent authorities may restrict admission to recognised schools, the
+      school must confirm that the language and educational prerequisites are met, and a
+      language test can be required in justified cases. In the case of minors, their
+      supervision must be guaranteed (Art. 27 para. 2 FNIA). You apply to the cantonal
+      immigration authority of the canton where the institution is located, before you
+      arrive in Switzerland. A continued stay after completing or discontinuing the course
+      is governed by the general admission requirements of the Act — the student permit is
+      not a settlement track in itself. Note that the English text of the FNIA is an
+      official translation with no legal force, and the VZAE exists only in the official
+      German, French and Italian versions.
+    steps:
+      - text: "Apply for the residence permit to the cantonal immigration authority of the canton where you will study — before you arrive in Switzerland."
+        tip: "Procedures, forms and document checklists are cantonal. Contact the competent cantonal migration office and get its requirements in writing before assembling documents."
+        links:
+          - text: "ch.ch — «If you wish to settle in Switzerland without taking up gainful employment, you must apply for a residence permit from the cantonal immigration and employment market authorities before you arrive in Switzerland.» (page expressly covers students)"
+            sourceUrl: "https://www.ch.ch/en/foreign-nationals-in-switzerland/entry-and-stay-in-switzerland/living-in-switzerland-without-gainful-employment/"
+            sourceName: "ch.ch — Living in Switzerland without gainful employment (official federal portal)"
+            # VERIFIED 2026-06-12 (fact-verifier): ch.ch page loaded (curl, browser UA, HTTP 200, title "Living as a foreign national in Switzerland without work"; SPA, server-rendered HTML read directly). The quoted sentence appears verbatim: "If you wish to settle in Switzerland without taking up gainful employment, you must apply for a residence permit from the cantonal immigration and employment market authorities before you arrive in Switzerland." Page expressly covers students — lead verbatim: "Foreign nationals such as students, pensioners or those of private means can take up residence in Switzerland without gainful employment." Quote and link text accurate.
+            status: VERIFIED
+            lastVerified: "2026-06-12"
+            verifiedBy: "fact-verifier"
+            reviewBy: "2026-09-10"
+          - text: "SEM — addresses of the cantonal immigration and employment market authorities"
+            sourceUrl: "https://www.sem.admin.ch/sem/en/home/sem/kontakt/kantonale_behoerden/adressen_kantone_und.html"
+            sourceName: "State Secretariat for Migration (SEM) — Cantonal immigration and employment market authorities"
+            # VERIFIED 2026-06-12 (fact-verifier): SEM page loaded fresh this run (curl, browser UA, HTTP 200, title "Cantonal immigration and employment market authorities"). Official per-canton address directory with the cantonal Migrationsamt / migration-office entries present. Link text accurate.
+            status: VERIFIED
+            lastVerified: "2026-06-12"
+            verifiedBy: "fact-verifier"
+            reviewBy: "2026-09-10"
+      - text: "Include the student-specific documents the official federal portal lists: a personal study plan indicating the goal of your studies, proof of admission to a recognised educational institution (matriculation certificate), a curriculum vitae, and confirmation that you will leave Switzerland at the end of your studies."
+        links:
+          - text: "ch.ch — documents students must also submit with their application for a residence permit (study plan, proof of admission, CV, confirmation of departure at the end of studies)"
+            sourceUrl: "https://www.ch.ch/en/foreign-nationals-in-switzerland/entry-and-stay-in-switzerland/living-in-switzerland-without-gainful-employment/"
+            sourceName: "ch.ch — Living in Switzerland without gainful employment (official federal portal)"
+            # VERIFIED 2026-06-12 (fact-verifier): same ch.ch page (HTTP 200). All four document items confirmed verbatim: "Students must also submit the following documents with their application for a residence permit:" followed by "a personal study plan indicating the goal of their studies", "proof of admission to a recognised educational institution (matriculation certificate)", "curriculum vitae", "confirmation that they will leave Switzerland at the end of their studies". Step text and link text match character-for-character.
+            status: VERIFIED
+            lastVerified: "2026-06-12"
+            verifiedBy: "fact-verifier"
+            reviewBy: "2026-09-10"
+      - text: "Prepare proof of the required financial means. The ordinance lists how they can be evidenced: a declaration of commitment plus proof of income and assets from a solvent person resident in Switzerland (a foreign national sponsor must hold a residence or settlement permit), a confirmation from a bank authorised in Switzerland of sufficient assets of the applicant, or a binding assurance of sufficient scholarships or education loans."
+        links:
+          - text: "VZAE/ASEO Art. 23 para. 1 — how the necessary financial means for education can be evidenced (declaration of commitment, Swiss-bank confirmation, or assured scholarships/loans)"
+            sourceUrl: "https://www.fedlex.admin.ch/eli/cc/2007/759/de#art_23"
+            sourceName: "Ordinance on Admission, Period of Stay and Employment (VZAE/ASEO, SR 142.201), Art. 23 — Fedlex (official German text)"
+            # VERIFIED 2026-06-12 (fact-verifier): cited www.fedlex.admin.ch URL resolves (HTTP 200, client-side SPA); German text read from the official Fedlex filestore consolidated DE HTML (ELI cc/2007/759, "Stand am 12. Juni 2026" — CURRENT consolidation per SPARQL version list; anchor "art_23" present; section heading "(Art. 27 AIG)" confirms the FNIA linkage). Para. 1 verbatim: "Die notwendigen finanziellen Mittel für eine Aus- und Weiterbildung können namentlich belegt werden durch: a. eine Verpflichtungserklärung sowie einen Einkommens- und Vermögensnachweis einer zahlungsfähigen Person mit Wohnsitz in der Schweiz; Ausländerinnen und Ausländer müssen eine Aufenthalts- oder Niederlassungsbewilligung besitzen; b. die Bestätigung einer in der Schweiz zugelassenen Bank über ausreichende Vermögenswerte der Gesuchstellerin oder des Gesuchstellers; c. die verbindliche Zusicherung von ausreichenden Stipendien oder Ausbildungsdarlehen." The step text's EN rendering of all three letters (incl. the residence/settlement-permit condition on a foreign sponsor) is accurate, and "lists how they can be evidenced" does not overstate the non-exhaustive "namentlich". No official EN translation of the VZAE exists on Fedlex — German correctly cited.
+            status: VERIFIED
+            lastVerified: "2026-06-12"
+            verifiedBy: "fact-verifier"
+            reviewBy: "2026-09-10"
+      - text: "Be aware of how your application is assessed: the personal requirements are met in particular when no previous stays, application proceedings or other circumstances indicate that the course merely serves to circumvent the admission rules; the authorities may restrict admission to recognised schools, the school management must confirm that you meet the language and educational prerequisites, and a language test can be required in justified cases."
+        links:
+          - text: "VZAE/ASEO Art. 23 para. 2 and Art. 24 — personal requirements (no circumvention) and requirements on the schools (recognised schools, confirmation of prerequisites, possible language test)"
+            sourceUrl: "https://www.fedlex.admin.ch/eli/cc/2007/759/de#art_23"
+            sourceName: "Ordinance on Admission, Period of Stay and Employment (VZAE/ASEO, SR 142.201), Arts. 23-24 — Fedlex (official German text)"
+            # VERIFIED 2026-06-12 (fact-verifier): Fedlex filestore VZAE DE (current consolidation in force 2026-06-12; anchors "art_23" and "art_24" present). Art. 23 para. 2 verbatim: "Die persönlichen Voraussetzungen (Art. 27 Abs. 1 Bst. d AIG) sind namentlich erfüllt, wenn keine früheren Aufenthalte und Gesuchsverfahren oder keine anderen Umstände darauf hinweisen, dass die angestrebte Aus- oder Weiterbildung lediglich dazu dient, die allgemeinen Vorschriften über die Zulassung und den Aufenthalt von Ausländerinnen und Ausländern zu umgehen." — the step text's "in particular" correctly preserves "namentlich". Art. 24 verbatim: "Die zuständigen Behörden können die Zulassung zur Aus- und Weiterbildung auf anerkannte Schulen beschränken." (para. 1); "Die Schulleitung muss bestätigen, dass die sprachlichen und bildungsmässigen Voraussetzungen für die vorgesehene Aus- oder Weiterbildung erfüllt sind." (para. 3); "In begründeten Fällen können die zuständigen Behörden zusätzlich einen Sprachtest verlangen." (para. 4). All three Art. 24 elements in the step and link text match character-for-character.
+            status: VERIFIED
+            lastVerified: "2026-06-12"
+            verifiedBy: "fact-verifier"
+            reviewBy: "2026-09-10"
+      - text: "Plan the overall duration realistically: education and training stays are authorised as a rule for at most eight years in total; exceptions are possible only for courses leading to a specific goal."
+        links:
+          - text: "VZAE/ASEO Art. 23 para. 3 — education or training is authorised as a rule for at most eight years; exceptions possible for goal-directed courses"
+            sourceUrl: "https://www.fedlex.admin.ch/eli/cc/2007/759/de#art_23"
+            sourceName: "Ordinance on Admission, Period of Stay and Employment (VZAE/ASEO, SR 142.201), Art. 23 — Fedlex (official German text)"
+            # VERIFIED 2026-06-12 (fact-verifier): Fedlex filestore VZAE DE (current consolidation in force 2026-06-12). Para. 3 verbatim: "Aus- oder Weiterbildungen werden in der Regel für längstens acht Jahre bewilligt. Ausnahmen sind möglich, wenn sie einer zielgerichteten Aus- oder Weiterbildung dienen." The "as a rule ... at most eight years" qualifier and the goal-directed-course exception match the step and link text character-for-character (statutory duration, not a fee -> 90-day window).
+            status: VERIFIED
+            lastVerified: "2026-06-12"
+            verifiedBy: "fact-verifier"
+            reviewBy: "2026-09-10"
+    documents:
+      - "Valid US passport"
+      - "Admission / confirmation of the educational institution (matriculation certificate)"
+      - "Personal study plan indicating the goal of your studies"
+      - "Curriculum vitae"
+      - "Confirmation that you will leave Switzerland at the end of your studies"
+      - "Proof of the required financial means (declaration of commitment from a solvent Swiss resident, Swiss-bank confirmation of sufficient assets, or binding assurance of scholarships/education loans)"
+      - "Proof of suitable accommodation in Switzerland"
+      - "Confirm the full cantonal document checklist with the competent cantonal migration office"
+    # timeline omitted (ADR-0007): processing of Art. 27 applications is
+    # cantonal; no official federal processing-time figure exists. Confirm with
+    # the cantonal migration office.
+    # cost omitted (ADR-0007): permit fees are set at cantonal level; no
+    # official federal fee figure exists. Confirm with the cantonal migration
+    # office.
+    warning: >
+      There is no entitlement to a student permit: Art. 27 FNIA says foreign nationals
+      "may be admitted" — the canton decides at its discretion. The permit is tied to the
+      education purpose: staying on in Switzerland after completing or discontinuing the
+      course is governed by the general admission requirements (Art. 27 para. 3 FNIA),
+      not by the student permit. Do not make irreversible arrangements before you have
+      the cantonal decision in writing.
+    # dependsOn references study-admission, which only renders for users with
+    # studyStatus == 'applying'; for admitted users the id is filtered out and
+    # ignored at runtime (ADR-0009 mechanics).
+    dependsOn:
+      - study-admission
+
+  # ---------------------------------------------------------------------------
+  - id: study-d-visa
+    title: "Apply for the national (type D) visa for education purposes at the Swiss representation in the USA"
+    category: visa-permit
+    # appliesIf (content-researcher, 2026-06-12, PENDING fact-verifier approval
+    # per ADR-0009 §4): same pattern as family-d-visa / retirement-d-visa —
+    # the D-visa requirement is route-independent, but this task's steps and
+    # documents presuppose the Art. 27 cantonal application; other routes have
+    # their own D-visa tasks.
+    # appliesIf APPROVED 2026-06-12 (fact-verifier, ADR-0009 §4): correct.
+    # The D-visa requirement itself is route-independent (SEM Entry FAQ), but
+    # this task's steps/documents presuppose the Art. 27 education
+    # application; each other route is served by its own D-visa task, and
+    # register-commune's dependsOn now lists study-d-visa alongside the other
+    # entry tasks (established multi-route pattern, checked this run).
+    appliesIf: "motivation == 'study'"
+    summary:
+      text: "A category D (national) visa is issued for stays exceeding 90 days, and SEM expressly lists education or vocational training among the reasons for which a category D visa is required. You apply in writing using the national visa application form at the Swiss representation abroad responsible for your place of residence; applications for a category D visa are processed by the cantons (a residence permit is required)."
+      sourceUrl: "https://www.sem.admin.ch/sem/en/home/themen/einreise/faq.html"
+      sourceName: "State Secretariat for Migration (SEM) — FAQ: Entry"
+      # VERIFIED 2026-06-12 (fact-verifier): SEM Entry FAQ loaded (curl, browser UA, HTTP 200, title "FAQ – Entry"). All elements verbatim: "Category D visas are issued for stays exceeding 90 days"; "A category D visa is required if you wish to stay in Switzerland for one of the following reasons:" with the list "gainful employment / education or vocational training / family reunification" — the study purpose IS expressly named; "You must apply for the category D visa in writing using the application form or directly at the Swiss representation abroad responsible for your place of residence."; "Applications for a category D visa are processed by the cantons (a residence permit is required)." Matches claim character-for-character.
+      status: VERIFIED
+      lastVerified: "2026-06-12"
+      verifiedBy: "fact-verifier"
+      reviewBy: "2026-09-10"
+    detail: >
+      The type D visa is the entry document for the study route, exactly as for the work,
+      family and retirement routes: it lets you travel to Switzerland to take up the
+      residence the canton has authorised for your education. SEM's Entry FAQ names
+      "education or vocational training" explicitly among the category D purposes. No
+      separate student processing track is published — SEM states only that processing
+      time varies by canton and purpose of stay. Apply at the Swiss representation
+      competent for your US state of residence (for example the Embassy in Washington or
+      a Swiss consulate); each representation covers specific US states — confirm which
+      one covers yours, and its submission procedure, on that representation's own page
+      before applying.
+    steps:
+      - text: "Identify the Swiss representation abroad competent for your US state of residence, then apply for the category D visa in writing using the national visa application form, indicating education or vocational training as the purpose of stay."
+        links:
+          - text: "SEM — FAQ: where and how to apply for a category D visa for Switzerland"
+            sourceUrl: "https://www.sem.admin.ch/sem/en/home/themen/einreise/faq.html"
+            sourceName: "State Secretariat for Migration (SEM) — FAQ: Entry"
+            # VERIFIED 2026-06-12 (fact-verifier): same SEM Entry FAQ (HTTP 200). Verbatim: "You must apply for the category D visa in writing using the application form or directly at the Swiss representation abroad responsible for your place of residence." Link text accurate.
+            status: VERIFIED
+            lastVerified: "2026-06-12"
+            verifiedBy: "fact-verifier"
+            reviewBy: "2026-09-10"
+          - text: "SEM — National (type D) visa application form (for long-term stays of more than three months in Switzerland subject to authorisation)"
+            sourceUrl: "https://www.sem.admin.ch/sem/en/home/themen/einreise/visumantragsformular.html"
+            sourceName: "State Secretariat for Migration (SEM) — Visa Application Form"
+            # VERIFIED 2026-06-12 (fact-verifier): SEM Visa Application Form page loaded (curl, browser UA, HTTP 200, title "Visa Application Form"). Verbatim: "National (type D) visa application form" with description "For long-term stays (more than three months) in Switzerland subject to authorization (e.g. gainful employment, familiy reunification)." (source's own typo "familiy"). Framing checked and ACCEPTED: the link text claims only "long-term stays of more than three months subject to authorisation" — it does not assert education is named in the page's "e.g." list; that list is expressly non-exhaustive, an Art. 27 stay is a stay subject to authorisation, and the Entry FAQ (verified this run) names education as a category D purpose. Same accepted framing as the verified retirement-d-visa link.
+            status: VERIFIED
+            lastVerified: "2026-06-12"
+            verifiedBy: "fact-verifier"
+            reviewBy: "2026-09-10"
+      - text: "Submit the visa application together with the study supporting documents required by the representation and the canton (admission confirmation, reference to the cantonal Art. 27 application or authorisation)."
+        tip: "Check the specific representation's instructions for how to submit (by post or appointment) and the exact document checklist."
+      - text: "The representation issues the type D visa once the cantonal authorisation is confirmed; you then travel to Switzerland within its validity."
+    documents:
+      - "Completed national (type D) visa application form"
+      - "Valid US passport"
+      - "Passport photos to the required specification"
+      - "Admission / confirmation of the educational institution"
+      - "Reference to the cantonal authorisation or pending application for the residence permit for education purposes"
+      - "Proof of financial means as requested by the representation"
+      - "Confirm the full document list with the competent Swiss representation in the USA"
+    timeline:
+      text: "Category D (national) visa applications are processed by the cantons and the time required varies by canton and purpose of stay; SEM states that, as a rule, one to several months must be expected. No student-specific processing time is published. Confirm the current timing with the competent Swiss representation abroad."
+      sourceUrl: "https://www.sem.admin.ch/sem/en/home/themen/einreise/faq.html"
+      sourceName: "State Secretariat for Migration (SEM) — FAQ: Entry"
+      # VERIFIED 2026-06-12 (fact-verifier): SEM Entry FAQ loaded fresh this run (curl, browser UA, HTTP 200). Verbatim: "Applications for a category D visa are processed by the cantons (a residence permit is required). The time the responsible authorities need to process such applications may vary according to canton and purpose of stay. As a rule, one to several months must be expected." Matches claim character-for-character. "No student-specific processing time is published" confirmed accurate — the FAQ publishes no per-purpose processing figures.
+      status: VERIFIED
+      lastVerified: "2026-06-12"
+      verifiedBy: "fact-verifier"
+      reviewBy: "2026-09-10"
+    cost:
+      text: "Confirm the current national (type D) visa fee with the competent Swiss representation abroad. Unlike the Schengen (category C) visa, which is a fixed EUR 90 for adults, the national (type D) visa fee is not published by SEM as a single fixed figure; an extra charge of up to 50% of the fee may apply for urgent/out-of-hours handling. A service fee to an external provider may also apply."
+      sourceUrl: "https://www.sem.admin.ch/sem/en/home/themen/einreise/faq.html"
+      sourceName: "State Secretariat for Migration (SEM) — FAQ: Entry"
+      # VERIFIED 2026-06-12 (fact-verifier): SEM Entry FAQ loaded fresh this run (curl, browser UA, HTTP 200) — independently re-checked, not carried over from the prior routes. Verbatim: "The cost of submitting an application is EUR 90 for adults and EUR 45 for children between 6 and 12 years old. This is a fixed charge for a Schengen visa." (EUR 90 is the Schengen, not national, fee — claim states this correctly); "There may be an extra charge of up to 50% of the fee for a national visa (for a stay longer than 90 days) when the applicant asks for the visa to be issued urgently or outside of normal working hours..."; external-provider service fee "in addition to the visa fee" confirmed. No fixed national (type D) figure published — claim correctly defers to the representation. Fee claim -> 30-day review window.
+      status: VERIFIED
+      lastVerified: "2026-06-12"
+      verifiedBy: "fact-verifier"
+      reviewBy: "2026-07-12"
+    dependsOn:
+      - study-residence-permit
+
+  # ---------------------------------------------------------------------------
+  - id: study-work-alongside
+    title: "Working alongside your studies: waiting period, hour limit and employer permit"
+    category: employment
+    # appliesIf (content-researcher, 2026-06-12, PENDING fact-verifier approval
+    # per ADR-0009 §4): the VZAE Arts. 38-40 rules apply specifically to
+    # persons residing in Switzerland for education; work-route users are
+    # admitted under Arts. 18-22 FNIA and family-route users have free access
+    # to work under Art. 46 FNIA — this task would be wrong for both.
+    # appliesIf APPROVED 2026-06-12 (fact-verifier, ADR-0009 §4): correct.
+    # VZAE Arts. 38-40 (verified this run, consolidation in force 2026-06-12)
+    # all open with "Für Ausländerinnen und Ausländer, die in der Schweiz
+    # eine Aus- oder Weiterbildung ... absolvieren" — education residents
+    # only. Work-route users already hold a labour-market admission
+    # (Arts. 18-22) and family-route users may work anywhere under Art. 46
+    # FNIA (verified on the family run), so showing them a six-month wait
+    # and a 15-hour cap would be factually wrong for both.
+    appliesIf: "motivation == 'study'"
+    summary:
+      text: "Third-country students at a Swiss university or university of applied sciences may be approved for supplementary employment, subject to conditions (Art. 38 ASEO/VZAE): work may begin no sooner than six months after the start of the course, is limited to a maximum of 15 hours a week outside of the holidays, the university authorities must confirm that the work is compatible with the studies and will not delay their completion, the application must be submitted by the employer, and the employment must comply with the applicable regulations on pay and working conditions. The competent cantonal authorities decide."
+      sourceUrl: "https://www.sem.admin.ch/sem/en/home/themen/arbeit/faq.html"
+      sourceName: "State Secretariat for Migration (SEM) — FAQ: Working"
+      # VERIFIED 2026-06-12 (fact-verifier): SEM Working FAQ loaded (curl, browser UA, HTTP 200, title "FAQ – Working"). Every figure and condition verbatim: "If you are living in Switzerland to train or study at a university or university of applied sciences, the competent cantonal authorities may approve a supplementary activity in accordance with Art. 38 ASEO, subject to a number of conditions. Beginning no sooner than six months after the start of their course, foreign students may work for a maximum of 15 hours a week outside of the holidays. However, the university authorities must confirm that the student's work is compatible with their studies and will not delay their completion. In addition, an application must be submitted by the employer, and the employment must comply with the applicable regulations on pay and working conditions." Six-month waiting period, 15-hour weekly cap outside holidays, school confirmation, employer-files-application and pay/conditions all match character-for-character; figures cross-checked against the statutory text VZAE Art. 38 DE (in force 2026-06-12, same task): "frühestens sechs Monate nach Beginn der Ausbildung", "die wöchentliche Arbeitszeit ausserhalb der Ferien 15 Stunden nicht überschreitet" — identical. "The competent cantonal authorities decide" is the FAQ's own framing ("may approve").
+      status: VERIFIED
+      lastVerified: "2026-06-12"
+      verifiedBy: "fact-verifier"
+      reviewBy: "2026-09-10"
+    detail: >
+      You cannot simply take a job on a student permit: gainful employment during
+      education is a separate cantonal authorisation with its own statutory conditions,
+      set out in Arts. 38-40 of the Ordinance on Admission, Period of Stay and Employment
+      (VZAE/ASEO). The general side-employment rule (Art. 38) carries a six-month waiting
+      period from the start of the course and a 15-hour weekly cap outside holidays, and
+      it is the employer — not you — who files the application. Separate provisions cover
+      work that is part of a mandatory internship within the curriculum (Art. 39) and
+      employment in your own scientific specialist field during continuing education at a
+      university or university of applied sciences (Art. 40). Note that the VZAE exists
+      only in the official German, French and Italian versions, and that the 15-hour rule
+      as published covers students at universities and universities of applied sciences —
+      if you attend another type of school, confirm your options with the cantonal
+      authority before counting on any income from work.
+    steps:
+      - text: "Plan your budget for the first six months without Swiss work income: side employment can be authorised at the earliest six months after your course starts, and never for more than 15 hours a week outside holidays."
+        links:
+          - text: "VZAE/ASEO Art. 38 — side employment during education: school confirmation, max 15 hours/week outside holidays, employer application, pay and working conditions (authorisation possible at the earliest six months after the course starts)"
+            sourceUrl: "https://www.fedlex.admin.ch/eli/cc/2007/759/de#art_38"
+            sourceName: "Ordinance on Admission, Period of Stay and Employment (VZAE/ASEO, SR 142.201), Art. 38 — Fedlex (official German text)"
+            # VERIFIED 2026-06-12 (fact-verifier): Fedlex filestore VZAE DE (current consolidation "Stand am 12. Juni 2026" per SPARQL; anchor "art_38" present). Art. 38 verbatim: "Für Ausländerinnen und Ausländer, die in der Schweiz eine Aus- oder Weiterbildung an einer Hochschule oder Fachhochschule absolvieren, kann frühestens sechs Monate nach Beginn der Ausbildung eine Nebenerwerbstätigkeit bewilligt werden, wenn: a. die Schulleitung bestätigt, dass diese Tätigkeit im Rahmen der Ausbildung verantwortbar ist und den Ausbildungsabschluss nicht verzögert; b. die wöchentliche Arbeitszeit ausserhalb der Ferien 15 Stunden nicht überschreitet; c. das Gesuch eines Arbeitgebers nach Artikel 18 Buchstabe b AIG vorliegt; d. die Lohn- und Arbeitsbedingungen nach Artikel 22 AIG eingehalten werden." Six months ("frühestens" = at the earliest), 15 hours/week outside holidays, school confirmation, employer application and pay/conditions all match the step and link text character-for-character. The Hochschule/Fachhochschule scope limitation is correctly carried into the summary, detail and warning. Statutory conditions, not fees -> 90-day window.
+            status: VERIFIED
+            lastVerified: "2026-06-12"
+            verifiedBy: "fact-verifier"
+            reviewBy: "2026-09-10"
+      - text: "If your curriculum includes a mandatory internship, that work needs its own authorisation: it can be approved only if the internship is an integral part of your studies, and the work may not exceed half of the total duration of the education."
+        links:
+          - text: "SEM — FAQ: a permit for an internship will not be granted unless the internship forms an integral part of your studies; applications are generally submitted via a placement organisation"
+            sourceUrl: "https://www.sem.admin.ch/sem/en/home/themen/arbeit/faq.html"
+            sourceName: "State Secretariat for Migration (SEM) — FAQ: Working"
+            # VERIFIED 2026-06-12 (fact-verifier): SEM Working FAQ (HTTP 200). Verbatim: "you need a residence permit to pursue gainful employment, but it will not be granted unless your internship forms an integral part of your studies" and "applications are generally submitted via an organisation such as IAESTE or AIESEC". Link text accurate.
+            status: VERIFIED
+            lastVerified: "2026-06-12"
+            verifiedBy: "fact-verifier"
+            reviewBy: "2026-09-10"
+          - text: "VZAE/ASEO Art. 39 — work within a mandatory internship may be authorised if it does not exceed half of the total duration of the education (plus employer application, pay/conditions, suitable accommodation)"
+            sourceUrl: "https://www.fedlex.admin.ch/eli/cc/2007/759/de#art_39"
+            sourceName: "Ordinance on Admission, Period of Stay and Employment (VZAE/ASEO, SR 142.201), Art. 39 — Fedlex (official German text)"
+            # VERIFIED 2026-06-12 (fact-verifier): Fedlex filestore VZAE DE (current consolidation in force 2026-06-12; anchor "art_39" present). Art. 39 verbatim: "Für Ausländerinnen und Ausländer, die in der Schweiz eine vollzeitliche Ausbildung absolvieren, kann eine Erwerbstätigkeit im Rahmen eines obligatorischen Praktikums bewilligt werden, wenn: a. die Erwerbstätigkeit die Hälfte der gesamten Ausbildungsdauer nicht überschreitet; b. das Gesuch eines Arbeitgebers nach Artikel 18 Buchstabe b AIG vorliegt; c. die Lohn- und Arbeitsbedingungen nach Artikel 22 AIG eingehalten werden; d. die Gesuchstellerin oder der Gesuchsteller über eine bedarfsgerechte Wohnung nach Artikel 24 AIG verfügt." The half-of-total-duration cap and the parenthetical (employer application, pay/conditions, suitable accommodation) match the link text character-for-character.
+            status: VERIFIED
+            lastVerified: "2026-06-12"
+            verifiedBy: "fact-verifier"
+            reviewBy: "2026-09-10"
+      - text: "If you are in continuing education (Weiterbildung) at a university or university of applied sciences, employment in your own scientific specialist field can be authorised, provided the continuing education is not hindered by the work and the employer files the application."
+        links:
+          - text: "VZAE/ASEO Art. 40 — employment in one's scientific specialist field during continuing education at a university or university of applied sciences"
+            sourceUrl: "https://www.fedlex.admin.ch/eli/cc/2007/759/de#art_40"
+            sourceName: "Ordinance on Admission, Period of Stay and Employment (VZAE/ASEO, SR 142.201), Art. 40 — Fedlex (official German text)"
+            # VERIFIED 2026-06-12 (fact-verifier): Fedlex filestore VZAE DE (current consolidation in force 2026-06-12; anchor "art_40" present). Art. 40 verbatim: "Ausländerinnen und Ausländern, die in der Schweiz an einer Hochschule oder Fachhochschule eine Weiterbildung absolvieren, kann eine Erwerbstätigkeit in ihrem wissenschaftlichen Spezialbereich bewilligt werden, wenn: a. das Gesuch eines Arbeitgebers nach Artikel 18 Buchstabe b AIG vorliegt; b. die Lohn- und Arbeitsbedingungen nach Artikel 22 AIG eingehalten werden." Para. 2: "Die Weiterbildung darf durch die Erwerbstätigkeit nicht behindert werden." Scientific-specialist-field scope, employer application and not-hindered condition match the step and link text character-for-character.
+            status: VERIFIED
+            lastVerified: "2026-06-12"
+            verifiedBy: "fact-verifier"
+            reviewBy: "2026-09-10"
+    documents:
+      - "Application filed by your prospective employer with the cantonal authority (you cannot file it yourself)"
+      - "Confirmation from your institution that the work is compatible with your studies and will not delay completion"
+      - "Valid residence permit for education purposes"
+    # timeline omitted (ADR-0007): authorisation of student employment is a
+    # cantonal procedure; no official federal processing-time figure exists.
+    # cost omitted (ADR-0007): any fees are cantonal; no federal figure exists.
+    warning: >
+      Do not start working before the cantonal authorisation is granted — the student
+      residence permit by itself does not allow gainful employment. The published 15-hour
+      rule covers students at universities and universities of applied sciences; if you
+      study at another type of institution, confirm your situation with the cantonal
+      migration and labour-market authority first.
+    dependsOn:
+      - residence-permit-card
+
+  # ---------------------------------------------------------------------------
+  - id: study-health-insurance-exemption
+    title: "Check the student exemption from Swiss compulsory health insurance"
+    category: healthcare-insurance
+    # appliesIf (content-researcher, 2026-06-12, PENDING fact-verifier approval
+    # per ADR-0009 §4): KVV Art. 2 para. 4 is specific to persons staying in
+    # Switzerland for education or training; it complements (and does not
+    # contradict) the shared health-insurance task, which correctly states the
+    # default obligation for all residents.
+    # appliesIf APPROVED 2026-06-12 (fact-verifier, ADR-0009 §4): correct.
+    # KVV Art. 2 para. 4 (verified this run) covers "Personen, die sich im
+    # Rahmen einer Aus- oder Weiterbildung in der Schweiz aufhalten" —
+    # education stays only. The shared health-insurance task (no appliesIf)
+    # still renders for study users, which is right: the default three-month
+    # obligation stands unless and until the cantonal exemption is granted,
+    # exactly as this task's detail and warning state. NOTE (no change
+    # needed): Art. 2 para. 4 also exempts accompanying family members of
+    # the student; the intake does not model that persona, so the gate loses
+    # nothing today.
+    appliesIf: "motivation == 'study'"
+    summary:
+      text: "Students staying in Switzerland for education or training can, on request, be exempted from the compulsory Swiss health insurance if they have equivalent insurance cover for treatment in Switzerland for the entire duration of the exemption (Art. 2 para. 4 KVV, SR 832.102). A written confirmation from the competent foreign body must accompany the request. The competent cantonal authority may grant the exemption for at most three years; on request it can be extended by at most three further years. The exemption (or a waiver of it) cannot be revoked without special reason."
+      sourceUrl: "https://www.fedlex.admin.ch/eli/cc/1995/3867_3867_3867/de#art_2"
+      sourceName: "Ordinance on Health Insurance (KVV, SR 832.102), Art. 2 para. 4 — Fedlex (official German text)"
+      # VERIFIED 2026-06-12 (fact-verifier): cited www.fedlex.admin.ch URL resolves (HTTP 200, client-side SPA); German text read from the official Fedlex filestore consolidated DE HTML (ELI cc/1995/3867_3867_3867, SR 832.102, "Stand am 1. Januar 2026"; anchor "art_2" present). CONSOLIDATION CURRENCY CONFIRMED via the Fedlex SPARQL version list: 2026-01-01 is the consolidation in force today (next versions 2027-01-01 and 2032-07-01 are future-dated). Art. 2 para. 4 verbatim, every element of the claim present: "Auf Gesuch hin von der Versicherungspflicht ausgenommen sind Personen, die sich im Rahmen einer Aus- oder Weiterbildung in der Schweiz aufhalten, wie namentlich Studierende ... sofern sie während der gesamten Geltungsdauer der Befreiung für Behandlungen in der Schweiz über einen gleichwertigen Versicherungsschutz verfügen. Dem Gesuch ist eine schriftliche Bestätigung der zuständigen ausländischen Stelle mit allen erforderlichen Angaben beizulegen. Die zuständige kantonale Behörde kann die betreffende Person höchstens für drei Jahre von der Versicherungspflicht befreien. Auf Gesuch hin kann die Befreiung um höchstens drei weitere Jahre verlängert werden. Die betreffende Person kann die Befreiung oder einen Verzicht auf die Befreiung ohne besonderen Grund nicht widerrufen." On-request character, equivalent-cover condition for the whole exemption period, written foreign-body confirmation, cantonal competence, max three years + one three-year extension, and the no-revocation-without-special-reason rule all match character-for-character. Statutory durations, not fees -> 90-day window. No official EN translation of the KVV exists on Fedlex — German correctly cited.
+      status: VERIFIED
+      lastVerified: "2026-06-12"
+      verifiedBy: "fact-verifier"
+      reviewBy: "2026-09-10"
+    detail: >
+      The default rule of the shared health-insurance step still applies to you: anyone
+      settling in Switzerland must take out basic insurance within three months of taking
+      up residence. The ordinance on health insurance carves out a request-based exemption
+      for people staying in Switzerland for education or training — expressly naming
+      students, school pupils, interns and stagiaires, and the family members accompanying
+      them — but only if equivalent cover for treatment in Switzerland exists for the
+      whole exemption period, evidenced by a written confirmation from the competent
+      foreign body. The decision lies with the competent cantonal authority, the exemption
+      is capped at three years (one extension of at most three further years), and once
+      granted (or once waived) it cannot be revoked without special reason. Whether a US
+      insurance plan counts as equivalent is decided in your individual case — do not
+      assume it. The KVV exists only in the official German, French and Italian versions.
+    steps:
+      - text: "Decide early, within the three-month insurance window: either take out Swiss basic insurance (see the health-insurance step) or ask the competent cantonal authority of your canton of study how to request the student exemption, enclosing written confirmation of your equivalent foreign cover."
+        tip: "If the exemption is refused or your cover is not equivalent, the three-month obligation stands — budget for Swiss premiums until you have the cantonal decision in writing."
+    documents:
+      - "Written confirmation from the competent foreign body of your insurance cover (with all required details)"
+      - "Evidence that the cover is equivalent for treatments in Switzerland for the entire exemption period — confirm requirements with the competent cantonal authority"
+    # timeline omitted (ADR-0007): the exemption decision is cantonal; no
+    # official federal processing-time figure exists.
+    # cost omitted (ADR-0007): any fees are cantonal; no federal figure exists.
+    warning: >
+      Until an exemption is granted you remain subject to the obligation to insure within
+      three months of taking up residence. An exemption, once granted, cannot be revoked
+      without special reason — switching into Swiss basic insurance later (for example to
+      access cheaper premiums) is not freely available. Take the decision deliberately.
+    dependsOn:
+      - register-commune
+
+  # ---------------------------------------------------------------------------
+  - id: study-after-graduation
+    title: "After graduation: the six-month stay to look for qualified work"
+    category: employment
+    # appliesIf (content-researcher, 2026-06-12, PENDING fact-verifier approval
+    # per ADR-0009 §4): FNIA Art. 21 para. 3 applies specifically to holders of
+    # a Swiss higher-education degree at the end of the study route; it has no
+    # bearing on the other routes' users.
+    # appliesIf APPROVED 2026-06-12 (fact-verifier, ADR-0009 §4): correct.
+    # Art. 21 para. 3 FNIA (verified this run, EN 2026-02-01 + DE
+    # 2026-06-12) is conditioned on a Swiss university degree
+    # ("Ausländerinnen und Ausländer mit Schweizer Hochschulabschluss") —
+    # only the study route produces that situation in this corridor.
+    appliesIf: "motivation == 'study'"
+    summary:
+      text: "Third-country nationals who have graduated from a Swiss higher education institution have a six-month period from the end of their course or training in Switzerland in which to look for a job that matches their qualifications. In derogation from the principle of precedence for Swiss and EU/EFTA candidates, they may be admitted to work if their work is of high academic or economic interest (Art. 21 para. 3 FNIA). Admission to such work remains a decision of the authorities — it is not an automatic right to a work permit."
+      sourceUrl: "https://www.sem.admin.ch/sem/en/home/themen/arbeit/faq.html"
+      sourceName: "State Secretariat for Migration (SEM) — FAQ: Working"
+      # VERIFIED 2026-06-12 (fact-verifier): SEM Working FAQ loaded (curl, browser UA, HTTP 200, title "FAQ – Working"). Verbatim: "Third-country nationals who have graduated from a Swiss higher education institution have a six-month period from the end of their course or training in Switzerland in which to look for a job which matches their qualifications. In derogation of the principle of precedence for Swiss and EU/EFTA nationals, they may be admitted if their work represents an overriding scientific or economic interest." The claim's "high academic or economic interest" wording is the statutory EN phrase of FNIA Art. 21 para. 3 (verified verbatim this run on the Fedlex filestore text; cited as a link in this task) and is expressly attributed to that article. "Not an automatic right" is exactly supported: both FAQ and statute say "may be admitted". Six-month figure matches both sources character-for-character.
+      status: VERIFIED
+      lastVerified: "2026-06-12"
+      verifiedBy: "fact-verifier"
+      reviewBy: "2026-09-10"
+    detail: >
+      The student permit is not a path that ends in nothing: Swiss law gives graduates of
+      Swiss higher education institutions a six-month window after completing their course
+      to find suitable work, and lets them be admitted to employment in derogation from
+      the usual precedence rule (Swiss and EU/EFTA candidates first) where the work is of
+      high academic or economic interest. This is the realistic bridge from the study
+      route to the work route — but it is a derogation the authorities apply, not an
+      entitlement, and outside it the general admission requirements apply (Art. 27
+      para. 3 FNIA: a continued stay after completion or discontinuation of the course is
+      governed by the general admission requirements of the Act). If you find a qualifying
+      job, the employer-led work-permit process of the work route applies. The English
+      text of the FNIA is provided for information only and has no legal force.
+    steps:
+      - text: "Before your course ends, plan the transition: if you intend to stay, the six-month job-seeking window starts at the end of your course or training."
+        links:
+          - text: "FNIA Art. 21 para. 3 — graduates of a Swiss university may be admitted in derogation from the precedence rule if their work is of high academic or economic interest; they shall be admitted for six months following completion of their education to find suitable work"
+            sourceUrl: "https://www.fedlex.admin.ch/eli/cc/2007/758/en#art_21"
+            sourceName: "Foreign Nationals and Integration Act (FNIA, SR 142.20), Art. 21 — Fedlex"
+            # VERIFIED 2026-06-12 (fact-verifier): Fedlex filestore FNIA EN (in-force 2026-02-01, latest EN manifestation; anchor "art_21" present). Para. 3 verbatim: "Foreign nationals with a Swiss university degree may be admitted in derogation from paragraph 1 if their work is of high academic or economic interest. They shall be admitted for a period of six months following completion of their education or training in Switzerland in order to find suitable work." DE consolidation in force TODAY (2026-06-12) cross-checked as requested: Art. 21 unchanged ("von hohem wissenschaftlichem oder wirtschaftlichem Interesse"; "für eine Dauer von sechs Monaten"). Link text matches character-for-character.
+            status: VERIFIED
+            lastVerified: "2026-06-12"
+            verifiedBy: "fact-verifier"
+            reviewBy: "2026-09-10"
+      - text: "If you do not find qualifying work (or do not seek it), remember that staying on is governed by the general admission requirements of the Act — there is no automatic continued residence after the course."
+        links:
+          - text: "FNIA Art. 27 para. 3 — a continued stay in Switzerland following completion or discontinuation of the education or training course is governed by the general admission requirements of the Act"
+            sourceUrl: "https://www.fedlex.admin.ch/eli/cc/2007/758/en#art_27"
+            sourceName: "Foreign Nationals and Integration Act (FNIA, SR 142.20), Art. 27 — Fedlex"
+            # VERIFIED 2026-06-12 (fact-verifier): Fedlex filestore FNIA EN (in-force 2026-02-01; anchor "art_27" present). Art. 27 para. 3 verbatim: "A continued stay in Switzerland following completion or discontinuation of the education or training course is governed by the general admission requirements contained in this Act." DE consolidation in force 2026-06-12 cross-checked: unchanged. Link text matches character-for-character.
+            status: VERIFIED
+            lastVerified: "2026-06-12"
+            verifiedBy: "fact-verifier"
+            reviewBy: "2026-09-10"
+    documents:
+      - "Swiss higher-education degree / confirmation of completion of the course"
+      - "Valid residence permit and passport"
+      - "Confirm the application procedure for the six-month job-seeking stay with the cantonal migration office before your course ends"
+    # timeline omitted (ADR-0007): the six-month window is a statutory claim in
+    # the summary/steps, not a processing-time estimate; the application
+    # procedure itself is cantonal with no federal figure.
+    # cost omitted (ADR-0007): cantonal fees; no federal figure exists.
+    warning: >
+      The six-month stay is for graduates of Swiss higher education institutions looking
+      for work matching their qualifications — it is not a general right to remain after
+      any course, and admission to a job within it still requires that the work be of
+      high academic or economic interest. Contact the cantonal migration office before
+      your course ends.
+    dependsOn:
+      - residence-permit-card
