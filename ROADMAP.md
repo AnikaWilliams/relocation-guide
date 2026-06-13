@@ -6,7 +6,7 @@
 >
 > Legend: ✅ done · 🚧 in progress · ⏳ planned · 🔁 ongoing · 🗓️ backlog
 
-Last updated: 2026-06-12 (ADR-0012 document checklists + key facts live on all 21 tasks; 218/218 verified)
+Last updated: 2026-06-13 (all-routes intake + launch waitlist for not-yet-live corridors, dormant by default (ADR-0015); plus launch-readiness: legal/About/Contact drafts, og:image, dormant consent+analytics gate (ADR-0013), us-ch founder approval (ADR-0014); go-live blocked on domain)
 
 > **Current focus:** USA → Switzerland (`us-ch`) **only**, until it is perfected end-to-end.
 > All other corridors are deferred (see DECISIONS.md **ADR-0006**). India → Germany (`in-de`)
@@ -56,7 +56,7 @@ _Founder direction: drop the visual flowchart from the UI; make the whole produc
 - [x] Dependency logic extracted to `src/utils/journey.ts` (topological order + lock/unlock); `CorridorFlowchart.tsx` + `@xyflow/react` retired from the render path
 - [x] Post-intake experience = one-task-at-a-time guided card + sidebar (progress, editable answer history, journey tracker); mobile collapses the sidebar to a toggle
 - [x] **Intake restructured** (replaces the old 3-step wizard): origin + destination split into two steps; passports multi-select (`string[]`); motivation (work/family/study/other) with config-driven conditional follow-ups (`WizardStep[]` + `visibleIf`); intended-stay + children retained
-- [x] Country selection gated by published corridors — unsupported countries greyed/unselectable; self-hosted SVG flags (`flag-icons`, per-asset import) for the selectable set
+- [x] Country selection gated by published corridors — unsupported countries greyed/unselectable; self-hosted SVG flags (`flag-icons`, per-asset import) for the selectable set _(superseded 2026-06-13: every country is now selectable; non-live routes lead to a waitlist — see 2e / ADR-0015)_
 - [x] CWV: island bundle ~59 kB gz → ~9 kB gz (ReactFlow removed); CSS kept at ~17 kB by avoiding the full flag-icons stylesheet — **resolves the old ReactFlow bundle overage**
 - [x] Questionnaire fits one screen: card = pinned question header + internally-scrolling options + pinned Back/Continue footer (fullBleed body now `h-screen`); verified question+Continue visible on every step at 375×667 — _supersedes old F-07 (sticky Continue)_
 - [x] "Start over" reset in both wizard and plan view, with a confirm guard so answers/progress aren't wiped by an accidental tap
@@ -88,16 +88,25 @@ _Founder direction: drop the visual flowchart from the UI; make the whole produc
 - [ ] Structural a11y (QA findings, 2026-06-12, non-blocking): single-select steps as `role="radiogroup"` with arrow keys _(remaining)_. Done 2026-06-12: `role="status"` announcements on the personalised + route-coverage banners and the progress count; sidebar section labels are now real `h2` headings
 - [x] `hashchange` listener (2026-06-12): pasting/clicking a share link on an already-open corridor page now applies the profile without a reload (plain anchors like `#full-guide` ignored)
 
+#### 2e — All-routes intake + launch waitlist ✅ (ADR-0015, 2026-06-13)
+_Founder request: stop greying out countries; capture demand for routes we haven't built yet._
+- [x] **Every country selectable** in the origin/destination grids (no disabled options, nothing preselected on first open, no per-country availability badge); route-live predicate centralised in `src/utils/routes.ts` (`isRouteLive`)
+- [x] **Waitlist phase**: completing the intake for a non-published corridor routes to a dedicated "not live yet" screen (never a 404) capturing email (required) + phone (optional) behind explicit, unticked consent (`WaitlistPanel` + `src/utils/waitlist.ts`)
+- [x] **Dormant by default** (mirrors ADR-0013): no `PUBLIC_WAITLIST_ENDPOINT` → signup kept on-device only (`rg-waitlist-v1`), nothing transmitted; coarse payload only (route + motivation + contact, never free text) when enabled. Privacy/Cookie drafts + `.env.example` updated
+- [x] **Verified**: 79 unit tests incl. exhaustive 324-pair origin×destination matrix (only us→ch live); Playwright drove 26 routes through the real UI + form validation/submit/persistence
+- [ ] **ACTIVATION GATE (founder + lawyer, not done):** choose/stand up a backend that stores signups and can email/SMS at launch; update + lawyer-review Privacy/Cookie; confirm lawful basis + DPA — then set `PUBLIC_WAITLIST_ENDPOINT`. Until then notifications cannot send cross-device.
+
 #### 2c — Launch readiness ⏳
-- [ ] **Sole active corridor: USA → Switzerland (`us-ch`)** — founder approval + flip `published: true` _(blocked on 2b blockers above)_
+- [x] **Sole active corridor: USA → Switzerland (`us-ch`)** — `published: true`; **founder human-gate approval recorded (ADR-0014, 2026-06-13)**. _Content approved; public go-live still blocked on the domain (below)._
 - [ ] _(deferred)_ India → Germany (`in-de`) — parked WIP on `corridor/in-de`; resume after `us-ch`
 - [ ] _(deferred)_ all other corridors until `us-ch` is published
-- [ ] Compliance pages: privacy policy, cookie policy, terms (draft, lawyer review pending)
-- [ ] Impressum for Germany & Switzerland
-- [ ] Contact / About page
-- [ ] SEO metadata + JSON-LD per corridor (seo-analyst)
-- [ ] Analytics + consent decision implemented (resolve **ADR-0004**)
-- [ ] Founder approval of first corridors (human gate)
+- [x] Compliance pages: privacy policy, cookie policy, terms — **drafted 2026-06-13** (`src/pages/privacy.astro`, `cookie-policy.astro`, `terms.astro`), clearly marked DRAFT with operator placeholders; **lawyer review + operator details still pending before launch**
+- [x] Impressum — drafted (`src/pages/impressum.astro`); operator details + lawyer review pending
+- [x] Contact / About page — **drafted 2026-06-13** (`about.astro`, `contact.astro`); contact email is a placeholder until the domain exists
+- [x] SEO metadata + JSON-LD per corridor (seo-analyst) — corridor JSON-LD live (ADR-0011); **og:image social card + `summary_large_image` Twitter card added 2026-06-13** (`public/og/og-default.{svg,png}`, wired in `BaseLayout`)
+- [x] Analytics + consent decision implemented (resolves **ADR-0004** → **ADR-0013**) — Plausible + GA4-behind-consent + AdSense all behind a reject-by-default consent banner (`ConsentBanner.tsx`); **dormant until `PUBLIC_*` env vars are set at launch** (nothing loads without a domain/IDs)
+- [x] Founder approval of first corridor (human gate) — **ADR-0014, 2026-06-13** (`us-ch`)
+- [ ] **Launch blockers remaining (infrastructural):** production domain + Cloudflare Pages deploy + `SITE_URL`; lawyer review of legal drafts; operator details for Impressum/Contact. Monetization groundwork documented in `docs/monetization.md` (AdSense not yet eligible — needs domain + ~15 pages).
 
 ### Phase 3 — Accuracy system 🔁 (ongoing from Phase 1)
 The non-negotiable provenance rules — enforced continuously, not a one-off phase.
@@ -122,7 +131,7 @@ Status per corridor: ⬜ not started · ✏️ drafted (`UNVERIFIED`) · 🔎 in
 | Origin ↓ \ Dest → | Switzerland (`ch`) | Germany (`de`) |
 |---|---|---|
 | India (`in`) | ⬜ | ✏️ (parked) |
-| USA (`us`) | ✅ 218/218 verified (work + family + retirement + study; ADR-0012 document checklists on all 21 tasks) — awaiting founder approval | ⬜ |
+| USA (`us`) | ✅ 218/218 verified (work + family + retirement + study; ADR-0012 document checklists on all 21 tasks) — **founder-approved (ADR-0014)**; go-live blocked on domain | ⬜ |
 | UK (`gb`) | ⬜ | ⬜ |
 | Canada (`ca`) | ⬜ | ⬜ |
 | Australia (`au`) | ⬜ | ⬜ |
@@ -134,6 +143,7 @@ _Wave 2 origins (Serbia, Russia, Ukraine) and destinations added as those waves 
 ---
 
 ## Pending decisions
-- **ADR-0004 (analytics & consent):** Plausible + GA4-behind-CMP recommended; awaiting founder sign-off.
+- ~~**ADR-0004 (analytics & consent)**~~ — **resolved 2026-06-13 (ADR-0013):** founder approved Plausible + GA4-behind-consent; implemented dormant.
 - **ADR-0005 schema additions** (`published`, `title`/`description`, `CategoryEnum`): implemented; awaiting founder confirmation.
-- **Production domain / `site` URL:** placeholder until registered (affects canonical URLs + sitemap).
+- **Production domain / `site` URL:** placeholder until registered (affects canonical URLs + sitemap, and gates analytics/ads go-live).
+- **Legal drafts (privacy/cookie/terms/Impressum):** drafted; need a human lawyer's review + operator details before launch.

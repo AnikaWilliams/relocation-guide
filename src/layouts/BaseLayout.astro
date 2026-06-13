@@ -1,16 +1,22 @@
 ---
 import '../styles/global.css';
 import Disclaimer from '../components/Disclaimer.astro';
+import ConsentBanner from '../components/ConsentBanner.tsx';
 
 interface Props {
   title: string;
   description: string;
   /** Remove all padding and hide the footer — for full-bleed app-style pages. */
   fullBleed?: boolean;
+  /** Social-card image path (site-absolute, e.g. "/og/foo.png"). Defaults to the
+      branded default card. PNG is used because some scrapers reject SVG. */
+  ogImage?: string;
 }
 
-const { title, description, fullBleed = false } = Astro.props;
+const { title, description, fullBleed = false, ogImage = '/og/og-default.png' } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
+// Scrapers require an absolute og:image URL.
+const ogImageUrl = new URL(ogImage, Astro.site).href;
 ---
 
 <!doctype html>
@@ -31,7 +37,14 @@ const canonical = new URL(Astro.url.pathname, Astro.site).href;
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
-    <meta name="twitter:card" content="summary" />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={title} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageUrl} />
     <meta name="generator" content={Astro.generator} />
     {/* Per-page head extras (e.g. JSON-LD structured data) */}
     <slot name="head" />
@@ -61,13 +74,32 @@ const canonical = new URL(Astro.url.pathname, Astro.site).href;
     <footer class={`border-t border-slate-200 ${fullBleed ? '' : 'mt-12'}`}>
         <div class="mx-auto max-w-5xl px-4 py-8 space-y-4 text-sm text-slate-600">
           <Disclaimer />
-          <div class="flex flex-wrap items-center justify-between gap-2">
+          <div class="flex flex-wrap items-center justify-between gap-x-6 gap-y-2">
             <p>&copy; {new Date().getFullYear()} Relocation Guide. Informational use only.</p>
-            <nav aria-label="Legal" class="flex gap-4">
+            <nav aria-label="Site and legal" class="flex flex-wrap gap-x-4 gap-y-1">
+              <a href="/about" class="hover:text-slate-900 underline">About</a>
+              <a href="/contact" class="hover:text-slate-900 underline">Contact</a>
+              <a href="/privacy" class="hover:text-slate-900 underline">Privacy</a>
+              <a href="/cookie-policy" class="hover:text-slate-900 underline">Cookies</a>
+              <a href="/terms" class="hover:text-slate-900 underline">Terms</a>
               <a href="/impressum" class="hover:text-slate-900 underline">Impressum</a>
+              <button type="button" data-cookie-settings class="hover:text-slate-900 underline">
+                Cookie settings
+              </button>
             </nav>
           </div>
         </div>
       </footer>
+
+      <ConsentBanner client:load />
+
+      {/* Footer "Cookie settings" re-opens the consent panel (handled by the
+          ConsentBanner island via a window event). */}
+      <script>
+        import { CONSENT_OPEN_EVENT } from '../utils/analytics';
+        document.querySelectorAll('[data-cookie-settings]').forEach((el) => {
+          el.addEventListener('click', () => window.dispatchEvent(new Event(CONSENT_OPEN_EVENT)));
+        });
+      </script>
   </body>
 </html>

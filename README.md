@@ -20,7 +20,7 @@ progress tracker. Snapshot:
 |---|---|---|
 | **Phase 0** | Governance scaffold: `CLAUDE.md`, ADRs, agent definitions | ✅ Done |
 | **Phase 1** | Technical foundation: Astro app, content schema, **provenance build gate**, UI shell, tests | ✅ Done |
-| **Phase 2** | First corridors through the content pipeline; SEO; compliance pages; analytics | ⏳ Planned |
+| **Phase 2** | First corridors through the content pipeline; SEO; compliance pages; analytics | 🚧 In progress |
 | **Phase 3** | Accuracy system (provenance rules) — enforced continuously from Phase 1 onward | 🔁 Ongoing |
 | **Phase 4** | Monetisation (AdSense) + scale to more corridors/destinations | 🗓️ Backlog |
 
@@ -29,13 +29,25 @@ reunification, retirement (non-gainful, FNIA Art. 28), and study (Art. 27) — w
 independently verified** across **21 tasks**. The corridor app is a **guided form** (ADR-0008): a
 branching intake (origin, destination, passports, motivation + follow-ups, stay, children) →
 a one-task-at-a-time plan with a journey/answer-history sidebar; `appliesIf` rules (ADR-0009)
-route each user to their own steps. The dependency graph is backend-only (`src/utils/journey.ts`);
-the visual flowchart was retired (island bundle ~59 kB → ~9 kB gzip). Every step now carries a
+route each user to their own steps. **Every country is selectable** in the intake (nothing
+is preselected on first open); a route with no published guide leads to a **launch
+waitlist** — an email/phone capture with explicit consent, dormant by default so nothing
+leaves the browser until a backend is wired (ADR-0015) — rather than a dead end.
+The dependency graph is backend-only (`src/utils/journey.ts`);
+the visual flowchart was retired (island bundle ~59 kB → ~9 kB gzip then; ~14.5 kB gzip now with the waitlist). Every step now carries a
 **document checklist + scannable key facts** (ADR-0012): each task lists what you provide vs. the
 official form to obtain, with form links to the issuing authority's own page (never self-hosted).
 Plans are shareable via the URL fragment (F-08, no answers sent to servers); the full guide also
 renders as indexable markup below the app (ADR-0011). A weekly link-auditor CI watches every
-source URL. Ready for founder approval.
+source URL. The corridor is **founder-approved** (human gate, ADR-0014).
+
+**Launch readiness (2026-06-13):** draft Privacy / Cookie / Terms / About / Contact pages (legal
+ones clearly marked DRAFT pending lawyer review), a branded og:image social card, and a
+reject-by-default **cookie-consent banner** gating Plausible + GA4 + AdSense — all **dormant
+until the production domain and analytics IDs exist** (nothing loads without them; ADR-0013).
+**Remaining go-live blockers are infrastructural:** a production domain + Cloudflare Pages deploy,
+a human lawyer's review of the legal drafts, and operator details for the Impressum/Contact.
+Monetization (AdSense) is documented but not yet eligible — see [`docs/monetization.md`](docs/monetization.md).
 
 ---
 

@@ -1,9 +1,11 @@
 import { useState, useEffect, useMemo, useRef, type ReactNode } from 'react';
-import { COUNTRY_OPTIONS, countryName } from '../utils/countries';
+import { COUNTRY_OPTIONS, countryName, type CountryOption } from '../utils/countries';
 import { flagUrl } from '../utils/flags';
 import { topoOrder, statusOf, currentTaskId, type TaskStatus } from '../utils/journey';
 import { evaluateAppliesIf, type AppliesIfContext } from '../utils/appliesIf';
 import { INTAKE_PARAM_KEYS, readIntakeParams, applyIntakeParams, intakeSearchString, hasIntakeParams } from '../utils/urlState';
+import { submitWaitlist, isValidEmail, alreadyOnWaitlist, type WaitlistStatus } from '../utils/waitlist';
+import { isRouteLive } from '../utils/routes';
 
 /** Self-hosted SVG flag — renders identically on every OS, unlike emoji flags. */
 function Flag({ iso, className = '' }: { iso: string; className?: string }) {
@@ -19,19 +21,6 @@ function Flag({ iso, className = '' }: { iso: string; className?: string }) {
       className={`inline-block rounded-sm align-[-0.1em] ${className}`}
       style={{ width: '1.33em', height: '1em', objectFit: 'cover' }}
     />
-  );
-}
-
-/** Muted ISO chip used in place of a flag for not-yet-supported countries. */
-function IsoChip({ iso }: { iso: string }) {
-  return (
-    <span
-      className="inline-flex items-center justify-center rounded-sm bg-slate-200 text-slate-400 font-semibold"
-      style={{ width: '1.66rem', height: '1.25rem', fontSize: '0.6rem' }}
-      aria-hidden="true"
-    >
-      {iso.toUpperCase()}
-    </span>
   );
 }
 
@@ -171,11 +160,16 @@ const DURATION: Opt[] = [
   { value: 'permanent', label: 'Indefinitely — planning to settle', description: 'B permit now; C permit later' },
 ];
 
-function defaultIntake(originIso2: string, destinationIso2: string): Intake {
+/**
+ * A blank intake — nothing is preselected. A fresh visitor picks their own
+ * origin, destination, and passport(s); the page's corridor only seeds the
+ * answers when a share link / saved state restores them (see the mount effect).
+ */
+function defaultIntake(): Intake {
   return {
-    origin: originIso2,
-    destination: destinationIso2,
-    passports: [originIso2],
+    origin: null,
+    destination: null,
+    passports: [],
     motivation: null,
     workStatus: null,
     employerName: '',
@@ -212,14 +206,14 @@ const STEPS: WizardStep[] = [
   {
     id: 'origin',
     title: 'Where are you moving from?',
-    subtitle: 'Only corridors we have verified data for are selectable today.',
+    subtitle: "Pick any country. If your route has a verified guide we'll open it; if not, you can join the launch waitlist.",
     fields: [{ kind: 'country', scope: 'origin' }],
     isComplete: (a) => !!a.origin,
   },
   {
     id: 'destination',
     title: 'Where are you moving to?',
-    subtitle: 'More destinations unlock as we verify them.',
+    subtitle: "Pick anywhere you're headed. Ready routes open the full guide; the rest let you join the waitlist.",
     fields: [{ kind: 'country', scope: 'destination' }],
     isComplete: (a) => !!a.destination,
   },
@@ -410,36 +404,31 @@ function CategoryBadge({ category }: { category: string }) {
 
 // ── Country pickers ──────────────────────────────────────────────────────────
 
+/**
+ * Country picker. Every country is selectable — there are no greyed-out options
+ * and no per-country availability badge. Whether a chosen route has a published
+ * guide is revealed only after selection (the plan vs. the launch waitlist).
+ */
 function CountryGrid({
-  selectableIso, selectedIso, onSelect,
-}: { selectableIso: Set<string>; selectedIso: string | null; onSelect: (iso: string) => void }) {
+  options, selectedIso, onSelect,
+}: { options: CountryOption[]; selectedIso: string | null; onSelect: (iso: string) => void }) {
   return (
     <div className="grid grid-cols-2 gap-1.5 sm:gap-2">
-      {COUNTRY_OPTIONS.map((c) => {
-        const selectable = selectableIso.has(c.iso2);
+      {options.map((c) => {
         const selected = selectedIso === c.iso2;
         return (
           <button
             key={c.iso2}
             type="button"
-            disabled={!selectable}
             aria-pressed={selected}
             onClick={() => onSelect(c.iso2)}
-            title={selectable ? undefined : 'No verified corridor for this country yet'}
             className={`flex items-center gap-2 border rounded-lg px-2.5 py-2 text-left text-sm transition-all ${
-              !selectable
-                ? 'border-slate-100 bg-slate-50 opacity-50 cursor-not-allowed'
-                : selected
-                ? 'border-blue-500 bg-blue-50'
-                : 'border-slate-200 bg-white hover:border-blue-300'
+              selected ? 'border-blue-500 bg-blue-50' : 'border-slate-200 bg-white hover:border-blue-300'
             }`}
           >
-            {selectable ? <Flag iso={c.iso2} className="text-xl" /> : <IsoChip iso={c.iso2} />}
-            <span className={`font-medium ${selectable ? 'text-slate-900' : 'text-slate-400'}`}>
-              {c.name}
-              {!selectable && <span className="sr-only"> (no verified corridor yet)</span>}
-            </span>
-            {selected && <span className="ml-auto text-blue-500" aria-hidden="true">✓</span>}
+            <Flag iso={c.iso2} className="text-xl" />
+            <span className="font-medium text-slate-900 truncate">{c.name}</span>
+            {selected && <span className="ml-auto text-blue-500 shrink-0" aria-hidden="true">✓</span>}
           </button>
         );
       })}
@@ -954,15 +943,187 @@ function TaskCard({
   );
 }
 
+// ── Waitlist (route not live yet) ────────────────────────────────────────────
+
+/**
+ * Shown when the chosen origin→destination corridor has no published guide.
+ * Captures an email (required) and optional phone with explicit, unticked
+ * consent, then hands them to `submitWaitlist` (dormant by default — see
+ * utils/waitlist.ts). Honest framing: we say plainly the guide isn't built yet.
+ */
+function WaitlistPanel({
+  origin, destination, motivation, onEditRoute, headingRef,
+}: {
+  origin: string;
+  destination: string;
+  motivation: Motivation | null;
+  onEditRoute: () => void;
+  headingRef?: React.Ref<HTMLHeadingElement>;
+}) {
+  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
+  const [consent, setConsent] = useState(false);
+  const [status, setStatus] = useState<'idle' | 'submitting' | 'done' | 'error'>('idle');
+  const [error, setError] = useState<string | null>(null);
+  const [already, setAlready] = useState(false);
+
+  // localStorage read happens after mount (never during first render).
+  useEffect(() => {
+    setAlready(alreadyOnWaitlist(origin, destination));
+  }, [origin, destination]);
+
+  const routeLabel = (
+    <span className="inline-flex items-center gap-1.5 font-semibold text-slate-900">
+      <Flag iso={origin} /> {countryName(origin)} <span className="text-slate-400">→</span> <Flag iso={destination} /> {countryName(destination)}
+    </span>
+  );
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    setError(null);
+    if (!isValidEmail(email)) {
+      setError('Please enter a valid email address so we can reach you.');
+      return;
+    }
+    if (!consent) {
+      setError('Please tick the box to confirm we can contact you about this route.');
+      return;
+    }
+    setStatus('submitting');
+    const result: WaitlistStatus = await submitWaitlist({ origin, destination, motivation, email, phone });
+    if (result === 'error') {
+      setStatus('error');
+      setError('Something went wrong saving your request. Please try again in a moment.');
+      return;
+    }
+    setStatus('done');
+    setAlready(true);
+  }
+
+  const done = status === 'done' || already;
+
+  return (
+    <div className="mx-auto w-full max-w-xl px-4 sm:px-6 py-8 space-y-4">
+      <div className="bg-white rounded-2xl shadow-sm border border-slate-100 p-6 sm:p-8 space-y-5">
+        <div className="space-y-2">
+          <span className="inline-flex items-center rounded-full bg-blue-50 px-2.5 py-0.5 text-xs font-semibold text-blue-700">
+            Not live yet
+          </span>
+          <h2 ref={headingRef} tabIndex={-1} className="text-2xl font-bold text-slate-900 leading-snug focus:outline-none">
+            We haven't built the {countryName(origin)} → {countryName(destination)} guide yet
+          </h2>
+          <p className="text-slate-600 leading-relaxed">
+            Every route we publish is researched against official sources and independently
+            fact-checked before it goes live, so we add them one at a time. Yours isn't ready —
+            but leave your details and we'll tell you the moment it launches.
+          </p>
+        </div>
+
+        <div className="rounded-xl bg-slate-50 border border-slate-200 px-4 py-3 text-sm text-slate-700 flex flex-wrap items-center gap-x-2 gap-y-1">
+          {routeLabel}
+          {motivation && <span className="text-slate-400">·</span>}
+          {motivation && <span>{motivationLabel(motivation)} route</span>}
+        </div>
+
+        {origin === 'ru' && (
+          <div className="rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-800">
+            <strong>Note for moves from Russia:</strong> sanctions and banking restrictions can
+            heavily affect this route. When we publish it, those blockers will be flagged
+            prominently.
+          </div>
+        )}
+
+        {done ? (
+          <div role="status" className="rounded-xl border border-emerald-200 bg-emerald-50 px-4 py-4">
+            <p className="font-semibold text-emerald-800">You're on the list ✓</p>
+            <p className="mt-1 text-sm text-emerald-700">
+              We'll contact you when the {countryName(origin)} → {countryName(destination)} guide is
+              ready. You can close this page — your spot is saved on this device.
+            </p>
+          </div>
+        ) : (
+          <form onSubmit={handleSubmit} className="space-y-4" noValidate>
+            <div className="space-y-1.5">
+              <label htmlFor="wl-email" className="block text-sm font-medium text-slate-700">
+                Email address
+              </label>
+              <input
+                id="wl-email"
+                type="email"
+                inputMode="email"
+                autoComplete="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="you@example.com"
+                className="w-full border border-slate-200 rounded-xl px-4 py-3 text-slate-900 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none"
+              />
+            </div>
+            <div className="space-y-1.5">
+              <label htmlFor="wl-phone" className="block text-sm font-medium text-slate-700">
+                Phone number <span className="text-slate-400 font-normal">(optional, for a text)</span>
+              </label>
+              <input
+                id="wl-phone"
+                type="tel"
+                inputMode="tel"
+                autoComplete="tel"
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
+                placeholder="+1 555 123 4567"
+                className="w-full border border-slate-200 rounded-xl px-4 py-3 text-slate-900 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none"
+              />
+            </div>
+
+            <label className="flex items-start gap-2.5 text-sm text-slate-600">
+              <input
+                type="checkbox"
+                checked={consent}
+                onChange={(e) => setConsent(e.target.checked)}
+                className="mt-0.5 h-4 w-4 shrink-0"
+              />
+              <span>
+                You can contact me once, when this route launches. I can ask to be removed at any
+                time. See the <a href="/privacy" className="underline hover:text-slate-800">Privacy policy</a>.
+              </span>
+            </label>
+
+            {error && <p role="alert" className="text-sm text-rose-700">{error}</p>}
+
+            <button
+              type="submit"
+              disabled={status === 'submitting'}
+              className={`w-full rounded-xl py-3 font-medium text-white transition-colors ${
+                status === 'submitting' ? 'bg-blue-300 cursor-wait' : 'bg-blue-500 hover:bg-blue-600'
+              }`}
+            >
+              {status === 'submitting' ? 'Saving…' : 'Notify me when it launches'}
+            </button>
+
+            <p className="text-xs text-slate-400">
+              We'll only use these details to tell you about this one route — nothing else.
+            </p>
+          </form>
+        )}
+      </div>
+
+      <div className="flex items-center justify-center text-sm">
+        <button type="button" onClick={onEditRoute} className="text-slate-500 hover:text-slate-700 font-medium">
+          ← Choose a different route
+        </button>
+      </div>
+    </div>
+  );
+}
+
 // ── Main component ───────────────────────────────────────────────────────────
 
 export default function CorridorApp({ tasks, corridorTitle, originIso2, destinationIso2, availableCorridors, coversMotivations }: CorridorAppProps) {
   // Deterministic defaults for the first render (must match the server so
   // hydration succeeds). Persisted state is loaded from localStorage in an
   // effect after mount — see below.
-  const [phase, setPhase] = useState<'wizard' | 'app'>('wizard');
+  const [phase, setPhase] = useState<'wizard' | 'app' | 'waitlist'>('wizard');
   const [stepId, setStepId] = useState<string>(STEPS[0].id);
-  const [answers, setAnswers] = useState<Intake>(() => defaultIntake(originIso2, destinationIso2));
+  const [answers, setAnswers] = useState<Intake>(() => defaultIntake());
   const [doneIds, setDoneIds] = useState<Set<string>>(() => new Set());
   const [docState, setDocState] = useState<DocState>({});
   const [activeTaskId, setActiveTaskId] = useState<string | null>(null);
@@ -1011,7 +1172,7 @@ export default function CorridorApp({ tasks, corridorTitle, originIso2, destinat
   // non-plan extras (free text) and task progress.
   useEffect(() => {
     let saved: {
-      phase?: 'wizard' | 'app';
+      phase?: 'wizard' | 'app' | 'waitlist';
       stepId?: string;
       answers?: Partial<Intake>;
       doneIds?: unknown;
@@ -1029,7 +1190,7 @@ export default function CorridorApp({ tasks, corridorTitle, originIso2, destinat
     // reach our servers); the query string is accepted for hand-built links.
     const params = readIntakeParams(window.location);
 
-    let nextAnswers = defaultIntake(originIso2, destinationIso2);
+    let nextAnswers = defaultIntake();
     if (saved?.answers) nextAnswers = { ...nextAnswers, ...saved.answers };
     if (params) {
       // Origin/destination come from the page path, not from saved state.
@@ -1121,12 +1282,16 @@ export default function CorridorApp({ tasks, corridorTitle, originIso2, destinat
     return () => window.removeEventListener('hashchange', handler);
   }, [originIso2, destinationIso2]);
 
-  // Selectable country sets, derived from published corridors.
-  const originSelectable = useMemo(() => new Set(availableCorridors.map((c) => c.origin)), [availableCorridors]);
-  const destinationSelectable = useMemo(() => {
-    const pool = availableCorridors.filter((c) => !answers.origin || c.origin === answers.origin);
-    return new Set(pool.map((c) => c.destination));
-  }, [availableCorridors, answers.origin]);
+  // The destination grid offers every country except the one chosen as origin.
+  const destinationOptions = useMemo(
+    () => COUNTRY_OPTIONS.filter((c) => c.iso2 !== answers.origin),
+    [answers.origin],
+  );
+  // Is the chosen corridor a published one (vs. a waitlist route)?
+  const routeLive = useMemo(
+    () => isRouteLive(availableCorridors, answers.origin, answers.destination),
+    [availableCorridors, answers.origin, answers.destination],
+  );
 
   // Personalised path: evaluate each task's `appliesIf` against the intake
   // answers. Invalid expressions fail OPEN (the task stays visible) — hiding
@@ -1189,7 +1354,7 @@ export default function CorridorApp({ tasks, corridorTitle, originIso2, destinat
     return typeof v === 'function' ? (v as (a: Intake) => T)(answers) : v;
   }
 
-  function pushHistory(nextPhase: 'wizard' | 'app', nextStepId?: string) {
+  function pushHistory(nextPhase: 'wizard' | 'app' | 'waitlist', nextStepId?: string) {
     window.history.pushState({ __relocation: true, phase: nextPhase, stepId: nextStepId }, '');
   }
 
@@ -1200,10 +1365,17 @@ export default function CorridorApp({ tasks, corridorTitle, originIso2, destinat
       pushHistory('wizard', next);
       return;
     }
-    // Last step → enter the app. Redirect if the chosen corridor isn't this
-    // page — carrying the intake in the URL fragment so the target corridor
-    // lands straight on the personalised plan (F-08), without the answers
-    // ever appearing in the HTTP request.
+    // Last step. If the chosen corridor has no published guide, send them to the
+    // launch waitlist instead of navigating to a page that doesn't exist.
+    if (answers.origin && answers.destination && !routeLive) {
+      setMobilePanelOpen(false);
+      setPhase('waitlist');
+      pushHistory('waitlist');
+      return;
+    }
+    // Live corridor on a different page → redirect, carrying the intake in the
+    // URL fragment so the target corridor lands straight on the personalised
+    // plan (F-08), without the answers ever appearing in the HTTP request.
     if (answers.origin && answers.destination && (answers.origin !== originIso2 || answers.destination !== destinationIso2)) {
       const qs = intakeSearchString(answers);
       window.location.assign(`/${answers.origin}/${answers.destination}/${qs ? `#${qs}` : ''}`);
@@ -1260,7 +1432,7 @@ export default function CorridorApp({ tasks, corridorTitle, originIso2, destinat
     }
     setPhase('wizard');
     setStepId(STEPS[0].id);
-    setAnswers(defaultIntake(originIso2, destinationIso2));
+    setAnswers(defaultIntake());
     setDoneIds(new Set());
     setDocState({});
     setActiveTaskId(null);
@@ -1270,10 +1442,9 @@ export default function CorridorApp({ tasks, corridorTitle, originIso2, destinat
 
   // Country handlers (need cross-field logic, so not closures on the field).
   function selectOrigin(iso: string) {
-    setAnswers((a) => {
-      const stillValid = availableCorridors.some((c) => c.origin === iso && c.destination === a.destination);
-      return { ...a, origin: iso, destination: stillValid ? a.destination : null };
-    });
+    // The destination grid excludes the chosen origin, so clear a destination
+    // that would now equal it; otherwise keep the user's destination as-is.
+    setAnswers((a) => ({ ...a, origin: iso, destination: a.destination === iso ? null : a.destination }));
   }
   function selectDestination(iso: string) {
     setAnswers((a) => ({ ...a, destination: iso }));
@@ -1322,10 +1493,10 @@ export default function CorridorApp({ tasks, corridorTitle, originIso2, destinat
               <div className="flex-1 min-h-0 overflow-y-auto px-6 sm:px-8 py-4 space-y-4">
                 {currentStep.fields.map((field, fi) => {
                   if (field.kind === 'country') {
-                    const selectable = field.scope === 'origin' ? originSelectable : destinationSelectable;
-                    const selected = field.scope === 'origin' ? answers.origin : answers.destination;
-                    const onSelect = field.scope === 'origin' ? selectOrigin : selectDestination;
-                    return <CountryGrid key={fi} selectableIso={selectable} selectedIso={selected} onSelect={onSelect} />;
+                    if (field.scope === 'origin') {
+                      return <CountryGrid key={fi} options={COUNTRY_OPTIONS} selectedIso={answers.origin} onSelect={selectOrigin} />;
+                    }
+                    return <CountryGrid key={fi} options={destinationOptions} selectedIso={answers.destination} onSelect={selectDestination} />;
                   }
                   if (field.kind === 'countryMulti') {
                     return <CountryMultiGrid key={fi} selected={answers.passports} onToggle={togglePassport} />;
@@ -1418,6 +1589,47 @@ export default function CorridorApp({ tasks, corridorTitle, originIso2, destinat
             the official authority or a licensed immigration adviser before acting.{' '}
             <a href="/impressum" className="underline hover:text-slate-800">Impressum</a>
           </p>
+        </div>
+      </div>
+    );
+  }
+
+  // ── Waitlist phase (chosen corridor has no published guide yet) ──────────────
+
+  if (phase === 'waitlist' && answers.origin && answers.destination) {
+    return (
+      <div className="flex-1 flex flex-col overflow-hidden">
+        <div className="shrink-0 bg-white border-b border-slate-200 px-4 sm:px-8 py-3 sm:py-5 flex items-center justify-between gap-3 min-w-0">
+          <div className="min-w-0">
+            <p className="text-base sm:text-xl font-bold text-slate-900 flex items-center gap-1.5 min-w-0">
+              <Flag iso={answers.origin} className="shrink-0" />
+              <span className="truncate">{countryName(answers.origin)}</span>
+              <span className="shrink-0 text-slate-400">→</span>
+              <Flag iso={answers.destination} className="shrink-0" />
+              <span className="truncate">{countryName(answers.destination)}</span>
+            </p>
+            <p className="text-xs sm:text-sm text-slate-500 mt-0.5 truncate">This route isn't live yet — join the launch waitlist</p>
+          </div>
+          <button type="button" onClick={handleReset} className="shrink-0 text-sm text-blue-600 hover:text-blue-700 font-medium whitespace-nowrap">← Start over</button>
+        </div>
+
+        <div className="shrink-0 bg-amber-50 border-b border-amber-100 px-4 py-2">
+          <p className="text-xs text-amber-800">
+            <strong>General guidance only — not legal advice.</strong>{' '}
+            Rules change frequently; always verify with the official authority or a licensed
+            immigration adviser before acting.{' '}
+            <a href="/impressum" className="underline hover:text-amber-900">Impressum</a>
+          </p>
+        </div>
+
+        <div className="flex-1 overflow-y-auto bg-slate-50">
+          <WaitlistPanel
+            origin={answers.origin}
+            destination={answers.destination}
+            motivation={answers.motivation}
+            onEditRoute={() => handleEditAnswer('origin')}
+            headingRef={taskHeadingRef}
+          />
         </div>
       </div>
     );

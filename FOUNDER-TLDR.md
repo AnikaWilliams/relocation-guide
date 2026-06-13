@@ -10,6 +10,68 @@ coming next. Newest updates are at the top.
 
 ---
 
+## 2026-06-13 — Removed the green "Guide ready" tag from the country list
+
+**What changed.** I took out the small green "Guide ready" label that sat beside countries with a finished guide (it was showing next to the United States). The list of countries is now plain — just flags and names, every option looking the same. Which routes are actually built is still revealed the instant someone picks one: they either land on the full step-by-step guide or on the "join the waitlist" screen.
+
+**Why it matters.** You asked for it gone — and a uniform list doesn't draw the eye toward one country over the others, so people pick the route that's genuinely theirs rather than the one we've flagged.
+
+**What you'd notice today.** Open the planner: no green tags anywhere; the country list looks clean and even until you choose.
+
+**What's next.** This batch is being committed now.
+
+---
+
+## 2026-06-13 — The planner now starts as a blank slate
+
+**What changed.** When someone opens the planner, no country is filled in for them anymore. Before, because the page lives at a USA→Switzerland web address, it quietly pre-ticked "United States" and "Switzerland" — like handing someone a form already half-filled with another person's answers. Now the first question starts empty: visitors pick their own "from" country, their own "to" country, and their own passport, and the "Continue" button stays greyed out until they actually choose. (Routes we've already built still show a little green "Guide ready" tag, so people can see which ones are finished.)
+
+**Why it matters.** It's more honest, and it stops accidental answers — nobody gets nudged toward a route that isn't theirs. As a bonus, the interest we collect from the new waitlist now reflects what people genuinely want, not a pre-filled default.
+
+**What you'd notice today.** Open the planner: every country is blank and unselected, and "Continue" only lights up once you pick one.
+
+**What's next.** Your go-ahead to commit this together with the waitlist work.
+
+---
+
+## 2026-06-13 — Pick any country — and a "tell me when my route is ready" waitlist
+
+**What changed.** Before, the planner let you choose **only** the USA→Switzerland route; every other country was greyed out, like a menu where most dishes are crossed off. Now **every country is pickable**. The ones we've already researched show a small green "Guide ready" tag; the rest are open too. If you pick a route we haven't built yet, instead of a dead end you get a friendly page that says, honestly, "we haven't built this guide yet," and offers to take your email (phone optional) so we can tell you when it launches — with a tick-box where you actively agree first.
+
+**One important caveat:** the "tell me when it's ready" box is wired up but **not yet connected to anything that can actually send an email** — exactly like the cookie banner, it's installed but switched off. Right now a sign-up is just remembered on that person's own device; nothing is sent to us. Switching on real notifications needs a decision from you (see below) plus a lawyer's nod, because we'd be collecting people's contact details.
+
+**Why it matters.** Two wins: visitors never hit a dead end, and we start learning **which routes people actually want** — so we build the most-wanted ones next instead of guessing.
+
+**What you'd notice today.** Open the planner: all countries selectable; choose, say, India→Germany and you'll see the waitlist sign-up.
+
+**What's next.** Your call on how we collect + send those alerts (a small mailing setup), then a lawyer reviews the privacy wording before we switch it on.
+
+---
+
+## 2026-06-13 — The pages every real website needs — plus a cookie banner that's ready but switched off
+
+**What changed.** I built the "around the edges" pages a launch needs: **Privacy**, **Cookies**, **Terms**, **About**, and **Contact**, all linked from a new footer menu on every page. The legal three are clearly stamped **DRAFT — for a lawyer to review** and have blanks (your name, address, email) for you to fill. I also made a branded **social-share image** — the little preview card that shows up when someone posts a link to the site — and a **cookie consent banner**. Think of the banner like the light switch and wiring being fully installed, but the power to the room left off: it remembers a visitor's choice, defaults to "no extra tracking," and lets them change their mind anytime — but because we have no website address or analytics account yet, nothing actually tracks anyone. I also wrote up the **money-making plan** (ads later, honestly: we're not eligible yet) and formally logged your go-ahead to publish the USA→Switzerland guide.
+
+**Why it matters.** These are the gatekeepers for going live and for ads — done now so launch day is flipping a switch, not building a room.
+
+**What you'd notice today.** New footer links on every page; a privacy choices banner pops up once.
+
+**What's next.** A real web address, then a lawyer's pass over the drafts.
+
+---
+
+## 2026-06-13 — Taught the link-watchdog to tell "can't reach it" apart from "it's broken"
+
+**What changed.** Right after the big content push, the automated link-watchdog flagged the build as failing — but it was a false alarm again. This time its servers couldn't even connect to the Swiss federal websites at all (a network timeout from the data-centre it runs in), even though those sites are perfectly fine from a normal connection. The watchdog was treating "I couldn't reach it from here" the same as "this link is dead." Fixed: it now retries a couple of times, and if it still can't connect from the data centre, it logs a *warning* ("couldn't reach from CI — check locally") instead of failing the build. A genuinely dead or moved link (a real "page not found") still fails loudly, everywhere. The thorough check from a normal connection still passes all 32 sources.
+
+**Why it matters.** A watchdog that cries wolf gets switched off. This keeps it trustworthy: it still catches real link rot, but stops blocking work over its own data-centre's network hiccups.
+
+**What you'd notice today.** Nothing user-facing — this is the safety machinery staying honest.
+
+**What's next.** Confirm the build check goes green, then back to the launch checklist.
+
+---
+
 ## 2026-06-12 — Done: every step of the guide now has a fact-checked document checklist
 
 **What changed.** All 21 steps of the USA → Switzerland guide — across all four routes (work, family, retirement, study) — now carry the full treatment: a scannable "Key facts" box, the long explanation tucked into a "Read the details" drop-down, and a checkable document list separating what you provide from the official forms (each linked to the issuing government office's own page, never a copy we host). Every one of the 218 underlying facts has been independently fact-checked against official Swiss sources; the site builds clean. The last two steps were finished from the statute books after the usual portal proved unreachable to the checker. A reader can now go end-to-end through any of the four routes with, at each step, the plain "what and why," the key facts, and exactly which papers to gather.

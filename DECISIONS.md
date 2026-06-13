@@ -332,3 +332,78 @@ WHICH documents a step requires, per SEM / Canton de Vaud guidance, is factual c
 - Per-task doc progress is derived state (no schema for "checked" — it's user-local).
 - Renaming a document in content resets users' checkmarks for that item (key = task id + doc name) — acceptable; names are stable post-verification.
 - The all-done completion screen is now genuinely earned: every applicable task's documents were handled first.
+
+---
+
+## ADR-0013 — Analytics, consent & advertising: approval + dormant implementation
+
+**Date:** 2026-06-13
+**Status:** Accepted — resolves the pending decision in **ADR-0004**
+**Decided by:** Founder (Anika Williams) approved Option 3; implemented this session
+
+### Context
+ADR-0004 left the analytics/consent choice "pending founder decision" with a recommendation of Option 3 (Plausible primary + GA4 behind a consent gate). The founder approved that option and asked to also begin monetization groundwork. The site has **no production domain yet** and far fewer than AdSense's content-volume threshold, so nothing can actually go live — but the consent and analytics plumbing can ship now, dormant, so launch is a config change rather than a build.
+
+### Decision
+1. **Approve ADR-0004 Option 3.** Plausible (cookieless, no consent prompt) is the primary analytic; **GA4 loads only behind explicit consent**. Advertising (Google AdSense) is added to the same consent gate for post-launch.
+2. **Dormant by default.** All provider IDs are read from `PUBLIC_*` build env vars (`PUBLIC_PLAUSIBLE_DOMAIN`, `PUBLIC_GA4_ID`, `PUBLIC_ADSENSE_CLIENT`) that default to empty. With empty config **nothing loads — not even after a visitor clicks "Accept"** (`src/utils/analytics.ts` guards every loader on a non-empty ID). Safe to ship pre-launch; documented in `.env.example`.
+3. **Consent model** (`src/components/ConsentBanner.tsx`, compliance-owned behaviour): optional categories default OFF (reject-by-default, no pre-ticked boxes); "Accept all" and "Reject non-essential" have equal prominence; granular per-category toggles via "Customise"; choice persisted to `localStorage` key `rg-consent-v1` (versioned — a bump re-asks); withdrawable/changeable any time via the footer **"Cookie settings"** link (dispatches a window event the island listens for). Hydration-safe: renders nothing until mounted, reads storage only in an effect.
+4. **Event taxonomy is coarse and non-personal.** `trackEvent(name, props)` carries only enums (corridor, motivation, step index, task id, booleans) — **never** free-text intake, passports, or employer/institution names. Full taxonomy in `docs/monetization.md` §2. Wiring the specific calls into `CorridorApp` is deferred to land with a live endpoint.
+5. **Advertising strategy (groundwork).** Ads will be **AdSense only**, serving **only post-launch**, **only behind the advertising consent toggle**, **never adjacent to legal/visa claims, document checklists, official-source links, or the disclaimer**, within a CWV budget (reserved slot sizes, lazy below-the-fold). Activation gated on: live domain + ~15 indexable pages + AdSense approval + `PUBLIC_ADSENSE_CLIENT` set. Placement plan in `docs/monetization.md` §3.
+
+### Consequences
+- New: `src/utils/analytics.ts`, `src/components/ConsentBanner.tsx`, `docs/monetization.md`; `.env.example` documents the three optional `PUBLIC_*` vars. `BaseLayout` mounts the banner (`client:load`) and the footer gains a "Cookie settings" trigger.
+- Legal drafts updated to match: `privacy.astro`, `cookie-policy.astro` (storage inventory), `terms.astro` — all DRAFT pending human lawyer review (CLAUDE.md compliance scope).
+- The consent UI is live and functional now, but **measures/serves nothing** until the env vars are populated at launch. Verified in-browser: reject persists & loads nothing; accept persists & still loads nothing (no IDs configured).
+- ADR-0004's pending status is resolved here; its text is left intact (append-only).
+
+---
+
+## ADR-0014 — USA → Switzerland: founder human-gate publication approval
+
+**Date:** 2026-06-13
+**Status:** Accepted
+**Decided by:** Founder (Anika Williams)
+
+### Context
+CLAUDE.md rule 8 (human gate): "the founder personally approves the first version of every corridor before it goes live." The `us-ch` corridor is content-complete: 21 tasks, 218/218 claims VERIFIED via the two-agent pipeline, document checklists + key facts on every task (ADR-0012), the indexable guide (ADR-0011), route-coverage honesty (ADR-0010), and `published: true`. The founder reviewed the launch-readiness checklist and approved publication.
+
+### Decision
+**The founder approves the first published version of `us-ch`.** This records the human gate required by CLAUDE.md rule 8. The corridor remains `published: true`; the build gate continues to enforce that every rendered claim stays VERIFIED and in-date (a future stale/flagged claim will fail the build regardless of this approval).
+
+### Scope / caveats
+- Approval is of the **content's first version**, not a go-live: the site cannot actually launch until the production domain + Cloudflare Pages deploy exist (ROADMAP 2c) and `SITE_URL` is set. Canonical URLs/sitemap/og use the placeholder domain until then.
+- Legal pages remain DRAFT pending human lawyer review; Impressum awaits operator details. These do not block content approval but **do** block public launch.
+
+### Consequences
+- The human gate for `us-ch` is satisfied and dated. Subsequent material content changes to `us-ch` should be re-approved.
+- Remaining launch blockers are infrastructural (domain, lawyer review, operator details), tracked in ROADMAP Phase 2c.
+
+---
+
+## ADR-0015 — Launch waitlist for not-yet-live corridors (dormant capture)
+
+**Date:** 2026-06-13
+**Status:** Accepted (UI + capture). **Activation of off-device sending is DEFERRED to a founder decision.**
+**Decided by:** Founder request (make every country selectable; capture interest for routes that aren't live) + main thread (architecture).
+
+### Context
+The intake previously greyed out every country outside a published corridor, so only USA→Switzerland was reachable. The founder asked to (a) make **all** countries selectable and (b) when a chosen route has no published guide, capture an email/phone to notify the person when it launches. This is a static site (Astro → Cloudflare Pages) with **no backend, no database, no production domain, and no email/SMS provider**, and the just-shipped Privacy policy states intake answers never leave the browser. Actually *sending* a launch notification requires backend infrastructure, a sending provider, a lawful basis, and a Privacy/Cookie update with lawyer review — all founder-owned and infrastructural.
+
+### Decision
+1. **Every country is selectable** in the origin and destination grids (no disabled/greyed options; nothing preselected on first open; no per-country availability badge — availability is revealed after selection). The route-live predicate lives in one pure, unit-tested helper (`src/utils/routes.ts`, `isRouteLive`).
+2. **Waitlist phase.** Completing the intake for a non-published origin→destination pair routes to a dedicated waitlist screen (never a 404) that states plainly the guide isn't built yet and captures an **email (required) + phone (optional)** behind an **explicit, unticked consent** checkbox linking the Privacy policy.
+3. **Dormant by default** — mirrors the analytics gate (ADR-0013). With `PUBLIC_WAITLIST_ENDPOINT` empty (the default), a signup is recorded **only in the visitor's own browser** (`rg-waitlist-v1`) and **nothing is transmitted off-device**, so the Privacy policy's "your answers stay in your browser" remains true. Set the endpoint to activate transmission.
+4. **Coarse payload only.** When transmission is enabled, the body is route (origin/destination) + motivation + the contact details the visitor typed — **never** free text (employer / institution / "other"), matching the analytics hard-rule.
+
+### Activation gate (founder + compliance — NOT yet done)
+Before `PUBLIC_WAITLIST_ENDPOINT` may be set in production:
+- choose + stand up a backend that stores signups and can email/SMS at launch (e.g. a Cloudflare Pages Function + KV/D1, or a form/ESP provider);
+- update the Privacy + Cookie policies with the provider, retention, and rights, and have a **lawyer review** them;
+- confirm the lawful basis (the unticked consent box is the opt-in) and a data-processing agreement with the provider.
+Until then the feature is honest plumbing: it captures intent on-device and demonstrates the full UX, but cannot notify cross-device.
+
+### Consequences
+- Demand for unbuilt corridors becomes visible/capturable the day a backend is wired, with no UI rework — turning it on is a config + endpoint change.
+- No PII leaves the device in the default deployment, so the privacy posture is unchanged until the founder deliberately activates it.
+- Verified: 79 unit tests (incl. an exhaustive 324-pair origin×destination matrix asserting only us→ch is live); Playwright drove 26 routes through the real UI (live control → plan; all others → waitlist) plus the form's validation, submit, and on-device persistence.
