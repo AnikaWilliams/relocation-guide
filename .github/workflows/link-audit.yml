@@ -63,6 +63,12 @@ jobs:
         id: audit
         run: npm run links -- --report link-audit-report.md
 
+      # ADR-0017: re-fetch each tracked source live, normalize, hash, and compare
+      # to the stored snapshot to detect content drift. Informational (non-strict)
+      # for now — it surfaces drift without failing the run.
+      - name: Source content-drift check
+        run: node scripts/check-sources.mjs
+
       - name: Upload report artifact
         if: always()
         uses: actions/upload-artifact@v4

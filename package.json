@@ -16,7 +16,9 @@
     "check": "astro check",
     "test": "vitest run",
     "test:watch": "vitest",
-    "links": "node scripts/check-links.mjs"
+    "links": "node scripts/check-links.mjs",
+    "sources:snapshot": "node scripts/snapshot-source.mjs",
+    "sources:check": "node scripts/check-sources.mjs"
   },
   "dependencies": {
     "@astrojs/react": "^3.6.2",

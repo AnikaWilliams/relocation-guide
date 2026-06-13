@@ -30,6 +30,11 @@ npm-debug.log*
 # Claude Code local settings (per-developer, not shared)
 .claude/settings.local.json
 
+# Source-snapshot raw cache (ADR-0017): regenerable raw payloads, keyed by
+# content hash. The tracked manifest.json + normalized .txt files are committed;
+# the gzipped raw bytes are not.
+sources/.cache/
+
 # Misc
 *.local
 *.tsbuildinfo

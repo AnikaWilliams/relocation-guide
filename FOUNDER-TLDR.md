@@ -10,6 +10,18 @@ coming next. Newest updates are at the top.
 
 ---
 
+## 2026-06-13 — Built "receipts" for every official fact
+
+**What changed.** I built the behind-the-scenes "receipts drawer" for our research. Before, when we confirmed a fact (a visa fee, a deadline) we saved the official web *address* we used — but not a copy of what that page actually *said* that day. Now the system can snapshot the page itself, time-stamp it, and take a fingerprint of its wording, kept alongside the guide — so we can prove "on this date, the government's own page said exactly this," and an automatic check re-reads those pages and flags any that have quietly changed. I built it with a small team of AI assistants working in parallel (the capability we just switched on) — a deliberate low-risk trial before the big country-research push. It passed every test (90 automated checks green).
+
+**Why it matters.** It's the backbone of trust: if a fact is ever challenged we have the dated receipt — and we catch it automatically when an official source edits its page out from under us.
+
+**What you'd notice today.** Nothing visible — pure accuracy plumbing, now built and tested.
+
+**What's next.** Switch it on during the USA → Western Europe research so every new fact gets a receipt from day one.
+
+---
+
 ## 2026-06-13 — Removed the green "Guide ready" tag from the country list
 
 **What changed.** I took out the small green "Guide ready" label that sat beside countries with a finished guide (it was showing next to the United States). The list of countries is now plain — just flags and names, every option looking the same. Which routes are actually built is still revealed the instant someone picks one: they either land on the full step-by-step guide or on the "join the waitlist" screen.

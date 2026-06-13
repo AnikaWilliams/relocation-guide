@@ -407,3 +407,119 @@ Until then the feature is honest plumbing: it captures intent on-device and demo
 - Demand for unbuilt corridors becomes visible/capturable the day a backend is wired, with no UI rework — turning it on is a config + endpoint change.
 - No PII leaves the device in the default deployment, so the privacy posture is unchanged until the founder deliberately activates it.
 - Verified: 79 unit tests (incl. an exhaustive 324-pair origin×destination matrix asserting only us→ch is live); Playwright drove 26 routes through the real UI (live control → plan; all others → waitlist) plus the form's validation, submit, and on-device persistence.
+
+---
+
+## ADR-0016 — Corridor production via agent teams, in two separate runs (research, then verification)
+
+**Date:** 2026-06-13
+**Status:** Accepted
+**Decided by:** Founder (Anika Williams)
+
+### Context
+`us-ch` is content-complete and founder-approved (ADR-0014), so corridor production can scale beyond it. Claude Code **agent teams** (multiple independent Opus-4.8 sessions coordinating via a shared task list) let us parallelise that work. But CLAUDE.md's **two-agent rule** requires that the agent which *writes* a claim and the agent which *verifies* it be **different sessions with no shared context** — and within a single team, teammates share a task list and mailbox.
+
+### Decision
+Corridor content is produced with agent teams, split into **two separate runs / sessions** so the two-agent rule holds by construction (zero shared context between writer and verifier):
+
+1. **Research run** — a team of `content-researcher` teammates (Opus 4.8) drafts each corridor YAML. Every claim is tagged `status: UNVERIFIED` with `sourceUrl`/`sourceName`, and the corridor stays `published: false`. **No verification happens in this run.**
+2. **Verification run** — a *separate, later* team of `fact-verifier` teammates (Opus 4.8) independently re-derives each claim from its primary official source and flips it to `VERIFIED` (or kicks it back). Because it is a distinct session, the verifier shares no context with the writer beyond the claim text + cited URL in the YAML.
+
+**This session's batch (research run):** USA → all in-scope Western-European destinations + UK — `us-de, us-fr, us-nl, us-ie, us-at, us-be, us-lu, us-gb`. (`us-ch` is already complete and serves as the quality template.)
+
+### Required follow-up (do not skip)
+**Research alone does not produce publishable content.** A **verification team run is mandatory** before any claim is marked `VERIFIED` or any corridor is set `published: true`. Until that run completes, every corridor in this batch remains `UNVERIFIED` and `published: false`.
+
+### Constraints carried
+- Opus 4.8 only (`content-researcher`/`fact-verifier` are pinned to it); never Fable 5 for this work.
+- Every claim needs a primary official source. Agent `WebFetch` is datacenter-IP-blocked on government sites (confirmed `*.admin.ch`/`ch.ch`; assume the same risk elsewhere) → fetch with local `curl` via Bash; if a source is unreachable, the claim stays `UNVERIFIED` ("confirm with [authority]" + link), never inferred.
+- One teammate per corridor file (no concurrent edits to one file); the lead serialises writes to shared files (VERIFICATION_LOG.md, ROADMAP.md, FOUNDER-TLDR.md).
+- The build gate is unaffected — unpublished drafts don't trip it. Never merge to `main`/`develop`; the founder flips `published: true` after human review.
+
+### Consequences
+- Parallel throughput on corridor drafting; the two-agent rule is preserved by separation of runs rather than by in-team discipline.
+- Verification is the gating step and is bound by official-source reachability (the `curl` path), so it is expected to be the slower of the two runs.
+
+---
+
+## ADR-0017 — Source-snapshot cache + content-drift detection (audit trail for verified claims)
+
+**Date:** 2026-06-13
+**Status:** Accepted (spec). **Implementation pending** — see ROADMAP Phase 3.
+**Decided by:** Founder (Anika Williams)
+**Owner:** `architect` (design) → `link-auditor` (CI integration)
+
+### Context
+Today we persist the *conclusions* of research — each claim's `status`/`sourceUrl`/`lastVerified`/`verifiedBy`/`reviewBy` live in the corridor YAML, with `VERIFICATION_LOG.md` as the audit record. We do **not** persist the *raw source content*. Consequences:
+- Every research and every verification run re-fetches the same official pages from scratch (the two-agent rule deliberately makes the verifier re-fetch live — that part stays).
+- The only raw captures that exist are ad-hoc, untracked session dumps (`audit/fetch-20260612/`, `audit/verify-study-20260612/`), created to work around the agent-WebFetch datacenter-IP block.
+- We cannot prove **what an official page said on the day we verified a claim** — a real gap for content people make legal decisions from.
+- `link-auditor` (`scripts/check-links.mjs` + `scripts/link-baseline.json`) checks URL *liveness* and a sha256 *baseline*, but it is not a per-claim, dated content archive.
+
+### Decision
+Build a **local-first, git-tracked source-snapshot cache** that captures the raw official-source content behind every claim, indexes it, and powers content-drift detection — without weakening the two-agent rule.
+
+**1. Storage layout (per corridor)**
+```
+src/content/corridors/<corridor>.yaml          # unchanged (claims + provenance)
+sources/<corridor>/manifest.json               # TRACKED — index (see below)
+sources/<corridor>/<sha256-prefix>.txt         # TRACKED — normalized text extract
+sources/.cache/<sha256>.html.gz                # GITIGNORED — raw payload (regenerable)
+```
+- **Tracked, small, diffable:** the `manifest.json` index + a **normalized plain-text extraction** of each source (whitespace-collapsed, boilerplate-stripped) — this is the legally-relevant content and is what drift compares.
+- **Gitignored, regenerable:** the raw HTML/PDF, gzipped, keyed by content hash — fast local reuse within a run; not committed, to keep the repo lean.
+- **Dedup:** keyed by normalized URL; identical content (same sha256) stored once; one source can back many claims.
+
+**2. Manifest entry shape**
+```jsonc
+{
+  "sourceUrl": "https://…",          // normalized (canonical)
+  "sourceName": "…",                 // issuing authority
+  "claimIds": ["task.cost", "…"],    // claims that cite this source
+  "fetchedAt": "2026-06-13",
+  "fetchMethod": "curl",             // curl (preferred) | webfetch
+  "sha256": "…",                     // hash of the NORMALIZED text
+  "byteSize": 12345,
+  "contentType": "text/html",
+  "textPath": "sources/<corridor>/<sha>.txt",
+  "capturedBy": "<agent/teammate or human>"
+}
+```
+
+**3. Capture path (dodges the datacenter block).** A helper `scripts/snapshot-source.mjs <url> <corridor>` fetches via local `curl` (residential IP), normalizes → text, hashes, writes the raw `.gz` to the gitignored cache and the text + manifest entry to the tracked tree. Falls back to WebFetch only for non-blocked sites. If a source is unreachable, it records nothing and signals the caller (claim stays `UNVERIFIED`).
+
+**4. Schema change (back-compatible).** Add an **optional** `sourceHash` (sha256 of the normalized source text at last verification) to the `Claim` schema. Absent = "no snapshot yet" (existing `us-ch` claims keep building). When present, the build/CI can cross-check the rendered claim's hash against the tracked snapshot.
+
+**5. Two-team integration (preserves the two-agent rule — ADR-0016).**
+- **Research run:** after curl-fetching a source, the researcher snapshots it (raw→cache, text+hash→manifest). Claims stay `UNVERIFIED`.
+- **Verification run:** the verifier **still re-fetches the source LIVE** and re-derives the claim — it does **not** trust the research snapshot as evidence. It then **diffs** its live fetch against the research snapshot:
+  - identical / immaterially different + source supports the claim → `VERIFIED`, write `sourceHash`, refresh the manifest's verified snapshot;
+  - **materially different** (page changed between research and verify) → flag for human/re-research, claim stays `UNVERIFIED`.
+  The cache is an audit trail and a drift signal, **never** a substitute for the live integrity check.
+
+**6. Drift detection (CI).** Extend the auditor with `scripts/check-sources.mjs` (or fold into `link-audit.yml`): for each tracked source, re-fetch live, normalize, hash, compare to the stored `sha256`/`sourceHash`. Content drift → warning by default; for claims tagged sensitive (fees/quotas/eligibility) → red, flips dependent claims toward re-verification (complements the existing `reviewBy` staleness gate). This is a real upgrade over the liveness-only `link-baseline.json`.
+
+### Non-goals
+- **Not** a runtime/site cache — the site stays static and never fetches sources at build or runtime.
+- **Not** an external database or service (no domain/infra dependency; local-first, git-tracked).
+- **Not** a replacement for live verification — the verifier always re-fetches live.
+
+### Consequences
+- Eliminates redundant re-fetching *within* a research run and gives a dated, per-claim **audit trail** ("what the source said on date X") — directly supports the "as if a lawyer will audit it" standard.
+- Real **content-drift detection**, not just dead-link detection.
+- Resilient to the datacenter-IP block (snapshots captured via local curl).
+- Costs: some repo growth (bounded — text-only tracked, raw gzipped + gitignored, dedup by hash); new tooling to maintain; one optional schema field (back-compat); a normalization routine whose output must be stable (so hashes don't churn).
+
+### Open questions / tunables (decide at implementation)
+- **Track raw too?** Default: text + hash tracked, raw gzipped + gitignored. If legal review wants immutable raw archival, escalate to git-lfs or an external object store, and/or add PDF/screenshot capture for the highest-stakes claims.
+- **Drift severity:** warn-vs-fail threshold by claim sensitivity (proposed: fees/quotas/eligibility = fail).
+- **Backfill:** snapshot `us-ch`'s existing 218 claims, or only apply going forward to the USA→Western-Europe batch (ADR-0016)?
+- **Normalization spec:** exact text-extraction rules (must be deterministic across runs/OSes to keep hashes stable).
+- **Privacy:** sources are public official pages (no PII) → safe to commit; the snapshotter must refuse anything behind auth or containing personal data.
+
+### Implementation tasks (for ROADMAP)
+1. `scripts/snapshot-source.mjs` (capture: curl → normalize → hash → manifest/text/raw-gz) + `.gitignore` for `sources/.cache/`.
+2. Optional `sourceHash` on the `Claim` schema (Zod), back-compatible.
+3. `scripts/check-sources.mjs` drift check wired into `link-audit.yml`.
+4. Wire capture into the ADR-0016 research-team prompt and the diff into the verification-team prompt.
+5. Decide + apply backfill for `us-ch`.

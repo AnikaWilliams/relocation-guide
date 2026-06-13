@@ -6,7 +6,7 @@
 >
 > Legend: ✅ done · 🚧 in progress · ⏳ planned · 🔁 ongoing · 🗓️ backlog
 
-Last updated: 2026-06-13 (all-routes intake + launch waitlist for not-yet-live corridors, dormant by default (ADR-0015); plus launch-readiness: legal/About/Contact drafts, og:image, dormant consent+analytics gate (ADR-0013), us-ch founder approval (ADR-0014); go-live blocked on domain)
+Last updated: 2026-06-13 (source-snapshot cache + content-drift detection spec'd + core-implemented via agent team, ADR-0017; corridor production via agent teams — research then a separate verification run, ADR-0016, USA → Western Europe + UK batch queued. Plus: all-routes intake + launch waitlist (ADR-0015); launch-readiness drafts, og:image, dormant consent+analytics (ADR-0013), us-ch founder approval (ADR-0014); go-live blocked on domain)
 
 > **Current focus:** USA → Switzerland (`us-ch`) **only**, until it is perfected end-to-end.
 > All other corridors are deferred (see DECISIONS.md **ADR-0006**). India → Germany (`in-de`)
@@ -100,6 +100,7 @@ _Founder request: stop greying out countries; capture demand for routes we haven
 - [x] **Sole active corridor: USA → Switzerland (`us-ch`)** — `published: true`; **founder human-gate approval recorded (ADR-0014, 2026-06-13)**. _Content approved; public go-live still blocked on the domain (below)._
 - [ ] _(deferred)_ India → Germany (`in-de`) — parked WIP on `corridor/in-de`; resume after `us-ch`
 - [ ] _(deferred)_ all other corridors until `us-ch` is published
+- [ ] **USA → Western Europe + UK batch via agent teams (ADR-0016, 2026-06-13):** `us-de, us-fr, us-nl, us-ie, us-at, us-be, us-lu, us-gb`. Run 1 = `content-researcher` team (drafts, all claims UNVERIFIED, `published: false`). **Run 2 = a SEPARATE `fact-verifier` team is REQUIRED before any claim is VERIFIED or any corridor is published** — research output is not publishable on its own. Opus 4.8 throughout; official sources via local `curl` (agent WebFetch is gov-site datacenter-blocked).
 - [x] Compliance pages: privacy policy, cookie policy, terms — **drafted 2026-06-13** (`src/pages/privacy.astro`, `cookie-policy.astro`, `terms.astro`), clearly marked DRAFT with operator placeholders; **lawyer review + operator details still pending before launch**
 - [x] Impressum — drafted (`src/pages/impressum.astro`); operator details + lawyer review pending
 - [x] Contact / About page — **drafted 2026-06-13** (`about.astro`, `contact.astro`); contact email is a placeholder until the domain exists
@@ -114,6 +115,13 @@ The non-negotiable provenance rules — enforced continuously, not a one-off pha
 - [ ] Two-agent verification practised on every corridor (researcher ≠ verifier)
 - [x] `link-auditor` CI (2026-06-12): `scripts/check-links.mjs` + weekly `link-audit.yml` (also runs on PRs touching corridor content). Checks every claim sourceUrl: dead links/soft-404s/redirect-loops = red (opens a tracking issue); permanent redirects + content drift (sha256 baseline in `scripts/link-baseline.json`) = warnings. Handles fedlex SPA shells and the eda.admin.ch bot-block (manual-check allowlist). First run: **23/23 URLs OK, 0 errors**
 - [x] Automated staleness flagging surfaced in CI (same job): past-due `reviewBy` = red; due within 14 days = warning; VERIFIED claims missing provenance = red. Earliest current reviewBy: 2026-07-09 (30-day fee claims start warning ~2026-06-25)
+- **Source-snapshot cache + content-drift detection (ADR-0017):** spec'd + **core implemented 2026-06-13** (built by a 2-teammate agent team on Opus 4.8; 90 tests green). Local-first, git-tracked archive of the raw official source behind every claim, to prove "what the page said on date X" and detect *content* drift (not just dead links).
+  - [x] `scripts/snapshot-source.mjs` — capture via local `curl` (dodges the gov-site datacenter block) → normalize (`scripts/lib/normalize-source.mjs`, deterministic) → sha256 → `sources/<corridor>/manifest.json` + tracked text extract; raw HTML gzipped in a gitignored `sources/.cache/`. Dedups by sha256, merges claimIds, writes nothing on fetch failure.
+  - [x] Optional, back-compatible `sourceHash` on the `Claim` schema (Zod) + `tests/schema-sourcehash.test.ts`
+  - [x] `scripts/check-sources.mjs` drift check folded into `link-audit.yml` (re-fetch → normalize → hash compare → OK/DRIFTED/UNREACHABLE). **v1 is informational/non-strict** (warnings + CI annotations); `--strict` exits non-zero.
+  - [ ] _(deferred)_ per-claim drift severity (fees/quotas/eligibility drift = red vs. warning) — v1 treats all drift as a warning
+  - [ ] Wire capture into the ADR-0016 **research**-team prompt; wire the live-refetch + diff into the **verification**-team prompt (verifier still re-fetches live — the cache never replaces the integrity check, preserving the two-agent rule)
+  - [ ] Decide + apply backfill for `us-ch` (218 claims) vs. going-forward only
 
 ### Phase 4 — Monetisation & scale 🗓️
 - [ ] AdSense readiness (15+ pages, policy pages, HTTPS) + review submission

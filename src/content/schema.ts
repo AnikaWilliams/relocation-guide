@@ -59,6 +59,8 @@ export const ClaimSchema = z.object({
   verifiedBy: z.string().optional(),
   reviewBy: z.string().date().optional(),
   status: ClaimStatusEnum.default('UNVERIFIED'),
+  // ADR-0017: sha256 of the normalized source text at last verification (optional; back-compat)
+  sourceHash: z.string().optional(),
 });
 export type Claim = z.infer<typeof ClaimSchema>;
 
