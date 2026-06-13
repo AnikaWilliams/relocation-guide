@@ -10,6 +10,42 @@ coming next. Newest updates are at the top.
 
 ---
 
+## 2026-06-12 — Done: every step of the guide now has a fact-checked document checklist
+
+**What changed.** All 21 steps of the USA → Switzerland guide — across all four routes (work, family, retirement, study) — now carry the full treatment: a scannable "Key facts" box, the long explanation tucked into a "Read the details" drop-down, and a checkable document list separating what you provide from the official forms (each linked to the issuing government office's own page, never a copy we host). Every one of the 218 underlying facts has been independently fact-checked against official Swiss sources; the site builds clean. The last two steps were finished from the statute books after the usual portal proved unreachable to the checker. A reader can now go end-to-end through any of the four routes with, at each step, the plain "what and why," the key facts, and exactly which papers to gather.
+
+**Why it matters.** This is the heart of the product — turning "you need to move" into a concrete, sourced, tick-it-off checklist — now complete for the whole first corridor.
+
+**What you'd notice today.** Open any step on `localhost`: facts box, details drop-down, document checklist with "Get form from…" buttons.
+
+**What's next.** Your review, then I commit and push the whole batch.
+
+---
+
+## 2026-06-12 — The last two steps sourced straight from Swiss law; final fact-check running
+
+**What changed.** The two steps the bulk run couldn't finish — commune registration and the social-security number — now have their facts drafted, but sourced a different way. Because the automated checker's servers can't open the usual government portal (ch.ch), we went to the primary source instead: the actual Swiss statute books (Fedlex). That turned up a useful precision point — the "register within 14 days" rule isn't in the headline immigration act; it's in the implementing ordinance, so we cited it correctly there. Those drafts are now in the same independent fact-check every other fact goes through.
+
+**Why it matters.** Going to the statute is the most authoritative source there is — arguably better than the portal — and it shows the accuracy process bends to reach the truth rather than skipping a hard-to-reach fact.
+
+**What you'd notice today.** Still nothing new live — this is the final check before all 21 steps are complete.
+
+**What's next.** Check passes → full preview → your go-ahead to commit.
+
+---
+
+## 2026-06-12 — Document checklists now on nearly every step — fact-checked, in bulk
+
+**What changed.** After you approved the first step, we ran the rest as a coordinated team of helpers: several researched the required documents for the remaining steps at once, an independent checker re-verified every fact against official sources, and the results were written in one careful pass each so nothing collided. The result: **19 of the 21 steps** now have the scannable "Key facts" box + the checkable document list (what you provide vs. the official form to fetch, each form linked to the issuing government office's own page). Across all four routes — work, family, retirement, study — that's 208 facts, every one fact-checked, and the site still builds clean.
+
+**Why it matters.** This is the core "what do I actually need to do, and what paperwork" experience, now real across almost the whole guide — and proven repeatable at scale.
+
+**What you'd notice today.** Open almost any step: a tidy facts box and a real document checklist with "Get form from…" buttons.
+
+**What's next.** Two shared steps (commune registration, social-security number) need a quick follow-up — the auto-checker's servers can't reach one government site that a local connection can, so those two are being finished now from the underlying law instead. Then your preview and the go-ahead to commit.
+
+---
+
 ## 2026-06-12 — Removed the blue "Personalised for you" banner
 
 **What changed.** You asked to drop the blue strip that appeared above a plan reading "Personalised for you: N of M steps apply… Skipped: …". It's gone. The personalisation itself is unchanged — the plan still quietly shows only the steps that apply to a person's situation; we just no longer call attention to what was left out. The legal-advice disclaimer and the honest "your route isn't covered yet" notice both stay exactly as they were.

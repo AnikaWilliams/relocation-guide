@@ -24,22 +24,18 @@ progress tracker. Snapshot:
 | **Phase 3** | Accuracy system (provenance rules) — enforced continuously from Phase 1 onward | 🔁 Ongoing |
 | **Phase 4** | Monetisation (AdSense) + scale to more corridors/destinations | 🗓️ Backlog |
 
-**Right now:** USA → Switzerland (`us-ch`) covers **two verified routes — work and family
-reunification — with 49/49 claims independently verified** (12 tasks; `appliesIf` rules route
-each user to their own plan, approved by the fact-verifier). The
-corridor app was reshaped into a **guided form** (ADR-0008): a branching intake (origin,
-destination, passports, motivation + follow-ups, stay, children) followed by a one-task-at-a-time
-plan with a journey/answer-history sidebar. The dependency graph is now backend-only
-(`src/utils/journey.ts`); the visual flowchart was retired from the UI, cutting the island bundle
-from ~59 kB to ~9 kB gzip (the dead `CorridorFlowchart.tsx` + `@xyflow/react` code is now fully
-removed from the repo). Country choices are gated to published corridors. Plans are shareable and
-bookmarkable (F-08): answers ride in the URL fragment — never sent to our servers, free-typed text
-never included, per the compliance share-link ruling. Ready for founder approval.
-A third route — **retirement / residence without gainful employment** (FNIA Art. 28) — is
-**live**: 20/20 claims independently verified, "Retirement" added to the intake, and retirees
-get their own non-employed pension task in place of the employee-framed one. The corridor now
-holds **69 verified claims across 15 tasks and 3 routes**; a study-route research lane and a
-weekly source-link watchdog (CI) are in progress.
+**Right now:** USA → Switzerland (`us-ch`) covers **four verified routes — work, family
+reunification, retirement (non-gainful, FNIA Art. 28), and study (Art. 27) — with 218/218 claims
+independently verified** across **21 tasks**. The corridor app is a **guided form** (ADR-0008): a
+branching intake (origin, destination, passports, motivation + follow-ups, stay, children) →
+a one-task-at-a-time plan with a journey/answer-history sidebar; `appliesIf` rules (ADR-0009)
+route each user to their own steps. The dependency graph is backend-only (`src/utils/journey.ts`);
+the visual flowchart was retired (island bundle ~59 kB → ~9 kB gzip). Every step now carries a
+**document checklist + scannable key facts** (ADR-0012): each task lists what you provide vs. the
+official form to obtain, with form links to the issuing authority's own page (never self-hosted).
+Plans are shareable via the URL fragment (F-08, no answers sent to servers); the full guide also
+renders as indexable markup below the app (ADR-0011). A weekly link-auditor CI watches every
+source URL. Ready for founder approval.
 
 ---
 

@@ -6,7 +6,7 @@
 >
 > Legend: ✅ done · 🚧 in progress · ⏳ planned · 🔁 ongoing · 🗓️ backlog
 
-Last updated: 2026-06-12 (retirement route live, 69/69; study lane + link-auditor running)
+Last updated: 2026-06-12 (ADR-0012 document checklists + key facts live on all 21 tasks; 218/218 verified)
 
 > **Current focus:** USA → Switzerland (`us-ch`) **only**, until it is perfected end-to-end.
 > All other corridors are deferred (see DECISIONS.md **ADR-0006**). India → Germany (`in-de`)
@@ -62,6 +62,7 @@ _Founder direction: drop the visual flowchart from the UI; make the whole produc
 - [x] "Start over" reset in both wizard and plan view, with a confirm guard so answers/progress aren't wiped by an accidental tap
 
 **Next — high-value before scaling to more corridors (this month):**
+- [x] **Document checklists + de-densified task detail (ADR-0012)** — every one of the 21 tasks now has structured `documents` (provide vs. official `form`, each form-link a build-gated/link-audited Claim to the issuing authority's own page, never self-hosted) + a distilled `tldr` + 3-5 `keyFacts`. Built via a Workflow (parallel research + independent verification, serialized per-group writes); `register-commune` + `ahv-social-security` sourced from Fedlex statutes after the verifier's server-side WebFetch hit ch.ch's datacenter block. **218/218 VERIFIED.** _Systemic note: agent `WebFetch` is datacenter-blocked on ch.ch — content verification touching ch.ch must use the Fedlex/local-curl path._
 - [x] **Wire answers → task path** (`appliesIf` evaluation, ADR-0009): safe mini-grammar evaluator (`src/utils/appliesIf.ts`, fail-open, 9 tests) filters tasks by intake answers. _Machinery only — per-task `appliesIf` rules are legal judgements and go through the content pipeline._ ~~"Personalised for you" banner (F-12)~~ — the skipped-steps banner was **removed per founder request (2026-06-12)**; filtering still happens silently, F-12 (the visible summary) is intentionally dropped.
 - [x] **Route-coverage honesty** (ADR-0010, founder bug report): corridors declare `coversMotivations`; us-ch = `[work]`. A family/study/other user now sees "your route isn't covered yet" on the motivation step and on the plan (header no longer claims "personalised") instead of being silently handed the work-route plan
 - [x] **Family-reunification route for us-ch** (2026-06-12, two-agent): 6 new tasks (spouse/registered partner split by sponsor status citizen/settled/B-holder per FNIA Art. 42/43/44, unmarried partner = honest cantonal-discretion path, children, family D visa); **27/27 claims independently VERIFIED** (VERIFICATION_LOG.md), all `appliesIf` rules approved by the verifier; `coversMotivations: [work, family]` flipped — family users now get a real personalised plan, work-entry tasks gated to work users. Total corridor: **49 verified claims, 12 tasks, 2 routes.** _Follow-ups flagged: `familyJoineeStatus == 'other'` catch-all task; `ahv-social-security` + `register-commune` presume employment (need family-aware variants); `hashchange` listener for same-page profile links_
@@ -121,7 +122,7 @@ Status per corridor: ⬜ not started · ✏️ drafted (`UNVERIFIED`) · 🔎 in
 | Origin ↓ \ Dest → | Switzerland (`ch`) | Germany (`de`) |
 |---|---|---|
 | India (`in`) | ⬜ | ✏️ (parked) |
-| USA (`us`) | ✅ 69/69 verified (work + family + retirement) — awaiting founder approval | ⬜ |
+| USA (`us`) | ✅ 218/218 verified (work + family + retirement + study; ADR-0012 document checklists on all 21 tasks) — awaiting founder approval | ⬜ |
 | UK (`gb`) | ⬜ | ⬜ |
 | Canada (`ca`) | ⬜ | ⬜ |
 | Australia (`au`) | ⬜ | ⬜ |
