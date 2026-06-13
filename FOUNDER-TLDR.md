@@ -13,7 +13,7 @@ coming next. Newest updates are at the top.
 ## 2026-06-13 — Drafting progress: USA → Western Europe batch
 
 **What changed.** Running tally of the eight-guide batch (I'll update this line as they land). All are drafts — every fact unverified and the guide hidden — until the separate fact-checking team runs.
-**Done so far: 6 of 8** — 🇫🇷 France (11 topics / 111 facts), 🇩🇪 Germany (14 / 94), 🇳🇱 Netherlands (10 / 92), 🇦🇹 Austria (11 / 91), 🇧🇪 Belgium (7 / 50), 🇮🇪 Ireland (11 / 84). **Remaining: Luxembourg + UK** — their official sources are already captured (receipts saved), but the research team's parallel sessions ended during a long pause before those two guides were written, so they need a short finishing pass.
+**Done: 8 of 8 — research run COMPLETE** — 🇫🇷 France (11/111), 🇩🇪 Germany (14/94), 🇳🇱 Netherlands (10/92), 🇦🇹 Austria (11/91), 🇧🇪 Belgium (7/50), 🇮🇪 Ireland (11/84), 🇬🇧 UK (13/106), 🇱🇺 Luxembourg (11/104) = **732 sourced facts, all unverified and hidden**. Next phase: the fact-checking team verifies every fact against its captured source before any of these can publish.
 
 **Why it matters.** Steady expansion of the catalogue beyond Switzerland, each fact captured with a dated official-source receipt.
 

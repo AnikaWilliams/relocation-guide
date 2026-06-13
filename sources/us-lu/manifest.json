@@ -15,7 +15,9 @@
     "sourceUrl": "https://guichet.public.lu/en/citoyens/immigration/plus-3-mois/ressortissant-tiers/salarie/salarie-pays-tiers.html",
     "sourceName": "guichet.lu — Conditions of residence for third-country salaried workers",
     "claimIds": [
-      "work-salaried-permit"
+      "work-salaried-permit",
+      "entry-authorisation",
+      "declaration-arrival"
     ],
     "fetchedAt": "2026-06-13",
     "fetchMethod": "curl",
@@ -31,6 +33,7 @@
     "claimIds": [
       "work-blue-card"
     ],
+    "_comment": "claimIds are task ids in src/content/corridors/us-lu.yaml; provenance is per-claim within each task.",
     "fetchedAt": "2026-06-13",
     "fetchMethod": "curl",
     "sha256": "4eafb0e373a0c1ab0301f5f40c824129b188bc6ed5ed60c3405c067f56015a4a",
@@ -73,6 +76,7 @@
     "claimIds": [
       "declaration-arrival"
     ],
+    "_comment": "Also backs the salaried/Blue Card 3-day immigration arrival rule cross-referenced in declaration-arrival.",
     "fetchedAt": "2026-06-13",
     "fetchMethod": "curl",
     "sha256": "ab2da09224926d3f88c4548830e93dca1c2a8746b85e580c0a5a9dbfff1bd6c5",
@@ -98,9 +102,8 @@
   {
     "sourceUrl": "https://guichet.public.lu/en/citoyens/immigration/moins-3-mois/ressortissant-tiers/sejour.html",
     "sourceName": "Guichet.lu — Staying in Luxembourg for less than 90 days as a third-country national",
-    "claimIds": [
-      "entry-authorisation"
-    ],
+    "claimIds": [],
+    "_comment": "Captured for reference; not cited in us-lu.yaml v1 (the entree-visa page backs entry-authorisation).",
     "fetchedAt": "2026-06-13",
     "fetchMethod": "curl",
     "sha256": "ecf408ba7455fc7aef11537b03b1a912c06309a96aea75624b2d05c62dc56896",
@@ -126,9 +129,8 @@
   {
     "sourceUrl": "https://guichet.public.lu/en/citoyens/immigration/plus-3-mois/ressortissant-tiers/raisons-privees/sejour-raisons-privees.html",
     "sourceName": "guichet.lu — Residence for private reasons (third-country nationals)",
-    "claimIds": [
-      "entry-authorisation"
-    ],
+    "claimIds": [],
+    "_comment": "Captured for the retirement/non-gainful route (not covered in v1); kept for future research.",
     "fetchedAt": "2026-06-13",
     "fetchMethod": "curl",
     "sha256": "8beb31f4c52cd27cc5ac28145645a0de51c31bc7cfa06244e11de7d3374c269a",
@@ -154,13 +156,57 @@
   {
     "sourceUrl": "https://guichet.public.lu/en/citoyens/fiscalite/declaration-impot-decompte/activite-professionnelle/declaration-revenus/declaration-impot.html",
     "sourceName": "guichet.lu — Income tax return for natural persons (residents)",
-    "claimIds": [],
+    "claimIds": [
+      "income-tax"
+    ],
     "fetchedAt": "2026-06-13",
     "fetchMethod": "curl",
     "sha256": "9915204014ad1c2b106c9caf9afe87627dd4074ef63f065deab703c8649250bc",
     "byteSize": 263662,
     "contentType": "text/html; charset=utf-8",
     "textPath": "sources/us-lu/99152040.txt",
+    "capturedBy": "snapshot-source"
+  },
+  {
+    "sourceUrl": "https://guichet.public.lu/en/citoyens/immigration/nouveau-resident-luxembourg.html",
+    "sourceName": "guichet.lu — Setting up in Luxembourg as a new resident (overview)",
+    "claimIds": [
+      "open-bank-account"
+    ],
+    "fetchedAt": "2026-06-13",
+    "fetchMethod": "curl",
+    "sha256": "27b2e4ff1011dfabf3fb6df40d91799841b8dbd0748c10f2f43a20886b4d6171",
+    "byteSize": 170604,
+    "contentType": "text/html; charset=utf-8",
+    "textPath": "sources/us-lu/27b2e4ff.txt",
+    "capturedBy": "snapshot-source"
+  },
+  {
+    "sourceUrl": "https://guichet.public.lu/en/citoyens/logement.html",
+    "sourceName": "guichet.lu — Housing & Construction (overview)",
+    "claimIds": [
+      "housing"
+    ],
+    "fetchedAt": "2026-06-13",
+    "fetchMethod": "curl",
+    "sha256": "f28e26f610d5c5b109d929f86dfc75621327321573818174b40c29a2568223d6",
+    "byteSize": 181406,
+    "contentType": "text/html; charset=utf-8",
+    "textPath": "sources/us-lu/f28e26f6.txt",
+    "capturedBy": "snapshot-source"
+  },
+  {
+    "sourceUrl": "https://guichet.public.lu/en/citoyens/logement/location.html",
+    "sourceName": "guichet.lu — Renting (Leasing) overview",
+    "claimIds": [
+      "housing"
+    ],
+    "fetchedAt": "2026-06-13",
+    "fetchMethod": "curl",
+    "sha256": "bdca738ad5516d67e42c9cafd945b40d6e9a375bd293d570ed005a27bb086b2a",
+    "byteSize": 171414,
+    "contentType": "text/html; charset=utf-8",
+    "textPath": "sources/us-lu/bdca738a.txt",
     "capturedBy": "snapshot-source"
   }
 ]
