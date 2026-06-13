@@ -15,7 +15,7 @@
   },
   {
     "sourceUrl": "https://ind.nl/en/required-amounts-income-requirements",
-    "sourceName": "IND — Required amounts (income requirements)",
+    "sourceName": "Immigration and Naturalisation Service (IND) — Required amounts (income requirements)",
     "claimIds": [
       "work-hsm-permit"
     ],
@@ -43,7 +43,7 @@
   },
   {
     "sourceUrl": "https://ind.nl/en/residence-permits/work/single-permit-gvva",
-    "sourceName": "IND — Single permit (GVVA)",
+    "sourceName": "Immigration and Naturalisation Service (IND) — Single Permit: GVVA",
     "claimIds": [
       "work-single-permit-gvva"
     ],
@@ -57,7 +57,7 @@
   },
   {
     "sourceUrl": "https://ind.nl/en/provisional-residence-permit-mvv",
-    "sourceName": "IND — Provisional residence permit (MVV)",
+    "sourceName": "Immigration and Naturalisation Service (IND) — Provisional residence permit (MVV)",
     "claimIds": [
       "entry-mvv-exemption"
     ],
@@ -71,7 +71,7 @@
   },
   {
     "sourceUrl": "https://ind.nl/en/mvv-exemptions",
-    "sourceName": "IND — MVV exemptions",
+    "sourceName": "Immigration and Naturalisation Service (IND) — MVV exemptions",
     "claimIds": [
       "entry-mvv-exemption"
     ],
@@ -85,7 +85,7 @@
   },
   {
     "sourceUrl": "https://ind.nl/en/apply-for-mvv-and-residence-permit-from-abroad",
-    "sourceName": "IND — Apply for MVV and residence permit from abroad",
+    "sourceName": "Immigration and Naturalisation Service (IND) — Apply for MVV and residence permit from abroad",
     "claimIds": [
       "entry-residence-permit"
     ],
@@ -99,21 +99,21 @@
   },
   {
     "sourceUrl": "https://ind.nl/en/residence-permits/family-and-partner/residence-permit-for-partner",
-    "sourceName": "IND — Residence permit for partner",
+    "sourceName": "Immigration and Naturalisation Service (IND) — Residence permit for partner",
     "claimIds": [
       "family-partner-permit"
     ],
     "fetchedAt": "2026-06-13",
     "fetchMethod": "curl",
     "sha256": "a50d36bf0a5c1d8d4ea54b287660b5ea8bf669cde726b1dcc453212e82dc749d",
-    "byteSize": 36532,
+    "byteSize": 36533,
     "contentType": "text/html; charset=UTF-8",
     "textPath": "sources/us-nl/a50d36bf.txt",
     "capturedBy": "snapshot-source"
   },
   {
     "sourceUrl": "https://ind.nl/en/independent-sustainable-and-sufficient-income",
-    "sourceName": "IND — Independent, sustainable and sufficient income",
+    "sourceName": "Immigration and Naturalisation Service (IND) — Income requirements: independent, sustainable and sufficient income",
     "claimIds": [
       "family-partner-permit"
     ],
@@ -127,7 +127,7 @@
   },
   {
     "sourceUrl": "https://ind.nl/en/residence-permits/study/student-residence-permit-for-university-or-higher-professional-education",
-    "sourceName": "IND — Student residence permit for university or higher professional education",
+    "sourceName": "Immigration and Naturalisation Service (IND) — Student residence permit for university or higher professional education",
     "claimIds": [
       "study-residence-permit"
     ],
@@ -176,7 +176,7 @@
     "fetchedAt": "2026-06-13",
     "fetchMethod": "curl",
     "sha256": "e4ac43fbc9590c1abc693ec695c42cf48dea0aeeb3a761ac91cbd363314fbe4b",
-    "byteSize": 219614,
+    "byteSize": 219514,
     "contentType": "text/html; charset=utf-8",
     "textPath": "sources/us-nl/e4ac43fb.txt",
     "capturedBy": "snapshot-source"
@@ -197,7 +197,7 @@
   },
   {
     "sourceUrl": "https://ind.nl/en/fees-costs-of-an-application",
-    "sourceName": "IND — Fees: costs of an application",
+    "sourceName": "Immigration and Naturalisation Service (IND) — Fees: costs of an application",
     "claimIds": [
       "entry-residence-permit"
     ],
@@ -239,7 +239,7 @@
   },
   {
     "sourceUrl": "https://ind.nl/en/residence-permits/work/employing-a-foreign-national",
-    "sourceName": "IND — Employing a foreign national",
+    "sourceName": "Immigration and Naturalisation Service (IND) — Employing a foreign national",
     "claimIds": [
       "work-single-permit-gvva"
     ],
@@ -253,7 +253,7 @@
   },
   {
     "sourceUrl": "https://business.gov.nl/regulations/health-care-insurance/",
-    "sourceName": "Netherlands Enterprise Agency (business.gov.nl) — Healthcare insurance in the Netherlands",
+    "sourceName": "Netherlands Enterprise Agency (business.gov.nl) — Taking out compulsory healthcare insurance",
     "claimIds": [
       "health-insurance-zvw"
     ],

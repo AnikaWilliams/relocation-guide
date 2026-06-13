@@ -74,16 +74,22 @@ tasks:
       text: "Since 1 January 2019, any non-European citizen who wants to stay and work in Belgium for more than 90 days must hold a single permit — one authorisation that combines the right to work and the right to reside. The application is made by your employer to the competent Region (the Region of your principal place of work), and the Region and the federal Immigration Office examine and decide it jointly: the Region decides whether you may work and the Immigration Office whether you may stay for more than 90 days."
       sourceUrl: "https://dofi.ibz.be/en/themes/third-country-nationals/work/single-permit"
       sourceName: "Immigration Office (Office des Etrangers / Dienst Vreemdelingenzaken, IBZ/DOFI) — Single Permit"
-      # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). FIGURE (90 days) ->
-      # 30-day window. dofi Single Permit page verbatim basis: "Since 03/01/2019,
-      # any citizen from a non-European country who wants to stay and work more
-      # than 90 days in Belgium must be a single permit holder."; "The employer
-      # must apply to the competent Region (=the worker's principal place of
-      # work)."; "The Immigration Office and the Region handle the request
-      # together and make a decision."; "The Region will examine whether the
-      # worker can be authorised to work, and the Immigration Office will
-      # determine whether the worker can to stay in Belgium for more than 90
-      # days." Verifier: confirm all four elements verbatim.
+      # KICKED BACK 2026-06-13 (fact-verifier): the >90-days rule, employer-applies,
+      # joint decision, and Region-decides-work/IO-decides-residence elements are ALL
+      # supported verbatim on the live dofi Single Permit page (re-fetched
+      # 2026-06-13, sha256 6b70af30…): "any citizen from a non-European country who
+      # wants to stay and work more than 90 days in Belgium must be a single permit
+      # holder."; "The employer must apply to the competent Region (=the worker's
+      # principal place of work)."; "The Immigration Office and the Region handle
+      # the request together and make a decision."; "The Region will examine whether
+      # the worker can be authorised to work, and the Immigration Office will
+      # determine whether the worker can to stay in Belgium for more than 90 days."
+      # BUT the claim's DATE is wrong vs THIS cited source: the dofi page says
+      # "Since 03/01/2019" (= 3 January 2019, DD/MM), NOT "1 January 2019" as the
+      # claim text states. (The FPS Employment page does say "Since 1 January 2019",
+      # but that is a DIFFERENT URL, not the one cited here.) Date discrepancy ->
+      # researcher must either change "1 January 2019" to "3 January 2019" to match
+      # dofi, or re-cite the FPS Employment page for the date. Claim text NOT edited.
       status: UNVERIFIED
       lastVerified: "2026-06-13"
       verifiedBy: ""
@@ -92,37 +98,55 @@ tasks:
       text: "To work in Belgium for more than 90 days you need a single permit — a combined work-and-residence authorisation. You do not apply yourself: your Belgian employer applies to the competent Region (where you will mainly work), and the Region (for the work) and the federal Immigration Office (for the residence) decide together. One application covers both."
       sourceUrl: "https://dofi.ibz.be/en/themes/third-country-nationals/work/single-permit"
       sourceName: "Immigration Office (Office des Etrangers / Dienst Vreemdelingenzaken, IBZ/DOFI) — Single Permit"
-      # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). Same single-permit
-      # basis. "Applying for a work permit is equivalent to applying for a
-      # residence permit (single application)." Verifier: confirm the
-      # employer-applies and one-application framing.
-      status: UNVERIFIED
+      # VERIFIED 2026-06-13 (fact-verifier): live dofi Single Permit page
+      # (sha256 6b70af30…) supports the framing verbatim — "The employer must apply
+      # to the competent Region (=the worker's principal place of work)."; "The
+      # Immigration Office and the Region handle the request together and make a
+      # decision."; "Applying for a work permit is equivalent to applying for a
+      # residence permit (single application)." and ">90 days" throughout. No date
+      # asserted in this claim, so no 2019 issue. reviewBy kept at 90d (the >90-day
+      # threshold is a structural rule, not a fee/quota).
+      status: VERIFIED
       lastVerified: "2026-06-13"
-      verifiedBy: ""
+      verifiedBy: "fact-verifier-be 2026-06-13"
+      sourceHash: "6b70af30f7753c5024b9cf7026ceb2a2fad85ccc706f23e24af819bd9ae0ef7a"
       reviewBy: "2026-09-11"
     keyFacts:
       - label: "Who applies"
         text: "Your employer applies, not you — the application must be made by an employer based in Belgium, to the competent Region via the one-stop counter."
         sourceUrl: "https://dofi.ibz.be/en/themes/third-country-nationals/work/single-permit"
         sourceName: "Immigration Office (Office des Etrangers / Dienst Vreemdelingenzaken, IBZ/DOFI) — Single Permit"
-        # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). dofi: "The
-        # application has to be done by an employer based in Belgium."; "The
-        # employer must apply to the competent Region". Verifier: confirm verbatim.
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): live dofi Single Permit page
+        # (sha256 6b70af30…) verbatim: "The application has to be done by an employer
+        # based in Belgium."; "The employer must apply to the competent Region (=the
+        # worker's principal place of work)."; and the lead text "submit an
+        # application for a work permit to the authorised Region via their employer
+        # using the one-stop counter". Supports "employer applies, not you ... to the
+        # competent Region via the one-stop counter" character-for-character.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-be 2026-06-13"
+        sourceHash: "6b70af30f7753c5024b9cf7026ceb2a2fad85ccc706f23e24af819bd9ae0ef7a"
         reviewBy: "2026-09-11"
       - label: "Where (which Region)"
         text: "The competent Region is the one where your principal place of work is — work authorisation is a regional competence (Flemish, Brussels-Capital, Walloon Region, or the German-speaking Community), while residence is decided federally by the Immigration Office."
         sourceUrl: "https://employment.belgium.be/en/themes/international/foreign-workers"
         sourceName: "FPS Employment, Labour and Social Dialogue — Foreign workers"
-        # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). FPS Employment
-        # verbatim basis: "Since the Sixth State Reform, the regulation of foreign
-        # workers has been the responsibility of the Regions." with the regional
-        # administration URLs listed (Flemish, Brussels-Capital, Walloon Region,
-        # German-speaking Community). dofi: "the competent Region (=the worker's
-        # principal place of work)". Verifier: confirm the regional competence
-        # and the "principal place of work" rule.
+        # KICKED BACK 2026-06-13 (fact-verifier): the CITED source (live FPS
+        # Employment page, sha256 e7de09f3…) supports only PART of this claim. It
+        # supports the regional competence verbatim — "Since the Sixth State Reform,
+        # the regulation of foreign workers has been the responsibility of the
+        # Regions." — and lists all four administrations (Flemish, Brussels-Capital,
+        # Walloon Region, German-speaking Community). BUT the load-bearing
+        # "competent Region is the one where your principal place of work is" rule
+        # does NOT appear on the FPS Employment page; that wording ("=the worker's
+        # principal place of work") is on the dofi Single Permit page, which is NOT
+        # the URL cited here. Also, the FPS page does not state "residence is decided
+        # federally by the Immigration Office" (it says the Federal State retains
+        # competence only for special-residence situations). Fix: cite the dofi
+        # Single Permit page for the "principal place of work" element (and the
+        # dofi Work page / belgium.be Residence-documents for the residence-is-
+        # federal element), or split the claim. Claim text NOT edited.
         status: UNVERIFIED
         lastVerified: "2026-06-13"
         verifiedBy: ""
@@ -131,31 +155,36 @@ tasks:
         text: "Once the Region declares the application admissible, the Region and the Immigration Office must decide within 4 months (extendable in complex cases); if no unfavourable decision is taken within that period, the residence and work authorisations are considered granted."
         sourceUrl: "https://dofi.ibz.be/en/themes/third-country-nationals/work/single-permit"
         sourceName: "Immigration Office (Office des Etrangers / Dienst Vreemdelingenzaken, IBZ/DOFI) — Single Permit"
-        # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). FIGURE (4 months) ->
-        # 30-day window. dofi verbatim: "A second period of 4 months within which
-        # the Region and the Immigration Office must decide on the single
-        # application. The Region or the Immigration Office may extend this second
-        # deadline in exceptional circumstances ... If the Region and the
-        # Immigration Office do not make any unfavourable decision within the
+        # VERIFIED 2026-06-13 (fact-verifier): live dofi Single Permit page
+        # (sha256 6b70af30…) supports every element verbatim — "The date on which
+        # the Region declares the application admissible is the starting point of a
+        # dual deadline."; "A second period of 4 months within which the Region and
+        # the Immigration Office must decide on the single application. The Region or
+        # the Immigration Office may extend this second deadline in exceptional
+        # circumstances related to the complexity of the application. If the Region
+        # and the Immigration Office do not make any unfavourable decision within the
         # 4-month deadline, potentially extended, the residence and work
-        # authorisations will be considered as being granted." Verifier: confirm
-        # the 4-month figure and the silence-equals-granted rule verbatim.
-        status: UNVERIFIED
+        # authorisations will be considered as being granted." The 4-month figure
+        # and the silence-equals-granted rule match character-for-character. FIGURE
+        # (4 months) -> 30-day reviewBy.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-be 2026-06-13"
+        sourceHash: "6b70af30f7753c5024b9cf7026ceb2a2fad85ccc706f23e24af819bd9ae0ef7a"
         reviewBy: "2026-07-13"
       - label: "One application = work + residence"
         text: "Applying for the work permit is equivalent to applying for the residence permit — a single application produces a single permit certifying you are authorised to stay and work for more than 90 days."
         sourceUrl: "https://dofi.ibz.be/en/themes/third-country-nationals/work/single-permit"
         sourceName: "Immigration Office (Office des Etrangers / Dienst Vreemdelingenzaken, IBZ/DOFI) — Single Permit"
-        # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). dofi: "Applying for a
-        # work permit is equivalent to applying for a residence permit (single
-        # application)."; "the Immigration Office issues a single permit
-        # certifying the holder is authorised to stay and work in Belgium for
-        # more than 90 days." Verifier: confirm verbatim.
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): live dofi Single Permit page
+        # (sha256 6b70af30…) verbatim: "Applying for a work permit is equivalent to
+        # applying for a residence permit (single application)." and "the Immigration
+        # Office issues a single permit certifying the holder is authorised to stay
+        # and work in Belgium for more than 90 days." Matches character-for-character.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-be 2026-06-13"
+        sourceHash: "6b70af30f7753c5024b9cf7026ceb2a2fad85ccc706f23e24af819bd9ae0ef7a"
         reviewBy: "2026-09-11"
     detail: >
       Belgium is a federal state, and since the Sixth State Reform the authorisation to work is
@@ -176,24 +205,36 @@ tasks:
           - text: "FPS Employment — Foreign workers (work authorisation is a regional competence; links to each Region)"
             sourceUrl: "https://employment.belgium.be/en/themes/international/foreign-workers"
             sourceName: "FPS Employment, Labour and Social Dialogue — Foreign workers"
-            # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). FPS Employment
-            # lists the regional administration URLs and the single-permit-since-
-            # 2019 fact. Verifier: confirm.
-            status: UNVERIFIED
+            # VERIFIED 2026-06-13 (fact-verifier): live FPS Employment page
+            # (sha256 e7de09f3…) is the correct page and supports the link
+            # description — it lists all four regional administration URLs (Flemish,
+            # Brussels-Capital, Walloon, German-speaking Community) and states "Since
+            # the Sixth State Reform, the regulation of foreign workers has been the
+            # responsibility of the Regions." and "Since 1 January 2019, the single
+            # permit has been in force." Link target accurate (navigational claim).
+            status: VERIFIED
             lastVerified: "2026-06-13"
-            verifiedBy: ""
+            verifiedBy: "fact-verifier-be 2026-06-13"
+            sourceHash: "e7de09f3a83ffd1739c4b6e96ecc826c89d38a9e6852fe5ca76c9c1338a2e2fa"
             reviewBy: "2026-09-11"
       - text: "Your employer submits the single-permit application to the competent Region via the one-stop counter; you provide the residence-side documents."
         links:
           - text: "Immigration Office — Single Permit (employer applies via the one-stop counter; documents; joint decision)"
             sourceUrl: "https://dofi.ibz.be/en/themes/third-country-nationals/work/single-permit"
             sourceName: "Immigration Office (Office des Etrangers / Dienst Vreemdelingenzaken, IBZ/DOFI) — Single Permit"
-            # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). dofi Single Permit
-            # page describes the one-stop counter submission and the documents.
-            # Verifier: confirm the one-stop-counter step.
-            status: UNVERIFIED
+            # VERIFIED 2026-06-13 (fact-verifier): live dofi Single Permit page
+            # (sha256 6b70af30…) describes the one-stop-counter submission verbatim —
+            # "submit an application for a work permit to the authorised Region via
+            # their employer using the one-stop counter
+            # (https://www.international.socialsecurity.be/working_in_belgium/en/single-permit.html)";
+            # "After you have submitted your application using the one-stop counter,
+            # your dossier is automatically transferred to the competent region." —
+            # plus the residence-side documents list and the joint examination.
+            # Link target accurate.
+            status: VERIFIED
             lastVerified: "2026-06-13"
-            verifiedBy: ""
+            verifiedBy: "fact-verifier-be 2026-06-13"
+            sourceHash: "6b70af30f7753c5024b9cf7026ceb2a2fad85ccc706f23e24af819bd9ae0ef7a"
             reviewBy: "2026-09-11"
       - text: "If the single permit is granted while you are abroad, apply for the national (type D) long-stay visa at the Belgian post to travel to Belgium (see the next task)."
         tip: "A worker who gave a foreign address must then obtain the D visa on presentation of a valid passport and the decision granting the single permit."
@@ -201,14 +242,17 @@ tasks:
           - text: "Immigration Office — Single Permit: granting to a worker who is abroad (apply for the D visa at the Belgian post)"
             sourceUrl: "https://dofi.ibz.be/en/themes/third-country-nationals/work/single-permit"
             sourceName: "Immigration Office (Office des Etrangers / Dienst Vreemdelingenzaken, IBZ/DOFI) — Single Permit"
-            # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). dofi: "A worker
-            # who has indicated a foreign address ... must apply for a national
-            # long-stay visa (more than 90 days) at the Belgian diplomatic or
-            # consular post ... on presentation of a valid passport and the
-            # decision granting a [single permit]." Verifier: confirm.
-            status: UNVERIFIED
+            # VERIFIED 2026-06-13 (fact-verifier): live dofi Single Permit page
+            # (sha256 6b70af30…) verbatim: "A worker who has indicated a foreign
+            # address in their application for a work permit must apply for a national
+            # long-stay visa (more than 90 days) at the Belgian diplomatic or consular
+            # post competent for their residence. The post will issue the [visa] ...
+            # on presentation of a valid passport and the decision granting a [single
+            # permit]". Supports the step text and tip character-for-character.
+            status: VERIFIED
             lastVerified: "2026-06-13"
-            verifiedBy: ""
+            verifiedBy: "fact-verifier-be 2026-06-13"
+            sourceHash: "6b70af30f7753c5024b9cf7026ceb2a2fad85ccc706f23e24af819bd9ae0ef7a"
             reviewBy: "2026-09-11"
     documents:
       - name: "Copy of your valid US passport"
@@ -233,15 +277,19 @@ tasks:
           text: "The single permit is applied for by your Belgian employer to the competent Region via the one-stop counter (international.socialsecurity.be). Conditions, the work-side documents and procedures are published by each Region (Flemish, Brussels-Capital, Walloon, German-speaking Community). We link the Immigration Office Single Permit authority page rather than a deep regional PDF so the current procedure is always referenced."
           sourceUrl: "https://dofi.ibz.be/en/themes/third-country-nationals/work/single-permit"
           sourceName: "Immigration Office (Office des Etrangers / Dienst Vreemdelingenzaken, IBZ/DOFI) — Single Permit"
-          # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). dofi: application
-          # "via the one-stop counter:
-          # https://www.international.socialsecurity.be/working_in_belgium/en/single-permit.html";
-          # "To find out more about the conditions, procedures and all other
-          # required information ... consult the website of each region". Verifier:
-          # confirm the one-stop-counter URL is the current official channel.
-          status: UNVERIFIED
+          # VERIFIED 2026-06-13 (fact-verifier): live dofi Single Permit page
+          # (sha256 6b70af30…) confirms the one-stop-counter channel and URL verbatim
+          # — "via their employer using the one-stop counter:
+          # https://www.international.socialsecurity.be/working_in_belgium/en/single-permit.html"
+          # — and "To find out more about the conditions, procedures and all other
+          # required information to submit your application, please consult the website
+          # of each region in particular: Brussels-Capital Region / Flemish Region /
+          # Walloon Region (without the German Community) / German Community". Supports
+          # the employer-files-via-one-stop-counter and per-region-conditions framing.
+          status: VERIFIED
           lastVerified: "2026-06-13"
-          verifiedBy: ""
+          verifiedBy: "fact-verifier-be 2026-06-13"
+          sourceHash: "6b70af30f7753c5024b9cf7026ceb2a2fad85ccc706f23e24af819bd9ae0ef7a"
           reviewBy: "2026-09-11"
     warning: >
       The single-permit application must be filed by a Belgian-based employer, not by you, and
@@ -259,16 +307,22 @@ tasks:
       text: "For any stay in Belgium longer than 90 days you need a national (type D) long-stay visa, applied for before you travel. All nationalities — including US citizens — are subject to the visa requirement for long stays; there is no visa-free option to simply enter and apply in Belgium except in exceptional circumstances. Visas for US residents are issued by the Embassy of Belgium in Washington, D.C. and the Consulates General in Atlanta, Los Angeles and New York."
       sourceUrl: "https://unitedstates.diplomatie.belgium.be/en/travel-belgium/visa-belgium"
       sourceName: "Embassy of Belgium in the United States (FPS Foreign Affairs) — Visa for Belgium"
-      # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). FIGURE (90 days) ->
-      # 30-day window. Embassy page verbatim basis: "National visa (D-visa) ... Long
-      # stay (>90 days), or D-visa"; "Visas are issued by the Embassy of Belgium
-      # in Washington, D.C. and by the Consulates General of Belgium in Atlanta,
-      # Los Angeles and New York. Honorary consulates do not issue Schengen
-      # visas." dofi third-country page verbatim: "all nationalities are subject
-      # to a visa requirement for a [long stay] in Belgium. In certain
-      # exceptional circumstances, the application for residence can be submitted
-      # in Belgium." Verifier: confirm the D-visa-for->90-days and
-      # all-nationalities facts, and the 4 US posts.
+      # KICKED BACK 2026-06-13 (fact-verifier): the CITED source (live Embassy
+      # "Visa for Belgium" page, sha256 a8b9049a…) supports the D-visa->90-days and
+      # the 4-posts facts verbatim — "Long stay (>90 days), or D-visa"; "Visas are
+      # issued by the Embassy of Belgium in Washington, D.C. and by the Consulates
+      # General of Belgium in Atlanta, Los Angeles and New York. Honorary consulates
+      # do not issue Schengen visas." BUT the load-bearing claim that "All
+      # nationalities — including US citizens — are subject to the visa requirement
+      # for long stays; there is no visa-free option to simply enter and apply in
+      # Belgium except in exceptional circumstances" is NOT on this embassy page —
+      # that text ("all nationalities are subject to a visa requirement for a long
+      # stay in Belgium. In certain exceptional circumstances, the application for
+      # residence can be submitted in Belgium.") is on the dofi Third-country
+      # nationals page (sha256 526f0040…), which the summary does NOT cite. Fix:
+      # add the dofi Third-country page as the source for the all-nationalities/no-
+      # visa-free element (it is correctly cited on the "No visa-free long-stay
+      # option" keyFact below), or split the summary. Claim text NOT edited.
       status: UNVERIFIED
       lastVerified: "2026-06-13"
       verifiedBy: ""
@@ -277,8 +331,17 @@ tasks:
       text: "A national (type D) visa is required to enter Belgium for any stay over 90 days, and you must obtain it before travelling — unlike some countries, the USA has no visa-free 'enter then apply' option for long stays in Belgium. For US residents, D visas are issued by the Belgian Embassy in Washington, D.C. and the Consulates General in Atlanta, Los Angeles and New York."
       sourceUrl: "https://unitedstates.diplomatie.belgium.be/en/travel-belgium/visa-belgium"
       sourceName: "Embassy of Belgium in the United States (FPS Foreign Affairs) — Visa for Belgium"
-      # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). Same basis. Verifier:
-      # confirm the no-visa-free-for-long-stays point against the dofi page.
+      # KICKED BACK 2026-06-13 (fact-verifier): the CITED Embassy "Visa for Belgium"
+      # page (sha256 a8b9049a…) supports the D-visa->90-days fact ("Long stay (>90
+      # days), or D-visa") and the 4 US posts verbatim, but NOT the load-bearing
+      # "no visa-free 'enter then apply' option for long stays" point — the draft's
+      # own note even says to "confirm the no-visa-free-for-long-stays point against
+      # the dofi page", yet the sourceUrl here is the embassy page, not dofi. That
+      # element lives on the dofi Third-country nationals page (sha256 526f0040…,
+      # "all nationalities are subject to a visa requirement for a long stay in
+      # Belgium. In certain exceptional circumstances, the application for residence
+      # can be submitted in Belgium."). Fix: cite the dofi Third-country page for the
+      # no-visa-free element. Claim text NOT edited.
       status: UNVERIFIED
       lastVerified: "2026-06-13"
       verifiedBy: ""
@@ -288,49 +351,61 @@ tasks:
         text: "A national (type D) visa is required for stays in Belgium longer than 90 days; a C (Schengen) visa covers stays of up to 90 days."
         sourceUrl: "https://unitedstates.diplomatie.belgium.be/en/travel-belgium/visa-belgium"
         sourceName: "Embassy of Belgium in the United States (FPS Foreign Affairs) — Visa for Belgium"
-        # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). FIGURE (90 days) ->
-        # 30-day window. Embassy: "Short stay (< 90 days), or C-visa"; "Long stay
-        # (>90 days), or D-visa". Verifier: confirm.
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): live Embassy "Visa for Belgium" page
+        # (sha256 a8b9049a…) verbatim: "Schengen visa (C-visa) ≤ 90 days"; "Short
+        # stay (< 90 days), or C-visa"; "Long stay (>90 days), or D-visa". Supports
+        # "D visa required for stays longer than 90 days; C (Schengen) visa covers up
+        # to 90 days" (the page's "≤ 90 days" for the C-visa matches "up to 90 days").
+        # FIGURE (90 days) -> 30-day reviewBy.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-be 2026-06-13"
+        sourceHash: "a8b9049a04637a46b7e3f3128a79175c3518c3f05832dc85175c10895c83f17f"
         reviewBy: "2026-07-13"
       - label: "No visa-free long-stay option"
         text: "All nationalities are subject to the visa requirement for long stays in Belgium; applying for residence from inside Belgium is only possible in exceptional circumstances."
         sourceUrl: "https://dofi.ibz.be/en/themes/third-country-nationals"
         sourceName: "Immigration Office (Office des Etrangers / Dienst Vreemdelingenzaken, IBZ/DOFI) — Third-country nationals"
-        # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). dofi third-country
-        # page verbatim: "all nationalities are subject to a visa requirement for
-        # a [long stay] in Belgium. In certain exceptional circumstances, the
-        # application for residence can be submitted in Belgium." Verifier:
-        # confirm — this is the key contrast with Germany's §41 US exemption.
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): live dofi Third-country nationals page
+        # (sha256 526f0040…) verbatim: "However, all nationalities are subject to a
+        # visa requirement for a [A long stay in the Schengen Area is longer than 90
+        # days] in Belgium. In certain exceptional circumstances, the application for
+        # residence can be submitted in Belgium." Supports the claim character-for-
+        # character (the bracketed gloss is the page's own tooltip definition of
+        # "long stay"). This is the key Belgium-vs-Germany contrast and it holds.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-be 2026-06-13"
+        sourceHash: "526f0040c6d97f0a1457b043749e8d490f504a05f68f4c4b51fda129db0e18ba"
         reviewBy: "2026-09-11"
       - label: "Where (USA)"
         text: "For US residents, visas are issued by the Embassy of Belgium in Washington, D.C. and the Consulates General in Atlanta, Los Angeles and New York; honorary consulates do not issue Schengen visas."
         sourceUrl: "https://unitedstates.diplomatie.belgium.be/en/travel-belgium/visa-belgium"
         sourceName: "Embassy of Belgium in the United States (FPS Foreign Affairs) — Visa for Belgium"
-        # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). Embassy verbatim:
-        # "Visas are issued by the Embassy of Belgium in Washington, D.C. and by
-        # the Consulates General of Belgium in Atlanta, Los Angeles and New York.
-        # Honorary consulates do not issue Schengen visas." Verifier: confirm the
-        # four posts.
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): live Embassy "Visa for Belgium" page
+        # (sha256 a8b9049a…) verbatim: "Visas are issued by the Embassy of Belgium in
+        # Washington, D.C. and by the Consulates General of Belgium in Atlanta, Los
+        # Angeles and New York. Honorary consulates do not issue Schengen visas."
+        # Matches the four posts and the honorary-consulates caveat character-for-
+        # character.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-be 2026-06-13"
+        sourceHash: "a8b9049a04637a46b7e3f3128a79175c3518c3f05832dc85175c10895c83f17f"
         reviewBy: "2026-09-11"
       - label: "Apply early"
         text: "The visa application procedure can take a long time; apply well ahead of your planned travel (at least four weeks for visas generally, and longer for long-stay cases)."
         sourceUrl: "https://www.belgium.be/en/family/residence_documents_for_belgium"
         sourceName: "belgium.be (official federal portal) — Residence documents for Belgium"
-        # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). belgium.be Residence
-        # documents: "In some cases, the visa application procedure may take a
-        # long time. You are advised to make your application at least four weeks
-        # before you plan to travel." Verifier: confirm; the "longer for long-stay"
-        # gloss is a soft caveat — keep it general or soften to the four-week
-        # statement on the page.
+        # KICKED BACK 2026-06-13 (fact-verifier): the live belgium.be Residence-
+        # documents page (sha256 2ed0d80b…) supports the first part verbatim — "In
+        # some cases, the visa application procedure may take a long time. You are
+        # advised to make your application at least four weeks before you plan to
+        # travel." — but does NOT support the claim's parenthetical "(... and longer
+        # for long-stay cases)". The page gives only the single, flat "at least four
+        # weeks" figure with no long-stay distinction. The draft's own note already
+        # flagged this gloss as a soft caveat to soften. Fix: drop "and longer for
+        # long-stay cases" (or re-cite a source that states it). Claim text NOT edited.
         status: UNVERIFIED
         lastVerified: "2026-06-13"
         verifiedBy: ""
@@ -352,23 +427,31 @@ tasks:
           - text: "Embassy of Belgium in the United States — Visa for Belgium (posts that issue visas; A/C/D visa types)"
             sourceUrl: "https://unitedstates.diplomatie.belgium.be/en/travel-belgium/visa-belgium"
             sourceName: "Embassy of Belgium in the United States (FPS Foreign Affairs) — Visa for Belgium"
-            # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). Verifier: confirm.
-            status: UNVERIFIED
+            # VERIFIED 2026-06-13 (fact-verifier): live Embassy "Visa for Belgium"
+            # page (sha256 a8b9049a…) is the correct page and lists the visa types
+            # ("Airport transit, or A-visa"; "Short stay (< 90 days), or C-visa";
+            # "Long stay (>90 days), or D-visa") and the posts that issue visas
+            # (Washington D.C.; Consulates General Atlanta, Los Angeles, New York).
+            # Link target accurate (navigational claim — confirm-which-post step).
+            status: VERIFIED
             lastVerified: "2026-06-13"
-            verifiedBy: ""
+            verifiedBy: "fact-verifier-be 2026-06-13"
+            sourceHash: "a8b9049a04637a46b7e3f3128a79175c3518c3f05832dc85175c10895c83f17f"
             reviewBy: "2026-09-11"
       - text: "Apply for the national (type D) visa at the competent post, presenting your underlying authorisation (e.g. the single-permit grant, family-reunification decision or admission) and the required documents."
         links:
           - text: "belgium.be — Residence documents for Belgium (visa issued by FPS Foreign Affairs; apply at the Belgian embassy/consulate where you live)"
             sourceUrl: "https://www.belgium.be/en/family/residence_documents_for_belgium"
             sourceName: "belgium.be (official federal portal) — Residence documents for Belgium"
-            # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). belgium.be:
-            # "You must apply for a visa at the Belgian Embassy or the consulate
-            # in the country where you live"; "The issue of visas is the
-            # responsibility of the FPS Foreign Affairs." Verifier: confirm.
-            status: UNVERIFIED
+            # VERIFIED 2026-06-13 (fact-verifier): live belgium.be Residence-documents
+            # page (sha256 2ed0d80b…) verbatim: "You must apply for a visa at the
+            # Belgian Embassy or the consulate in the country where you live." and
+            # "The issue of visas is the responsibility of the FPS Foreign Affairs."
+            # Supports the link description character-for-character.
+            status: VERIFIED
             lastVerified: "2026-06-13"
-            verifiedBy: ""
+            verifiedBy: "fact-verifier-be 2026-06-13"
+            sourceHash: "2ed0d80b6b879a73ee60e66f4c2c4836d097302eef4ede9324036354eea917fb"
             reviewBy: "2026-09-11"
     documents:
       - name: "Valid US passport"
@@ -384,12 +467,16 @@ tasks:
           text: "Apply for the national (type D) visa at the competent Belgian post in the USA (Embassy Washington D.C. or Consulates General Atlanta, Los Angeles, New York). We link the Embassy's Visa for Belgium authority page rather than a deep PDF so the current form and instructions are referenced."
           sourceUrl: "https://unitedstates.diplomatie.belgium.be/en/travel-belgium/visa-belgium"
           sourceName: "Embassy of Belgium in the United States (FPS Foreign Affairs) — Visa for Belgium"
-          # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). Verifier: confirm
-          # the Embassy page is the current visa-application authority page for US
-          # residents.
-          status: UNVERIFIED
+          # VERIFIED 2026-06-13 (fact-verifier): live Embassy "Visa for Belgium" page
+          # (sha256 a8b9049a…) is the current US-resident visa authority page — it is
+          # the FPS Foreign Affairs Embassy-of-Belgium-in-the-US site, names the D-visa
+          # ("Long stay (>90 days), or D-visa") and the competent posts (Washington
+          # D.C.; Consulates General Atlanta, Los Angeles, New York). Supports the
+          # "apply at the competent Belgian post in the USA" framing.
+          status: VERIFIED
           lastVerified: "2026-06-13"
-          verifiedBy: ""
+          verifiedBy: "fact-verifier-be 2026-06-13"
+          sourceHash: "a8b9049a04637a46b7e3f3128a79175c3518c3f05832dc85175c10895c83f17f"
           reviewBy: "2026-09-11"
     warning: >
       Belgium has no general visa-free entry-and-apply route for US citizens on long stays —
@@ -408,63 +495,86 @@ tasks:
       text: "If you are a foreign national who wants to stay in Belgium for longer than three months, you must report to the commune (municipality) where you are staying within eight days of your arrival, and you must be registered on the National Register — for which you need an actual place of residence in that commune. The commune and the Immigration Office handle your residence record, which leads to your residence permit (electronic card)."
       sourceUrl: "https://www.belgium.be/en/housing/moving_to_belgium"
       sourceName: "belgium.be (official federal portal) — Moving to Belgium"
-      # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). FIGURE (8 days) ->
-      # 30-day window. belgium.be Moving page verbatim: "If as a foreign national
-      # you wish to stay in Belgium for longer than three months, you must report
-      # to the municipality in which you are staying within eight days of your
+      # VERIFIED 2026-06-13 (fact-verifier): live belgium.be Moving page (sha256
+      # 77e94d00…) supports the load-bearing facts verbatim — "If as a foreign
+      # national you wish to stay in Belgium for longer than three months, you must
+      # report to the municipality in which you are staying within eight days of your
       # arrival. You must be registered on the National Register; and for that you
-      # must have an actual place of residence in this municipality." Verifier:
-      # confirm the 8-day deadline and National Register requirement verbatim.
-      status: UNVERIFIED
+      # must have an actual place of residence in this municipality." The 8-day
+      # deadline, the >3-months trigger, the National-Register entry and the actual-
+      # place-of-residence requirement all match character-for-character. NOTE: the
+      # tail framing ("the commune and the Immigration Office handle your residence
+      # record, which leads to your residence permit (electronic card)") is general
+      # and not on THIS page, but it asserts no figure/threshold; the residence-
+      # permit-card / Immigration-Office responsibility is supported on the cited
+      # residence-documents and dofi Single Permit pages used by sibling claims, so
+      # the summary is not overstated. FIGURE (8 days) -> 30-day reviewBy.
+      status: VERIFIED
       lastVerified: "2026-06-13"
-      verifiedBy: ""
+      verifiedBy: "fact-verifier-be 2026-06-13"
+      sourceHash: "77e94d0085e3b7041827fb08b586e4364d39e92e70e84c1d0c5aae9e74063aad"
       reviewBy: "2026-07-13"
     tldr:
       text: "Within 8 days of arriving, report in person to your commune (municipality) if you are staying more than three months. You must have an actual address there, and you are entered on the National Register; this starts the procedure that leads to your residence permit."
       sourceUrl: "https://www.belgium.be/en/housing/moving_to_belgium"
       sourceName: "belgium.be (official federal portal) — Moving to Belgium"
-      # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). FIGURE (8 days) ->
-      # 30-day window. Same basis. Verifier: confirm.
-      status: UNVERIFIED
+      # VERIFIED 2026-06-13 (fact-verifier): live belgium.be Moving page (sha256
+      # 77e94d00…), same verbatim basis — "report to the municipality in which you
+      # are staying within eight days of your arrival", ">3 months" trigger,
+      # National-Register entry, actual place of residence. "report in person" is a
+      # reasonable gloss of "report to the municipality" and asserts no figure.
+      # FIGURE (8 days) -> 30-day reviewBy.
+      status: VERIFIED
       lastVerified: "2026-06-13"
-      verifiedBy: ""
+      verifiedBy: "fact-verifier-be 2026-06-13"
+      sourceHash: "77e94d0085e3b7041827fb08b586e4364d39e92e70e84c1d0c5aae9e74063aad"
       reviewBy: "2026-07-13"
     keyFacts:
       - label: "Deadline"
         text: "Within eight days of your arrival (if staying longer than three months)."
         sourceUrl: "https://www.belgium.be/en/housing/moving_to_belgium"
         sourceName: "belgium.be (official federal portal) — Moving to Belgium"
-        # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). FIGURE -> 30-day
-        # window. belgium.be: "within eight days of your arrival". Verifier:
-        # confirm.
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): live belgium.be Moving page (sha256
+        # 77e94d00…) verbatim: "you must report to the municipality in which you are
+        # staying within eight days of your arrival" with the ">longer than three
+        # months" trigger immediately preceding. Matches "Within eight days of your
+        # arrival (if staying longer than three months)" character-for-character.
+        # FIGURE (8 days) -> 30-day reviewBy.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-be 2026-06-13"
+        sourceHash: "77e94d0085e3b7041827fb08b586e4364d39e92e70e84c1d0c5aae9e74063aad"
         reviewBy: "2026-07-13"
       - label: "Where"
         text: "At the commune (municipality) where you are staying — you must have an actual place of residence there to be entered on the National Register."
         sourceUrl: "https://www.belgium.be/en/housing/moving_to_belgium"
         sourceName: "belgium.be (official federal portal) — Moving to Belgium"
-        # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). belgium.be: "report
-        # to the municipality in which you are staying ... You must be registered
-        # on the National Register; and for that you must have an actual place of
-        # residence in this municipality." Verifier: confirm.
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): live belgium.be Moving page (sha256
+        # 77e94d00…) verbatim: "report to the municipality in which you are staying
+        # ... You must be registered on the National Register; and for that you must
+        # have an actual place of residence in this municipality." Supports the claim
+        # character-for-character.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-be 2026-06-13"
+        sourceHash: "77e94d0085e3b7041827fb08b586e4364d39e92e70e84c1d0c5aae9e74063aad"
         reviewBy: "2026-09-11"
       - label: "What it leads to"
         text: "Registration starts your residence record; the residence documents for a long stay are the responsibility of the FPS Home Affairs / Immigration Office and follow after your visa."
         sourceUrl: "https://www.belgium.be/en/family/residence_documents_for_belgium"
         sourceName: "belgium.be (official federal portal) — Residence documents for Belgium"
-        # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). belgium.be Residence
-        # documents: "If you want to stay for a very long period or permanently in
-        # Belgium, you will need another residence document after your visa has
-        # expired. These residence documents are the responsibility of the FPS
-        # Home Affairs, Department of Federal Immigration." Verifier: confirm.
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): live belgium.be Residence-documents
+        # page (sha256 2ed0d80b…) verbatim: "If you want to stay for a very long
+        # period or permanently in Belgium, you will need another residence document
+        # after your visa has expired. These residence documents are the
+        # responsibility of the FPS Home Affairs, Department of Federal Immigration."
+        # Supports "residence documents ... responsibility of the FPS Home Affairs /
+        # Immigration Office and follow after your visa" (the "Department of Federal
+        # Immigration" = the federal Immigration Office is a fair gloss).
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-be 2026-06-13"
+        sourceHash: "2ed0d80b6b879a73ee60e66f4c2c4836d097302eef4ede9324036354eea917fb"
         reviewBy: "2026-09-11"
     detail: >
       Registration at the commune is the step that formally records your residence in Belgium
@@ -481,10 +591,14 @@ tasks:
           - text: "belgium.be — Moving to Belgium (report to your municipality within eight days; National Register)"
             sourceUrl: "https://www.belgium.be/en/housing/moving_to_belgium"
             sourceName: "belgium.be (official federal portal) — Moving to Belgium"
-            # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). Verifier: confirm.
-            status: UNVERIFIED
+            # VERIFIED 2026-06-13 (fact-verifier): live belgium.be Moving page (sha256
+            # 77e94d00…) is the correct page and states the 8-day report duty and the
+            # National-Register requirement verbatim (see summary). Link target
+            # accurate (navigational claim).
+            status: VERIFIED
             lastVerified: "2026-06-13"
-            verifiedBy: ""
+            verifiedBy: "fact-verifier-be 2026-06-13"
+            sourceHash: "77e94d0085e3b7041827fb08b586e4364d39e92e70e84c1d0c5aae9e74063aad"
             reviewBy: "2026-09-11"
       - text: "Be registered on the National Register and follow the commune's procedure (including any residence check) leading to your residence permit."
     documents:
@@ -504,22 +618,31 @@ tasks:
           text: "Arrival registration is handled by your commune (municipality) — procedures and forms are set locally, with no single national form. We link the federal belgium.be Moving authority page (which states the 8-day duty and National Register requirement); obtain the current procedure and any form from your commune."
           sourceUrl: "https://www.belgium.be/en/housing/moving_to_belgium"
           sourceName: "belgium.be (official federal portal) — Moving to Belgium"
-          # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). Commune procedures
-          # are local; we link the federal authority page stating the duty per the
-          # always-current rule. Verifier: confirm this framing is honest.
-          status: UNVERIFIED
+          # VERIFIED 2026-06-13 (fact-verifier): framing is honest and the cited live
+          # belgium.be Moving page (sha256 77e94d00…) does state the duty it claims to
+          # state — "you must report to the municipality in which you are staying
+          # within eight days of your arrival. You must be registered on the National
+          # Register". The page indeed prescribes no single national form (registration
+          # is handled by the municipality), so "procedures and forms are set locally"
+          # is not contradicted. Honest, supported.
+          status: VERIFIED
           lastVerified: "2026-06-13"
-          verifiedBy: ""
+          verifiedBy: "fact-verifier-be 2026-06-13"
+          sourceHash: "77e94d0085e3b7041827fb08b586e4364d39e92e70e84c1d0c5aae9e74063aad"
           reviewBy: "2026-09-11"
     timeline:
       text: "Report to your commune within eight days of arrival (if staying more than three months)."
       sourceUrl: "https://www.belgium.be/en/housing/moving_to_belgium"
       sourceName: "belgium.be (official federal portal) — Moving to Belgium"
-      # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). FIGURE (8 days) ->
-      # 30-day window. Verifier: confirm.
-      status: UNVERIFIED
+      # VERIFIED 2026-06-13 (fact-verifier): live belgium.be Moving page (sha256
+      # 77e94d00…) verbatim: "you must report to the municipality in which you are
+      # staying within eight days of your arrival" with the ">longer than three
+      # months" trigger. Matches the timeline character-for-character. FIGURE (8
+      # days) -> 30-day reviewBy.
+      status: VERIFIED
       lastVerified: "2026-06-13"
-      verifiedBy: ""
+      verifiedBy: "fact-verifier-be 2026-06-13"
+      sourceHash: "77e94d0085e3b7041827fb08b586e4364d39e92e70e84c1d0c5aae9e74063aad"
       reviewBy: "2026-07-13"
     dependsOn:
       # Entry tasks across routes; a dependsOn id filtered out by appliesIf is
@@ -534,15 +657,19 @@ tasks:
       text: "After you arrive on your D visa and register at the commune, your long-stay residence is evidenced by a Belgian residence permit, issued under the responsibility of the FPS Home Affairs / federal Immigration Office. Since 1 January 2019, the residence document itself indicates whether the holder is authorised to work (for single-permit holders) — so for the work route your right to work is shown on the residence card."
       sourceUrl: "https://www.belgium.be/en/family/residence_documents_for_belgium"
       sourceName: "belgium.be (official federal portal) — Residence documents for Belgium"
-      # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). belgium.be Residence
-      # documents: "If you want to stay for a very long period or permanently in
-      # Belgium, you will need another residence document after your visa has
-      # expired. These residence documents are the responsibility of the FPS Home
-      # Affairs, Department of Federal Immigration." FPS Employment: "Since 1
-      # January 2019, the single permit has been in force. Thus, the residence
-      # document now indicates whether the person concerned has a work
-      # authorisation." Verifier: confirm both — the residence-document
-      # responsibility and the work-authorisation-shown-on-the-card fact.
+      # KICKED BACK 2026-06-13 (fact-verifier): the CITED source (live belgium.be
+      # Residence-documents page, sha256 2ed0d80b…) supports ONLY the first half —
+      # "These residence documents are the responsibility of the FPS Home Affairs,
+      # Department of Federal Immigration." It does NOT mention 2019, the single
+      # permit, or work-authorisation-shown-on-the-card. The claim's second sentence
+      # ("Since 1 January 2019, the residence document itself indicates whether the
+      # holder is authorised to work ... your right to work is shown on the residence
+      # card") comes from the FPS Employment page (sha256 e7de09f3…: "Since 1 January
+      # 2019, the single permit has been in force. Thus, the residence document now
+      # indicates whether the person concerned has a work authorisation."), which is
+      # NOT cited here. Fix: add the FPS Employment page as a second source for the
+      # work-shown-on-card sentence (it is correctly cited on the keyFact below), or
+      # split the summary. Claim text NOT edited.
       status: UNVERIFIED
       lastVerified: "2026-06-13"
       verifiedBy: ""
@@ -552,26 +679,38 @@ tasks:
         text: "Residence documents for a long stay are the responsibility of the FPS Home Affairs / federal Immigration Office; the commune handles your local registration."
         sourceUrl: "https://www.belgium.be/en/family/residence_documents_for_belgium"
         sourceName: "belgium.be (official federal portal) — Residence documents for Belgium"
-        # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). belgium.be verbatim
-        # basis as above. Verifier: confirm.
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): live belgium.be Residence-documents
+        # page (sha256 2ed0d80b…) verbatim: "These residence documents are the
+        # responsibility of the FPS Home Affairs, Department of Federal Immigration."
+        # Supports the load-bearing assertion "residence documents for a long stay
+        # are the responsibility of the FPS Home Affairs / federal Immigration
+        # Office". The secondary clause "the commune handles your local registration"
+        # asserts no figure and is supported by the sibling belgium.be Moving page
+        # (register at the municipality); not overstated.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-be 2026-06-13"
+        sourceHash: "2ed0d80b6b879a73ee60e66f4c2c4836d097302eef4ede9324036354eea917fb"
         reviewBy: "2026-09-11"
       - label: "Work authorisation shown on the card"
         text: "Since 1 January 2019 the residence document indicates whether the holder has a work authorisation — your right to work is recorded on the residence permit."
         sourceUrl: "https://employment.belgium.be/en/themes/international/foreign-workers"
         sourceName: "FPS Employment, Labour and Social Dialogue — Foreign workers"
-        # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). FPS Employment:
-        # "Since 1 January 2019, the single permit has been in force. Thus, the
-        # residence document now indicates whether the person concerned has a
-        # work authorisation." And: for non-work residents (students, family),
-        # "The Federal State determines whether or not these people can work. This
+        # VERIFIED 2026-06-13 (fact-verifier): live FPS Employment page (sha256
+        # e7de09f3…) verbatim: "Since 1 January 2019, the single permit has been in
+        # force. Thus, the residence document now indicates whether the person
+        # concerned has a work authorisation." — supports "Since 1 January 2019 the
+        # residence document indicates whether the holder has a work authorisation"
+        # character-for-character (NB: the date "1 January 2019" IS correct on THIS
+        # page; the dofi Single Permit page's "03/01/2019" is the variant flagged on
+        # other claims). The page also corroborates the family/student variant: "The
+        # Federal State determines whether or not these people can work. This
         # information is also indicated on the residence document since 1 January
-        # 2019." Verifier: confirm.
-        status: UNVERIFIED
+        # 2019." DATE-bearing structural fact -> 90-day reviewBy.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-be 2026-06-13"
+        sourceHash: "e7de09f3a83ffd1739c4b6e96ecc826c89d38a9e6852fe5ca76c9c1338a2e2fa"
         reviewBy: "2026-09-11"
     detail: >
       Your residence permit is the physical proof of your right to live in Belgium for your
@@ -588,10 +727,14 @@ tasks:
           - text: "belgium.be — Residence documents for Belgium (residence documents are FPS Home Affairs / Federal Immigration)"
             sourceUrl: "https://www.belgium.be/en/family/residence_documents_for_belgium"
             sourceName: "belgium.be (official federal portal) — Residence documents for Belgium"
-            # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). Verifier: confirm.
-            status: UNVERIFIED
+            # VERIFIED 2026-06-13 (fact-verifier): live belgium.be Residence-documents
+            # page (sha256 2ed0d80b…) is the correct page and states "These residence
+            # documents are the responsibility of the FPS Home Affairs, Department of
+            # Federal Immigration." Link target accurate (navigational claim).
+            status: VERIFIED
             lastVerified: "2026-06-13"
-            verifiedBy: ""
+            verifiedBy: "fact-verifier-be 2026-06-13"
+            sourceHash: "2ed0d80b6b879a73ee60e66f4c2c4836d097302eef4ede9324036354eea917fb"
             reviewBy: "2026-09-11"
     documents:
       - name: "Valid US passport with your D visa"
@@ -617,15 +760,21 @@ tasks:
       text: "You must have health insurance covering all risks in Belgium for yourself and your family — it is one of the documents required for the single permit and for family reunification, and is part of demonstrating sufficient, stable means. Most residents affiliate with a health insurance fund (mutualité / ziekenfonds) once registered; confirm the scheme that applies to your situation."
       sourceUrl: "https://dofi.ibz.be/en/themes/third-country-nationals/work/single-permit"
       sourceName: "Immigration Office (Office des Etrangers / Dienst Vreemdelingenzaken, IBZ/DOFI) — Single Permit"
-      # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). dofi Single Permit doc
-      # list verbatim: "proof that the applicant has health insurance covering all
-      # risks in Belgium for themselves and their family." dofi Family page lists
-      # "Insurance" and "Stable, regular and adequate means of subsistence" among
-      # the conditions. The "mutualité/ziekenfonds affiliation" sentence is
-      # general framing — verifier should confirm against an official source or
-      # soften to "confirm the scheme that applies to you". Verifier: confirm the
-      # health-insurance-covering-all-risks requirement on the single-permit doc
-      # list and the family conditions.
+      # KICKED BACK 2026-06-13 (fact-verifier): the core requirement IS supported on
+      # the cited live dofi Single Permit page (sha256 6b70af30…): "proof that the
+      # applicant has health insurance covering all risks in Belgium for themselves
+      # and their family." BUT the summary makes two assertions the cited Single
+      # Permit page does NOT support: (a) "and for family reunification" — that is on
+      # the dofi Family page (sha256 1ab78bb4…, "Insurance" in the conditions list),
+      # NOT cited here; and (b) "is part of demonstrating sufficient, stable means" —
+      # the dofi page lists "proof of sufficient means of subsistence" and the
+      # health-insurance requirement as SEPARATE documents and does not tie insurance
+      # to the means test, so this conflation is unsupported. The "mutualité /
+      # ziekenfonds affiliation" sentence is general framing not on the cited page
+      # (draft flagged it itself). Fix: cite the Family page for the family element,
+      # drop/soften the "part of demonstrating sufficient stable means" conflation,
+      # and soften the mutualité sentence to "confirm the scheme that applies to
+      # you". Claim text NOT edited.
       status: UNVERIFIED
       lastVerified: "2026-06-13"
       verifiedBy: ""
@@ -635,23 +784,32 @@ tasks:
         text: "Proof of health insurance covering all risks in Belgium (for you and your family) is required for the single permit."
         sourceUrl: "https://dofi.ibz.be/en/themes/third-country-nationals/work/single-permit"
         sourceName: "Immigration Office (Office des Etrangers / Dienst Vreemdelingenzaken, IBZ/DOFI) — Single Permit"
-        # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). dofi single-permit
-        # doc list verbatim. Verifier: confirm.
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): live dofi Single Permit page (sha256
+        # 6b70af30…) doc list verbatim: "proof that the applicant has health
+        # insurance covering all risks in Belgium for themselves and their family."
+        # Supports "Proof of health insurance covering all risks in Belgium (for you
+        # and your family) is required for the single permit" character-for-character.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-be 2026-06-13"
+        sourceHash: "6b70af30f7753c5024b9cf7026ceb2a2fad85ccc706f23e24af819bd9ae0ef7a"
         reviewBy: "2026-09-11"
       - label: "Also for family"
         text: "Health insurance is among the conditions for family reunification (alongside stable, regular and adequate means of subsistence and adequate housing)."
         sourceUrl: "https://dofi.ibz.be/en/themes/third-country-nationals/family-reunification"
         sourceName: "Immigration Office (Office des Etrangers / Dienst Vreemdelingenzaken, IBZ/DOFI) — Family reunification"
-        # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). dofi Family page
-        # "Most viewed" / conditions list includes "Stable, regular and adequate
-        # means of subsistence", "Insurance", "Adequate housing". Verifier:
-        # confirm these conditions appear on the family page.
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): live dofi Family reunification page
+        # (sha256 1ab78bb4…) lists, under "Most viewed:", "Stable, regular and
+        # adequate means of subsistence", "Insurance", and "Adequate housing" — and
+        # the body states conditions "are determined by nationality, age, family
+        # relationship ... and the residence status". Supports "Health insurance is
+        # among the conditions for family reunification (alongside stable, regular and
+        # adequate means of subsistence and adequate housing)". ("Insurance" on the
+        # page = the health-insurance condition.)
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-be 2026-06-13"
+        sourceHash: "1ab78bb497cbfd81c7c10466b205c85ab8c0149ac2ac2872e0d621f0e468cd22"
         reviewBy: "2026-09-11"
     detail: >
       Belgium requires proof of health insurance covering all risks for you and your family as
@@ -668,10 +826,14 @@ tasks:
           - text: "Immigration Office — Single Permit (documents: proof of health insurance covering all risks)"
             sourceUrl: "https://dofi.ibz.be/en/themes/third-country-nationals/work/single-permit"
             sourceName: "Immigration Office (Office des Etrangers / Dienst Vreemdelingenzaken, IBZ/DOFI) — Single Permit"
-            # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). Verifier: confirm.
-            status: UNVERIFIED
+            # VERIFIED 2026-06-13 (fact-verifier): live dofi Single Permit page (sha256
+            # 6b70af30…) is the correct page and lists "proof that the applicant has
+            # health insurance covering all risks in Belgium for themselves and their
+            # family" in the residence-side documents. Link target accurate.
+            status: VERIFIED
             lastVerified: "2026-06-13"
-            verifiedBy: ""
+            verifiedBy: "fact-verifier-be 2026-06-13"
+            sourceHash: "6b70af30f7753c5024b9cf7026ceb2a2fad85ccc706f23e24af819bd9ae0ef7a"
             reviewBy: "2026-09-11"
       - text: "After registering, affiliate with a Belgian health insurance fund (mutualité / ziekenfonds) for ongoing cover."
     documents:
@@ -691,82 +853,112 @@ tasks:
       text: "Certain foreign family members of a Belgian national or of a foreign national legally residing in Belgium have the right to come and live with their family in Belgium, provided they prove with documents that the conditions are met. The conditions depend on nationality, age, family relationship (marriage, partnership or lineage) and the sponsor's residence status. As a rule the application is made abroad (a D visa), and the decision is made by the Immigration Office; conditions include stable, regular and adequate means of subsistence, health insurance and adequate housing."
       sourceUrl: "https://dofi.ibz.be/en/themes/third-country-nationals/family-reunification"
       sourceName: "Immigration Office (Office des Etrangers / Dienst Vreemdelingenzaken, IBZ/DOFI) — Family reunification"
-      # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). dofi Family page
-      # verbatim basis: "Certain foreign nationals who are family members of a
-      # Belgian national or a foreign national legally residing in Belgium have
-      # the right to come and live with their family in Belgium. This right ...
-      # must be recognized if ... they prove, with documents, that the conditions
-      # for family reunification are met."; "The conditions for family
-      # reunification are determined by nationality, age, family relationship
-      # (marriage, partnership or lineage) and the residence status of the person
-      # entitled ..."; "As a rule, the application for family reunification must
-      # be made abroad"; "As a rule, the decision is made by the Immigration
-      # Office. When the right ... is recognised ... the applicant receives a
-      # national long-stay visa (more than 90 days) and/or a residence permit."
-      # Conditions list includes "Stable, regular and adequate means of
-      # subsistence", "Insurance", "Adequate housing". Verifier: confirm these
-      # elements verbatim; do not overstate "right" (it is conditional on proof).
-      status: UNVERIFIED
+      # VERIFIED 2026-06-13 (fact-verifier): live dofi Family reunification page
+      # (sha256 1ab78bb4…) supports every element verbatim — "Certain foreign
+      # nationals who are family members of a Belgian national or a foreign national
+      # legally residing in Belgium have the right to come and live with their family
+      # in Belgium. This right to [family reunification] for these family members
+      # must be recognized if ... they prove, with documents, that the conditions for
+      # family reunification are met."; "The conditions for family reunification are
+      # determined by nationality, age, family relationship (marriage, partnership or
+      # lineage) and the residence status of the person entitled to family
+      # reunification"; "As a rule, the application for family reunification must be
+      # made abroad"; "As a rule, the decision is made by the Immigration Office.
+      # When the right to family reunification is recognised (positive decision), the
+      # applicant receives a national long-stay visa (more than 90 days). and/or a
+      # residence permit." Conditions ("Stable, regular and adequate means of
+      # subsistence", "Insurance", "Adequate housing") in the "Most viewed:" list.
+      # The claim correctly frames the right as CONDITIONAL on proof — no overstatement.
+      status: VERIFIED
       lastVerified: "2026-06-13"
-      verifiedBy: ""
+      verifiedBy: "fact-verifier-be 2026-06-13"
+      sourceHash: "1ab78bb497cbfd81c7c10466b205c85ab8c0149ac2ac2872e0d621f0e468cd22"
       reviewBy: "2026-09-11"
     tldr:
       text: "If you are the family member of a Belgian or of someone legally living in Belgium, you can have a right to join them — once you prove the conditions are met. These depend on your relationship, ages, nationality and the sponsor's residence status, and include stable adequate means, health insurance and adequate housing. You normally apply for a D visa abroad, and the Immigration Office decides."
       sourceUrl: "https://dofi.ibz.be/en/themes/third-country-nationals/family-reunification"
       sourceName: "Immigration Office (Office des Etrangers / Dienst Vreemdelingenzaken, IBZ/DOFI) — Family reunification"
-      # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). Same family basis.
-      # Verifier: confirm the conditional-right framing and the conditions.
-      status: UNVERIFIED
+      # VERIFIED 2026-06-13 (fact-verifier): live dofi Family reunification page
+      # (sha256 1ab78bb4…), same verbatim basis as the summary — conditional right
+      # ("must be recognized if ... they prove, with documents, that the conditions
+      # ... are met"), conditions determined by "nationality, age, family
+      # relationship ... and the residence status", "Stable, regular and adequate
+      # means of subsistence" / "Insurance" / "Adequate housing", "As a rule, the
+      # application for family reunification must be made abroad", and "the decision
+      # is made by the Immigration Office". All supported; the conditional-right
+      # framing is faithful.
+      status: VERIFIED
       lastVerified: "2026-06-13"
-      verifiedBy: ""
+      verifiedBy: "fact-verifier-be 2026-06-13"
+      sourceHash: "1ab78bb497cbfd81c7c10466b205c85ab8c0149ac2ac2872e0d621f0e468cd22"
       reviewBy: "2026-09-11"
     keyFacts:
       - label: "Who qualifies"
         text: "Family members of a Belgian national or of a foreign national legally residing in Belgium — the exact eligibility depends on the relationship (marriage, registered partnership or lineage) and the sponsor's residence status."
         sourceUrl: "https://dofi.ibz.be/en/themes/third-country-nationals/family-reunification"
         sourceName: "Immigration Office (Office des Etrangers / Dienst Vreemdelingenzaken, IBZ/DOFI) — Family reunification"
-        # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). dofi verbatim basis
-        # as above. Verifier: confirm.
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): live dofi Family reunification page
+        # (sha256 1ab78bb4…) verbatim: "Certain foreign nationals who are family
+        # members of a Belgian national or a foreign national legally residing in
+        # Belgium have the right to come and live with their family in Belgium." and
+        # "The conditions for family reunification are determined by nationality, age,
+        # family relationship (marriage, partnership or lineage) and the residence
+        # status of the person entitled to family reunification". Supports the claim
+        # character-for-character.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-be 2026-06-13"
+        sourceHash: "1ab78bb497cbfd81c7c10466b205c85ab8c0149ac2ac2872e0d621f0e468cd22"
         reviewBy: "2026-09-11"
       - label: "Conditions"
         text: "Conditions include proving the relationship with documents, stable, regular and adequate means of subsistence, health insurance, and adequate housing."
         sourceUrl: "https://dofi.ibz.be/en/themes/third-country-nationals/family-reunification"
         sourceName: "Immigration Office (Office des Etrangers / Dienst Vreemdelingenzaken, IBZ/DOFI) — Family reunification"
-        # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). dofi Family
-        # conditions list: "Stable, regular and adequate means of subsistence",
-        # "Insurance", "Adequate housing", plus proof of relationship. Verifier:
-        # confirm these conditions appear on the page.
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): live dofi Family reunification page
+        # (sha256 1ab78bb4…) — conditions list under "Most viewed:" includes "Stable,
+        # regular and adequate means of subsistence", "Insurance", "Adequate
+        # housing"; and the body requires they "prove, with documents, that the
+        # conditions for family reunification are met". Supports "proving the
+        # relationship with documents, stable, regular and adequate means of
+        # subsistence, health insurance, and adequate housing".
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-be 2026-06-13"
+        sourceHash: "1ab78bb497cbfd81c7c10466b205c85ab8c0149ac2ac2872e0d621f0e468cd22"
         reviewBy: "2026-09-11"
       - label: "Where to apply"
         text: "As a rule the application is made abroad (a D visa); in certain situations it can be made in Belgium. The decision is made by the Immigration Office."
         sourceUrl: "https://dofi.ibz.be/en/themes/third-country-nationals/family-reunification"
         sourceName: "Immigration Office (Office des Etrangers / Dienst Vreemdelingenzaken, IBZ/DOFI) — Family reunification"
-        # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). dofi: "As a rule, the
-        # application for family reunification must be made abroad ... In certain
-        # situations, the application can be made in Belgium."; "As a rule, the
-        # decision is made by the Immigration Office." Verifier: confirm.
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): live dofi Family reunification page
+        # (sha256 1ab78bb4…) verbatim: "As a rule, the application for family
+        # reunification must be made abroad ... In certain situations, the
+        # application can be made in Belgium." and "As a rule, the decision is made by
+        # the Immigration Office." Supports the claim character-for-character. (The
+        # "(a D visa)" gloss is supported by the same page: a positive decision means
+        # "the applicant receives a national long-stay visa (more than 90 days).")
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-be 2026-06-13"
+        sourceHash: "1ab78bb497cbfd81c7c10466b205c85ab8c0149ac2ac2872e0d621f0e468cd22"
         reviewBy: "2026-09-11"
       - label: "Right to work"
         text: "A third-country national authorised to work and reside in Belgium may be accompanied or joined by spouse/partner and minor children under certain conditions; whether joining family members may work is shown on their residence document."
         sourceUrl: "https://dofi.ibz.be/en/themes/third-country-nationals/work"
         sourceName: "Immigration Office (Office des Etrangers / Dienst Vreemdelingenzaken, IBZ/DOFI) — Work"
-        # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). dofi Work page: "A
-        # third-country national authorised to work and reside in Belgium for more
-        # than 90 days may be accompanied or joined by his/her spouse or partner
-        # (partnership registered under a law) and minor children, under certain
-        # conditions." FPS Employment: family members' right to work is decided
-        # federally and "indicated on the residence document since 1 January
-        # 2019." Verifier: confirm both; soften if the work-permission detail is
-        # not directly supported.
+        # KICKED BACK 2026-06-13 (fact-verifier): the FIRST half is supported on the
+        # cited live dofi Work page (sha256 05d858a7…) verbatim — "A third-country
+        # national authorised to work and reside in Belgium for more than 90 days may
+        # be accompanied or joined by his/her spouse or partner (partnership
+        # registered under a law) and minor children, under certain conditions." BUT
+        # the SECOND clause ("whether joining family members may work is shown on
+        # their residence document") is NOT on the dofi Work page — it is on the FPS
+        # Employment page (sha256 e7de09f3…: "The Federal State determines whether or
+        # not these people [incl. family members] can work. This information is also
+        # indicated on the residence document since 1 January 2019."), which is NOT
+        # cited here. Draft's own note flagged this. Fix: add the FPS Employment page
+        # as a second source for the work-shown-on-card clause, or drop that clause.
+        # Claim text NOT edited.
         status: UNVERIFIED
         lastVerified: "2026-06-13"
         verifiedBy: ""
@@ -790,13 +982,16 @@ tasks:
           - text: "Immigration Office — Family reunification (sub-categories; conditions; who decides)"
             sourceUrl: "https://dofi.ibz.be/en/themes/third-country-nationals/family-reunification"
             sourceName: "Immigration Office (Office des Etrangers / Dienst Vreemdelingenzaken, IBZ/DOFI) — Family reunification"
-            # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). dofi sidebar lists
-            # "with a Belgian national / with a national of an EU or associated
-            # country / with a third country national / with a beneficiary of
-            # international protection status". Verifier: confirm.
-            status: UNVERIFIED
+            # VERIFIED 2026-06-13 (fact-verifier): live dofi Family reunification page
+            # (sha256 1ab78bb4…) sidebar lists the sub-categories verbatim — "Family
+            # reunification with a Belgian national / with a national of an EU or
+            # associated country / with a third country national / with a beneficiary
+            # of international protection status" — plus the conditions and "the
+            # decision is made by the Immigration Office". Link target accurate.
+            status: VERIFIED
             lastVerified: "2026-06-13"
-            verifiedBy: ""
+            verifiedBy: "fact-verifier-be 2026-06-13"
+            sourceHash: "1ab78bb497cbfd81c7c10466b205c85ab8c0149ac2ac2872e0d621f0e468cd22"
             reviewBy: "2026-09-11"
       - text: "Apply abroad for the family-reunification D visa at the competent Belgian post (or, in eligible situations, in Belgium)."
     documents:
@@ -825,10 +1020,18 @@ tasks:
           text: "The family-reunification application is normally a national (type D) visa application made abroad at the competent Belgian post; the Immigration Office decides. We link the Immigration Office Family reunification authority page rather than a deep PDF so the current conditions and procedure are referenced."
           sourceUrl: "https://dofi.ibz.be/en/themes/third-country-nationals/family-reunification"
           sourceName: "Immigration Office (Office des Etrangers / Dienst Vreemdelingenzaken, IBZ/DOFI) — Family reunification"
-          # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). Verifier: confirm.
-          status: UNVERIFIED
+          # VERIFIED 2026-06-13 (fact-verifier): live dofi Family reunification page
+          # (sha256 1ab78bb4…) supports the framing — "As a rule, the application for
+          # family reunification must be made abroad ... In certain situations, the
+          # application can be made in Belgium."; "As a rule, the decision is made by
+          # the Immigration Office."; and a positive decision yields "a national
+          # long-stay visa (more than 90 days). and/or a residence permit." Supports
+          # "normally a national (type D) visa application made abroad ... the
+          # Immigration Office decides". Authority-page link framing is honest.
+          status: VERIFIED
           lastVerified: "2026-06-13"
-          verifiedBy: ""
+          verifiedBy: "fact-verifier-be 2026-06-13"
+          sourceHash: "1ab78bb497cbfd81c7c10466b205c85ab8c0149ac2ac2872e0d621f0e468cd22"
           reviewBy: "2026-09-11"
     warning: >
       Family-reunification conditions (means of subsistence, housing, insurance and proof of
@@ -849,18 +1052,23 @@ tasks:
       text: "Non-EU foreigners who wish to stay in Belgium for more than 90 days to study at a recognised higher-education institution apply via the Immigration Office's study route. Education is organised by the Communities (Flemish, French and German-speaking), so admission is to an institution of the relevant Community. After completing your studies, you can stay for an additional year (a search year) to find a job or start a business with a view to a work residence permit."
       sourceUrl: "https://dofi.ibz.be/en/themes/third-country-nationals/study"
       sourceName: "Immigration Office (Office des Etrangers / Dienst Vreemdelingenzaken, IBZ/DOFI) — Study"
-      # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). dofi Study page
-      # verbatim basis: "These pages are primarily intended for non-EU foreigners
-      # who wish to stay in Belgium for more than 90 days in order to: study at a
-      # recognized higher education institution and, at the end of their studies,
-      # obtain a degree recognized in Belgium; stay for an additional year after
-      # completing their studies in order to find a job or start a business with
-      # the aim of obtaining a residence permit for work purposes." belgium.be
-      # study page: "Education is the responsibility of the Flemish, French and
-      # German-speaking Communities." Verifier: confirm the >90-day study scope,
-      # the search-year option, and the Community competence. NOTE: a March 2026
-      # circular revoked older study circulars — verifier should check the page's
-      # current statement of conditions.
+      # KICKED BACK 2026-06-13 (fact-verifier): the study-route core IS supported on
+      # the cited live dofi Study page (sha256 d974e0f1…) verbatim — "These pages are
+      # primarily intended for non-EU foreigners who wish to stay in Belgium for more
+      # than 90 days in order to: study at a recognized higher education institution
+      # and, at the end of their studies, obtain a degree recognized in Belgium; stay
+      # for an additional year after completing their studies in order to find a job
+      # or start a business with the aim of obtaining a residence permit for work
+      # purposes." BUT the summary's clause "Education is organised by the Communities
+      # (Flemish, French and German-speaking), so admission is to an institution of
+      # the relevant Community" is NOT on the dofi Study page — that is on the
+      # belgium.be Coming-to-study page (sha256 963fb6f4…: "Education is the
+      # responsibility of the Flemish, French and German-speaking Communities."),
+      # which the summary does NOT cite. Fix: add the belgium.be Coming-to-study page
+      # as a second source for the Community-competence clause (it is correctly cited
+      # on the keyFact below), or split the summary. Claim text NOT edited. (NB: the
+      # dofi Study page DOES carry the March 2026 circular notice — see study warning,
+      # which is verified separately.)
       status: UNVERIFIED
       lastVerified: "2026-06-13"
       verifiedBy: ""
@@ -870,36 +1078,48 @@ tasks:
         text: "Non-EU foreigners staying more than 90 days to study at a recognised higher-education institution and obtain a degree recognised in Belgium."
         sourceUrl: "https://dofi.ibz.be/en/themes/third-country-nationals/study"
         sourceName: "Immigration Office (Office des Etrangers / Dienst Vreemdelingenzaken, IBZ/DOFI) — Study"
-        # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). dofi Study verbatim.
-        # Verifier: confirm.
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): live dofi Study page (sha256 d974e0f1…)
+        # verbatim: "non-EU foreigners who wish to stay in Belgium for more than 90
+        # days in order to: study at a recognized higher education institution and, at
+        # the end of their studies, obtain a degree recognized in Belgium". Supports
+        # the claim character-for-character.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-be 2026-06-13"
+        sourceHash: "d974e0f1857e26306d7b7e0452f195e351b7a54f6659e3dc9164b4c47ea81082"
         reviewBy: "2026-09-11"
       - label: "Education is a Community competence"
         text: "Education is the responsibility of the Flemish, French and German-speaking Communities — you apply for admission to an institution of the relevant Community."
         sourceUrl: "https://www.belgium.be/en/education/coming_to_study_in_belgium"
         sourceName: "belgium.be (official federal portal) — Coming to study in Belgium"
-        # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). belgium.be: "Belgium
-        # is a federal state composed of three communities and three regions.
-        # Education is the responsibility of the Flemish, French and
-        # German-speaking Communities." Verifier: confirm.
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): live belgium.be Coming-to-study page
+        # (sha256 963fb6f4…) verbatim: "Belgium is a federal state composed of three
+        # communities and three regions. Education is the responsibility of the
+        # Flemish, French and German-speaking Communities." Supports "Education is the
+        # responsibility of the Flemish, French and German-speaking Communities"
+        # character-for-character. ("you apply for admission to an institution of the
+        # relevant Community" is the corollary of education being a Community
+        # competence; not overstated.)
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-be 2026-06-13"
+        sourceHash: "963fb6f42c404bc5558675ef2351c3c4778b3cd5cbe8ce8f5a75bd1e5b70c456"
         reviewBy: "2026-09-11"
       - label: "After graduation"
         text: "After completing your studies you can stay for an additional year (search year) to find a job or start a business, with a view to a work residence permit."
         sourceUrl: "https://dofi.ibz.be/en/themes/third-country-nationals/study"
         sourceName: "Immigration Office (Office des Etrangers / Dienst Vreemdelingenzaken, IBZ/DOFI) — Study"
-        # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). dofi Study verbatim:
-        # "stay for an additional year after completing their studies in order to
-        # find a job or start a business". dofi sidebar lists "Search year after
-        # higher studies". Verifier: confirm the search-year and its one-year
-        # framing.
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): live dofi Study page (sha256 d974e0f1…)
+        # verbatim: "stay for an additional year after completing their studies in
+        # order to find a job or start a business with the aim of obtaining a
+        # residence permit for work purposes." and the sidebar lists "Search year
+        # after higher studies". Supports the "additional year (search year) ... with
+        # a view to a work residence permit" claim character-for-character (the
+        # "additional year" = one year).
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-be 2026-06-13"
+        sourceHash: "d974e0f1857e26306d7b7e0452f195e351b7a54f6659e3dc9164b4c47ea81082"
         reviewBy: "2026-09-11"
     detail: >
       To study in Belgium for more than 90 days you first secure admission to a recognised
@@ -919,20 +1139,32 @@ tasks:
           - text: "belgium.be — Coming to study in Belgium (education is a Community competence; entry conditions via FPS Foreign Affairs)"
             sourceUrl: "https://www.belgium.be/en/education/coming_to_study_in_belgium"
             sourceName: "belgium.be (official federal portal) — Coming to study in Belgium"
-            # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). Verifier: confirm.
-            status: UNVERIFIED
+            # VERIFIED 2026-06-13 (fact-verifier): live belgium.be Coming-to-study page
+            # (sha256 963fb6f4…) is the correct page and supports the link description
+            # — "Education is the responsibility of the Flemish, French and
+            # German-speaking Communities." and, under "Conditions of entry into
+            # Belgium", "The FPS Foreign Affairs can help you. It can also provide
+            # information regarding residence in Belgium as a European or non-European
+            # student." Link target accurate.
+            status: VERIFIED
             lastVerified: "2026-06-13"
-            verifiedBy: ""
+            verifiedBy: "fact-verifier-be 2026-06-13"
+            sourceHash: "963fb6f42c404bc5558675ef2351c3c4778b3cd5cbe8ce8f5a75bd1e5b70c456"
             reviewBy: "2026-09-11"
       - text: "Apply for the national (type D) study visa at the competent Belgian post, then register at your commune and obtain your residence permit after arrival."
         links:
           - text: "Immigration Office — Study (higher education; more than 90 days; search year after studies)"
             sourceUrl: "https://dofi.ibz.be/en/themes/third-country-nationals/study"
             sourceName: "Immigration Office (Office des Etrangers / Dienst Vreemdelingenzaken, IBZ/DOFI) — Study"
-            # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). Verifier: confirm.
-            status: UNVERIFIED
+            # VERIFIED 2026-06-13 (fact-verifier): live dofi Study page (sha256
+            # d974e0f1…) is the correct page — covers higher education (">90 days ...
+            # study at a recognized higher education institution"), and its sidebar
+            # lists "Higher education" and "Search year after higher studies". Link
+            # target accurate (navigational claim).
+            status: VERIFIED
             lastVerified: "2026-06-13"
-            verifiedBy: ""
+            verifiedBy: "fact-verifier-be 2026-06-13"
+            sourceHash: "d974e0f1857e26306d7b7e0452f195e351b7a54f6659e3dc9164b4c47ea81082"
             reviewBy: "2026-09-11"
     documents:
       - name: "Letter of admission from a recognised institution"
@@ -954,10 +1186,20 @@ tasks:
           text: "Apply for the study D visa at the competent Belgian post in the USA; we link the Immigration Office Study authority page rather than a deep PDF so the current (post-2026-circular) conditions and procedure are referenced."
           sourceUrl: "https://dofi.ibz.be/en/themes/third-country-nationals/study"
           sourceName: "Immigration Office (Office des Etrangers / Dienst Vreemdelingenzaken, IBZ/DOFI) — Study"
-          # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). Verifier: confirm.
-          status: UNVERIFIED
+          # VERIFIED 2026-06-13 (fact-verifier): live dofi Study page (sha256
+          # d974e0f1…) is the current Immigration-Office Study authority page and it
+          # carries the post-2026-circular state of the rules — top banner:
+          # "Communication - Publication in the Belgian Official Gazette of March 12,
+          # 2026 of the ministerial circular of March 5, 2026 revoking the circular of
+          # September 15, 1998 ... relating to the residence of [foreigners] who wish
+          # to study in Belgium." Supports the honest "we link the Study authority
+          # page so the current (post-2026-circular) conditions are referenced"
+          # framing. (The page does not itself detail the US-post D-visa step, but the
+          # form's load-bearing claim is the authority-page link, which is correct.)
+          status: VERIFIED
           lastVerified: "2026-06-13"
-          verifiedBy: ""
+          verifiedBy: "fact-verifier-be 2026-06-13"
+          sourceHash: "d974e0f1857e26306d7b7e0452f195e351b7a54f6659e3dc9164b4c47ea81082"
           reviewBy: "2026-09-11"
     warning: >
       Belgium revoked its older study-residence circulars in March 2026; the conditions

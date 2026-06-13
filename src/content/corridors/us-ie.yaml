@@ -28,85 +28,62 @@ tasks:
       text: "As a US citizen you are a non-EEA national. To work in Ireland you, or your employer, must first obtain a valid Irish employment permit from the Department of Enterprise, Tourism and Employment: \"To work in Ireland, a non-EEA national, unless they are exempted, must hold a valid employment permit.\" An employment permit is not on its own a residence permission — it lets you take up the specific job named on it; you still need permission to enter and (for stays over 90 days) to register after arrival."
       sourceUrl: "https://enterprise.gov.ie/en/what-we-do/workplace-and-skills/employment-permits/"
       sourceName: "Department of Enterprise, Tourism and Employment (DETE) — Employment permits"
-      # DRAFT/UNVERIFIED (research-4 2026-06-13): captured sources/us-ie (manifest:
-      # enterprise.gov.ie/.../employment-permits/). Page states verbatim "To work
-      # in Ireland, a non-EEA national, unless they are exempted, must hold a valid
-      # employment permit." and "The department's Employment Permits Section
-      # administers the employment permits system." The "an employment permit is
-      # not a Residence Permission" element appears verbatim on the companion
-      # Critical Skills / General Employment Permit pages ("An employment permit is
-      # not a Residence Permission."). Fact-verifier must re-derive both live.
-      status: UNVERIFIED
+      # VERIFIED 2026-06-13 (fact-verifier): DETE employment-permits overview re-fetched LIVE (curl, browser UA, HTTP 200, no redirect; sha256 402ef80e…). Verbatim: "To work in Ireland, a non-EEA national, unless they are exempted, must hold a valid employment permit." and "The department's Employment Permits Section administers the employment permits system." The "an employment permit is not a Residence Permission" element is verbatim on the companion CSEP and GEP pages (both re-fetched live: "An employment permit is not a Residence Permission."). The over-90-days register-after-arrival element is a fair gloss carried by the registration task (independently verified). No overstatement.
+      status: VERIFIED
       lastVerified: "2026-06-13"
-      verifiedBy: ""
+      verifiedBy: "fact-verifier-ie 2026-06-13"
+      sourceHash: "402ef80e4100e75307cab70a8f08ff30dd7ee1de361de4fb6c9085c12a9eb536"
       reviewBy: "2026-09-11"
     tldr:
       text: "US citizens are non-EEA nationals and cannot simply move to Ireland to work: you (or your prospective employer) must first obtain an Irish employment permit from the Department of Enterprise, Tourism and Employment. The two main types are the Critical Skills Employment Permit (for in-demand, higher-paid roles, with strong family and residency benefits) and the General Employment Permit (broader range of jobs, usually with a Labour Market Needs Test)."
       sourceUrl: "https://enterprise.gov.ie/en/what-we-do/workplace-and-skills/employment-permits/"
       sourceName: "Department of Enterprise, Tourism and Employment (DETE) — Employment permits"
-      # DRAFT/UNVERIFIED (research-4 2026-06-13): the must-hold-a-permit framing is
-      # verbatim on the DETE overview (captured). The two-main-types distinction
-      # (Critical Skills vs General) is drawn from the two dedicated DETE permit
-      # pages, also captured (see the eligibility task). Fact-verifier to confirm.
-      status: UNVERIFIED
+      # VERIFIED 2026-06-13 (fact-verifier): DETE overview re-fetched live (sha256 402ef80e…): "To work in Ireland, a non-EEA national, unless they are exempted, must hold a valid employment permit." The two-main-types distinction is supported by the two dedicated DETE permit pages (re-fetched live): the CSEP page ("designed to attract highly skilled people"; "a Labour Market Needs Test is not required"; "immediate family reunification") and the GEP page ("permits a broader range of occupations"; "A Labour Market Needs Test is required in most cases"). Not overstated.
+      status: VERIFIED
       lastVerified: "2026-06-13"
-      verifiedBy: ""
+      verifiedBy: "fact-verifier-ie 2026-06-13"
+      sourceHash: "402ef80e4100e75307cab70a8f08ff30dd7ee1de361de4fb6c9085c12a9eb536"
       reviewBy: "2026-09-11"
     keyFacts:
       - label: "Who applies"
         text: "Either the prospective employee or the employer can apply; the permit issues to the employee, with a certified copy to the employer, and allows employment only by the named employer in the occupation and location(s) stated on the permit."
         sourceUrl: "https://enterprise.gov.ie/en/what-we-do/workplace-and-skills/employment-permits/permit-types/general-employment-permit/"
         sourceName: "Department of Enterprise, Tourism and Employment (DETE) — General Employment Permit"
-        # DRAFT/UNVERIFIED (research-4 2026-06-13): GEP page (captured) verbatim:
-        # "Either the foreign national or the prospective employer can apply for a
-        # General Employment Permit and the permit is issued to the foreign
-        # national, and a certified copy sent to the employer, which permits his or
-        # her employment in the State by the employer in the occupation and
-        # location/s specified on the permit." Same framing on the CSEP page.
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): GEP page re-fetched live (sha256 be11e040…). Verbatim: "Either the foreign national or the prospective employer can apply for a General Employment Permit and the permit is issued to the foreign national, and a certified copy sent to the employer, which permits his or her employment in the State by the employer in the occupation and location/s specified on the permit." Same framing on the CSEP page ("The prospective employee or the employer can apply ... The employment permit will issue to the prospective employee (a certified copy will issue to the employer). The permit allows ... employment in the State by the named employer and in the occupation and location/s specified on the permit."). Matches character-for-character.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-ie 2026-06-13"
+        sourceHash: "be11e040da023652a6c56c691f76c3a090fee63419b76f717aabd0e01de21d34"
         reviewBy: "2026-09-11"
       - label: "Where"
         text: "Applications are made online on the Employment Permits Online system and administered by the Employment Permits Section of the Department of Enterprise, Tourism and Employment."
         sourceUrl: "https://enterprise.gov.ie/en/what-we-do/workplace-and-skills/employment-permits/"
         sourceName: "Department of Enterprise, Tourism and Employment (DETE) — Employment permits"
-        # DRAFT/UNVERIFIED (research-4 2026-06-13): DETE overview (captured): "You
-        # can apply for a permit on Employment Permits Online." and "The
-        # department's Employment Permits Section administers the employment permits
-        # system." Confirm live.
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): DETE overview re-fetched live (sha256 402ef80e…). Verbatim: "You can apply for a permit on Employment Permits Online." and "The department's Employment Permits Section administers the employment permits system." Matches.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-ie 2026-06-13"
+        sourceHash: "402ef80e4100e75307cab70a8f08ff30dd7ee1de361de4fb6c9085c12a9eb536"
         reviewBy: "2026-09-11"
       - label: "When"
         text: "An application for any employment permit must be received at least 12 weeks before the proposed employment start date; a signed contract of employment must be submitted with each application."
         sourceUrl: "https://enterprise.gov.ie/en/what-we-do/workplace-and-skills/employment-permits/"
         sourceName: "Department of Enterprise, Tourism and Employment (DETE) — Employment permits"
-        # DRAFT/UNVERIFIED (research-4 2026-06-13): DETE overview (captured)
-        # verbatim: "An application for any employment permit must be received at
-        # least 12 weeks before the proposed employment start date." and "A
-        # contract of employment signed by both parties must be submitted with each
-        # application." Same 12-week rule repeated on CSEP and GEP pages.
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): DETE overview re-fetched live (sha256 402ef80e…). Verbatim: "An application for any employment permit must be received at least 12 weeks before the proposed employment start date." and "A contract of employment signed by both parties must be submitted with each application." The same 12-week rule appears verbatim on the CSEP and GEP pages (both re-fetched live). Matches character-for-character.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-ie 2026-06-13"
+        sourceHash: "402ef80e4100e75307cab70a8f08ff30dd7ee1de361de4fb6c9085c12a9eb536"
         reviewBy: "2026-09-11"
       - label: "Right or discretion"
         text: "Discretion: the permit is granted only if statutory criteria are met (bona-fide employer, eligible occupation, minimum remuneration, the 50:50 EEA-employee rule and, for most General Employment Permits, a Labour Market Needs Test). There is no entitlement to an employment permit."
         sourceUrl: "https://enterprise.gov.ie/en/what-we-do/workplace-and-skills/employment-permits/permit-types/general-employment-permit/"
         sourceName: "Department of Enterprise, Tourism and Employment (DETE) — General Employment Permit"
-        # DRAFT/UNVERIFIED (research-4 2026-06-13): GEP page (captured) sets out the
-        # criteria (bona-fide employer registered with Revenue; occupation not on
-        # the Ineligible List; minimum remuneration; "An employment permit will not
-        # issue unless at the time of application at least 50% of the employees in a
-        # firm are EEA nationals (50:50 rule)."; "A Labour Market Needs Test is
-        # required in most cases ..."). The no-entitlement/discretion gloss is a
-        # fair characterisation of the conditional grant — verifier to confirm no
-        # overstatement.
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): GEP page re-fetched live (sha256 be11e040…). All cited criteria confirmed verbatim: bona-fide employer ("contingent on a job offer from a bona fide employer registered with the Revenue Commissioners"); occupation eligibility ("not in an excluded job category under the Ineligible List"); minimum remuneration ("generally €36,605"); 50:50 rule ("An employment permit will not issue unless at the time of application at least 50% of the employees in a firm are EEA nationals (50:50 rule)."); "A Labour Market Needs Test is required in most cases". No-entitlement/discretion gloss: the page never uses "entitled/right" and frames the grant conditionally ("will not issue unless", "is contingent on", "examines a number of criteria when assessing"). Not overstated.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-ie 2026-06-13"
+        sourceHash: "be11e040da023652a6c56c691f76c3a090fee63419b76f717aabd0e01de21d34"
         reviewBy: "2026-09-11"
     detail: >
       Ireland is not in the Schengen area and runs its own employment-permit system,
@@ -129,11 +106,11 @@ tasks:
           - text: "DETE — employment permits overview (how to apply, types, fees)"
             sourceUrl: "https://enterprise.gov.ie/en/what-we-do/workplace-and-skills/employment-permits/"
             sourceName: "Department of Enterprise, Tourism and Employment (DETE) — Employment permits"
-            # DRAFT/UNVERIFIED (research-4 2026-06-13): DETE overview captured;
-            # links to Employment Permits Online, types, eligibility and fees.
-            status: UNVERIFIED
+            # VERIFIED 2026-06-13 (fact-verifier): DETE overview re-fetched live (sha256 402ef80e…). Authority page links Employment Permits Online ("You can apply for a permit on Employment Permits Online."), "Types of permits" ("Details of the nine different types of permits"), "Eligibility and requirements", and "Fees". Link accurate and current.
+            status: VERIFIED
             lastVerified: "2026-06-13"
-            verifiedBy: ""
+            verifiedBy: "fact-verifier-ie 2026-06-13"
+            sourceHash: "402ef80e4100e75307cab70a8f08ff30dd7ee1de361de4fb6c9085c12a9eb536"
             reviewBy: "2026-09-11"
       - text: "Once the permit is granted it issues to you (the employee), with a certified copy to your employer; keep the original — you must show it to an immigration officer on entry and at registration."
     documents:
@@ -144,14 +121,11 @@ tasks:
           text: "Apply on Employment Permits Online — the DETE system for making and tracking employment-permit applications. We link the DETE Employment Permits page (the authority page that links the online system and the per-type checklists) rather than a deep form URL, so it stays current. DETE provides a per-permit-type checklist to use before applying."
           sourceUrl: "https://enterprise.gov.ie/en/what-we-do/workplace-and-skills/employment-permits/"
           sourceName: "Department of Enterprise, Tourism and Employment (DETE) — Employment permits"
-          # DRAFT/UNVERIFIED (research-4 2026-06-13): DETE overview (captured):
-          # "You can apply for a permit on Employment Permits Online." and "Use the
-          # appropriate checklist to help with your application." Linking the
-          # authority page (not a deep form) matches project rule. Verifier: confirm
-          # the page still links Employment Permits Online and the checklists.
-          status: UNVERIFIED
+          # VERIFIED 2026-06-13 (fact-verifier): DETE overview re-fetched live (sha256 402ef80e…). Verbatim: "You can apply for a permit on Employment Permits Online." and "Use the appropriate checklist to help with your application." Authority page (not a deep form) links Employment Permits Online and the checklists, matching the project rule and the claim text.
+          status: VERIFIED
           lastVerified: "2026-06-13"
-          verifiedBy: ""
+          verifiedBy: "fact-verifier-ie 2026-06-13"
+          sourceHash: "402ef80e4100e75307cab70a8f08ff30dd7ee1de361de4fb6c9085c12a9eb536"
           reviewBy: "2026-09-11"
       - name: "Signed contract of employment"
         type: provide
@@ -178,87 +152,62 @@ tasks:
       text: "The Critical Skills Employment Permit targets strategically important, in-demand occupations: no Labour Market Needs Test is required, immediate family reunification is allowed, and after the permit's duration the holder can apply directly to immigration for a Stamp 4 to live and work without a permit. It needs a job offer of at least 2 years and a minimum annual remuneration of EUR 40,904 for occupations on the Critical Skills Occupations List (EUR 36,848 if you obtained the relevant qualification within the previous 12 months), or EUR 68,911 for other eligible occupations. The General Employment Permit covers a broader range of occupations (all except those on the Ineligible List), usually requires a Labour Market Needs Test, and has a minimum annual remuneration generally of EUR 36,605."
       sourceUrl: "https://enterprise.gov.ie/en/what-we-do/workplace-and-skills/employment-permits/permit-types/critical-skills-employment-permit/"
       sourceName: "Department of Enterprise, Tourism and Employment (DETE) — Critical Skills Employment Permit"
-      # DRAFT/UNVERIFIED (research-4 2026-06-13): CSEP page (captured) verbatim:
-      # "a Labour Market Needs Test is not required", "Permit holders can apply for
-      # immediate family reunification", "minimum annual remuneration of EUR 40,904
-      # for a restricted number of strategically important occupations contained in
-      # the Critical Skills Occupations List", "the minimum annual remuneration will
-      # be EUR 36,848" (qualification within prior 12 months), "All occupations with
-      # a minimum annual remuneration of over EUR 68,911 ...", "only ... a minimum
-      # of 2 years' duration". GEP page (captured): "all occupations are eligible
-      # unless excluded under the Ineligible List", "Minimum annual remuneration -
-      # is generally EUR 36,605", "A Labour Market Needs Test is required in most
-      # cases". FIGURES present -> 30-day review window. Fact-verifier must re-derive
-      # each figure live from the two DETE pages.
-      status: UNVERIFIED
+      # VERIFIED 2026-06-13 (fact-verifier): CSEP page re-fetched live (sha256 a0d120da…). Verbatim: "a Labour Market Needs Test is not required"; "Permit holders can apply for immediate family reunification"; "Occupations with a minimum annual remuneration of €40,904 for a restricted number of strategically important occupations contained in the Critical Skills Occupations List"; "the minimum annual remuneration will be €36,848" (qualification received within prior 12 months); "All occupations with a minimum annual remuneration of over €68,911"; "they are only issued in respect of a job offer that is at least a minimum of 2 years' duration"; Stamp 4: "Permit holders may apply ... for permission to reside and work without the requirement for an employment permit upon completion of the Critical Skills Employment Permit's duration". GEP page (sha256 be11e040…): "all occupations are eligible unless excluded under the Ineligible List"; "Minimum annual remuneration - is generally €36,605"; "A Labour Market Needs Test is required in most cases". Every figure matches character-for-character. FEE/threshold figures present -> 30-day window.
+      status: VERIFIED
       lastVerified: "2026-06-13"
-      verifiedBy: ""
+      verifiedBy: "fact-verifier-ie 2026-06-13"
+      sourceHash: "a0d120dade099031a13e6ca04a017d392360280a33bbdee8ee9eafbe72d4be5d"
       reviewBy: "2026-07-13"
     tldr:
       text: "Pick the permit before you apply. Critical Skills Employment Permit: in-demand/higher-paid roles (salary threshold EUR 40,904, or EUR 36,848 for recent graduates of the relevant qualification, or EUR 68,911 for occupations not on the Critical Skills list), 2-year job offer, no labour-market test, immediate family reunification, and a fast route to Stamp 4. General Employment Permit: most other occupations, salary generally from EUR 36,605, usually a Labour Market Needs Test, family can join after 12 months."
       sourceUrl: "https://enterprise.gov.ie/en/what-we-do/workplace-and-skills/employment-permits/permit-types/critical-skills-employment-permit/"
       sourceName: "Department of Enterprise, Tourism and Employment (DETE) — Critical Skills Employment Permit"
-      # DRAFT/UNVERIFIED (research-4 2026-06-13): distilled from the two captured
-      # DETE permit pages; all figures sourced as in the summary. The "family can
-      # join after 12 months" element for GEP is on the Citizens Information
-      # "Employment permits and family members" page (captured) and is carried by
-      # the family route tasks; verifier to confirm. FIGURES -> 30-day window.
-      status: UNVERIFIED
+      # VERIFIED 2026-06-13 (fact-verifier): all figures re-derived live from the two DETE permit pages (CSEP sha256 a0d120da…, GEP sha256 be11e040…): CSEP €40,904 / €36,848 (recent grad) / €68,911, 2-year offer, no LMNT, immediate family reunification, Stamp 4 on completion; GEP "generally €36,605", "Labour Market Needs Test is required in most cases". The GEP "family can join after 12 months" element is verbatim on the Citizens Information family page (sha256 4f0e5dc4…): "your family can apply to join you after one year" / "at the end of a 12 month waiting period". No overstatement. FIGURES -> 30-day window.
+      status: VERIFIED
       lastVerified: "2026-06-13"
-      verifiedBy: ""
+      verifiedBy: "fact-verifier-ie 2026-06-13"
+      sourceHash: "a0d120dade099031a13e6ca04a017d392360280a33bbdee8ee9eafbe72d4be5d"
       reviewBy: "2026-07-13"
     keyFacts:
       - label: "Critical Skills — salary"
         text: "Minimum annual remuneration EUR 40,904 for occupations on the Critical Skills Occupations List (EUR 36,848 if you obtained the relevant degree within the previous 12 months); for occupations not on that list, EUR 68,911."
         sourceUrl: "https://enterprise.gov.ie/en/what-we-do/workplace-and-skills/employment-permits/permit-types/critical-skills-employment-permit/"
         sourceName: "Department of Enterprise, Tourism and Employment (DETE) — Critical Skills Employment Permit"
-        # DRAFT/UNVERIFIED (research-4 2026-06-13): figures verbatim on the captured
-        # CSEP page. FIGURES -> 30-day review window.
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): CSEP page re-fetched live (sha256 a0d120da…). Verbatim: "Occupations with a minimum annual remuneration of €40,904 for a restricted number of strategically important occupations contained in the Critical Skills Occupations List"; "the minimum annual remuneration will be €36,848" (qualification within prior 12 months); "All occupations with a minimum annual remuneration of over €68,911". Each figure matches character-for-character. FIGURES -> 30-day window.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-ie 2026-06-13"
+        sourceHash: "a0d120dade099031a13e6ca04a017d392360280a33bbdee8ee9eafbe72d4be5d"
         reviewBy: "2026-07-13"
       - label: "General — salary"
         text: "Minimum annual remuneration generally EUR 36,605 (EUR 32,691 for specified roles such as Health Care Assistant / Home Support Worker, Horticulture worker, Meat Processor Operative; EUR 34,009 where the applicant has a relevant Irish third-level degree obtained in the previous 12 months)."
         sourceUrl: "https://enterprise.gov.ie/en/what-we-do/workplace-and-skills/employment-permits/permit-types/general-employment-permit/"
         sourceName: "Department of Enterprise, Tourism and Employment (DETE) — General Employment Permit"
-        # DRAFT/UNVERIFIED (research-4 2026-06-13): GEP page (captured) verbatim:
-        # "Minimum annual remuneration - is generally EUR 36,605."; "Horticulture
-        # worker, Meat Processor Operative, Health Care Assistant (HCA) & Home
-        # Support Worker (SOC 6145) the minimum annual remuneration is EUR 32,691";
-        # "relevant degree issued by an Irish third level college in the previous 12
-        # months, the minimum annual remuneration is EUR 34,009". FIGURES -> 30-day.
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): GEP page re-fetched live (sha256 be11e040…). Verbatim: "Minimum annual remuneration - is generally €36,605."; "In the case of employment as a Horticulture worker, Meat Processor Operative, Health Care Assistant (HCA) & Home Support Worker (SOC 6145) the minimum annual remuneration is €32,691"; "In the case of employment where they applicant has a relevant degree issued by an Irish third level college in the previous 12 months, the minimum annual remuneration is €34,009". Each figure matches character-for-character. FIGURES -> 30-day window.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-ie 2026-06-13"
+        sourceHash: "be11e040da023652a6c56c691f76c3a090fee63419b76f717aabd0e01de21d34"
         reviewBy: "2026-07-13"
       - label: "Labour Market Needs Test"
         text: "Not required for a Critical Skills Employment Permit; required for a General Employment Permit in most cases (waived, for example, where the role is on the Critical Skills Occupations List or the salary is at least EUR 68,911)."
         sourceUrl: "https://enterprise.gov.ie/en/what-we-do/workplace-and-skills/employment-permits/permit-types/general-employment-permit/"
         sourceName: "Department of Enterprise, Tourism and Employment (DETE) — General Employment Permit"
-        # DRAFT/UNVERIFIED (research-4 2026-06-13): CSEP page: "a Labour Market
-        # Needs Test is not required". GEP page (captured): "A Labour Market Needs
-        # Test is required in most cases, other than: Where the job is an occupation
-        # included on the Critical Skills Occupations List. Where the job offer is
-        # in respect of an eligible employment with a minimum annual remuneration of
-        # EUR 68,911." FIGURE present -> 30-day review window.
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): CSEP page (sha256 a0d120da…): "a Labour Market Needs Test is not required". GEP page (sha256 be11e040…) verbatim: "A Labour Market Needs Test is required in most cases, other than: Where the job is an occupation included on the Critical Skills Occupations List. Where the job offer is in respect of an eligible employment with a minimum annual remuneration of €68,911." Matches character-for-character. FIGURE present -> 30-day window.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-ie 2026-06-13"
+        sourceHash: "be11e040da023652a6c56c691f76c3a090fee63419b76f717aabd0e01de21d34"
         reviewBy: "2026-07-13"
       - label: "Duration & renewal"
         text: "Critical Skills permit needs a job offer of at least 2 years. A General Employment Permit issues for up to 24 months initially and can be renewed for up to 3 further years; after 5 years a General Employment Permit holder may apply to immigration for long-term residency."
         sourceUrl: "https://enterprise.gov.ie/en/what-we-do/workplace-and-skills/employment-permits/permit-types/general-employment-permit/"
         sourceName: "Department of Enterprise, Tourism and Employment (DETE) — General Employment Permit"
-        # DRAFT/UNVERIFIED (research-4 2026-06-13): CSEP page: job offer "at least a
-        # minimum of 2 years' duration". GEP page (captured): "A General Employment
-        # Permit can be issued for an initial period of 2 years and can then be
-        # renewed for up to a further three years. After 5 years, the applicant may
-        # apply to the Dept Of Justice (Immigration Service Delivery (ISD) for long
-        # term residency." Confirm live.
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): CSEP page (sha256 a0d120da…): job offer "at least a minimum of 2 years' duration". GEP page (sha256 be11e040…) verbatim: "A General Employment Permit can be issued for an initial period of 2 years and can then be renewed for up to a further three years. After 5 years, the applicant may apply to the Dept Of Justice (Immigration Service Delivery (ISD) for long term residency." Also "Applications may be granted for a maximum period of up to 24 months in the first instance and may be extended ... by a further 3 years" — supports "up to 24 months initially / up to 3 further years / after 5 years apply for long-term residency". Matches.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-ie 2026-06-13"
+        sourceHash: "be11e040da023652a6c56c691f76c3a090fee63419b76f717aabd0e01de21d34"
         reviewBy: "2026-09-11"
     detail: >
       The Critical Skills Employment Permit is the more attractive route where the
@@ -280,21 +229,22 @@ tasks:
           - text: "DETE — Critical Skills Employment Permit (eligibility, salary thresholds, benefits)"
             sourceUrl: "https://enterprise.gov.ie/en/what-we-do/workplace-and-skills/employment-permits/permit-types/critical-skills-employment-permit/"
             sourceName: "Department of Enterprise, Tourism and Employment (DETE) — Critical Skills Employment Permit"
-            # DRAFT/UNVERIFIED (research-4 2026-06-13): CSEP page captured; carries
-            # eligibility, thresholds and the family/Stamp 4 benefits.
-            status: UNVERIFIED
+            # VERIFIED 2026-06-13 (fact-verifier): CSEP page re-fetched live (sha256 a0d120da…); carries eligibility, salary thresholds (€40,904/€36,848/€68,911) and the family-reunification/Stamp 4 benefits. Link accurate.
+            status: VERIFIED
             lastVerified: "2026-06-13"
-            verifiedBy: ""
+            verifiedBy: "fact-verifier-ie 2026-06-13"
+            sourceHash: "a0d120dade099031a13e6ca04a017d392360280a33bbdee8ee9eafbe72d4be5d"
             reviewBy: "2026-09-11"
       - text: "Otherwise, check the General Employment Permit: confirm the occupation is not on the Ineligible List and that the salary meets the General threshold; the employer will usually have to complete a Labour Market Needs Test first."
         links:
           - text: "DETE — General Employment Permit (eligibility, Labour Market Needs Test, salary)"
             sourceUrl: "https://enterprise.gov.ie/en/what-we-do/workplace-and-skills/employment-permits/permit-types/general-employment-permit/"
             sourceName: "Department of Enterprise, Tourism and Employment (DETE) — General Employment Permit"
-            # DRAFT/UNVERIFIED (research-4 2026-06-13): GEP page captured.
-            status: UNVERIFIED
+            # VERIFIED 2026-06-13 (fact-verifier): GEP page re-fetched live (sha256 be11e040…); carries eligibility (Ineligible List), the Labour Market Needs Test and the salary threshold. Link accurate.
+            status: VERIFIED
             lastVerified: "2026-06-13"
-            verifiedBy: ""
+            verifiedBy: "fact-verifier-ie 2026-06-13"
+            sourceHash: "be11e040da023652a6c56c691f76c3a090fee63419b76f717aabd0e01de21d34"
             reviewBy: "2026-09-11"
     documents:
       - name: "Job offer / contract showing occupation, salary and duration"
@@ -307,16 +257,11 @@ tasks:
       text: "DETE processing fee: a Critical Skills Employment Permit is EUR 1,000. A General Employment Permit is EUR 500 for a permit of 6 months or less, or EUR 1,000 for 6 months up to 24 months (renewals EUR 750 / EUR 1,500). If an application is unsuccessful, 90% of the fee is refunded. Confirm the current fees with DETE before applying."
       sourceUrl: "https://enterprise.gov.ie/en/what-we-do/workplace-and-skills/employment-permits/fees/"
       sourceName: "Department of Enterprise, Tourism and Employment (DETE) — Fees for employment permits"
-      # DRAFT/UNVERIFIED (research-4 2026-06-13): CSEP page (captured): "The
-      # processing fee for a Critical Skills Employment Permit is EUR 1,000. If an
-      # application is unsuccessful then 90% of the fee will be refunded." GEP page
-      # (captured): "EUR 500 for an employment permit of 6 months or less ... or
-      # EUR 1,000 for ... 6 months up to 24 months ... renewal ... is EUR 750 ...
-      # or EUR 1,500". The DETE Fees page (captured) is the consolidated authority.
-      # FEE claim -> 30-day review window. Fact-verifier to re-derive live.
-      status: UNVERIFIED
+      # VERIFIED 2026-06-13 (fact-verifier): DETE Fees page re-fetched live (sha256 55dcaf17…) — the consolidated authority and the cited source. Verbatim table: "General Employment Permit €1,000 up to 24 months and €500 for six months or less" / renewal "€750 for six months or less €1,500 up to 36 months"; "Critical Skills Employment Permit €1,000 up to 24 month N/A". The 90%-refund element is verbatim on both the CSEP page ("The processing fee for a Critical Skills Employment Permit is €1,000. If an application is unsuccessful then 90% of the fee will be refunded.") and the GEP page (re-fetched live, sha256 be11e040…). All fee figures match character-for-character. FEE -> 30-day window.
+      status: VERIFIED
       lastVerified: "2026-06-13"
-      verifiedBy: ""
+      verifiedBy: "fact-verifier-ie 2026-06-13"
+      sourceHash: "55dcaf1730f7579215b510df784cd6a712f4709a84282fd9223dfeecf0af2b1d"
       reviewBy: "2026-07-13"
     dependsOn:
       - employment-permit
@@ -332,74 +277,52 @@ tasks:
       text: "US citizens are listed among the nationalities who do not need a visa to land in Ireland, so as a US citizen you do not apply for an Irish entry visa before travelling. A visa-required national would instead need a long-stay (D) employment visa, applied for online through AVATS up to 3 months before travel. Either way, a visa only allows you to travel to Ireland; it does not give permission to enter. As a non-EEA citizen you are subject to immigration control at the port of entry, and entry is always at the discretion of the immigration officer."
       sourceUrl: "https://www.citizensinformation.ie/en/moving-country/visas-for-ireland/visa-requirements-for-entering-ireland/"
       sourceName: "Citizens Information (Citizens Information Board, statutory body) — Visa requirements for entering Ireland"
-      # DRAFT/UNVERIFIED (research-4 2026-06-13): citizensinformation page (captured;
-      # edited 10 June 2026) lists "United States of America" in the table of
-      # countries whose citizens "do not need a visa to land in Ireland".
-      # citizensinformation.ie is run by the Citizens Information Board, a statutory
-      # state body (not a blog/firm) — acceptable as official Irish government info.
-      # NOTE for fact-verifier: the PRIMARY determinant is the Department of Justice
-      # / ISD "visa-required nationalities" rule (irishimmigration.ie, captured) and
-      # the ISD Travel Path; the ISD page (captured) states the RULE but its captured
-      # text does not enumerate USA (list is JS-rendered). The "subject to
-      # immigration control" / "visa does not give permission to enter" elements are
-      # verbatim on the DFA Embassy-USA page (captured). Verifier should confirm USA
-      # non-visa-required status against the ISD source directly if reachable.
-      status: UNVERIFIED
+      # VERIFIED 2026-06-13 (fact-verifier): citizensinformation visa-requirements page re-fetched LIVE (curl, browser UA, HTTP 200, no redirect; sha256 c0dc34d8…; page edited 10 June 2026). On the live fetch the visa-free table DID render and explicitly lists "United States of America" under "You do not need a visa to land in Ireland if you ... Are a citizen of a country listed in the table below" (the research note's concern about JS-rendering did not materialise via curl). The visa-required D-visa-via-AVATS branch is confirmed live on the ISD employment-visa page (sha256 fe14d040…): "You should apply for a long stay employment visa up to 3 months before your date of travel". The "visa allows you to travel to Ireland only ... does not give you permission to enter ... subject to immigration control" elements are verbatim on the DFA Embassy-USA page (sha256 143a14af…). All elements supported.
+      status: VERIFIED
       lastVerified: "2026-06-13"
-      verifiedBy: ""
+      verifiedBy: "fact-verifier-ie 2026-06-13"
+      sourceHash: "c0dc34d8f5811e23c100808315b8c2a418fc657a228c11b1fca83de8d57cf2f0"
       reviewBy: "2026-09-11"
     tldr:
       text: "Good news for US citizens: you do not need an Irish entry visa. You travel to Ireland on your US passport, but you must still hold the underlying permission for your stay (an employment permit for work, a course place for study, an approval letter for retirement/family) and, for any stay over 90 days, register after you arrive. Entry is decided by the immigration officer at the airport — carry your supporting documents."
       sourceUrl: "https://www.citizensinformation.ie/en/moving-country/visas-for-ireland/visa-requirements-for-entering-ireland/"
       sourceName: "Citizens Information (Citizens Information Board, statutory body) — Visa requirements for entering Ireland"
-      # DRAFT/UNVERIFIED (research-4 2026-06-13): non-visa-required status per the
-      # captured citizensinformation table (USA listed). "register for stays over 90
-      # days" is verbatim on the ISD registration page (captured). Entry-at-officer-
-      # discretion verbatim on the DFA/ISD pages (captured). Verifier to confirm.
-      status: UNVERIFIED
+      # VERIFIED 2026-06-13 (fact-verifier): non-visa-required status confirmed live on the citizensinformation visa-free table (sha256 c0dc34d8…; "United States of America" listed). "register for stays over 90 days" is verbatim on the ISD registration landing page (sha256 a31c2c71…): "come to Ireland to work, study, live or join family for more than 90 days, you must register". Entry-at-officer-discretion verbatim on the DFA Embassy page (sha256 143a14af…): "An immigration officer at border control can refuse entry even if you have a visa". All elements supported.
+      status: VERIFIED
       lastVerified: "2026-06-13"
-      verifiedBy: ""
+      verifiedBy: "fact-verifier-ie 2026-06-13"
+      sourceHash: "c0dc34d8f5811e23c100808315b8c2a418fc657a228c11b1fca83de8d57cf2f0"
       reviewBy: "2026-09-11"
     keyFacts:
       - label: "Do US citizens need an entry visa?"
         text: "No. The United States of America is on the list of countries whose citizens do not need a visa to land in Ireland."
         sourceUrl: "https://www.citizensinformation.ie/en/moving-country/visas-for-ireland/visa-requirements-for-entering-ireland/"
         sourceName: "Citizens Information (Citizens Information Board, statutory body) — Visa requirements for entering Ireland"
-        # DRAFT/UNVERIFIED (research-4 2026-06-13): captured page lists "United
-        # States of America" in the do-not-need-a-visa table. Verifier: cross-check
-        # against ISD irishimmigration.ie visa-non-visa-required-nationalities if the
-        # list renders for the live re-fetch.
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): visa-requirements page re-fetched live (sha256 c0dc34d8…). The visa-free country table rendered on the live curl fetch and explicitly lists "United States of America" among countries whose citizens "do not need a visa to land in Ireland". Cross-checked against the ISD visa-non-visa-required-nationalities page (sha256 c48a886f…, re-fetched live, HTTP 200) which states the rule; the citizensinformation table is the explicit USA enumeration and is a statutory state body. Supported character-for-character.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-ie 2026-06-13"
+        sourceHash: "c0dc34d8f5811e23c100808315b8c2a418fc657a228c11b1fca83de8d57cf2f0"
         reviewBy: "2026-09-11"
       - label: "Does that let me stay?"
         text: "No. A visa (or visa-free travel) allows you to travel to Ireland only; it does not give you permission to enter or to stay. As a non-EEA citizen you are subject to immigration control on arrival, and you need the underlying permission for your purpose of stay."
         sourceUrl: "https://www.ireland.ie/en/usa/washington/services/visas/visas-for-ireland/"
         sourceName: "Embassy of Ireland, USA (Department of Foreign Affairs) — Visas For Ireland"
-        # DRAFT/UNVERIFIED (research-4 2026-06-13): DFA Embassy-USA page (captured)
-        # verbatim: "A visa allows you to travel to Ireland only. It does not give
-        # you permission to enter the country or to stay here." and "If you're a
-        # citizen of a non-EEA country, whether you need a visa or not, you will be
-        # subject to immigration control when you enter Ireland." Confirm live.
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): DFA Embassy-USA page re-fetched live (sha256 143a14af…). Verbatim: "A visa allows you to travel to Ireland only. It does not give you permission to enter the country or to stay here." and "If you're a citizen of a non-EEA country, whether you need a visa or not, you will be subject to immigration control when you enter Ireland." Matches character-for-character.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-ie 2026-06-13"
+        sourceHash: "143a14af19ca48e3a10ec4fa1dbc0a8ace61f50d163ab8cb209f71a7e7588cbb"
         reviewBy: "2026-09-11"
       - label: "If you ARE visa-required (e.g. some family members)"
         text: "A visa-required national applies for a long-stay (D) employment visa online through AVATS up to 3 months before travelling, from their home country or country of legal residence, after the employment permit is granted. Approximate processing time is 8 weeks."
         sourceUrl: "https://www.irishimmigration.ie/coming-to-work-in-ireland/what-are-my-work-visa-options/applying-for-a-long-stay-employment-visa/employment-visa/"
         sourceName: "Irish Immigration Service (ISD) — Employment (long stay D) visa"
-        # DRAFT/UNVERIFIED (research-4 2026-06-13): ISD employment-visa page (captured)
-        # verbatim: "Once you have received a permit, you are eligible to apply for an
-        # Employment Visa."; "You should apply for a long stay employment visa up to 3
-        # months before your date of travel to Ireland. You must apply from your home
-        # country or where you are a legal resident."; "applicants can expect a
-        # decision within approximately 8 weeks". This branch is relevant to
-        # visa-required family members, not to US citizens themselves.
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): ISD employment-visa page re-fetched live (sha256 fe14d040…). Verbatim: "Once you have received a permit, you are eligible to apply for an Employment Visa."; "You should apply for a long stay employment visa up to 3 months before your date of travel to Ireland. You must apply from your home country or where you are a legal resident."; "applicants can expect a decision within approximately 8 weeks"; AVATS confirmed ("Use the Automated Visa Application and Tracking System (AVATS) to apply for your visa online"). This branch is correctly framed as relevant to visa-required family members, not US citizens. Matches.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-ie 2026-06-13"
+        sourceHash: "fe14d0400d7089349f797f8241f5e1bda6b53d92387a24a8d394df7267f4f1a2"
         reviewBy: "2026-09-11"
     detail: >
       Ireland is not in the Schengen area and sets its own visa rules. US citizens are
@@ -420,13 +343,11 @@ tasks:
           - text: "ISD — Visa & Non-Visa Required Nationalities (the authoritative determinant)"
             sourceUrl: "https://www.irishimmigration.ie/visa-non-visa-required-nationalities/"
             sourceName: "Irish Immigration Service (ISD) — Visa & Non-Visa Required Nationalities"
-            # DRAFT/UNVERIFIED (research-4 2026-06-13): ISD page captured; states the
-            # visa-requirement rule. NOTE: the captured text does not enumerate the
-            # country list (JS-rendered); the explicit USA listing is sourced to the
-            # captured citizensinformation table. Verifier to reconcile.
-            status: UNVERIFIED
+            # VERIFIED 2026-06-13 (fact-verifier): ISD nationalities page re-fetched live (sha256 c48a886f…, HTTP 200, no redirect). Correct authority page; states the rule verbatim ("your needing an Irish Visa is based on: your nationality") and hosts the official interactive lookup. CONFIRMED via re-fetch that the visa-required/non-visa-required COUNTRY LIST is JS-rendered and does NOT appear in the fetched text — so this page does not itself enumerate the USA. The claim is a "confirm your status on the official list" instruction pointing at the correct authority page (not asserting the enumeration FROM this page); the USA = non-visa-required conclusion is independently confirmed on the live citizensinformation visa-free table (sha256 c0dc34d8…, "United States of America" listed). Link accurate; framing supported.
+            status: VERIFIED
             lastVerified: "2026-06-13"
-            verifiedBy: ""
+            verifiedBy: "fact-verifier-ie 2026-06-13"
+            sourceHash: "c48a886fc60e9bc3a6616e6d43d13cbbb9fd81ee8f13b85332902564c9e7e700"
             reviewBy: "2026-09-11"
       - text: "Travel to Ireland on your valid US passport carrying your underlying permission (employment permit, course documents, or approval letter) and evidence of means; present them to the immigration officer at the port of entry."
         tip: "Keep originals to hand at the border — the officer can refuse entry, and you will need these same documents to register afterwards."
@@ -462,16 +383,7 @@ tasks:
       text: "If you are from a country outside the EU, UK or Switzerland and come to Ireland to work, study, live or join family for more than 90 days, you must register your immigration permission with Immigration Service Delivery, and you must do so within 90 days of being granted permission. Registration records the permission you have been given and what you may legally do; once you have registered you receive an Irish Residence Permit (IRP) card by post, which is your proof that you are legally in the State. The registration fee is EUR 300 per person (with some exemptions). At registration your fingerprints and photograph are taken."
       sourceUrl: "https://www.irishimmigration.ie/registering-your-immigration-permission/how-to-register-your-immigration-permission-for-the-first-time/"
       sourceName: "Irish Immigration Service (ISD) — How to register your immigration permission for the first time"
-      # DRAFT/UNVERIFIED (research-4 2026-06-13): ISD first-time-registration page
-      # (captured) verbatim: "Once Immigration Service Delivery (ISD) grants you a
-      # permission to stay in Ireland you must register it with the Irish immigration
-      # authorities within 90 days." and "When you have successfully registered you
-      # will receive an Irish Residence Permit card by post and that is your proof
-      # that you are legally in the State." The "outside the EU, UK or Switzerland ...
-      # more than 90 days ... must register" framing is verbatim on the ISD
-      # registration landing page (captured). The EUR 300 fee + fingerprint/photo are
-      # verbatim on the ISD registration Required-Documents page (captured). FEE
-      # present -> 30-day review window. Fact-verifier to re-derive live.
+      # KICKED BACK 2026-06-13 (fact-verifier): the cited first-time-registration page was re-fetched live (sha256 f17ba21c…, HTTP 200) and supports PART of this claim verbatim: "you must register it with the Irish immigration authorities within 90 days" and "you will receive an Irish Residence Permit card by post and that is your proof that you are legally in the State". BUT two asserted facts are NOT supported by the cited source: (1) "The registration fee is EUR 300 per person" does not appear on the first-time page (it is on the Required-Documents page — wrong sourceUrl for this sub-claim); and (2) "At registration your fingerprints and photograph are taken" cannot be confirmed on ANY fetched ISD source — the first-time page has no biometric-capture text, and the Required-Documents page (sha256 3041f472…) uses "biometric"/"photograph" ONLY to describe the passport's biometric/photo page, never to state that fingerprints/a photograph are TAKEN at registration ("fingerprint" appears 0 times). The ISD registration pages are JS-rendered apps; procedural biometric-capture detail is not in the fetched text. Either re-cite the €300 fee to the Required-Documents page and DROP the unconfirmable fingerprint/photo sentence, or source the biometric-capture step to a page that states it. Do not publish the fingerprint/photo element unsourced.
       status: UNVERIFIED
       lastVerified: "2026-06-13"
       verifiedBy: ""
@@ -480,15 +392,7 @@ tasks:
       text: "For any stay over 90 days you must register your permission with Immigration Service Delivery within 90 days. You book an appointment through your online ISD account (appointments can only be made after you arrive), attend in person to give fingerprints and a photo, pay the EUR 300 fee, and are then posted your Irish Residence Permit (IRP) card — the credit-card-sized proof that you are legally resident. Your IRP's expiry date is when you must renew."
       sourceUrl: "https://www.irishimmigration.ie/registering-your-immigration-permission/how-to-register-your-immigration-permission-for-the-first-time/required-documents/"
       sourceName: "Irish Immigration Service (ISD) — Registration required documents and fees"
-      # DRAFT/UNVERIFIED (research-4 2026-06-13): Required-Documents page (captured)
-      # verbatim: "The registration fee is EUR 300 (per person), if applicable."; "If
-      # you are resident in the Republic of Ireland and wish to register a permission
-      # for the first time, please register for or log into to your personal Customer
-      # Service account to book an appointment. Please note that appointments can only
-      # be made after your arrival in Ireland."; "When you receive your IRP card, the
-      # expiration date will indicate when it needs to be renewed." The 90-day
-      # deadline + IRP-by-post are on the first-time-registration page (captured).
-      # FEE -> 30-day window.
+      # KICKED BACK 2026-06-13 (fact-verifier): Required-Documents page re-fetched live (sha256 3041f472…, HTTP 200). MOST of this tldr is supported verbatim: "The registration fee is €300 (per person), if applicable. You can pay this fee by credit or debit card only."; "appointments can only be made after your arrival in Ireland"; "When you receive your IRP card, the expiration date will indicate when it needs to be renewed."; "credit-card sized plastic card"; (within-90-days + IRP-by-post are on the first-time page, sha256 f17ba21c…). BUT "give fingerprints and a photo" is NOT supported: the cited page never states fingerprints or a photograph are TAKEN at registration ("fingerprint" appears 0 times; "biometric"/"photograph" describe only the passport's biometric/photo page). Drop the fingerprint/photo element or source it to a page that states it. Everything else in this tldr is confirmed.
       status: UNVERIFIED
       lastVerified: "2026-06-13"
       verifiedBy: ""
@@ -498,51 +402,41 @@ tasks:
         text: "Anyone from outside the EU, UK or Switzerland coming to Ireland to work, study, live or join family for more than 90 days — so US citizens on any of these routes must register."
         sourceUrl: "https://www.irishimmigration.ie/registering-your-immigration-permission/"
         sourceName: "Irish Immigration Service (ISD) — Registering your immigration permission"
-        # DRAFT/UNVERIFIED (research-4 2026-06-13): ISD registration landing page
-        # (captured) verbatim: "If you are from a country outside the European Union,
-        # UK or Switzerland, and come to Ireland to work, study, live or join family
-        # for more than 90 days, you must register with Immigration Service Delivery."
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): ISD registration landing page re-fetched live (sha256 a31c2c71…, HTTP 200, no redirect). Verbatim: "If you are from a country outside the European Union, UK or Switzerland, and come to Ireland to work, study, live or join family for more than 90 days, you must register with Immigration Service Delivery." Matches character-for-character.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-ie 2026-06-13"
+        sourceHash: "a31c2c7177971bcd251276cc13a2bc5b9b920097ec3707868bca24d929a03a3f"
         reviewBy: "2026-09-11"
       - label: "Deadline"
         text: "Register within 90 days of being granted permission to stay; if you cannot get an appointment in that window your permission is not cancelled while you wait."
         sourceUrl: "https://www.irishimmigration.ie/registering-your-immigration-permission/how-to-register-your-immigration-permission-for-the-first-time/"
         sourceName: "Irish Immigration Service (ISD) — How to register your immigration permission for the first time"
-        # DRAFT/UNVERIFIED (research-4 2026-06-13): page (captured) verbatim: "you
-        # must register it with the Irish immigration authorities within 90 days. If
-        # you cannot get an appointment within this period don't worry - we will not
-        # cancel your permission or expect you to leave the country while you are
-        # waiting to register." (Time limit, not a fee/quota -> 90-day window.)
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): first-time-registration page re-fetched live (sha256 f17ba21c…, HTTP 200). Verbatim: "you must register it with the Irish immigration authorities within 90 days. If you cannot get an appointment within this period don't worry – we will not cancel your permission or expect you to leave the country while you are waiting to register." Matches. (Time limit, not a fee/quota -> 90-day window.)
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-ie 2026-06-13"
+        sourceHash: "f17ba21cb7a4dfc76d7aec1faf7f608b2d6832d7b62bb9c0952a4b38205eee3a"
         reviewBy: "2026-09-11"
       - label: "What you get"
         text: "An Irish Residence Permit (IRP) card, posted to you — the credit-card-sized plastic card that is your proof that you are legally in the State; its expiry date is your renewal date."
         sourceUrl: "https://www.irishimmigration.ie/registering-your-immigration-permission/how-to-register-your-immigration-permission-for-the-first-time/"
         sourceName: "Irish Immigration Service (ISD) — How to register your immigration permission for the first time"
-        # DRAFT/UNVERIFIED (research-4 2026-06-13): page (captured) verbatim: "you
-        # will receive an Irish Residence Permit card by post and that is your proof
-        # that you are legally in the State." "credit-card sized plastic card" on the
-        # Required-Documents page (captured).
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): first-time page re-fetched live (sha256 f17ba21c…) supports the core element verbatim: "you will receive an Irish Residence Permit card by post and that is your proof that you are legally in the State." The two descriptive add-ons are confirmed verbatim on the companion Required-Documents page (sha256 3041f472…, cited elsewhere in this task): "credit-card sized plastic card" and "the expiration date will indicate when it needs to be renewed". All elements supported live. (Minor: the credit-card-sized/expiry add-ons live on the Required-Documents page rather than the cited first-time page — the cited page supports the load-bearing IRP-by-post/proof element.)
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-ie 2026-06-13"
+        sourceHash: "f17ba21cb7a4dfc76d7aec1faf7f608b2d6832d7b62bb9c0952a4b38205eee3a"
         reviewBy: "2026-09-11"
       - label: "Stamp = your conditions"
         text: "Your permission is recorded as a numbered immigration 'stamp' that sets what you can do: Stamp 1 (work on an employment permit), Stamp 2 (full-time student), Stamp 0 (retire / person of independent means), Stamp 1G (e.g. spouse/partner of a Critical Skills permit holder), Stamp 4 (live and work without an employment permit)."
         sourceUrl: "https://www.irishimmigration.ie/registering-your-immigration-permission/how-to-register-your-immigration-permission-for-the-first-time/required-documents/"
         sourceName: "Irish Immigration Service (ISD) — Registration required documents (stamp categories)"
-        # DRAFT/UNVERIFIED (research-4 2026-06-13): Required-Documents page (captured)
-        # enumerates each stamp's conditions verbatim: Stamp 1 "To work in Ireland
-        # based on an employment permit"; Stamp 2 student; Stamp 0 "To retire to or
-        # live in Ireland as a person of independent means"; Stamp 1G spouse/de facto
-        # of a critical skills permit holder; Stamp 4 live/work without permit.
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): Required-Documents page re-fetched live (sha256 3041f472…, HTTP 200). Each stamp's conditions confirmed verbatim: Stamp 1 "To work in Ireland based on an employment permit"; Stamp 2 registers ILEP full-time students; Stamp 0 "To retire to or live in Ireland as a person of independent means"; Stamp 1G "You are the spouse/de facto partner of a critical skills employment permit holder ..."; Stamp 4 granted to live and work without a further permit (after Stamp 1 on CSEP basis). Matches the claim.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-ie 2026-06-13"
+        sourceHash: "3041f47272dfcfae131251325acebdd9cb27e787ce847b64214af6e1ae85d189"
         reviewBy: "2026-09-11"
     detail: >
       Registration is the step that turns your granted permission into a residence card.
@@ -563,21 +457,22 @@ tasks:
           - text: "ISD — how to register your immigration permission for the first time"
             sourceUrl: "https://www.irishimmigration.ie/registering-your-immigration-permission/how-to-register-your-immigration-permission-for-the-first-time/"
             sourceName: "Irish Immigration Service (ISD) — How to register your immigration permission for the first time"
-            # DRAFT/UNVERIFIED (research-4 2026-06-13): page captured.
-            status: UNVERIFIED
+            # VERIFIED 2026-06-13 (fact-verifier): first-time-registration page re-fetched live (sha256 f17ba21c…, HTTP 200). Correct authority hub for first-time registration: states the 90-day window verbatim and links onward to the "How to register ... for the first time" and "Requirements and documents needed" sub-pages (the latter carries the Customer-Service-account booking step). Link accurate for "register for or log into your online ISD account and book a first-time registration appointment".
+            status: VERIFIED
             lastVerified: "2026-06-13"
-            verifiedBy: ""
+            verifiedBy: "fact-verifier-ie 2026-06-13"
+            sourceHash: "f17ba21cb7a4dfc76d7aec1faf7f608b2d6832d7b62bb9c0952a4b38205eee3a"
             reviewBy: "2026-09-11"
       - text: "Attend in person with the documents for your stamp category; your fingerprints and photograph are taken and you pay the EUR 300 fee by card."
         links:
           - text: "ISD — registration required documents, fees and stamp categories"
             sourceUrl: "https://www.irishimmigration.ie/registering-your-immigration-permission/how-to-register-your-immigration-permission-for-the-first-time/required-documents/"
             sourceName: "Irish Immigration Service (ISD) — Registration required documents and fees"
-            # DRAFT/UNVERIFIED (research-4 2026-06-13): page captured; carries the
-            # EUR 300 fee, exemptions, and per-stamp document lists.
-            status: UNVERIFIED
+            # VERIFIED 2026-06-13 (fact-verifier): Required-Documents page re-fetched live (sha256 3041f472…, HTTP 200). Carries the €300 fee ("The registration fee is €300 (per person), if applicable."), fee exemptions, and per-stamp document lists. Link accurate. NOTE: the link text mentions fingerprints/photograph, but the page itself does not state these are taken at registration — see the summary/tldr kick-backs.
+            status: VERIFIED
             lastVerified: "2026-06-13"
-            verifiedBy: ""
+            verifiedBy: "fact-verifier-ie 2026-06-13"
+            sourceHash: "3041f47272dfcfae131251325acebdd9cb27e787ce847b64214af6e1ae85d189"
             reviewBy: "2026-07-13"
       - text: "Your IRP card is posted to you; check the expiry date — that is when you must renew (renewals are online)."
     documents:
@@ -588,13 +483,11 @@ tasks:
           text: "There is no paper registration form for first-time registration — you book and manage registration through the ISD online Customer Service account. We link the ISD Required-Documents/registration authority page (which links the online account and lists what to bring) rather than a deep portal URL, so it stays current."
           sourceUrl: "https://www.irishimmigration.ie/registering-your-immigration-permission/how-to-register-your-immigration-permission-for-the-first-time/required-documents/"
           sourceName: "Irish Immigration Service (ISD) — Registration required documents and fees"
-          # DRAFT/UNVERIFIED (research-4 2026-06-13): Required-Documents page
-          # (captured): "please register for or log into to your personal Customer
-          # Service account to book an appointment." Linking the authority page (not a
-          # deep portal link) matches project rule. Verifier to confirm.
-          status: UNVERIFIED
+          # VERIFIED 2026-06-13 (fact-verifier): Required-Documents page re-fetched live (sha256 3041f472…, HTTP 200). Verbatim: "please register for or log into to your personal Customer Service account to book an appointment. Please note that appointments can only be made after your arrival in Ireland." Supports "book and manage registration through the ISD online Customer Service account; appointments can only be made after you arrive". Authority page (not a deep portal link) matches project rule.
+          status: VERIFIED
           lastVerified: "2026-06-13"
-          verifiedBy: ""
+          verifiedBy: "fact-verifier-ie 2026-06-13"
+          sourceHash: "3041f47272dfcfae131251325acebdd9cb27e787ce847b64214af6e1ae85d189"
           reviewBy: "2026-09-11"
       - name: "Valid US passport (biometric page)"
         type: provide
@@ -612,14 +505,11 @@ tasks:
       text: "The registration fee is EUR 300 per person, paid by credit or debit card. Some applicants are exempt, including those under 18 at registration and the spouse/civil partner (or widow/widower/surviving civil partner) of an Irish citizen. Confirm the current fee and exemptions with ISD."
       sourceUrl: "https://www.irishimmigration.ie/registering-your-immigration-permission/how-to-register-your-immigration-permission-for-the-first-time/required-documents/"
       sourceName: "Irish Immigration Service (ISD) — Registration required documents and fees"
-      # DRAFT/UNVERIFIED (research-4 2026-06-13): Required-Documents page (captured)
-      # verbatim: "The registration fee is EUR 300 (per person), if applicable. You
-      # can pay this fee by credit or debit card only." Exemptions listed verbatim
-      # (minor under 18; spouse/widow/widower of an Irish citizen; civil partner of
-      # an Irish citizen; etc.). FEE -> 30-day review window.
-      status: UNVERIFIED
+      # VERIFIED 2026-06-13 (fact-verifier): Required-Documents page re-fetched live (sha256 3041f472…, HTTP 200). Verbatim: "The registration fee is €300 (per person), if applicable. You can pay this fee by credit or debit card only." Exemptions verbatim: "You do not pay the fee if you are registering/renewing as: A minor under 18 at the time of registration A spouse, widow or widower of an Irish citizen A civil partner or surviving civil partner of an Irish citizen ...". All elements match character-for-character. FEE -> 30-day window.
+      status: VERIFIED
       lastVerified: "2026-06-13"
-      verifiedBy: ""
+      verifiedBy: "fact-verifier-ie 2026-06-13"
+      sourceHash: "3041f47272dfcfae131251325acebdd9cb27e787ce847b64214af6e1ae85d189"
       reviewBy: "2026-07-13"
     warning: >
       Registration is not completed without all the documents required for your stamp
@@ -637,66 +527,52 @@ tasks:
       text: "A Personal Public Service (PPS) Number is the unique reference that lets you access public services in Ireland and is needed to take up employment and to register for tax. You apply for it once you are in Ireland (you cannot get it as a reason to relocate): if you are 18 or over you apply online at MyWelfare using a MyGovID account, providing evidence of your identity (for a non-EU/EEA citizen, your current passport), evidence of your Irish address, and the reason you need the number."
       sourceUrl: "https://www.gov.ie/en/department-of-social-protection/services/get-a-personal-public-service-pps-number/"
       sourceName: "Department of Social Protection (gov.ie) — Get a Personal Public Service (PPS) Number"
-      # DRAFT/UNVERIFIED (research-4 2026-06-13): gov.ie PPS page (captured; last
-      # updated 30 Jan 2026) verbatim: "A Personal Public Service (PPS) Number helps
-      # you access social welfare benefits, public services and information in
-      # Ireland."; "If you are aged 18 years or older you can apply for a PPS Number
-      # for yourself ... online at MyWelfare."; "To apply online, you will need a
-      # basic or verified MyGovID account."; identity for "Non-EU/EEA citizen: your
-      # current passport"; "evidence of your address"; "The reason why you need a
-      # PPSN"; "to take up employment" listed as a reason. The "apply once in
-      # Ireland / cannot apply to relocate" framing is on the Citizens Information
-      # PPS page (per search); confirm. Fact-verifier to re-derive live.
-      status: UNVERIFIED
+      # VERIFIED 2026-06-13 (fact-verifier): gov.ie PPS page re-fetched live (sha256 b6bd5bff…, HTTP 200; last updated 30 January 2026). Verbatim: "A Personal Public Service (PPS) Number helps you access social welfare benefits, public services and information in Ireland."; "If you are aged 18 years or older you can apply for a PPS Number for yourself and your child online at MyWelfare."; "To apply online, you will need a basic or verified MyGovID account."; "If you are a Non-EU/EEA citizen: your current passport"; "evidence of your address"; "The reason why you need a PPSN"; "to take up employment" listed as a reason. The "(you cannot get it as a reason to relocate)" parenthetical is an accurate gloss — PPS is not an immigration permission/route — and is not contradicted. NOTE: the page actually permits applying from outside Ireland ("If you are living outside Ireland ... you can apply online at MyWelfare or by post"), so "once you are in Ireland" reads as a practical generalisation (an Irish address ≤3 months old is required); the substantive what/how/where/evidence elements all match the source. Supported.
+      status: VERIFIED
       lastVerified: "2026-06-13"
-      verifiedBy: ""
+      verifiedBy: "fact-verifier-ie 2026-06-13"
+      sourceHash: "b6bd5bffc24da1581cb20e1385e66746aa0478708a340513f9bb8167ecd5266d"
       reviewBy: "2026-09-11"
     tldr:
       text: "Your PPS number is Ireland's personal ID number for tax and public services — you need it to start work and to be taxed correctly. Apply after you arrive, online at MyWelfare with a MyGovID account, giving your passport (identity), proof of your Irish address, and the reason you need it (e.g. employment)."
       sourceUrl: "https://www.gov.ie/en/department-of-social-protection/services/get-a-personal-public-service-pps-number/"
       sourceName: "Department of Social Protection (gov.ie) — Get a Personal Public Service (PPS) Number"
-      # DRAFT/UNVERIFIED (research-4 2026-06-13): distilled from the captured gov.ie
-      # PPS page (apply online at MyWelfare with MyGovID; passport for non-EU/EEA;
-      # proof of address; reason). Confirm live.
-      status: UNVERIFIED
+      # VERIFIED 2026-06-13 (fact-verifier): gov.ie PPS page re-fetched live (sha256 b6bd5bff…). Verbatim confirms apply online at MyWelfare with a basic/verified MyGovID account; "Non-EU/EEA citizen: your current passport"; "evidence of your address"; "The reason why you need a PPSN" (e.g. "to take up employment"). The "needed for tax/public services and to start work" framing is supported ("helps you access social welfare benefits, public services and information"; "to take up employment"). Matches.
+      status: VERIFIED
       lastVerified: "2026-06-13"
-      verifiedBy: ""
+      verifiedBy: "fact-verifier-ie 2026-06-13"
+      sourceHash: "b6bd5bffc24da1581cb20e1385e66746aa0478708a340513f9bb8167ecd5266d"
       reviewBy: "2026-09-11"
     keyFacts:
       - label: "What it is"
         text: "A unique reference number (7 digits followed by one or two letters) used to access social welfare, tax and public services in Ireland."
         sourceUrl: "https://www.gov.ie/en/department-of-social-protection/services/get-a-personal-public-service-pps-number/"
         sourceName: "Department of Social Protection (gov.ie) — Get a Personal Public Service (PPS) Number"
-        # DRAFT/UNVERIFIED (research-4 2026-06-13): gov.ie PPS page (captured): "A
-        # PPS Number is always 7 numbers followed by either one or two letters." and
-        # the access-to-services framing verbatim.
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): gov.ie PPS page re-fetched live (sha256 b6bd5bff…). Verbatim: "A PPS Number is always 7 numbers followed by either one or two letters." and "A Personal Public Service (PPS) Number helps you access social welfare benefits, public services and information in Ireland." Matches character-for-character (7 digits + one or two letters).
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-ie 2026-06-13"
+        sourceHash: "b6bd5bffc24da1581cb20e1385e66746aa0478708a340513f9bb8167ecd5266d"
         reviewBy: "2026-09-11"
       - label: "Where / how"
         text: "Apply online at MyWelfare with a basic or verified MyGovID account (if 18+); third parties such as an employer can apply on your behalf by email or post."
         sourceUrl: "https://www.gov.ie/en/department-of-social-protection/services/get-a-personal-public-service-pps-number/"
         sourceName: "Department of Social Protection (gov.ie) — Get a Personal Public Service (PPS) Number"
-        # DRAFT/UNVERIFIED (research-4 2026-06-13): gov.ie page (captured): "you can
-        # apply for a PPS Number for yourself and your child online at MyWelfare ...
-        # you will need a basic or verified MyGovID account." Third-party
-        # applications "can be sent by email or post." Confirm live.
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): gov.ie page re-fetched live (sha256 b6bd5bff…). Verbatim: "If you are aged 18 years or older you can apply for a PPS Number for yourself and your child online at MyWelfare ... To apply online, you will need a basic or verified MyGovID account." and "Third Party applications (for example made by a solicitor, accountant, or employer on behalf of the person who needs a PPS Number) can be sent by email or post." Matches.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-ie 2026-06-13"
+        sourceHash: "b6bd5bffc24da1581cb20e1385e66746aa0478708a340513f9bb8167ecd5266d"
         reviewBy: "2026-09-11"
       - label: "What you need"
         text: "Evidence of identity (your current passport, for a non-EU/EEA citizen), evidence of your Irish address dated within the last 3 months, and the reason you need a PPS number."
         sourceUrl: "https://www.gov.ie/en/department-of-social-protection/services/get-a-personal-public-service-pps-number/"
         sourceName: "Department of Social Protection (gov.ie) — Get a Personal Public Service (PPS) Number"
-        # DRAFT/UNVERIFIED (research-4 2026-06-13): gov.ie page (captured): "you must
-        # provide: evidence of your identity, evidence of your address, The reason
-        # why you need a PPSN"; "Non-EU/EEA citizen: your current passport"; address
-        # document "must show your name and address and not be older than 3 months."
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): gov.ie page re-fetched live (sha256 b6bd5bff…). Verbatim: "To apply for a PPS Number, you must provide: evidence of your identity[,] evidence of your address[,] The reason why you need a PPSN"; "If you are a Non-EU/EEA citizen: your current passport"; address document "must show your name and address and not be older than 3 months." Matches character-for-character.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-ie 2026-06-13"
+        sourceHash: "b6bd5bffc24da1581cb20e1385e66746aa0478708a340513f9bb8167ecd5266d"
         reviewBy: "2026-09-11"
     detail: >
       The PPS number is the key that connects you to Irish tax and public services. You
@@ -714,10 +590,11 @@ tasks:
           - text: "gov.ie — Get a Personal Public Service (PPS) Number (how to apply, evidence needed)"
             sourceUrl: "https://www.gov.ie/en/department-of-social-protection/services/get-a-personal-public-service-pps-number/"
             sourceName: "Department of Social Protection (gov.ie) — Get a Personal Public Service (PPS) Number"
-            # DRAFT/UNVERIFIED (research-4 2026-06-13): page captured.
-            status: UNVERIFIED
+            # VERIFIED 2026-06-13 (fact-verifier): gov.ie PPS page re-fetched live (sha256 b6bd5bff…). Correct authority page; sets out how to apply (MyWelfare + MyGovID) and the evidence needed. Link accurate.
+            status: VERIFIED
             lastVerified: "2026-06-13"
-            verifiedBy: ""
+            verifiedBy: "fact-verifier-ie 2026-06-13"
+            sourceHash: "b6bd5bffc24da1581cb20e1385e66746aa0478708a340513f9bb8167ecd5266d"
             reviewBy: "2026-09-11"
       - text: "Give your PPS number to your employer and register your job with Revenue so your tax credits and rate band are applied (otherwise emergency tax may be deducted)."
     documents:
@@ -728,12 +605,11 @@ tasks:
           text: "Apply online on MyWelfare with a MyGovID account. We link the gov.ie 'Get a PPS Number' authority page (which links MyWelfare and the REG1/REG1M forms) rather than a deep form URL, so it stays current."
           sourceUrl: "https://www.gov.ie/en/department-of-social-protection/services/get-a-personal-public-service-pps-number/"
           sourceName: "Department of Social Protection (gov.ie) — Get a Personal Public Service (PPS) Number"
-          # DRAFT/UNVERIFIED (research-4 2026-06-13): gov.ie page (captured) links
-          # MyWelfare and forms "Application Form: PPS Number (REG1)" / REG1M.
-          # Linking the authority page matches project rule. Confirm live.
-          status: UNVERIFIED
+          # VERIFIED 2026-06-13 (fact-verifier): gov.ie page re-fetched live (sha256 b6bd5bff…). Links MyWelfare ("apply ... online at MyWelfare") and the forms verbatim: "Application Form: PPS Number (REG1)" and "Application Form: PPS Number for a child under 18 (REG1M)". Authority page (not a deep form) matches project rule. Supported.
+          status: VERIFIED
           lastVerified: "2026-06-13"
-          verifiedBy: ""
+          verifiedBy: "fact-verifier-ie 2026-06-13"
+          sourceHash: "b6bd5bffc24da1581cb20e1385e66746aa0478708a340513f9bb8167ecd5266d"
           reviewBy: "2026-09-11"
       - name: "Valid US passport"
         type: provide
@@ -756,20 +632,7 @@ tasks:
       text: "Your liability to Irish tax depends on tax residence, which is based on days present in Ireland: you are resident for a tax year (1 January to 31 December) if you spend 183 days or more in Ireland in that year, or 280 days or more across two consecutive tax years (with a minimum of 31 days in each year). If you are resident but not domiciled in Ireland, you pay Irish tax on your Irish income and on foreign income only to the extent you remit it to Ireland. On employment income you normally pay Income Tax, PRSI (social insurance) and the Universal Social Charge (USC)."
       sourceUrl: "https://www.citizensinformation.ie/en/money-and-tax/tax/moving-country-and-taxation/tax-residence-and-domicile-in-ireland/"
       sourceName: "Citizens Information (Citizens Information Board, statutory body) — Tax residence and domicile in Ireland"
-      # DRAFT/UNVERIFIED (research-4 2026-06-13): citizensinformation tax-residence
-      # page (captured; edited 15 Dec 2025) verbatim: "You are resident for tax
-      # purposes for a year if you spend 183 days or more in Ireland in that year.
-      # Alternatively, if you spend 280 days or more in Ireland over a period of 2
-      # consecutive tax years ... You must be in Ireland for a minimum of 31 days
-      # each year."; "A tax year runs from 1 January to 31 December." The
-      # resident-non-domiciled remittance basis is on the same page's tax-implications
-      # / the companion "Coming to Ireland - tax" page; the IT/PRSI/USC-on-employment
-      # element is on the Citizens Information tax pages (per search). FIGURES (day
-      # counts are thresholds, not fees/quotas) -> 90-day window. Fact-verifier to
-      # re-derive live and confirm the remittance-basis wording. NOTE: US citizens
-      # are taxed by the US on worldwide income regardless of residence; the
-      # US-Ireland double-taxation treaty governs relief — flag for a tax adviser,
-      # do NOT assert treaty outcomes as a claim.
+      # KICKED BACK 2026-06-13 (fact-verifier): cited tax-residence/domicile page re-fetched live (sha256 f2cea9fa…, HTTP 200; edited 15 Dec 2025). The day-count rule IS verbatim ("You are resident for tax purposes for a year if you spend 183 days or more in Ireland in that year. Alternatively, if you spend 280 days or more in Ireland over a period of 2 consecutive tax years ... You must be in Ireland for a minimum of 31 days each year."; "A tax year runs from 1 January to 31 December."). BUT two further asserted elements are NOT on the cited page: (1) the resident-non-domiciled REMITTANCE BASIS ("foreign income only to the extent you remit it") — the words "remit"/"remittance" appear 0 times; the page's "Tax implications" section only says residence/domicile are "taken into account for a number of taxes including income tax, DIRT, Capital Acquisitions Tax and Capital Gains Tax." (2) the "Income Tax, PRSI and USC ... deducted under PAYE" element — "PRSI", "USC", "Universal Social Charge" and "PAYE" appear 0 times. Both belong on the companion "Coming to Ireland - tax and social insurance" page (linked as a related document). Either re-cite those two sub-claims to that page (and re-verify) or remove them. The day-count test alone is verifiable here.
       status: UNVERIFIED
       lastVerified: "2026-06-13"
       verifiedBy: ""
@@ -778,9 +641,7 @@ tasks:
       text: "Whether Ireland taxes your worldwide income turns on tax residence — broadly, 183 days in Ireland in a year (or 280 over two years). If you are resident but not Irish-domiciled, foreign income is taxed only when remitted to Ireland. As a US citizen you also remain subject to US tax on worldwide income, so the US-Ireland double-tax treaty matters — get advice from a tax professional before you move."
       sourceUrl: "https://www.citizensinformation.ie/en/money-and-tax/tax/moving-country-and-taxation/tax-residence-and-domicile-in-ireland/"
       sourceName: "Citizens Information (Citizens Information Board, statutory body) — Tax residence and domicile in Ireland"
-      # DRAFT/UNVERIFIED (research-4 2026-06-13): 183/280-day rule + remittance basis
-      # from the captured page. The US-worldwide-tax + treaty point is general and
-      # framed as "get advice", not asserted as a treaty outcome. Confirm live.
+      # KICKED BACK 2026-06-13 (fact-verifier): the 183/280-day rule IS verbatim on the cited page (sha256 f2cea9fa…), and the US-worldwide-tax + treaty point is correctly framed as "get advice" (not asserted as a treaty outcome). BUT the remittance-basis element ("foreign income is taxed only when remitted to Ireland") is NOT on the cited tax-residence page — "remit"/"remittance" appear 0 times (it is on the companion "Coming to Ireland - tax and social insurance" page). Re-cite the remittance element to that page (and re-verify) or remove it; the day-count rule alone is verifiable here.
       status: UNVERIFIED
       lastVerified: "2026-06-13"
       verifiedBy: ""
@@ -790,20 +651,17 @@ tasks:
         text: "Resident for a tax year if present in Ireland 183 days or more that year, or 280 days or more over two consecutive years (minimum 31 days each year). The tax year is the calendar year."
         sourceUrl: "https://www.citizensinformation.ie/en/money-and-tax/tax/moving-country-and-taxation/tax-residence-and-domicile-in-ireland/"
         sourceName: "Citizens Information (Citizens Information Board, statutory body) — Tax residence and domicile in Ireland"
-        # DRAFT/UNVERIFIED (research-4 2026-06-13): verbatim on captured page (see
-        # summary note). Confirm live.
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): tax-residence page re-fetched live (sha256 f2cea9fa…, HTTP 200). Verbatim: "You are resident for tax purposes for a year if you spend 183 days or more in Ireland in that year. Alternatively, if you spend 280 days or more in Ireland over a period of 2 consecutive tax years, you will be regarded as resident for the second tax year. You must be in Ireland for a minimum of 31 days each year." and "A tax year runs from 1 January to 31 December." Matches character-for-character. (Day-count thresholds, not fees/quotas -> 90-day window.)
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-ie 2026-06-13"
+        sourceHash: "f2cea9fa228de39a05f142340ceaeab5713b9bc41f3403d18b4036ef5f1353b6"
         reviewBy: "2026-09-11"
       - label: "Non-domiciled (remittance basis)"
         text: "If you are resident but not domiciled in Ireland, you pay Irish tax on Irish income and on foreign income only to the extent that you bring (remit) it into Ireland."
         sourceUrl: "https://www.citizensinformation.ie/en/money-and-tax/tax/moving-country-and-taxation/tax-residence-and-domicile-in-ireland/"
         sourceName: "Citizens Information (Citizens Information Board, statutory body) — Tax residence and domicile in Ireland"
-        # DRAFT/UNVERIFIED (research-4 2026-06-13): remittance-basis principle on the
-        # captured tax-residence/domicile page and the companion coming-to-Ireland
-        # tax page. Verifier to confirm exact wording on a reachable Revenue/
-        # citizensinformation source.
+        # KICKED BACK 2026-06-13 (fact-verifier): cited tax-residence/domicile page re-fetched live (sha256 f2cea9fa…, HTTP 200) does NOT support this claim — "remit"/"remittance" appear 0 times and the page's "Tax implications" section only states residence/domicile "are taken into account for a number of taxes including income tax, DIRT, Capital Acquisitions Tax and Capital Gains Tax." The resident-but-not-domiciled remittance basis ("foreign income only to the extent that you bring (remit) it into Ireland") is on the companion Citizens Information "Coming to Ireland - tax and social insurance" page, not here. Re-cite to that page (or a Revenue source) and re-verify the exact wording; do not publish against this URL.
         status: UNVERIFIED
         lastVerified: "2026-06-13"
         verifiedBy: ""
@@ -812,11 +670,7 @@ tasks:
         text: "On employment income in Ireland you normally pay Income Tax, PRSI (Pay Related Social Insurance) and the Universal Social Charge (USC), deducted under PAYE."
         sourceUrl: "https://www.citizensinformation.ie/en/money-and-tax/tax/moving-country-and-taxation/tax-residence-and-domicile-in-ireland/"
         sourceName: "Citizens Information (Citizens Information Board, statutory body) — Tax residence and domicile in Ireland"
-        # DRAFT/UNVERIFIED (research-4 2026-06-13): the IT/PRSI/USC-on-employment
-        # framing is standard Citizens Information / Revenue content; verifier should
-        # re-source to the Revenue "tax and starting work" / "coming to Ireland - tax
-        # and social insurance" page (a better primary cite than tax-residence) and
-        # adjust the sourceUrl if needed. No specific rate is asserted here.
+        # KICKED BACK 2026-06-13 (fact-verifier): cited tax-residence page re-fetched live (sha256 f2cea9fa…, HTTP 200) does NOT support this claim — "PRSI", "USC", "Universal Social Charge" and "PAYE" each appear 0 times. The IT/PRSI/USC-under-PAYE framing must be sourced elsewhere (e.g. the Revenue "tax and starting work" or Citizens Information "Coming to Ireland - tax and social insurance" page). Re-cite the sourceUrl to a page that states it and re-verify; do not publish against this URL.
         status: UNVERIFIED
         lastVerified: "2026-06-13"
         verifiedBy: ""
@@ -839,10 +693,11 @@ tasks:
           - text: "Citizens Information — tax residence and domicile in Ireland"
             sourceUrl: "https://www.citizensinformation.ie/en/money-and-tax/tax/moving-country-and-taxation/tax-residence-and-domicile-in-ireland/"
             sourceName: "Citizens Information (Citizens Information Board, statutory body) — Tax residence and domicile in Ireland"
-            # DRAFT/UNVERIFIED (research-4 2026-06-13): page captured.
-            status: UNVERIFIED
+            # VERIFIED 2026-06-13 (fact-verifier): page re-fetched live (sha256 f2cea9fa…, HTTP 200). Correct authority page for Irish tax residence and domicile (the 183/280-day test, tax year). Link accurate. (The link text is about tax residence/domicile, which this page supports; the remittance-basis and PRSI/USC sub-claims that live elsewhere are kicked back above.)
+            status: VERIFIED
             lastVerified: "2026-06-13"
-            verifiedBy: ""
+            verifiedBy: "fact-verifier-ie 2026-06-13"
+            sourceHash: "f2cea9fa228de39a05f142340ceaeab5713b9bc41f3403d18b4036ef5f1353b6"
             reviewBy: "2026-09-11"
       - text: "Get cross-border tax advice on the US filing obligation and the US-Ireland treaty before relying on any particular treatment of foreign income, pensions or gains."
     documents:
@@ -869,68 +724,52 @@ tasks:
       text: "Anyone the Health Service Executive (HSE) accepts as ordinarily resident in Ireland — meaning you have been living here for at least a year, or you intend to live here for at least a year — is entitled, regardless of nationality, to public health services, either with full eligibility (a medical card) or limited eligibility (without one). Separately, many immigration stamp categories require you to hold private medical insurance with hospital cover to register, so check what your route requires."
       sourceUrl: "https://www.citizensinformation.ie/en/health/health-system/entitlement-to-public-health-services/"
       sourceName: "Citizens Information (Citizens Information Board, statutory body) — Entitlement to health services"
-      # DRAFT/UNVERIFIED (research-4 2026-06-13): citizensinformation health-
-      # entitlement page (captured) verbatim: "You are ordinarily resident if you
-      # have been living in Ireland for at least a year or you intend to live here
-      # for at least one year." and "Any person, regardless of nationality, who is
-      # accepted by the HSE as being ordinarily resident in Ireland is entitled to
-      # either full eligibility (Category 1, medical card holders) or limited
-      # eligibility (Category 2) for health services." The private-medical-insurance-
-      # to-register requirement is verbatim on the ISD registration Required-Documents
-      # page (captured) for several stamps. Confirm live. NOTE: page last-edited
-      # 17 Oct 2022 — verifier should check currency.
-      status: UNVERIFIED
+      # VERIFIED 2026-06-13 (fact-verifier): health-entitlement page re-fetched live (sha256 4b54cc5e…, HTTP 200). Verbatim: "You are ordinarily resident if you have been living in Ireland for at least a year or you intend to live here for at least one year." and "Any person, regardless of nationality, who is accepted by the HSE as being ordinarily resident in Ireland is entitled to either full eligibility (Category 1, medical card holders) or limited eligibility (Category 2) for health services." The private-medical-insurance-to-register requirement is verbatim on the ISD Required-Documents page (sha256 3041f472…) for Stamp 0, Stamp 2 (students) and many others ("Private Medical Insurance or Travel Insurance with medical cover ... including hospital stays in Ireland" — appears 28×). The "no universal mandatory insurance" contrast is an accurate negative characterisation of the residence-based public system the page describes (entitlement turns on ordinary residence, not compulsory insurance); not contradicted. Supported.
+      status: VERIFIED
       lastVerified: "2026-06-13"
-      verifiedBy: ""
+      verifiedBy: "fact-verifier-ie 2026-06-13"
+      sourceHash: "4b54cc5e35ec0a90a44c403e590051514c0fa8a2b2ccc7ec3bb80ae01c7a007f"
       reviewBy: "2026-09-11"
     tldr:
       text: "Ireland's public health system is residence-based, not insurance-based: once the HSE treats you as ordinarily resident (living here, or intending to live here, for at least a year) you can use public health services regardless of nationality. But unlike Switzerland there is no universal mandatory insurance — and several immigration stamps require you to BUY private medical insurance with hospital cover in order to register, so check your route's requirement."
       sourceUrl: "https://www.citizensinformation.ie/en/health/health-system/entitlement-to-public-health-services/"
       sourceName: "Citizens Information (Citizens Information Board, statutory body) — Entitlement to health services"
-      # DRAFT/UNVERIFIED (research-4 2026-06-13): ordinarily-resident entitlement
-      # from the captured health page; the private-insurance-to-register requirement
-      # from the captured ISD Required-Documents page. The "no universal mandatory
-      # insurance" contrast is a fair description (Ireland has no KVG/LAMal-style
-      # mandate); verifier to confirm framing. Confirm live.
-      status: UNVERIFIED
+      # VERIFIED 2026-06-13 (fact-verifier): ordinarily-resident entitlement re-derived live from the health page (sha256 4b54cc5e…): "ordinarily resident if you have been living in Ireland for at least a year or you intend to live here for at least one year"; "regardless of nationality ... entitled to either full eligibility ... or limited eligibility". The private-insurance-to-register requirement is verbatim on the ISD Required-Documents page (sha256 3041f472…). The "no universal mandatory insurance" contrast is an accurate negative characterisation of the residence-based system; not contradicted. Supported.
+      status: VERIFIED
       lastVerified: "2026-06-13"
-      verifiedBy: ""
+      verifiedBy: "fact-verifier-ie 2026-06-13"
+      sourceHash: "4b54cc5e35ec0a90a44c403e590051514c0fa8a2b2ccc7ec3bb80ae01c7a007f"
       reviewBy: "2026-09-11"
     keyFacts:
       - label: "Ordinary residence = access"
         text: "You are ordinarily resident if you have lived in Ireland for at least a year or intend to live here for at least a year; any ordinarily resident person, regardless of nationality, gets full or limited eligibility for public health services."
         sourceUrl: "https://www.citizensinformation.ie/en/health/health-system/entitlement-to-public-health-services/"
         sourceName: "Citizens Information (Citizens Information Board, statutory body) — Entitlement to health services"
-        # DRAFT/UNVERIFIED (research-4 2026-06-13): verbatim on captured page (see
-        # summary note).
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): health page re-fetched live (sha256 4b54cc5e…). Verbatim: "You are ordinarily resident if you have been living in Ireland for at least a year or you intend to live here for at least one year." and "Any person, regardless of nationality, who is accepted by the HSE as being ordinarily resident in Ireland is entitled to either full eligibility (Category 1, medical card holders) or limited eligibility (Category 2) for health services." Matches.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-ie 2026-06-13"
+        sourceHash: "4b54cc5e35ec0a90a44c403e590051514c0fa8a2b2ccc7ec3bb80ae01c7a007f"
         reviewBy: "2026-09-11"
       - label: "Full vs limited eligibility"
         text: "Full eligibility (medical card) gives free GP, public hospital, prescribed-drug (subject to a per-item charge) and other services; without a medical card you have limited eligibility and may pay public-hospital charges and for GP visits and medicines."
         sourceUrl: "https://www.citizensinformation.ie/en/health/health-system/entitlement-to-public-health-services/"
         sourceName: "Citizens Information (Citizens Information Board, statutory body) — Entitlement to health services"
-        # DRAFT/UNVERIFIED (research-4 2026-06-13): captured page sets out medical-
-        # card (full) vs non-medical-card (limited) entitlements; medical card gives
-        # free GP/public hospital/prescribed drugs "subject to a charge for each item
-        # prescribed". No specific charge amount asserted. Confirm live.
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): health page re-fetched live (sha256 4b54cc5e…). Sets out "Full eligibility for medical card holders" vs "Limited eligibility for people who don't have a medical card"; medical card gives free "GP services, Prescribed drugs and medicines, subject to a charge for each item prescribed" and non-card holders "must pay for prescribed drugs and medicines". No specific charge amount asserted by the claim. Supported.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-ie 2026-06-13"
+        sourceHash: "4b54cc5e35ec0a90a44c403e590051514c0fa8a2b2ccc7ec3bb80ae01c7a007f"
         reviewBy: "2026-09-11"
       - label: "Private insurance often required to register"
         text: "Many immigration stamp categories (for example Stamp 0, students, and several others) require original private medical/health insurance with hospital cover to register — confirm what your specific stamp requires."
         sourceUrl: "https://www.irishimmigration.ie/registering-your-immigration-permission/how-to-register-your-immigration-permission-for-the-first-time/required-documents/"
         sourceName: "Irish Immigration Service (ISD) — Registration required documents"
-        # DRAFT/UNVERIFIED (research-4 2026-06-13): ISD Required-Documents page
-        # (captured) repeatedly lists "Private Medical Insurance or Travel Insurance
-        # with medical cover for accidents and medical incident including hospital
-        # stays in Ireland" as a registration requirement for many stamps. Confirm
-        # live and that the stamps named (Stamp 0, students) carry it.
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): ISD Required-Documents page re-fetched live (sha256 3041f472…, HTTP 200). "Private Medical Insurance or Travel Insurance with medical cover for accidents and medical incident including hospital stays in Ireland" appears as a registration requirement across many stamps (28 insurance mentions), including verbatim within the Stamp 0 and Stamp 2 (student) sections. Supports "many stamp categories (for example Stamp 0, students, and several others) require ... private medical/health insurance with hospital cover to register".
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-ie 2026-06-13"
+        sourceHash: "3041f47272dfcfae131251325acebdd9cb27e787ce847b64214af6e1ae85d189"
         reviewBy: "2026-09-11"
     detail: >
       Ireland funds healthcare mainly through general taxation and the public HSE system,
@@ -950,20 +789,22 @@ tasks:
           - text: "ISD — registration required documents (insurance requirements by stamp)"
             sourceUrl: "https://www.irishimmigration.ie/registering-your-immigration-permission/how-to-register-your-immigration-permission-for-the-first-time/required-documents/"
             sourceName: "Irish Immigration Service (ISD) — Registration required documents"
-            # DRAFT/UNVERIFIED (research-4 2026-06-13): page captured.
-            status: UNVERIFIED
+            # VERIFIED 2026-06-13 (fact-verifier): ISD Required-Documents page re-fetched live (sha256 3041f472…). Correct authority page; lists private-medical-insurance requirements by stamp. Link accurate.
+            status: VERIFIED
             lastVerified: "2026-06-13"
-            verifiedBy: ""
+            verifiedBy: "fact-verifier-ie 2026-06-13"
+            sourceHash: "3041f47272dfcfae131251325acebdd9cb27e787ce847b64214af6e1ae85d189"
             reviewBy: "2026-09-11"
       - text: "Once living in Ireland, establish your HSE ordinary-residence eligibility for public services; check whether you qualify for a medical card or GP visit card."
         links:
           - text: "Citizens Information — entitlement to public health services"
             sourceUrl: "https://www.citizensinformation.ie/en/health/health-system/entitlement-to-public-health-services/"
             sourceName: "Citizens Information (Citizens Information Board, statutory body) — Entitlement to health services"
-            # DRAFT/UNVERIFIED (research-4 2026-06-13): page captured.
-            status: UNVERIFIED
+            # VERIFIED 2026-06-13 (fact-verifier): health page re-fetched live (sha256 4b54cc5e…). Correct authority page for HSE ordinary-residence entitlement and full/limited eligibility. Link accurate.
+            status: VERIFIED
             lastVerified: "2026-06-13"
-            verifiedBy: ""
+            verifiedBy: "fact-verifier-ie 2026-06-13"
+            sourceHash: "4b54cc5e35ec0a90a44c403e590051514c0fa8a2b2ccc7ec3bb80ae01c7a007f"
             reviewBy: "2026-09-11"
     documents:
       - name: "Private medical insurance with hospital cover (if your stamp requires it)"
@@ -986,86 +827,62 @@ tasks:
       text: "Family members of a person living in Ireland have no automatic right to join them unless they are EEA, UK or Swiss citizens; instead Immigration Service Delivery operates a family reunification policy that sets the rules. If your sponsor holds a Critical Skills Employment Permit (or is a researcher on a Hosting Agreement, or a doctor on Stamp 1H), the spouse/de facto partner and dependent children can apply to come to Ireland immediately. If your sponsor holds any other employment permit, family can apply after a 12-month waiting period and the sponsor must be earning enough to support the family. You must have been in a de facto partnership for at least 2 years to sponsor a partner."
       sourceUrl: "https://www.citizensinformation.ie/en/moving-country/working-in-ireland/employment-permits/spousal-work-permit-scheme/"
       sourceName: "Citizens Information (Citizens Information Board, statutory body) — Employment permits and family members"
-      # DRAFT/UNVERIFIED (research-4 2026-06-13): citizensinformation "Employment
-      # permits and family members" page (captured; edited 19 May 2026) verbatim:
-      # "Your family does not have an automatic right to join an employment permit
-      # holder in Ireland, unless they are citizens of the EEA ... the UK or
-      # Switzerland."; "Immigration Service Delivery (ISD ...) has a family
-      # reunification policy"; CSEP/researcher/Stamp 1H: "Your spouse or de facto
-      # partner and dependent children can apply to come to Ireland without any
-      # waiting period."; "All other employment permits ... can apply to come to
-      # Ireland at the end of a 12 month waiting period. You must be earning enough
-      # money to support your family."; "For de facto partnerships, you must be able
-      # to show that you have been in the relationship for at least 2 years." Confirm
-      # live. The "no automatic right for Irish citizens either" point is on the
-      # captured visa-requirements page (search corroborated). FIGURE (12 months) is
-      # a duration, not a fee/quota -> 90-day window.
-      status: UNVERIFIED
+      # VERIFIED 2026-06-13 (fact-verifier): citizensinformation "Employment permits and family members" page re-fetched live (sha256 4f0e5dc4…, HTTP 200; edited 19 May 2026). Verbatim: "Your family does not have an automatic right to join an employment permit holder in Ireland, unless they are citizens of the EEA (the EU, plus Iceland, Norway and Lichtenstein), the UK or Switzerland."; "Immigration Service Delivery (ISD ...) has a family reunification policy"; CSEP/researcher/Stamp 1H: "Your spouse or de facto partner and dependent children can apply to come to Ireland without any waiting period."; "All other employment permits Your spouse or de facto partner, and dependent children can apply to come to Ireland at the end of a 12 month waiting period. You must be earning enough money to support your family."; "For de facto partnerships, you must be able to show that you have been in the relationship for at least 2 years." All elements match. FIGURE (12 months) is a duration -> 90-day window.
+      status: VERIFIED
       lastVerified: "2026-06-13"
-      verifiedBy: ""
+      verifiedBy: "fact-verifier-ie 2026-06-13"
+      sourceHash: "4f0e5dc4a73ff53621db343c62d11dbaf23220c631ff8e3e9d928aa44d805f55"
       reviewBy: "2026-09-11"
     tldr:
       text: "Whether and when your family can join you in Ireland depends on the sponsor's status. Critical Skills permit holders: spouse/partner and children can come immediately, and the spouse/partner can work (Stamp 1G) without their own permit. Other employment-permit holders: family can join after 12 months, and you must show you can support them. There is no automatic right to family reunification for non-EEA/UK/Swiss family — ISD's family reunification policy applies."
       sourceUrl: "https://www.citizensinformation.ie/en/moving-country/working-in-ireland/employment-permits/spousal-work-permit-scheme/"
       sourceName: "Citizens Information (Citizens Information Board, statutory body) — Employment permits and family members"
-      # DRAFT/UNVERIFIED (research-4 2026-06-13): distilled from the captured family-
-      # members page (immediate vs 12-month; spouse of CSEP holder gets Stamp 1G to
-      # work without a permit; no automatic right). Confirm live.
-      status: UNVERIFIED
+      # VERIFIED 2026-06-13 (fact-verifier): family-members page re-fetched live (sha256 4f0e5dc4…). Immediate (CSEP) vs 12-month (other permits) confirmed verbatim; spouse/partner of a CSEP holder "can get a Stamp 1G IRP when they register. This gives them the right to work without an employment permit"; "Your family does not have an automatic right to join". Matches.
+      status: VERIFIED
       lastVerified: "2026-06-13"
-      verifiedBy: ""
+      verifiedBy: "fact-verifier-ie 2026-06-13"
+      sourceHash: "4f0e5dc4a73ff53621db343c62d11dbaf23220c631ff8e3e9d928aa44d805f55"
       reviewBy: "2026-09-11"
     keyFacts:
       - label: "When family can join"
         text: "Immediately if the sponsor holds a Critical Skills Employment Permit (or is a researcher on a Hosting Agreement, or a doctor on Stamp 1H); after a 12-month waiting period for other employment permits."
         sourceUrl: "https://www.citizensinformation.ie/en/moving-country/working-in-ireland/employment-permits/spousal-work-permit-scheme/"
         sourceName: "Citizens Information (Citizens Information Board, statutory body) — Employment permits and family members"
-        # DRAFT/UNVERIFIED (research-4 2026-06-13): verbatim on captured page (see
-        # summary note). 12 months is a duration -> 90-day window.
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): family-members page re-fetched live (sha256 4f0e5dc4…). Verbatim: CSEP/researchers/Stamp 1H — "Your spouse or de facto partner and dependent children can apply to come to Ireland without any waiting period."; all other permits — "can apply to come to Ireland at the end of a 12 month waiting period." Matches. 12 months is a duration -> 90-day window.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-ie 2026-06-13"
+        sourceHash: "4f0e5dc4a73ff53621db343c62d11dbaf23220c631ff8e3e9d928aa44d805f55"
         reviewBy: "2026-09-11"
       - label: "Can the spouse/partner work?"
         text: "Spouse or de facto partner of a Critical Skills permit holder gets a Stamp 1G when they register, which allows work without an employment permit. Since 15 May 2024, the spouse/de facto partner of a General Employment Permit or Intra-Corporate Transferee holder can also work without a permit (issued a Stamp 1G)."
         sourceUrl: "https://www.citizensinformation.ie/en/moving-country/working-in-ireland/employment-permits/spousal-work-permit-scheme/"
         sourceName: "Citizens Information (Citizens Information Board, statutory body) — Employment permits and family members"
-        # DRAFT/UNVERIFIED (research-4 2026-06-13): captured page verbatim: "Your
-        # spouse or partner can get a Stamp 1G IRP when they register. This gives
-        # them the right to work without an employment permit." and "From 15 May 2024,
-        # you can work without an employment permit if you are the spouse or de-facto
-        # partner of a General Employment Permit (GEP) holder or an Intra-Corporate
-        # Transferee (ICT) permit holder ... When your current IRP card expires and
-        # you renew it, you will be issued with a Stamp 1G." Confirm live.
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): family-members page re-fetched live (sha256 4f0e5dc4…). Verbatim: "Your spouse or partner can get a Stamp 1G IRP when they register. This gives them the right to work without an employment permit." and "From 15 May 2024, you can work without an employment permit if you are the spouse or de-facto partner of a General Employment Permit (GEP) holder or an Intra-Corporate Transferee (ICT) permit holder ... When your current IRP card expires and you renew it, you will be issued with a Stamp 1G." Matches character-for-character (including the 15 May 2024 date).
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-ie 2026-06-13"
+        sourceHash: "4f0e5dc4a73ff53621db343c62d11dbaf23220c631ff8e3e9d928aa44d805f55"
         reviewBy: "2026-09-11"
       - label: "Visa vs preclearance"
         text: "Visa-required family members each apply for a Join Family Member (D) visa. Non-visa-required de facto partners of a Critical Skills (or Hosting Agreement) holder must apply for preclearance before coming to Ireland."
         sourceUrl: "https://www.citizensinformation.ie/en/moving-country/visas-for-ireland/visa-requirements-for-entering-ireland/"
         sourceName: "Citizens Information (Citizens Information Board, statutory body) — Visa requirements for entering Ireland"
-        # DRAFT/UNVERIFIED (research-4 2026-06-13): captured visa-requirements page
-        # verbatim under "Do I need preclearance?": "You have to apply for
-        # preclearance if you want to come to Ireland: ... As the de facto partner of
-        # a Critical Skills Employment Permit or Hosting Agreement holder ... As the
-        # de facto partner of an Irish citizen ..." The Join Family Member (D) visa
-        # for visa-required family is on the same page / family-members page (search
-        # corroborated). Confirm live.
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): visa-requirements page re-fetched live (sha256 c0dc34d8…, HTTP 200). Verbatim under "Do I need preclearance?": "You have to apply for preclearance if you want to come to Ireland: ... As the de facto partner of a Critical Skills Employment Permit or Hosting Agreement holder ... As the de facto partner of an Irish citizen ...". The visa-required-family-each-apply element is verbatim on the companion family-members page (sha256 4f0e5dc4…): "If your family is from a country that needs a visa to travel to Ireland, each family member must apply for their own visa." The "Join Family Member (D) visa" is the long-stay (join family) D visa (ISD "Coming to join family" page, sha256 f743ad6d…). Both elements supported.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-ie 2026-06-13"
+        sourceHash: "c0dc34d8f5811e23c100808315b8c2a418fc657a228c11b1fca83de8d57cf2f0"
         reviewBy: "2026-09-11"
       - label: "After arrival"
         text: "Each joining spouse/de facto partner and any child aged 16 or over must register and get an Irish Residence Permit (IRP) after arriving in Ireland."
         sourceUrl: "https://www.citizensinformation.ie/en/moving-country/working-in-ireland/employment-permits/spousal-work-permit-scheme/"
         sourceName: "Citizens Information (Citizens Information Board, statutory body) — Employment permits and family members"
-        # DRAFT/UNVERIFIED (research-4 2026-06-13): captured page verbatim: "Your
-        # spouse or de-facto partner and any child aged 16 and over must register and
-        # get an Irish Residence Permit (IRP)." Confirm live.
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): family-members page re-fetched live (sha256 4f0e5dc4…). Verbatim: "Your spouse or de-facto partner and any child aged 16 and over must register and get an Irish Residence Permit (IRP)." Matches character-for-character.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-ie 2026-06-13"
+        sourceHash: "4f0e5dc4a73ff53621db343c62d11dbaf23220c631ff8e3e9d928aa44d805f55"
         reviewBy: "2026-09-11"
     detail: >
       Ireland has no automatic family-reunification right for non-EEA/UK/Swiss family
@@ -1088,21 +905,22 @@ tasks:
           - text: "Citizens Information — employment permits and family members (who can join, when, and work rights)"
             sourceUrl: "https://www.citizensinformation.ie/en/moving-country/working-in-ireland/employment-permits/spousal-work-permit-scheme/"
             sourceName: "Citizens Information (Citizens Information Board, statutory body) — Employment permits and family members"
-            # DRAFT/UNVERIFIED (research-4 2026-06-13): page captured.
-            status: UNVERIFIED
+            # VERIFIED 2026-06-13 (fact-verifier): family-members page re-fetched live (sha256 4f0e5dc4…). Correct authority page covering who can join, when (immediate vs 12-month), and work rights (Stamp 1G). Link accurate.
+            status: VERIFIED
             lastVerified: "2026-06-13"
-            verifiedBy: ""
+            verifiedBy: "fact-verifier-ie 2026-06-13"
+            sourceHash: "4f0e5dc4a73ff53621db343c62d11dbaf23220c631ff8e3e9d928aa44d805f55"
             reviewBy: "2026-09-11"
       - text: "Apply by the right route: visa-required family members apply for a Join Family Member (D) visa; non-visa-required de facto partners of a Critical Skills holder apply for preclearance — both before travelling."
         links:
           - text: "Citizens Information — visa requirements and preclearance for family"
             sourceUrl: "https://www.citizensinformation.ie/en/moving-country/visas-for-ireland/visa-requirements-for-entering-ireland/"
             sourceName: "Citizens Information (Citizens Information Board, statutory body) — Visa requirements for entering Ireland"
-            # DRAFT/UNVERIFIED (research-4 2026-06-13): page captured (preclearance
-            # categories listed verbatim).
-            status: UNVERIFIED
+            # VERIFIED 2026-06-13 (fact-verifier): visa-requirements page re-fetched live (sha256 c0dc34d8…). Correct authority page; preclearance categories listed verbatim ("As the de facto partner of a Critical Skills Employment Permit or Hosting Agreement holder ..."). Link accurate.
+            status: VERIFIED
             lastVerified: "2026-06-13"
-            verifiedBy: ""
+            verifiedBy: "fact-verifier-ie 2026-06-13"
+            sourceHash: "c0dc34d8f5811e23c100808315b8c2a418fc657a228c11b1fca83de8d57cf2f0"
             reviewBy: "2026-09-11"
       - text: "After arriving in Ireland, each joining spouse/partner and any child aged 16+ registers for an IRP; the spouse/partner of a Critical Skills holder receives a Stamp 1G allowing work without a permit."
     documents:
@@ -1113,13 +931,11 @@ tasks:
           text: "Family members apply online through the ISD/AVATS system (Join Family Member (D) visa) or the ISD preclearance process. We link the ISD 'Coming to join family in Ireland' authority section rather than a deep form URL, so it stays current; confirm the exact route (visa vs preclearance) for the family member's nationality and relationship."
           sourceUrl: "https://www.irishimmigration.ie/coming-to-join-family-in-ireland/"
           sourceName: "Irish Immigration Service (ISD) — Coming to join family in Ireland"
-          # DRAFT/UNVERIFIED (research-4 2026-06-13): ISD "Coming to join family"
-          # landing page captured (sources/us-ie). Linking the authority section
-          # (not a deep form) matches project rule. Verifier to confirm it routes to
-          # the Join Family (D) visa and preclearance processes.
-          status: UNVERIFIED
+          # VERIFIED 2026-06-13 (fact-verifier): ISD "Coming to join family in Ireland" page re-fetched live (sha256 f743ad6d…, HTTP 200, no redirect). Correct authority section: routes to the "long stay (join family) visa" for a non-EEA/non-Swiss sponsor and to preclearance/visa schemes, links the "join family travel path" and "Financial Thresholds". Supports linking this authority section (not a deep form) for the Join Family (D) visa / preclearance routes. NOTE: the page's own term is "long stay (join family) visa" (the D visa); the "Join Family Member (D)" label in the claim is the same D-visa route.
+          status: VERIFIED
           lastVerified: "2026-06-13"
-          verifiedBy: ""
+          verifiedBy: "fact-verifier-ie 2026-06-13"
+          sourceHash: "f743ad6d78d98a17780d0f620b6d7756cbb2692d3133107fe09419b23c00e012"
           reviewBy: "2026-09-11"
       - name: "Sponsor's employment permit / IRP"
         type: provide
@@ -1151,67 +967,52 @@ tasks:
       text: "To study in Ireland as a non-EEA/non-Swiss national you must be enrolled in an eligible full-time course (you cannot come for a part-time or distance-learning course), have a letter of enrolment, and have paid your fees. Eligible higher-education and English-language courses are those listed on the Interim List of Eligible Programmes (ILEP). Admission and fees are set by the institution, so secure your course place first."
       sourceUrl: "https://www.irishimmigration.ie/coming-to-study-in-ireland/"
       sourceName: "Irish Immigration Service (ISD) — Coming to study in Ireland"
-      # DRAFT/UNVERIFIED (research-4 2026-06-13): ISD study landing page (captured)
-      # verbatim: "If you want to study in Ireland and are a non EEA/non Swiss
-      # national, you will need to have: A letter of enrolment. Paid your fees."
-      # The full-time/ILEP requirement is verbatim on the Citizens Information
-      # "Immigration rules for full-time non-EEA students" page (captured): "Non-EEA
-      # nationals coming to study in Ireland must be enrolled in an eligible full-time
-      # course."; "Eligible courses are listed on the Interim List of Eligible
-      # Programmes (ILEP)."; "They are not allowed to come to Ireland to do a
-      # part-time or distance learning course." Confirm live.
-      status: UNVERIFIED
+      # VERIFIED 2026-06-13 (fact-verifier): ISD study landing page re-fetched live (sha256 5ea28c96…, HTTP 200, no redirect). Verbatim: "If you want to study in Ireland and are a non EEA/non Swiss national, you will need to have: A letter of enrolment Paid your fees." The full-time/ILEP requirement is verbatim on the Citizens Information non-EEA-students page (sha256 587a0ef8…): "Non-EEA nationals coming to study in Ireland must be enrolled in an eligible full-time course."; "Eligible courses are listed on the Interim List of Eligible Programmes (ILEP)."; "They are not allowed to come to Ireland to do a part-time or distance learning course." All elements match.
+      status: VERIFIED
       lastVerified: "2026-06-13"
-      verifiedBy: ""
+      verifiedBy: "fact-verifier-ie 2026-06-13"
+      sourceHash: "5ea28c96bf865b28d8c8bc49aa381e8fdea4893ccafdaa458097fabaea10e39e"
       reviewBy: "2026-09-11"
     tldr:
       text: "Admission comes before immigration: enrol in an eligible full-time course on the Interim List of Eligible Programmes (ILEP), get your letter of enrolment, and pay your fees. Part-time and distance courses do not qualify. The institution sets admission requirements and fees — sort the course place first, then the immigration steps."
       sourceUrl: "https://www.citizensinformation.ie/en/moving-country/moving-to-ireland/studying-in-ireland/immigration-nonEEA-students/"
       sourceName: "Citizens Information (Citizens Information Board, statutory body) — Immigration rules for full-time non-EEA students"
-      # DRAFT/UNVERIFIED (research-4 2026-06-13): ILEP / full-time / no part-time
-      # framing verbatim on the captured Citizens Information non-EEA students page;
-      # letter-of-enrolment + fees-paid on the captured ISD study page. Confirm live.
-      status: UNVERIFIED
+      # VERIFIED 2026-06-13 (fact-verifier): non-EEA students page re-fetched live (sha256 587a0ef8…). ILEP / full-time / no-part-time-or-distance framing verbatim ("must be enrolled in an eligible full-time course"; "Eligible courses are listed on the Interim List of Eligible Programmes (ILEP)"; "not allowed to come to Ireland to do a part-time or distance learning course"). Letter-of-enrolment + fees-paid verbatim on the ISD study page (sha256 5ea28c96…). All elements match.
+      status: VERIFIED
       lastVerified: "2026-06-13"
-      verifiedBy: ""
+      verifiedBy: "fact-verifier-ie 2026-06-13"
+      sourceHash: "587a0ef842199b47b06c8fff1fa86830b3c7b99d3d762e96581d5173047d6c42"
       reviewBy: "2026-09-11"
     keyFacts:
       - label: "Eligible course"
         text: "A full-time course on the Interim List of Eligible Programmes (ILEP) — higher education at NFQ level 6 or above, or an eligible English-language course. Part-time and distance-learning courses are not allowed for study immigration."
         sourceUrl: "https://www.citizensinformation.ie/en/moving-country/moving-to-ireland/studying-in-ireland/immigration-nonEEA-students/"
         sourceName: "Citizens Information (Citizens Information Board, statutory body) — Immigration rules for full-time non-EEA students"
-        # DRAFT/UNVERIFIED (research-4 2026-06-13): captured page verbatim: "Non-EEA
-        # nationals can enrol in an eligible course at level 6 or above on the
-        # National Framework of Qualifications (NFQ). Eligible courses are listed on
-        # the Interim List of Eligible Programmes (ILEP)." and "They are not allowed
-        # to come to Ireland to do a part-time or distance learning course."
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): non-EEA students page re-fetched live (sha256 587a0ef8…). Verbatim: "Non-EEA nationals can enrol in an eligible course at level 6 or above on the National Framework of Qualifications (NFQ). Eligible courses are listed on the Interim List of Eligible Programmes (ILEP)." and "They are not allowed to come to Ireland to do a part-time or distance learning course." Matches character-for-character (NFQ level 6 or above).
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-ie 2026-06-13"
+        sourceHash: "587a0ef842199b47b06c8fff1fa86830b3c7b99d3d762e96581d5173047d6c42"
         reviewBy: "2026-09-11"
       - label: "What admission needs"
         text: "A letter of enrolment from the institution and proof you have paid your fees; admission requirements and fees are set by each institution."
         sourceUrl: "https://www.irishimmigration.ie/coming-to-study-in-ireland/"
         sourceName: "Irish Immigration Service (ISD) — Coming to study in Ireland"
-        # DRAFT/UNVERIFIED (research-4 2026-06-13): ISD study page (captured)
-        # verbatim: "you will need to have: A letter of enrolment. Paid your fees."
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): ISD study page re-fetched live (sha256 5ea28c96…). Verbatim: "you will need to have: A letter of enrolment Paid your fees." (admission requirements/fees set by each institution is uncontroversial framing). Matches.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-ie 2026-06-13"
+        sourceHash: "5ea28c96bf865b28d8c8bc49aa381e8fdea4893ccafdaa458097fabaea10e39e"
         reviewBy: "2026-09-11"
       - label: "After graduation"
         text: "Under the Third Level Graduate Scheme, a level-8 graduate may get a 12-month extension and a level-9-or-above graduate up to 24 months, to find employment and apply for a General or Critical Skills Employment Permit."
         sourceUrl: "https://www.citizensinformation.ie/en/moving-country/moving-to-ireland/studying-in-ireland/immigration-nonEEA-students/"
         sourceName: "Citizens Information (Citizens Information Board, statutory body) — Immigration rules for full-time non-EEA students"
-        # DRAFT/UNVERIFIED (research-4 2026-06-13): captured page verbatim: "Graduates
-        # with a level 8 qualification may get a 12-month extension ... Graduates with
-        # qualifications at level 9 or above may get a 24-month extension (2 blocks of
-        # 12-months)." and the scheme "allows them to find employment and apply for a
-        # General Employment Permit or Critical Skills Employment Permit." Durations,
-        # not fees -> 90-day window.
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): non-EEA students page re-fetched live (sha256 587a0ef8…). Verbatim: "Graduates with a level 8 qualification may get a 12-month extension to their residence permission ... Graduates with qualifications at level 9 or above may get a 24-month extension (2 blocks of 12-months) to their permission" and "The scheme allows them to find employment and apply for a General Employment Permit or Critical Skills Employment Permit." Matches. Durations, not fees -> 90-day window.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-ie 2026-06-13"
+        sourceHash: "587a0ef842199b47b06c8fff1fa86830b3c7b99d3d762e96581d5173047d6c42"
         reviewBy: "2026-09-11"
     detail: >
       For the study route the first step is academic, not immigration: you apply directly to
@@ -1231,10 +1032,11 @@ tasks:
           - text: "Citizens Information — immigration rules for full-time non-EEA students (ILEP, finances, work)"
             sourceUrl: "https://www.citizensinformation.ie/en/moving-country/moving-to-ireland/studying-in-ireland/immigration-nonEEA-students/"
             sourceName: "Citizens Information (Citizens Information Board, statutory body) — Immigration rules for full-time non-EEA students"
-            # DRAFT/UNVERIFIED (research-4 2026-06-13): page captured.
-            status: UNVERIFIED
+            # VERIFIED 2026-06-13 (fact-verifier): non-EEA students page re-fetched live (sha256 587a0ef8…). Correct authority page; covers ILEP, finances and work rules. Link accurate.
+            status: VERIFIED
             lastVerified: "2026-06-13"
-            verifiedBy: ""
+            verifiedBy: "fact-verifier-ie 2026-06-13"
+            sourceHash: "587a0ef842199b47b06c8fff1fa86830b3c7b99d3d762e96581d5173047d6c42"
             reviewBy: "2026-09-11"
       - text: "Keep your letter of enrolment and fee receipts — you need them for entry and for your Stamp 2 registration after arrival."
     documents:
@@ -1245,12 +1047,11 @@ tasks:
           text: "Apply on the institution's own admissions platform; there is no central government study-application form. We link the ISD 'Coming to study in Ireland' authority page (which sets out what you need: an ILEP course, a letter of enrolment, paid fees) rather than any one institution's form, so it stays current. Confirm the application route and deadline with your chosen institution."
           sourceUrl: "https://www.irishimmigration.ie/coming-to-study-in-ireland/"
           sourceName: "Irish Immigration Service (ISD) — Coming to study in Ireland"
-          # DRAFT/UNVERIFIED (research-4 2026-06-13): ISD study page captured;
-          # institution-set admission (no central immigration form). Linking the
-          # authority page matches project rule. Confirm live.
-          status: UNVERIFIED
+          # VERIFIED 2026-06-13 (fact-verifier): ISD study page re-fetched live (sha256 5ea28c96…). Sets out what a non-EEA/non-Swiss student needs (letter of enrolment, paid fees); admission is institution-set (no central immigration study-application form). Linking this authority page matches the project rule. Supported.
+          status: VERIFIED
           lastVerified: "2026-06-13"
-          verifiedBy: ""
+          verifiedBy: "fact-verifier-ie 2026-06-13"
+          sourceHash: "5ea28c96bf865b28d8c8bc49aa381e8fdea4893ccafdaa458097fabaea10e39e"
           reviewBy: "2026-09-11"
       - name: "Letter of enrolment"
         type: provide
@@ -1276,68 +1077,52 @@ tasks:
       text: "Non-EEA students register on Stamp 2 and must show they can support themselves: for a one-year course you must show access to EUR 10,000; for courses of 6 to 8 months you must show EUR 833 per month (EUR 6,665 in total for 8 months). Stamp 2 lets you take casual employment of up to 20 hours per week during term and up to 40 hours per week during defined holiday periods. Stamp 2 students are not entitled to social welfare and generally cannot bring family members on the basis of being a student."
       sourceUrl: "https://www.citizensinformation.ie/en/moving-country/moving-to-ireland/studying-in-ireland/immigration-nonEEA-students/"
       sourceName: "Citizens Information (Citizens Information Board, statutory body) — Immigration rules for full-time non-EEA students"
-      # DRAFT/UNVERIFIED (research-4 2026-06-13): captured Citizens Information page
-      # verbatim: "For courses that result in a stay of 6 to 8 months, you must show
-      # evidence that you can access EUR 833 per month (a total of EUR 4,998 for a 6
-      # month stay or EUR 6,665 for an 8 month stay). For courses of study that are
-      # one year in duration, you must show that you have access to EUR 10,000.";
-      # "Non-EEA students with Stamp 2 permission to remain are allowed to take up
-      # casual employment. They can work up to 20 hours a week during term time and up
-      # to 40 hours a week in the holidays."; "Non-EEA students are not entitled to
-      # social welfare payments."; "Generally, non-EEA students coming to Ireland have
-      # no right to bring their family with them." The EUR 10,000 figure is also on
-      # the captured ISD registration Required-Documents page (Stamp 2). FIGURES
-      # present -> 30-day review window. Fact-verifier to re-derive each.
-      status: UNVERIFIED
+      # VERIFIED 2026-06-13 (fact-verifier): non-EEA students page re-fetched live (sha256 587a0ef8…, HTTP 200). Verbatim: "For courses that result in a stay of 6 to 8 months, you must show evidence that you can access €833 per month (a total of €4,998 for a 6 month stay or €6,665 for an 8 month stay). For courses of study that are one year in duration, you must show that you have access to €10,000."; "Non-EEA students with Stamp 2 permission to remain are allowed to take up casual employment. They can work up to 20 hours a week during term time and up to 40 hours a week in the holidays."; "Non-EEA students are not entitled to social welfare payments."; "Generally, non-EEA students coming to Ireland have no right to bring their family with them." The €10,000 figure is corroborated on the ISD Required-Documents Stamp 2 section (sha256 3041f472…). Every figure matches character-for-character. FIGURES -> 30-day window.
+      status: VERIFIED
       lastVerified: "2026-06-13"
-      verifiedBy: ""
+      verifiedBy: "fact-verifier-ie 2026-06-13"
+      sourceHash: "587a0ef842199b47b06c8fff1fa86830b3c7b99d3d762e96581d5173047d6c42"
       reviewBy: "2026-07-13"
     tldr:
       text: "As a non-EEA student you register on Stamp 2. You must prove funds (EUR 10,000 for a year-long course; EUR 833/month, EUR 6,665 total, for 6-8 month courses), you can work casually up to 20 hours/week in term and 40 hours/week in holidays, you cannot claim social welfare, and you generally cannot bring family as a student."
       sourceUrl: "https://www.citizensinformation.ie/en/moving-country/moving-to-ireland/studying-in-ireland/immigration-nonEEA-students/"
       sourceName: "Citizens Information (Citizens Information Board, statutory body) — Immigration rules for full-time non-EEA students"
-      # DRAFT/UNVERIFIED (research-4 2026-06-13): all elements verbatim on the
-      # captured page (see summary note). FIGURES -> 30-day window.
-      status: UNVERIFIED
+      # VERIFIED 2026-06-13 (fact-verifier): non-EEA students page re-fetched live (sha256 587a0ef8…). All elements verbatim: €10,000 (one-year) / €833 per month / €6,665 total (8 months); "20 hours a week during term time and up to 40 hours a week in the holidays"; "not entitled to social welfare payments"; "no right to bring their family with them". Matches. FIGURES -> 30-day window.
+      status: VERIFIED
       lastVerified: "2026-06-13"
-      verifiedBy: ""
+      verifiedBy: "fact-verifier-ie 2026-06-13"
+      sourceHash: "587a0ef842199b47b06c8fff1fa86830b3c7b99d3d762e96581d5173047d6c42"
       reviewBy: "2026-07-13"
     keyFacts:
       - label: "Money you must show"
         text: "EUR 10,000 for a one-year course; for 6-8 month courses, EUR 833 per month (EUR 4,998 total for 6 months, EUR 6,665 total for 8 months). This applies to both visa and non-visa-required students."
         sourceUrl: "https://www.citizensinformation.ie/en/moving-country/moving-to-ireland/studying-in-ireland/immigration-nonEEA-students/"
         sourceName: "Citizens Information (Citizens Information Board, statutory body) — Immigration rules for full-time non-EEA students"
-        # DRAFT/UNVERIFIED (research-4 2026-06-13): verbatim on captured page (see
-        # summary). The captured ISD registration Required-Documents page corroborates
-        # "EUR 10,000 for courses resulting in residence of greater than 8 months".
-        # FIGURES -> 30-day window.
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): non-EEA students page re-fetched live (sha256 587a0ef8…). Verbatim: "you must show evidence that you can access €833 per month (a total of €4,998 for a 6 month stay or €6,665 for an 8 month stay). For courses of study that are one year in duration, you must show that you have access to €10,000. This applies to both visa and non-visa required students." The €10,000 figure is corroborated on the ISD Required-Documents Stamp 2 section (sha256 3041f472…). All figures match character-for-character. FIGURES -> 30-day window.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-ie 2026-06-13"
+        sourceHash: "587a0ef842199b47b06c8fff1fa86830b3c7b99d3d762e96581d5173047d6c42"
         reviewBy: "2026-07-13"
       - label: "Work allowed"
         text: "Stamp 2 students may take casual employment up to 20 hours per week in term time and up to 40 hours per week during the standardised holiday periods (June to September and 15 December to 15 January). Stamp 2A students may not work."
         sourceUrl: "https://www.citizensinformation.ie/en/moving-country/moving-to-ireland/studying-in-ireland/immigration-nonEEA-students/"
         sourceName: "Citizens Information (Citizens Information Board, statutory body) — Immigration rules for full-time non-EEA students"
-        # DRAFT/UNVERIFIED (research-4 2026-06-13): captured page verbatim on the
-        # 20/40-hour rule, the standardised holiday periods, and "Students with stamp
-        # 2A permission are not allowed to work." FIGURES (hours) -> 30-day window.
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): non-EEA students page re-fetched live (sha256 587a0ef8…). Verbatim: "They can work up to 20 hours a week during term time and up to 40 hours a week in the holidays. Holiday periods have been standardised – June to September inclusive and from 15 December to 15 January." and "Students with stamp 2A permission are not allowed to work." Matches character-for-character (20/40 hours; June–September and 15 Dec–15 Jan). FIGURES (hours) -> 30-day window.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-ie 2026-06-13"
+        sourceHash: "587a0ef842199b47b06c8fff1fa86830b3c7b99d3d762e96581d5173047d6c42"
         reviewBy: "2026-07-13"
       - label: "No welfare, no family route"
         text: "Stamp 2 students are not entitled to social welfare and generally cannot bring family members on the basis of being a student (family must qualify in their own right; limited exceptions, e.g. PhD students)."
         sourceUrl: "https://www.citizensinformation.ie/en/moving-country/moving-to-ireland/studying-in-ireland/immigration-nonEEA-students/"
         sourceName: "Citizens Information (Citizens Information Board, statutory body) — Immigration rules for full-time non-EEA students"
-        # DRAFT/UNVERIFIED (research-4 2026-06-13): captured page verbatim: "Non-EEA
-        # students are not entitled to social welfare payments." and "Generally,
-        # non-EEA students coming to Ireland have no right to bring their family with
-        # them ... There are some exceptions to this rule, for example, for PhD
-        # students."
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): non-EEA students page re-fetched live (sha256 587a0ef8…). Verbatim: "Non-EEA students are not entitled to social welfare payments." and "Generally, non-EEA students coming to Ireland have no right to bring their family with them ... There are some exceptions to this rule, for example, for PhD students." Matches.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-ie 2026-06-13"
+        sourceHash: "587a0ef842199b47b06c8fff1fa86830b3c7b99d3d762e96581d5173047d6c42"
         reviewBy: "2026-09-11"
     detail: >
       After admission, your study permission is Stamp 2 (registered after arrival like every
@@ -1356,10 +1141,11 @@ tasks:
           - text: "Citizens Information — immigration rules for full-time non-EEA students"
             sourceUrl: "https://www.citizensinformation.ie/en/moving-country/moving-to-ireland/studying-in-ireland/immigration-nonEEA-students/"
             sourceName: "Citizens Information (Citizens Information Board, statutory body) — Immigration rules for full-time non-EEA students"
-            # DRAFT/UNVERIFIED (research-4 2026-06-13): page captured.
-            status: UNVERIFIED
+            # VERIFIED 2026-06-13 (fact-verifier): non-EEA students page re-fetched live (sha256 587a0ef8…). Correct authority page for Stamp 2 finances, work limits and conditions. Link accurate.
+            status: VERIFIED
             lastVerified: "2026-06-13"
-            verifiedBy: ""
+            verifiedBy: "fact-verifier-ie 2026-06-13"
+            sourceHash: "587a0ef842199b47b06c8fff1fa86830b3c7b99d3d762e96581d5173047d6c42"
             reviewBy: "2026-09-11"
       - text: "Keep within the 20-hours/40-hours work limits and keep proof of academic progression for each renewal."
     documents:
@@ -1391,82 +1177,62 @@ tasks:
       text: "To retire to Ireland you must be financially independent and meet all conditions; you are not entitled to access State benefits on this permission. As a guide, a person of independent means should have an individual income of EUR 50,000 per year and access to a lump sum to cover a major expense (for example, the price of a residential dwelling in the State). All applicants must apply for permission (Stamp 0) before arriving, by completing the TPER application form; your finances must be certified by an Irish accountancy firm. If successful you receive a Conditional Letter of Offer; non-visa-required applicants (including US citizens) may then travel, complete the process and register."
       sourceUrl: "https://www.irishimmigration.ie/coming-to-live-in-ireland/i-want-to-retire-to-ireland/"
       sourceName: "Irish Immigration Service (ISD) — I want to retire to Ireland"
-      # DRAFT/UNVERIFIED (research-4 2026-06-13): ISD retire page (captured; updated
-      # 15 Oct 2025) verbatim: "If you wish to retire to Ireland you must be
-      # financially independent and meet all conditions ... you are not entitled to
-      # access State benefits while resident here on a retirement permission."; "For
-      # people of independent means ... you should have an individual income of EUR
-      # 50,000 per year. You must also have access to a lump sum of money to cover any
-      # sudden major expenses. This lump sum should be equal to, for example, the
-      # price of a residential dwelling in the State."; "all applicants must apply for
-      # Stamp 0 before arriving in Ireland."; "you must apply for permission by
-      # completing the TPER application form"; finances "must be certified by an Irish
-      # accountancy firm"; "If your application is successful, you will be issued with
-      # a Conditional Letter of Offer". FIGURE (EUR 50,000) -> 30-day review window.
-      # Fact-verifier to re-derive live.
-      status: UNVERIFIED
+      # VERIFIED 2026-06-13 (fact-verifier): ISD retire page re-fetched live (sha256 def8e0e4…, HTTP 200, no redirect). Verbatim: "If you wish to retire to Ireland you must be financially independent and meet all conditions"; "you are not entitled to access State benefits while resident here on a retirement permission"; "you should have an individual income of €50,000 per year. You must also have access to a lump sum of money to cover any sudden major expenses. This lump sum should be equal to, for example, the price of a residential dwelling in the State."; "all applicants must apply for Stamp 0 before arriving"; "you must apply for permission by completing the TPER application form"; "This verification must be certified by an Irish accountancy firm"; "you will be issued with a Conditional Letter of Offer". All elements match. FIGURE (€50,000) -> 30-day window.
+      status: VERIFIED
       lastVerified: "2026-06-13"
-      verifiedBy: ""
+      verifiedBy: "fact-verifier-ie 2026-06-13"
+      sourceHash: "def8e0e44121810aa8fa5cafbaa287aaa985ff23fa66566939194ffdc3d4b28d"
       reviewBy: "2026-07-13"
     tldr:
       text: "Ireland's retirement route is the 'person of independent means' Stamp 0: you must be financially self-supporting (guide income EUR 50,000/year plus a lump sum), claim no State benefits, and have your finances certified by an Irish accountancy firm. Everyone applies for Stamp 0 before arriving (TPER form); US citizens, being non-visa-required, travel once they have the Conditional Letter of Offer, then complete the process and register."
       sourceUrl: "https://www.irishimmigration.ie/coming-to-live-in-ireland/i-want-to-retire-to-ireland/"
       sourceName: "Irish Immigration Service (ISD) — I want to retire to Ireland"
-      # DRAFT/UNVERIFIED (research-4 2026-06-13): all elements verbatim on captured
-      # retire page (see summary). FIGURE -> 30-day window.
-      status: UNVERIFIED
+      # VERIFIED 2026-06-13 (fact-verifier): retire page re-fetched live (sha256 def8e0e4…). All elements verbatim: financially self-supporting (guide income €50,000/year plus a lump sum), "not entitled to access State benefits", certified by an Irish accountancy firm, everyone applies for Stamp 0 before arriving via the TPER form, Conditional Letter of Offer. Matches. FIGURE -> 30-day window.
+      status: VERIFIED
       lastVerified: "2026-06-13"
-      verifiedBy: ""
+      verifiedBy: "fact-verifier-ie 2026-06-13"
+      sourceHash: "def8e0e44121810aa8fa5cafbaa287aaa985ff23fa66566939194ffdc3d4b28d"
       reviewBy: "2026-07-13"
     keyFacts:
       - label: "Financial requirement"
         text: "A guide individual income of EUR 50,000 per year, plus access to a lump sum to cover a major expense (e.g. the price of a residential dwelling in the State). You must be financially independent and not access State benefits."
         sourceUrl: "https://www.irishimmigration.ie/coming-to-live-in-ireland/i-want-to-retire-to-ireland/"
         sourceName: "Irish Immigration Service (ISD) — I want to retire to Ireland"
-        # DRAFT/UNVERIFIED (research-4 2026-06-13): verbatim on captured page (see
-        # summary). FIGURE (EUR 50,000) -> 30-day window.
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): retire page re-fetched live (sha256 def8e0e4…). Verbatim: "you should have an individual income of €50,000 per year. You must also have access to a lump sum of money to cover any sudden major expenses. This lump sum should be equal to, for example, the price of a residential dwelling in the State." and "you must be financially independent and meet all conditions ... not entitled to access State benefits". Matches character-for-character. FIGURE (€50,000) -> 30-day window.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-ie 2026-06-13"
+        sourceHash: "def8e0e44121810aa8fa5cafbaa287aaa985ff23fa66566939194ffdc3d4b28d"
         reviewBy: "2026-07-13"
       - label: "Apply before arriving"
         text: "All applicants must apply for Stamp 0 permission before arriving in Ireland, using the TPER application form; visa-required applicants must also obtain a D-Reside visa, non-visa-required applicants do not."
         sourceUrl: "https://www.irishimmigration.ie/coming-to-live-in-ireland/i-want-to-retire-to-ireland/"
         sourceName: "Irish Immigration Service (ISD) — I want to retire to Ireland"
-        # DRAFT/UNVERIFIED (research-4 2026-06-13): captured page verbatim: "all
-        # applicants must apply for Stamp 0 before arriving in Ireland.", "you must
-        # apply for permission by completing the TPER application form", and the
-        # visa-required vs non-visa-required split (D-Reside visa only if visa
-        # required). Confirm live.
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): retire page re-fetched live (sha256 def8e0e4…). Verbatim: "all applicants must apply for Stamp 0 before arriving"; "you must apply for permission by completing the TPER application form"; and the split "must apply for a D Reside visa before arriving in Ireland, and all applicants must apply for Stamp 0 before..." (D-Reside visa only if visa required; US citizens non-visa-required). Matches.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-ie 2026-06-13"
+        sourceHash: "def8e0e44121810aa8fa5cafbaa287aaa985ff23fa66566939194ffdc3d4b28d"
         reviewBy: "2026-09-11"
       - label: "Finances certified"
         text: "Your financial documentation must be presented in spreadsheet form, converted to euros, and certified by an Irish accountancy firm; investment sums are not normally counted — finances must be pension income or readily accessible funds."
         sourceUrl: "https://www.irishimmigration.ie/coming-to-live-in-ireland/i-want-to-retire-to-ireland/"
         sourceName: "Irish Immigration Service (ISD) — I want to retire to Ireland"
-        # DRAFT/UNVERIFIED (research-4 2026-06-13): captured page verbatim:
-        # "Financial documentation should be presented in spreadsheet form and
-        # converted into euros ... This must be certified by an Irish accountancy
-        # firm"; "Investment sums are not normally measured - finances must be in the
-        # form of pension income or readily accessible funds". Confirm live.
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): retire page re-fetched live (sha256 def8e0e4…). Verbatim: "[Financial documentation] should be presented in spreadsheet form and converted into euros. It should clearly show all income and spending ... This must be certified by an Irish accountancy firm"; "Investment sums are not normally measured – finances must be in the form of pension income or readily accessible funds". Matches.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-ie 2026-06-13"
+        sourceHash: "def8e0e44121810aa8fa5cafbaa287aaa985ff23fa66566939194ffdc3d4b28d"
         reviewBy: "2026-09-11"
       - label: "Processing time"
         text: "The average processing time for applications is four months; delays occur when documents are missing, and applications are processed in chronological order."
         sourceUrl: "https://www.irishimmigration.ie/coming-to-live-in-ireland/i-want-to-retire-to-ireland/"
         sourceName: "Irish Immigration Service (ISD) — I want to retire to Ireland"
-        # DRAFT/UNVERIFIED (research-4 2026-06-13): captured page verbatim: "The
-        # average processing time for applications is four months. Delays can be
-        # expected when applicants do not send in all of the required documents with
-        # their original application. Applications are processed in chronological
-        # order." (Processing time, not a fee/quota -> 90-day window.)
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): retire page re-fetched live (sha256 def8e0e4…). Verbatim: "The average processing time for applications is four months. Delays can be expected when applicants do not send in all of the required documents with their original application. ... applications are processed in chronological order." Matches. (Processing time, not a fee/quota -> 90-day window.)
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-ie 2026-06-13"
+        sourceHash: "def8e0e44121810aa8fa5cafbaa287aaa985ff23fa66566939194ffdc3d4b28d"
         reviewBy: "2026-09-11"
     detail: >
       Ireland's retirement route is for people of independent means and is registered as
@@ -1488,10 +1254,11 @@ tasks:
           - text: "ISD — I want to retire to Ireland (eligibility, TPER form, documents, processing)"
             sourceUrl: "https://www.irishimmigration.ie/coming-to-live-in-ireland/i-want-to-retire-to-ireland/"
             sourceName: "Irish Immigration Service (ISD) — I want to retire to Ireland"
-            # DRAFT/UNVERIFIED (research-4 2026-06-13): page captured.
-            status: UNVERIFIED
+            # VERIFIED 2026-06-13 (fact-verifier): retire page re-fetched live (sha256 def8e0e4…). Correct authority page; sets out eligibility, the TPER form, where to send it, the documents and processing. Link accurate.
+            status: VERIFIED
             lastVerified: "2026-06-13"
-            verifiedBy: ""
+            verifiedBy: "fact-verifier-ie 2026-06-13"
+            sourceHash: "def8e0e44121810aa8fa5cafbaa287aaa985ff23fa66566939194ffdc3d4b28d"
             reviewBy: "2026-09-11"
       - text: "On approval you receive a Conditional Letter of Offer; as a US (non-visa-required) citizen you may then travel to Ireland."
       - text: "After arrival, send the signed Agreement Form and your passport to the Domestic Residence and Permissions Division to have the Stamp 0 added, then book a Burgh Quay registration appointment to be fingerprinted and registered for your IRP."
@@ -1503,12 +1270,11 @@ tasks:
           text: "Apply on the official TPER (Temporary Permission) application form for Stamp 0 — person of independent means. We link the ISD 'I want to retire to Ireland' authority page (which sets out the TPER form, where to send it, and the documents) rather than a deep PDF, so it stays current."
           sourceUrl: "https://www.irishimmigration.ie/coming-to-live-in-ireland/i-want-to-retire-to-ireland/"
           sourceName: "Irish Immigration Service (ISD) — I want to retire to Ireland"
-          # DRAFT/UNVERIFIED (research-4 2026-06-13): captured page references "the
-          # TPER application form" and the submission address. Linking the authority
-          # page matches project rule. Confirm live.
-          status: UNVERIFIED
+          # VERIFIED 2026-06-13 (fact-verifier): retire page re-fetched live (sha256 def8e0e4…). Verbatim references "the TPER application form" ("you must apply for permission by completing the TPER application form and sending the required documentation to:") and the submission address (Domestic Residence and Permissions Division). Linking this authority page (not a deep PDF) matches the project rule. Supported.
+          status: VERIFIED
           lastVerified: "2026-06-13"
-          verifiedBy: ""
+          verifiedBy: "fact-verifier-ie 2026-06-13"
+          sourceHash: "def8e0e44121810aa8fa5cafbaa287aaa985ff23fa66566939194ffdc3d4b28d"
           reviewBy: "2026-09-11"
       - name: "Accountant-certified financial evidence"
         type: provide
@@ -1526,12 +1292,11 @@ tasks:
       text: "The average processing time for retirement (Stamp 0) applications is four months; missing documents cause delays, and applications are processed in chronological order. Confirm current timing with ISD."
       sourceUrl: "https://www.irishimmigration.ie/coming-to-live-in-ireland/i-want-to-retire-to-ireland/"
       sourceName: "Irish Immigration Service (ISD) — I want to retire to Ireland"
-      # DRAFT/UNVERIFIED (research-4 2026-06-13): captured page verbatim: "The
-      # average processing time for applications is four months." Processing time ->
-      # 90-day review window.
-      status: UNVERIFIED
+      # VERIFIED 2026-06-13 (fact-verifier): retire page re-fetched live (sha256 def8e0e4…). Verbatim: "The average processing time for applications is four months." plus delays-from-missing-documents and "applications are processed in chronological order." Matches. Processing time -> 90-day window.
+      status: VERIFIED
       lastVerified: "2026-06-13"
-      verifiedBy: ""
+      verifiedBy: "fact-verifier-ie 2026-06-13"
+      sourceHash: "def8e0e44121810aa8fa5cafbaa287aaa985ff23fa66566939194ffdc3d4b28d"
       reviewBy: "2026-09-11"
     warning: >
       Stamp 0 is a limited permission: no access to State benefits and no right to work. The

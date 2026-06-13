@@ -15,7 +15,7 @@
   },
   {
     "sourceUrl": "https://www.gov.uk/skilled-worker-visa/your-job",
-    "sourceName": "GOV.UK — Skilled Worker visa: Your job (salary and eligibility)",
+    "sourceName": "GOV.UK — Skilled Worker visa: Your job",
     "claimIds": [
       "gb-sw-job"
     ],
@@ -43,7 +43,7 @@
   },
   {
     "sourceUrl": "https://www.gov.uk/skilled-worker-visa/documents-you-must-provide",
-    "sourceName": "GOV.UK — Skilled Worker visa: Documents you must provide",
+    "sourceName": "GOV.UK — Skilled Worker visa: Documents you'll need to apply",
     "claimIds": [
       "gb-sw-docs"
     ],
@@ -85,7 +85,7 @@
   },
   {
     "sourceUrl": "https://www.gov.uk/student-visa/course",
-    "sourceName": "GOV.UK — Student visa: Course (eligibility, CAS)",
+    "sourceName": "GOV.UK — Student visa: Your course",
     "claimIds": [
       "gb-student-course"
     ],
@@ -113,7 +113,7 @@
   },
   {
     "sourceUrl": "https://www.gov.uk/uk-family-visa/partner-spouse",
-    "sourceName": "GOV.UK — UK family visa: Partner or spouse",
+    "sourceName": "GOV.UK — UK family visa: Apply as a partner or spouse",
     "claimIds": [
       "gb-family-partner"
     ],
@@ -127,7 +127,7 @@
   },
   {
     "sourceUrl": "https://www.gov.uk/uk-family-visa/proof-income-partner",
-    "sourceName": "GOV.UK — UK family visa: Proof of income (partner)",
+    "sourceName": "GOV.UK — UK family visa: Financial requirements (partner or spouse)",
     "claimIds": [
       "gb-family-income"
     ],
@@ -141,7 +141,7 @@
   },
   {
     "sourceUrl": "https://www.gov.uk/graduate-visa",
-    "sourceName": "GOV.UK — Graduate visa",
+    "sourceName": "GOV.UK — Graduate visa: Overview",
     "claimIds": [
       "gb-graduate"
     ],
@@ -155,7 +155,7 @@
   },
   {
     "sourceUrl": "https://www.gov.uk/healthcare-immigration-application",
-    "sourceName": "GOV.UK — Pay for UK healthcare as part of your immigration application (Immigration Health Surcharge)",
+    "sourceName": "GOV.UK — Pay for UK healthcare as part of your immigration application (IHS): Overview",
     "claimIds": [
       "gb-ihs"
     ],
@@ -169,7 +169,7 @@
   },
   {
     "sourceUrl": "https://www.gov.uk/get-access-evisa",
-    "sourceName": "GOV.UK — Get access to your eVisa",
+    "sourceName": "GOV.UK — Get access to your eVisa (set up a UKVI account)",
     "claimIds": [
       "gb-evisa"
     ],
@@ -207,7 +207,7 @@
   },
   {
     "sourceUrl": "https://www.gov.uk/healthcare-immigration-application/how-much-pay",
-    "sourceName": "GOV.UK — Immigration Health Surcharge: How much you have to pay",
+    "sourceName": "GOV.UK — IHS: How much you have to pay",
     "claimIds": [],
     "fetchedAt": "2026-06-13",
     "fetchMethod": "curl",
@@ -267,7 +267,7 @@
   },
   {
     "sourceUrl": "https://www.gov.uk/council-tax",
-    "sourceName": "GOV.UK — Council Tax",
+    "sourceName": "GOV.UK — How Council Tax works",
     "claimIds": [],
     "fetchedAt": "2026-06-13",
     "fetchMethod": "curl",

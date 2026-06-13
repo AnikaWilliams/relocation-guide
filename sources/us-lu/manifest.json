@@ -22,7 +22,7 @@
     "fetchedAt": "2026-06-13",
     "fetchMethod": "curl",
     "sha256": "e8d880612afdde51c6931b20fa53c4f1c6491918a8d843d89fd5e779404189e6",
-    "byteSize": 1006819,
+    "byteSize": 1006831,
     "contentType": "text/html; charset=utf-8",
     "textPath": "sources/us-lu/e8d88061.txt",
     "capturedBy": "snapshot-source"
@@ -51,7 +51,7 @@
     "fetchedAt": "2026-06-13",
     "fetchMethod": "curl",
     "sha256": "d444f57cbb5a61704e8391d12c6019aaec96702b3f0bec52743eefb6ea981867",
-    "byteSize": 1016553,
+    "byteSize": 1016555,
     "contentType": "text/html; charset=utf-8",
     "textPath": "sources/us-lu/d444f57c.txt",
     "capturedBy": "snapshot-source"
@@ -65,7 +65,7 @@
     "fetchedAt": "2026-06-13",
     "fetchMethod": "curl",
     "sha256": "1cc41f8b7b2892be70dd337155d0f85023b3550ec042c6eaaf70fe7e000dce62",
-    "byteSize": 1014179,
+    "byteSize": 1014184,
     "contentType": "text/html; charset=utf-8",
     "textPath": "sources/us-lu/1cc41f8b.txt",
     "capturedBy": "snapshot-source"
@@ -121,7 +121,7 @@
     "fetchedAt": "2026-06-13",
     "fetchMethod": "curl",
     "sha256": "c23814d68b37efceab07d747622c1c78f3092ed84ecbef279faced7368ea5407",
-    "byteSize": 237265,
+    "byteSize": 237266,
     "contentType": "text/html; charset=utf-8",
     "textPath": "sources/us-lu/c23814d6.txt",
     "capturedBy": "snapshot-source"
@@ -148,7 +148,7 @@
     "fetchedAt": "2026-06-13",
     "fetchMethod": "curl",
     "sha256": "666602b951d60757f1ce8a1d1b5c5fe85e630e608b98b21e930ffe2470cf642b",
-    "byteSize": 285991,
+    "byteSize": 285988,
     "contentType": "text/html; charset=utf-8",
     "textPath": "sources/us-lu/666602b9.txt",
     "capturedBy": "snapshot-source"
@@ -162,7 +162,7 @@
     "fetchedAt": "2026-06-13",
     "fetchMethod": "curl",
     "sha256": "9915204014ad1c2b106c9caf9afe87627dd4074ef63f065deab703c8649250bc",
-    "byteSize": 263662,
+    "byteSize": 263658,
     "contentType": "text/html; charset=utf-8",
     "textPath": "sources/us-lu/99152040.txt",
     "capturedBy": "snapshot-source"
@@ -176,7 +176,7 @@
     "fetchedAt": "2026-06-13",
     "fetchMethod": "curl",
     "sha256": "27b2e4ff1011dfabf3fb6df40d91799841b8dbd0748c10f2f43a20886b4d6171",
-    "byteSize": 170604,
+    "byteSize": 170602,
     "contentType": "text/html; charset=utf-8",
     "textPath": "sources/us-lu/27b2e4ff.txt",
     "capturedBy": "snapshot-source"
@@ -190,7 +190,7 @@
     "fetchedAt": "2026-06-13",
     "fetchMethod": "curl",
     "sha256": "f28e26f610d5c5b109d929f86dfc75621327321573818174b40c29a2568223d6",
-    "byteSize": 181406,
+    "byteSize": 181410,
     "contentType": "text/html; charset=utf-8",
     "textPath": "sources/us-lu/f28e26f6.txt",
     "capturedBy": "snapshot-source"

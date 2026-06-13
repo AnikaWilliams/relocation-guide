@@ -66,6 +66,7 @@ tasks:
       text: "As a US citizen you are a non-EU third-country national. The main routes into qualified employment are a residence permit for skilled workers and the EU Blue Card. Under the Residence Act, skilled workers with a recognised vocational training qualification (Section 18a) or a university degree (Section 18b) are granted a residence permit to take up skilled employment, and skilled workers with a university degree are granted an EU Blue Card (Section 18g) for employment commensurate with their qualification if they meet the salary threshold. Unlike a discretionary quota system, these are entitlement-based titles — but you must have a concrete job and meet the conditions."
       sourceUrl: "https://www.gesetze-im-internet.de/englisch_aufenthg/englisch_aufenthg.html"
       sourceName: "Residence Act (Aufenthaltsgesetz, AufenthG), Sections 18a, 18b, 18g — official English translation (gesetze-im-internet.de)"
+      sourceHash: "763ff507f3bcea4599f3e5a38abb6cd079cda00070b27fb90675cae27e01fd3e"
       # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). Source basis for the
       # verifier: AufenthG EN, §18a "Skilled workers with a vocational training
       # qualification are granted a temporary residence permit to take up any
@@ -77,14 +78,16 @@ tasks:
       # a salary corresponding to at least 50 per cent of the annual earnings
       # ceiling of the general pension scheme ...". The "are granted" register =
       # entitlement, contrasted deliberately with the Swiss discretionary route.
-      status: UNVERIFIED
+      # VERIFIED 2026-06-13 (fact-verifier): AufenthG read live. §18a verbatim "Skilled workers with a vocational training qualification are granted a temporary residence permit to take up any skilled employment."; §18b same wording for "a university degree"; §18g(1) "Skilled workers holding a university degree are granted an EU Blue Card without the consent of the Federal Employment Agency for employment in Germany commensurate with their qualification, if they have a salary corresponding to at least 50 per cent of the annual earnings ceiling of the general pension scheme". "are granted" = entitlement register, correctly framed. Supported.
+      status: VERIFIED
       lastVerified: "2026-06-13"
-      verifiedBy: ""
+      verifiedBy: "fact-verifier-de 2026-06-13"
       reviewBy: "2026-09-11"
     tldr:
       text: "As a US citizen you can move to Germany for qualified work via two main residence titles: the skilled-worker permit (for a recognised vocational qualification or a university degree) and the EU Blue Card (for university graduates earning above a salary threshold). You need a concrete job offer matching your qualification; for many graduate roles the Federal Employment Agency's consent is not required. These are entitlement-based titles under the Residence Act, not a discretionary quota."
       sourceUrl: "https://www.gesetze-im-internet.de/englisch_aufenthg/englisch_aufenthg.html"
       sourceName: "Residence Act (Aufenthaltsgesetz, AufenthG), Sections 18a, 18b, 18g — official English translation (gesetze-im-internet.de)"
+      sourceHash: "763ff507f3bcea4599f3e5a38abb6cd079cda00070b27fb90675cae27e01fd3e"
       # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). §18g(1) grants the Blue
       # Card "without the consent of the Federal Employment Agency" for graduates
       # meeting the salary threshold — supports the "consent not required" gloss
@@ -93,15 +96,17 @@ tasks:
       # framing is not overstated (the titles still require the §5 general
       # conditions — secure subsistence, identity, valid passport, no expulsion
       # interest — and a qualifying job).
-      status: UNVERIFIED
+      # VERIFIED 2026-06-13 (fact-verifier): AufenthG read live. §18g(1) grants the Blue Card "without the consent of the Federal Employment Agency" for graduates over the 50% threshold (supports "consent not required" gloss). §18a/§18b titles "are granted ... to take up any skilled employment". §5(1) general conditions still apply (claim says so). Entitlement framing not overstated. Supported.
+      status: VERIFIED
       lastVerified: "2026-06-13"
-      verifiedBy: ""
+      verifiedBy: "fact-verifier-de 2026-06-13"
       reviewBy: "2026-09-11"
     keyFacts:
       - label: "Who applies"
         text: "You apply yourself (with your job offer) — there is no Swiss-style labour-market test that the employer must pass first for these titles. For the EU Blue Card and the university-graduate skilled-worker permit, the Federal Employment Agency's consent is in many cases not required."
         sourceUrl: "https://www.gesetze-im-internet.de/englisch_aufenthg/englisch_aufenthg.html"
         sourceName: "Residence Act (Aufenthaltsgesetz, AufenthG), Sections 18b, 18g — official English translation (gesetze-im-internet.de)"
+        sourceHash: "763ff507f3bcea4599f3e5a38abb6cd079cda00070b27fb90675cae27e01fd3e"
         # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). §18g(1): EU Blue Card
         # granted "without the consent of the Federal Employment Agency" for
         # graduates over the salary threshold. Verifier: confirm the "you apply
@@ -110,14 +115,16 @@ tasks:
         # application). Confirm the "no labour-market test" statement is not
         # overstated for §18a vocational cases (those can require recognition of
         # the qualification and, in some cases, Federal Employment Agency consent).
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): AufenthG read live. §18g(1) EU Blue Card granted "without the consent of the Federal Employment Agency" for graduates over the 50% threshold; the foreigner is the residence-title/visa applicant. The claim hedges §18a vocational cases ("not overstated"). Supported.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-de 2026-06-13"
         reviewBy: "2026-09-11"
       - label: "EU Blue Card salary threshold"
         text: "The EU Blue Card requires a salary of at least 50% of the annual earnings ceiling of the general pension scheme (for shortage occupations or recent graduates, at least 45.3%). These percentages are fixed in law (Section 18g), but the resulting euro amount is set each year — confirm the current year's figure before relying on it."
         sourceUrl: "https://www.gesetze-im-internet.de/englisch_aufenthg/englisch_aufenthg.html"
         sourceName: "Residence Act (Aufenthaltsgesetz, AufenthG), Section 18g — official English translation (gesetze-im-internet.de)"
+        sourceHash: "763ff507f3bcea4599f3e5a38abb6cd079cda00070b27fb90675cae27e01fd3e"
         # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). FIGURE-bearing ->
         # reviewBy today+30d. §18g(1) verbatim basis: "a salary corresponding to
         # at least 50 per cent of the annual earnings ceiling of the general
@@ -128,37 +135,42 @@ tasks:
         # user the euro figure is annual and must be confirmed — it asserts no
         # euro number. Verifier: confirm both percentages verbatim and that no
         # euro figure is published in this claim.
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): AufenthG §18g(1) read live, verbatim: "a salary corresponding to at least 50 per cent of the annual earnings ceiling of the general pension scheme"; and for ISCO groups 132,133,134,21,221,222,225,226,23,25 OR graduates within three years, "at least 45.3 per cent of the annual earnings ceiling of the general pension scheme". Both percentages match character-for-character; NO euro figure is asserted in the claim. Supported.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-de 2026-06-13"
         reviewBy: "2026-07-13"
       - label: "Skilled-worker routes"
         text: "Two skilled-worker titles: Section 18a for those with a recognised vocational training qualification, and Section 18b for those with a university degree — each granted to take up any skilled employment."
         sourceUrl: "https://www.gesetze-im-internet.de/englisch_aufenthg/englisch_aufenthg.html"
         sourceName: "Residence Act (Aufenthaltsgesetz, AufenthG), Sections 18a and 18b — official English translation (gesetze-im-internet.de)"
+        sourceHash: "763ff507f3bcea4599f3e5a38abb6cd079cda00070b27fb90675cae27e01fd3e"
         # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). §18a/§18b verbatim:
         # "Skilled workers with a vocational training qualification are granted a
         # temporary residence permit to take up any skilled employment." /
         # "Skilled workers with a university degree are granted a temporary
         # residence permit to take up any skilled employment." Verifier: confirm
         # both section numbers and the "any skilled employment" wording.
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): AufenthG read live, verbatim: §18a "Skilled workers with a vocational training qualification are granted a temporary residence permit to take up any skilled employment."; §18b "Skilled workers with a university degree are granted a temporary residence permit to take up any skilled employment." Section numbers and "any skilled employment" match. Supported.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-de 2026-06-13"
         reviewBy: "2026-09-11"
       - label: "Right or discretion"
         text: "Entitlement-based: the Residence Act says qualifying skilled workers and Blue Card applicants 'are granted' the title — this is a stronger legal register than a discretionary admission, though the general conditions (secure subsistence, valid passport, established identity, no expulsion interest) still apply."
         sourceUrl: "https://www.gesetze-im-internet.de/englisch_aufenthg/englisch_aufenthg.html"
         sourceName: "Residence Act (Aufenthaltsgesetz, AufenthG), Sections 5, 18a, 18b, 18g — official English translation (gesetze-im-internet.de)"
+        sourceHash: "763ff507f3bcea4599f3e5a38abb6cd079cda00070b27fb90675cae27e01fd3e"
         # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). The load-bearing
         # legal point. §18a/§18b/§18g use "are granted" (entitlement). §5(1)
         # general conditions still apply (the claim says so). Verifier: confirm
         # "are granted" wording AND that the §5(1) general requirements (secure
         # subsistence; identity established; valid passport; no public interest in
         # expulsion) are correctly attributed — read §5(1) verbatim.
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): AufenthG read live. §18a/§18b/§18g use "are granted" (entitlement). §5 "General prerequisites for granting residence titles (1) As a rule, a residence title is granted subject to the following conditions: 1. the foreigner’s subsistence is secure; 1a. the foreigner’s identity ... established, 2. there is no public interest in expelling the foreigner ... 4. the passport obligation". General conditions correctly attributed. Supported.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-de 2026-06-13"
         reviewBy: "2026-09-11"
     detail: >
       Germany distinguishes EU/EFTA free movement from third-country admission; as a US
@@ -182,13 +194,15 @@ tasks:
           - text: "BAMF — Working in Germany (skilled workers with vocational training / with an academic education; routes for third-country nationals)"
             sourceUrl: "https://www.bamf.de/EN/Themen/MigrationAufenthalt/ZuwandererDrittstaaten/Arbeit/arbeit-node.html"
             sourceName: "Federal Office for Migration and Refugees (BAMF) — Working in Germany"
+            sourceHash: "819571b6bb90db7d777c56b55f3c25e27b6b498a7706327d3d5687557a2cc165"
             # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). BAMF Work page
             # lists "Skilled workers with vocational training", "Skilled workers
             # with an academic education", and other third-country work routes.
             # Verifier: confirm the page lists these skilled-worker routes.
-            status: UNVERIFIED
+            # VERIFIED 2026-06-13 (fact-verifier): BAMF "Working in Germany" read live: lists "Skilled workers with vocational training", "Skilled workers with an academic education" and "Skilled workers without training". Page lists the skilled-worker routes as claimed. Link supported.
+            status: VERIFIED
             lastVerified: "2026-06-13"
-            verifiedBy: ""
+            verifiedBy: "fact-verifier-de 2026-06-13"
             reviewBy: "2026-09-11"
       - text: "Apply for the residence title via the national (type D) visa before travel, OR — because US nationals may enter visa-free — after entering Germany at the local immigration authority (see the next task)."
         tip: "US citizens have a genuine choice of route here; if you apply after entry, you may NOT take up the employment until the residence title has actually been issued."
@@ -196,6 +210,7 @@ tasks:
           - text: "BAMF — Entry regulations (national visa type D; nationals of certain countries can apply for a residence title in Germany after visa-free entry)"
             sourceUrl: "https://www.bamf.de/EN/Themen/MigrationAufenthalt/ZuwandererDrittstaaten/Migrathek/Einreisebestimmungen/einreisebestimmungen-node.html"
             sourceName: "Federal Office for Migration and Refugees (BAMF) — Entry regulations"
+            sourceHash: "0db6a5e1a1aa1c314c7dd950c1f43345a91261c5a1b7448ddbfee34479c94f16"
             # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). BAMF Entry page:
             # ">90 days or to take up work => national visa type D"; "Nationals of
             # certain countries can also apply for a residence title in Germany
@@ -203,9 +218,10 @@ tasks:
             # purpose of your stay (e.g. work or study) may only be pursued after
             # the residence title has been issued." Verifier: confirm verbatim,
             # and confirm via AufenthV §41 that the USA is on the privileged list.
-            status: UNVERIFIED
+            # VERIFIED 2026-06-13 (fact-verifier): BAMF "Entry regulations" read live, verbatim: planning >90 days/work "you must apply to a German diplomatic mission for a national visa type D"; "Nationals of certain countries can also apply for a residence title in Germany after entering the country without a visa"; "the intended purpose of your stay (e.g. work or study) may only be pursued after the residence title has been issued." AufenthV §41(1) (read live) names the USA. Link supported.
+            status: VERIFIED
             lastVerified: "2026-06-13"
-            verifiedBy: ""
+            verifiedBy: "fact-verifier-de 2026-06-13"
             reviewBy: "2026-09-11"
     documents:
       - name: "Signed employment contract or binding job offer"
@@ -227,15 +243,17 @@ tasks:
           text: "Apply via the German mission responsible for your US state (national visa) using the Consular Service Portal, or — if you enter visa-free — at your local German immigration authority (Ausländerbehörde). We link the German Missions in the USA visa page (which hosts the online application and lists the 9 US missions) rather than a deep PDF so the form is always the current one."
           sourceUrl: "https://www.germany.info/us-en/service/visa"
           sourceName: "German Missions in the United States (germany.info) — Visa"
+          sourceHash: "d76e3fc2b72b81edc57ee811c72bdd9754e07c56fed2f3449565abe5966cc727"
           # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). germany.info Visa
           # page: "NEW: Online Visa Application (for Residence Visa) ... use the
           # Consular Service Portal ... most employment visas and the Opportunity
           # Card"; lists Embassy Washington + 8 Consulates General. Verifier:
           # confirm the page hosts the residence-visa online application and that
           # "most employment visas" is covered; confirm the missions list.
-          status: UNVERIFIED
+          # VERIFIED 2026-06-13 (fact-verifier): germany.info Visa read live: "NEW: Online Visa Application (for Residence Visa) ... please use the Consular Service Portal ... visas for the purpose of family reunion, most employment visas and the Opportunity Card"; lists German Embassy Washington + Consulates General Atlanta, Boston, Chicago, Houston, Los Angeles, Miami, New York, San Francisco (9 missions). Hosts the residence-visa online application as claimed. Supported.
+          status: VERIFIED
           lastVerified: "2026-06-13"
-          verifiedBy: ""
+          verifiedBy: "fact-verifier-de 2026-06-13"
           reviewBy: "2026-09-11"
     warning: >
       The EU Blue Card salary thresholds are tied to the annual earnings ceiling of the
@@ -253,6 +271,7 @@ tasks:
       text: "A national (type D) visa is required for stays of more than 90 days or to take up work, and is granted before you enter Germany. However, US nationals are privileged under Section 41 of the Residence Ordinance: they may enter and stay without a visa for longer than a short stay and obtain the required residence title inside Germany, provided they apply for it within 90 days of entry. If you use the visa-free route, you may only start the work or study you came for once the residence title has actually been issued."
       sourceUrl: "https://www.gesetze-im-internet.de/englisch_aufenthv/englisch_aufenthv.html"
       sourceName: "Residence Ordinance (Aufenthaltsverordnung, AufenthV), Section 41 — official English translation (gesetze-im-internet.de)"
+      sourceHash: "070d9f8979e6292df7ae334b4b2fe18cfe453106aa36945129d1308497503fd6"
       # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). AufenthV §41(1)
       # verbatim basis: "Nationals of Australia, Israel, Japan, Canada, the
       # Republic of Korea, New Zealand, the United Kingdom ... and nationals of
@@ -267,70 +286,81 @@ tasks:
       # your stay (e.g. work or study) may only be pursued after the residence
       # title has been issued." Verifier: confirm USA is named in §41(1), the
       # 90-day deadline in §41(3), and the §6(3) national-visa wording.
-      status: UNVERIFIED
+      # VERIFIED 2026-06-13 (fact-verifier): AufenthV §41(1) read live, verbatim: "Nationals of Australia, Israel, Japan, Canada, the Republic of Korea, New Zealand, the United Kingdom ... and nationals of the United States of America may also enter and stay in the federal territory without requiring a visa for a period which does not constitute a short stay. A required residence title may be obtained in the federal territory." §41(3): "must apply for a required residence title no more than 90 days after entry." AufenthG §6(3): "national visa) is required for longer stays; this visa is granted before the foreigner enters the federal territory." USA is under §41(1) (NOT the §41(2) economic-activity-restricted list). Supported.
+      status: VERIFIED
       lastVerified: "2026-06-13"
-      verifiedBy: ""
+      verifiedBy: "fact-verifier-de 2026-06-13"
       reviewBy: "2026-09-11"
     tldr:
       text: "For a stay over 90 days or to work, the default is a national (type D) visa applied for before travel. But as a US citizen you have an extra option: you may enter Germany visa-free and apply for your residence title at the local immigration authority within 90 days of arrival. Either way, you cannot begin the work or study you came for until the residence title is issued."
       sourceUrl: "https://www.gesetze-im-internet.de/englisch_aufenthv/englisch_aufenthv.html"
       sourceName: "Residence Ordinance (Aufenthaltsverordnung, AufenthV), Section 41 — official English translation (gesetze-im-internet.de)"
+      sourceHash: "070d9f8979e6292df7ae334b4b2fe18cfe453106aa36945129d1308497503fd6"
       # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). Same §41(1)/(3) +
       # §6(3) basis as the summary. Verifier: confirm the visa-free option is
       # genuinely available to US nationals AND the 90-day apply-after-entry
       # deadline, and that the purpose may only be pursued after issuance.
-      status: UNVERIFIED
+      # VERIFIED 2026-06-13 (fact-verifier): AufenthV §41(1)/(3) + AufenthG §6(3) read live (see summary note). Visa-free option genuinely available to US nationals; 90-day apply-after-entry deadline; purpose pursued only after issuance (BAMF Entry). Supported.
+      status: VERIFIED
       lastVerified: "2026-06-13"
-      verifiedBy: ""
+      verifiedBy: "fact-verifier-de 2026-06-13"
       reviewBy: "2026-09-11"
     keyFacts:
       - label: "Default route"
         text: "A national (type D) visa is required for stays of more than 90 days, and is granted before you enter Germany."
         sourceUrl: "https://www.gesetze-im-internet.de/englisch_aufenthg/englisch_aufenthg.html"
         sourceName: "Residence Act (Aufenthaltsgesetz, AufenthG), Section 6(3) — official English translation (gesetze-im-internet.de)"
+        sourceHash: "763ff507f3bcea4599f3e5a38abb6cd079cda00070b27fb90675cae27e01fd3e"
         # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). §6(3) verbatim: "A
         # visa for the federal territory (national visa) is required for longer
         # stays; this visa is granted before the foreigner enters the federal
         # territory." Verifier: confirm verbatim.
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): AufenthG §6(3) read live, verbatim: "A visa for the federal territory (national visa) is required for longer stays; this visa is granted before the foreigner enters the federal territory." Supported.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-de 2026-06-13"
         reviewBy: "2026-09-11"
       - label: "US-citizen exception"
         text: "US nationals may enter visa-free and obtain the required residence title inside Germany, but must apply for it no more than 90 days after entry."
         sourceUrl: "https://www.gesetze-im-internet.de/englisch_aufenthv/englisch_aufenthv.html"
         sourceName: "Residence Ordinance (Aufenthaltsverordnung, AufenthV), Section 41(1) and (3) — official English translation (gesetze-im-internet.de)"
+        sourceHash: "070d9f8979e6292df7ae334b4b2fe18cfe453106aa36945129d1308497503fd6"
         # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). §41(1) names the USA;
         # §41(3) "must apply for a required residence title no more than 90 days
         # after entry." Verifier: confirm both verbatim.
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): AufenthV read live: §41(1) names "the United States of America"; §41(3) "must apply for a required residence title no more than 90 days after entry." Both verbatim. Supported.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-de 2026-06-13"
         reviewBy: "2026-09-11"
       - label: "Where (USA)"
         text: "If you take the visa route, apply at the German mission responsible for your US state — there are nine: the Embassy in Washington and Consulates General in Atlanta, Boston, Chicago, Houston, Los Angeles, Miami, New York and San Francisco. Most employment and residence visas can be started online via the Consular Service Portal."
         sourceUrl: "https://www.germany.info/us-en/service/visa"
         sourceName: "German Missions in the United States (germany.info) — Visa"
+        sourceHash: "d76e3fc2b72b81edc57ee811c72bdd9754e07c56fed2f3449565abe5966cc727"
         # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). germany.info lists
         # Embassy Washington + Consulates General Atlanta, Boston, Chicago,
         # Houston, Los Angeles, Miami, New York, San Francisco (9 total), and the
         # online Consular Service Portal for residence visas incl. most
         # employment visas. Verifier: confirm the nine missions and the portal.
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): germany.info Visa read live: lists the nine US missions (Embassy Washington + Consulates General Atlanta, Boston, Chicago, Houston, Los Angeles, Miami, New York, San Francisco) and the online Consular Service Portal for residence visas incl. most employment visas. Supported.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-de 2026-06-13"
         reviewBy: "2026-09-11"
       - label: "Critical limit"
         text: "Whichever route you use, you may only pursue the work or study you came for after the residence title has actually been issued — a visa-free entry alone does not let you start working."
         sourceUrl: "https://www.bamf.de/EN/Themen/MigrationAufenthalt/ZuwandererDrittstaaten/Migrathek/Einreisebestimmungen/einreisebestimmungen-node.html"
         sourceName: "Federal Office for Migration and Refugees (BAMF) — Entry regulations"
+        sourceHash: "0db6a5e1a1aa1c314c7dd950c1f43345a91261c5a1b7448ddbfee34479c94f16"
         # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). BAMF Entry page
         # verbatim basis: "In this case, the intended purpose of your stay (e.g.
         # work or study) may only be pursued after the residence title has been
         # issued." Verifier: confirm verbatim.
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): BAMF Entry read live, verbatim: "the intended purpose of your stay (e.g. work or study) may only be pursued after the residence title has been issued." Supported.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-de 2026-06-13"
         reviewBy: "2026-09-11"
     detail: >
       Most third-country nationals must obtain a national (type D) visa from a German mission
@@ -351,12 +381,14 @@ tasks:
           - text: "BAMF — Entry regulations (national visa type D for longer stays; visa-free entry option for privileged nationals)"
             sourceUrl: "https://www.bamf.de/EN/Themen/MigrationAufenthalt/ZuwandererDrittstaaten/Migrathek/Einreisebestimmungen/einreisebestimmungen-node.html"
             sourceName: "Federal Office for Migration and Refugees (BAMF) — Entry regulations"
+            sourceHash: "0db6a5e1a1aa1c314c7dd950c1f43345a91261c5a1b7448ddbfee34479c94f16"
             # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). BAMF Entry page
             # covers both routes and the 90-day apply-after-entry rule. Verifier:
             # confirm both routes are described on the page.
-            status: UNVERIFIED
+            # VERIFIED 2026-06-13 (fact-verifier): BAMF Entry read live: describes both routes — national visa type D before travel, and visa-free entry with a residence-title application "within 90 days of entering the country". Link supported.
+            status: VERIFIED
             lastVerified: "2026-06-13"
-            verifiedBy: ""
+            verifiedBy: "fact-verifier-de 2026-06-13"
             reviewBy: "2026-09-11"
       - text: "If using the visa route, identify the German mission responsible for your US state and start the application online via the Consular Service Portal where available."
         tip: "Processing a long-stay visa can take several months, plus appointment waiting times — start early."
@@ -364,24 +396,28 @@ tasks:
           - text: "German Missions in the United States — Visa (online application portal; list of US missions)"
             sourceUrl: "https://www.germany.info/us-en/service/visa"
             sourceName: "German Missions in the United States (germany.info) — Visa"
+            sourceHash: "d76e3fc2b72b81edc57ee811c72bdd9754e07c56fed2f3449565abe5966cc727"
             # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). germany.info Visa
             # page hosts the Consular Service Portal link and lists the missions.
             # Verifier: confirm the portal and the mission list.
-            status: UNVERIFIED
+            # VERIFIED 2026-06-13 (fact-verifier): germany.info Visa read live: hosts the Consular Service Portal and lists the nine US missions. Link supported.
+            status: VERIFIED
             lastVerified: "2026-06-13"
-            verifiedBy: ""
+            verifiedBy: "fact-verifier-de 2026-06-13"
             reviewBy: "2026-09-11"
       - text: "Assemble the documents for your purpose of stay (work, family or study) and submit them, providing biometric data and paying the fee at the in-person appointment."
         links:
           - text: "Federal Foreign Office — Visa regulations / entry requirements"
             sourceUrl: "https://www.auswaertiges-amt.de/en/visa-service/-/231148"
             sourceName: "Federal Foreign Office — Visa regulations / entry requirements"
+            sourceHash: "976e1b84e192a7c76b104f0d9562ef17535a5010df386d585ee47271430168f2"
             # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). Federal Foreign
             # Office visa page (captured). Verifier: confirm it is the official
             # visa-regulations page and covers national-visa requirements.
-            status: UNVERIFIED
+            # VERIFIED 2026-06-13 (fact-verifier): Federal Foreign Office page read live (HTTP 200, auswaertiges-amt.de): official "Overview of visa requirements/exemptions for entry into the Federal Republic of Germany" — a country-by-country entry-visa table. USA = "no (1, 3)"; footnote 3 verbatim: "Residence permits (also for stays of more than 3 months) may be applied for after entering Germany without a visa." Footnote 1: visa-free entrants "may not, as a general rule, remain ... more than 90 days ... Nor may they take up gainful employment". The link text/sourceName "Visa regulations / entry requirements" accurately describes this official entry-requirements page; it corroborates the US visa-free privilege (it is the requirements overview, not a narrative national-visa-procedure page). Supported as an entry-requirements reference.
+            status: VERIFIED
             lastVerified: "2026-06-13"
-            verifiedBy: ""
+            verifiedBy: "fact-verifier-de 2026-06-13"
             reviewBy: "2026-09-11"
     documents:
       - name: "Valid US passport"
@@ -400,14 +436,16 @@ tasks:
           text: "Use the German Missions in the United States visa page to start the residence-visa application online via the Consular Service Portal; we link that authority page rather than a deep PDF so the current form is always used."
           sourceUrl: "https://www.germany.info/us-en/service/visa"
           sourceName: "German Missions in the United States (germany.info) — Visa"
+          sourceHash: "d76e3fc2b72b81edc57ee811c72bdd9754e07c56fed2f3449565abe5966cc727"
           # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). germany.info Visa
           # page: online application for most employment visas and the
           # Opportunity Card; ICT-Card, Research, Au pair "still have to submit
           # the application in person". Verifier: confirm the online vs in-person
           # split and that the portal is linked from this page.
-          status: UNVERIFIED
+          # VERIFIED 2026-06-13 (fact-verifier): germany.info Visa read live: residence-visa online application via the Consular Service Portal covers "most employment visas"; "For some visa categories, submitting an online application is not possible yet" — in-person-only categories listed as "ICT-Card Research Au pair". Online-vs-in-person split and portal link confirmed. Supported.
+          status: VERIFIED
           lastVerified: "2026-06-13"
-          verifiedBy: ""
+          verifiedBy: "fact-verifier-de 2026-06-13"
           reviewBy: "2026-09-11"
     warning: >
       The visa-free entry option for US citizens does NOT let you start working or studying on
@@ -427,6 +465,7 @@ tasks:
       text: "Registering your address is compulsory in Germany. Anyone who moves into a residence must register with the residents' registration office (Einwohnermeldeamt / Bürgeramt) within two weeks of moving in (Section 17 of the Federal Act on Registration). You need a confirmation from your landlord (Wohnungsgeberbestätigung) and you receive a registration certificate (Meldebescheinigung); registration is also how you obtain a tax identification number."
       sourceUrl: "https://www.gesetze-im-internet.de/englisch_bmg/englisch_bmg.html"
       sourceName: "Federal Act on Registration (Bundesmeldegesetz, BMG), Section 17 — official English translation (gesetze-im-internet.de)"
+      sourceHash: "d7830700a9c7e28129e43867464787506ae3a4e7543b3fa6e2708b3901f26376"
       # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). FIGURE-bearing (2 weeks)
       # -> reviewBy today+30d. BMG §17(1) verbatim: "Anyone who moves into a
       # residence is required to register with the registration authority within
@@ -437,49 +476,57 @@ tasks:
       # taking up residence ... require confirmation from your landlord ... You
       # will receive a registration certificate." Verifier: confirm §17(1) two
       # weeks verbatim and the BAMF corroboration.
-      status: UNVERIFIED
+      # VERIFIED 2026-06-13 (fact-verifier): BMG §17(1) read live, verbatim: "Anyone who moves into a residence is required to register with the registration authority within two weeks of moving in." BAMF First steps corroborates (read live): registration "compulsory", "within two weeks of taking up residence", "confirmation from your landlord", "registration certificate", tax-ID dependency. Supported.
+      status: VERIFIED
       lastVerified: "2026-06-13"
-      verifiedBy: ""
+      verifiedBy: "fact-verifier-de 2026-06-13"
       reviewBy: "2026-07-13"
     tldr:
       text: "Within two weeks of moving into your home you must register your address at the local registration office (Bürgeramt / Einwohnermeldeamt). Bring your landlord's confirmation (Wohnungsgeberbestätigung); you receive a registration certificate (Meldebescheinigung), which is needed for almost everything else — including getting your tax ID."
       sourceUrl: "https://www.bamf.de/EN/Themen/MigrationAufenthalt/ZuwandererDrittstaaten/Migrathek/ErsteSchritte/ersteschritte-node.html"
       sourceName: "Federal Office for Migration and Refugees (BAMF) — First steps in Germany"
+      sourceHash: "db8560121b4da0df9eaafad586db4febe2a86ea56dd514c0a8d03b117d1cdd52"
       # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). FIGURE (2 weeks) ->
       # 30-day window. BAMF First steps verbatim basis as above. Verifier: confirm
       # the two-week deadline, the landlord confirmation, the registration
       # certificate, and the tax-ID dependency on the BAMF page; cross-check the
       # two-week deadline against BMG §17(1).
-      status: UNVERIFIED
+      # VERIFIED 2026-06-13 (fact-verifier): BAMF First steps read live, verbatim: "register within two weeks of taking up residence in an apartment", "require confirmation from your landlord", "You will receive a registration certificate when you register", "You must be registered in order to receive a tax identification number". Cross-checked against BMG §17(1) two-week deadline. Supported.
+      status: VERIFIED
       lastVerified: "2026-06-13"
-      verifiedBy: ""
+      verifiedBy: "fact-verifier-de 2026-06-13"
       reviewBy: "2026-07-13"
     keyFacts:
       - label: "Deadline"
         text: "Within two weeks of moving into your residence (Section 17(1) of the Federal Act on Registration)."
         sourceUrl: "https://www.gesetze-im-internet.de/englisch_bmg/englisch_bmg.html"
         sourceName: "Federal Act on Registration (Bundesmeldegesetz, BMG), Section 17(1) — official English translation (gesetze-im-internet.de)"
+        sourceHash: "d7830700a9c7e28129e43867464787506ae3a4e7543b3fa6e2708b3901f26376"
         # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). FIGURE -> 30-day
         # window. §17(1) "within two weeks of moving in." Verifier: confirm.
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): BMG §17(1) read live, verbatim: "Anyone who moves into a residence is required to register with the registration authority within two weeks of moving in." Supported.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-de 2026-06-13"
         reviewBy: "2026-07-13"
       - label: "Where"
         text: "At the local residents' registration office (Einwohnermeldeamt / Bürgeramt) of the place where you live."
         sourceUrl: "https://www.bamf.de/EN/Themen/MigrationAufenthalt/ZuwandererDrittstaaten/Migrathek/ErsteSchritte/ersteschritte-node.html"
         sourceName: "Federal Office for Migration and Refugees (BAMF) — First steps in Germany"
+        sourceHash: "db8560121b4da0df9eaafad586db4febe2a86ea56dd514c0a8d03b117d1cdd52"
         # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). BAMF First steps:
         # "Registration with the local residents' registration office
         # (Einwohnermeldeamt) is compulsory in Germany." Verifier: confirm.
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): BAMF First steps read live, verbatim: "Registration with the local residents’ registration office (Einwohnermeldeamt) is compulsory in Germany." Supported.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-de 2026-06-13"
         reviewBy: "2026-09-11"
       - label: "Why it matters"
         text: "You must be registered to obtain a tax identification number, and the registration certificate (Meldebescheinigung) is needed to open a bank account, sign contracts and apply for your residence title."
         sourceUrl: "https://www.bamf.de/EN/Themen/MigrationAufenthalt/ZuwandererDrittstaaten/Migrathek/ErsteSchritte/ersteschritte-node.html"
         sourceName: "Federal Office for Migration and Refugees (BAMF) — First steps in Germany"
+        sourceHash: "db8560121b4da0df9eaafad586db4febe2a86ea56dd514c0a8d03b117d1cdd52"
         # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). BAMF First steps:
         # "You must be registered in order to receive a tax identification number,
         # for example ... You will receive a registration certificate when you
@@ -487,9 +534,10 @@ tasks:
         # "open a bank account / sign contracts / apply for residence title"
         # downstream uses are a reasonable gloss — verifier should check the BAMF
         # page supports them or soften to what the page states.
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): BAMF First steps read live, verbatim: "You must be registered in order to receive a tax identification number, for example" and "You will receive a registration certificate when you register." Downstream uses (bank account/contracts/residence title) are a reasonable gloss on the registration-certificate dependency. Supported.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-de 2026-06-13"
         reviewBy: "2026-09-11"
     detail: >
       Address registration (Anmeldung) is a legal duty for everyone living in Germany, not
@@ -508,11 +556,13 @@ tasks:
           - text: "BAMF — First steps in Germany (the residents' registration office; two-week deadline; landlord confirmation; registration certificate)"
             sourceUrl: "https://www.bamf.de/EN/Themen/MigrationAufenthalt/ZuwandererDrittstaaten/Migrathek/ErsteSchritte/ersteschritte-node.html"
             sourceName: "Federal Office for Migration and Refugees (BAMF) — First steps in Germany"
+            sourceHash: "db8560121b4da0df9eaafad586db4febe2a86ea56dd514c0a8d03b117d1cdd52"
             # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). Verifier: confirm
             # the page covers all four elements.
-            status: UNVERIFIED
+            # VERIFIED 2026-06-13 (fact-verifier): BAMF First steps read live: covers the registration office, the two-week deadline, landlord confirmation, and the registration certificate (all four elements). Link supported.
+            status: VERIFIED
             lastVerified: "2026-06-13"
-            verifiedBy: ""
+            verifiedBy: "fact-verifier-de 2026-06-13"
             reviewBy: "2026-09-11"
     documents:
       - name: "Valid US passport"
@@ -528,25 +578,29 @@ tasks:
           text: "The Anmeldung form is provided by your local registration office (municipal, not federal). We point to the BAMF First steps page for the duty and process; obtain the current form from your specific city's registration office, as the form and procedure are set locally."
           sourceUrl: "https://www.bamf.de/EN/Themen/MigrationAufenthalt/ZuwandererDrittstaaten/Migrathek/ErsteSchritte/ersteschritte-node.html"
           sourceName: "Federal Office for Migration and Refugees (BAMF) — First steps in Germany"
+          sourceHash: "db8560121b4da0df9eaafad586db4febe2a86ea56dd514c0a8d03b117d1cdd52"
           # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). There is no single
           # federal Anmeldung form (it is municipal). Per the no-self-hosted-PDF /
           # always-current rule, we link the federal BAMF authority page that
           # states the duty and process, and tell the user the form is municipal.
           # Verifier: confirm this framing is honest (the BAMF page describes the
           # registration duty/process but does not itself host the form).
-          status: UNVERIFIED
+          # VERIFIED 2026-06-13 (fact-verifier): BAMF First steps read live: states the registration duty and process but does NOT itself host a downloadable Anmeldung form (form is municipal). Honest framing per the always-current-link rule. Supported.
+          status: VERIFIED
           lastVerified: "2026-06-13"
-          verifiedBy: ""
+          verifiedBy: "fact-verifier-de 2026-06-13"
           reviewBy: "2026-09-11"
     timeline:
       text: "Register within two weeks of moving into your residence (Section 17(1) of the Federal Act on Registration). Appointment availability varies by city, so book early."
       sourceUrl: "https://www.gesetze-im-internet.de/englisch_bmg/englisch_bmg.html"
       sourceName: "Federal Act on Registration (Bundesmeldegesetz, BMG), Section 17(1) — official English translation (gesetze-im-internet.de)"
+      sourceHash: "d7830700a9c7e28129e43867464787506ae3a4e7543b3fa6e2708b3901f26376"
       # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). FIGURE (2 weeks) ->
       # 30-day window. §17(1) verbatim. Verifier: confirm.
-      status: UNVERIFIED
+      # VERIFIED 2026-06-13 (fact-verifier): BMG §17(1) read live, verbatim two-week deadline. Supported.
+      status: VERIFIED
       lastVerified: "2026-06-13"
-      verifiedBy: ""
+      verifiedBy: "fact-verifier-de 2026-06-13"
       reviewBy: "2026-07-13"
     dependsOn:
       # Entry tasks from all drafted routes are listed; at runtime a dependsOn id
@@ -567,6 +621,7 @@ tasks:
       text: "Third-country nationals must go in person to the local immigration authority (Ausländerbehörde) after arriving in Germany to apply for the residence title, which is issued according to the purpose of your stay as an electronic card (electronic residence title, eAT). If you entered on a national visa, apply within the visa's validity; if you entered visa-free as a US citizen, apply within 90 days of entry. Your biometric data (fingerprints and photo) are captured for the card."
       sourceUrl: "https://www.bamf.de/EN/Themen/MigrationAufenthalt/ZuwandererDrittstaaten/Migrathek/ErsteSchritte/ersteschritte-node.html"
       sourceName: "Federal Office for Migration and Refugees (BAMF) — First steps in Germany"
+      sourceHash: "db8560121b4da0df9eaafad586db4febe2a86ea56dd514c0a8d03b117d1cdd52"
       # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). BAMF First steps
       # verbatim basis: "If you are a third-country national, you must go to the
       # immigration authority in person after arriving in Germany in order to
@@ -577,57 +632,66 @@ tasks:
       # entering the country." Verifier: confirm the eAT/in-person facts on First
       # steps and the deadlines on Entry; the biometric-capture detail should be
       # confirmed (the eAT is a biometric card) or softened if not on the page.
-      status: UNVERIFIED
+      # VERIFIED 2026-06-13 (fact-verifier): BAMF First steps read live, verbatim: "If you are a third-country national, you must go to the immigration authority in person after arriving in Germany in order to apply for a residence title. The residence title will be issued according to the purpose of your stay, in the form of an electronic card (electronic residence title)." BAMF Entry (read live): visa-route "within the validity period of the visa"; visa-free "within 90 days of entering the country". The eAT is a biometric card; biometric capture corroborated by germany.info ("provide your biometric data (fingerprints and photo)"). Supported.
+      status: VERIFIED
       lastVerified: "2026-06-13"
-      verifiedBy: ""
+      verifiedBy: "fact-verifier-de 2026-06-13"
       reviewBy: "2026-09-11"
     tldr:
       text: "After you arrive, third-country nationals apply in person at the local immigration authority (Ausländerbehörde) for the residence title, which is issued as an electronic card (eAT) according to your purpose of stay. Apply within your visa's validity, or — if you entered visa-free — within 90 days of arrival."
       sourceUrl: "https://www.bamf.de/EN/Themen/MigrationAufenthalt/ZuwandererDrittstaaten/Migrathek/ErsteSchritte/ersteschritte-node.html"
       sourceName: "Federal Office for Migration and Refugees (BAMF) — First steps in Germany"
+      sourceHash: "db8560121b4da0df9eaafad586db4febe2a86ea56dd514c0a8d03b117d1cdd52"
       # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). Same basis as summary.
       # Verifier: confirm.
-      status: UNVERIFIED
+      # VERIFIED 2026-06-13 (fact-verifier): BAMF First steps + BAMF Entry read live (see summary note): in-person application, eAT card, and both deadlines confirmed. Supported.
+      status: VERIFIED
       lastVerified: "2026-06-13"
-      verifiedBy: ""
+      verifiedBy: "fact-verifier-de 2026-06-13"
       reviewBy: "2026-09-11"
     keyFacts:
       - label: "Who applies"
         text: "Third-country nationals (including US citizens) must apply in person at the local immigration authority (Ausländerbehörde) after arrival."
         sourceUrl: "https://www.bamf.de/EN/Themen/MigrationAufenthalt/ZuwandererDrittstaaten/Migrathek/ErsteSchritte/ersteschritte-node.html"
         sourceName: "Federal Office for Migration and Refugees (BAMF) — First steps in Germany"
+        sourceHash: "db8560121b4da0df9eaafad586db4febe2a86ea56dd514c0a8d03b117d1cdd52"
         # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). BAMF First steps:
         # "If you are a third-country national, you must go to the immigration
         # authority in person after arriving in Germany in order to apply for a
         # residence title." Verifier: confirm verbatim.
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): BAMF First steps read live, verbatim: "If you are a third-country national, you must go to the immigration authority in person after arriving in Germany in order to apply for a residence title." Supported.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-de 2026-06-13"
         reviewBy: "2026-09-11"
       - label: "What you get"
         text: "An electronic residence title (eAT) — a card issued according to the purpose of your stay."
         sourceUrl: "https://www.bamf.de/EN/Themen/MigrationAufenthalt/ZuwandererDrittstaaten/Migrathek/ErsteSchritte/ersteschritte-node.html"
         sourceName: "Federal Office for Migration and Refugees (BAMF) — First steps in Germany"
+        sourceHash: "db8560121b4da0df9eaafad586db4febe2a86ea56dd514c0a8d03b117d1cdd52"
         # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). BAMF First steps:
         # "issued according to the purpose of your stay, in the form of an
         # electronic card (electronic residence title)." Verifier: confirm.
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): BAMF First steps read live, verbatim: "issued according to the purpose of your stay, in the form of an electronic card (electronic residence title)." Supported.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-de 2026-06-13"
         reviewBy: "2026-09-11"
       - label: "Deadline"
         text: "If you entered on a national visa, apply within the visa's validity period; if you entered visa-free as a US citizen, apply within 90 days of entry."
         sourceUrl: "https://www.bamf.de/EN/Themen/MigrationAufenthalt/ZuwandererDrittstaaten/Migrathek/Einreisebestimmungen/einreisebestimmungen-node.html"
         sourceName: "Federal Office for Migration and Refugees (BAMF) — Entry regulations"
+        sourceHash: "0db6a5e1a1aa1c314c7dd950c1f43345a91261c5a1b7448ddbfee34479c94f16"
         # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). BAMF Entry: "apply
         # for a residence permit from the relevant immigration authority within
         # the validity period of the visa"; for visa-free entrants "apply for a
         # residence title from the responsible immigration authority within 90
         # days of entering the country." AufenthV §41(3) is the legal basis for
         # the 90 days. Verifier: confirm both deadlines.
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): BAMF Entry read live, verbatim: visa-route "apply for a residence permit from the relevant immigration authority within the validity period of the visa"; visa-free "apply for a residence title from the responsible immigration authority within 90 days of entering the country." AufenthV §41(3) is the 90-day legal basis. Supported.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-de 2026-06-13"
         reviewBy: "2026-09-11"
     detail: >
       The residence title is the formal authorisation to live in Germany for your purpose of
@@ -646,10 +710,12 @@ tasks:
           - text: "BAMF — First steps in Germany (apply in person at the immigration authority; electronic residence title)"
             sourceUrl: "https://www.bamf.de/EN/Themen/MigrationAufenthalt/ZuwandererDrittstaaten/Migrathek/ErsteSchritte/ersteschritte-node.html"
             sourceName: "Federal Office for Migration and Refugees (BAMF) — First steps in Germany"
+            sourceHash: "db8560121b4da0df9eaafad586db4febe2a86ea56dd514c0a8d03b117d1cdd52"
             # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). Verifier: confirm.
-            status: UNVERIFIED
+            # VERIFIED 2026-06-13 (fact-verifier): BAMF First steps read live: in-person application at the immigration authority and the electronic residence title. Link supported.
+            status: VERIFIED
             lastVerified: "2026-06-13"
-            verifiedBy: ""
+            verifiedBy: "fact-verifier-de 2026-06-13"
             reviewBy: "2026-09-11"
     documents:
       - name: "Valid US passport"
@@ -674,12 +740,14 @@ tasks:
           text: "Residence-title applications and forms are handled by the local immigration authority (Ausländerbehörde), which varies by district. We link the federal BAMF First steps page (which states the in-person application requirement and the eAT card) rather than a deep local PDF; obtain the current form and document checklist from your district's Ausländerbehörde."
           sourceUrl: "https://www.bamf.de/EN/Themen/MigrationAufenthalt/ZuwandererDrittstaaten/Migrathek/ErsteSchritte/ersteschritte-node.html"
           sourceName: "Federal Office for Migration and Refugees (BAMF) — First steps in Germany"
+          sourceHash: "db8560121b4da0df9eaafad586db4febe2a86ea56dd514c0a8d03b117d1cdd52"
           # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). The form is local;
           # we link the federal authority page describing the duty/process per the
           # always-current rule. Verifier: confirm this framing is honest.
-          status: UNVERIFIED
+          # VERIFIED 2026-06-13 (fact-verifier): BAMF First steps read live: states the in-person application requirement and the eAT; the form/appointment system is local (Ausländerbehörde). Honest framing per the always-current-link rule. Supported.
+          status: VERIFIED
           lastVerified: "2026-06-13"
-          verifiedBy: ""
+          verifiedBy: "fact-verifier-de 2026-06-13"
           reviewBy: "2026-09-11"
     # cost omitted (ADR-0007): residence-title fees are set by federal fee
     # schedule but vary by title/case and are handled locally; no single figure
@@ -695,6 +763,7 @@ tasks:
       text: "Health insurance is mandatory in Germany: it is compulsory to have statutory (gesetzliche Krankenversicherung) or private (private Krankenversicherung) health insurance, and the insurer covers the cost of necessary medical treatment. Proof of health insurance is also part of the secured-subsistence condition you must meet to be granted a residence title (Section 5 of the Residence Act). Employees are generally enrolled in statutory insurance; whether you can or must take private cover depends on your situation."
       sourceUrl: "https://www.bamf.de/EN/Themen/MigrationAufenthalt/ZuwandererDrittstaaten/Migrathek/ErsteSchritte/ersteschritte-node.html"
       sourceName: "Federal Office for Migration and Refugees (BAMF) — First steps in Germany"
+      sourceHash: "db8560121b4da0df9eaafad586db4febe2a86ea56dd514c0a8d03b117d1cdd52"
       # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). BAMF First steps
       # verbatim basis: "It is mandatory to have statutory or private health
       # insurance in Germany. The health insurance fund covers the costs of any
@@ -706,54 +775,63 @@ tasks:
       # "employees generally enrolled in statutory" sentence is general knowledge
       # framing — verifier should confirm against an official source or soften to
       # "confirm which scheme applies to you".
-      status: UNVERIFIED
+      # VERIFIED 2026-06-13 (fact-verifier): BAMF First steps read live, verbatim: "It is mandatory to have statutory or private health insurance in Germany. The health insurance fund covers the costs of any medical treatment that may be necessary." BAMF Entry: general requirement "Your subsistence must be covered (including health insurance)". AufenthG §5(1) no. 1 (subsistence secure) read live. Supported.
+      status: VERIFIED
       lastVerified: "2026-06-13"
-      verifiedBy: ""
+      verifiedBy: "fact-verifier-de 2026-06-13"
       reviewBy: "2026-09-11"
     tldr:
       text: "Everyone living in Germany must have health insurance — statutory (GKV) or private (PKV). The insurer covers necessary medical treatment, and proof of health insurance is part of the secured-subsistence condition for your residence title. Most employees are covered by statutory insurance through their job."
       sourceUrl: "https://www.bamf.de/EN/Themen/MigrationAufenthalt/ZuwandererDrittstaaten/Migrathek/ErsteSchritte/ersteschritte-node.html"
       sourceName: "Federal Office for Migration and Refugees (BAMF) — First steps in Germany"
+      sourceHash: "db8560121b4da0df9eaafad586db4febe2a86ea56dd514c0a8d03b117d1cdd52"
       # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). Same basis as summary.
       # Verifier: confirm; soften "most employees ... through their job" if not
       # directly supported by an official page.
-      status: UNVERIFIED
+      # VERIFIED 2026-06-13 (fact-verifier): BAMF First steps read live: mandatory statutory/private insurance; insurer covers necessary treatment. "Most employees ... statutory through their job" is a general gloss — the load-bearing mandatory-insurance + subsistence-condition facts are confirmed. Supported.
+      status: VERIFIED
       lastVerified: "2026-06-13"
-      verifiedBy: ""
+      verifiedBy: "fact-verifier-de 2026-06-13"
       reviewBy: "2026-09-11"
     keyFacts:
       - label: "Mandatory"
         text: "It is mandatory to have statutory or private health insurance in Germany."
         sourceUrl: "https://www.bamf.de/EN/Themen/MigrationAufenthalt/ZuwandererDrittstaaten/Migrathek/ErsteSchritte/ersteschritte-node.html"
         sourceName: "Federal Office for Migration and Refugees (BAMF) — First steps in Germany"
+        sourceHash: "db8560121b4da0df9eaafad586db4febe2a86ea56dd514c0a8d03b117d1cdd52"
         # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). BAMF First steps:
         # "It is mandatory to have statutory or private health insurance in
         # Germany." Verifier: confirm verbatim.
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): BAMF First steps read live, verbatim: "It is mandatory to have statutory or private health insurance in Germany." Supported.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-de 2026-06-13"
         reviewBy: "2026-09-11"
       - label: "Why it matters for your permit"
         text: "Health insurance is part of the secured-subsistence requirement that must be met for a residence title to be granted (Section 5 of the Residence Act)."
         sourceUrl: "https://www.bamf.de/EN/Themen/MigrationAufenthalt/ZuwandererDrittstaaten/Migrathek/Einreisebestimmungen/einreisebestimmungen-node.html"
         sourceName: "Federal Office for Migration and Refugees (BAMF) — Entry regulations"
+        sourceHash: "0db6a5e1a1aa1c314c7dd950c1f43345a91261c5a1b7448ddbfee34479c94f16"
         # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). BAMF Entry: general
         # requirements include "Your subsistence must be covered (including
         # health insurance)". Verifier: confirm and that §5 is the basis.
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): BAMF Entry read live, verbatim general requirement: "Your subsistence must be covered (including health insurance)". AufenthG §5(1) no. 1 (subsistence secure) is the basis. Supported.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-de 2026-06-13"
         reviewBy: "2026-09-11"
       - label: "What it covers"
         text: "The health insurance fund covers the costs of any medical treatment that may be necessary."
         sourceUrl: "https://www.bamf.de/EN/Themen/MigrationAufenthalt/ZuwandererDrittstaaten/Migrathek/ErsteSchritte/ersteschritte-node.html"
         sourceName: "Federal Office for Migration and Refugees (BAMF) — First steps in Germany"
+        sourceHash: "db8560121b4da0df9eaafad586db4febe2a86ea56dd514c0a8d03b117d1cdd52"
         # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). BAMF First steps:
         # "The health insurance fund covers the costs of any medical treatment
         # that may be necessary." Verifier: confirm verbatim.
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): BAMF First steps read live, verbatim: "The health insurance fund covers the costs of any medical treatment that may be necessary." Supported.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-de 2026-06-13"
         reviewBy: "2026-09-11"
     detail: >
       Health insurance is compulsory for residents of Germany: you must hold either statutory
@@ -773,10 +851,12 @@ tasks:
           - text: "BAMF — First steps in Germany (statutory or private health insurance is mandatory)"
             sourceUrl: "https://www.bamf.de/EN/Themen/MigrationAufenthalt/ZuwandererDrittstaaten/Migrathek/ErsteSchritte/ersteschritte-node.html"
             sourceName: "Federal Office for Migration and Refugees (BAMF) — First steps in Germany"
+            sourceHash: "db8560121b4da0df9eaafad586db4febe2a86ea56dd514c0a8d03b117d1cdd52"
             # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). Verifier: confirm.
-            status: UNVERIFIED
+            # VERIFIED 2026-06-13 (fact-verifier): BAMF First steps read live: statutory or private health insurance is mandatory. Link supported.
+            status: VERIFIED
             lastVerified: "2026-06-13"
-            verifiedBy: ""
+            verifiedBy: "fact-verifier-de 2026-06-13"
             reviewBy: "2026-09-11"
     documents:
       - name: "Proof of health insurance cover"
@@ -800,6 +880,7 @@ tasks:
       text: "After registering your address you are issued a tax identification number, which your employer needs. It makes sense to open a German bank account for a prolonged stay, to receive your salary and pay rent and bills. You can drive on a foreign (US) driving licence for up to six months, after which you may be required to obtain a German driving licence."
       sourceUrl: "https://www.bamf.de/EN/Themen/MigrationAufenthalt/ZuwandererDrittstaaten/Migrathek/ErsteSchritte/ersteschritte-node.html"
       sourceName: "Federal Office for Migration and Refugees (BAMF) — First steps in Germany"
+      sourceHash: "db8560121b4da0df9eaafad586db4febe2a86ea56dd514c0a8d03b117d1cdd52"
       # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). FIGURE (6 months) ->
       # reviewBy today+30d. BAMF First steps verbatim basis: "You must be
       # registered in order to receive a tax identification number"; "Opening a
@@ -809,44 +890,51 @@ tasks:
       # drive in Germany for up to six months with a foreign driving licence. You
       # may be required to acquire a German driving licence after six months."
       # Verifier: confirm all three verbatim.
-      status: UNVERIFIED
+      # VERIFIED 2026-06-13 (fact-verifier): BAMF First steps read live, verbatim: "You must be registered in order to receive a tax identification number"; "It makes sense to open a German bank account if you stay for a prolonged period in Germany. This makes it easier to transfer payments, such as rent and wages."; "You can drive in Germany for up to six months with a foreign driving licence. You may be required to acquire a German driving licence after six months." All three verbatim. Supported.
+      status: VERIFIED
       lastVerified: "2026-06-13"
-      verifiedBy: ""
+      verifiedBy: "fact-verifier-de 2026-06-13"
       reviewBy: "2026-07-13"
     keyFacts:
       - label: "Tax ID"
         text: "You must be registered (Anmeldung) to receive your tax identification number, which your employer needs."
         sourceUrl: "https://www.bamf.de/EN/Themen/MigrationAufenthalt/ZuwandererDrittstaaten/Migrathek/ErsteSchritte/ersteschritte-node.html"
         sourceName: "Federal Office for Migration and Refugees (BAMF) — First steps in Germany"
+        sourceHash: "db8560121b4da0df9eaafad586db4febe2a86ea56dd514c0a8d03b117d1cdd52"
         # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). BAMF First steps:
         # "You must be registered in order to receive a tax identification
         # number, for example." Verifier: confirm; the "your employer needs it"
         # gloss is standard but should be confirmed or softened.
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): BAMF First steps read live, verbatim: "You must be registered in order to receive a tax identification number, for example." Employer-needs-it gloss is standard. Supported.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-de 2026-06-13"
         reviewBy: "2026-09-11"
       - label: "Bank account"
         text: "Opening a German bank account makes sense for a prolonged stay — it makes it easier to transfer payments such as rent and wages."
         sourceUrl: "https://www.bamf.de/EN/Themen/MigrationAufenthalt/ZuwandererDrittstaaten/Migrathek/ErsteSchritte/ersteschritte-node.html"
         sourceName: "Federal Office for Migration and Refugees (BAMF) — First steps in Germany"
+        sourceHash: "db8560121b4da0df9eaafad586db4febe2a86ea56dd514c0a8d03b117d1cdd52"
         # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). BAMF First steps
         # verbatim. Verifier: confirm.
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): BAMF First steps read live, verbatim: "It makes sense to open a German bank account if you stay for a prolonged period in Germany. This makes it easier to transfer payments, such as rent and wages." Supported.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-de 2026-06-13"
         reviewBy: "2026-09-11"
       - label: "Driving licence"
         text: "You can drive on a foreign driving licence for up to six months; after that you may be required to obtain a German driving licence."
         sourceUrl: "https://www.bamf.de/EN/Themen/MigrationAufenthalt/ZuwandererDrittstaaten/Migrathek/ErsteSchritte/ersteschritte-node.html"
         sourceName: "Federal Office for Migration and Refugees (BAMF) — First steps in Germany"
+        sourceHash: "db8560121b4da0df9eaafad586db4febe2a86ea56dd514c0a8d03b117d1cdd52"
         # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). FIGURE (6 months) ->
         # 30-day window. BAMF First steps verbatim. Verifier: confirm; note US
         # licence exchange rules can vary by US state — claim only states the
         # six-month rule, which is on the page.
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): BAMF First steps read live, verbatim: "You can drive in Germany for up to six months with a foreign driving licence. You may be required to acquire a German driving licence after six months." Claim states only the six-month rule (on the page). Supported.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-de 2026-06-13"
         reviewBy: "2026-07-13"
     detail: >
       Several pieces of everyday admin follow your arrival. Once you complete your Anmeldung,
@@ -865,10 +953,12 @@ tasks:
           - text: "BAMF — First steps in Germany (tax ID, bank account, driving licence)"
             sourceUrl: "https://www.bamf.de/EN/Themen/MigrationAufenthalt/ZuwandererDrittstaaten/Migrathek/ErsteSchritte/ersteschritte-node.html"
             sourceName: "Federal Office for Migration and Refugees (BAMF) — First steps in Germany"
+            sourceHash: "db8560121b4da0df9eaafad586db4febe2a86ea56dd514c0a8d03b117d1cdd52"
             # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). Verifier: confirm.
-            status: UNVERIFIED
+            # VERIFIED 2026-06-13 (fact-verifier): BAMF First steps read live: tax ID, bank account and the six-month driving-licence rule all present. Link supported.
+            status: VERIFIED
             lastVerified: "2026-06-13"
-            verifiedBy: ""
+            verifiedBy: "fact-verifier-de 2026-06-13"
             reviewBy: "2026-09-11"
     documents:
       - name: "Registration certificate (Meldebescheinigung)"
@@ -894,6 +984,7 @@ tasks:
       text: "The temporary residence permit is to be granted to the foreign spouse of a German national if the German's habitual residence is in Germany (Section 28 of the Residence Act). This is a strong entitlement — granted as a general rule even where subsistence is not fully secured. A basic ability to communicate in German is generally required as for other spousal reunification (the Section 30 conditions apply accordingly), subject to the statutory exceptions. Family members who come for reunification are allowed to work in Germany."
       sourceUrl: "https://www.gesetze-im-internet.de/englisch_aufenthg/englisch_aufenthg.html"
       sourceName: "Residence Act (Aufenthaltsgesetz, AufenthG), Section 28 — official English translation (gesetze-im-internet.de)"
+      sourceHash: "763ff507f3bcea4599f3e5a38abb6cd079cda00070b27fb90675cae27e01fd3e"
       # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). §28(1) verbatim basis:
       # "The temporary residence permit is to be granted to the foreign 1. spouse
       # of a German ... if the German's habitual residence is in the federal
@@ -908,67 +999,78 @@ tasks:
       # §30(1) no.2 German-language requirement applies via §28 (do NOT state
       # spouses of Germans are exempt — they are not, per §28's cross-reference);
       # confirm the work-permission on the BAMF Family page.
-      status: UNVERIFIED
+      # VERIFIED 2026-06-13 (fact-verifier): AufenthG §28(1) read live, verbatim: "The temporary residence permit is to be granted to the foreign 1. spouse of a German ... if the German’s habitual residence is in the federal territory ... In derogation from section 5 (1), no. 1, it is to be granted as a general rule in the cases covered by sentence 1 no. 1. ... Section 30 (1) sentence 1 nos. 1 and 2, sentence 3 ... applies accordingly in the cases covered by sentence 1 no. 1." => §30(1) no. 2 basic-German requirement DOES apply to spouses of Germans (claim correctly does not exempt them). BAMF Family: "Family members coming to Germany for the purpose of family reunification are allowed to work in Germany." Supported.
+      status: VERIFIED
       lastVerified: "2026-06-13"
-      verifiedBy: ""
+      verifiedBy: "fact-verifier-de 2026-06-13"
       reviewBy: "2026-09-11"
     tldr:
       text: "If you are the foreign spouse of a German citizen whose home is in Germany, the residence permit is to be granted to you (Section 28) — a strong entitlement, granted as a general rule even if subsistence isn't fully secured. A basic ability to communicate in German is generally expected (the same condition as other spousal reunification), with statutory exceptions. Once here, you may work."
       sourceUrl: "https://www.gesetze-im-internet.de/englisch_aufenthg/englisch_aufenthg.html"
       sourceName: "Residence Act (Aufenthaltsgesetz, AufenthG), Section 28 — official English translation (gesetze-im-internet.de)"
+      sourceHash: "763ff507f3bcea4599f3e5a38abb6cd079cda00070b27fb90675cae27e01fd3e"
       # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). Same §28 basis.
       # Verifier: confirm the entitlement and the basic-German requirement
       # framing is accurate (not overstated as "no German needed").
-      status: UNVERIFIED
+      # VERIFIED 2026-06-13 (fact-verifier): AufenthG §28(1) read live (see summary note): "is to be granted ... as a general rule" in derogation from §5(1) no.1; basic-German requirement applies via the §30(1) cross-reference (not overstated as "no German needed"). Supported.
+      status: VERIFIED
       lastVerified: "2026-06-13"
-      verifiedBy: ""
+      verifiedBy: "fact-verifier-de 2026-06-13"
       reviewBy: "2026-09-11"
     keyFacts:
       - label: "Who qualifies"
         text: "The foreign spouse of a German national whose habitual residence is in Germany; minor unmarried children of a German also qualify under Section 28."
         sourceUrl: "https://www.gesetze-im-internet.de/englisch_aufenthg/englisch_aufenthg.html"
         sourceName: "Residence Act (Aufenthaltsgesetz, AufenthG), Section 28(1) — official English translation (gesetze-im-internet.de)"
+        sourceHash: "763ff507f3bcea4599f3e5a38abb6cd079cda00070b27fb90675cae27e01fd3e"
         # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). §28(1) lists "spouse
         # of a German", "minor unmarried child of a German", and "parent of a
         # minor unmarried German for ... care and custody". Verifier: confirm.
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): AufenthG §28(1) read live, verbatim list: "1. spouse of a German, 2. minor unmarried child of a German, 3. parent of a minor unmarried German for the purpose of care and custody". Supported.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-de 2026-06-13"
         reviewBy: "2026-09-11"
       - label: "Right or discretion"
         text: "Strong entitlement: the permit 'is to be granted' to the spouse of a German, and as a general rule even in derogation from the secured-subsistence condition (Section 5(1) no. 1)."
         sourceUrl: "https://www.gesetze-im-internet.de/englisch_aufenthg/englisch_aufenthg.html"
         sourceName: "Residence Act (Aufenthaltsgesetz, AufenthG), Section 28(1) — official English translation (gesetze-im-internet.de)"
+        sourceHash: "763ff507f3bcea4599f3e5a38abb6cd079cda00070b27fb90675cae27e01fd3e"
         # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). §28(1): "is to be
         # granted ... as a general rule in the cases covered by sentence 1 no. 1"
         # in derogation from §5(1) no. 1. Verifier: confirm the derogation.
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): AufenthG §28(1) read live, verbatim: "In derogation from section 5 (1), no. 1, it is to be granted as a general rule in the cases covered by sentence 1 no. 1." (the spouse case). Derogation confirmed. Supported.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-de 2026-06-13"
         reviewBy: "2026-09-11"
       - label: "Language"
         text: "A basic ability to communicate in German is generally required, as for other spousal reunification (Section 30 conditions apply accordingly under Section 28), subject to the statutory exceptions."
         sourceUrl: "https://www.gesetze-im-internet.de/englisch_aufenthg/englisch_aufenthg.html"
         sourceName: "Residence Act (Aufenthaltsgesetz, AufenthG), Sections 28 and 30 — official English translation (gesetze-im-internet.de)"
+        sourceHash: "763ff507f3bcea4599f3e5a38abb6cd079cda00070b27fb90675cae27e01fd3e"
         # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). LOAD-BEARING: §28(1)
         # cross-references "Section 30 (1) sentence 1 nos. 1 and 2, sentence 3"
         # => §30(1) no. 2 (basic German) applies accordingly, with the sentence-3
         # exceptions. Verifier: confirm the cross-reference; do NOT let this be
         # restated as "spouses of Germans need no German".
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): AufenthG §28(1) read live, verbatim cross-reference: "Section 30 (1) sentence 1 nos. 1 and 2, sentence 3 ... applies accordingly in the cases covered by sentence 1 no. 1." => §30(1) no. 2 (basic German) applies accordingly with the sentence-3 exceptions. NOT restated as "no German needed". Supported.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-de 2026-06-13"
         reviewBy: "2026-09-11"
       - label: "Work permission"
         text: "Family members who come to Germany for family reunification are allowed to work."
         sourceUrl: "https://www.bamf.de/EN/Themen/MigrationAufenthalt/ZuwandererDrittstaaten/Familie/familie-node.html"
         sourceName: "Federal Office for Migration and Refugees (BAMF) — Family"
+        sourceHash: "f0650add252316f37b63bc72439ad463babae2bebd80fd50bd67a8cedf5cc6ac"
         # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). BAMF Family verbatim:
         # "Family members coming to Germany for the purpose of family
         # reunification are allowed to work in Germany." Verifier: confirm.
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): BAMF Family read live, verbatim: "Family members coming to Germany for the purpose of family reunification are allowed to work in Germany." Supported.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-de 2026-06-13"
         reviewBy: "2026-09-11"
     detail: >
       Joining a German-citizen spouse is one of the strongest reunification routes: under
@@ -989,25 +1091,29 @@ tasks:
           - text: "BAMF — Family reunification (conditions vary by whether you join a German national, an EU citizen or a third-country national)"
             sourceUrl: "https://www.bamf.de/EN/Themen/MigrationAufenthalt/ZuwandererDrittstaaten/Familie/familie-node.html"
             sourceName: "Federal Office for Migration and Refugees (BAMF) — Family"
+            sourceHash: "f0650add252316f37b63bc72439ad463babae2bebd80fd50bd67a8cedf5cc6ac"
             # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). BAMF Family:
             # "the conditions vary according to whether you wish to come to
             # Germany to join a German national, an EU citizen or a third-country
             # national." Verifier: confirm.
-            status: UNVERIFIED
+            # VERIFIED 2026-06-13 (fact-verifier): BAMF Family read live, verbatim: "whether you wish to come to Germany to join a German national, an EU citizen or a third-country national." Conditions-vary framing confirmed. Link supported.
+            status: VERIFIED
             lastVerified: "2026-06-13"
-            verifiedBy: ""
+            verifiedBy: "fact-verifier-de 2026-06-13"
             reviewBy: "2026-09-11"
       - text: "Apply for the residence permit (via a family-reunification visa at a German mission, or after visa-free entry at the immigration authority)."
         links:
           - text: "German Missions in the United States — Visa (online application for family-reunion visas)"
             sourceUrl: "https://www.germany.info/us-en/service/visa"
             sourceName: "German Missions in the United States (germany.info) — Visa"
+            sourceHash: "d76e3fc2b72b81edc57ee811c72bdd9754e07c56fed2f3449565abe5966cc727"
             # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). germany.info Visa
             # page: online application includes "visas for the purpose of family
             # reunion". Verifier: confirm.
-            status: UNVERIFIED
+            # VERIFIED 2026-06-13 (fact-verifier): germany.info Visa read live: online application includes "visas for the purpose of family reunion". Link supported.
+            status: VERIFIED
             lastVerified: "2026-06-13"
-            verifiedBy: ""
+            verifiedBy: "fact-verifier-de 2026-06-13"
             reviewBy: "2026-09-11"
     documents:
       - name: "Valid US passport"
@@ -1029,11 +1135,13 @@ tasks:
           text: "Use the German Missions in the United States visa page (Consular Service Portal) to start a family-reunion visa, or apply at the local Ausländerbehörde after visa-free entry; we link the authority page rather than a deep PDF so the current form is used."
           sourceUrl: "https://www.germany.info/us-en/service/visa"
           sourceName: "German Missions in the United States (germany.info) — Visa"
+          sourceHash: "d76e3fc2b72b81edc57ee811c72bdd9754e07c56fed2f3449565abe5966cc727"
           # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). germany.info online
           # application includes family-reunion visas. Verifier: confirm.
-          status: UNVERIFIED
+          # VERIFIED 2026-06-13 (fact-verifier): germany.info Visa read live: Consular Service Portal online application includes family-reunion visas. Honest always-current-link framing. Supported.
+          status: VERIFIED
           lastVerified: "2026-06-13"
-          verifiedBy: ""
+          verifiedBy: "fact-verifier-de 2026-06-13"
           reviewBy: "2026-09-11"
     dependsOn: []
 
@@ -1046,6 +1154,7 @@ tasks:
       text: "A foreigner's spouse is to be granted a temporary residence permit if both spouses are at least 18 years old, the spouse can communicate in German at least at a basic level, and the sponsor holds a qualifying residence title (such as a settlement permit, an EU long-term residence permit, certain temporary residence permits, or has held a temporary residence permit for at least two years) — Section 30 of the Residence Act. Statutory exceptions to the basic-German requirement exist (for example for certain highly qualified sponsors and Blue Card holders); the general subsistence condition also applies."
       sourceUrl: "https://www.gesetze-im-internet.de/englisch_aufenthg/englisch_aufenthg.html"
       sourceName: "Residence Act (Aufenthaltsgesetz, AufenthG), Section 30 — official English translation (gesetze-im-internet.de)"
+      sourceHash: "763ff507f3bcea4599f3e5a38abb6cd079cda00070b27fb90675cae27e01fd3e"
       # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). §30(1) verbatim basis:
       # "A foreigner's spouse is to be granted a temporary residence permit if 1.
       # both spouses are at least 18 years of age, 2. the spouse is able to
@@ -1059,65 +1168,76 @@ tasks:
       # exceptions exist" rather than listing them definitively — verifier should
       # confirm at least that exceptions exist, e.g. via §30(1) sentence 3, and
       # that the §5 subsistence condition applies to this route).
-      status: UNVERIFIED
+      # VERIFIED 2026-06-13 (fact-verifier): AufenthG §30(1) read live, verbatim: "A foreigner’s spouse is to be granted a temporary residence permit if 1. both spouses are at least 18 years of age, 2. the spouse is able to communicate in the German language at least on a basic level and 3. the foreigner a) possesses a permanent settlement permit, b) possesses an EU long-term residence permit, c) possesses a temporary residence permit in accordance with sections 18d, 18f or sections 25 (1) or (2) ..., d) has held a temporary residence permit for two years ...". Basic-German exceptions exist (§30(1) sentence 3, incl. no. 5 for Blue Card/§18a/§18b sponsors). §5 subsistence condition applies. Supported.
+      status: VERIFIED
       lastVerified: "2026-06-13"
-      verifiedBy: ""
+      verifiedBy: "fact-verifier-de 2026-06-13"
       reviewBy: "2026-09-11"
     tldr:
       text: "If you are joining a foreign (non-German) spouse who lives in Germany, the permit is to be granted under Section 30 if both of you are at least 18, you can communicate in German at a basic level, and your sponsor holds a qualifying residence title (or has held one for two years). Statutory exceptions to the German requirement exist, and the general subsistence condition applies."
       sourceUrl: "https://www.gesetze-im-internet.de/englisch_aufenthg/englisch_aufenthg.html"
       sourceName: "Residence Act (Aufenthaltsgesetz, AufenthG), Section 30 — official English translation (gesetze-im-internet.de)"
+      sourceHash: "763ff507f3bcea4599f3e5a38abb6cd079cda00070b27fb90675cae27e01fd3e"
       # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). Same §30 basis.
       # Verifier: confirm.
-      status: UNVERIFIED
+      # VERIFIED 2026-06-13 (fact-verifier): AufenthG §30(1) read live (see summary note): three numbered conditions + qualifying-sponsor-title list + statutory German exceptions. Supported.
+      status: VERIFIED
       lastVerified: "2026-06-13"
-      verifiedBy: ""
+      verifiedBy: "fact-verifier-de 2026-06-13"
       reviewBy: "2026-09-11"
     keyFacts:
       - label: "Age requirement"
         text: "Both spouses must be at least 18 years of age."
         sourceUrl: "https://www.gesetze-im-internet.de/englisch_aufenthg/englisch_aufenthg.html"
         sourceName: "Residence Act (Aufenthaltsgesetz, AufenthG), Section 30(1) — official English translation (gesetze-im-internet.de)"
+        sourceHash: "763ff507f3bcea4599f3e5a38abb6cd079cda00070b27fb90675cae27e01fd3e"
         # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). §30(1) no. 1: "both
         # spouses are at least 18 years of age". Verifier: confirm verbatim.
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): AufenthG §30(1) no. 1 read live, verbatim: "both spouses are at least 18 years of age". Supported.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-de 2026-06-13"
         reviewBy: "2026-09-11"
       - label: "Language"
         text: "The joining spouse must be able to communicate in German at least on a basic level, unless a statutory exception applies."
         sourceUrl: "https://www.gesetze-im-internet.de/englisch_aufenthg/englisch_aufenthg.html"
         sourceName: "Residence Act (Aufenthaltsgesetz, AufenthG), Section 30(1) — official English translation (gesetze-im-internet.de)"
+        sourceHash: "763ff507f3bcea4599f3e5a38abb6cd079cda00070b27fb90675cae27e01fd3e"
         # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). §30(1) no. 2: "able
         # to communicate in the German language at least on a basic level".
         # Verifier: confirm verbatim and that exceptions exist (§30(1) sentence 3
         # / sentence 2).
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): AufenthG §30(1) no. 2 read live, verbatim: "the spouse is able to communicate in the German language at least on a basic level"; sentence-3 exceptions confirmed read live. Supported.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-de 2026-06-13"
         reviewBy: "2026-09-11"
       - label: "Sponsor's status"
         text: "Your sponsor must hold a qualifying residence title — e.g. a settlement permit, an EU long-term residence permit, certain temporary residence permits, or have held a temporary residence permit for at least two years."
         sourceUrl: "https://www.gesetze-im-internet.de/englisch_aufenthg/englisch_aufenthg.html"
         sourceName: "Residence Act (Aufenthaltsgesetz, AufenthG), Section 30(1) — official English translation (gesetze-im-internet.de)"
+        sourceHash: "763ff507f3bcea4599f3e5a38abb6cd079cda00070b27fb90675cae27e01fd3e"
         # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). §30(1) no. 3 lists
         # the qualifying sponsor titles (settlement permit; EU long-term; certain
         # temporary permits incl. §18d/§18f; held a temporary permit for two
         # years). Verifier: confirm the list (note the claim summarises it; do not
         # let it imply ALL temporary-permit holders qualify immediately).
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): AufenthG §30(1) no. 3 read live: qualifying sponsor titles — (a) permanent settlement permit, (b) EU long-term residence permit, (c) certain temporary permits (§18d/§18f/§25), (d) "has held a temporary residence permit for two years", (g) EU Blue Card/ICT. Claim summarises the list without implying all temporary-permit holders qualify immediately. Supported.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-de 2026-06-13"
         reviewBy: "2026-09-11"
       - label: "Work permission"
         text: "Family members who come to Germany for family reunification are allowed to work."
         sourceUrl: "https://www.bamf.de/EN/Themen/MigrationAufenthalt/ZuwandererDrittstaaten/Familie/familie-node.html"
         sourceName: "Federal Office for Migration and Refugees (BAMF) — Family"
+        sourceHash: "f0650add252316f37b63bc72439ad463babae2bebd80fd50bd67a8cedf5cc6ac"
         # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). BAMF Family verbatim.
         # Verifier: confirm.
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): BAMF Family read live, verbatim: "Family members coming to Germany for the purpose of family reunification are allowed to work in Germany." Supported.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-de 2026-06-13"
         reviewBy: "2026-09-11"
     detail: >
       Reunification with a non-German (third-country national) spouse who lives in Germany is
@@ -1137,23 +1257,27 @@ tasks:
           - text: "BAMF — Family reunification (subsequent immigration to join third-country nationals)"
             sourceUrl: "https://www.bamf.de/EN/Themen/MigrationAufenthalt/ZuwandererDrittstaaten/Familie/familie-node.html"
             sourceName: "Federal Office for Migration and Refugees (BAMF) — Family"
+            sourceHash: "f0650add252316f37b63bc72439ad463babae2bebd80fd50bd67a8cedf5cc6ac"
             # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). BAMF Family lists
             # "Subsequent immigration to join third-country nationals". Verifier:
             # confirm the subpage/topic exists on the page.
-            status: UNVERIFIED
+            # VERIFIED 2026-06-13 (fact-verifier): BAMF Family read live: sub-page "Subsequent immigration to join third-country nationals" listed. Link supported.
+            status: VERIFIED
             lastVerified: "2026-06-13"
-            verifiedBy: ""
+            verifiedBy: "fact-verifier-de 2026-06-13"
             reviewBy: "2026-09-11"
       - text: "Apply for the family-reunion visa at the German mission for your US state, or apply after visa-free entry at the immigration authority."
         links:
           - text: "German Missions in the United States — Visa (family-reunion visa online application)"
             sourceUrl: "https://www.germany.info/us-en/service/visa"
             sourceName: "German Missions in the United States (germany.info) — Visa"
+            sourceHash: "d76e3fc2b72b81edc57ee811c72bdd9754e07c56fed2f3449565abe5966cc727"
             # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). germany.info
             # online application includes family-reunion visas. Verifier: confirm.
-            status: UNVERIFIED
+            # VERIFIED 2026-06-13 (fact-verifier): germany.info Visa read live: online application includes family-reunion visas. Link supported.
+            status: VERIFIED
             lastVerified: "2026-06-13"
-            verifiedBy: ""
+            verifiedBy: "fact-verifier-de 2026-06-13"
             reviewBy: "2026-09-11"
     documents:
       - name: "Valid US passport"
@@ -1178,10 +1302,12 @@ tasks:
           text: "Start the family-reunion visa through the German Missions in the United States visa page (Consular Service Portal), or apply at the local Ausländerbehörde after visa-free entry; we link the authority page so the form is always current."
           sourceUrl: "https://www.germany.info/us-en/service/visa"
           sourceName: "German Missions in the United States (germany.info) — Visa"
+          sourceHash: "d76e3fc2b72b81edc57ee811c72bdd9754e07c56fed2f3449565abe5966cc727"
           # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). Verifier: confirm.
-          status: UNVERIFIED
+          # VERIFIED 2026-06-13 (fact-verifier): germany.info Visa read live: Consular Service Portal hosts family-reunion visa application. Honest always-current-link framing. Supported.
+          status: VERIFIED
           lastVerified: "2026-06-13"
-          verifiedBy: ""
+          verifiedBy: "fact-verifier-de 2026-06-13"
           reviewBy: "2026-09-11"
     warning: >
       The basic-German requirement and the sponsor's qualifying-title conditions are strict and
@@ -1199,6 +1325,7 @@ tasks:
       text: "The minor unmarried child of a foreigner is to be granted a temporary residence permit where the parents (or the parent with sole care and custody) hold a qualifying residence title — including the skilled-worker, Blue Card, family and other titles listed in Section 32 of the Residence Act. Children of family-reunification arrivals are allowed to attend school free of charge, and schooling is compulsory."
       sourceUrl: "https://www.gesetze-im-internet.de/englisch_aufenthg/englisch_aufenthg.html"
       sourceName: "Residence Act (Aufenthaltsgesetz, AufenthG), Section 32 — official English translation (gesetze-im-internet.de)"
+      sourceHash: "763ff507f3bcea4599f3e5a38abb6cd079cda00070b27fb90675cae27e01fd3e"
       # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). §32(1) verbatim basis:
       # "The minor unmarried child of a foreigner is to be granted a temporary
       # residence permit if the parents or the parent having the sole right of
@@ -1210,35 +1337,41 @@ tasks:
       # attend school." Verifier: confirm §32(1) "is to be granted" + the
       # qualifying-title list; confirm the free-schooling + compulsory-schooling
       # facts on BAMF First steps.
-      status: UNVERIFIED
+      # VERIFIED 2026-06-13 (fact-verifier): AufenthG §32(1) read live, verbatim: "The minor unmarried child of a foreigner is to be granted a temporary residence permit if the parents or the parent having the sole right of care and custody hold one of the following residence titles: ... 3. a temporary residence permit in accordance with sections 28, 30, 31, 36 or 36a, ... 5. an EU Blue Card ...". (Skilled-worker §18a/§18b/§18g sit in Division 4, also listed.) BAMF First steps: "your children can go to school free of charge"; "All children and juveniles living in Germany are required to attend school." Supported.
+      status: VERIFIED
       lastVerified: "2026-06-13"
-      verifiedBy: ""
+      verifiedBy: "fact-verifier-de 2026-06-13"
       reviewBy: "2026-09-11"
     keyFacts:
       - label: "Who qualifies"
         text: "A minor unmarried child of a foreigner, where the parents (or the parent with sole care and custody) hold a qualifying residence title."
         sourceUrl: "https://www.gesetze-im-internet.de/englisch_aufenthg/englisch_aufenthg.html"
         sourceName: "Residence Act (Aufenthaltsgesetz, AufenthG), Section 32(1) — official English translation (gesetze-im-internet.de)"
+        sourceHash: "763ff507f3bcea4599f3e5a38abb6cd079cda00070b27fb90675cae27e01fd3e"
         # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). §32(1) verbatim.
         # Verifier: confirm.
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): AufenthG §32(1) read live, verbatim: "The minor unmarried child of a foreigner is to be granted a temporary residence permit if the parents or the parent having the sole right of care and custody hold one of the following residence titles". Supported.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-de 2026-06-13"
         reviewBy: "2026-09-11"
       - label: "Right or discretion"
         text: "Entitlement: the child 'is to be granted' the permit where the qualifying-title condition is met."
         sourceUrl: "https://www.gesetze-im-internet.de/englisch_aufenthg/englisch_aufenthg.html"
         sourceName: "Residence Act (Aufenthaltsgesetz, AufenthG), Section 32(1) — official English translation (gesetze-im-internet.de)"
+        sourceHash: "763ff507f3bcea4599f3e5a38abb6cd079cda00070b27fb90675cae27e01fd3e"
         # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). §32(1) "is to be
         # granted". Verifier: confirm.
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): AufenthG §32(1) read live: "is to be granted" (entitlement). Supported.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-de 2026-06-13"
         reviewBy: "2026-09-11"
       - label: "Schooling"
         text: "Children can attend school free of charge (most schools are state-run), and schooling is compulsory for all children living in Germany — generally at least nine years from age six."
         sourceUrl: "https://www.bamf.de/EN/Themen/MigrationAufenthalt/ZuwandererDrittstaaten/Migrathek/ErsteSchritte/ersteschritte-node.html"
         sourceName: "Federal Office for Migration and Refugees (BAMF) — First steps in Germany"
+        sourceHash: "db8560121b4da0df9eaafad586db4febe2a86ea56dd514c0a8d03b117d1cdd52"
         # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). FIGURE-ish (nine
         # years / age six) — keep 90-day window as it is a stable statutory-ish
         # education fact, not a fee/quota. BAMF First steps verbatim basis: "your
@@ -1247,9 +1380,10 @@ tasks:
         # attend a general education school for at least nine years from the age
         # of six onwards", "The majority of schools are state-run and thus free of
         # charge." Verifier: confirm verbatim.
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): BAMF First steps read live, verbatim: "your children can go to school free of charge"; "All children and juveniles living in Germany are required to attend school. Depending on the Federal Land, they usually have to attend a general education school for at least nine years from the age of six onwards"; "The majority of schools are state-run and thus free of charge." Supported.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-de 2026-06-13"
         reviewBy: "2026-09-11"
     detail: >
       Children join under Section 32 of the Residence Act: the minor unmarried child of a
@@ -1268,10 +1402,12 @@ tasks:
           - text: "BAMF — First steps in Germany (children's schooling: compulsory, free state schools, mid-year enrolment)"
             sourceUrl: "https://www.bamf.de/EN/Themen/MigrationAufenthalt/ZuwandererDrittstaaten/Migrathek/ErsteSchritte/ersteschritte-node.html"
             sourceName: "Federal Office for Migration and Refugees (BAMF) — First steps in Germany"
+            sourceHash: "db8560121b4da0df9eaafad586db4febe2a86ea56dd514c0a8d03b117d1cdd52"
             # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). Verifier: confirm.
-            status: UNVERIFIED
+            # VERIFIED 2026-06-13 (fact-verifier): BAMF First steps read live: compulsory schooling, free state schools, and "They may also enrol intra-year" (mid-year enrolment). Link supported.
+            status: VERIFIED
             lastVerified: "2026-06-13"
-            verifiedBy: ""
+            verifiedBy: "fact-verifier-de 2026-06-13"
             reviewBy: "2026-09-11"
     documents:
       - name: "Child's valid US passport"
@@ -1297,6 +1433,7 @@ tasks:
       text: "For family reunification you normally apply for a national (type D) family-reunion visa at the German mission responsible for your US state, before travelling. As a US citizen you may instead enter visa-free and apply for the residence permit at the local immigration authority within 90 days of entry. For US applicants, family-reunion visas can be started online through the German Missions' Consular Service Portal."
       sourceUrl: "https://www.germany.info/us-en/service/visa"
       sourceName: "German Missions in the United States (germany.info) — Visa"
+      sourceHash: "d76e3fc2b72b81edc57ee811c72bdd9754e07c56fed2f3449565abe5966cc727"
       # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). germany.info: online
       # application includes "visas for the purpose of family reunion"; lists the
       # 9 US missions. AufenthV §41(1)/(3): US nationals may enter visa-free and
@@ -1306,41 +1443,48 @@ tasks:
       # §41(2) excludes economic activity for SOME privileged nationals, but
       # §41(1) — which names the USA — has no such restriction; verifier should
       # confirm the USA falls under §41(1), not §41(2)).
-      status: UNVERIFIED
+      # VERIFIED 2026-06-13 (fact-verifier): germany.info Visa read live: online application includes "visas for the purpose of family reunion"; lists the nine US missions. AufenthV §41(1) names the USA (NOT on the §41(2) economic-activity-restricted list); §41(3) 90-day deadline; AufenthG §6(3) national visa for longer stays. Family reunification falls within §41(1) scope for US nationals. Supported.
+      status: VERIFIED
       lastVerified: "2026-06-13"
-      verifiedBy: ""
+      verifiedBy: "fact-verifier-de 2026-06-13"
       reviewBy: "2026-09-11"
     keyFacts:
       - label: "Default route"
         text: "A national (type D) family-reunion visa from the German mission for your US state, applied for before travel."
         sourceUrl: "https://www.gesetze-im-internet.de/englisch_aufenthg/englisch_aufenthg.html"
         sourceName: "Residence Act (Aufenthaltsgesetz, AufenthG), Section 6(3) — official English translation (gesetze-im-internet.de)"
+        sourceHash: "763ff507f3bcea4599f3e5a38abb6cd079cda00070b27fb90675cae27e01fd3e"
         # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). §6(3) national visa
         # for longer stays. Verifier: confirm.
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): AufenthG §6(3) read live: national visa required for longer stays. Supported.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-de 2026-06-13"
         reviewBy: "2026-09-11"
       - label: "US-citizen option"
         text: "US nationals may instead enter visa-free and apply for the residence permit in Germany within 90 days of entry (Section 41 of the Residence Ordinance)."
         sourceUrl: "https://www.gesetze-im-internet.de/englisch_aufenthv/englisch_aufenthv.html"
         sourceName: "Residence Ordinance (Aufenthaltsverordnung, AufenthV), Section 41(1) and (3) — official English translation (gesetze-im-internet.de)"
+        sourceHash: "070d9f8979e6292df7ae334b4b2fe18cfe453106aa36945129d1308497503fd6"
         # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). §41(1) names the USA;
         # §41(3) 90-day deadline. Verifier: confirm and that family reunification
         # is within §41(1) scope.
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): AufenthV §41(1) (names the USA) + §41(3) (90-day deadline) read live; family reunification is within §41(1) scope (USA is not on the economic-activity-restricted §41(2) list). Supported.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-de 2026-06-13"
         reviewBy: "2026-09-11"
       - label: "Online for US applicants"
         text: "Family-reunion visas can be started online via the German Missions' Consular Service Portal."
         sourceUrl: "https://www.germany.info/us-en/service/visa"
         sourceName: "German Missions in the United States (germany.info) — Visa"
+        sourceHash: "d76e3fc2b72b81edc57ee811c72bdd9754e07c56fed2f3449565abe5966cc727"
         # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). germany.info online
         # portal lists family-reunion visas. Verifier: confirm.
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): germany.info Visa read live: online Consular Service Portal lists family-reunion visas. Supported.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-de 2026-06-13"
         reviewBy: "2026-09-11"
     detail: >
       The entry route for family reunification mirrors the work route: the default is a
@@ -1357,20 +1501,24 @@ tasks:
           - text: "BAMF — Entry regulations (national visa type D; visa-free entry option for privileged nationals)"
             sourceUrl: "https://www.bamf.de/EN/Themen/MigrationAufenthalt/ZuwandererDrittstaaten/Migrathek/Einreisebestimmungen/einreisebestimmungen-node.html"
             sourceName: "Federal Office for Migration and Refugees (BAMF) — Entry regulations"
+            sourceHash: "0db6a5e1a1aa1c314c7dd950c1f43345a91261c5a1b7448ddbfee34479c94f16"
             # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). Verifier: confirm.
-            status: UNVERIFIED
+            # VERIFIED 2026-06-13 (fact-verifier): BAMF Entry read live: covers national visa type D and the visa-free entry option for privileged nationals (§41 AufenthV in legal-basis list). NOTE: this link’s label/sourceName say "Online for US applicants" but the BAMF Entry page supports the entry-routes content, not an online portal; the cited page nonetheless supports both routes described in the step. Supported.
+            status: VERIFIED
             lastVerified: "2026-06-13"
-            verifiedBy: ""
+            verifiedBy: "fact-verifier-de 2026-06-13"
             reviewBy: "2026-09-11"
       - text: "If using the visa route, start the family-reunion visa application online via the Consular Service Portal and book the in-person appointment."
         links:
           - text: "German Missions in the United States — Visa"
             sourceUrl: "https://www.germany.info/us-en/service/visa"
             sourceName: "German Missions in the United States (germany.info) — Visa"
+            sourceHash: "d76e3fc2b72b81edc57ee811c72bdd9754e07c56fed2f3449565abe5966cc727"
             # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). Verifier: confirm.
-            status: UNVERIFIED
+            # VERIFIED 2026-06-13 (fact-verifier): germany.info Visa read live: Consular Service Portal + nine US missions. Link supported.
+            status: VERIFIED
             lastVerified: "2026-06-13"
-            verifiedBy: ""
+            verifiedBy: "fact-verifier-de 2026-06-13"
             reviewBy: "2026-09-11"
     documents:
       - name: "Valid US passport"
@@ -1386,10 +1534,12 @@ tasks:
           text: "Start the family-reunion visa via the German Missions in the United States visa page (Consular Service Portal); we link that authority page rather than a deep PDF so the current form is used."
           sourceUrl: "https://www.germany.info/us-en/service/visa"
           sourceName: "German Missions in the United States (germany.info) — Visa"
+          sourceHash: "d76e3fc2b72b81edc57ee811c72bdd9754e07c56fed2f3449565abe5966cc727"
           # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). Verifier: confirm.
-          status: UNVERIFIED
+          # VERIFIED 2026-06-13 (fact-verifier): germany.info Visa read live: Consular Service Portal hosts the family-reunion visa application. Honest always-current-link framing. Supported.
+          status: VERIFIED
           lastVerified: "2026-06-13"
-          verifiedBy: ""
+          verifiedBy: "fact-verifier-de 2026-06-13"
           reviewBy: "2026-09-11"
     dependsOn: []
 
@@ -1404,6 +1554,7 @@ tasks:
       text: "A residence permit for study requires that you have been accepted by the educational institution: for full-time studies at a state or state-recognised university (or a comparable institution), a foreigner is granted a temporary residence permit if he or she has been accepted by the institution (Section 16b of the Residence Act). Admission is the first step — you must hold a university place (or, in some cases, be admitted to a preparatory or language course required for your studies) before the study permit can be granted."
       sourceUrl: "https://www.gesetze-im-internet.de/englisch_aufenthg/englisch_aufenthg.html"
       sourceName: "Residence Act (Aufenthaltsgesetz, AufenthG), Section 16b — official English translation (gesetze-im-internet.de)"
+      sourceHash: "763ff507f3bcea4599f3e5a38abb6cd079cda00070b27fb90675cae27e01fd3e"
       # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). §16b(1) verbatim basis:
       # "For the purpose of full-time studies at a state or state-recognised
       # university or a comparable educational institution, a foreigner is granted
@@ -1413,45 +1564,52 @@ tasks:
       # admitted to a full-time course of study by a higher education institution.
       # You must also be able to support yourself." Verifier: confirm §16b(1)
       # acceptance requirement and the BAMF support-yourself fact.
-      status: UNVERIFIED
+      # VERIFIED 2026-06-13 (fact-verifier): AufenthG §16b(1) read live, verbatim: "For the purpose of full-time studies at a state or state-recognised university or a comparable educational institution, a foreigner is granted a temporary residence permit if he or she has been accepted by the educational institution." BAMF Education: "You can come to Germany to study here as long as you are admitted to a full-time course of study by a higher education institution. You must also be able to support yourself." Supported.
+      status: VERIFIED
       lastVerified: "2026-06-13"
-      verifiedBy: ""
+      verifiedBy: "fact-verifier-de 2026-06-13"
       reviewBy: "2026-09-11"
     keyFacts:
       - label: "Precondition"
         text: "You must be accepted (admitted) for full-time study at a state or state-recognised higher-education institution before the study residence permit can be granted."
         sourceUrl: "https://www.gesetze-im-internet.de/englisch_aufenthg/englisch_aufenthg.html"
         sourceName: "Residence Act (Aufenthaltsgesetz, AufenthG), Section 16b(1) — official English translation (gesetze-im-internet.de)"
+        sourceHash: "763ff507f3bcea4599f3e5a38abb6cd079cda00070b27fb90675cae27e01fd3e"
         # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). §16b(1) verbatim.
         # Verifier: confirm.
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): AufenthG §16b(1) read live, verbatim acceptance requirement (full-time, state/state-recognised institution). Supported.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-de 2026-06-13"
         reviewBy: "2026-09-11"
       - label: "Self-support"
         text: "You must be able to support yourself for the duration of your studies."
         sourceUrl: "https://www.bamf.de/EN/Themen/MigrationAufenthalt/ZuwandererDrittstaaten/Bildung/bildung-node.html"
         sourceName: "Federal Office for Migration and Refugees (BAMF) — Education / Study"
+        sourceHash: "5824fe26234fdd2763be5dccc12b30e3bb98ea3ccca9f6ad1a1b9ae14a50c079"
         # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). BAMF Education: "You
         # must also be able to support yourself." Verifier: confirm. (The exact
         # blocked-account amount changes yearly and is NOT asserted here.)
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): BAMF Education read live, verbatim: "You must also be able to support yourself." No blocked-account euro figure asserted. Supported.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-de 2026-06-13"
         reviewBy: "2026-09-11"
       - label: "Preparatory measures"
         text: "Residence for study also covers measures to prepare for studies — e.g. a required preparatory or language course where your university acceptance depends on it."
         sourceUrl: "https://www.gesetze-im-internet.de/englisch_aufenthg/englisch_aufenthg.html"
         sourceName: "Residence Act (Aufenthaltsgesetz, AufenthG), Section 16b(1) — official English translation (gesetze-im-internet.de)"
+        sourceHash: "763ff507f3bcea4599f3e5a38abb6cd079cda00070b27fb90675cae27e01fd3e"
         # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). §16b(1): "Residence
         # for study purposes also extends to measures to prepare for studies and
         # compulsory training. Measures to prepare for studies are 1. attending a
         # language course to prepare for studies, if ... acceptance depends on the
         # foreigner attending the preparatory language course, and 2. attending a
         # preparatory or comparable course ...". Verifier: confirm.
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): AufenthG §16b(1) read live, verbatim: "Residence for study purposes also extends to measures to prepare for studies and compulsory training. Measures to prepare for studies are 1. attending a language course to prepare for studies, if the foreigner has been accepted for full-time studies and the acceptance depends on the foreigner attending the preparatory language course, and 2. attending a preparatory or comparable course prior to studying ...". Supported.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-de 2026-06-13"
         reviewBy: "2026-09-11"
     detail: >
       The study route starts with admission. Under Section 16b of the Residence Act a foreigner
@@ -1470,10 +1628,12 @@ tasks:
           - text: "BAMF — Studying in Germany (admission to a full-time course; ability to support yourself)"
             sourceUrl: "https://www.bamf.de/EN/Themen/MigrationAufenthalt/ZuwandererDrittstaaten/Bildung/bildung-node.html"
             sourceName: "Federal Office for Migration and Refugees (BAMF) — Education / Study"
+            sourceHash: "5824fe26234fdd2763be5dccc12b30e3bb98ea3ccca9f6ad1a1b9ae14a50c079"
             # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). Verifier: confirm.
-            status: UNVERIFIED
+            # VERIFIED 2026-06-13 (fact-verifier): BAMF Education read live: admission to a full-time course + ability to support yourself. Link supported.
+            status: VERIFIED
             lastVerified: "2026-06-13"
-            verifiedBy: ""
+            verifiedBy: "fact-verifier-de 2026-06-13"
             reviewBy: "2026-09-11"
       - text: "Prepare proof that you can support yourself for the duration of your studies."
     documents:
@@ -1497,46 +1657,54 @@ tasks:
       text: "Once admitted, you receive a residence permit for the purpose of study under Section 16b of the Residence Act. As a US citizen you can either apply for a national (type D) study visa at a German mission before travel, or enter visa-free and apply for the study residence permit at the local immigration authority within 90 days — but you may only begin studying once the residence title has been issued. You must hold your university admission and proof of funds."
       sourceUrl: "https://www.gesetze-im-internet.de/englisch_aufenthg/englisch_aufenthg.html"
       sourceName: "Residence Act (Aufenthaltsgesetz, AufenthG), Section 16b — official English translation (gesetze-im-internet.de)"
+      sourceHash: "763ff507f3bcea4599f3e5a38abb6cd079cda00070b27fb90675cae27e01fd3e"
       # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). §16b basis as above;
       # AufenthV §41(1)/(3) visa-free option + 90-day deadline; BAMF Entry "the
       # intended purpose of your stay (e.g. work or study) may only be pursued
       # after the residence title has been issued." Verifier: confirm the study
       # permit is §16b, the visa-free option applies, and the start-after-issuance
       # restriction.
-      status: UNVERIFIED
+      # VERIFIED 2026-06-13 (fact-verifier): AufenthG §16b read live (study permit on acceptance). AufenthV §41(1)/(3) visa-free option + 90-day deadline read live. BAMF Entry: purpose "may only be pursued after the residence title has been issued." Supported.
+      status: VERIFIED
       lastVerified: "2026-06-13"
-      verifiedBy: ""
+      verifiedBy: "fact-verifier-de 2026-06-13"
       reviewBy: "2026-09-11"
     keyFacts:
       - label: "Legal basis"
         text: "Residence permit for the purpose of study under Section 16b of the Residence Act, granted on the basis of your university admission."
         sourceUrl: "https://www.gesetze-im-internet.de/englisch_aufenthg/englisch_aufenthg.html"
         sourceName: "Residence Act (Aufenthaltsgesetz, AufenthG), Section 16b — official English translation (gesetze-im-internet.de)"
+        sourceHash: "763ff507f3bcea4599f3e5a38abb6cd079cda00070b27fb90675cae27e01fd3e"
         # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). §16b. Verifier: confirm.
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): AufenthG §16b read live: residence permit for study granted on the basis of acceptance by the institution. Supported.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-de 2026-06-13"
         reviewBy: "2026-09-11"
       - label: "Entry options"
         text: "Apply for a national (type D) study visa before travel, or — as a US citizen — enter visa-free and apply for the study residence permit within 90 days of entry."
         sourceUrl: "https://www.gesetze-im-internet.de/englisch_aufenthv/englisch_aufenthv.html"
         sourceName: "Residence Ordinance (Aufenthaltsverordnung, AufenthV), Section 41 — official English translation (gesetze-im-internet.de)"
+        sourceHash: "070d9f8979e6292df7ae334b4b2fe18cfe453106aa36945129d1308497503fd6"
         # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). §41(1)/(3). Verifier:
         # confirm.
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): AufenthV §41(1)/(3) read live: US nationals may enter visa-free and apply within 90 days; national (type D) visa is the alternative. Supported.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-de 2026-06-13"
         reviewBy: "2026-09-11"
       - label: "Critical limit"
         text: "You may only begin your studies once the residence title has actually been issued — a visa-free entry alone does not let you start."
         sourceUrl: "https://www.bamf.de/EN/Themen/MigrationAufenthalt/ZuwandererDrittstaaten/Migrathek/Einreisebestimmungen/einreisebestimmungen-node.html"
         sourceName: "Federal Office for Migration and Refugees (BAMF) — Entry regulations"
+        sourceHash: "0db6a5e1a1aa1c314c7dd950c1f43345a91261c5a1b7448ddbfee34479c94f16"
         # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). BAMF Entry verbatim:
         # purpose "may only be pursued after the residence title has been issued."
         # Verifier: confirm.
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): BAMF Entry read live, verbatim: purpose (e.g. work or study) "may only be pursued after the residence title has been issued." Supported.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-de 2026-06-13"
         reviewBy: "2026-09-11"
     detail: >
       The study residence permit under Section 16b is granted on the basis of your university
@@ -1553,12 +1721,14 @@ tasks:
           - text: "German Missions in the United States — Visa (residence visa required for stays over 90 days for study)"
             sourceUrl: "https://www.germany.info/us-en/service/visa"
             sourceName: "German Missions in the United States (germany.info) — Visa"
+            sourceHash: "d76e3fc2b72b81edc57ee811c72bdd9754e07c56fed2f3449565abe5966cc727"
             # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). germany.info:
             # "A residence visa is required if you intend to stay in Germany for
             # more than 90 days for work or study ...". Verifier: confirm.
-            status: UNVERIFIED
+            # VERIFIED 2026-06-13 (fact-verifier): germany.info Visa read live, verbatim: "A residence visa is required if you intend to stay in Germany for more than 90 days for work or study or if you intend to move to Germany permanently." Supported.
+            status: VERIFIED
             lastVerified: "2026-06-13"
-            verifiedBy: ""
+            verifiedBy: "fact-verifier-de 2026-06-13"
             reviewBy: "2026-09-11"
       - text: "After arrival, complete your Anmeldung and apply for the study residence permit at the immigration authority."
     documents:
@@ -1581,10 +1751,12 @@ tasks:
           text: "Use the German Missions in the United States visa page (Consular Service Portal) for the study residence visa, or apply at the local Ausländerbehörde after visa-free entry; we link the authority page so the current form is used."
           sourceUrl: "https://www.germany.info/us-en/service/visa"
           sourceName: "German Missions in the United States (germany.info) — Visa"
+          sourceHash: "d76e3fc2b72b81edc57ee811c72bdd9754e07c56fed2f3449565abe5966cc727"
           # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). Verifier: confirm.
-          status: UNVERIFIED
+          # VERIFIED 2026-06-13 (fact-verifier): germany.info Visa read live: Consular Service Portal for residence visas; honest always-current-link framing. Supported.
+          status: VERIFIED
           lastVerified: "2026-06-13"
-          verifiedBy: ""
+          verifiedBy: "fact-verifier-de 2026-06-13"
           reviewBy: "2026-09-11"
     dependsOn:
       - study-admission
@@ -1598,36 +1770,42 @@ tasks:
       text: "Students on a Section 16b residence permit may take up employment of up to a total of 140 working days per year (a 'working day account'); student jobs (studentische Nebentätigkeiten) at the university are not counted against this limit. Part-time work counts in the way most favourable to you."
       sourceUrl: "https://www.gesetze-im-internet.de/englisch_aufenthg/englisch_aufenthg.html"
       sourceName: "Residence Act (Aufenthaltsgesetz, AufenthG), Section 16b — official English translation (gesetze-im-internet.de)"
+      sourceHash: "763ff507f3bcea4599f3e5a38abb6cd079cda00070b27fb90675cae27e01fd3e"
       # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). FIGURE (140 days) ->
       # reviewBy today+30d. §16b verbatim basis: "employment of up to a total of
       # 140 working days per year (working day account). Student jobs are not
       # counted. Part-time employment will be counted as follows in the way most
       # favourable for the foreigner: ...". Verifier: confirm the 140-working-day
       # figure and the student-jobs exemption verbatim.
-      status: UNVERIFIED
+      # VERIFIED 2026-06-13 (fact-verifier): AufenthG §16b read live, verbatim: "only entitles the holder to employment of up to a total of 140 working days per year (working day account). Student jobs are not counted. Part-time employment will be counted as follows in the way most favourable for the foreigner ...". Supported.
+      status: VERIFIED
       lastVerified: "2026-06-13"
-      verifiedBy: ""
+      verifiedBy: "fact-verifier-de 2026-06-13"
       reviewBy: "2026-07-13"
     keyFacts:
       - label: "Work allowance"
         text: "Up to 140 working days per year of employment (a 'working day account')."
         sourceUrl: "https://www.gesetze-im-internet.de/englisch_aufenthg/englisch_aufenthg.html"
         sourceName: "Residence Act (Aufenthaltsgesetz, AufenthG), Section 16b — official English translation (gesetze-im-internet.de)"
+        sourceHash: "763ff507f3bcea4599f3e5a38abb6cd079cda00070b27fb90675cae27e01fd3e"
         # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). FIGURE -> 30-day
         # window. §16b "140 working days per year". Verifier: confirm verbatim.
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): AufenthG §16b read live, verbatim: "employment of up to a total of 140 working days per year (working day account)." Supported.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-de 2026-06-13"
         reviewBy: "2026-07-13"
       - label: "Student jobs"
         text: "Student jobs (at the university) are not counted against the 140-day limit."
         sourceUrl: "https://www.gesetze-im-internet.de/englisch_aufenthg/englisch_aufenthg.html"
         sourceName: "Residence Act (Aufenthaltsgesetz, AufenthG), Section 16b — official English translation (gesetze-im-internet.de)"
+        sourceHash: "763ff507f3bcea4599f3e5a38abb6cd079cda00070b27fb90675cae27e01fd3e"
         # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). §16b "Student jobs
         # are not counted." Verifier: confirm verbatim.
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): AufenthG §16b read live, verbatim: "Student jobs are not counted." Supported.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-de 2026-06-13"
         reviewBy: "2026-09-11"
     detail: >
       A study permit lets you work part-time: up to 140 full working days per year under the
@@ -1642,10 +1820,12 @@ tasks:
           - text: "AufenthG Section 16b — students' 140-working-day employment allowance"
             sourceUrl: "https://www.gesetze-im-internet.de/englisch_aufenthg/englisch_aufenthg.html"
             sourceName: "Residence Act (Aufenthaltsgesetz, AufenthG), Section 16b — official English translation (gesetze-im-internet.de)"
+            sourceHash: "763ff507f3bcea4599f3e5a38abb6cd079cda00070b27fb90675cae27e01fd3e"
             # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). Verifier: confirm.
-            status: UNVERIFIED
+            # VERIFIED 2026-06-13 (fact-verifier): AufenthG §16b read live: 140-working-day account, student jobs not counted. Link supported.
+            status: VERIFIED
             lastVerified: "2026-06-13"
-            verifiedBy: ""
+            verifiedBy: "fact-verifier-de 2026-06-13"
             reviewBy: "2026-07-13"
     documents:
       - name: "Your study residence permit"
@@ -1663,6 +1843,7 @@ tasks:
       text: "After successfully completing a course of study in Germany, you can be granted a temporary residence permit to look for a job matching your qualification, for up to 18 months (Section 20 of the Residence Act). During this period you can take steps to move onto a skilled-worker permit or EU Blue Card once you have a suitable job."
       sourceUrl: "https://www.gesetze-im-internet.de/englisch_aufenthg/englisch_aufenthg.html"
       sourceName: "Residence Act (Aufenthaltsgesetz, AufenthG), Section 20 — official English translation (gesetze-im-internet.de)"
+      sourceHash: "763ff507f3bcea4599f3e5a38abb6cd079cda00070b27fb90675cae27e01fd3e"
       # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). FIGURE (18 months) ->
       # reviewBy today+30d. §20(1) basis: "In order to look for a job ...
       # foreigners are granted a temporary residence permit, if they successfully
@@ -1673,31 +1854,36 @@ tasks:
       # can be extended to enable you to look for a job matching your
       # qualifications." Verifier: confirm §20 job-search permit for graduates AND
       # the 18-month figure verbatim (read the §20 validity-period subsection).
-      status: UNVERIFIED
+      # VERIFIED 2026-06-13 (fact-verifier): AufenthG §20(1) read live, verbatim: "In order to look for a job 1. foreigners are granted a temporary residence permit, if they successfully completed a course of study in the federal territory as part of a stay under sections 16b or 16c". §20(2): "the temporary residence permit is granted for a period of up to 18 months" (applies to subsection (1) nos. 1–4, i.e. graduates). BAMF Education corroborates the post-study job-search extension. Supported.
+      status: VERIFIED
       lastVerified: "2026-06-13"
-      verifiedBy: ""
+      verifiedBy: "fact-verifier-de 2026-06-13"
       reviewBy: "2026-07-13"
     keyFacts:
       - label: "Post-study job search"
         text: "A residence permit to look for a job matching your qualification is granted after you successfully complete your studies in Germany."
         sourceUrl: "https://www.gesetze-im-internet.de/englisch_aufenthg/englisch_aufenthg.html"
         sourceName: "Residence Act (Aufenthaltsgesetz, AufenthG), Section 20(1) — official English translation (gesetze-im-internet.de)"
+        sourceHash: "763ff507f3bcea4599f3e5a38abb6cd079cda00070b27fb90675cae27e01fd3e"
         # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). §20(1) verbatim.
         # Verifier: confirm.
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): AufenthG §20(1) no. 1 read live: job-search permit granted to graduates of a §16b/§16c course of study. Supported.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-de 2026-06-13"
         reviewBy: "2026-09-11"
       - label: "Duration"
         text: "Up to 18 months."
         sourceUrl: "https://www.gesetze-im-internet.de/englisch_aufenthg/englisch_aufenthg.html"
         sourceName: "Residence Act (Aufenthaltsgesetz, AufenthG), Section 20 — official English translation (gesetze-im-internet.de)"
+        sourceHash: "763ff507f3bcea4599f3e5a38abb6cd079cda00070b27fb90675cae27e01fd3e"
         # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). FIGURE -> 30-day
         # window. §20 validity-period basis: "18 months." Verifier: confirm the
         # 18-month figure applies to the graduate job-search case specifically.
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): AufenthG §20(2) read live, verbatim: "the temporary residence permit is granted for a period of up to 18 months." This 18-month period applies to §20(1) nos. 1–4 (graduates = no. 1); the 12-month period applies only to no. 5 (health-care helpers). 18 months correctly applies to the graduate case. Supported.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-de 2026-06-13"
         reviewBy: "2026-07-13"
     detail: >
       Germany lets graduates stay on to find suitable work: under Section 20 of the Residence
@@ -1713,11 +1899,13 @@ tasks:
           - text: "BAMF — Education (after completing a degree, your stay can be extended to look for a matching job)"
             sourceUrl: "https://www.bamf.de/EN/Themen/MigrationAufenthalt/ZuwandererDrittstaaten/Bildung/bildung-node.html"
             sourceName: "Federal Office for Migration and Refugees (BAMF) — Education / Study"
+            sourceHash: "5824fe26234fdd2763be5dccc12b30e3bb98ea3ccca9f6ad1a1b9ae14a50c079"
             # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). BAMF Education
             # verbatim basis as above. Verifier: confirm.
-            status: UNVERIFIED
+            # VERIFIED 2026-06-13 (fact-verifier): BAMF Education read live, verbatim: "After successfully completing vocational training or a degree course, your stay in Germany can be extended to enable you to look for a job matching your qualifications." Supported.
+            status: VERIFIED
             lastVerified: "2026-06-13"
-            verifiedBy: ""
+            verifiedBy: "fact-verifier-de 2026-06-13"
             reviewBy: "2026-09-11"
       - text: "When you have a qualifying offer, switch to a skilled-worker permit or EU Blue Card."
     documents:

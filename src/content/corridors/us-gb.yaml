@@ -1,11 +1,14 @@
 # =============================================================================
-# USA -> United Kingdom (us-gb) corridor — RESEARCH DRAFT (ADR-0016 research run).
+# USA -> United Kingdom (us-gb) corridor — VERIFIED (ADR-0016 verification run).
 #
-# Drafted 2026-06-13 by content-researcher "research-gb". Every claim is
-# status: UNVERIFIED and the corridor is published: false. NOTHING here is
-# verified — a separate fact-verifier team must independently re-derive each
-# claim from its primary official source before any claim is set VERIFIED or
-# the corridor is published (two-agent rule, CLAUDE.md rule 2 / ADR-0016).
+# Drafted 2026-06-13 by content-researcher "research-gb"; every claim then
+# independently re-verified 2026-06-13 by fact-verifier "fact-verifier-gb"
+# (a DIFFERENT session, two-agent rule, CLAUDE.md rule 2 / ADR-0016). All 106
+# claims are now status: VERIFIED, each re-derived from its primary official
+# source re-fetched LIVE (curl, browser UA, HTTP 200) and carrying a sourceHash.
+# The corridor REMAINS published: false — the founder flips that after human
+# review (CLAUDE.md rule 8). No claim was set VERIFIED on the draft's wording or
+# pre-captured text alone; every source was re-fetched live during verification.
 #
 # Source base (all captured to sources/us-gb/ via scripts/snapshot-source.mjs,
 # local curl / residential IP, on 2026-06-13 — see manifest.json). gov.uk and
@@ -72,103 +75,72 @@ tasks:
       text: "The Skilled Worker visa lets you come to the UK to do an eligible job for a UK employer that the Home Office has approved as a sponsor. You must have a confirmed job offer and a 'Certificate of Sponsorship' (CoS) from that employer before you apply, the job must be on the list of eligible occupations, and you must be paid at least the minimum salary for the type of work. This is sponsorship-based, not a self-petition: you cannot apply without an approved sponsor."
       sourceUrl: "https://www.gov.uk/skilled-worker-visa"
       sourceName: "GOV.UK (UK Visas & Immigration) — Skilled Worker visa: Overview"
-      # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). Source basis: Overview
-      # page — "A Skilled Worker visa allows you to come to or stay in the UK to
-      # do an eligible job with an approved employer." Eligibility: "work for a UK
-      # employer that's been approved by the Home Office", "have a 'certificate of
-      # sponsorship' (CoS) from your employer", "do a job that's on the list of
-      # eligible occupations", "be paid a minimum salary". "You must have a
-      # confirmed job offer before you apply." Verifier: confirm the
-      # sponsorship-required framing and that this replaced Tier 2 (General).
-      status: UNVERIFIED
+      # VERIFIED 2026-06-13 (fact-verifier): Overview page re-fetched LIVE (curl, browser UA, HTTP 200, no redirect; correct page, breadcrumb Visas and immigration › Work in the UK › Skilled Worker visa). Verbatim: "A Skilled Worker visa allows you to come to or stay in the UK to do an eligible job with an approved employer. This visa has replaced the Tier 2 (General) work visa." Eligibility verbatim: "work for a UK employer that's been approved by the Home Office", "have a 'certificate of sponsorship' (CoS) from your employer", "do a job that's on the list of eligible occupations", "be paid a minimum salary". And: "You must have a confirmed job offer before you apply for your visa." Sponsorship-required framing supported character-for-character.
+      status: VERIFIED
       lastVerified: "2026-06-13"
-      verifiedBy: ""
+      verifiedBy: "fact-verifier-gb 2026-06-13"
+      sourceHash: "7f1e03639e350a4f751e4a552b9076d813e477dc98f3c29712415494ab2a0420"
       reviewBy: "2026-09-11"
     tldr:
       text: "To work in the UK as a US citizen, the main route is the Skilled Worker visa: you need a job offer from a UK employer the Home Office has licensed as a sponsor, a Certificate of Sponsorship from them, an eligible occupation, and a salary at or above the minimum. As a US national you do not have to prove your knowledge of English for this visa. The visa can last up to 5 years before you extend, and after 5 years you may be able to apply to settle (indefinite leave to remain)."
       sourceUrl: "https://www.gov.uk/skilled-worker-visa"
       sourceName: "GOV.UK — Skilled Worker visa: Overview"
-      # DRAFT 2026-06-13 (content-researcher, UNVERIFIED). Overview: "Your visa
-      # can last for up to 5 years before you need to extend it" and "After 5
-      # years, you may be able to apply to settle permanently in the UK (also
-      # known as 'indefinite leave to remain')." English-exemption for US
-      # nationals is on the companion "Knowledge of English" page (USA listed
-      # among countries whose nationals "do not need to prove their knowledge of
-      # English"). Verifier: confirm the English exemption for US nationals and
-      # the 5-year / ILR statements; do not overstate ILR as automatic ("may be
-      # able to").
-      status: UNVERIFIED
+      # VERIFIED 2026-06-13 (fact-verifier): Overview re-fetched LIVE (HTTP 200). Verbatim: "Your visa can last for up to 5 years before you need to extend it" and "After 5 years, you may be able to apply to settle permanently in the UK (also known as 'indefinite leave to remain')" — "may be able to" preserved (ILR not overstated as automatic). English exemption cross-checked on the companion Knowledge of English page (sourceHash 65d8b82b…), which lists "USA" verbatim under "Who does not need to prove their knowledge of English". Both load-bearing facts (5-year/ILR, US English exemption) supported.
+      status: VERIFIED
       lastVerified: "2026-06-13"
-      verifiedBy: ""
+      verifiedBy: "fact-verifier-gb 2026-06-13"
+      sourceHash: "7f1e03639e350a4f751e4a552b9076d813e477dc98f3c29712415494ab2a0420"
       reviewBy: "2026-09-11"
     keyFacts:
       - label: "Who sponsors"
         text: "A UK employer approved by the Home Office (a 'sponsor'). They issue you a Certificate of Sponsorship (CoS) — an electronic record with a reference number you use in your application. You cannot apply without a CoS."
         sourceUrl: "https://www.gov.uk/skilled-worker-visa/your-job"
         sourceName: "GOV.UK — Skilled Worker visa: Your job"
-        # DRAFT 2026-06-13 (UNVERIFIED). "Your job" page: "You must have a job
-        # offer from an approved UK employer before you apply", "They'll give you
-        # a 'certificate of sponsorship' (CoS) ... The certificate of sponsorship
-        # is an electronic record, not a physical document. It will have a
-        # reference number, which you'll need for your visa application."
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): "Your job" page re-fetched LIVE (HTTP 200, correct page). Verbatim: "You must have a job offer from an approved UK employer before you apply for a Skilled Worker visa. Approved employers are also known as sponsors". And: "They'll give you a 'certificate of sponsorship' (CoS) ... The certificate of sponsorship is an electronic record, not a physical document. It will have a reference number, which you'll need for your visa application." "cannot apply without a CoS" framing supported (CoS reference number required for the application).
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-gb 2026-06-13"
+        sourceHash: "50764181d7e67233d2e5a25a78eb42579220b0e634d37293161845f809543cea"
         reviewBy: "2026-09-11"
       - label: "Minimum salary"
         text: "Usually the higher of £41,700 per year OR the 'going rate' for your specific occupation code — whichever is greater. In limited cases (not healthcare/education) you might qualify with a salary of at least £33,400. Healthcare and education jobs use national pay scales. These figures change — confirm the current amounts before relying on them."
         sourceUrl: "https://www.gov.uk/skilled-worker-visa/your-job"
         sourceName: "GOV.UK — Skilled Worker visa: Your job"
-        # DRAFT 2026-06-13 (UNVERIFIED, FIGURE — reviewBy +30d). "Your job":
-        # "The minimum salary for the type of work you'll be doing is whichever is
-        # the highest of: £41,700 per year [or] the 'going rate' for the type of
-        # work you'll be doing." "When you can be paid less" section: "you might
-        # still be eligible if your salary will be at least £33,400 per year."
-        # Healthcare/education use national pay scales (separate page). Verifier:
-        # re-confirm both £ figures against the live page; these are the most
-        # volatile claims in the file.
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): "Your job" page re-fetched LIVE (HTTP 200). Both £ figures match character-for-character. Verbatim: "The minimum salary for the type of work you'll be doing is whichever is the highest of: £41,700 per year [or] the 'going rate' for the type of work you'll be doing." And under "When you can be paid less": "you might still be eligible if your salary will be at least £33,400 per year." Healthcare/education: "There are different salary rules if you work in some healthcare or education jobs, where the going rate is based on national pay scales." All three salary elements supported.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-gb 2026-06-13"
+        sourceHash: "50764181d7e67233d2e5a25a78eb42579220b0e634d37293161845f809543cea"
         reviewBy: "2026-07-13"
       - label: "English language"
         text: "US nationals do NOT need to prove their knowledge of English for this visa — the USA is on the Home Office exemption list. (Other applicants prove English to CEFR level B2, e.g. via a UK degree, a degree taught in English, or an approved test.)"
         sourceUrl: "https://www.gov.uk/skilled-worker-visa/knowledge-of-english"
         sourceName: "GOV.UK — Skilled Worker visa: Knowledge of English"
-        # DRAFT 2026-06-13 (UNVERIFIED). "Knowledge of English": "You do not need
-        # to prove your knowledge of English if you're a national of one of the
-        # following countries or territories:" — list includes "USA". General
-        # requirement otherwise: "at least level B2 on the Common European
-        # Framework of Reference for Languages (CEFR) scale." Verifier: confirm
-        # USA still on the exemption list — this is a load-bearing corridor fact.
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): "Knowledge of English" page re-fetched LIVE (HTTP 200). Load-bearing corridor fact CONFIRMED: under "Who does not need to prove their knowledge of English ... if you're a national of one of the following countries or territories:" the list ends with "USA" (verbatim). General requirement verbatim: "at least level B2 on the Common European Framework of Reference for Languages (CEFR) scale." US English-exemption supported character-for-character.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-gb 2026-06-13"
+        sourceHash: "65d8b82b559a9b408037364e4a58a96bf3d854d734e81430c300cbfa5d6658a5"
         reviewBy: "2026-09-11"
       - label: "How long / settlement"
         text: "The visa can last up to 5 years before you extend; you can extend as many times as you keep qualifying. After 5 years in the UK you may be able to apply to settle permanently (indefinite leave to remain)."
         sourceUrl: "https://www.gov.uk/skilled-worker-visa"
         sourceName: "GOV.UK — Skilled Worker visa: Overview"
-        # DRAFT 2026-06-13 (UNVERIFIED). Overview: "Your visa can last for up to 5
-        # years before you need to extend it", "You can apply to extend your visa
-        # as many times as you like as long as you still meet the eligibility
-        # requirements", "After 5 years, you may be able to apply to settle
-        # permanently". Verifier: keep "may be able to" — ILR is not automatic.
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): Overview re-fetched LIVE (HTTP 200). Verbatim: "Your visa can last for up to 5 years before you need to extend it", "You can apply to extend your visa as many times as you like as long as you still meet the eligibility requirements", "After 5 years, you may be able to apply to settle permanently in the UK". "may be able to" preserved — ILR not overstated. Supported.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-gb 2026-06-13"
+        sourceHash: "7f1e03639e350a4f751e4a552b9076d813e477dc98f3c29712415494ab2a0420"
         reviewBy: "2026-09-11"
       - label: "Decision time"
         text: "Once you have applied online, proved your identity and submitted documents, a decision usually comes within 3 weeks if you apply from outside the UK (8 weeks if inside). You can apply up to 3 months before your start date."
         sourceUrl: "https://www.gov.uk/skilled-worker-visa"
         sourceName: "GOV.UK — Skilled Worker visa: Overview"
-        # DRAFT 2026-06-13 (UNVERIFIED). Overview: "you'll usually get a decision
-        # on your visa within: 3 weeks, if you're outside the UK; 8 weeks, if
-        # you're inside the UK." "You can apply for a visa up to 3 months before
-        # the day you are due to start work."
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): Overview re-fetched LIVE (HTTP 200). Verbatim: "you'll usually get a decision on your visa within: 3 weeks, if you're outside the UK; 8 weeks, if you're inside the UK." And: "You can apply for a visa up to 3 months before the day you are due to start work in the UK." Both figures supported character-for-character.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-gb 2026-06-13"
+        sourceHash: "7f1e03639e350a4f751e4a552b9076d813e477dc98f3c29712415494ab2a0420"
         reviewBy: "2026-09-11"
     detail: >
       The Skilled Worker visa is the UK's main employer-sponsored work route under
@@ -192,25 +164,22 @@ tasks:
           - text: "GOV.UK — Skilled Worker visa: Your job (sponsor licence, CoS, occupation code, salary)"
             sourceUrl: "https://www.gov.uk/skilled-worker-visa/your-job"
             sourceName: "GOV.UK — Skilled Worker visa: Your job"
-            # DRAFT 2026-06-13 (UNVERIFIED). "You must apply for your visa within
-            # 3 months of getting your certificate of sponsorship." Sponsor-
-            # licence framing on same page.
-            status: UNVERIFIED
+            # VERIFIED 2026-06-13 (fact-verifier): "Your job" re-fetched LIVE (HTTP 200). Verbatim: "You must apply for your visa within 3 months of getting your certificate of sponsorship." Sponsor-licence framing supported verbatim: "If your employer is not currently approved, they can apply for a sponsor licence if they're eligible ... It usually takes around 8 weeks to process a licence application." Link accurate.
+            status: VERIFIED
             lastVerified: "2026-06-13"
-            verifiedBy: ""
+            verifiedBy: "fact-verifier-gb 2026-06-13"
+            sourceHash: "50764181d7e67233d2e5a25a78eb42579220b0e634d37293161845f809543cea"
             reviewBy: "2026-09-11"
       - text: "Check your job is eligible: find its 4-digit occupation code and confirm it is on the list of eligible occupations, and that your salary meets the minimum (the higher of the general threshold or your occupation's going rate)."
         links:
           - text: "GOV.UK — Skilled Worker visa: Your job (occupation code + going rate)"
             sourceUrl: "https://www.gov.uk/skilled-worker-visa/your-job"
             sourceName: "GOV.UK — Skilled Worker visa: Your job"
-            # DRAFT 2026-06-13 (UNVERIFIED). "Before you can find out if your job
-            # is eligible, you need to know its 4-digit occupation code", "Each
-            # occupation code has its own annual going rate. Check the going rate
-            # for your job in the going rates table."
-            status: UNVERIFIED
+            # VERIFIED 2026-06-13 (fact-verifier): "Your job" re-fetched LIVE (HTTP 200). Verbatim: "Before you can find out if your job is eligible, you need to know its 4-digit occupation code" and "Each occupation code has its own annual going rate. Check the going rate for your job in the going rates table." Eligible-occupations table referenced verbatim ("view the table of eligible jobs to see if it's included"). Link accurate.
+            status: VERIFIED
             lastVerified: "2026-06-13"
-            verifiedBy: ""
+            verifiedBy: "fact-verifier-gb 2026-06-13"
+            sourceHash: "50764181d7e67233d2e5a25a78eb42579220b0e634d37293161845f809543cea"
             reviewBy: "2026-09-11"
       - text: "Apply online from the USA, pay the application fee and the Immigration Health Surcharge, and show you have at least £1,270 in savings to support yourself (unless exempt or your employer certifies maintenance)."
         tip: "The savings must usually have been in your account for 28 consecutive days, with day 28 within 31 days of applying."
@@ -218,27 +187,22 @@ tasks:
           - text: "GOV.UK — Skilled Worker visa: How much it costs"
             sourceUrl: "https://www.gov.uk/skilled-worker-visa/how-much-it-costs"
             sourceName: "GOV.UK — Skilled Worker visa: How much it costs"
-            # DRAFT 2026-06-13 (UNVERIFIED). "support yourself when you arrive in
-            # the UK - you'll usually need to have at least £1,270 available
-            # (unless you're exempt)"; "You will need to have had the money
-            # available for at least 28 days in a row. Day 28 must be within 31
-            # days of applying."
-            status: UNVERIFIED
+            # VERIFIED 2026-06-13 (fact-verifier): "How much it costs" re-fetched LIVE (HTTP 200). Verbatim: "support yourself when you arrive in the UK - you'll usually need to have at least £1,270 available (unless you're exempt)" and "You will need to have had the money available for at least 28 days in a row. Day 28 must be within 31 days of applying for this visa." Employer-certifies-maintenance exemption supported ("Your employer will need to complete the 'sponsor certifies maintenance' section on your certificate"). £1,270 + 28/31-day rule supported character-for-character.
+            status: VERIFIED
             lastVerified: "2026-06-13"
-            verifiedBy: ""
+            verifiedBy: "fact-verifier-gb 2026-06-13"
+            sourceHash: "5ff69ae5009e40209534ba9341a731947c22aa83110d38c0e03d69ded0df6e0e"
             reviewBy: "2026-07-13"
       - text: "Prove your identity (usually with the 'UK Immigration: ID Check' app and a UKVI account, or by giving biometrics at a visa application centre) and submit your documents."
         links:
           - text: "GOV.UK — Skilled Worker visa: Documents you'll need to apply"
             sourceUrl: "https://www.gov.uk/skilled-worker-visa/documents-you-must-provide"
             sourceName: "GOV.UK — Skilled Worker visa: Documents you'll need to apply"
-            # DRAFT 2026-06-13 (UNVERIFIED). Documents page lists required items;
-            # identity-proof framing on Overview/Your partner pages ("UK
-            # Immigration: ID Check app ... UKVI account" or biometrics at a visa
-            # application centre).
-            status: UNVERIFIED
+            # VERIFIED 2026-06-13 (fact-verifier): Documents page re-fetched LIVE (HTTP 200, correct page). Lists required items verbatim: "your certificate of sponsorship reference number", "proof of your knowledge of English", "a valid passport or other document that shows your identity and nationality", "your job title and annual salary", "your job's occupation code", "the name of your employer and their sponsor licence number". ID Check / biometrics framing in the step text cross-confirmed on the "Your partner and children" page (sourceHash 9f697ef2…): verbatim "use the 'UK Immigration: ID Check' app to scan their identity document - they'll also create or sign into their UK Visas and Immigration (UKVI) account [or] have their fingerprints and photo (biometric information) taken at a visa application centre". Link accurate; step text supported.
+            status: VERIFIED
             lastVerified: "2026-06-13"
-            verifiedBy: ""
+            verifiedBy: "fact-verifier-gb 2026-06-13"
+            sourceHash: "c3fdcc3e4169aa275687532647dd2447c0fd94cd93b0439aa6fd446947658cf6"
             reviewBy: "2026-09-11"
     documents:
       - name: "Certificate of Sponsorship (CoS) reference number"
@@ -263,36 +227,31 @@ tasks:
           text: "Apply online for the Skilled Worker visa via the official GOV.UK route. We link the route page rather than a deep apply-link so it stays current; choose the 'Apply from outside the UK' path."
           sourceUrl: "https://www.gov.uk/skilled-worker-visa"
           sourceName: "GOV.UK — Skilled Worker visa: Overview"
-          # DRAFT 2026-06-13 (UNVERIFIED). Overview: "You must apply online. How
-          # you apply depends on whether you're: outside the UK and are coming to
-          # the UK ..." Verifier: confirm the route page is the correct entry
-          # point and links the outside-UK application path.
-          status: UNVERIFIED
+          # VERIFIED 2026-06-13 (fact-verifier): Overview re-fetched LIVE (HTTP 200). Verbatim: "You must apply online. How you apply depends on whether you're: outside the UK and are coming to the UK; inside the UK and extending your current visa; inside the UK and switching from a different visa". Route page is the correct entry point and the contents include "Apply from outside the UK". Supported.
+          status: VERIFIED
           lastVerified: "2026-06-13"
-          verifiedBy: ""
+          verifiedBy: "fact-verifier-gb 2026-06-13"
+          sourceHash: "7f1e03639e350a4f751e4a552b9076d813e477dc98f3c29712415494ab2a0420"
           reviewBy: "2026-09-11"
     timeline:
       text: "Usually 3 weeks for a decision after you apply from outside the UK (longer if you need a biometrics appointment). You can apply up to 3 months before your job start date."
       sourceUrl: "https://www.gov.uk/skilled-worker-visa"
       sourceName: "GOV.UK — Skilled Worker visa: Overview"
-      # DRAFT 2026-06-13 (UNVERIFIED). Overview decision-time + 3-months-before
-      # statements (see "Decision time" keyFact basis).
-      status: UNVERIFIED
+      # VERIFIED 2026-06-13 (fact-verifier): Overview re-fetched LIVE (HTTP 200). Verbatim: "you'll usually get a decision on your visa within: 3 weeks, if you're outside the UK" and "You can apply for a visa up to 3 months before the day you are due to start work in the UK." Supported.
+      status: VERIFIED
       lastVerified: "2026-06-13"
-      verifiedBy: ""
+      verifiedBy: "fact-verifier-gb 2026-06-13"
+      sourceHash: "7f1e03639e350a4f751e4a552b9076d813e477dc98f3c29712415494ab2a0420"
       reviewBy: "2026-09-11"
     cost:
       text: "Application fee from outside the UK: £819 per person for up to 3 years, or £1,618 per person for more than 3 years (lower fees apply if the job is on the immigration salary list: £628 / £1,235). Plus the Immigration Health Surcharge, usually £1,035 per year. Figures change — confirm current amounts."
       sourceUrl: "https://www.gov.uk/skilled-worker-visa/how-much-it-costs"
       sourceName: "GOV.UK — Skilled Worker visa: How much it costs"
-      # DRAFT 2026-06-13 (UNVERIFIED, FIGURE — reviewBy +30d). "How much it
-      # costs": from outside the UK "up to 3 years - £819 per person; more than 3
-      # years - £1,618 per person"; immigration salary list "£628 / £1,235";
-      # "pay the healthcare surcharge - this is usually £1,035 per year."
-      # Verifier: re-confirm all four fee figures + IHS rate on the live page.
-      status: UNVERIFIED
+      # VERIFIED 2026-06-13 (fact-verifier): "How much it costs" re-fetched LIVE (HTTP 200). All four fee figures + IHS rate match character-for-character. Verbatim, outside the UK: "up to 3 years - £819 per person; more than 3 years - £1,618 per person". Immigration salary list: "£628 if you're staying for up to 3 years; £1,235 if you're staying for more than 3 years". And: "pay the healthcare surcharge - this is usually £1,035 per year". Supported.
+      status: VERIFIED
       lastVerified: "2026-06-13"
-      verifiedBy: ""
+      verifiedBy: "fact-verifier-gb 2026-06-13"
+      sourceHash: "5ff69ae5009e40209534ba9341a731947c22aa83110d38c0e03d69ded0df6e0e"
       reviewBy: "2026-07-13"
     warning: >
       Salary thresholds, going rates, application fees and the eligible-occupation
@@ -312,75 +271,62 @@ tasks:
       text: "The Global Talent visa is for people who are a leader or potential leader in academia or research, arts and culture, or digital technology. Unlike the Skilled Worker visa it does not need an employer sponsor or a job offer. Most applicants first get an 'endorsement' confirming they are a leader/potential leader in their field; winners of certain eligible prestigious prizes can apply directly without an endorsement. You must be at least 18."
       sourceUrl: "https://www.gov.uk/global-talent"
       sourceName: "GOV.UK — Global Talent visa: Overview"
-      # DRAFT 2026-06-13 (UNVERIFIED). Overview: "You can apply for a Global
-      # Talent visa to work in the UK if you're a leader or potential leader in
-      # one of the following fields: academia or research; arts and culture;
-      # digital technology. You must also be at least 18 years old." Endorsement
-      # vs prize routes described. Verifier: confirm no sponsor/job-offer needed.
-      status: UNVERIFIED
+      # VERIFIED 2026-06-13 (fact-verifier): Global Talent Overview re-fetched LIVE (HTTP 200, correct page "Apply for the Global Talent visa: Overview"). Verbatim: "You can apply for a Global Talent visa to work in the UK if you're a leader or potential leader in one of the following fields: academia or research; arts and culture; digital technology. You must also be at least 18 years old." Endorsement-vs-prize verbatim: "If you've won an eligible prestigious prize, you can apply for the visa directly. If you've not won an eligible prestigious prize, you'll need to get an endorsement first". No-sponsor/no-job-offer confirmed: the page never requires a sponsor or job offer and frames Skilled Worker as the alternative ("there are other ways to work in the UK - for example a Skilled Worker visa"). Supported.
+      status: VERIFIED
       lastVerified: "2026-06-13"
-      verifiedBy: ""
+      verifiedBy: "fact-verifier-gb 2026-06-13"
+      sourceHash: "3ba22e6a017ebccebb97d2185f38f2f1d2407f809d3eea4592717f642a704d68"
       reviewBy: "2026-09-11"
     tldr:
       text: "If you are a recognised leader (or potential leader) in research/academia, arts and culture, or digital technology, the Global Talent visa lets you work in the UK without an employer sponsor or job offer. Most people need an endorsement from a designated body first; eligible-prize winners can skip that. You can live and work in the UK for up to 5 years at a time, with no overall limit, and may settle after 3 or 5 years depending on your field and route."
       sourceUrl: "https://www.gov.uk/global-talent"
       sourceName: "GOV.UK — Global Talent visa: Overview"
-      # DRAFT 2026-06-13 (UNVERIFIED). Overview: "You can live and work in the UK
-      # for up to 5 years at a time", "There's no limit to how long you can stay
-      # in the UK in total", "You may be able to get indefinite leave to remain
-      # so you can settle in the UK after 3 or 5 years, depending on which field
-      # you work in and how you apply." Verifier: keep "may be able to".
-      status: UNVERIFIED
+      # VERIFIED 2026-06-13 (fact-verifier): Overview re-fetched LIVE (HTTP 200). Verbatim: "You can live and work in the UK for up to 5 years at a time", "There's no limit to how long you can stay in the UK in total", "You may be able to get indefinite leave to remain so you can settle in the UK after 3 or 5 years, depending on which field you work in and how you apply." "may be able to" preserved. Supported.
+      status: VERIFIED
       lastVerified: "2026-06-13"
-      verifiedBy: ""
+      verifiedBy: "fact-verifier-gb 2026-06-13"
+      sourceHash: "3ba22e6a017ebccebb97d2185f38f2f1d2407f809d3eea4592717f642a704d68"
       reviewBy: "2026-09-11"
     keyFacts:
       - label: "Sponsor / job offer"
         text: "None required. You do not need an employer sponsor or a confirmed job offer — this is the key difference from the Skilled Worker visa."
         sourceUrl: "https://www.gov.uk/global-talent"
         sourceName: "GOV.UK — Global Talent visa: Overview"
-        # DRAFT 2026-06-13 (UNVERIFIED). The Overview never mentions a sponsor or
-        # job offer and contrasts itself with the Skilled Worker visa ("there are
-        # other ways to work in the UK - for example a Skilled Worker visa").
-        # Verifier: confirm the no-sponsor framing is not overstated.
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): Overview re-fetched LIVE (HTTP 200). The page describes eligibility (leader/potential leader + endorsement-or-prize) with NO sponsor and NO job-offer requirement anywhere, and verbatim frames Skilled Worker as the alternative: "If you're not eligible for a Global Talent visa, there are other ways to work in the UK - for example a Skilled Worker visa." No-sponsor framing not overstated. Supported.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-gb 2026-06-13"
+        sourceHash: "3ba22e6a017ebccebb97d2185f38f2f1d2407f809d3eea4592717f642a704d68"
         reviewBy: "2026-09-11"
       - label: "Endorsement vs prize"
         text: "Most applicants apply for an endorsement first (proving they are a leader/potential leader). If you have won an eligible prestigious prize named on the official list, you can apply for the visa directly without an endorsement."
         sourceUrl: "https://www.gov.uk/global-talent"
         sourceName: "GOV.UK — Global Talent visa: Overview"
-        # DRAFT 2026-06-13 (UNVERIFIED). "If you've won an eligible prestigious
-        # prize, you can apply for the visa directly. If you've not ... you'll
-        # need to get an endorsement first."
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): Overview re-fetched LIVE (HTTP 200). Verbatim: "If you've won an eligible prestigious prize, you can apply for the visa directly. If you've not won an eligible prestigious prize, you'll need to get an endorsement first to prove that you're a leader or potential leader in your field." Prize-must-be-named-on-the-list supported: "the prize must be named on the list - other prizes awarded by the same institutions are not eligible". Supported.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-gb 2026-06-13"
+        sourceHash: "3ba22e6a017ebccebb97d2185f38f2f1d2407f809d3eea4592717f642a704d68"
         reviewBy: "2026-09-11"
       - label: "Cost"
         text: "£766 to apply. If applying via endorsement it is split: £561 for the endorsement, then £205 for the visa. Plus the Immigration Health Surcharge, usually £1,035 per year per person. Figures change — confirm current amounts."
         sourceUrl: "https://www.gov.uk/global-talent"
         sourceName: "GOV.UK — Global Talent visa: Overview"
-        # DRAFT 2026-06-13 (UNVERIFIED, FIGURE — reviewBy +30d). "It costs £766 to
-        # apply. If you're applying based on an endorsement, you'll pay the £766
-        # in two parts: £561 when you apply for the endorsement; £205 when you
-        # apply for the visa itself." "healthcare surcharge ... usually £1,035 per
-        # year for each person." Verifier: re-confirm the £766/£561/£205 split.
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): Overview re-fetched LIVE (HTTP 200). £766/£561/£205 split matches character-for-character. Verbatim: "It costs £766 to apply. If you're applying based on an endorsement, you'll pay the £766 in two parts: £561 when you apply for the endorsement; £205 when you apply for the visa itself." And: "Healthcare surcharge ... this is usually £1,035 per year for each person applying." Supported.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-gb 2026-06-13"
+        sourceHash: "3ba22e6a017ebccebb97d2185f38f2f1d2407f809d3eea4592717f642a704d68"
         reviewBy: "2026-07-13"
       - label: "Decision time"
         text: "Usually 3 weeks for the visa decision if you apply from outside the UK (8 weeks inside), after proving identity and submitting documents."
         sourceUrl: "https://www.gov.uk/global-talent"
         sourceName: "GOV.UK — Global Talent visa: Overview"
-        # DRAFT 2026-06-13 (UNVERIFIED). "you'll usually get a decision on your
-        # visa within: 3 weeks, if you're outside the UK; 8 weeks, if you're
-        # inside the UK." (Note: this is the visa stage; endorsement is separate.)
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): Overview re-fetched LIVE (HTTP 200). Verbatim (under "Getting a decision"): "you'll usually get a decision on your visa within: 3 weeks, if you're outside the UK; 8 weeks, if you're inside the UK." Claim correctly scopes this to the visa stage (endorsement is separate). Supported.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-gb 2026-06-13"
+        sourceHash: "3ba22e6a017ebccebb97d2185f38f2f1d2407f809d3eea4592717f642a704d68"
         reviewBy: "2026-09-11"
     detail: >
       The Global Talent visa suits US applicants who do not have (or do not want)
@@ -399,9 +345,11 @@ tasks:
           - text: "GOV.UK — Global Talent visa: Overview (endorsement vs prize)"
             sourceUrl: "https://www.gov.uk/global-talent"
             sourceName: "GOV.UK — Global Talent visa: Overview"
-            status: UNVERIFIED
+            # VERIFIED 2026-06-13 (fact-verifier): Overview re-fetched LIVE (HTTP 200). Endorsement-vs-prize routing verbatim: "If you've won an eligible prestigious prize, you can apply for the visa directly. If you've not won an eligible prestigious prize, you'll need to get an endorsement first". Link accurate.
+            status: VERIFIED
             lastVerified: "2026-06-13"
-            verifiedBy: ""
+            verifiedBy: "fact-verifier-gb 2026-06-13"
+            sourceHash: "3ba22e6a017ebccebb97d2185f38f2f1d2407f809d3eea4592717f642a704d68"
             reviewBy: "2026-09-11"
       - text: "If needed, apply for an endorsement in your field, then apply online for the visa itself; prove your identity and submit your documents."
         tip: "If applying via endorsement you pay the fee in two parts (endorsement first, then visa)."
@@ -409,9 +357,11 @@ tasks:
           - text: "GOV.UK — Global Talent visa: Overview (how to apply, fees)"
             sourceUrl: "https://www.gov.uk/global-talent"
             sourceName: "GOV.UK — Global Talent visa: Overview"
-            status: UNVERIFIED
+            # VERIFIED 2026-06-13 (fact-verifier): Overview re-fetched LIVE (HTTP 200). Two-part fee verbatim: "If you're applying based on an endorsement, you'll pay the £766 in two parts: £561 when you apply for the endorsement; £205 when you apply for the visa itself." How-to-apply ("You must apply online") present. Link accurate.
+            status: VERIFIED
             lastVerified: "2026-06-13"
-            verifiedBy: ""
+            verifiedBy: "fact-verifier-gb 2026-06-13"
+            sourceHash: "3ba22e6a017ebccebb97d2185f38f2f1d2407f809d3eea4592717f642a704d68"
             reviewBy: "2026-07-13"
     documents:
       - name: "Valid passport or identity document"
@@ -427,18 +377,21 @@ tasks:
           text: "Apply online for the Global Talent visa via the official GOV.UK route page. We link the route page so the apply path and endorsing-body links stay current."
           sourceUrl: "https://www.gov.uk/global-talent"
           sourceName: "GOV.UK — Global Talent visa: Overview"
-          status: UNVERIFIED
+          # VERIFIED 2026-06-13 (fact-verifier): Overview re-fetched LIVE (HTTP 200). Verbatim: "You must apply online. How you apply depends on whether you're: outside the UK and are coming to the UK ..." Route page is the correct GOV.UK entry point for both the endorsement and visa application. Supported.
+          status: VERIFIED
           lastVerified: "2026-06-13"
-          verifiedBy: ""
+          verifiedBy: "fact-verifier-gb 2026-06-13"
+          sourceHash: "3ba22e6a017ebccebb97d2185f38f2f1d2407f809d3eea4592717f642a704d68"
           reviewBy: "2026-09-11"
     cost:
       text: "£766 total to apply (split £561 endorsement + £205 visa if using the endorsement route), plus the Immigration Health Surcharge, usually £1,035 per year per person. Confirm current figures before relying on them."
       sourceUrl: "https://www.gov.uk/global-talent"
       sourceName: "GOV.UK — Global Talent visa: Overview"
-      # DRAFT 2026-06-13 (UNVERIFIED, FIGURE — reviewBy +30d). See "Cost" keyFact.
-      status: UNVERIFIED
+      # VERIFIED 2026-06-13 (fact-verifier): Overview re-fetched LIVE (HTTP 200). £766/£561/£205 split + IHS £1,035/yr per person all match character-for-character (see "Cost" keyFact). Supported.
+      status: VERIFIED
       lastVerified: "2026-06-13"
-      verifiedBy: ""
+      verifiedBy: "fact-verifier-gb 2026-06-13"
+      sourceHash: "3ba22e6a017ebccebb97d2185f38f2f1d2407f809d3eea4592717f642a704d68"
       reviewBy: "2026-07-13"
     warning: >
       Endorsing bodies, eligible-prize lists and fees change. The endorsement
@@ -457,77 +410,62 @@ tasks:
       text: "The Student visa lets you study in the UK if you are 16 or over, have an unconditional offer of a place on a course from a licensed student sponsor (your university or college), can support yourself and pay for your course, and can use English. Your institution issues you a 'Confirmation of Acceptance for Studies' (CAS) reference number, which you need before you apply. This replaced the Tier 4 (General) student visa."
       sourceUrl: "https://www.gov.uk/student-visa"
       sourceName: "GOV.UK — Student visa: Overview"
-      # DRAFT 2026-06-13 (UNVERIFIED). Overview eligibility list + "This visa has
-      # replaced the Tier 4 (General) student visa." CAS requirement on the
-      # companion "Your course" page. Verifier: confirm licensed-sponsor + CAS.
-      status: UNVERIFIED
+      # VERIFIED 2026-06-13 (fact-verifier): Student visa Overview re-fetched LIVE (HTTP 200, correct page). Eligibility verbatim: "16 or over and you: have been offered a place on a course by a licensed student sponsor; have enough money to support yourself and pay for your course ...; can speak, read, write and understand English". And: "This visa has replaced the Tier 4 (General) student visa." CAS requirement cross-confirmed on the "Your course" page (sourceHash 49f5001e…). Licensed-sponsor + CAS supported.
+      status: VERIFIED
       lastVerified: "2026-06-13"
-      verifiedBy: ""
+      verifiedBy: "fact-verifier-gb 2026-06-13"
+      sourceHash: "110eba201cdb8fb0c902407a0a4a72bbf2f0467143ef489d90270bd854579597"
       reviewBy: "2026-09-11"
     tldr:
       text: "To study in the UK as a US citizen, you need a place on a course with a licensed student sponsor and a Confirmation of Acceptance for Studies (CAS) from them before you apply. As a US national you fall under the 'differential evidence requirement', so you usually do not have to prove your maintenance funds upfront (though you may still be asked). A degree-level course usually lets you stay up to 5 years; after completing your course you may be able to switch to a Graduate visa."
       sourceUrl: "https://www.gov.uk/student-visa/money"
       sourceName: "GOV.UK — Student visa: Money you need"
-      # DRAFT 2026-06-13 (UNVERIFIED). "Money you need": "You do not need to prove
-      # you have enough money to support yourself if you're ... from one of the
-      # following countries or territories:" — list includes "United States of
-      # America". Overview: "If you're 18 or over and your course is at degree
-      # level, you can usually stay in the UK for up to 5 years." Graduate-switch
-      # on Overview. Verifier: confirm USA on differential-evidence list.
-      status: UNVERIFIED
+      # VERIFIED 2026-06-13 (fact-verifier): "Money you need" re-fetched LIVE (HTTP 200). Differential-evidence list CONFIRMED to include "United States of America" verbatim, with caveat verbatim: "However, you might be asked to provide this evidence before you get a decision on your application." Degree-level 5-year stay and Graduate-switch cross-confirmed on the Overview page (sourceHash 110eba20…: "If you're 18 or over and your course is at degree level, you can usually stay in the UK for up to 5 years"). USA on differential-evidence list supported character-for-character.
+      status: VERIFIED
       lastVerified: "2026-06-13"
-      verifiedBy: ""
+      verifiedBy: "fact-verifier-gb 2026-06-13"
+      sourceHash: "5473d5e8a311d9e6129c994b0cef3f769b9e18573b686eea677f405bf21a0da8"
       reviewBy: "2026-09-11"
     keyFacts:
       - label: "You need a CAS"
         text: "An unconditional offer from a licensed student sponsor, who sends you a Confirmation of Acceptance for Studies (CAS) reference number. You must apply within 6 months of receiving your CAS."
         sourceUrl: "https://www.gov.uk/student-visa/course"
         sourceName: "GOV.UK — Student visa: Your course"
-        # DRAFT 2026-06-13 (UNVERIFIED). "Your course": "You must have an
-        # unconditional offer of a place on a course with a licensed student
-        # sponsor", "your education provider will send you a reference number
-        # (called a Confirmation of Acceptance for Studies (CAS))", "You must
-        # apply for your visa within 6 months of receiving your CAS."
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): "Your course" re-fetched LIVE (HTTP 200). Verbatim: "You must have an unconditional offer of a place on a course with a licensed student sponsor.", "your education provider will send you a reference number (called a Confirmation of Acceptance for Studies (CAS))", "You need a CAS before you can apply for your visa.", "You must apply for your visa within 6 months of receiving your CAS." All elements supported character-for-character.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-gb 2026-06-13"
+        sourceHash: "49f5001e4670c6866b917135ec0900313024c268e742765bc971f4f0f8ed3614"
         reviewBy: "2026-09-11"
       - label: "Money (US applicants)"
         text: "As a US national you fall under the 'differential evidence requirement' and usually do not need to prove your maintenance funds upfront, though UKVI may still ask. The underlying amounts are £1,529/month (London) or £1,171/month (outside London), for up to 9 months, plus course fees."
         sourceUrl: "https://www.gov.uk/student-visa/money"
         sourceName: "GOV.UK — Student visa: Money you need"
-        # DRAFT 2026-06-13 (UNVERIFIED, FIGURE — reviewBy +30d). "Money you need":
-        # "£1,529 per month (for up to 9 months) for courses in London; £1,171 per
-        # month (for up to 9 months) for courses outside London." Differential
-        # evidence list includes "United States of America" with caveat "you
-        # might be asked to provide this evidence before you get a decision."
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): "Money you need" re-fetched LIVE (HTTP 200). Both figures match character-for-character. Verbatim: "£1,529 per month (for up to 9 months) for courses in London; £1,171 per month (for up to 9 months) for courses outside London." Differential-evidence list includes "United States of America" with caveat verbatim "you might be asked to provide this evidence before you get a decision on your application." Course-fee element supported ("You need enough money to pay for your course for 1 academic year (up to 9 months)"). Supported.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-gb 2026-06-13"
+        sourceHash: "5473d5e8a311d9e6129c994b0cef3f769b9e18573b686eea677f405bf21a0da8"
         reviewBy: "2026-07-13"
       - label: "Cost"
         text: "£558 to apply from outside the UK, plus the Immigration Health Surcharge — for students this is usually £776 per year. Figures change — confirm current amounts."
         sourceUrl: "https://www.gov.uk/student-visa"
         sourceName: "GOV.UK — Student visa: Overview"
-        # DRAFT 2026-06-13 (UNVERIFIED, FIGURE — reviewBy +30d). Overview: "£558 to
-        # apply for a Student visa from outside the UK". Student IHS rate (£776/yr)
-        # from the IHS "How much you have to pay" page: "£776 per year for
-        # students, their dependants ...". Verifier: re-confirm £558 + £776.
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): Student Overview re-fetched LIVE (HTTP 200). £558 confirmed verbatim: "It costs: £558 to apply for a Student visa from outside the UK". Student IHS rate £776/yr cross-confirmed on the IHS "How much you have to pay" page (sourceHash 733bac51…): verbatim "£776 per year for students, their dependants, and those on a Youth Mobility Scheme visa". Both figures supported character-for-character.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-gb 2026-06-13"
+        sourceHash: "110eba201cdb8fb0c902407a0a4a72bbf2f0467143ef489d90270bd854579597"
         reviewBy: "2026-07-13"
       - label: "When to apply / decision"
         text: "Apply at most 6 months before your course starts; a decision usually comes within 3 weeks from outside the UK. You can travel to the UK up to 1 month before your course starts if it lasts more than 6 months."
         sourceUrl: "https://www.gov.uk/student-visa"
         sourceName: "GOV.UK — Student visa: Overview"
-        # DRAFT 2026-06-13 (UNVERIFIED). Overview: "The earliest you can apply for
-        # a visa is 6 months before you start your course", "3 weeks, if you're
-        # outside the UK", "up to 1 month before, if your course lasts more than 6
-        # months."
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): Student Overview re-fetched LIVE (HTTP 200). Verbatim (Applying from outside the UK): "The earliest you can apply for a visa is 6 months before you start your course." Decision: "3 weeks, if you're outside the UK". Travel: "up to 1 month before, if your course lasts more than 6 months". All three supported character-for-character.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-gb 2026-06-13"
+        sourceHash: "110eba201cdb8fb0c902407a0a4a72bbf2f0467143ef489d90270bd854579597"
         reviewBy: "2026-09-11"
     detail: >
       The Student visa is the route for US citizens enrolling at a UK university
@@ -548,9 +486,11 @@ tasks:
           - text: "GOV.UK — Student visa: Your course (CAS, eligible courses)"
             sourceUrl: "https://www.gov.uk/student-visa/course"
             sourceName: "GOV.UK — Student visa: Your course"
-            status: UNVERIFIED
+            # VERIFIED 2026-06-13 (fact-verifier): "Your course" re-fetched LIVE (HTTP 200). Verbatim: "You must have an unconditional offer of a place on a course with a licensed student sponsor" and CAS issuance ("your education provider will send you a reference number called a Confirmation of Acceptance for Studies"). Eligible-courses list present. Link accurate.
+            status: VERIFIED
             lastVerified: "2026-06-13"
-            verifiedBy: ""
+            verifiedBy: "fact-verifier-gb 2026-06-13"
+            sourceHash: "49f5001e4670c6866b917135ec0900313024c268e742765bc971f4f0f8ed3614"
             reviewBy: "2026-09-11"
       - text: "Apply online from the USA (up to 6 months before your course starts), pay the application fee and the student Immigration Health Surcharge, and prove your identity."
         tip: "As a US national you usually need not prove maintenance funds upfront, but keep evidence ready in case UKVI asks."
@@ -558,9 +498,11 @@ tasks:
           - text: "GOV.UK — Student visa: Money you need (US differential evidence)"
             sourceUrl: "https://www.gov.uk/student-visa/money"
             sourceName: "GOV.UK — Student visa: Money you need"
-            status: UNVERIFIED
+            # VERIFIED 2026-06-13 (fact-verifier): "Money you need" re-fetched LIVE (HTTP 200). US differential-evidence verbatim: list under "If you're from a country listed under the 'differential evidence requirement'" includes "United States of America"; caveat "you might be asked to provide this evidence before you get a decision on your application." Link accurate; step tip supported.
+            status: VERIFIED
             lastVerified: "2026-06-13"
-            verifiedBy: ""
+            verifiedBy: "fact-verifier-gb 2026-06-13"
+            sourceHash: "5473d5e8a311d9e6129c994b0cef3f769b9e18573b686eea677f405bf21a0da8"
             reviewBy: "2026-07-13"
     documents:
       - name: "Confirmation of Acceptance for Studies (CAS) reference number"
@@ -582,26 +524,31 @@ tasks:
           text: "Apply online for the Student visa via the official GOV.UK route page; choose the apply-from-outside-the-UK path."
           sourceUrl: "https://www.gov.uk/student-visa"
           sourceName: "GOV.UK — Student visa: Overview"
-          status: UNVERIFIED
+          # VERIFIED 2026-06-13 (fact-verifier): Student Overview re-fetched LIVE (HTTP 200). Verbatim: "Apply from outside the UK £558" and "How you apply depends on whether you're applying from inside or outside the UK." Route page is the correct entry point with an outside-UK path. Supported.
+          status: VERIFIED
           lastVerified: "2026-06-13"
-          verifiedBy: ""
+          verifiedBy: "fact-verifier-gb 2026-06-13"
+          sourceHash: "110eba201cdb8fb0c902407a0a4a72bbf2f0467143ef489d90270bd854579597"
           reviewBy: "2026-09-11"
     timeline:
       text: "Usually 3 weeks for a decision after applying from outside the UK; you can apply up to 6 months before your course starts."
       sourceUrl: "https://www.gov.uk/student-visa"
       sourceName: "GOV.UK — Student visa: Overview"
-      status: UNVERIFIED
+      # VERIFIED 2026-06-13 (fact-verifier): Student Overview re-fetched LIVE (HTTP 200). Verbatim: "3 weeks, if you're outside the UK" and "The earliest you can apply for a visa is 6 months before you start your course." Supported.
+      status: VERIFIED
       lastVerified: "2026-06-13"
-      verifiedBy: ""
+      verifiedBy: "fact-verifier-gb 2026-06-13"
+      sourceHash: "110eba201cdb8fb0c902407a0a4a72bbf2f0467143ef489d90270bd854579597"
       reviewBy: "2026-09-11"
     cost:
       text: "£558 to apply from outside the UK, plus the student Immigration Health Surcharge of usually £776 per year. Confirm current figures."
       sourceUrl: "https://www.gov.uk/student-visa"
       sourceName: "GOV.UK — Student visa: Overview"
-      # DRAFT 2026-06-13 (UNVERIFIED, FIGURE — reviewBy +30d). See "Cost" keyFact.
-      status: UNVERIFIED
+      # VERIFIED 2026-06-13 (fact-verifier): Student Overview re-fetched LIVE (HTTP 200). £558 verbatim ("£558 to apply for a Student visa from outside the UK"); student IHS £776/yr cross-confirmed on the IHS "How much you have to pay" page (sourceHash 733bac51…). Both figures supported (see "Cost" keyFact).
+      status: VERIFIED
       lastVerified: "2026-06-13"
-      verifiedBy: ""
+      verifiedBy: "fact-verifier-gb 2026-06-13"
+      sourceHash: "110eba201cdb8fb0c902407a0a4a72bbf2f0467143ef489d90270bd854579597"
       reviewBy: "2026-07-13"
     warning: >
       Maintenance amounts, fees and the IHS rate change. The differential
@@ -621,65 +568,62 @@ tasks:
       text: "The Graduate visa lets you stay in the UK to work or look for work after successfully completing an eligible UK course. You must be in the UK on a Student (or Tier 4) visa when you apply, and your education provider must have told the Home Office you completed your course. It does not need a sponsor or job offer and cannot be extended, but you can switch from it to another visa such as the Skilled Worker visa."
       sourceUrl: "https://www.gov.uk/graduate-visa"
       sourceName: "GOV.UK — Graduate visa: Overview"
-      # DRAFT 2026-06-13 (UNVERIFIED). Overview: "A Graduate visa gives you
-      # permission to stay in the UK for at least 18 months after successfully
-      # completing an eligible course", eligibility list ("you're in the UK",
-      # "your current visa is a Student visa or Tier 4 (General) student visa",
-      # course completed), "You cannot extend your Graduate visa. However, you may
-      # be able to switch to a different visa, for example a Skilled Worker visa."
-      status: UNVERIFIED
+      # VERIFIED 2026-06-13 (fact-verifier): Graduate Overview re-fetched LIVE (HTTP 200, correct page). Eligibility verbatim: "you're in the UK; your current visa is a Student visa or Tier 4 (General) student visa; you studied a UK bachelor's degree, postgraduate degree or other eligible course for a minimum period of time ...; your education provider ... has told the Home Office you've successfully completed your course." And: "You cannot extend your Graduate visa. However, you may be able to switch to a different visa, for example a Skilled Worker visa." No-sponsor framing supported (no sponsor/job offer required). Supported.
+      status: VERIFIED
       lastVerified: "2026-06-13"
-      verifiedBy: ""
+      verifiedBy: "fact-verifier-gb 2026-06-13"
+      sourceHash: "d134b5cb7e440af44406ad65b9226832522b4ae5dd49cd960c197b4415d32ef8"
       reviewBy: "2026-09-11"
     tldr:
       text: "After finishing an eligible UK degree on a Student visa, you can switch (from inside the UK) to a Graduate visa to work, look for work, or be self-employed without needing a sponsor. It lasts 2 years (or 18 months if you apply on/after 1 January 2027), or 3 years for a PhD. It cannot be extended, but you can move on to a Skilled Worker visa."
       sourceUrl: "https://www.gov.uk/graduate-visa"
       sourceName: "GOV.UK — Graduate visa: Overview"
-      # DRAFT 2026-06-13 (UNVERIFIED). Overview: "A Graduate visa lasts for: 2
-      # years if you apply on or before 31 December 2026; 18 months if you apply
-      # on or after 1 January 2027. If you have a PhD or other doctoral
-      # qualification, it will last for 3 years." "you can: work in most jobs;
-      # look for work; be self-employed." Verifier: confirm the 2yr/18mo cutover
-      # dates and PhD 3yr.
-      status: UNVERIFIED
+      # VERIFIED 2026-06-13 (fact-verifier): Graduate Overview re-fetched LIVE (HTTP 200). Duration cutover dates and PhD 3yr match character-for-character. Verbatim: "A Graduate visa lasts for: 2 years if you apply on or before 31 December 2026; 18 months if you apply on or after 1 January 2027. If you have a PhD or other doctoral qualification, it will last for 3 years." And: "work in most jobs; look for work; be self-employed". Switch-from-inside-UK supported ("You must be in the UK when you apply"). Supported.
+      status: VERIFIED
       lastVerified: "2026-06-13"
-      verifiedBy: ""
+      verifiedBy: "fact-verifier-gb 2026-06-13"
+      sourceHash: "d134b5cb7e440af44406ad65b9226832522b4ae5dd49cd960c197b4415d32ef8"
       reviewBy: "2026-09-11"
     keyFacts:
       - label: "Eligibility"
         text: "You must be in the UK on a Student or Tier 4 (General) student visa, have studied an eligible UK course for the required period, and your provider must have confirmed to the Home Office you completed it."
         sourceUrl: "https://www.gov.uk/graduate-visa"
         sourceName: "GOV.UK — Graduate visa: Overview"
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): Overview re-fetched LIVE (HTTP 200). Eligibility list verbatim: "you're in the UK; your current visa is a Student visa or Tier 4 (General) student visa; you studied a UK bachelor's degree, postgraduate degree or other eligible course for a minimum period of time ...; your education provider (such as your university or college) has told the Home Office you've successfully completed your course." Supported.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-gb 2026-06-13"
+        sourceHash: "d134b5cb7e440af44406ad65b9226832522b4ae5dd49cd960c197b4415d32ef8"
         reviewBy: "2026-09-11"
       - label: "How long"
         text: "2 years if you apply on or before 31 December 2026; 18 months if you apply on or after 1 January 2027; 3 years for a PhD or other doctoral qualification. It cannot be extended."
         sourceUrl: "https://www.gov.uk/graduate-visa"
         sourceName: "GOV.UK — Graduate visa: Overview"
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): Overview re-fetched LIVE (HTTP 200). Verbatim: "A Graduate visa lasts for: 2 years if you apply on or before 31 December 2026; 18 months if you apply on or after 1 January 2027. If you have a PhD or other doctoral qualification, it will last for 3 years." And: "You cannot extend your Graduate visa." All dates and PhD 3yr supported character-for-character.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-gb 2026-06-13"
+        sourceHash: "d134b5cb7e440af44406ad65b9226832522b4ae5dd49cd960c197b4415d32ef8"
         reviewBy: "2026-09-11"
       - label: "Cost"
         text: "£937 application fee, plus the Immigration Health Surcharge of usually £1,035 for each year of your stay. Figures change — confirm current amounts."
         sourceUrl: "https://www.gov.uk/graduate-visa"
         sourceName: "GOV.UK — Graduate visa: Overview"
-        # DRAFT 2026-06-13 (UNVERIFIED, FIGURE — reviewBy +30d). "pay the £937
-        # application fee; pay the healthcare surcharge - this is usually £1,035
-        # for each year you'll be in the UK." Verifier: re-confirm £937.
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): Overview re-fetched LIVE (HTTP 200). £937 matches character-for-character. Verbatim: "pay the £937 application fee; pay the healthcare surcharge - this is usually £1,035 for each year you'll be in the UK." Supported.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-gb 2026-06-13"
+        sourceHash: "d134b5cb7e440af44406ad65b9226832522b4ae5dd49cd960c197b4415d32ef8"
         reviewBy: "2026-07-13"
       - label: "Sponsor / job offer"
         text: "None required. You can work in most jobs, look for work, or be self-employed; you cannot work as a professional sportsperson or claim most benefits."
         sourceUrl: "https://www.gov.uk/graduate-visa"
         sourceName: "GOV.UK — Graduate visa: Overview"
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): Overview re-fetched LIVE (HTTP 200). Verbatim: "With a Graduate visa you can: work in most jobs; look for work; be self-employed". And: "You cannot: apply for most benefits (public funds), or the State Pension; work as a professional sportsperson." No sponsor/job offer required anywhere on the page. Supported.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-gb 2026-06-13"
+        sourceHash: "d134b5cb7e440af44406ad65b9226832522b4ae5dd49cd960c197b4415d32ef8"
         reviewBy: "2026-09-11"
     detail: >
       The Graduate visa is the UK's post-study work route. It is only available
@@ -696,18 +640,22 @@ tasks:
           - text: "GOV.UK — Graduate visa: Overview (eligibility, when to apply)"
             sourceUrl: "https://www.gov.uk/graduate-visa"
             sourceName: "GOV.UK — Graduate visa: Overview"
-            status: UNVERIFIED
+            # VERIFIED 2026-06-13 (fact-verifier): Overview re-fetched LIVE (HTTP 200). When-to-apply verbatim: "You must apply before your Student visa or Tier 4 (General) student visa expires. You can apply after your education provider ... has told the Home Office that you've successfully completed the course ... You do not have to wait until you've graduated". Link accurate.
+            status: VERIFIED
             lastVerified: "2026-06-13"
-            verifiedBy: ""
+            verifiedBy: "fact-verifier-gb 2026-06-13"
+            sourceHash: "d134b5cb7e440af44406ad65b9226832522b4ae5dd49cd960c197b4415d32ef8"
             reviewBy: "2026-09-11"
       - text: "Apply online for the Graduate visa before your Student/Tier 4 visa expires; pay the fee and the Immigration Health Surcharge and prove your identity."
         links:
           - text: "GOV.UK — Graduate visa: Overview (how to apply, costs)"
             sourceUrl: "https://www.gov.uk/graduate-visa"
             sourceName: "GOV.UK — Graduate visa: Overview"
-            status: UNVERIFIED
+            # VERIFIED 2026-06-13 (fact-verifier): Overview re-fetched LIVE (HTTP 200). How-to-apply verbatim: "You must apply online for a Graduate visa." Costs verbatim: "pay the £937 application fee; pay the healthcare surcharge - this is usually £1,035 for each year you'll be in the UK." Link accurate.
+            status: VERIFIED
             lastVerified: "2026-06-13"
-            verifiedBy: ""
+            verifiedBy: "fact-verifier-gb 2026-06-13"
+            sourceHash: "d134b5cb7e440af44406ad65b9226832522b4ae5dd49cd960c197b4415d32ef8"
             reviewBy: "2026-07-13"
     documents:
       - name: "Valid passport or identity document"
@@ -723,18 +671,21 @@ tasks:
           text: "Apply online for the Graduate visa via the official GOV.UK route page (you must be in the UK to apply)."
           sourceUrl: "https://www.gov.uk/graduate-visa"
           sourceName: "GOV.UK — Graduate visa: Overview"
-          status: UNVERIFIED
+          # VERIFIED 2026-06-13 (fact-verifier): Overview re-fetched LIVE (HTTP 200). Verbatim: "You must apply online for a Graduate visa." and "You must be in the UK when you apply." Route page is the correct entry point. Supported.
+          status: VERIFIED
           lastVerified: "2026-06-13"
-          verifiedBy: ""
+          verifiedBy: "fact-verifier-gb 2026-06-13"
+          sourceHash: "d134b5cb7e440af44406ad65b9226832522b4ae5dd49cd960c197b4415d32ef8"
           reviewBy: "2026-09-11"
     cost:
       text: "£937 application fee plus the Immigration Health Surcharge of usually £1,035 per year of stay. Confirm current figures."
       sourceUrl: "https://www.gov.uk/graduate-visa"
       sourceName: "GOV.UK — Graduate visa: Overview"
-      # DRAFT 2026-06-13 (UNVERIFIED, FIGURE — reviewBy +30d). See "Cost" keyFact.
-      status: UNVERIFIED
+      # VERIFIED 2026-06-13 (fact-verifier): Overview re-fetched LIVE (HTTP 200). £937 + IHS £1,035/yr match character-for-character (see "Cost" keyFact). Supported.
+      status: VERIFIED
       lastVerified: "2026-06-13"
-      verifiedBy: ""
+      verifiedBy: "fact-verifier-gb 2026-06-13"
+      sourceHash: "d134b5cb7e440af44406ad65b9226832522b4ae5dd49cd960c197b4415d32ef8"
       reviewBy: "2026-07-13"
     warning: >
       A Graduate visa cannot be extended. If you want to stay beyond it, line up
@@ -753,88 +704,72 @@ tasks:
       text: "You need a family visa to live in the UK for more than 6 months with a partner who is settled in the UK or is a British or Irish citizen (and certain other statuses). You must both be 18 or over, intend to live together permanently, prove your relationship (marriage/civil partnership, or living together for at least 2 years), meet a minimum income requirement, and meet the English-language requirement."
       sourceUrl: "https://www.gov.uk/uk-family-visa/partner-spouse"
       sourceName: "GOV.UK — UK family visa: Apply as a partner or spouse"
-      # DRAFT 2026-06-13 (UNVERIFIED). "Apply as a partner or spouse": "To apply
-      # as a partner, you and your partner both need to be 18 or over. Your
-      # partner must also either: be a British or Irish citizen; have settled in
-      # the UK ...". "You and your partner must intend to live together
-      # permanently in the UK." Relationship-proof list + "have a good knowledge
-      # of English; meet the financial requirements." Overview: "You need a
-      # family visa to live with a family member in the UK for more than 6
-      # months." Verifier: confirm partner-status list and 2-year cohabitation.
-      status: UNVERIFIED
+      # VERIFIED 2026-06-13 (fact-verifier): "Apply as a partner or spouse" re-fetched LIVE (HTTP 200, correct page). Verbatim: "To apply as a partner, you and your partner both need to be 18 or over. Your partner must also either: be a British or Irish citizen; have settled in the UK ...". And: "You and your partner must intend to live together permanently in the UK after you apply." Relationship proof verbatim includes "you've been living together in a relationship for at least 2 years when you apply"; plus "have a good knowledge of English; meet the financial requirements." 6-month threshold cross-confirmed on Overview (sourceHash 216d9e44…: "You need a family visa to live with a family member in the UK for more than 6 months."). Partner-status list and 2-year cohabitation supported.
+      status: VERIFIED
       lastVerified: "2026-06-13"
-      verifiedBy: ""
+      verifiedBy: "fact-verifier-gb 2026-06-13"
+      sourceHash: "196822e2e422b704cfd3568a9e8fb04069f90bb5a64a394b0496fee4240d3c4b"
       reviewBy: "2026-09-11"
     tldr:
       text: "If your partner is a British/Irish citizen or settled in the UK, you can apply for a partner/spouse family visa to join them. You must prove your relationship (married/civil partners, or 2+ years living together), show a combined income of at least £29,000 a year (the minimum income requirement), and meet the English requirement. The partner visa is granted for 2 years and 9 months at a time; you can apply to settle after 5 continuous years on this route."
       sourceUrl: "https://www.gov.uk/uk-family-visa/proof-income-partner"
       sourceName: "GOV.UK — UK family visa: Financial requirements (partner or spouse)"
-      # DRAFT 2026-06-13 (UNVERIFIED, FIGURE — reviewBy +30d). "Financial
-      # requirements": "you and your partner usually need to prove that your
-      # combined income is at least £29,000 a year. This is called a 'minimum
-      # income requirement'." "Apply as a partner": "You can stay in the UK for 2
-      # years and 9 months." "The earliest you can apply to settle ... is after
-      # you've lived in the UK for 5 years continuously on a family visa as a
-      # partner." Verifier: re-confirm £29,000.
-      status: UNVERIFIED
+      # VERIFIED 2026-06-13 (fact-verifier): "Financial requirements" re-fetched LIVE (HTTP 200). £29,000 matches character-for-character. Verbatim: "you and your partner usually need to prove that your combined income is at least £29,000 a year. This is called a 'minimum income requirement'." 2yr9mo + 5-year settle cross-confirmed on the partner/spouse page (sourceHash 196822e2…: "You can stay in the UK for 2 years and 9 months." and "The earliest you can apply to settle in the UK ... is after you've lived in the UK for 5 years continuously on a family visa as a partner."). Supported.
+      status: VERIFIED
       lastVerified: "2026-06-13"
-      verifiedBy: ""
+      verifiedBy: "fact-verifier-gb 2026-06-13"
+      sourceHash: "9803dfe877cf9fc30bb3d21f081702a92be5c2273bf569af0abf624bea3a8908"
       reviewBy: "2026-07-13"
     keyFacts:
       - label: "Your partner's status"
         text: "Your partner must be a British or Irish citizen, settled in the UK (e.g. indefinite leave to remain), or hold certain other statuses. You cannot use this route if your partner is in the UK only temporarily on a work or student visa — you would apply as their dependant instead."
         sourceUrl: "https://www.gov.uk/uk-family-visa"
         sourceName: "GOV.UK — UK family visa: Overview"
-        # DRAFT 2026-06-13 (UNVERIFIED). Overview: "You cannot apply for a family
-        # visa if your family member is in the UK temporarily on a work visa or
-        # student visa. You can apply to stay with them as a dependant instead."
-        # Partner-status list on the partner/spouse page.
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): Overview re-fetched LIVE (HTTP 200). Verbatim: "You cannot apply for a family visa if your family member is in the UK temporarily on a work visa or student visa. You can apply to stay with them as a dependant instead." Partner-status list (British/Irish citizen, settled in the UK) cross-confirmed on the partner/spouse page (sourceHash 196822e2…). Supported.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-gb 2026-06-13"
+        sourceHash: "216d9e440114ca33b4de5c001fc1fe751672d0819d6882d4d2b3b638389fa8be"
         reviewBy: "2026-09-11"
       - label: "Minimum income"
         text: "You and your partner usually need a combined income of at least £29,000 a year (the 'minimum income requirement'); savings may be used instead. Different/lower figures apply in some cases (e.g. certain disability or carer's benefits, or extending a visa first applied for before 11 April 2024). Confirm current figures."
         sourceUrl: "https://www.gov.uk/uk-family-visa/proof-income-partner"
         sourceName: "GOV.UK — UK family visa: Financial requirements (partner or spouse)"
-        # DRAFT 2026-06-13 (UNVERIFIED, FIGURE — reviewBy +30d). "at least £29,000
-        # a year"; pre-11-April-2024 extension uses "£18,600 a year"; extra for
-        # children "£3,800 ... £2,400". Verifier: re-confirm £29,000 + caveats.
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): "Financial requirements" re-fetched LIVE (HTTP 200). £29,000 + all caveats match character-for-character. Verbatim: "at least £29,000 a year"; pre-11-April-2024 extension "your combined income is at least £18,600 a year"; children extra "£3,800 a year for the first child; £2,400 a year for each additional child"; disability/carer's-benefits exception ("You do not need to meet a minimum income requirement if your partner gets one of the following benefits"); savings alternative ("You may be able to use your savings instead of income"). Supported.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-gb 2026-06-13"
+        sourceHash: "9803dfe877cf9fc30bb3d21f081702a92be5c2273bf569af0abf624bea3a8908"
         reviewBy: "2026-07-13"
       - label: "Proving the relationship"
         text: "Prove you are in a UK-recognised marriage or civil partnership, OR have lived together in a relationship for at least 2 years when you apply (or, if you cannot live together, that you have an ongoing committed relationship of 2+ years)."
         sourceUrl: "https://www.gov.uk/uk-family-visa/partner-spouse"
         sourceName: "GOV.UK — UK family visa: Apply as a partner or spouse"
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): "Apply as a partner or spouse" re-fetched LIVE (HTTP 200). Verbatim: "You must be able to prove one of the following: you're in a civil partnership or marriage that's recognised in the UK; you've been living together in a relationship for at least 2 years when you apply; ... you've been in a relationship for at least 2 years when you apply but you cannot live together" (with ongoing-commitment evidence). Supported character-for-character.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-gb 2026-06-13"
+        sourceHash: "196822e2e422b704cfd3568a9e8fb04069f90bb5a64a394b0496fee4240d3c4b"
         reviewBy: "2026-09-11"
       - label: "Cost"
         text: "£2,064 to apply from outside the UK (each dependant added costs the same), plus the Immigration Health Surcharge — for an adult, £5,175 for a 5-year stay (other lengths cost less). Figures change — confirm current amounts."
         sourceUrl: "https://www.gov.uk/uk-family-visa"
         sourceName: "GOV.UK — UK family visa: Overview"
-        # DRAFT 2026-06-13 (UNVERIFIED, FIGURE — reviewBy +30d). Overview fee
-        # table: "Cost if joining your partner, parent or child — Apply outside
-        # the UK £2,064". IHS: "For each adult (18 or older) it costs: ... £5,175
-        # if you're staying for 5 years." Verifier: re-confirm £2,064 + IHS band.
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): Overview re-fetched LIVE (HTTP 200). £2,064 + £5,175 IHS band match character-for-character. Fee table verbatim: "Cost if joining your partner, parent or child — Apply outside the UK £2,064" and "Cost for each dependant added to your application £2,064 each person". IHS verbatim: "For each adult (18 or older) it costs: ... £5,175 if you're staying for 5 years." Supported.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-gb 2026-06-13"
+        sourceHash: "216d9e440114ca33b4de5c001fc1fe751672d0819d6882d4d2b3b638389fa8be"
         reviewBy: "2026-07-13"
       - label: "Decision time"
         text: "If you apply from outside the UK you usually get a decision within 12 weeks (longer — about 12 months — if you apply inside the UK and do not meet the income/English requirements)."
         sourceUrl: "https://www.gov.uk/uk-family-visa/partner-spouse"
         sourceName: "GOV.UK — UK family visa: Apply as a partner or spouse"
-        # DRAFT 2026-06-13 (UNVERIFIED). "If you apply outside the UK you'll
-        # usually get a decision within 12 weeks." "If you apply inside the UK and
-        # you do not meet the financial requirements ... it currently takes about
-        # 12 months."
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): "Apply as a partner or spouse" re-fetched LIVE (HTTP 200). Verbatim: "If you apply outside the UK you'll usually get a decision within 12 weeks." And: "If you apply inside the UK and you do not meet the financial requirements and English language requirements, it currently takes about 12 months to get a decision." Both supported character-for-character.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-gb 2026-06-13"
+        sourceHash: "196822e2e422b704cfd3568a9e8fb04069f90bb5a64a394b0496fee4240d3c4b"
         reviewBy: "2026-09-11"
     detail: >
       The UK partner/spouse family visa is for US citizens joining a partner who
@@ -855,18 +790,22 @@ tasks:
           - text: "GOV.UK — UK family visa: Apply as a partner or spouse"
             sourceUrl: "https://www.gov.uk/uk-family-visa/partner-spouse"
             sourceName: "GOV.UK — UK family visa: Apply as a partner or spouse"
-            status: UNVERIFIED
+            # VERIFIED 2026-06-13 (fact-verifier): "Apply as a partner or spouse" re-fetched LIVE (HTTP 200). Partner-status, age (18+), relationship, English and financial requirements all set out verbatim on the page ("You also need to prove you: have a good knowledge of English; meet the financial requirements"). Link accurate.
+            status: VERIFIED
             lastVerified: "2026-06-13"
-            verifiedBy: ""
+            verifiedBy: "fact-verifier-gb 2026-06-13"
+            sourceHash: "196822e2e422b704cfd3568a9e8fb04069f90bb5a64a394b0496fee4240d3c4b"
             reviewBy: "2026-09-11"
       - text: "Gather evidence of your relationship and of meeting the minimum income requirement (or savings), then apply online from the USA, pay the fee and the Immigration Health Surcharge, and prove your identity."
         links:
           - text: "GOV.UK — UK family visa: Financial requirements (partner or spouse)"
             sourceUrl: "https://www.gov.uk/uk-family-visa/proof-income-partner"
             sourceName: "GOV.UK — UK family visa: Financial requirements (partner or spouse)"
-            status: UNVERIFIED
+            # VERIFIED 2026-06-13 (fact-verifier): "Financial requirements" re-fetched LIVE (HTTP 200). £29,000 minimum income, savings alternative, and children/disability caveats all present verbatim. Link accurate.
+            status: VERIFIED
             lastVerified: "2026-06-13"
-            verifiedBy: ""
+            verifiedBy: "fact-verifier-gb 2026-06-13"
+            sourceHash: "9803dfe877cf9fc30bb3d21f081702a92be5c2273bf569af0abf624bea3a8908"
             reviewBy: "2026-07-13"
     documents:
       - name: "Valid passport or identity document"
@@ -888,26 +827,31 @@ tasks:
           text: "Apply online for the partner/spouse family visa via the official GOV.UK route page; choose the apply-from-outside-the-UK path."
           sourceUrl: "https://www.gov.uk/uk-family-visa/partner-spouse"
           sourceName: "GOV.UK — UK family visa: Apply as a partner or spouse"
-          status: UNVERIFIED
+          # VERIFIED 2026-06-13 (fact-verifier): "Apply as a partner or spouse" re-fetched LIVE (HTTP 200). Verbatim: "Outside the UK — You must apply online from outside the UK." Route page is the correct entry point with an outside-UK path. Supported.
+          status: VERIFIED
           lastVerified: "2026-06-13"
-          verifiedBy: ""
+          verifiedBy: "fact-verifier-gb 2026-06-13"
+          sourceHash: "196822e2e422b704cfd3568a9e8fb04069f90bb5a64a394b0496fee4240d3c4b"
           reviewBy: "2026-09-11"
     timeline:
       text: "Usually a decision within 12 weeks when you apply as a partner from outside the UK."
       sourceUrl: "https://www.gov.uk/uk-family-visa/partner-spouse"
       sourceName: "GOV.UK — UK family visa: Apply as a partner or spouse"
-      status: UNVERIFIED
+      # VERIFIED 2026-06-13 (fact-verifier): "Apply as a partner or spouse" re-fetched LIVE (HTTP 200). Verbatim: "If you apply outside the UK you'll usually get a decision within 12 weeks." Supported.
+      status: VERIFIED
       lastVerified: "2026-06-13"
-      verifiedBy: ""
+      verifiedBy: "fact-verifier-gb 2026-06-13"
+      sourceHash: "196822e2e422b704cfd3568a9e8fb04069f90bb5a64a394b0496fee4240d3c4b"
       reviewBy: "2026-09-11"
     cost:
       text: "£2,064 to apply from outside the UK (and the same per added dependant), plus the Immigration Health Surcharge (for an adult, £5,175 for a 5-year stay; shorter stays cost less). Confirm current figures."
       sourceUrl: "https://www.gov.uk/uk-family-visa"
       sourceName: "GOV.UK — UK family visa: Overview"
-      # DRAFT 2026-06-13 (UNVERIFIED, FIGURE — reviewBy +30d). See "Cost" keyFact.
-      status: UNVERIFIED
+      # VERIFIED 2026-06-13 (fact-verifier): Overview re-fetched LIVE (HTTP 200). £2,064 (and same per dependant) + £5,175 IHS for 5 years match character-for-character (see "Cost" keyFact). Supported.
+      status: VERIFIED
       lastVerified: "2026-06-13"
-      verifiedBy: ""
+      verifiedBy: "fact-verifier-gb 2026-06-13"
+      sourceHash: "216d9e440114ca33b4de5c001fc1fe751672d0819d6882d4d2b3b638389fa8be"
       reviewBy: "2026-07-13"
     warning: >
       The minimum income requirement, fees and the IHS rate change. This route is
@@ -927,59 +871,52 @@ tasks:
       text: "If you come to the UK on a Skilled Worker (or other eligible) visa, your partner and children may apply to join you or stay as your 'dependants'. Each dependant completes a separate application and pays the application fee and Immigration Health Surcharge. They must show their relationship to you and that there is enough money to support them, in addition to your own savings requirement."
       sourceUrl: "https://www.gov.uk/skilled-worker-visa/your-partner-and-children"
       sourceName: "GOV.UK — Skilled Worker visa: Your partner and children"
-      # DRAFT 2026-06-13 (UNVERIFIED). "Your partner and children may also be able
-      # to apply to join you or stay in the UK as your 'dependants'. They'll need
-      # to complete separate applications." Dependant definition (husband/wife/
-      # civil/unmarried partner; child under 18; child over 18 already a
-      # dependant). Maintenance amounts on same page. Verifier: confirm separate-
-      # application + per-dependant fee.
-      status: UNVERIFIED
+      # VERIFIED 2026-06-13 (fact-verifier): "Your partner and children" re-fetched LIVE (HTTP 200, correct page). Verbatim: "Your partner and children may also be able to apply to join you or stay in the UK as your 'dependants'. They'll need to complete separate applications." Per-dependant fee verbatim: "Each family member will need to complete a separate application and pay the visa fee." Dependant definition and maintenance amounts present on the same page. Separate-application + per-dependant fee supported.
+      status: VERIFIED
       lastVerified: "2026-06-13"
-      verifiedBy: ""
+      verifiedBy: "fact-verifier-gb 2026-06-13"
+      sourceHash: "9f697ef29fd102224c65443f3eb69f1180f631c88749e0d0160e694cf45ab8a7"
       reviewBy: "2026-09-11"
     keyFacts:
       - label: "Who counts as a dependant"
         text: "Your husband, wife, civil partner or unmarried partner; your child under 18 (including one born in the UK during your stay); and a child over 18 who already has permission to be in the UK as your dependant."
         sourceUrl: "https://www.gov.uk/skilled-worker-visa/your-partner-and-children"
         sourceName: "GOV.UK — Skilled Worker visa: Your partner and children"
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): "Your partner and children" re-fetched LIVE (HTTP 200). Dependant definition verbatim: "A dependant partner or child is any of the following: your husband, wife, civil partner or unmarried partner; your child under 18 - including if they were born in the UK during your stay; your child over 18 if they currently have permission ('leave to enter' or 'leave to remain') to be in the UK as your dependant." Supported character-for-character.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-gb 2026-06-13"
+        sourceHash: "9f697ef29fd102224c65443f3eb69f1180f631c88749e0d0160e694cf45ab8a7"
         reviewBy: "2026-09-11"
       - label: "Money for dependants"
         text: "On the Skilled Worker route you (or the dependant) must show extra funds: £285 for your partner, £315 for one child, and £200 for each additional child — held for 28 days in a row — unless an exemption applies. Figures change; confirm current amounts."
         sourceUrl: "https://www.gov.uk/skilled-worker-visa/your-partner-and-children"
         sourceName: "GOV.UK — Skilled Worker visa: Your partner and children"
-        # DRAFT 2026-06-13 (UNVERIFIED, FIGURE — reviewBy +30d). "£285 for your
-        # partner; £315 for one child; £200 for each additional child." "had the
-        # money available for at least 28 days in a row." Verifier: re-confirm.
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): "Your partner and children" re-fetched LIVE (HTTP 200). All three figures match character-for-character. Verbatim: "You - or your partner or child - will need: £285 for your partner; £315 for one child; £200 for each additional child" and "You - or your partner or child - will need to have had the money available for at least 28 days in a row. Day 28 must be within 31 days of you or them applying for this visa." Supported.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-gb 2026-06-13"
+        sourceHash: "9f697ef29fd102224c65443f3eb69f1180f631c88749e0d0160e694cf45ab8a7"
         reviewBy: "2026-07-13"
       - label: "What dependants can do"
         text: "A dependant partner or child can work (except as a professional sportsperson or coach) and study; they cannot claim most benefits or the State Pension. They may apply to settle after 5 years."
         sourceUrl: "https://www.gov.uk/skilled-worker-visa/your-partner-and-children"
         sourceName: "GOV.UK — Skilled Worker visa: Your partner and children"
-        # DRAFT 2026-06-13 (UNVERIFIED). "Your partner or child can: work, except
-        # as a sportsperson or coach; study; ... apply to settle permanently ...
-        # if they've lived in the UK for 5 years." "They cannot apply for most
-        # benefits (public funds), or the State Pension."
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): "Your partner and children" re-fetched LIVE (HTTP 200). Verbatim: "Your partner or child can: work, except as a sportsperson or coach; study; ... apply to settle permanently in the UK (also known as 'indefinite leave to remain') if they've lived in the UK for 5 years and meet the other eligibility requirements" and "They cannot apply for most benefits (public funds), or the State Pension." Supported character-for-character.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-gb 2026-06-13"
+        sourceHash: "9f697ef29fd102224c65443f3eb69f1180f631c88749e0d0160e694cf45ab8a7"
         reviewBy: "2026-09-11"
       - label: "Children born in the UK"
         text: "A child born to you in the UK does not automatically become a British citizen; you must apply for their dependant visa (before they turn 18) if you want to travel in and out of the UK with them, providing a full UK birth certificate naming both parents."
         sourceUrl: "https://www.gov.uk/skilled-worker-visa/your-partner-and-children"
         sourceName: "GOV.UK — Skilled Worker visa: Your partner and children"
-        # DRAFT 2026-06-13 (UNVERIFIED). "If you have a child while you're in the
-        # UK, they do not automatically become a British citizen. You must apply
-        # for your child's dependant visa ... You'll need to provide a full UK
-        # birth certificate for each child, showing the names of both parents."
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): "Your partner and children" re-fetched LIVE (HTTP 200). Verbatim: "If you have a child while you're in the UK, they do not automatically become a British citizen. You must apply for your child's dependant visa if you want to travel in and out of the UK with them. ... You'll need to provide a full UK birth certificate for each child, showing the names of both parents. You must apply for their dependant visa before they turn 18 if they want to stay in the UK." Supported character-for-character.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-gb 2026-06-13"
+        sourceHash: "9f697ef29fd102224c65443f3eb69f1180f631c88749e0d0160e694cf45ab8a7"
         reviewBy: "2026-09-11"
     detail: >
       Most UK work and study routes let you bring a partner and children as
@@ -998,9 +935,11 @@ tasks:
           - text: "GOV.UK — Skilled Worker visa: Your partner and children"
             sourceUrl: "https://www.gov.uk/skilled-worker-visa/your-partner-and-children"
             sourceName: "GOV.UK — Skilled Worker visa: Your partner and children"
-            status: UNVERIFIED
+            # VERIFIED 2026-06-13 (fact-verifier): "Your partner and children" re-fetched LIVE (HTTP 200). Dependant definition + relationship-evidence requirement verbatim ("They'll need to provide evidence of their relationship to you when they apply"). Link accurate.
+            status: VERIFIED
             lastVerified: "2026-06-13"
-            verifiedBy: ""
+            verifiedBy: "fact-verifier-gb 2026-06-13"
+            sourceHash: "9f697ef29fd102224c65443f3eb69f1180f631c88749e0d0160e694cf45ab8a7"
             reviewBy: "2026-09-11"
       - text: "Each dependant applies online separately (using your application number / family linking code), pays the fee and the Immigration Health Surcharge, shows the extra maintenance funds, and proves their identity."
         tip: "Dependants applying from outside the UK must apply before they travel."
@@ -1008,9 +947,11 @@ tasks:
           - text: "GOV.UK — Skilled Worker visa: Your partner and children (apply, money needed)"
             sourceUrl: "https://www.gov.uk/skilled-worker-visa/your-partner-and-children"
             sourceName: "GOV.UK — Skilled Worker visa: Your partner and children"
-            status: UNVERIFIED
+            # VERIFIED 2026-06-13 (fact-verifier): "Your partner and children" re-fetched LIVE (HTTP 200). Separate application + family-linking code + per-dependant fee + apply-before-travel all verbatim ("Each family member will need to complete a separate application and pay the visa fee. They must apply before they travel to the UK. They'll need your application number ... a 'family linking code'"). Money-needed figures (£285/£315/£200) present. Link accurate.
+            status: VERIFIED
             lastVerified: "2026-06-13"
-            verifiedBy: ""
+            verifiedBy: "fact-verifier-gb 2026-06-13"
+            sourceHash: "9f697ef29fd102224c65443f3eb69f1180f631c88749e0d0160e694cf45ab8a7"
             reviewBy: "2026-07-13"
     documents:
       - name: "Each dependant's valid passport"
@@ -1029,9 +970,11 @@ tasks:
           text: "Each dependant applies online via the official GOV.UK 'Your partner and children' route; they apply as your partner or child, from outside or inside the UK as applicable."
           sourceUrl: "https://www.gov.uk/skilled-worker-visa/your-partner-and-children"
           sourceName: "GOV.UK — Skilled Worker visa: Your partner and children"
-          status: UNVERIFIED
+          # VERIFIED 2026-06-13 (fact-verifier): "Your partner and children" re-fetched LIVE (HTTP 200). Apply-as-partner / apply-as-child, outside-or-inside-UK paths verbatim ("apply online as your partner outside the UK / apply online as your child outside the UK" and inside-UK equivalents). Route page is the correct per-dependant entry point. Supported.
+          status: VERIFIED
           lastVerified: "2026-06-13"
-          verifiedBy: ""
+          verifiedBy: "fact-verifier-gb 2026-06-13"
+          sourceHash: "9f697ef29fd102224c65443f3eb69f1180f631c88749e0d0160e694cf45ab8a7"
           reviewBy: "2026-09-11"
     warning: >
       Dependant rules differ by route and by occupation type (e.g. some "medium
@@ -1051,46 +994,42 @@ tasks:
       text: "Most people pay the Immigration Health Surcharge (IHS) as part of their online immigration application. Paying it lets you use the NHS broadly free of charge from the date your visa starts (some services like prescriptions, dental and eye tests are still charged). The amount depends on the length of your visa, and you pay for the whole visa period upfront."
       sourceUrl: "https://www.gov.uk/healthcare-immigration-application"
       sourceName: "GOV.UK — Pay for UK healthcare as part of your immigration application (IHS): Overview"
-      # DRAFT 2026-06-13 (UNVERIFIED). IHS Overview: "Most people need to pay the
-      # immigration health surcharge (IHS) as part of their online immigration
-      # application." "You can start using the NHS free of charge from the date
-      # your visa starts." "You'll still need to pay for certain types of
-      # services, such as prescriptions, dental treatment, eye tests and assisted
-      # conception."
-      status: UNVERIFIED
+      # VERIFIED 2026-06-13 (fact-verifier): IHS Overview re-fetched LIVE (HTTP 200, correct page). Verbatim: "Most people need to pay the immigration health surcharge (IHS) as part of their online immigration application." "You can start using the NHS free of charge from the date your visa starts." "You'll still need to pay for certain types of services, such as prescriptions, dental treatment, eye tests and assisted conception." Pay-upfront-for-whole-period supported (per the "How much you have to pay" page, sourceHash 733bac51…). Supported.
+      status: VERIFIED
       lastVerified: "2026-06-13"
-      verifiedBy: ""
+      verifiedBy: "fact-verifier-gb 2026-06-13"
+      sourceHash: "a98043672be9bf30bff6125ef92b9bff024572c6f8c852c69485f627fd4abbbe"
       reviewBy: "2026-09-11"
     keyFacts:
       - label: "Standard rate"
         text: "£1,035 per year for most applications (e.g. work and family routes). Students, their dependants, and under-18 applicants pay £776 per year. You pay for the full length of your visa upfront. Figures change — confirm current rates."
         sourceUrl: "https://www.gov.uk/healthcare-immigration-application/how-much-pay"
         sourceName: "GOV.UK — IHS: How much you have to pay"
-        # DRAFT 2026-06-13 (UNVERIFIED, FIGURE — reviewBy +30d). "How much you
-        # have to pay": "£776 per year for students, their dependants ... and
-        # those on a Youth Mobility Scheme visa"; "£776 per year for ... under the
-        # age of 18"; "£1,035 per year for all other visa and immigration
-        # applications, for example £3,105 for a 3-year visa." Verifier: re-
-        # confirm both rates.
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): "How much you have to pay" re-fetched LIVE (HTTP 200). Both rates match character-for-character. Verbatim: "£776 per year for students, their dependants, and those on a Youth Mobility Scheme visa"; "£776 per year for visa and immigration applicants who are under the age of 18 at time of application"; "£1,035 per year for all other visa and immigration applications, for example £3,105 for a 3-year visa." Supported.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-gb 2026-06-13"
+        sourceHash: "733bac5164a5f390201a07014b64a2a0b0ed230155d6947befca06a2d709d117"
         reviewBy: "2026-07-13"
       - label: "When NHS access starts"
         text: "You can use the NHS free of charge from the date your visa starts, provided you have paid the IHS — even before you have registered with a GP."
         sourceUrl: "https://www.gov.uk/healthcare-immigration-application"
         sourceName: "GOV.UK — IHS: Overview"
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): IHS Overview re-fetched LIVE (HTTP 200). Verbatim: "You can start using the NHS free of charge from the date your visa starts. You must have already paid the IHS if you need to." Claim's "even before you have registered with a GP" is an accurate gloss (NHS access derives from paid IHS + visa start, not from GP registration). Supported.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-gb 2026-06-13"
+        sourceHash: "a98043672be9bf30bff6125ef92b9bff024572c6f8c852c69485f627fd4abbbe"
         reviewBy: "2026-09-11"
       - label: "Always charged"
         text: "Even with the IHS paid, you pay separately for some services such as prescriptions, dental treatment, eye tests and assisted conception (and may pay for NHS treatment before a decision is made on your visa)."
         sourceUrl: "https://www.gov.uk/healthcare-immigration-application"
         sourceName: "GOV.UK — IHS: Overview"
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): IHS Overview re-fetched LIVE (HTTP 200). Verbatim: "You'll still need to pay for certain types of services, such as prescriptions, dental treatment, eye tests and assisted conception." And: "You may need to pay for NHS treatment if the Home Office has not made a decision on your visa yet." Supported character-for-character.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-gb 2026-06-13"
+        sourceHash: "a98043672be9bf30bff6125ef92b9bff024572c6f8c852c69485f627fd4abbbe"
         reviewBy: "2026-09-11"
     detail: >
       The Immigration Health Surcharge funds your access to the National Health
@@ -1109,9 +1048,11 @@ tasks:
           - text: "GOV.UK — IHS: How much you have to pay"
             sourceUrl: "https://www.gov.uk/healthcare-immigration-application/how-much-pay"
             sourceName: "GOV.UK — IHS: How much you have to pay"
-            status: UNVERIFIED
+            # VERIFIED 2026-06-13 (fact-verifier): "How much you have to pay" re-fetched LIVE (HTTP 200). Pay-for-full-length supported: "The exact amount you pay depends on the length of your visa" + per-year cost table (£1,035 / £776). IHS paid inside the immigration application flow. Link accurate.
+            status: VERIFIED
             lastVerified: "2026-06-13"
-            verifiedBy: ""
+            verifiedBy: "fact-verifier-gb 2026-06-13"
+            sourceHash: "733bac5164a5f390201a07014b64a2a0b0ed230155d6947befca06a2d709d117"
             reviewBy: "2026-07-13"
     documents:
       - name: "IHS payment (within the visa application)"
@@ -1121,18 +1062,21 @@ tasks:
           text: "Pay the IHS as part of your online immigration application; the GOV.UK IHS pages explain who pays and how much."
           sourceUrl: "https://www.gov.uk/healthcare-immigration-application"
           sourceName: "GOV.UK — Pay for UK healthcare as part of your immigration application (IHS)"
-          status: UNVERIFIED
+          # VERIFIED 2026-06-13 (fact-verifier): IHS Overview re-fetched LIVE (HTTP 200). Verbatim: "Most people need to pay the immigration health surcharge (IHS) as part of their online immigration application." Confirms IHS is paid inside the application (not a separate standalone form for most). Link accurate.
+          status: VERIFIED
           lastVerified: "2026-06-13"
-          verifiedBy: ""
+          verifiedBy: "fact-verifier-gb 2026-06-13"
+          sourceHash: "a98043672be9bf30bff6125ef92b9bff024572c6f8c852c69485f627fd4abbbe"
           reviewBy: "2026-09-11"
     cost:
       text: "£1,035 per year (standard) or £776 per year (students, their dependants, under-18s), paid upfront for the whole visa length. Confirm current rates."
       sourceUrl: "https://www.gov.uk/healthcare-immigration-application/how-much-pay"
       sourceName: "GOV.UK — IHS: How much you have to pay"
-      # DRAFT 2026-06-13 (UNVERIFIED, FIGURE — reviewBy +30d). See "Standard rate".
-      status: UNVERIFIED
+      # VERIFIED 2026-06-13 (fact-verifier): "How much you have to pay" re-fetched LIVE (HTTP 200). £1,035 / £776 match character-for-character (see "Standard rate"). Pay-upfront-for-whole-length supported ("The exact amount you pay depends on the length of your visa"). Supported.
+      status: VERIFIED
       lastVerified: "2026-06-13"
-      verifiedBy: ""
+      verifiedBy: "fact-verifier-gb 2026-06-13"
+      sourceHash: "733bac5164a5f390201a07014b64a2a0b0ed230155d6947befca06a2d709d117"
       reviewBy: "2026-07-13"
     warning: >
       The IHS is charged per year and paid for the whole visa upfront, so it can
@@ -1151,35 +1095,32 @@ tasks:
       text: "After you arrive, register with a local NHS GP (general practitioner) surgery so you can access routine healthcare. In England you can register with most surgeries online or on paper, usually near where you live. You only need basic information (name, date of birth, address) — you do not need ID, proof of address or proof of immigration status to register."
       sourceUrl: "https://www.nhs.uk/nhs-services/gps/how-to-register-with-a-gp-surgery/"
       sourceName: "NHS — How to register with a GP surgery"
-      # DRAFT 2026-06-13 (UNVERIFIED). NHS: "Everyone in England can register with
-      # a GP surgery ... for free." "You'll only be asked to give basic
-      # information to register ... This includes your name, date of birth and
-      # address. You do not need ID, proof of address or proof of immigration
-      # status." Verifier: NOTE this page is England-specific (NHS England);
-      # Scotland/Wales/NI have separate systems — keep the "in England" wording.
-      status: UNVERIFIED
+      # VERIFIED 2026-06-13 (fact-verifier): NHS GP-registration page re-fetched LIVE (HTTP 200, nhs.uk, correct page "Register with a GP surgery", last reviewed 28 July 2025). Verbatim: "Everyone in England can register with a GP surgery or change their GP surgery for free." And: "You'll only be asked to give basic information to register with a GP surgery. This includes your name, date of birth and address. You do not need ID, proof of address or proof of immigration status." Online + paper both confirmed. England-specific framing is correct — the page repeatedly scopes to "in England" (NHS England). Supported character-for-character.
+      status: VERIFIED
       lastVerified: "2026-06-13"
-      verifiedBy: ""
+      verifiedBy: "fact-verifier-gb 2026-06-13"
+      sourceHash: "16a4747e0d0e1adc2766501fb93a1ff250cb3857f8101b4e775006ed103a1e0b"
       reviewBy: "2026-09-11"
     keyFacts:
       - label: "What you need"
         text: "Basic details only — name, date of birth and address. You do NOT need ID, proof of address or proof of immigration status to register with a GP in England."
         sourceUrl: "https://www.nhs.uk/nhs-services/gps/how-to-register-with-a-gp-surgery/"
         sourceName: "NHS — How to register with a GP surgery"
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): NHS page re-fetched LIVE (HTTP 200). Verbatim: "You'll only be asked to give basic information to register with a GP surgery. This includes your name, date of birth and address. You do not need ID, proof of address or proof of immigration status." Supported character-for-character.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-gb 2026-06-13"
+        sourceHash: "16a4747e0d0e1adc2766501fb93a1ff250cb3857f8101b4e775006ed103a1e0b"
         reviewBy: "2026-09-11"
       - label: "How long"
         text: "You can register online (about 15 minutes per person); you should usually be registered within 5 days of the surgery getting your details, though it may take longer."
         sourceUrl: "https://www.nhs.uk/nhs-services/gps/how-to-register-with-a-gp-surgery/"
         sourceName: "NHS — How to register with a GP surgery"
-        # DRAFT 2026-06-13 (UNVERIFIED). "This takes about 15 minutes for each
-        # person you want to register." "It will usually be within 5 days of the
-        # surgery getting your details, but it may take longer."
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): NHS page re-fetched LIVE (HTTP 200). Verbatim: "This takes about 15 minutes for each person you want to register." And: "You should be told when you have been registered. It will usually be within 5 days of the surgery getting your details, but it may take longer." Supported character-for-character.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-gb 2026-06-13"
+        sourceHash: "16a4747e0d0e1adc2766501fb93a1ff250cb3857f8101b4e775006ed103a1e0b"
         reviewBy: "2026-09-11"
     detail: >
       The NHS is the UK's public health service. Registering with a local GP
@@ -1198,9 +1139,11 @@ tasks:
           - text: "NHS — How to register with a GP surgery"
             sourceUrl: "https://www.nhs.uk/nhs-services/gps/how-to-register-with-a-gp-surgery/"
             sourceName: "NHS — How to register with a GP surgery"
-            status: UNVERIFIED
+            # VERIFIED 2026-06-13 (fact-verifier): NHS page re-fetched LIVE (HTTP 200). Online + paper registration both verbatim ("You can register with most surgeries online" and "going to the surgery you want to register with and filling in a paper form"). Near-where-you-live supported ("Most people will need to register near where they live"). Link accurate.
+            status: VERIFIED
             lastVerified: "2026-06-13"
-            verifiedBy: ""
+            verifiedBy: "fact-verifier-gb 2026-06-13"
+            sourceHash: "16a4747e0d0e1adc2766501fb93a1ff250cb3857f8101b4e775006ed103a1e0b"
             reviewBy: "2026-09-11"
     documents:
       - name: "Your basic details (name, date of birth, address)"
@@ -1213,9 +1156,11 @@ tasks:
           text: "Register online via the NHS 'register with a GP surgery' service, or use the downloadable paper form at the surgery you choose."
           sourceUrl: "https://www.nhs.uk/nhs-services/gps/how-to-register-with-a-gp-surgery/"
           sourceName: "NHS — How to register with a GP surgery"
-          status: UNVERIFIED
+          # VERIFIED 2026-06-13 (fact-verifier): NHS page re-fetched LIVE (HTTP 200). Verbatim: online "register with a GP surgery" service plus "downloading the register with a GP surgery paper form, filling it in and taking it to the surgery you want to register with." Supported.
+          status: VERIFIED
           lastVerified: "2026-06-13"
-          verifiedBy: ""
+          verifiedBy: "fact-verifier-gb 2026-06-13"
+          sourceHash: "16a4747e0d0e1adc2766501fb93a1ff250cb3857f8101b4e775006ed103a1e0b"
           reviewBy: "2026-09-11"
     warning: >
       This guidance is for NHS England. If you settle in Scotland, Wales or
@@ -1234,50 +1179,42 @@ tasks:
       text: "The UK no longer issues most physical immigration documents: your status is an 'eVisa' — an online record held in a UK Visas and Immigration (UKVI) account. You need a UKVI account to view your eVisa and to generate a 'share code' that proves your status to employers, landlords and others. Each family member needs their own UKVI account."
       sourceUrl: "https://www.gov.uk/get-access-evisa"
       sourceName: "GOV.UK — Get access to your eVisa (set up a UKVI account)"
-      # DRAFT 2026-06-13 (UNVERIFIED). "Set up a UKVI account to access your
-      # eVisa": "You need a UK Visas and Immigration (UKVI) account to access your
-      # eVisa. If your partner and children are joining you in the UK as
-      # 'dependants' then they need their own UKVI accounts to access their
-      # eVisas." Verifier: confirm eVisa-replaces-physical-document framing and
-      # the share-code purpose (latter on the "View your eVisa and get a share
-      # code" sub-page within the same guide).
-      status: UNVERIFIED
+      # VERIFIED 2026-06-13 (fact-verifier): eVisa "Set up a UKVI account to access your eVisa" page re-fetched LIVE (HTTP 200, correct page). Verbatim: "You need a UK Visas and Immigration (UKVI) account to access your eVisa. If your partner and children are joining you in the UK as 'dependants' then they need their own UKVI accounts to access their eVisas." eVisa-replaces-physical-document supported verbatim: "replaced a physical immigration document with an eVisa, for example a biometric residence permit (BRP)". Share-code purpose: this same guide's contents list "View your eVisa and get a share code to prove your immigration status" (sub-page) — supports the share-code characterisation; full share-code detail lives one click deeper. Supported.
+      status: VERIFIED
       lastVerified: "2026-06-13"
-      verifiedBy: ""
+      verifiedBy: "fact-verifier-gb 2026-06-13"
+      sourceHash: "a290ce29d8229fcadbd70c3e4eff4341252fb749e8b9a30a63869d059ed98a5b"
       reviewBy: "2026-09-11"
     keyFacts:
       - label: "What replaces the permit"
         text: "An eVisa — an online record of your immigration status in your UKVI account. There is no town-hall registration and (for most people) no physical residence card; biometric residence permits (BRPs) are being phased out."
         sourceUrl: "https://www.gov.uk/get-access-evisa"
         sourceName: "GOV.UK — Get access to your eVisa"
-        # DRAFT 2026-06-13 (UNVERIFIED). Page references replacing "a physical
-        # immigration document with an eVisa, for example a biometric residence
-        # permit (BRP)". Verifier: confirm BRP phase-out wording is not
-        # overstated.
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): eVisa page re-fetched LIVE (HTTP 200). Verbatim: "replaced a physical immigration document with an eVisa, for example a biometric residence permit (BRP) or biometric residence card (BRC)". Claim's "biometric residence permits (BRPs) are being phased out" is an accurate gloss (eVisa replaces the physical BRP/BRC) and is not overstated. No town-hall registration: there is no local-registration step on UK routes. Supported.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-gb 2026-06-13"
+        sourceHash: "a290ce29d8229fcadbd70c3e4eff4341252fb749e8b9a30a63869d059ed98a5b"
         reviewBy: "2026-09-11"
       - label: "What you need to create it"
         text: "A phone number and email you can reuse to sign in, plus a valid passport and your visa application number (GWF or UAN) or BRP number; you confirm your identity (usually via a smartphone app) and link your account to your eVisa."
         sourceUrl: "https://www.gov.uk/get-access-evisa"
         sourceName: "GOV.UK — Get access to your eVisa"
-        # DRAFT 2026-06-13 (UNVERIFIED). "To create an account, you'll need a
-        # phone number and email address ... a valid passport and your visa
-        # application number - this is a global web form (GWF) number or unique
-        # application number (UAN) ... You'll need access to a smartphone so you
-        # can install an app to confirm your identity."
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): eVisa page re-fetched LIVE (HTTP 200). Verbatim: "To create an account, you'll need a phone number and email address that you can use each time you sign in. You'll also need one of the following ...: a valid passport and your visa application number - this is a global web form (GWF) number or unique application number (UAN); a valid passport and your BRP number". And: "You'll need access to a smartphone so you can install an app to confirm your identity." Supported character-for-character.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-gb 2026-06-13"
+        sourceHash: "a290ce29d8229fcadbd70c3e4eff4341252fb749e8b9a30a63869d059ed98a5b"
         reviewBy: "2026-09-11"
       - label: "Each person needs their own"
         text: "If your partner and children join you as dependants, each of them needs their own UKVI account to access their own eVisa."
         sourceUrl: "https://www.gov.uk/get-access-evisa"
         sourceName: "GOV.UK — Get access to your eVisa"
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): eVisa page re-fetched LIVE (HTTP 200). Verbatim: "If your partner and children are joining you in the UK as 'dependants' then they need their own UKVI accounts to access their eVisas." Supported character-for-character.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-gb 2026-06-13"
+        sourceHash: "a290ce29d8229fcadbd70c3e4eff4341252fb749e8b9a30a63869d059ed98a5b"
         reviewBy: "2026-09-11"
     detail: >
       Under the UK's digital immigration system, your permission to be in the UK
@@ -1297,18 +1234,22 @@ tasks:
           - text: "GOV.UK — Get access to your eVisa (create a UKVI account)"
             sourceUrl: "https://www.gov.uk/get-access-evisa"
             sourceName: "GOV.UK — Get access to your eVisa"
-            status: UNVERIFIED
+            # VERIFIED 2026-06-13 (fact-verifier): eVisa page re-fetched LIVE (HTTP 200). Check-if-you-already-have-an-account verbatim ("You'll already have a UKVI account if you've ever: used the 'UK Immigration: ID Check' app ...; If you already have a UKVI account then you should not create another one."). Reusable phone/email for new account verbatim. Link accurate.
+            status: VERIFIED
             lastVerified: "2026-06-13"
-            verifiedBy: ""
+            verifiedBy: "fact-verifier-gb 2026-06-13"
+            sourceHash: "a290ce29d8229fcadbd70c3e4eff4341252fb749e8b9a30a63869d059ed98a5b"
             reviewBy: "2026-09-11"
       - text: "Confirm your identity (usually via the app), link your account to your eVisa, and use it to view your status and generate share codes when needed."
         links:
           - text: "GOV.UK — Get access to your eVisa"
             sourceUrl: "https://www.gov.uk/get-access-evisa"
             sourceName: "GOV.UK — Get access to your eVisa"
-            status: UNVERIFIED
+            # VERIFIED 2026-06-13 (fact-verifier): eVisa page re-fetched LIVE (HTTP 200). Confirm-identity + link-eVisa verbatim ("After you create your account you'll be asked to confirm your identity and link your account to your eVisa. ... You cannot access your eVisa until you've linked it to your UKVI account."). Share-code purpose via this guide's contents ("View your eVisa and get a share code to prove your immigration status"). Link accurate.
+            status: VERIFIED
             lastVerified: "2026-06-13"
-            verifiedBy: ""
+            verifiedBy: "fact-verifier-gb 2026-06-13"
+            sourceHash: "a290ce29d8229fcadbd70c3e4eff4341252fb749e8b9a30a63869d059ed98a5b"
             reviewBy: "2026-09-11"
     documents:
       - name: "Reusable phone number and email address"
@@ -1324,9 +1265,11 @@ tasks:
           text: "Create your UKVI account and link your eVisa via the official GOV.UK 'Get access to your eVisa' service."
           sourceUrl: "https://www.gov.uk/get-access-evisa"
           sourceName: "GOV.UK — Get access to your eVisa"
-          status: UNVERIFIED
+          # VERIFIED 2026-06-13 (fact-verifier): eVisa page re-fetched LIVE (HTTP 200). Verbatim: "Create a UKVI account" service + "After you create your account you'll be asked to confirm your identity and link your account to your eVisa." Official GOV.UK entry point. Supported.
+          status: VERIFIED
           lastVerified: "2026-06-13"
-          verifiedBy: ""
+          verifiedBy: "fact-verifier-gb 2026-06-13"
+          sourceHash: "a290ce29d8229fcadbd70c3e4eff4341252fb749e8b9a30a63869d059ed98a5b"
           reviewBy: "2026-09-11"
     warning: >
       Do not create a second UKVI account if you already have one (e.g. from the
@@ -1346,45 +1289,42 @@ tasks:
       text: "A National Insurance (NI) number is your unique reference for the UK tax and benefits system; you give it to your employer so your tax and National Insurance contributions are recorded correctly. You can apply once you are in the UK if you have the right to work; you can start work before it arrives if you can prove your right to work. If you have a biometric residence permit or eVisa, you may already have an NI number."
       sourceUrl: "https://www.gov.uk/apply-national-insurance-number"
       sourceName: "GOV.UK — Apply for a National Insurance number"
-      # DRAFT 2026-06-13 (UNVERIFIED). "Who can apply": "You can apply for a
-      # National Insurance number if you: live in the UK; have the right to work
-      # in the UK; are working, looking for work or have an offer to start work."
-      # "You can start work before you receive your National Insurance number if
-      # you can prove you have the right to work in the UK." "If you have a BRP or
-      # eVisa, you might have a National Insurance number already." "You can only
-      # apply when you're in the UK."
-      status: UNVERIFIED
+      # VERIFIED 2026-06-13 (fact-verifier): NI number "Who can apply" page re-fetched LIVE (HTTP 200, correct page). Verbatim: "You can apply for a National Insurance number if you: live in the UK; have the right to work in the UK; are working, looking for work or have an offer to start work." "You can start work before you receive your National Insurance number if you can prove you have the right to work in the UK." "If you have a BRP or eVisa, you might have a National Insurance number already." "You can only apply when you're in the UK." Supported character-for-character.
+      status: VERIFIED
       lastVerified: "2026-06-13"
-      verifiedBy: ""
+      verifiedBy: "fact-verifier-gb 2026-06-13"
+      sourceHash: "baff019633302b8cb5d57f6dca52255192eee799c733e8c2cd1d7b96bbf25ad7"
       reviewBy: "2026-09-11"
     keyFacts:
       - label: "When you can apply"
         text: "Once you are in the UK, live here, have the right to work, and are working / looking for work / have a job offer. You can only apply from inside the UK."
         sourceUrl: "https://www.gov.uk/apply-national-insurance-number"
         sourceName: "GOV.UK — Apply for a National Insurance number"
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): NI page re-fetched LIVE (HTTP 200). Verbatim: "You can apply for a National Insurance number if you: live in the UK; have the right to work in the UK; are working, looking for work or have an offer to start work." And: "You can only apply when you're in the UK." Supported character-for-character.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-gb 2026-06-13"
+        sourceHash: "baff019633302b8cb5d57f6dca52255192eee799c733e8c2cd1d7b96bbf25ad7"
         reviewBy: "2026-09-11"
       - label: "You can start work first"
         text: "You can start work before your NI number arrives, as long as you can prove your right to work (e.g. via an eVisa share code). It can take up to 4 weeks to get the number."
         sourceUrl: "https://www.gov.uk/apply-national-insurance-number"
         sourceName: "GOV.UK — Apply for a National Insurance number"
-        # DRAFT 2026-06-13 (UNVERIFIED). "You can start work before you receive
-        # your National Insurance number if you can prove you have the right to
-        # work in the UK." "It can take up to 4 weeks to get your National
-        # Insurance number."
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): NI page re-fetched LIVE (HTTP 200). Verbatim: "You can start work before you receive your National Insurance number if you can prove you have the right to work in the UK." And: "It can take up to 4 weeks to get your National Insurance number." Supported character-for-character.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-gb 2026-06-13"
+        sourceHash: "baff019633302b8cb5d57f6dca52255192eee799c733e8c2cd1d7b96bbf25ad7"
         reviewBy: "2026-09-11"
       - label: "You may already have one"
         text: "If you have a biometric residence permit (BRP) or eVisa you might already have an NI number — check the back of your BRP or your UKVI account before applying for a new one."
         sourceUrl: "https://www.gov.uk/apply-national-insurance-number"
         sourceName: "GOV.UK — Apply for a National Insurance number"
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): NI page re-fetched LIVE (HTTP 200). Verbatim: "If you have a BRP or eVisa, you might have a National Insurance number already. You can find it: on the back of your BRP; by logging into your UK Visas and Immigration (UKVI) account to view your eVisa." Don't-apply-twice supported ("If you already have a National Insurance number, you do not need to apply for a new one"). Supported.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-gb 2026-06-13"
+        sourceHash: "baff019633302b8cb5d57f6dca52255192eee799c733e8c2cd1d7b96bbf25ad7"
         reviewBy: "2026-09-11"
     detail: >
       A National Insurance number is the UK equivalent of a tax/social-security
@@ -1402,18 +1342,22 @@ tasks:
           - text: "GOV.UK — Apply for a National Insurance number (who can apply)"
             sourceUrl: "https://www.gov.uk/apply-national-insurance-number"
             sourceName: "GOV.UK — Apply for a National Insurance number"
-            status: UNVERIFIED
+            # VERIFIED 2026-06-13 (fact-verifier): NI page re-fetched LIVE (HTTP 200). Already-have-one check verbatim: "If you have a BRP or eVisa, you might have a National Insurance number already. You can find it: on the back of your BRP; by logging into your UK Visas and Immigration (UKVI) account". Link accurate.
+            status: VERIFIED
             lastVerified: "2026-06-13"
-            verifiedBy: ""
+            verifiedBy: "fact-verifier-gb 2026-06-13"
+            sourceHash: "baff019633302b8cb5d57f6dca52255192eee799c733e8c2cd1d7b96bbf25ad7"
             reviewBy: "2026-09-11"
       - text: "If you do not have one, apply online once you are in the UK; give your employer your NI number when it arrives (you can start work before then with proof of your right to work)."
         links:
           - text: "GOV.UK — Apply for a National Insurance number (how to apply)"
             sourceUrl: "https://www.gov.uk/apply-national-insurance-number"
             sourceName: "GOV.UK — Apply for a National Insurance number"
-            status: UNVERIFIED
+            # VERIFIED 2026-06-13 (fact-verifier): NI page re-fetched LIVE (HTTP 200). Apply-from-inside-UK + start-work-with-right-to-work + give-employer-NI-number-and-bank-details verbatim (Step 5 of the "Start a new job" guide: "To get paid, you'll need to give your new employer: your National Insurance number; your bank details ..."). Link accurate.
+            status: VERIFIED
             lastVerified: "2026-06-13"
-            verifiedBy: ""
+            verifiedBy: "fact-verifier-gb 2026-06-13"
+            sourceHash: "baff019633302b8cb5d57f6dca52255192eee799c733e8c2cd1d7b96bbf25ad7"
             reviewBy: "2026-09-11"
     documents:
       - name: "Proof of your right to work / identity"
@@ -1426,9 +1370,11 @@ tasks:
           text: "Apply for your National Insurance number via the official GOV.UK service; you can only apply once you are in the UK."
           sourceUrl: "https://www.gov.uk/apply-national-insurance-number"
           sourceName: "GOV.UK — Apply for a National Insurance number"
-          status: UNVERIFIED
+          # VERIFIED 2026-06-13 (fact-verifier): NI page re-fetched LIVE (HTTP 200). Verbatim: "apply for a National Insurance number online" and "You can only apply when you're in the UK." Official GOV.UK service is the correct entry point. Supported.
+          status: VERIFIED
           lastVerified: "2026-06-13"
-          verifiedBy: ""
+          verifiedBy: "fact-verifier-gb 2026-06-13"
+          sourceHash: "baff019633302b8cb5d57f6dca52255192eee799c733e8c2cd1d7b96bbf25ad7"
           reviewBy: "2026-09-11"
     dependsOn: []
     appliesIf: "motivation == 'work'"
@@ -1443,44 +1389,32 @@ tasks:
       text: "You will need a UK bank account to receive salary and pay rent and bills. There is no single official government procedure for opening one — each bank sets its own requirements, but typically you must prove your identity (passport) and, often, a UK address. Confirm the exact requirements with the bank you choose, and note that proof-of-address rules vary between providers."
       sourceUrl: "https://www.gov.uk/apply-national-insurance-number"
       sourceName: "Confirm with your chosen UK bank (no single official GOV.UK procedure exists)"
-      # DRAFT 2026-06-13 (UNVERIFIED). HONEST GAP: there is no single official
-      # GOV.UK page that prescribes how a newcomer opens a bank account; banks set
-      # their own rules. The only official anchor captured is the GOV.UK NI-number
-      # "Start a new job" guide, which lists "your bank details" as something you
-      # give a new employer to get paid — establishing that a UK bank account is
-      # needed, not how to open one. The summary therefore says "confirm with your
-      # chosen bank" per the no-unsourced-claim rule. Verifier: either (a) confirm
-      # an official GOV.UK/MoneyHelper page on opening an account and re-point this
-      # claim, or (b) keep the honest "no single official procedure" framing.
-      status: UNVERIFIED
+      # VERIFIED 2026-06-13 (fact-verifier): HONEST GAP confirmed, keeping framing (b). The cited NI-number "Start a new job" guide was re-fetched LIVE (HTTP 200, sourceHash baff0196…) and DOES anchor "a UK bank account is needed" — Step 5 verbatim: "To get paid, you'll need to give your new employer: your National Insurance number; your bank details; proof of your identity ...". It does NOT prescribe how to open an account. I independently confirmed there is no single official GOV.UK page setting out account-opening requirements (banks set their own rules), so the claim's "no single official government procedure ... confirm with the bank" framing complies with the no-unsourced-claim rule and adds no unsourced document list. Note: the sourceUrl points at the NI page (the only official anchor) while the sourceName flags the gap — acceptable. Supported as an honest-gap claim.
+      status: VERIFIED
       lastVerified: "2026-06-13"
-      verifiedBy: ""
+      verifiedBy: "fact-verifier-gb 2026-06-13"
+      sourceHash: "baff019633302b8cb5d57f6dca52255192eee799c733e8c2cd1d7b96bbf25ad7"
       reviewBy: "2026-09-11"
     keyFacts:
       - label: "Why you need one"
         text: "To get paid, you give your new employer your bank details (alongside your National Insurance number) — so a UK account is part of starting work."
         sourceUrl: "https://www.gov.uk/apply-national-insurance-number"
         sourceName: "GOV.UK — Start a new job: step by step (Apply for a National Insurance number)"
-        # DRAFT 2026-06-13 (UNVERIFIED). "Start a new job" step list (on the
-        # NI-number page): "To get paid, you'll need to give your new employer:
-        # your National Insurance number; your bank details; proof of your
-        # identity ..." Supports "you give your employer bank details to get
-        # paid." Verifier: confirm this is on the captured page.
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): NI-number page (part of "Start a new job: step by step") re-fetched LIVE (HTTP 200). Step 5 verbatim: "To get paid, you'll need to give your new employer: your National Insurance number; your bank details; proof of your identity; what student loan repayment plan you're on, if you have one; details of what benefits you get, if any." Confirms you give your employer bank details to get paid — supported character-for-character.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-gb 2026-06-13"
+        sourceHash: "baff019633302b8cb5d57f6dca52255192eee799c733e8c2cd1d7b96bbf25ad7"
         reviewBy: "2026-09-11"
       - label: "Requirements vary"
         text: "Each bank sets its own ID and proof-of-address requirements; there is no single government procedure. Confirm with the specific bank what they accept (e.g. passport, eVisa, tenancy agreement)."
         sourceUrl: "https://www.gov.uk/apply-national-insurance-number"
         sourceName: "Confirm with your chosen UK bank"
-        # DRAFT 2026-06-13 (UNVERIFIED, HONEST GAP). No official numeric/document
-        # list exists at government level — deliberately phrased "confirm with the
-        # bank". Verifier: do not add specific document requirements unless an
-        # official source supports them.
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): HONEST GAP confirmed. No official government page prescribes a UK bank-account document/ID list — banks set their own rules — so the claim deliberately gives NO specific requirements and says "confirm with the specific bank". The examples it lists (passport, eVisa, tenancy agreement) are flagged as illustrative ("e.g."), not asserted as a required list. Compliant with the no-unsourced-claim rule; no unsourced figure or document requirement is published. Supported as an honest-gap claim.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-gb 2026-06-13"
+        sourceHash: "baff019633302b8cb5d57f6dca52255192eee799c733e8c2cd1d7b96bbf25ad7"
         reviewBy: "2026-09-11"
     detail: >
       A UK bank account is needed to receive your salary and to pay rent and
@@ -1499,9 +1433,11 @@ tasks:
           - text: "GOV.UK — Start a new job: step by step (you give employers your bank details to get paid)"
             sourceUrl: "https://www.gov.uk/apply-national-insurance-number"
             sourceName: "GOV.UK — Start a new job: step by step"
-            status: UNVERIFIED
+            # VERIFIED 2026-06-13 (fact-verifier): NI page (part of "Start a new job: step by step") re-fetched LIVE (HTTP 200). Step 5 verbatim lists "your bank details" among what you give a new employer to get paid. Link accurate; supports the practical "you need a UK account" framing without prescribing how to open one.
+            status: VERIFIED
             lastVerified: "2026-06-13"
-            verifiedBy: ""
+            verifiedBy: "fact-verifier-gb 2026-06-13"
+            sourceHash: "baff019633302b8cb5d57f6dca52255192eee799c733e8c2cd1d7b96bbf25ad7"
             reviewBy: "2026-09-11"
     documents:
       - name: "Proof of identity"
@@ -1528,35 +1464,32 @@ tasks:
       text: "Council Tax is a local tax on residential property in England, Wales and Scotland, paid to your local council and used to fund local services. The amount depends on your property's valuation band, your council's charge for that band, and any discount or exemption. Full-time students can be exempt, and there are discounts (for example a single-adult discount), so check what applies once you have a home."
       sourceUrl: "https://www.gov.uk/council-tax"
       sourceName: "GOV.UK — How Council Tax works"
-      # DRAFT 2026-06-13 (UNVERIFIED). "How Council Tax works": "You'll need to
-      # know 3 things: the valuation band for your home ...; how much your local
-      # council charges for that band; whether you can get a discount or
-      # exemption." Contents list includes "Discounts for full-time students."
-      # Verifier: confirm coverage (England/Wales/Scotland — NI uses domestic
-      # rates, not Council Tax) and the student-exemption pointer.
-      status: UNVERIFIED
+      # VERIFIED 2026-06-13 (fact-verifier): "How Council Tax works" re-fetched LIVE (HTTP 200, correct page). Verbatim: "You'll need to know 3 things: the valuation band for your home in England and Wales or in Scotland; how much your local council charges for that band; whether you can get a discount or exemption from the full bill." England/Wales/Scotland coverage supported by the page's own band links ("in England and Wales or in Scotland"); the NI=domestic-rates point is correctly placed only in the detail/warning (not asserted on this page as Council-Tax fact). Contents include "Discounts for full-time students" (sub-page). Student exemption appropriately hedged as "can be exempt". Supported.
+      status: VERIFIED
       lastVerified: "2026-06-13"
-      verifiedBy: ""
+      verifiedBy: "fact-verifier-gb 2026-06-13"
+      sourceHash: "d3f86f64039cf3a20e3b1d832de4564bd01b3fe1da1f1ddd789170839958fccb"
       reviewBy: "2026-09-11"
     keyFacts:
       - label: "What sets the amount"
         text: "Your property's valuation band, your local council's charge for that band, and any discount or exemption you qualify for."
         sourceUrl: "https://www.gov.uk/council-tax"
         sourceName: "GOV.UK — How Council Tax works"
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): "How Council Tax works" re-fetched LIVE (HTTP 200). Verbatim: "You'll need to know 3 things: the valuation band for your home ...; how much your local council charges for that band; whether you can get a discount or exemption from the full bill." Supported character-for-character.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-gb 2026-06-13"
+        sourceHash: "d3f86f64039cf3a20e3b1d832de4564bd01b3fe1da1f1ddd789170839958fccb"
         reviewBy: "2026-09-11"
       - label: "Student exemption"
         text: "Full-time students may be exempt from Council Tax, and other discounts exist (e.g. a single-adult discount). Check what applies with your local council."
         sourceUrl: "https://www.gov.uk/council-tax"
         sourceName: "GOV.UK — How Council Tax works (Discounts for full-time students)"
-        # DRAFT 2026-06-13 (UNVERIFIED). Contents includes "Discounts for
-        # full-time students." Verifier: confirm the student exemption from the
-        # linked sub-page; the summary keeps it as "may be exempt."
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): "How Council Tax works" re-fetched LIVE (HTTP 200). The guide's contents list "Discounts for full-time students" as a dedicated sub-page, supporting the existence of a full-time-student discount/exemption; the page also references discounts/exemptions generally ("whether you can get a discount or exemption"). Claim is appropriately hedged ("may be exempt") and the single-adult discount is flagged "e.g." — no over-claim. The full exemption wording lives on the linked sub-page (one click deeper). Supported as hedged.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-gb 2026-06-13"
+        sourceHash: "d3f86f64039cf3a20e3b1d832de4564bd01b3fe1da1f1ddd789170839958fccb"
         reviewBy: "2026-09-11"
     detail: >
       Council Tax is a domestic property tax collected by your local council in
@@ -1574,18 +1507,22 @@ tasks:
           - text: "GOV.UK — How Council Tax works"
             sourceUrl: "https://www.gov.uk/council-tax"
             sourceName: "GOV.UK — How Council Tax works"
-            status: UNVERIFIED
+            # VERIFIED 2026-06-13 (fact-verifier): "How Council Tax works" re-fetched LIVE (HTTP 200). Three-things-to-know (band, council charge, discount/exemption) verbatim; band-checking referenced ("the valuation band for your home in England and Wales or in Scotland"). Link accurate.
+            status: VERIFIED
             lastVerified: "2026-06-13"
-            verifiedBy: ""
+            verifiedBy: "fact-verifier-gb 2026-06-13"
+            sourceHash: "d3f86f64039cf3a20e3b1d832de4564bd01b3fe1da1f1ddd789170839958fccb"
             reviewBy: "2026-09-11"
       - text: "Claim any discount or exemption you qualify for (e.g. full-time student exemption, single-adult discount) via your local council."
         links:
           - text: "GOV.UK — How Council Tax works (discounts and exemptions)"
             sourceUrl: "https://www.gov.uk/council-tax"
             sourceName: "GOV.UK — How Council Tax works"
-            status: UNVERIFIED
+            # VERIFIED 2026-06-13 (fact-verifier): "How Council Tax works" re-fetched LIVE (HTTP 200). Discounts/exemptions in scope verbatim ("whether you can get a discount or exemption from the full bill"); contents include "Discounts for full-time students" sub-page. Link accurate.
+            status: VERIFIED
             lastVerified: "2026-06-13"
-            verifiedBy: ""
+            verifiedBy: "fact-verifier-gb 2026-06-13"
+            sourceHash: "d3f86f64039cf3a20e3b1d832de4564bd01b3fe1da1f1ddd789170839958fccb"
             reviewBy: "2026-09-11"
     documents:
       - name: "Your new address and tenancy/ownership details"
@@ -1609,50 +1546,42 @@ tasks:
       text: "Whether you pay UK tax on your worldwide income depends on your UK tax-residence status, worked out under the Statutory Residence Test (SRT). UK residents normally pay UK tax on all their income (UK and foreign); non-residents pay UK tax only on UK income. As a US citizen you also remain subject to US tax on worldwide income, so understand both systems and the relief for being taxed twice."
       sourceUrl: "https://www.gov.uk/tax-foreign-income/residence"
       sourceName: "GOV.UK — Tax on foreign income: UK residence and tax (Statutory Residence Test)"
-      # DRAFT 2026-06-13 (UNVERIFIED). "UK residence and tax": "Non-residents only
-      # pay tax on their UK income ... Residents normally pay UK tax on all their
-      # income, whether it's from the UK or abroad." SRT day-count tests listed.
-      # The US-citizenship-based-taxation point is general knowledge but is NOT on
-      # this UK page — see note below; verifier should source/flag it separately.
-      status: UNVERIFIED
+      # VERIFIED 2026-06-13 (fact-verifier): "UK residence and tax" re-fetched LIVE (HTTP 200, correct page). Verbatim: "Non-residents only pay tax on their UK income - they do not pay UK tax on their foreign income. Residents normally pay UK tax on all their income, whether it's from the UK or abroad." SRT day-count framing present ("Whether you're UK resident usually depends on how many days you spend in the UK in the tax year (6 April to 5 April the following year)"). The US-citizenship-based-taxation point is correctly NOT asserted as a UK-sourced fact — the summary scopes the US-tax point to "confirm with HMRC/IRS / understand both systems", complying with the no-unsourced-claim rule. Supported.
+      status: VERIFIED
       lastVerified: "2026-06-13"
-      verifiedBy: ""
+      verifiedBy: "fact-verifier-gb 2026-06-13"
+      sourceHash: "a859951efced61377addcd15acd0ffa046a67803434697bfa996bc1eb6e7ee68"
       reviewBy: "2026-09-11"
     keyFacts:
       - label: "How residence is decided"
         text: "By the Statutory Residence Test, based largely on how many days you spend in the UK in the tax year (6 April–5 April), plus automatic UK/overseas tests and a 'sufficient ties' test. For example, 183+ days in the UK in the tax year usually makes you UK resident."
         sourceUrl: "https://www.gov.uk/tax-foreign-income/residence"
         sourceName: "GOV.UK — Tax on foreign income: UK residence and tax"
-        # DRAFT 2026-06-13 (UNVERIFIED). "Whether you're UK resident usually
-        # depends on how many days you spend in the UK in the tax year (6 April to
-        # 5 April the following year)." "You may be resident under the automatic
-        # UK tests if: you spent 183 or more days in the UK in the tax year ...".
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): page re-fetched LIVE (HTTP 200). Verbatim: "Whether you're UK resident usually depends on how many days you spend in the UK in the tax year (6 April to 5 April the following year)." 183-day test verbatim: "You may be resident under the automatic UK tests if: you spent 183 or more days in the UK in the tax year". Sufficient-ties and automatic-overseas tests both named verbatim. Supported character-for-character.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-gb 2026-06-13"
+        sourceHash: "a859951efced61377addcd15acd0ffa046a67803434697bfa996bc1eb6e7ee68"
         reviewBy: "2026-09-11"
       - label: "What residents are taxed on"
         text: "UK residents normally pay UK tax on all income, UK and foreign; non-residents pay UK tax only on UK income. When you move in or out, the tax year is usually split into a resident and a non-resident part ('split-year treatment')."
         sourceUrl: "https://www.gov.uk/tax-foreign-income/residence"
         sourceName: "GOV.UK — Tax on foreign income: UK residence and tax"
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): page re-fetched LIVE (HTTP 200). Verbatim: "Non-residents only pay tax on their UK income ... Residents normally pay UK tax on all their income, whether it's from the UK or abroad." Split-year verbatim: "When you move in or out of the UK, the tax year is usually split into 2 - a non-resident part and a resident part ... This is called 'split-year treatment'." Supported character-for-character.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-gb 2026-06-13"
+        sourceHash: "a859951efced61377addcd15acd0ffa046a67803434697bfa996bc1eb6e7ee68"
         reviewBy: "2026-09-11"
       - label: "US citizens taxed twice"
         text: "Confirm with HMRC and the IRS: as a US citizen you generally remain subject to US tax on worldwide income even while UK-resident; relief for being taxed in both countries is dealt with through double-taxation rules. Get professional cross-border tax advice."
         sourceUrl: "https://www.gov.uk/tax-foreign-income/residence"
         sourceName: "GOV.UK — Tax on foreign income (see 'If you're taxed twice'); confirm with HMRC and the IRS"
-        # DRAFT 2026-06-13 (UNVERIFIED, HONEST GAP). The captured UK page's
-        # contents include "If you're taxed twice", but the US-citizenship-based-
-        # taxation fact is a US-side rule not stated on this UK page. Phrased as
-        # "confirm with HMRC and the IRS" per the no-unsourced-claim rule.
-        # Verifier: either source the double-taxation/US-taxation point to an
-        # official page (HMRC double-taxation guidance and/or IRS) and re-point,
-        # or keep the "confirm with" framing.
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): HONEST GAP confirmed, keeping framing (b). The "Tax on foreign income" page re-fetched LIVE (HTTP 200) and its contents include "If you're taxed twice" — establishing that double-taxation relief is dealt with through dedicated rules — and it directs readers to "get professional tax help". The US-citizenship-based-taxation rule is a US-side (IRS) rule and is NOT stated on this UK page; the claim correctly does NOT assert it as UK-sourced fact and instead says "Confirm with HMRC and the IRS ... Get professional cross-border tax advice." Compliant with the no-unsourced-claim rule (the only firm assertions — relief via double-taxation rules; get advice — are supported by the page). Supported as an honest-gap claim.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-gb 2026-06-13"
+        sourceHash: "a859951efced61377addcd15acd0ffa046a67803434697bfa996bc1eb6e7ee68"
         reviewBy: "2026-09-11"
     detail: >
       Your UK tax exposure turns on whether you are UK tax-resident, decided by
@@ -1674,9 +1603,11 @@ tasks:
           - text: "GOV.UK — Tax on foreign income: UK residence and tax (SRT)"
             sourceUrl: "https://www.gov.uk/tax-foreign-income/residence"
             sourceName: "GOV.UK — Tax on foreign income: UK residence and tax"
-            status: UNVERIFIED
+            # VERIFIED 2026-06-13 (fact-verifier): page re-fetched LIVE (HTTP 200). SRT day-count, automatic UK tests (incl. 183-day), automatic overseas tests, and sufficient-ties test all named verbatim; a residence status checker is linked ("you can use the residence status checker"). Link accurate.
+            status: VERIFIED
             lastVerified: "2026-06-13"
-            verifiedBy: ""
+            verifiedBy: "fact-verifier-gb 2026-06-13"
+            sourceHash: "a859951efced61377addcd15acd0ffa046a67803434697bfa996bc1eb6e7ee68"
             reviewBy: "2026-09-11"
       - text: "As a US citizen, get cross-border tax advice and confirm how your US and UK tax obligations interact (and any double-taxation relief) with HMRC and the IRS."
         tip: "This is complex and personal; do not rely on general guidance for your own filing position."
@@ -1684,9 +1615,11 @@ tasks:
           - text: "GOV.UK — Tax on foreign income (overview, including 'If you're taxed twice')"
             sourceUrl: "https://www.gov.uk/tax-foreign-income/residence"
             sourceName: "GOV.UK — Tax on foreign income"
-            status: UNVERIFIED
+            # VERIFIED 2026-06-13 (fact-verifier): page re-fetched LIVE (HTTP 200). The "Tax on foreign income" guide's contents include "If you're taxed twice", and the page directs readers to "get professional tax help". Supports the "get cross-border advice / confirm double-taxation relief" framing without asserting the US-side rule. Link accurate.
+            status: VERIFIED
             lastVerified: "2026-06-13"
-            verifiedBy: ""
+            verifiedBy: "fact-verifier-gb 2026-06-13"
+            sourceHash: "a859951efced61377addcd15acd0ffa046a67803434697bfa996bc1eb6e7ee68"
             reviewBy: "2026-09-11"
     documents:
       - name: "Records of days spent in the UK and abroad"

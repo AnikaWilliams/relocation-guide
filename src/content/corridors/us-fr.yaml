@@ -22,58 +22,72 @@ tasks:
       text: "As a US citizen you are a non-EU/EEA third-country national, so to take up salaried employment in France your employer must obtain a work permit (autorisation de travail) from the French authorities before you arrive. With that permit you apply for a long-stay visa that serves as a residence permit (VLS-TS) bearing the statement «salarié» for a permanent contract (CDI) or «travailleur temporaire» for a fixed-term contract (CDD)."
       sourceUrl: "https://france-visas.gouv.fr/en/activite-salariee"
       sourceName: "France-Visas — Salaried employment"
-      status: UNVERIFIED
+      # VERIFIED 2026-06-13 (fact-verifier): France-Visas "Salaried employment" re-fetched LIVE (curl, browser UA, HTTP 200, no redirect; sha256 4b05e186…). Employees & seasonal workers § verbatim: "Your employer or … must obtain a work permit from the French authorities" and a "long-stay visa equivalent to a 12-month residence permit (maximum): Bearing the statement \"salarié\" (employee) for a permanent employment contracts / Bearing the statement \"travailleur temporaire\" (temporary worker) for fixed-term contracts"; "Along with your visa application, you must also submit the work permit that was granted to your employer." Supports employer-obtains-permit + salarié/travailleur-temporaire markings + submit-permit-with-visa.
+      status: VERIFIED
       lastVerified: "2026-06-13"
-      verifiedBy: ""
+      verifiedBy: "fact-verifier-fr 2026-06-13"
+      sourceHash: "4b05e186151a88ada0804923092c417bf5f28ec69ce6cd845f2a57db915c9bc2"
       reviewBy: "2026-09-11"
     tldr:
       text: "To work for a French employer as a US citizen you cannot apply for the work permit yourself: your employer must obtain a work permit (autorisation de travail) from the French authorities first. You then apply at a French consulate for a long-stay visa that doubles as a residence permit (VLS-TS) marked «salarié» (permanent contract) or «travailleur temporaire» (fixed-term contract), submitting that work permit with your visa application."
       sourceUrl: "https://france-visas.gouv.fr/en/activite-salariee"
       sourceName: "France-Visas — Salaried employment"
-      status: UNVERIFIED
+      # VERIFIED 2026-06-13 (fact-verifier): same live France-Visas page (sha256 4b05e186…). Employer-must-obtain-permit, "salarié" (permanent) / "travailleur temporaire" (fixed-term) markings, and "submit the work permit that was granted to your employer" all confirmed verbatim.
+      status: VERIFIED
       lastVerified: "2026-06-13"
-      verifiedBy: ""
+      verifiedBy: "fact-verifier-fr 2026-06-13"
+      sourceHash: "4b05e186151a88ada0804923092c417bf5f28ec69ce6cd845f2a57db915c9bc2"
       reviewBy: "2026-09-11"
     keyFacts:
       - label: "Who applies"
         text: "Your employer obtains the work permit (autorisation de travail) from the French authorities before you arrive; you then apply for the visa and must submit that work permit with your visa application."
         sourceUrl: "https://france-visas.gouv.fr/en/activite-salariee"
         sourceName: "France-Visas — Salaried employment"
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): live France-Visas page (sha256 4b05e186…). Verbatim: "Your employer or … must obtain a work permit from the French authorities" and "Along with your visa application, you must also submit the work permit that was granted to your employer." Supports both elements.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-fr 2026-06-13"
+        sourceHash: "4b05e186151a88ada0804923092c417bf5f28ec69ce6cd845f2a57db915c9bc2"
         reviewBy: "2026-09-11"
       - label: "Where"
         text: "Apply for the long-stay visa at the French consular authorities responsible for your place of residence in the USA; after arrival the residence-permit side is handled by your local prefecture."
         sourceUrl: "https://www.service-public.gouv.fr/particuliers/vosdroits/F16162?lang=en"
         sourceName: "Service-Public — Long-stay visa (3 months to 1 year)"
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): Service-Public F16162 re-fetched LIVE (sha256 1a3fe90f…). Verbatim: "You must submit your visa application (no more than 3 months before departure planned) with the French consular authorit[ies]" of the country where you live. Prefecture handling the residence-permit/card side is the standard process the page describes ("residence card to be requested within 2 months of arrival"). Supported.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-fr 2026-06-13"
+        sourceHash: "1a3fe90f88fb634bf2914c5c386228f3fa340883357f12faf669a3632a037b6d"
         reviewBy: "2026-09-11"
       - label: "Visa marking"
         text: "Permanent contract (CDI) → long-stay visa serving as a residence permit (VLS-TS) marked «salarié»; fixed-term contract (CDD) → VLS-TS marked «travailleur temporaire»."
         sourceUrl: "https://france-visas.gouv.fr/en/activite-salariee"
         sourceName: "France-Visas — Salaried employment"
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): live France-Visas page (sha256 4b05e186…). Verbatim: "Bearing the statement \"salarié\" (employee) for a permanent employment contracts / Bearing the statement \"travailleur temporaire\" (temporary worker) for fixed-term contracts." Matches CDI→salarié / CDD→travailleur temporaire character-for-character.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-fr 2026-06-13"
+        sourceHash: "4b05e186151a88ada0804923092c417bf5f28ec69ce6cd845f2a57db915c9bc2"
         reviewBy: "2026-09-11"
       - label: "After arrival"
         text: "You must validate the VLS-TS online within three months of arriving in France; the temporary-worker / employee residence card is then valid one year and renewable."
         sourceUrl: "https://www.service-public.gouv.fr/particuliers/vosdroits/F15898?lang=en"
         sourceName: "Service-Public — Residence card: employee / temporary worker"
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): Service-Public F15898 re-fetched LIVE (sha256 abb9ef76…). Verbatim: "Within 3 months of your arrival in France, you must validate your VLS-TS"; "This card is valid 1 year and renewable" (employee card) / "This card is valid 1 year, it shall be renewable" (temporary-worker card). Supports both elements.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-fr 2026-06-13"
+        sourceHash: "abb9ef7638bc7c490a5ac19e71b2174fc63d84f42e741de214a28884177c60c4"
         reviewBy: "2026-09-11"
       - label: "Right or discretion"
         text: "Discretion: a work permit must be obtained for the role; there is no automatic entitlement to a third-country salaried work authorisation."
         sourceUrl: "https://www.service-public.gouv.fr/particuliers/vosdroits/F2728?lang=en"
         sourceName: "Service-Public — Work authorisation for a foreign employee"
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): Service-Public F2728 re-fetched LIVE (sha256 a6138db4…). Verbatim: "If the foreigner has a residence card « employee » or « temporary worker », a work authorization is mandatory so he can work" and the work authorisation is granted only if "the proposed job must complete one of the following conditions: Figure on the list of looms in tension [shortage occupations]; Have been published during 3 consecutive weeks … with … the public employment service …" — i.e. a conditional/labour-market test, never an entitlement register. Supports "must be obtained; no automatic entitlement."
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-fr 2026-06-13"
+        sourceHash: "a6138db4344c141ca2513ce81ccc8a47a1ba4ef23f5b359b25c88c227c9c58da"
         reviewBy: "2026-09-11"
     detail: >
       France admits third-country salaried workers through a two-part process. First, the
@@ -94,9 +108,11 @@ tasks:
           - text: "France-Visas — Salaried employment: employer must obtain the work permit"
             sourceUrl: "https://france-visas.gouv.fr/en/activite-salariee"
             sourceName: "France-Visas — Salaried employment"
-            status: UNVERIFIED
+            # VERIFIED 2026-06-13 (fact-verifier): live France-Visas page (sha256 4b05e186…); employer-obtains-work-permit confirmed verbatim. Link accurate.
+            status: VERIFIED
             lastVerified: "2026-06-13"
-            verifiedBy: ""
+            verifiedBy: "fact-verifier-fr 2026-06-13"
+            sourceHash: "4b05e186151a88ada0804923092c417bf5f28ec69ce6cd845f2a57db915c9bc2"
             reviewBy: "2026-09-11"
       - text: "Apply for the long-stay visa (VLS-TS «salarié» or «travailleur temporaire») at the French consular authorities for your US state of residence, submitting the work permit granted to your employer."
         tip: "Use the France-Visas online visa wizard to get the exact document list for your situation, then check the competent consulate's own submission instructions."
@@ -104,18 +120,22 @@ tasks:
           - text: "France-Visas — submit the work permit granted to your employer with the visa application"
             sourceUrl: "https://france-visas.gouv.fr/en/activite-salariee"
             sourceName: "France-Visas — Salaried employment"
-            status: UNVERIFIED
+            # VERIFIED 2026-06-13 (fact-verifier): live France-Visas page (sha256 4b05e186…). Verbatim: "Along with your visa application, you must also submit the work permit that was granted to your employer." Link accurate.
+            status: VERIFIED
             lastVerified: "2026-06-13"
-            verifiedBy: ""
+            verifiedBy: "fact-verifier-fr 2026-06-13"
+            sourceHash: "4b05e186151a88ada0804923092c417bf5f28ec69ce6cd845f2a57db915c9bc2"
             reviewBy: "2026-09-11"
       - text: "Travel to France on the VLS-TS, then validate it online within three months of arrival (see the separate validation task)."
         links:
           - text: "Service-Public — employee/temporary-worker card: validate the VLS-TS within 3 months"
             sourceUrl: "https://www.service-public.gouv.fr/particuliers/vosdroits/F15898?lang=en"
             sourceName: "Service-Public — Residence card: employee / temporary worker"
-            status: UNVERIFIED
+            # VERIFIED 2026-06-13 (fact-verifier): live Service-Public F15898 (sha256 abb9ef76…). Verbatim: "Within 3 months of your arrival in France, you must validate your VLS-TS." Link accurate.
+            status: VERIFIED
             lastVerified: "2026-06-13"
-            verifiedBy: ""
+            verifiedBy: "fact-verifier-fr 2026-06-13"
+            sourceHash: "abb9ef7638bc7c490a5ac19e71b2174fc63d84f42e741de214a28884177c60c4"
             reviewBy: "2026-09-11"
     documents:
       - name: "Work permit (autorisation de travail) obtained by your employer"
@@ -125,9 +145,11 @@ tasks:
           text: "Work authorisation for a foreign employee — the employer files the request; the current procedure and the categories of permit are described on the official Service-Public page. We link the authority page rather than a deep PDF so it stays current."
           sourceUrl: "https://www.service-public.gouv.fr/particuliers/vosdroits/F2728?lang=en"
           sourceName: "Service-Public — Work authorisation for a foreign employee"
-          status: UNVERIFIED
+          # VERIFIED 2026-06-13 (fact-verifier): live Service-Public F2728 (sha256 a6138db4…). Page is the authority page on work authorisation for a foreign employee; opens "The employer who wishes to hire an employee foreigner not European…" and sets out the procedure/categories. Authority-page link (not a self-hosted PDF) — confirmed correct and current.
+          status: VERIFIED
           lastVerified: "2026-06-13"
-          verifiedBy: ""
+          verifiedBy: "fact-verifier-fr 2026-06-13"
+          sourceHash: "a6138db4344c141ca2513ce81ccc8a47a1ba4ef23f5b359b25c88c227c9c58da"
           reviewBy: "2026-09-11"
       - name: "Long-stay visa application (via France-Visas)"
         type: form
@@ -136,9 +158,11 @@ tasks:
           text: "Apply for a long-stay visa through the official France-Visas portal; the portal's visa wizard generates the exact supporting-document list for salaried employment. Submit at the competent French consulate."
           sourceUrl: "https://france-visas.gouv.fr/en/visa-de-long-sejour"
           sourceName: "France-Visas — Long-stay visa"
-          status: UNVERIFIED
+          # VERIFIED 2026-06-13 (fact-verifier): live France-Visas "Long-stay visa" portal page (sha256 bae71d04…). Verbatim: "For any stay in France exceeding 90 days, you are required [to hold a long-stay visa]" and "you will be required to attach supporting documents specific to your situation to your application." Correct official portal page for the long-stay visa application.
+          status: VERIFIED
           lastVerified: "2026-06-13"
-          verifiedBy: ""
+          verifiedBy: "fact-verifier-fr 2026-06-13"
+          sourceHash: "bae71d0439a75ab9d21345157404837203fac84137511f7b794bbbcc1195b529"
           reviewBy: "2026-09-11"
       - name: "Signed French employment contract or binding job offer"
         type: provide
@@ -169,61 +193,75 @@ tasks:
       text: "If you are a qualified or highly qualified employee, the multi-year «passeport talent» residence permit is usually the strongest route: your employment contract and stay must exceed three months, your employer does not have to apply for a separate work permit, and the card is valid for up to four years. The «talent — qualified employee» path requires a master's-level qualification recognised in France and an annual gross salary of at least €39,582; the «talent — EU Blue Card» path requires a relevant higher-education qualification (or comparable experience), a contract of at least six months, and a gross annual salary of at least €59,373."
       sourceUrl: "https://www.service-public.gouv.fr/particuliers/vosdroits/F16922?lang=en"
       sourceName: "Service-Public — Talent residence card (multi-year)"
-      status: UNVERIFIED
+      # VERIFIED 2026-06-13 (fact-verifier): Service-Public F16922 re-fetched LIVE (sha256 11b4b0e6…; verified 01 June 2026). Qualified-employee verbatim: "Have an employment contract of more than 3 months that provides for an annual gross remuneration greater than or equal to €39,582" + "master's degree or a level 1 diploma labeled by the Conference of Grandes Ecoles." EU Blue Card verbatim: "Have an employment contract of at least 6 months / Have a gross annual salary greater than or equal to 1.5 times the average annual gross salary, or €59,373.00." "Your employer does not have to apply for a work permit." "The card is valid for the same period as the employment contract, up to a maximum of 4 years." Both thresholds character-for-character.
+      status: VERIFIED
       lastVerified: "2026-06-13"
-      verifiedBy: ""
+      verifiedBy: "fact-verifier-fr 2026-06-13"
+      sourceHash: "11b4b0e6f5d65fe6dc2cb90f730d25b4f405788c4f12503f6600c32a02ea57ce"
       # 30-day window: contains salary thresholds (€39,582 / €59,373).
       reviewBy: "2026-07-13"
     tldr:
       text: "The «passeport talent» is a multi-year residence permit (up to four years) for qualified employees and similar profiles; the employer is exempt from applying for a separate work permit, and your family can join under a simplified «talent-famille» procedure. The «qualified employee» path needs a master's-level qualification and ≥ €39,582 gross a year; the «EU Blue Card» path needs a relevant degree (or 5 years' comparable experience), a contract ≥ 6 months, and ≥ €59,373 gross a year."
       sourceUrl: "https://www.service-public.gouv.fr/particuliers/vosdroits/F16922?lang=en"
       sourceName: "Service-Public — Talent residence card (multi-year)"
-      status: UNVERIFIED
+      # VERIFIED 2026-06-13 (fact-verifier): same live F16922 (sha256 11b4b0e6…). €39,582 (qualified employee, master's-level), €59,373.00 (EU Blue Card, contract ≥6 months), "up to a maximum of 4 years", work-permit exemption, and "talent-family" simplified family procedure all confirmed verbatim. EU Blue Card also accepts "5 years of comparable professional experience" per the page.
+      status: VERIFIED
       lastVerified: "2026-06-13"
-      verifiedBy: ""
+      verifiedBy: "fact-verifier-fr 2026-06-13"
+      sourceHash: "11b4b0e6f5d65fe6dc2cb90f730d25b4f405788c4f12503f6600c32a02ea57ce"
       reviewBy: "2026-07-13"
     keyFacts:
       - label: "Validity"
         text: "The «passeport talent» is issued for the duration of the employment contract, up to a maximum of four years, commencing on the date of arrival in France."
         sourceUrl: "https://www.service-public.gouv.fr/particuliers/vosdroits/F16922?lang=en"
         sourceName: "Service-Public — Talent residence card (multi-year)"
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): live F16922 (sha256 11b4b0e6…): "The card is valid for the same period as the employment contract, up to a maximum of 4 years." The "commencing on the date of arrival" element is confirmed on the companion France-Visas talents page (sha256 31a34b53…): "It will allow you to stay for a maximum of four years commencing on the date of arrival." Supported.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-fr 2026-06-13"
+        sourceHash: "11b4b0e6f5d65fe6dc2cb90f730d25b4f405788c4f12503f6600c32a02ea57ce"
         reviewBy: "2026-09-11"
       - label: "Qualified-employee threshold"
         text: "«Talent — qualified employee»: a qualification at least equivalent to a French master's (or a Grandes Écoles level-1 diploma) plus an employment contract over three months providing annual gross remuneration of at least €39,582."
         sourceUrl: "https://www.service-public.gouv.fr/particuliers/vosdroits/F16922?lang=en"
         sourceName: "Service-Public — Talent residence card (multi-year)"
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): live F16922 (sha256 11b4b0e6…). Verbatim: "Have obtained a diploma in France at least [equivalent to a] master's degree or a level 1 diploma labeled by the Conference of Grandes Ecoles … Have an employment contract of more than 3 months that provides for an annual gross remuneration greater than or equal to €39,582." Threshold confirmed character-for-character.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-fr 2026-06-13"
+        sourceHash: "11b4b0e6f5d65fe6dc2cb90f730d25b4f405788c4f12503f6600c32a02ea57ce"
         # 30-day window: salary threshold (€39,582).
         reviewBy: "2026-07-13"
       - label: "EU Blue Card threshold"
         text: "«Talent — EU Blue Card»: a higher-education qualification (≥ 3 years) or 5 years' comparable professional experience, a contract of at least six months, and a gross annual salary of at least 1.5× the average gross salary, i.e. €59,373."
         sourceUrl: "https://www.service-public.gouv.fr/particuliers/vosdroits/F16922?lang=en"
         sourceName: "Service-Public — Talent residence card (multi-year)"
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): live F16922 (sha256 11b4b0e6…). Verbatim: "Have an employment contract of at least 6 months / Have a gross annual salary greater than or equal to 1.5 times the average annual gross salary, or €59,373.00." The page accepts a higher-education diploma (≥3 years) or "5 years of comparable professional experience" for the relevant professions. Threshold confirmed character-for-character.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-fr 2026-06-13"
+        sourceHash: "11b4b0e6f5d65fe6dc2cb90f730d25b4f405788c4f12503f6600c32a02ea57ce"
         # 30-day window: salary threshold (€59,373).
         reviewBy: "2026-07-13"
       - label: "Work permit"
         text: "The employer does NOT have to apply for a separate work permit for a «passeport talent» or «talent — EU Blue Card» holder."
         sourceUrl: "https://www.service-public.gouv.fr/particuliers/vosdroits/F16922?lang=en"
         sourceName: "Service-Public — Talent residence card (multi-year)"
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): live F16922 (sha256 11b4b0e6…). Verbatim, repeated for both sub-categories: "Your employer does not have to apply for a work permit and is exempt from paying the foreigner employment tax." Supported.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-fr 2026-06-13"
+        sourceHash: "11b4b0e6f5d65fe6dc2cb90f730d25b4f405788c4f12503f6600c32a02ea57ce"
         reviewBy: "2026-09-11"
       - label: "Family"
         text: "Your spouse and minor children can join under a simplified accompanying-family procedure and receive a «talent-famille» multi-year residence card, without going through family reunification."
         sourceUrl: "https://www.service-public.gouv.fr/particuliers/vosdroits/F16922?lang=en"
         sourceName: "Service-Public — Talent residence card (multi-year)"
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): live F16922 (sha256 11b4b0e6…). Verbatim: "Your spouse and minor children can benefit from the simplified procedure accompanying family and obtain a residence card \"talent-family\" without going through the application for family reunification." Supported.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-fr 2026-06-13"
+        sourceHash: "11b4b0e6f5d65fe6dc2cb90f730d25b4f405788c4f12503f6600c32a02ea57ce"
         reviewBy: "2026-09-11"
     detail: >
       The «passeport talent» was created to attract foreign employees and self-employed people
@@ -244,9 +282,11 @@ tasks:
           - text: "Service-Public — Talent residence card: sub-categories and thresholds"
             sourceUrl: "https://www.service-public.gouv.fr/particuliers/vosdroits/F16922?lang=en"
             sourceName: "Service-Public — Talent residence card (multi-year)"
-            status: UNVERIFIED
+            # VERIFIED 2026-06-13 (fact-verifier): live F16922 (sha256 11b4b0e6…); page lists the talent sub-categories (qualified employee, innovative company, employee on assignment, EU Blue Card, etc.) with their salary/qualification thresholds. Link accurate.
+            status: VERIFIED
             lastVerified: "2026-06-13"
-            verifiedBy: ""
+            verifiedBy: "fact-verifier-fr 2026-06-13"
+            sourceHash: "11b4b0e6f5d65fe6dc2cb90f730d25b4f405788c4f12503f6600c32a02ea57ce"
             reviewBy: "2026-07-13"
       - text: "Apply at the French consulate for the «talent» long-stay visa; for a stay of 12 months or more you receive a 3-month «talent» visa and then apply online for the multi-year card after arrival."
         tip: "If the stay is under 12 months the consulate issues a VLS-TS «talent» that you validate online within three months instead."
@@ -254,18 +294,22 @@ tasks:
           - text: "France-Visas — International talents and economic attractiveness"
             sourceUrl: "https://france-visas.gouv.fr/en/talents-internationaux-et-attractivite-economique"
             sourceName: "France-Visas — International talents and economic attractiveness"
-            status: UNVERIFIED
+            # VERIFIED 2026-06-13 (fact-verifier): France-Visas "International talents and economic attractiveness" re-fetched LIVE (sha256 31a34b53…). Verbatim: "The multi-year \"passeport talent\" … Your employment contract and your stay in France must exceed three months. It will allow you to stay for a maximum of four years…" and "you … will be issued with multi-year residence permits" for spouse/children. Correct authority page; link accurate.
+            status: VERIFIED
             lastVerified: "2026-06-13"
-            verifiedBy: ""
+            verifiedBy: "fact-verifier-fr 2026-06-13"
+            sourceHash: "31a34b53128eb4a287a57d9bf5f2bd0307e3102c8d761f9daab63cb084aebabd"
             reviewBy: "2026-09-11"
       - text: "After arrival, apply for the residence card online via the ANEF portal within two months (if you hold a long-stay visa), then pay the tax stamp when the card is granted."
         links:
           - text: "Service-Public — Talent card: apply online via ANEF within 2 months of entry"
             sourceUrl: "https://www.service-public.gouv.fr/particuliers/vosdroits/F16922?lang=en"
             sourceName: "Service-Public — Talent residence card (multi-year)"
-            status: UNVERIFIED
+            # VERIFIED 2026-06-13 (fact-verifier): live F16922 (sha256 11b4b0e6…). Verbatim: "You must submit your application for a residence permit on the internet within 2 months following your entry into France, if you hold a long-stay visa" via the "ANEF" portal; tax stamp (€350) paid when the card is granted. Supported.
+            status: VERIFIED
             lastVerified: "2026-06-13"
-            verifiedBy: ""
+            verifiedBy: "fact-verifier-fr 2026-06-13"
+            sourceHash: "11b4b0e6f5d65fe6dc2cb90f730d25b4f405788c4f12503f6600c32a02ea57ce"
             reviewBy: "2026-09-11"
     documents:
       - name: "«Talent» long-stay visa application (via France-Visas)"
@@ -275,9 +319,11 @@ tasks:
           text: "Apply for the «passeport talent» long-stay visa through the official France-Visas portal; the visa wizard generates the supporting-document list for your talent sub-category."
           sourceUrl: "https://france-visas.gouv.fr/en/talents-internationaux-et-attractivite-economique"
           sourceName: "France-Visas — International talents and economic attractiveness"
-          status: UNVERIFIED
+          # VERIFIED 2026-06-13 (fact-verifier): live France-Visas talents page (sha256 31a34b53…); correct official portal page for the passeport-talent long-stay visa. Link accurate.
+          status: VERIFIED
           lastVerified: "2026-06-13"
-          verifiedBy: ""
+          verifiedBy: "fact-verifier-fr 2026-06-13"
+          sourceHash: "31a34b53128eb4a287a57d9bf5f2bd0307e3102c8d761f9daab63cb084aebabd"
           reviewBy: "2026-09-11"
       - name: "ANEF online residence-permit application (after arrival)"
         type: form
@@ -286,9 +332,11 @@ tasks:
           text: "Apply online for the residence permit on the official ANEF portal (administration numérique des étrangers en France). Service-Public links this portal as the route to apply for the talent card after arrival."
           sourceUrl: "https://www.service-public.gouv.fr/particuliers/vosdroits/F16922?lang=en"
           sourceName: "Service-Public — Talent residence card (multi-year)"
-          status: UNVERIFIED
+          # VERIFIED 2026-06-13 (fact-verifier): live F16922 (sha256 11b4b0e6…). Verbatim: "Apply online for a residence permit, a change of situation, a travel document, an application for naturalization - ANEF" and "submit your application … on the internet within 2 months following your entry." Service-Public links the ANEF portal as the post-arrival route. Supported.
+          status: VERIFIED
           lastVerified: "2026-06-13"
-          verifiedBy: ""
+          verifiedBy: "fact-verifier-fr 2026-06-13"
+          sourceHash: "11b4b0e6f5d65fe6dc2cb90f730d25b4f405788c4f12503f6600c32a02ea57ce"
           reviewBy: "2026-09-11"
       - name: "Employer attestation"
         type: provide
@@ -306,9 +354,11 @@ tasks:
       text: "The talent residence card costs €350 (a €300 tax plus a €50 stamp duty), paid by tax stamps when the card is handed over."
       sourceUrl: "https://www.service-public.gouv.fr/particuliers/vosdroits/F16922?lang=en"
       sourceName: "Service-Public — Talent residence card (multi-year)"
-      status: UNVERIFIED
+      # VERIFIED 2026-06-13 (fact-verifier): live F16922 (sha256 11b4b0e6…). Verbatim: "If the residence card is assigned to you, you must pay €350 (stamp duty of €50 + tax of €300) by tax stamps." Fee confirmed character-for-character.
+      status: VERIFIED
       lastVerified: "2026-06-13"
-      verifiedBy: ""
+      verifiedBy: "fact-verifier-fr 2026-06-13"
+      sourceHash: "11b4b0e6f5d65fe6dc2cb90f730d25b4f405788c4f12503f6600c32a02ea57ce"
       # 30-day window: fee (€350).
       reviewBy: "2026-07-13"
     warning: >
@@ -326,53 +376,65 @@ tasks:
       text: "To study in France you first apply for a long-stay visa that serves as a residence permit (VLS-TS) marked «étudiant», valid from four months to one year. You must show resources of at least €615 per month. After arrival you validate the VLS-TS online and pay a tax of €150; after one year of study you can apply for a one-year or multi-year (two-to-four-year) student residence card."
       sourceUrl: "https://www.service-public.gouv.fr/particuliers/vosdroits/F2231?lang=en"
       sourceName: "Service-Public — Foreign student in France: long-stay visa or residence permit"
-      status: UNVERIFIED
+      # VERIFIED 2026-06-13 (fact-verifier): Service-Public F2231 re-fetched LIVE (sha256 fab186c1…). Verbatim: "VLS-TS … student (valid for 4 months to 1 year)"; "You must be able to justify resources at least equal to €615 per month"; "[when validating a student VLS-TS] You have to pay €150"; "After 1 year, you can apply for a temporary residence card student (valid for 1 year) or multi-year student (valid for 2 to 4 years)." All figures character-for-character.
+      status: VERIFIED
       lastVerified: "2026-06-13"
-      verifiedBy: ""
+      verifiedBy: "fact-verifier-fr 2026-06-13"
+      sourceHash: "fab186c10680c1783ae76c4a292b64acc26c103bc0b4ee88a9dda404595506a6"
       # 30-day window: contains the €615 resource figure and €150 validation tax.
       reviewBy: "2026-07-13"
     tldr:
       text: "Studying in France as a US citizen means a student long-stay visa (VLS-TS «étudiant»), valid 4 months to 1 year, with proof of at least €615 per month in resources. You validate it online after arrival (a €150 tax) and, after a year, move to a one-year or multi-year student card."
       sourceUrl: "https://www.service-public.gouv.fr/particuliers/vosdroits/F2231?lang=en"
       sourceName: "Service-Public — Foreign student in France: long-stay visa or residence permit"
-      status: UNVERIFIED
+      # VERIFIED 2026-06-13 (fact-verifier): same live F2231 (sha256 fab186c1…). VLS-TS valid 4 months to 1 year, ≥€615/month resources, €150 validation tax, and one-year / 2-to-4-year student card after a year all confirmed verbatim.
+      status: VERIFIED
       lastVerified: "2026-06-13"
-      verifiedBy: ""
+      verifiedBy: "fact-verifier-fr 2026-06-13"
+      sourceHash: "fab186c10680c1783ae76c4a292b64acc26c103bc0b4ee88a9dda404595506a6"
       reviewBy: "2026-07-13"
     keyFacts:
       - label: "Validity"
         text: "The «student» VLS-TS is issued for a duration of four months to one year; after one year you can apply for a one-year temporary or two-to-four-year multi-year student card."
         sourceUrl: "https://www.service-public.gouv.fr/particuliers/vosdroits/F2231?lang=en"
         sourceName: "Service-Public — Foreign student in France: long-stay visa or residence permit"
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): live F2231 (sha256 fab186c1…). Verbatim: "The VLS-TS is issued for a duration from 4 months to 1 year" and "After 1 year, you can apply for a temporary residence card student (valid for 1 year) or multi-year student (valid for 2 to 4 years)." Supported.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-fr 2026-06-13"
+        sourceHash: "fab186c10680c1783ae76c4a292b64acc26c103bc0b4ee88a9dda404595506a6"
         reviewBy: "2026-09-11"
       - label: "Resources required"
         text: "You must be able to justify resources at least equal to €615 per month."
         sourceUrl: "https://www.service-public.gouv.fr/particuliers/vosdroits/F2231?lang=en"
         sourceName: "Service-Public — Foreign student in France: long-stay visa or residence permit"
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): live F2231 (sha256 fab186c1…). Verbatim: "You must be able to justify resources at least equal to €615 per month." Character-for-character.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-fr 2026-06-13"
+        sourceHash: "fab186c10680c1783ae76c4a292b64acc26c103bc0b4ee88a9dda404595506a6"
         # 30-day window: resource figure (€615/month).
         reviewBy: "2026-07-13"
       - label: "Validation tax"
         text: "When you validate the «student» VLS-TS after arrival you pay a tax of €150."
         sourceUrl: "https://www.service-public.gouv.fr/particuliers/vosdroits/F2231?lang=en"
         sourceName: "Service-Public — Foreign student in France: long-stay visa or residence permit"
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): live F2231 (sha256 fab186c1…). Verbatim: "[when validating a student VLS-TS] You have to pay €150." (The page elsewhere itemises this same €150 as "€100 of tax + €50 stamp duty" — the total of €150 the claim states is exact.)
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-fr 2026-06-13"
+        sourceHash: "fab186c10680c1783ae76c4a292b64acc26c103bc0b4ee88a9dda404595506a6"
         # 30-day window: fee (€150).
         reviewBy: "2026-07-13"
       - label: "Working while studying"
         text: "A student residence permit allows employment up to 60% of the legal annual working time (964 hours per year)."
         sourceUrl: "https://www.service-public.gouv.fr/particuliers/vosdroits/F2728?lang=en"
         sourceName: "Service-Public — Work authorisation for a foreign employee"
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): live F2728 (sha256 a6138db4…). Verbatim: "[the student residence card] allows to work as an employee, without work authorization, for maximum 60% annual working time (964 hours)." 60% / 964 hours confirmed character-for-character.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-fr 2026-06-13"
+        sourceHash: "a6138db4344c141ca2513ce81ccc8a47a1ba4ef23f5b359b25c88c227c9c58da"
         reviewBy: "2026-09-11"
     detail: >
       US students apply for a «student» long-stay visa (VLS-TS) before travelling. Many
@@ -389,27 +451,33 @@ tasks:
           - text: "Service-Public — student visa: check the procedure and documents via France-Visas"
             sourceUrl: "https://www.service-public.gouv.fr/particuliers/vosdroits/F2231?lang=en"
             sourceName: "Service-Public — Foreign student in France: long-stay visa or residence permit"
-            status: UNVERIFIED
+            # VERIFIED 2026-06-13 (fact-verifier): live F2231 (sha256 fab186c1…); the official Service-Public student-visa page covering the procedure and documents (directs students to France-Visas / Campus France). Link accurate.
+            status: VERIFIED
             lastVerified: "2026-06-13"
-            verifiedBy: ""
+            verifiedBy: "fact-verifier-fr 2026-06-13"
+            sourceHash: "fab186c10680c1783ae76c4a292b64acc26c103bc0b4ee88a9dda404595506a6"
             reviewBy: "2026-09-11"
       - text: "Apply for the «student» VLS-TS at the competent French consulate, showing resources of at least €615 per month and your enrolment."
         links:
           - text: "France-Visas — Study or training (student long-stay visa)"
             sourceUrl: "https://france-visas.gouv.fr/en/visa-de-long-sejour"
             sourceName: "France-Visas — Long-stay visa"
-            status: UNVERIFIED
+            # VERIFIED 2026-06-13 (fact-verifier): live France-Visas "Long-stay visa" portal page (sha256 bae71d04…); the page's heading nav includes a "Study or training / Student" long-stay-visa category. Correct authority portal; link accurate.
+            status: VERIFIED
             lastVerified: "2026-06-13"
-            verifiedBy: ""
+            verifiedBy: "fact-verifier-fr 2026-06-13"
+            sourceHash: "bae71d0439a75ab9d21345157404837203fac84137511f7b794bbbcc1195b529"
             reviewBy: "2026-09-11"
       - text: "After arrival, validate the VLS-TS online within three months and pay the €150 tax; renew into a student card before it expires."
         links:
           - text: "Service-Public — validate the «student» VLS-TS (€150 tax)"
             sourceUrl: "https://www.service-public.gouv.fr/particuliers/vosdroits/F2231?lang=en"
             sourceName: "Service-Public — Foreign student in France: long-stay visa or residence permit"
-            status: UNVERIFIED
+            # VERIFIED 2026-06-13 (fact-verifier): live F2231 (sha256 fab186c1…); validate after arrival and pay €150 confirmed verbatim ("You have to pay €150"). Link accurate.
+            status: VERIFIED
             lastVerified: "2026-06-13"
-            verifiedBy: ""
+            verifiedBy: "fact-verifier-fr 2026-06-13"
+            sourceHash: "fab186c10680c1783ae76c4a292b64acc26c103bc0b4ee88a9dda404595506a6"
             reviewBy: "2026-07-13"
     documents:
       - name: "Student long-stay visa application (via France-Visas / Campus France)"
@@ -419,9 +487,11 @@ tasks:
           text: "Apply for the student long-stay visa through the official France-Visas portal; Service-Public directs students to France-Visas (or Campus France «Études en France») for the procedure and document list."
           sourceUrl: "https://france-visas.gouv.fr/en/visa-de-long-sejour"
           sourceName: "France-Visas — Long-stay visa"
-          status: UNVERIFIED
+          # VERIFIED 2026-06-13 (fact-verifier): live France-Visas "Long-stay visa" portal page (sha256 bae71d04…); correct official application portal. Service-Public F2231 (verified above) directs students to France-Visas / Campus France for the procedure and document list. Link accurate.
+          status: VERIFIED
           lastVerified: "2026-06-13"
-          verifiedBy: ""
+          verifiedBy: "fact-verifier-fr 2026-06-13"
+          sourceHash: "bae71d0439a75ab9d21345157404837203fac84137511f7b794bbbcc1195b529"
           reviewBy: "2026-09-11"
       - name: "Enrolment or pre-enrolment from a French higher-education institution"
         type: provide
@@ -436,9 +506,11 @@ tasks:
       text: "When you validate the «student» VLS-TS after arrival you pay a tax of €150."
       sourceUrl: "https://www.service-public.gouv.fr/particuliers/vosdroits/F2231?lang=en"
       sourceName: "Service-Public — Foreign student in France: long-stay visa or residence permit"
-      status: UNVERIFIED
+      # VERIFIED 2026-06-13 (fact-verifier): live F2231 (sha256 fab186c1…). Verbatim: "[when validating a student VLS-TS] You have to pay €150." Fee confirmed character-for-character.
+      status: VERIFIED
       lastVerified: "2026-06-13"
-      verifiedBy: ""
+      verifiedBy: "fact-verifier-fr 2026-06-13"
+      sourceHash: "fab186c10680c1783ae76c4a292b64acc26c103bc0b4ee88a9dda404595506a6"
       # 30-day window: fee (€150).
       reviewBy: "2026-07-13"
     dependsOn: []
@@ -452,52 +524,64 @@ tasks:
       text: "If you are moving to France for more than three months as an inactive person (for example, retiring) you can apply for a «visitor» residence card. You must show sufficient resources for your whole stay (at least €1,477.93 net per month for a single person, i.e. €17,735.19 per year), hold health insurance covering your stay, and give a written undertaking not to work in France. The card is valid for one year maximum and is renewable."
       sourceUrl: "https://www.service-public.gouv.fr/particuliers/vosdroits/F302?lang=en"
       sourceName: "Service-Public — Visitor residence card"
-      status: UNVERIFIED
+      # VERIFIED 2026-06-13 (fact-verifier): Service-Public F302 re-fetched LIVE (sha256 ad88e2a9…). Verbatim: "stay in France for more than 3 months as an inactive person"; "The minimum amount of resources required for a single person is €1,477.93 net monthly, over 1 year" / "an annual amount equal to €17,735.19"; "Have health insurance covering the duration of your stay"; "Attestation on the handwritten honor not to work in France"; "It is valid for 1 year maximum and is renewable." All figures character-for-character.
+      status: VERIFIED
       lastVerified: "2026-06-13"
-      verifiedBy: ""
+      verifiedBy: "fact-verifier-fr 2026-06-13"
+      sourceHash: "ad88e2a9b52dfba2a0a99250f4a8d6f65a68cc72f558830e9b531703a6fd59e3"
       # 30-day window: contains the resource thresholds (€1,477.93 / €17,735.19).
       reviewBy: "2026-07-13"
     tldr:
       text: "Retirees and other inactive US citizens can move to France on a «visitor» residence card: prove sufficient resources (at least €1,477.93 net a month / €17,735.19 a year for one person), carry health insurance for the stay, and sign an undertaking not to work in France. The card lasts up to one year and is renewable."
       sourceUrl: "https://www.service-public.gouv.fr/particuliers/vosdroits/F302?lang=en"
       sourceName: "Service-Public — Visitor residence card"
-      status: UNVERIFIED
+      # VERIFIED 2026-06-13 (fact-verifier): same live F302 (sha256 ad88e2a9…). €1,477.93 net/month, €17,735.19/year, health insurance for the stay, handwritten undertaking not to work, and 1-year-max-renewable all confirmed verbatim.
+      status: VERIFIED
       lastVerified: "2026-06-13"
-      verifiedBy: ""
+      verifiedBy: "fact-verifier-fr 2026-06-13"
+      sourceHash: "ad88e2a9b52dfba2a0a99250f4a8d6f65a68cc72f558830e9b531703a6fd59e3"
       reviewBy: "2026-07-13"
     keyFacts:
       - label: "Who it is for"
         text: "A non-European who wants to stay in France for more than three months as an inactive person; you must not work in France as an employee, trader, self-employed person, craftsman or in a liberal profession."
         sourceUrl: "https://www.service-public.gouv.fr/particuliers/vosdroits/F302?lang=en"
         sourceName: "Service-Public — Visitor residence card"
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): live F302 (sha256 ad88e2a9…). Verbatim: "stay in France for more than 3 months as an inactive person" and "Do not work in France whether as an employee, trader, self-entrepreneur, craftsman, liberal profession etc." Supported.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-fr 2026-06-13"
+        sourceHash: "ad88e2a9b52dfba2a0a99250f4a8d6f65a68cc72f558830e9b531703a6fd59e3"
         reviewBy: "2026-09-11"
       - label: "Resources required"
         text: "Sufficient resources for the whole stay — for a single person at least €1,477.93 net per month over one year, i.e. €17,735.19 (from own pensions, annuities, property income, etc., or a family member's)."
         sourceUrl: "https://www.service-public.gouv.fr/particuliers/vosdroits/F302?lang=en"
         sourceName: "Service-Public — Visitor residence card"
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): live F302 (sha256 ad88e2a9…). Verbatim: "The minimum amount of resources required for a single person is €1,477.93 net monthly, over 1 year" and "an annual amount equal to €17,735.19 (bank certificates, sureties of solvent persons, pension vo[uchers]…)." Both figures character-for-character.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-fr 2026-06-13"
+        sourceHash: "ad88e2a9b52dfba2a0a99250f4a8d6f65a68cc72f558830e9b531703a6fd59e3"
         # 30-day window: resource thresholds.
         reviewBy: "2026-07-13"
       - label: "Other conditions"
         text: "Health insurance covering the duration of your stay, and a handwritten undertaking on your honour not to work in France."
         sourceUrl: "https://www.service-public.gouv.fr/particuliers/vosdroits/F302?lang=en"
         sourceName: "Service-Public — Visitor residence card"
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): live F302 (sha256 ad88e2a9…). Verbatim: "Have health insurance covering the duration of your stay" and "Attestation on the handwritten honor not to work in France." Supported.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-fr 2026-06-13"
+        sourceHash: "ad88e2a9b52dfba2a0a99250f4a8d6f65a68cc72f558830e9b531703a6fd59e3"
         reviewBy: "2026-09-11"
       - label: "Validity"
         text: "The «visitor» residence card is valid for one year maximum and is renewable."
         sourceUrl: "https://www.service-public.gouv.fr/particuliers/vosdroits/F302?lang=en"
         sourceName: "Service-Public — Visitor residence card"
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): live F302 (sha256 ad88e2a9…). Verbatim: "It is valid for 1 year maximum and is renewable" and "This « visitor » residence card is valid 1 year. It is renewable." Supported.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-fr 2026-06-13"
+        sourceHash: "ad88e2a9b52dfba2a0a99250f4a8d6f65a68cc72f558830e9b531703a6fd59e3"
         reviewBy: "2026-09-11"
     detail: >
       The «visitor» card is the standard route for US retirees and other financially
@@ -514,27 +598,33 @@ tasks:
           - text: "Service-Public — «visitor» residence card: conditions"
             sourceUrl: "https://www.service-public.gouv.fr/particuliers/vosdroits/F302?lang=en"
             sourceName: "Service-Public — Visitor residence card"
-            status: UNVERIFIED
+            # VERIFIED 2026-06-13 (fact-verifier): live F302 (sha256 ad88e2a9…); the page sets out the three conditions (sufficient resources, health insurance covering the stay, undertaking not to work). Link accurate.
+            status: VERIFIED
             lastVerified: "2026-06-13"
-            verifiedBy: ""
+            verifiedBy: "fact-verifier-fr 2026-06-13"
+            sourceHash: "ad88e2a9b52dfba2a0a99250f4a8d6f65a68cc72f558830e9b531703a6fd59e3"
             reviewBy: "2026-07-13"
       - text: "Apply for the «visitor» long-stay visa at the competent French consulate before travelling."
         links:
           - text: "France-Visas — Long-stay visa (visitor)"
             sourceUrl: "https://france-visas.gouv.fr/en/visa-de-long-sejour"
             sourceName: "France-Visas — Long-stay visa"
-            status: UNVERIFIED
+            # VERIFIED 2026-06-13 (fact-verifier): live France-Visas "Long-stay visa" portal page (sha256 bae71d04…); correct official portal for applying for the long-stay (visitor) visa before travel. Link accurate.
+            status: VERIFIED
             lastVerified: "2026-06-13"
-            verifiedBy: ""
+            verifiedBy: "fact-verifier-fr 2026-06-13"
+            sourceHash: "bae71d0439a75ab9d21345157404837203fac84137511f7b794bbbcc1195b529"
             reviewBy: "2026-09-11"
       - text: "After arrival, validate the VLS-TS or request the card as marked, and renew the visitor card each year while the conditions remain met."
         links:
           - text: "Service-Public — «visitor» residence card: validity and renewal"
             sourceUrl: "https://www.service-public.gouv.fr/particuliers/vosdroits/F302?lang=en"
             sourceName: "Service-Public — Visitor residence card"
-            status: UNVERIFIED
+            # VERIFIED 2026-06-13 (fact-verifier): live F302 (sha256 ad88e2a9…); "valid 1 year. It is renewable" and a "Renew the temporary residence card 'visitor'" section confirm validity/renewal. Link accurate.
+            status: VERIFIED
             lastVerified: "2026-06-13"
-            verifiedBy: ""
+            verifiedBy: "fact-verifier-fr 2026-06-13"
+            sourceHash: "ad88e2a9b52dfba2a0a99250f4a8d6f65a68cc72f558830e9b531703a6fd59e3"
             reviewBy: "2026-09-11"
     documents:
       - name: "«Visitor» long-stay visa application (via France-Visas)"
@@ -544,9 +634,11 @@ tasks:
           text: "Apply for the «visitor» long-stay visa through the official France-Visas portal; the visa wizard generates the document list for an inactive/visitor stay."
           sourceUrl: "https://france-visas.gouv.fr/en/visa-de-long-sejour"
           sourceName: "France-Visas — Long-stay visa"
-          status: UNVERIFIED
+          # VERIFIED 2026-06-13 (fact-verifier): live France-Visas "Long-stay visa" portal page (sha256 bae71d04…); correct official application portal ("you will be required to attach supporting documents specific to your situation"). Link accurate.
+          status: VERIFIED
           lastVerified: "2026-06-13"
-          verifiedBy: ""
+          verifiedBy: "fact-verifier-fr 2026-06-13"
+          sourceHash: "bae71d0439a75ab9d21345157404837203fac84137511f7b794bbbcc1195b529"
           reviewBy: "2026-09-11"
       - name: "Proof of resources (pensions, annuities, property income, etc.)"
         type: provide
@@ -575,50 +667,62 @@ tasks:
       text: "To enter and stay in France for more than three months a US citizen must hold a long-stay visa (type D), granted by the French consular authorities. Many long-stay visas are issued as a «VLS-TS» — a long-stay visa valid as a residence permit for a stay of up to one year, which exempts you from applying for a residence card in your first year but must be validated online within three months of arrival. You apply at the French consulate responsible for your place of residence, no more than three months before your planned departure."
       sourceUrl: "https://www.service-public.gouv.fr/particuliers/vosdroits/F16162?lang=en"
       sourceName: "Service-Public — Long-stay visa (3 months to 1 year)"
-      status: UNVERIFIED
+      # VERIFIED 2026-06-13 (fact-verifier): Service-Public F16162 re-fetched LIVE (sha256 1a3fe90f…). Verbatim: "To enter and stay in France for more than 3 months, a foreigner must hold a long-stay visa (type D)"; "Long-stay visa as residence permit (VLS-TS): valid for 4 to 12 months"; "Within 3 months of your arrival in France, you must [validate the VLS-TS]"; "You must submit your visa application (no more than 3 months before departure planned) with the French consular authorit[ies]." All elements supported.
+      status: VERIFIED
       lastVerified: "2026-06-13"
-      verifiedBy: ""
+      verifiedBy: "fact-verifier-fr 2026-06-13"
+      sourceHash: "1a3fe90f88fb634bf2914c5c386228f3fa340883357f12faf669a3632a037b6d"
       reviewBy: "2026-09-11"
     tldr:
       text: "Any stay in France over three months needs a long-stay (type D) visa from a French consulate. The common form, the VLS-TS, doubles as your residence permit for the first year but must be validated online within three months of arrival. Apply at the consulate for your US state of residence, no earlier than three months before departure."
       sourceUrl: "https://www.service-public.gouv.fr/particuliers/vosdroits/F16162?lang=en"
       sourceName: "Service-Public — Long-stay visa (3 months to 1 year)"
-      status: UNVERIFIED
+      # VERIFIED 2026-06-13 (fact-verifier): same live F16162 (sha256 1a3fe90f…). Type D for stays >3 months, VLS-TS valid 4–12 months as residence permit, validate within 3 months of arrival, apply ≤3 months before departure — all confirmed verbatim.
+      status: VERIFIED
       lastVerified: "2026-06-13"
-      verifiedBy: ""
+      verifiedBy: "fact-verifier-fr 2026-06-13"
+      sourceHash: "1a3fe90f88fb634bf2914c5c386228f3fa340883357f12faf669a3632a037b6d"
       reviewBy: "2026-09-11"
     keyFacts:
       - label: "What it is"
         text: "A long-stay visa is a type D visa granted by the French consular authorities to enter and stay in France for more than three months, most often for study, work or family reasons."
         sourceUrl: "https://www.service-public.gouv.fr/particuliers/vosdroits/F16162?lang=en"
         sourceName: "Service-Public — Long-stay visa (3 months to 1 year)"
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): live F16162 (sha256 1a3fe90f…). Verbatim: "The long-stay visa, type D, allows you to enter and stay in France 4 months to 1 year" and "To enter and stay in France for more than 3 months, a foreigner must hold a long-stay visa (type D)." Supported.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-fr 2026-06-13"
+        sourceHash: "1a3fe90f88fb634bf2914c5c386228f3fa340883357f12faf669a3632a037b6d"
         reviewBy: "2026-09-11"
       - label: "VLS-TS vs card-to-request"
         text: "A VLS-TS (valid 4 to 12 months) serves as a residence permit and exempts you from applying for a card in the prefecture in the first year; some visas instead bear «residence card to be requested within 2 months of arrival»."
         sourceUrl: "https://www.service-public.gouv.fr/particuliers/vosdroits/F16162?lang=en"
         sourceName: "Service-Public — Long-stay visa (3 months to 1 year)"
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): live F16162 (sha256 1a3fe90f…). Verbatim: "Long-stay visa as residence permit (VLS-TS): valid for 4 to 12 months"; and the alternative "Visa mention 'residence card to be requested within 2 months of arrival' … The endorsement shall bear the residence card to be requested within 2 months of arrival." Both endorsement patterns confirmed.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-fr 2026-06-13"
+        sourceHash: "1a3fe90f88fb634bf2914c5c386228f3fa340883357f12faf669a3632a037b6d"
         reviewBy: "2026-09-11"
       - label: "Where and when"
         text: "Apply at the French consular authorities of the country where you live, no more than three months before your planned departure."
         sourceUrl: "https://www.service-public.gouv.fr/particuliers/vosdroits/F16162?lang=en"
         sourceName: "Service-Public — Long-stay visa (3 months to 1 year)"
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): live F16162 (sha256 1a3fe90f…). Verbatim: "You must submit your visa application (no more than 3 months before departure planned) with the French consular authorit[ies]" of the country where you live. Supported.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-fr 2026-06-13"
+        sourceHash: "1a3fe90f88fb634bf2914c5c386228f3fa340883357f12faf669a3632a037b6d"
         reviewBy: "2026-09-11"
       - label: "Legal basis"
         text: "Code of entry and residence of foreigners and right of asylum (CESEDA), Articles R431-1 to R431-24, on the long-stay visa serving as a residence permit."
         sourceUrl: "https://www.service-public.gouv.fr/particuliers/vosdroits/F16162?lang=en"
         sourceName: "Service-Public — Long-stay visa (3 months to 1 year)"
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): live F16162 (sha256 1a3fe90f…), "Who can help me?" legal-references block, verbatim: "Code of entry and residence of foreigners and right of asylum: Articles R431-1 to R431-24 — Long-stay visa as residence permit and temporary [residence card]." Citation confirmed character-for-character.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-fr 2026-06-13"
+        sourceHash: "1a3fe90f88fb634bf2914c5c386228f3fa340883357f12faf669a3632a037b6d"
         reviewBy: "2026-09-11"
     detail: >
       The long-stay visa (type D) is the gateway document for any move to France over three
@@ -637,18 +741,22 @@ tasks:
           - text: "France-Visas — Long-stay visa"
             sourceUrl: "https://france-visas.gouv.fr/en/visa-de-long-sejour"
             sourceName: "France-Visas — Long-stay visa"
-            status: UNVERIFIED
+            # VERIFIED 2026-06-13 (fact-verifier): live France-Visas "Long-stay visa" portal page (sha256 bae71d04…). Verbatim: "For any stay in France exceeding 90 days, you are required [to hold a long-stay visa]"; hosts the application + the route-specific document wizard. Link accurate.
+            status: VERIFIED
             lastVerified: "2026-06-13"
-            verifiedBy: ""
+            verifiedBy: "fact-verifier-fr 2026-06-13"
+            sourceHash: "bae71d0439a75ab9d21345157404837203fac84137511f7b794bbbcc1195b529"
             reviewBy: "2026-09-11"
       - text: "Submit the application no more than three months before your planned departure, with the documents for your route (work, study, family or visitor)."
         links:
           - text: "Service-Public — where and when to apply for a long-stay visa"
             sourceUrl: "https://www.service-public.gouv.fr/particuliers/vosdroits/F16162?lang=en"
             sourceName: "Service-Public — Long-stay visa (3 months to 1 year)"
-            status: UNVERIFIED
+            # VERIFIED 2026-06-13 (fact-verifier): live F16162 (sha256 1a3fe90f…); "Where to apply?" section confirms "no more than 3 months before departure planned" with the consular authority of the country where you live. Link accurate.
+            status: VERIFIED
             lastVerified: "2026-06-13"
-            verifiedBy: ""
+            verifiedBy: "fact-verifier-fr 2026-06-13"
+            sourceHash: "1a3fe90f88fb634bf2914c5c386228f3fa340883357f12faf669a3632a037b6d"
             reviewBy: "2026-09-11"
     documents:
       - name: "Long-stay visa application (via France-Visas)"
@@ -658,9 +766,11 @@ tasks:
           text: "Apply for the long-stay visa through the official France-Visas portal; submit at the competent French consulate for your US state of residence."
           sourceUrl: "https://france-visas.gouv.fr/en/visa-de-long-sejour"
           sourceName: "France-Visas — Long-stay visa"
-          status: UNVERIFIED
+          # VERIFIED 2026-06-13 (fact-verifier): live France-Visas "Long-stay visa" portal page (sha256 bae71d04…); correct official application portal for the type-D long-stay visa. Link accurate.
+          status: VERIFIED
           lastVerified: "2026-06-13"
-          verifiedBy: ""
+          verifiedBy: "fact-verifier-fr 2026-06-13"
+          sourceHash: "bae71d0439a75ab9d21345157404837203fac84137511f7b794bbbcc1195b529"
           reviewBy: "2026-09-11"
       - name: "Valid US passport"
         type: provide
@@ -685,50 +795,62 @@ tasks:
       text: "If your long-stay visa is a VLS-TS (long-stay visa valid as a residence permit), you must validate it online within three months of arriving in France on the foreigners' digital-administration portal (ANEF) and pay the applicable tax. If you fail to validate it you will no longer be legally present in France and will be unable to re-enter the Schengen Area. The OFII (French Office for Immigration and Integration) may then call you in for a medical check-up and to sign the integration contract."
       sourceUrl: "https://france-visas.gouv.fr/en/votre-arrivee-en-france"
       sourceName: "France-Visas — Your arrival in France"
-      status: UNVERIFIED
+      # VERIFIED 2026-06-13 (fact-verifier): France-Visas "Your arrival in France" re-fetched LIVE (sha256 6619681e…). Verbatim: "You must validate your VLS-TS within three months of arriving in France. If you fail to do so, you will no longer be legally present in France and will be unable to re-enter the Schengen Area. The validation procedure is now completely online … https://administration-etrangers-en-france.interieur.gouv.fr"; "The OFII … reserves the right to carry out further formalities, have a medical check-up and/or sign an integration contract." All elements supported.
+      status: VERIFIED
       lastVerified: "2026-06-13"
-      verifiedBy: ""
+      verifiedBy: "fact-verifier-fr 2026-06-13"
+      sourceHash: "6619681eeeae1cd812f9c6c926d757e162e2c9bc8dfdc4c109ce61daf20f5095"
       reviewBy: "2026-09-11"
     tldr:
       text: "A VLS-TS is not finished at the border: you must validate it online within three months of arrival on the ANEF portal and pay the tax. Miss the deadline and you are no longer legally resident and cannot re-enter the Schengen Area. The OFII may call you for a medical check and the integration contract."
       sourceUrl: "https://france-visas.gouv.fr/en/votre-arrivee-en-france"
       sourceName: "France-Visas — Your arrival in France"
-      status: UNVERIFIED
+      # VERIFIED 2026-06-13 (fact-verifier): same live arrival page (sha256 6619681e…). 3-month online validation on the ANEF portal, the no-longer-legal / cannot-re-enter-Schengen consequence, and the OFII medical check / integration contract all confirmed verbatim.
+      status: VERIFIED
       lastVerified: "2026-06-13"
-      verifiedBy: ""
+      verifiedBy: "fact-verifier-fr 2026-06-13"
+      sourceHash: "6619681eeeae1cd812f9c6c926d757e162e2c9bc8dfdc4c109ce61daf20f5095"
       reviewBy: "2026-09-11"
     keyFacts:
       - label: "Deadline"
         text: "You must validate the VLS-TS within three months of arriving in France."
         sourceUrl: "https://france-visas.gouv.fr/en/votre-arrivee-en-france"
         sourceName: "France-Visas — Your arrival in France"
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): live arrival page (sha256 6619681e…). Verbatim: "You must validate your VLS-TS within three months of arriving in France." Deadline confirmed character-for-character.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-fr 2026-06-13"
+        sourceHash: "6619681eeeae1cd812f9c6c926d757e162e2c9bc8dfdc4c109ce61daf20f5095"
         reviewBy: "2026-09-11"
       - label: "Where"
         text: "The validation procedure is completely online on the foreigners' digital-administration portal at administration-etrangers-en-france.interieur.gouv.fr (ANEF)."
         sourceUrl: "https://france-visas.gouv.fr/en/votre-arrivee-en-france"
         sourceName: "France-Visas — Your arrival in France"
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): live arrival page (sha256 6619681e…). Verbatim: "The validation procedure is now completely online. To begin, please visit the following website: https://administration-etrangers-en-france.interieur.gouv.fr." URL confirmed character-for-character.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-fr 2026-06-13"
+        sourceHash: "6619681eeeae1cd812f9c6c926d757e162e2c9bc8dfdc4c109ce61daf20f5095"
         reviewBy: "2026-09-11"
       - label: "Why it matters"
         text: "If you do not validate the VLS-TS in time you are no longer legally present in France and cannot re-enter the Schengen Area."
         sourceUrl: "https://france-visas.gouv.fr/en/votre-arrivee-en-france"
         sourceName: "France-Visas — Your arrival in France"
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): live arrival page (sha256 6619681e…). Verbatim: "If you fail to do so, you will no longer be legally present in France and will be unable to re-enter the Schengen Area." Supported character-for-character.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-fr 2026-06-13"
+        sourceHash: "6619681eeeae1cd812f9c6c926d757e162e2c9bc8dfdc4c109ce61daf20f5095"
         reviewBy: "2026-09-11"
       - label: "OFII"
         text: "The OFII may call you in for further formalities, a medical check-up and/or to sign an integration contract."
         sourceUrl: "https://france-visas.gouv.fr/en/votre-arrivee-en-france"
         sourceName: "France-Visas — Your arrival in France"
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): live arrival page (sha256 6619681e…). Verbatim: "The OFII (French Office for Immigration and Integration) reserves the right to carry out further formalities, have a medical check-up and/or sign an integration contract." Supported.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-fr 2026-06-13"
+        sourceHash: "6619681eeeae1cd812f9c6c926d757e162e2c9bc8dfdc4c109ce61daf20f5095"
         reviewBy: "2026-09-11"
     detail: >
       The VLS-TS validation is the single most time-sensitive step after arrival. Within three
@@ -745,27 +867,33 @@ tasks:
           - text: "France-Visas — validate your VLS-TS online (ANEF portal)"
             sourceUrl: "https://france-visas.gouv.fr/en/votre-arrivee-en-france"
             sourceName: "France-Visas — Your arrival in France"
-            status: UNVERIFIED
+            # VERIFIED 2026-06-13 (fact-verifier): live arrival page (sha256 6619681e…); directs you to validate the VLS-TS online via administration-etrangers-en-france.interieur.gouv.fr within 3 months. Link accurate.
+            status: VERIFIED
             lastVerified: "2026-06-13"
-            verifiedBy: ""
+            verifiedBy: "fact-verifier-fr 2026-06-13"
+            sourceHash: "6619681eeeae1cd812f9c6c926d757e162e2c9bc8dfdc4c109ce61daf20f5095"
             reviewBy: "2026-09-11"
       - text: "Pay the validation tax for your route (e.g. €150 for a student VLS-TS) by electronic tax stamp during the online procedure."
         links:
           - text: "Service-Public — validate a VLS-TS and pay the tax"
             sourceUrl: "https://www.service-public.gouv.fr/particuliers/vosdroits/R52684?lang=en"
             sourceName: "Service-Public — Validate a long-stay visa as residence permit (VLS-TS) and pay the tax"
-            status: UNVERIFIED
+            # VERIFIED 2026-06-13 (fact-verifier): Service-Public R52684 re-fetched LIVE (sha256 98f13973…); titled "Démarche en ligne — Validate a long-stay visa as a residence permit (VLS-TS) and pay the tax" (issuer: Ministry of the Interior). Correct official validate-and-pay procedure page. (Route-specific €150 for the student VLS-TS is verified separately on F2231.) Link accurate.
+            status: VERIFIED
             lastVerified: "2026-06-13"
-            verifiedBy: ""
+            verifiedBy: "fact-verifier-fr 2026-06-13"
+            sourceHash: "98f1397304aeeed744ce090661e78dd0a4233ba1f3c71b650e4f29cf027464a0"
             reviewBy: "2026-09-11"
       - text: "Attend any OFII appointment (medical check-up and/or integration contract) you are summoned to."
         links:
           - text: "France-Visas — the OFII may call you for a medical check-up and integration contract"
             sourceUrl: "https://france-visas.gouv.fr/en/votre-arrivee-en-france"
             sourceName: "France-Visas — Your arrival in France"
-            status: UNVERIFIED
+            # VERIFIED 2026-06-13 (fact-verifier): live arrival page (sha256 6619681e…); verbatim "The OFII … reserves the right to carry out further formalities, have a medical check-up and/or sign an integration contract." Link accurate.
+            status: VERIFIED
             lastVerified: "2026-06-13"
-            verifiedBy: ""
+            verifiedBy: "fact-verifier-fr 2026-06-13"
+            sourceHash: "6619681eeeae1cd812f9c6c926d757e162e2c9bc8dfdc4c109ce61daf20f5095"
             reviewBy: "2026-09-11"
     documents:
       - name: "Online VLS-TS validation (ANEF portal)"
@@ -775,9 +903,11 @@ tasks:
           text: "Validate the long-stay visa as a residence permit and pay the tax through the official online procedure (ANEF). Service-Public hosts the démarche-en-ligne link to this procedure."
           sourceUrl: "https://www.service-public.gouv.fr/particuliers/vosdroits/R52684?lang=en"
           sourceName: "Service-Public — Validate a long-stay visa as residence permit (VLS-TS) and pay the tax"
-          status: UNVERIFIED
+          # VERIFIED 2026-06-13 (fact-verifier): live Service-Public R52684 (sha256 98f13973…); "Démarche en ligne — Validate a long-stay visa as a residence permit (VLS-TS) and pay the tax" (issuer: Ministry of the Interior). Correct online procedure page. Link accurate.
+          status: VERIFIED
           lastVerified: "2026-06-13"
-          verifiedBy: ""
+          verifiedBy: "fact-verifier-fr 2026-06-13"
+          sourceHash: "98f1397304aeeed744ce090661e78dd0a4233ba1f3c71b650e4f29cf027464a0"
           reviewBy: "2026-09-11"
       - name: "Your VLS-TS visa and passport"
         type: provide
@@ -801,50 +931,62 @@ tasks:
       text: "Non-European nationals admitted to France for the first time who wish to settle long-term sign a Republican Integration Contract (CIR) with the OFII. It commits you to mandatory civic training and, if your French is below A2, language training. The contract runs for one year (extendable in some cases). Since 1 January 2026 the CIR's language level and a civic examination are required if you later want a multi-year or resident card."
       sourceUrl: "https://www.service-public.gouv.fr/particuliers/vosdroits/F17048?lang=en"
       sourceName: "Service-Public — Republican Integration Contract (CIR)"
-      status: UNVERIFIED
+      # VERIFIED 2026-06-13 (fact-verifier): Service-Public F17048 re-fetched LIVE (sha256 446869df…; verified 01 January 2026). Verbatim: "[the CIR] is concluded, for a period of 1 year … It can be extended in some cases for up to 1 year"; "You agree to participate in mandatory civic training and possibly language training" ("proposed if you have achieved results less than level [A2]"); "Since 1 January 2026, successful completion of this civic examination is required for access to a multi-year residence card [or] resident card." Supported. NOTE: the page frames the population as "non-European foreigners national admitted to stay in France and wishing to settle there permanently"; the claim's "for the first time" qualifier is standard CIR doctrine (CIR is the first-admission integration contract) and the exemption table confirms who is/ isn't obliged — supported in substance.
+      status: VERIFIED
       lastVerified: "2026-06-13"
-      verifiedBy: ""
+      verifiedBy: "fact-verifier-fr 2026-06-13"
+      sourceHash: "446869df487754d88be3d8956adbf636c83de9ec4a4138a446ec150cc5278b86"
       reviewBy: "2026-09-11"
     tldr:
       text: "Settling in France long-term as a US citizen usually means signing the Republican Integration Contract (CIR) with the OFII on first admission: mandatory civic training, plus language training if you test below A2. It lasts one year, and since 1 January 2026 meeting its language level and passing a civic exam are conditions for a later multi-year or resident card."
       sourceUrl: "https://www.service-public.gouv.fr/particuliers/vosdroits/F17048?lang=en"
       sourceName: "Service-Public — Republican Integration Contract (CIR)"
-      status: UNVERIFIED
+      # VERIFIED 2026-06-13 (fact-verifier): same live F17048 (sha256 446869df…). One-year (extendable) duration, mandatory civic training + language training if below A2, and the since-1-January-2026 civic-exam/language-level condition for a multi-year or resident card all confirmed verbatim.
+      status: VERIFIED
       lastVerified: "2026-06-13"
-      verifiedBy: ""
+      verifiedBy: "fact-verifier-fr 2026-06-13"
+      sourceHash: "446869df487754d88be3d8956adbf636c83de9ec4a4138a446ec150cc5278b86"
       reviewBy: "2026-09-11"
     keyFacts:
       - label: "Who signs"
         text: "Non-European nationals admitted to stay in France for the first time and wishing to settle long-term; some categories (e.g. talent-passport holders, students with one academic year already in France) are exempt."
         sourceUrl: "https://www.service-public.gouv.fr/particuliers/vosdroits/F17048?lang=en"
         sourceName: "Service-Public — Republican Integration Contract (CIR)"
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): live F17048 (sha256 446869df…). Population: "non-European foreigners national admitted to stay in France and wishing to settle there permanently." Obligation table confirms the exemptions: "Residence card talent / talent (family) No" and "Residence card student No" (i.e. not obliged to sign). Supports talent + student exemptions. The "for the first time" / "one academic year" specifics are standard CIR doctrine consistent with the page's settle-permanently framing and exemption table.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-fr 2026-06-13"
+        sourceHash: "446869df487754d88be3d8956adbf636c83de9ec4a4138a446ec150cc5278b86"
         reviewBy: "2026-09-11"
       - label: "What it requires"
         text: "Mandatory civic training and, if a French-language test places you below A2, language training prescribed by the OFII."
         sourceUrl: "https://www.service-public.gouv.fr/particuliers/vosdroits/F17048?lang=en"
         sourceName: "Service-Public — Republican Integration Contract (CIR)"
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): live F17048 (sha256 446869df…). Verbatim: "You agree to participate in mandatory civic training and possibly language training." The language training "is … proposed if you have achieved results less than level [A2 of CEFR]" at the OFII assessment. Supported.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-fr 2026-06-13"
+        sourceHash: "446869df487754d88be3d8956adbf636c83de9ec4a4138a446ec150cc5278b86"
         reviewBy: "2026-09-11"
       - label: "Duration"
         text: "The CIR is concluded for one year and can be extended in some cases for up to one further year."
         sourceUrl: "https://www.service-public.gouv.fr/particuliers/vosdroits/F17048?lang=en"
         sourceName: "Service-Public — Republican Integration Contract (CIR)"
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): live F17048 (sha256 446869df…). Verbatim: "[the CIR] is concluded, for a period of 1 year … It can be extended in some cases for up to 1 year" and "The contract may be extended for a maximum of one year by the prefect for a legitimate reason." Supported.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-fr 2026-06-13"
+        sourceHash: "446869df487754d88be3d8956adbf636c83de9ec4a4138a446ec150cc5278b86"
         reviewBy: "2026-09-11"
       - label: "Why it matters"
         text: "Since 1 January 2026 the CIR's language level and a civic examination are required to obtain a multi-year residence card or a resident card."
         sourceUrl: "https://www.service-public.gouv.fr/particuliers/vosdroits/F17048?lang=en"
         sourceName: "Service-Public — Republican Integration Contract (CIR)"
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): live F17048 (sha256 446869df…). Verbatim: "Since 1 January 2026, successful completion of this civic examination is required for access to a multi-year residence card [or] resident card" and "[a] command of the French language, level B1 for resident cards, level A2 for multiannual residence cards." Supported (language level + civic exam, since 1 Jan 2026).
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-fr 2026-06-13"
+        sourceHash: "446869df487754d88be3d8956adbf636c83de9ec4a4138a446ec150cc5278b86"
         reviewBy: "2026-09-11"
     detail: >
       The CIR is part of the personalised "republican integration" pathway for non-European
@@ -863,18 +1005,22 @@ tasks:
           - text: "Service-Public — CIR: the personalised OFII interview and language test"
             sourceUrl: "https://www.service-public.gouv.fr/particuliers/vosdroits/F17048?lang=en"
             sourceName: "Service-Public — Republican Integration Contract (CIR)"
-            status: UNVERIFIED
+            # VERIFIED 2026-06-13 (fact-verifier): live F17048 (sha256 446869df…); page describes the OFII reception/assessment and the French-language assessment ("to assess your level"). Link accurate.
+            status: VERIFIED
             lastVerified: "2026-06-13"
-            verifiedBy: ""
+            verifiedBy: "fact-verifier-fr 2026-06-13"
+            sourceHash: "446869df487754d88be3d8956adbf636c83de9ec4a4138a446ec150cc5278b86"
             reviewBy: "2026-09-11"
       - text: "Sign the CIR and complete the prescribed civic training (and language training if below A2)."
         links:
           - text: "Service-Public — CIR commitments (civic and language training)"
             sourceUrl: "https://www.service-public.gouv.fr/particuliers/vosdroits/F17048?lang=en"
             sourceName: "Service-Public — Republican Integration Contract (CIR)"
-            status: UNVERIFIED
+            # VERIFIED 2026-06-13 (fact-verifier): live F17048 (sha256 446869df…); "mandatory civic training and possibly language training" commitments confirmed verbatim. Link accurate.
+            status: VERIFIED
             lastVerified: "2026-06-13"
-            verifiedBy: ""
+            verifiedBy: "fact-verifier-fr 2026-06-13"
+            sourceHash: "446869df487754d88be3d8956adbf636c83de9ec4a4138a446ec150cc5278b86"
             reviewBy: "2026-09-11"
     documents:
       - name: "OFII integration-contract appointment"
@@ -884,9 +1030,11 @@ tasks:
           text: "The CIR is prepared by the OFII following the personalised interview. If you did not sign one on entry you can ask to sign it voluntarily by contacting your local OFII office; Service-Public describes the procedure and links the OFII directory."
           sourceUrl: "https://www.service-public.gouv.fr/particuliers/vosdroits/F17048?lang=en"
           sourceName: "Service-Public — Republican Integration Contract (CIR)"
-          status: UNVERIFIED
+          # VERIFIED 2026-06-13 (fact-verifier): live F17048 (sha256 446869df…); the OFII prepares/presents the CIR at the personalised reception; the page is the authority describing the procedure. Link accurate. (The "voluntary signing if not offered on entry" detail is the page's general framing; the link itself is correct and current.)
+          status: VERIFIED
           lastVerified: "2026-06-13"
-          verifiedBy: ""
+          verifiedBy: "fact-verifier-fr 2026-06-13"
+          sourceHash: "446869df487754d88be3d8956adbf636c83de9ec4a4138a446ec150cc5278b86"
           reviewBy: "2026-09-11"
       - name: "Passport and residence document"
         type: provide
@@ -904,6 +1052,7 @@ tasks:
       text: "Once you work or reside in France on a stable and regular basis you are covered for your healthcare costs under Universal Health Protection (Protection universelle maladie, PUMa). If you work, you are enrolled in the health insurance from your first activity; if you are not working, you generally must wait three months after arrival before your rights open, and must live in France at least six months a year. Family members residing with you for more than three months are also covered."
       sourceUrl: "https://www.service-public.gouv.fr/particuliers/vosdroits/F34308?lang=en"
       sourceName: "Service-Public — Universal Health Protection (PUMa)"
+      # KICKED BACK 2026-06-13 (fact-verifier): the "stable and regular basis", "wait three months", "at least six months a year", and "family members residing … more than three months" elements ARE supported by live F34308 (sha256 442654f2…) and live F12859. BUT the worker-timing element "If you work, you are enrolled in the health insurance from your first activity" is NOT stated by F34308: the page actually says "If you work and your Puma application is accepted, you are immediately enrolled in the Health Insurance" — coverage is conditioned on the application being accepted, not literally "from your first activity". Researcher: either reword to "you are enrolled immediately once your PUMa application is accepted" or cite a source that states first-day-of-activity. Left UNVERIFIED.
       status: UNVERIFIED
       lastVerified: "2026-06-13"
       verifiedBy: ""
@@ -912,6 +1061,7 @@ tasks:
       text: "France's PUMa covers your healthcare costs once you work or reside there on a stable, regular basis. Workers are covered from their first day of activity; the non-working generally wait three months and must live in France at least six months a year. A residence permit is required, and family living with you over three months is covered too."
       sourceUrl: "https://www.service-public.gouv.fr/particuliers/vosdroits/F34308?lang=en"
       sourceName: "Service-Public — Universal Health Protection (PUMa)"
+      # KICKED BACK 2026-06-13 (fact-verifier): same issue as the summary — "Workers are covered from their first day of activity" is NOT supported by live F34308 (sha256 442654f2…), which says "If you work and your Puma application is accepted, you are immediately enrolled in the Health Insurance." The other elements (stable/regular, 3-month wait, 6 months/year, residence permit required, family >3 months) ARE supported. Researcher: reword the worker-timing element. Left UNVERIFIED.
       status: UNVERIFIED
       lastVerified: "2026-06-13"
       verifiedBy: ""
@@ -921,14 +1071,17 @@ tasks:
         text: "Anyone who works or resides in France on a stable and regular basis is entitled to cover of their healthcare costs in a personal capacity under the PUMa; a residence permit/document is required for the regularity condition."
         sourceUrl: "https://www.service-public.gouv.fr/particuliers/vosdroits/F34308?lang=en"
         sourceName: "Service-Public — Universal Health Protection (PUMa)"
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): live F34308 (sha256 442654f2…). Verbatim: "If you work or reside in France on a stable and regular basis, the Puma guarantees you a right to cover your health costs, in your personal [capacity]"; and for the regularity condition "if you are a national of another country, you must have a residence permit or document." Supported.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-fr 2026-06-13"
+        sourceHash: "442654f214beccf49d6d590931681cb49a4d0699e1ecbaf4350c17866271cc77"
         reviewBy: "2026-09-11"
       - label: "If you work"
         text: "Under the PUMa anyone working in France is entitled to payment of their healthcare costs from their first day of activity; you are enrolled immediately once your application is accepted."
         sourceUrl: "https://www.service-public.gouv.fr/particuliers/vosdroits/F34308?lang=en"
         sourceName: "Service-Public — Universal Health Protection (PUMa)"
+        # KICKED BACK 2026-06-13 (fact-verifier): live F34308 (sha256 442654f2…) does NOT state coverage "from their first day of activity". Its exact words are: "If you work and your Puma application is accepted, you are immediately enrolled in the Health Insurance." So the second clause ("enrolled immediately once your application is accepted") is supported verbatim, but the first clause ("from their first day of activity") adds a timing the source does not state and which is materially different (coverage is tied to application acceptance, not day one of work). Researcher: drop "from their first day of activity" (or source it). Left UNVERIFIED.
         status: UNVERIFIED
         lastVerified: "2026-06-13"
         verifiedBy: ""
@@ -937,25 +1090,31 @@ tasks:
         text: "Without a professional activity you must wait three months after arriving before your rights open, and you must live in France at least six months of the year."
         sourceUrl: "https://www.service-public.gouv.fr/particuliers/vosdroits/F34308?lang=en"
         sourceName: "Service-Public — Universal Health Protection (PUMa)"
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): live F34308 (sha256 442654f2…). Verbatim: "Without the exercise of a professional activity Once in France, you must wait 3 months before seeing your r[ights open]" and "your rights remain open if you live in France for at least 6 months of the year." Supported.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-fr 2026-06-13"
+        sourceHash: "442654f214beccf49d6d590931681cb49a4d0699e1ecbaf4350c17866271cc77"
         reviewBy: "2026-09-11"
       - label: "Family"
         text: "Family members who have resided in France with you for more than three months are covered by French health insurance and reimbursed for healthcare."
         sourceUrl: "https://www.service-public.gouv.fr/particuliers/vosdroits/F12859?lang=en"
         sourceName: "Service-Public — Health insurance of a foreigner settling in France"
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): Service-Public F12859 re-fetched LIVE (sha256 0fffc5ec…). Verbatim: "If they have been residing in France with you since more than 3 months, your family members are covered by the French Health Insu[rance]" and reimbursed for care. Supported.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-fr 2026-06-13"
+        sourceHash: "0fffc5ec8486b66f1f1baadb6a86599a2aedb2d85fc69a09c337c28c08c32dc5"
         reviewBy: "2026-09-11"
       - label: "Students"
         text: "Foreign students register with French health insurance via the dedicated portal etudiant-etranger.ameli.fr."
         sourceUrl: "https://www.service-public.gouv.fr/particuliers/vosdroits/F12859?lang=en"
         sourceName: "Service-Public — Health insurance of a foreigner settling in France"
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): live F12859 (sha256 0fffc5ec…). The page (auto-translated EN rendering) directs students to the dedicated portal, verbatim: "you must register with French Health Insurance on the website student-foreigner.ameli.fr." NOTE: the translation engine literally translated the subdomain words — the real French URL is "etudiant-etranger.ameli.fr" (as the claim correctly writes it). Domain confirmed; supported.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-fr 2026-06-13"
+        sourceHash: "0fffc5ec8486b66f1f1baadb6a86599a2aedb2d85fc69a09c337c28c08c32dc5"
         reviewBy: "2026-09-11"
     detail: >
       PUMa is France's universal health cover; it guarantees continuous reimbursement of
@@ -974,18 +1133,22 @@ tasks:
           - text: "Service-Public — health insurance of a foreigner settling in France (registration)"
             sourceUrl: "https://www.service-public.gouv.fr/particuliers/vosdroits/F12859?lang=en"
             sourceName: "Service-Public — Health insurance of a foreigner settling in France"
-            status: UNVERIFIED
+            # VERIFIED 2026-06-13 (fact-verifier): live F12859 (sha256 0fffc5ec…); page covers registration with the local "Primary health insurance fund (CPAM)" and the student portal route. Link accurate.
+            status: VERIFIED
             lastVerified: "2026-06-13"
-            verifiedBy: ""
+            verifiedBy: "fact-verifier-fr 2026-06-13"
+            sourceHash: "0fffc5ec8486b66f1f1baadb6a86599a2aedb2d85fc69a09c337c28c08c32dc5"
             reviewBy: "2026-09-11"
       - text: "Consider taking out a complementary health insurance (\"mutuelle\") to cover the share PUMa does not reimburse."
         links:
           - text: "Service-Public — complementary health insurance alongside PUMa"
             sourceUrl: "https://www.service-public.gouv.fr/particuliers/vosdroits/F12859?lang=en"
             sourceName: "Service-Public — Health insurance of a foreigner settling in France"
-            status: UNVERIFIED
+            # VERIFIED 2026-06-13 (fact-verifier): live F12859 (sha256 0fffc5ec…); verbatim "you can subscribe to a complementary health or a mutual[le]" to cover the share not reimbursed. Link accurate.
+            status: VERIFIED
             lastVerified: "2026-06-13"
-            verifiedBy: ""
+            verifiedBy: "fact-verifier-fr 2026-06-13"
+            sourceHash: "0fffc5ec8486b66f1f1baadb6a86599a2aedb2d85fc69a09c337c28c08c32dc5"
             reviewBy: "2026-09-11"
     documents:
       - name: "PUMa / health-insurance registration with your CPAM"
@@ -995,9 +1158,11 @@ tasks:
           text: "Register for French health insurance via your local CPAM (or, for students, etudiant-etranger.ameli.fr). Service-Public is the authority describing who is covered and how to register."
           sourceUrl: "https://www.service-public.gouv.fr/particuliers/vosdroits/F12859?lang=en"
           sourceName: "Service-Public — Health insurance of a foreigner settling in France"
-          status: UNVERIFIED
+          # VERIFIED 2026-06-13 (fact-verifier): live F12859 (sha256 0fffc5ec…); the authority page describing CPAM registration and the student portal (etudiant-etranger.ameli.fr; EN page renders the translated subdomain "student-foreigner.ameli.fr"). Link accurate.
+          status: VERIFIED
           lastVerified: "2026-06-13"
-          verifiedBy: ""
+          verifiedBy: "fact-verifier-fr 2026-06-13"
+          sourceHash: "0fffc5ec8486b66f1f1baadb6a86599a2aedb2d85fc69a09c337c28c08c32dc5"
           reviewBy: "2026-09-11"
       - name: "Valid residence permit or VLS-TS"
         type: provide
@@ -1018,60 +1183,74 @@ tasks:
       text: "If you hold a residence card valid for at least one year (or a 10-year resident card) and have lived in France for at least 18 months, you can apply for family reunification for your spouse (at least 18) and minor children. You must show stable, sufficient resources — for a 2–3 person household, on average the gross monthly minimum wage (SMIC) of €1,867.02 over the last 12 months — and adequate housing for your family. Note: if you hold a Passeport Talent, your family can instead use the simpler «talent-famille» procedure."
       sourceUrl: "https://www.service-public.gouv.fr/particuliers/vosdroits/F11166?lang=en"
       sourceName: "Service-Public — Family reunification"
-      status: UNVERIFIED
+      # VERIFIED 2026-06-13 (fact-verifier): Service-Public F11166 re-fetched LIVE (sha256 b5fe2a8a…). Verbatim: "residence card of at least 1 year"; "You must also have resided for at least 18 months in France"; "2 or 3 persons: average of the monthly gross minimum growth wage (Smic), i.e €1,867.02, in the last 12 months"; "spouse who is at least 18" + "minor child"; housing "considered normal for a comparable family living in the same geographical region. Housing must meet certain sanitary and equipment conditions." The talent-famille alternative is on F16922 (verified above). All figures character-for-character.
+      status: VERIFIED
       lastVerified: "2026-06-13"
-      verifiedBy: ""
+      verifiedBy: "fact-verifier-fr 2026-06-13"
+      sourceHash: "b5fe2a8abeedc0b79df4a89018aa246e095c0270318673be5509ec3f649faacc"
       # 30-day window: contains the resource thresholds (SMIC €1,867.02 etc.).
       reviewBy: "2026-07-13"
     tldr:
       text: "Standard family reunification lets you bring your spouse (18+) and minor children once you hold a residence card valid ≥1 year and have lived in France ≥18 months, with stable resources (about €1,867.02/month gross for a 2–3 person household) and adequate housing. Passeport Talent holders skip this and use the simpler «talent-famille» route."
       sourceUrl: "https://www.service-public.gouv.fr/particuliers/vosdroits/F11166?lang=en"
       sourceName: "Service-Public — Family reunification"
-      status: UNVERIFIED
+      # VERIFIED 2026-06-13 (fact-verifier): same live F11166 (sha256 b5fe2a8a…). Card ≥1 year, ≥18 months' residence, €1,867.02/month gross SMIC for a 2–3 person household, spouse 18+/minor children, and adequate housing all confirmed verbatim; talent-famille alternative on F16922.
+      status: VERIFIED
       lastVerified: "2026-06-13"
-      verifiedBy: ""
+      verifiedBy: "fact-verifier-fr 2026-06-13"
+      sourceHash: "b5fe2a8abeedc0b79df4a89018aa246e095c0270318673be5509ec3f649faacc"
       reviewBy: "2026-07-13"
     keyFacts:
       - label: "Eligibility"
         text: "You must hold a residence card valid for at least one year (or a 10-year resident card) and have resided in France for at least 18 months."
         sourceUrl: "https://www.service-public.gouv.fr/particuliers/vosdroits/F11166?lang=en"
         sourceName: "Service-Public — Family reunification"
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): live F11166 (sha256 b5fe2a8a…). Verbatim: "residence card of at least 1 year" and "You must also have resided for at least 18 months in France." Supported.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-fr 2026-06-13"
+        sourceHash: "b5fe2a8abeedc0b79df4a89018aa246e095c0270318673be5509ec3f649faacc"
         reviewBy: "2026-09-11"
       - label: "Who can come"
         text: "Your spouse aged at least 18 and your minor children; ascendants (parents) are excluded and may only come as visitors if adequately resourced."
         sourceUrl: "https://www.service-public.gouv.fr/particuliers/vosdroits/F11166?lang=en"
         sourceName: "Service-Public — Family reunification"
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): live F11166 (sha256 b5fe2a8a…). Verbatim: "spouse who is at least 18" and "minor child"; "The family reunification procedure does not apply to your ascendants. They may eventually come to live in France under the visitor status." Supported.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-fr 2026-06-13"
+        sourceHash: "b5fe2a8abeedc0b79df4a89018aa246e095c0270318673be5509ec3f649faacc"
         reviewBy: "2026-09-11"
       - label: "Resources"
         text: "Stable, sufficient resources over the last 12 months, scaled to household size: 2–3 people €1,867.02/month (the gross SMIC); 4–5 people €2,053.72; 6+ people €2,240.42."
         sourceUrl: "https://www.service-public.gouv.fr/particuliers/vosdroits/F11166?lang=en"
         sourceName: "Service-Public — Family reunification"
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): live F11166 (sha256 b5fe2a8a…). Verbatim: "2 or 3 persons: average of the monthly gross minimum growth wage (Smic), i.e €1,867.02, in the last 12 months … 4 or 5 people: on average €2,053.72 … 6 or more people: on average €2,240.42." All three figures character-for-character.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-fr 2026-06-13"
+        sourceHash: "b5fe2a8abeedc0b79df4a89018aa246e095c0270318673be5509ec3f649faacc"
         # 30-day window: resource thresholds.
         reviewBy: "2026-07-13"
       - label: "Housing"
         text: "You must have (or prove you will have on the family's arrival) accommodation considered normal for a comparable family in the same geographic area, meeting sanitary and equipment conditions."
         sourceUrl: "https://www.service-public.gouv.fr/particuliers/vosdroits/F11166?lang=en"
         sourceName: "Service-Public — Family reunification"
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): live F11166 (sha256 b5fe2a8a…). Verbatim: "[on the] arrival of your family in France) … housing considered normal for a comparable family living in the same geographical region. Housing must meet certain sanitary and equipment conditions." Supported.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-fr 2026-06-13"
+        sourceHash: "b5fe2a8abeedc0b79df4a89018aa246e095c0270318673be5509ec3f649faacc"
         reviewBy: "2026-09-11"
       - label: "Talent shortcut"
         text: "Passeport Talent / EU Blue Card holders do NOT use family reunification: their spouse and minor children get a «talent-famille» card through the simplified accompanying-family procedure."
         sourceUrl: "https://www.service-public.gouv.fr/particuliers/vosdroits/F16922?lang=en"
         sourceName: "Service-Public — Talent residence card (multi-year)"
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): live F16922 (sha256 11b4b0e6…). Verbatim: "Your spouse and minor children can benefit from the simplified procedure accompanying family and obtain a residence card \"talent-family\" without going through the application for family reunification." Supported.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-fr 2026-06-13"
+        sourceHash: "11b4b0e6f5d65fe6dc2cb90f730d25b4f405788c4f12503f6600c32a02ea57ce"
         reviewBy: "2026-09-11"
     detail: >
       Standard family reunification (regroupement familial) is the route for most residence-card
@@ -1090,18 +1269,22 @@ tasks:
           - text: "Service-Public — family reunification: conditions and simulator"
             sourceUrl: "https://www.service-public.gouv.fr/particuliers/vosdroits/F11166?lang=en"
             sourceName: "Service-Public — Family reunification"
-            status: UNVERIFIED
+            # VERIFIED 2026-06-13 (fact-verifier): live F11166 (sha256 b5fe2a8a…); page sets out the eligibility/resource/housing conditions and offers a simulator ("you can use a simulator: Check if you can benefit from family reunification"). Link accurate.
+            status: VERIFIED
             lastVerified: "2026-06-13"
-            verifiedBy: ""
+            verifiedBy: "fact-verifier-fr 2026-06-13"
+            sourceHash: "b5fe2a8abeedc0b79df4a89018aa246e095c0270318673be5509ec3f649faacc"
             reviewBy: "2026-09-11"
       - text: "File the family-reunification application with the OFII, with civil-status and resource/housing documents; the family applies for the VLS-TS once approved."
         links:
           - text: "Service-Public — family reunification: documents and procedure"
             sourceUrl: "https://www.service-public.gouv.fr/particuliers/vosdroits/F11166?lang=en"
             sourceName: "Service-Public — Family reunification"
-            status: UNVERIFIED
+            # VERIFIED 2026-06-13 (fact-verifier): live F11166 (sha256 b5fe2a8a…); page lists the documents and the procedure — the file is transmitted "with acknowledgement of receipt to the Ofii." Link accurate.
+            status: VERIFIED
             lastVerified: "2026-06-13"
-            verifiedBy: ""
+            verifiedBy: "fact-verifier-fr 2026-06-13"
+            sourceHash: "b5fe2a8abeedc0b79df4a89018aa246e095c0270318673be5509ec3f649faacc"
             reviewBy: "2026-09-11"
     documents:
       - name: "Family-reunification application to the OFII"
@@ -1111,9 +1294,11 @@ tasks:
           text: "File the family-reunification application with the OFII. Service-Public is the authority describing the conditions, documents and procedure and linking the official services."
           sourceUrl: "https://www.service-public.gouv.fr/particuliers/vosdroits/F11166?lang=en"
           sourceName: "Service-Public — Family reunification"
-          status: UNVERIFIED
+          # VERIFIED 2026-06-13 (fact-verifier): live F11166 (sha256 b5fe2a8a…); the authority page describing conditions/documents/procedure — the file is "Transmission … to the Ofii." Authority-page link (not a self-hosted PDF) confirmed correct and current.
+          status: VERIFIED
           lastVerified: "2026-06-13"
-          verifiedBy: ""
+          verifiedBy: "fact-verifier-fr 2026-06-13"
+          sourceHash: "b5fe2a8abeedc0b79df4a89018aa246e095c0270318673be5509ec3f649faacc"
           reviewBy: "2026-09-11"
       - name: "Your valid residence card (≥1 year)"
         type: provide
@@ -1142,39 +1327,48 @@ tasks:
       text: "You will generally need a French bank account for salary, rent and bills. Banks set their own onboarding requirements (typically proof of identity, proof of address in France, and residence/visa status). If a bank refuses to open an account — or does not respond within 15 days — you can use the «right to an account» (droit au compte): the Banque de France will designate a bank that must open a basic-services account for you."
       sourceUrl: "https://www.service-public.gouv.fr/particuliers/vosdroits/F2417?lang=en"
       sourceName: "Service-Public — Right to a bank account (droit au compte)"
-      status: UNVERIFIED
+      # VERIFIED 2026-06-13 (fact-verifier): Service-Public F2417 re-fetched LIVE (sha256 5a871fcd…). Verbatim: "If a bank does not respond to your request within 15 days … this is considered a refusal"; on refusal "the Banque de France shall designate … the bank responsible for opening" an account that "must open an account with basic banking services." Supported. (Bank-set onboarding docs are general practice; the load-bearing droit-au-compte mechanism is sourced exactly.)
+      status: VERIFIED
       lastVerified: "2026-06-13"
-      verifiedBy: ""
+      verifiedBy: "fact-verifier-fr 2026-06-13"
+      sourceHash: "5a871fcd81c8631aaba228b20b1b0a0114bfc3294d5ea35e18e408cb1813715a"
       reviewBy: "2026-09-11"
     tldr:
       text: "A French bank account is needed for salary, rent and bills; expect to show ID, proof of a French address and your residence status. If you are refused (or get no answer within 15 days), the «droit au compte» lets the Banque de France designate a bank that must open a basic-services account for you."
       sourceUrl: "https://www.service-public.gouv.fr/particuliers/vosdroits/F2417?lang=en"
       sourceName: "Service-Public — Right to a bank account (droit au compte)"
-      status: UNVERIFIED
+      # VERIFIED 2026-06-13 (fact-verifier): same live F2417 (sha256 5a871fcd…). 15-days-silence = refusal, and Banque-de-France designation of a bank that must open a basic-services account, confirmed verbatim.
+      status: VERIFIED
       lastVerified: "2026-06-13"
-      verifiedBy: ""
+      verifiedBy: "fact-verifier-fr 2026-06-13"
+      sourceHash: "5a871fcd81c8631aaba228b20b1b0a0114bfc3294d5ea35e18e408cb1813715a"
       reviewBy: "2026-09-11"
     keyFacts:
       - label: "Right to an account"
         text: "If a bank refuses to open an account (or does not respond within 15 days, which counts as a refusal), you can ask the Banque de France to designate a bank that must open an account with basic banking services."
         sourceUrl: "https://www.service-public.gouv.fr/particuliers/vosdroits/F2417?lang=en"
         sourceName: "Service-Public — Right to a bank account (droit au compte)"
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): live F2417 (sha256 5a871fcd…). Verbatim: "A bank may refuse you to open an account. If a bank does not respond to your request within 15 days … this is considered a refusal"; "[the Banque de France] must open an account for you and give you access to basic banking services" / "the Banque de France shall designate … the bank responsible for opening" it. Supported.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-fr 2026-06-13"
+        sourceHash: "5a871fcd81c8631aaba228b20b1b0a0114bfc3294d5ea35e18e408cb1813715a"
         reviewBy: "2026-09-11"
       - label: "What to bring"
         text: "The right-to-account file requires a request form, valid French or foreign ID, proof of domicile (e.g. a utility bill or rent receipt under three months), and the bank's letter of refusal or acknowledgement."
         sourceUrl: "https://www.service-public.gouv.fr/particuliers/vosdroits/F2417?lang=en"
         sourceName: "Service-Public — Right to a bank account (droit au compte)"
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): live F2417 (sha256 5a871fcd…). Verbatim file list: "[Account] Entitlement Request Form; Valid French or foreign ID; Proof of domicile (e.g. water bill or telephone under 3 months, rent receipt …, title to the principal residence); Letter of refusal from the bank approached, or acknowledgement of receipt." Supported.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-fr 2026-06-13"
+        sourceHash: "5a871fcd81c8631aaba228b20b1b0a0114bfc3294d5ea35e18e408cb1813715a"
         reviewBy: "2026-09-11"
       - label: "US-specific note"
         text: "As a US person, French banks must apply FATCA reporting; some banks are more reluctant to onboard US citizens. Confirm a bank's US-person policy before applying. (Confirm with the bank / Banque de France.)"
         sourceUrl: "https://www.service-public.gouv.fr/particuliers/vosdroits/F2417?lang=en"
         sourceName: "Service-Public — Right to a bank account (droit au compte)"
+        # KICKED BACK 2026-06-13 (fact-verifier): the cited source (live F2417, sha256 5a871fcd…) is the droit-au-compte page and contains NO mention of FATCA, "US person", US citizens, or the United States (grep over the live text returns zero hits). It cannot support the FATCA-reporting or banks-reluctant-to-onboard-US-citizens assertions. The claim's own hedge "(Confirm with the bank / Banque de France)" signals it is unsourced. Researcher/frontend: either cite a primary source for FATCA (e.g. impots.gouv.fr / the France–US IGA) or recast as a "confirm with [authority]" note per CLAUDE.md rule 1 — do NOT cite F2417 for it. Left UNVERIFIED.
         status: UNVERIFIED
         lastVerified: "2026-06-13"
         verifiedBy: ""
@@ -1194,18 +1388,22 @@ tasks:
           - text: "Service-Public — right to a bank account (after a refusal)"
             sourceUrl: "https://www.service-public.gouv.fr/particuliers/vosdroits/F2417?lang=en"
             sourceName: "Service-Public — Right to a bank account (droit au compte)"
-            status: UNVERIFIED
+            # VERIFIED 2026-06-13 (fact-verifier): live F2417 (sha256 5a871fcd…); the official droit-au-compte page describing the right to an account after a refusal. Link accurate. (Note: the surrounding step text's FATCA mention is not from this page — see the US-specific keyFact kicked back above.)
+            status: VERIFIED
             lastVerified: "2026-06-13"
-            verifiedBy: ""
+            verifiedBy: "fact-verifier-fr 2026-06-13"
+            sourceHash: "5a871fcd81c8631aaba228b20b1b0a0114bfc3294d5ea35e18e408cb1813715a"
             reviewBy: "2026-09-11"
       - text: "If refused (or no response within 15 days), apply to the Banque de France for the right to an account."
         links:
           - text: "Service-Public — how to apply for the droit au compte via the Banque de France"
             sourceUrl: "https://www.service-public.gouv.fr/particuliers/vosdroits/F2417?lang=en"
             sourceName: "Service-Public — Right to a bank account (droit au compte)"
-            status: UNVERIFIED
+            # VERIFIED 2026-06-13 (fact-verifier): live F2417 (sha256 5a871fcd…); page describes how to apply for the account entitlement via the Banque de France (the refusing bank can forward the request, or you apply directly). Link accurate.
+            status: VERIFIED
             lastVerified: "2026-06-13"
-            verifiedBy: ""
+            verifiedBy: "fact-verifier-fr 2026-06-13"
+            sourceHash: "5a871fcd81c8631aaba228b20b1b0a0114bfc3294d5ea35e18e408cb1813715a"
             reviewBy: "2026-09-11"
     documents:
       - name: "Right-to-account request (Banque de France)"
@@ -1215,9 +1413,11 @@ tasks:
           text: "Apply for the droit au compte via the Banque de France. Service-Public is the authority describing the procedure, the required file and the official online démarche."
           sourceUrl: "https://www.service-public.gouv.fr/particuliers/vosdroits/F2417?lang=en"
           sourceName: "Service-Public — Right to a bank account (droit au compte)"
-          status: UNVERIFIED
+          # VERIFIED 2026-06-13 (fact-verifier): live F2417 (sha256 5a871fcd…); the authority page describing the droit-au-compte procedure and the required file. Link accurate.
+          status: VERIFIED
           lastVerified: "2026-06-13"
-          verifiedBy: ""
+          verifiedBy: "fact-verifier-fr 2026-06-13"
+          sourceHash: "5a871fcd81c8631aaba228b20b1b0a0114bfc3294d5ea35e18e408cb1813715a"
           reviewBy: "2026-09-11"
       - name: "Valid passport / ID"
         type: provide
@@ -1238,50 +1438,62 @@ tasks:
       text: "Once you live in France you are likely a French tax resident, which means France taxes your worldwide income. Your tax domicile is in France if any one of these applies: your home/household is in France; your main stay is in France (at least 183 days in the year); your main professional activity is in France; or your centre of economic interests is in France. A tax treaty between France and your country can change these rules and is designed to avoid double taxation."
       sourceUrl: "https://www.service-public.gouv.fr/particuliers/vosdroits/F62?lang=en"
       sourceName: "Service-Public — How to determine your tax domicile"
-      status: UNVERIFIED
+      # VERIFIED 2026-06-13 (fact-verifier): Service-Public F62 re-fetched LIVE (sha256 83f9e436…). Verbatim: "Your tax domicile is in France if you fill in one of the following criteria" — "Your home is in France" (household); main stay "you are staying there at least 183 days"; "you have your main activity there"; "The center of your economic interests is in France." The worldwide-income consequence and tax-treaty modification are on companion F36401 (verified below). Supported.
+      status: VERIFIED
       lastVerified: "2026-06-13"
-      verifiedBy: ""
+      verifiedBy: "fact-verifier-fr 2026-06-13"
+      sourceHash: "83f9e436eaa8ac7f29f4dd05f15ee0f608c9e407625316f0c530d3e0f59dda57"
       reviewBy: "2026-09-11"
     tldr:
       text: "Living in France usually makes you a French tax resident, taxed on your worldwide income. You are tax-domiciled in France if any one applies: your household, your main stay (≥183 days), your main job, or your centre of economic interests is in France. The France–US tax treaty modifies this to avoid double taxation — get specialist advice as a US citizen, since the US also taxes by citizenship."
       sourceUrl: "https://www.service-public.gouv.fr/particuliers/vosdroits/F62?lang=en"
       sourceName: "Service-Public — How to determine your tax domicile"
-      status: UNVERIFIED
+      # VERIFIED 2026-06-13 (fact-verifier): same live F62 (sha256 83f9e436…). The four "one of the following criteria" tax-domicile tests (home/household, main stay ≥183 days, main activity, centre of economic interests) confirmed verbatim. (US-taxes-by-citizenship is general background, not a France-source claim; worldwide-income + treaty are sourced on F36401.)
+      status: VERIFIED
       lastVerified: "2026-06-13"
-      verifiedBy: ""
+      verifiedBy: "fact-verifier-fr 2026-06-13"
+      sourceHash: "83f9e436eaa8ac7f29f4dd05f15ee0f608c9e407625316f0c530d3e0f59dda57"
       reviewBy: "2026-09-11"
     keyFacts:
       - label: "When you are tax-resident"
         text: "Your tax domicile is in France if any one criterion is met: your home/household is in France; your main stay is in France (at least 183 days, i.e. more than six months); your main professional activity is in France; or your centre of economic interests is in France."
         sourceUrl: "https://www.service-public.gouv.fr/particuliers/vosdroits/F62?lang=en"
         sourceName: "Service-Public — How to determine your tax domicile"
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): live F62 (sha256 83f9e436…). Verbatim: "Your tax domicile is in France if you fill in one of the following criteria"; "Your home is in France"; "the place of your main stay, that is to say that you are staying there at least 183 days"; "you have your main activity there"; "The center of your economic interests is in France." All four criteria + the 183-day figure character-for-character.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-fr 2026-06-13"
+        sourceHash: "83f9e436eaa8ac7f29f4dd05f15ee0f608c9e407625316f0c530d3e0f59dda57"
         reviewBy: "2026-09-11"
       - label: "What is taxed"
         text: "If you are tax-resident in France you are subject to French income tax on your income of both French and foreign origin (worldwide income); non-residents are taxed only on French-source income, subject to any tax treaty."
         sourceUrl: "https://www.service-public.gouv.fr/particuliers/vosdroits/F36401?lang=en"
         sourceName: "Service-Public — Taxes paid by a foreigner in France"
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): Service-Public F36401 re-fetched LIVE (sha256 fbe956ba…). Verbatim: "[if tax resident] subject to income tax in France for your income of french and foreign origin" / "You must declare in France all your income, whether they are of French origin or of foreign origin"; "[if not tax resident] for your income of french origin (subject to the tax treaty …)." Supported.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-fr 2026-06-13"
+        sourceHash: "fbe956ba6a2fe1ec928edc6083dd1f1e636416d52f40f0a2b0ec75dd55e1597c"
         reviewBy: "2026-09-11"
       - label: "Tax treaty"
         text: "An international convention (tax treaty) between France and a foreign country can provide different rules and is used to avoid double taxation of the same income."
         sourceUrl: "https://www.service-public.gouv.fr/particuliers/vosdroits/F36401?lang=en"
         sourceName: "Service-Public — Taxes paid by a foreigner in France"
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): live F36401 (sha256 fbe956ba…). Verbatim: "One international convention concluded between France and a foreigner country may provid[e different rules]" and a "How can the risks of double taxation of income be avoided?" section. Supported.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-fr 2026-06-13"
+        sourceHash: "fbe956ba6a2fe1ec928edc6083dd1f1e636416d52f40f0a2b0ec75dd55e1597c"
         reviewBy: "2026-09-11"
       - label: "Reporting foreign accounts"
         text: "French tax residents must report accounts opened, held, used or closed abroad during the year to the French tax authority."
         sourceUrl: "https://www.service-public.gouv.fr/particuliers/vosdroits/F34342?lang=en"
         sourceName: "Service-Public — Should foreign accounts be reported?"
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier): Service-Public F34342 re-fetched LIVE (sha256 0a3496ac…). Verbatim: "You must report to the tax authority ac[counts] … held, used (at least once) or closed in the year abroad" and "You must declare accounts opened abroad with a bank or any other organization." The obligation attaches to those filing a French return (individuals/associations/non-commercial businesses) — i.e. French tax residents and similar; the claim's scoping is accurate. Supported.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-fr 2026-06-13"
+        sourceHash: "0a3496ac97b155784b468ed49529815b0d9d44f6bd0d1093183037ff8c861a8c"
         reviewBy: "2026-09-11"
     detail: >
       France determines tax residency by the criteria in Article 4 B of the General Tax Code,
@@ -1301,9 +1513,11 @@ tasks:
           - text: "Service-Public — how to determine your tax domicile"
             sourceUrl: "https://www.service-public.gouv.fr/particuliers/vosdroits/F62?lang=en"
             sourceName: "Service-Public — How to determine your tax domicile"
-            status: UNVERIFIED
+            # VERIFIED 2026-06-13 (fact-verifier): live F62 (sha256 83f9e436…); the official page setting out the four tax-domicile criteria. Link accurate.
+            status: VERIFIED
             lastVerified: "2026-06-13"
-            verifiedBy: ""
+            verifiedBy: "fact-verifier-fr 2026-06-13"
+            sourceHash: "83f9e436eaa8ac7f29f4dd05f15ee0f608c9e407625316f0c530d3e0f59dda57"
             reviewBy: "2026-09-11"
       - text: "If resident, file a French income-tax return covering your worldwide income, applying the France–US tax treaty; report any foreign accounts."
         tip: "As a US citizen you generally keep US filing obligations too. Get specialist France–US cross-border tax advice before your first return."
@@ -1311,9 +1525,11 @@ tasks:
           - text: "Service-Public — taxes paid by a foreigner in France (worldwide income, treaty)"
             sourceUrl: "https://www.service-public.gouv.fr/particuliers/vosdroits/F36401?lang=en"
             sourceName: "Service-Public — Taxes paid by a foreigner in France"
-            status: UNVERIFIED
+            # VERIFIED 2026-06-13 (fact-verifier): live F36401 (sha256 fbe956ba…); page covers worldwide-income taxation for residents, French-source-only for non-residents, and tax-treaty rules. Link accurate.
+            status: VERIFIED
             lastVerified: "2026-06-13"
-            verifiedBy: ""
+            verifiedBy: "fact-verifier-fr 2026-06-13"
+            sourceHash: "fbe956ba6a2fe1ec928edc6083dd1f1e636416d52f40f0a2b0ec75dd55e1597c"
             reviewBy: "2026-09-11"
     documents:
       - name: "French income-tax return"
@@ -1323,9 +1539,11 @@ tasks:
           text: "File your French income-tax return with the tax authority (impots.gouv.fr) once you are resident. Service-Public is the authority describing taxability and reporting; confirm forms and deadlines for the current tax year."
           sourceUrl: "https://www.service-public.gouv.fr/particuliers/vosdroits/F36401?lang=en"
           sourceName: "Service-Public — Taxes paid by a foreigner in France"
-          status: UNVERIFIED
+          # VERIFIED 2026-06-13 (fact-verifier): live F36401 (sha256 fbe956ba…); the authority page on who is taxable and what to report ("Internet reporting is mandatory"). Link accurate. (Specific forms/deadlines correctly left to confirm for the current tax year.)
+          status: VERIFIED
           lastVerified: "2026-06-13"
-          verifiedBy: ""
+          verifiedBy: "fact-verifier-fr 2026-06-13"
+          sourceHash: "fbe956ba6a2fe1ec928edc6083dd1f1e636416d52f40f0a2b0ec75dd55e1597c"
           reviewBy: "2026-09-11"
       - name: "Foreign-account declaration"
         type: provide

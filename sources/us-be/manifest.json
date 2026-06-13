@@ -1,7 +1,7 @@
 [
   {
     "sourceUrl": "https://dofi.ibz.be/en/themes/third-country-nationals",
-    "sourceName": "Immigration Office (Office des Etrangers / Dienst Vreemdelingenzaken) — Third-country nationals",
+    "sourceName": "Immigration Office (IBZ/DOFI) — Third-country nationals",
     "claimIds": [
       "probe"
     ],
@@ -15,7 +15,7 @@
   },
   {
     "sourceUrl": "https://dofi.ibz.be/en/themes/third-country-nationals/work",
-    "sourceName": "Immigration Office (IBZ/DOFI) — Third-country nationals: Work",
+    "sourceName": "Immigration Office (IBZ/DOFI) — Work",
     "claimIds": [
       "be-work"
     ],
@@ -29,7 +29,7 @@
   },
   {
     "sourceUrl": "https://dofi.ibz.be/en/themes/third-country-nationals/family-reunification",
-    "sourceName": "Immigration Office (IBZ/DOFI) — Third-country nationals: Family reunification",
+    "sourceName": "Immigration Office (IBZ/DOFI) — Family reunification",
     "claimIds": [
       "be-family"
     ],
@@ -43,7 +43,7 @@
   },
   {
     "sourceUrl": "https://dofi.ibz.be/en/themes/third-country-nationals/study",
-    "sourceName": "Immigration Office (IBZ/DOFI) — Third-country nationals: Study",
+    "sourceName": "Immigration Office (IBZ/DOFI) — Study",
     "claimIds": [
       "be-study"
     ],
@@ -71,7 +71,7 @@
   },
   {
     "sourceUrl": "https://www.belgium.be/en/family/residence_documents_for_belgium",
-    "sourceName": "belgium.be (official federal portal) — Residence documents for Belgium",
+    "sourceName": "belgium.be — Residence documents for Belgium",
     "claimIds": [
       "be-residence-docs"
     ],
@@ -85,7 +85,7 @@
   },
   {
     "sourceUrl": "https://www.belgium.be/en/housing/moving_to_belgium",
-    "sourceName": "belgium.be (official federal portal) — Moving to Belgium",
+    "sourceName": "belgium.be — Moving to Belgium",
     "claimIds": [
       "be-moving"
     ],
@@ -99,7 +99,7 @@
   },
   {
     "sourceUrl": "https://www.belgium.be/en/education/coming_to_study_in_belgium",
-    "sourceName": "belgium.be (official federal portal) — Coming to study in Belgium",
+    "sourceName": "belgium.be — Coming to study in Belgium",
     "claimIds": [
       "be-belgiumbe-study"
     ],
@@ -141,7 +141,7 @@
   },
   {
     "sourceUrl": "https://dofi.ibz.be/en/themes/third-country-nationals/work/single-permit",
-    "sourceName": "Immigration Office (IBZ/DOFI) — Single permit",
+    "sourceName": "Immigration Office (IBZ/DOFI) — Single Permit",
     "claimIds": [
       "be-single-permit"
     ],

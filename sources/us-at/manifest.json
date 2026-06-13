@@ -13,7 +13,7 @@
   },
   {
     "sourceUrl": "https://www.migration.gv.at/en/types-of-immigration/permanent-immigration/very-highly-qualified-workers/",
-    "sourceName": "Austria Migration — Very Highly Qualified Workers (RWR Card)",
+    "sourceName": "Austria Migration — Very Highly Qualified Workers (Red-White-Red Card)",
     "claimIds": [],
     "fetchedAt": "2026-06-13",
     "fetchMethod": "curl",
@@ -37,7 +37,7 @@
   },
   {
     "sourceUrl": "https://www.migration.gv.at/en/types-of-immigration/permanent-immigration/other-key-workers/",
-    "sourceName": "Austria Migration — Other Key Workers (RWR Card)",
+    "sourceName": "Austria Migration — Other Key Workers (Red-White-Red Card)",
     "claimIds": [],
     "fetchedAt": "2026-06-13",
     "fetchMethod": "curl",
@@ -145,7 +145,7 @@
   },
   {
     "sourceUrl": "https://www.migration.gv.at/en/living-and-working-in-austria/housing/housing.html",
-    "sourceName": "Austria Migration — Housing (Hauptmiete / Untermiete, MRG)",
+    "sourceName": "Austria Migration — Housing",
     "claimIds": [],
     "fetchedAt": "2026-06-13",
     "fetchMethod": "curl",

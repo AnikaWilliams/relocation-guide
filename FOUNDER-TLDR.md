@@ -10,6 +10,19 @@ coming next. Newest updates are at the top.
 
 ---
 
+## 2026-06-13 — Fact-checking progress: USA → Western Europe batch
+
+**What changed.** The independent fact-checking run is underway — separate AI checkers re-fetch every drafted fact's official source *live* and confirm it (or kick it back), with no trust in how it was written. (I'll update this line as they finish.)
+**Checked: 8 of 8 — fact-checking COMPLETE.** 670 of 732 facts (91%) confirmed against live official sources. **Fully clean and ready for your publish go-ahead: 🇩🇪 Germany 94/94, 🇬🇧 UK 106/106.** The rest: 🇫🇷 France 107/111, 🇱🇺 Luxembourg 92/104, 🇦🇹 Austria 80/91, 🇮🇪 Ireland 78/84, 🇧🇪 Belgium 41/50, 🇳🇱 Netherlands 72/92. The 62 "kicked back" facts aren't *wrong* — they were cited to the wrong official page, or to a detail the site hides behind an interactive widget; a short re-sourcing pass fixes and re-checks them. **Zero content drift** anywhere, and nothing publishes until you approve each guide.
+
+**Why it matters.** This is the gate that lets a guide go live — a fact isn't trustworthy until a second, independent pass confirms it against the government's own page.
+
+**What you'd notice today.** Nothing live yet — verification doesn't publish anything; it just earns each guide the right to be published once you approve it.
+
+**What's next.** Finish checking the other 7, then the fully-verified guides come to you for the publish go-ahead.
+
+---
+
 ## 2026-06-13 — Drafting progress: USA → Western Europe batch
 
 **What changed.** Running tally of the eight-guide batch (I'll update this line as they land). All are drafts — every fact unverified and the guide hidden — until the separate fact-checking team runs.

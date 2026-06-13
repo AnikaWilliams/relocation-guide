@@ -403,3 +403,22 @@ Scope: independently re-verified the 10 `UNVERIFIED` distilled-copy claims (tldr
 | 2026-06-12 | us-ch | ahv-social-security keyFact "Work allowed" (employee 4.35% + employer 4.35% = 8.7%, deducted from gross) | fact-verifier | VERIFIED | https://www.fedlex.admin.ch/eli/cc/63/837_843_843/de#art_5 | AHVG Art. 5 para. 1 "4,35 Prozent" (employee) + Art. 13 "4,35 Prozent" (employer) + "je 4,35 Prozent des massgebenden Lohnes" all verbatim DE; deduction-from-gross = Art. 14 para. 1. 4.35+4.35 = 8.7% matches already-VERIFIED ch.ch cost field + ch.ch re-fetch ("8.7% of your salary ... half by you and half by your employer", HTTP 200). FIGURE → reviewBy 2026-07-12. |
 
 **Run totals (us-ch Fedlex re-source, 2026-06-12):** 10 VERIFIED / 0 FLAGGED of 10. Critical checks all passed: (1) the 14-day figure is attributed to OASA/VZAE Art. 10, not FNIA Art. 12 (Art. 12 only delegates the limit); (2) the 8.7% employment rate is the verbatim 4.35% (AHVG Art. 5) + 4.35% (AHVG Art. 13) and matches the already-VERIFIED ch.ch cost field; (3) framing is route-neutral on both tasks (registration duty binds all permit-holders; OASI covers residents and gainfully-employed separately, with non-working residents handled by the dedicated retirement-ahv-contributions task). These 10 were the only red claims gating the build on these two tasks.
+
+---
+
+### USA → Western Europe + UK batch (8 corridors) — verification run 2026-06-13
+
+Independent verification (two-agent rule, ADR-0016): 8 separate `fact-verifier` sessions (one per corridor, none sharing context with the `content-researcher`/finisher that drafted it), each re-fetched every cited source LIVE via `scripts/snapshot-source.mjs` (local curl + browser UA, ADR-0017) and confirmed each claim against the live text. Every VERIFIED claim carries `verifiedBy`, `lastVerified: 2026-06-13`, a live `sourceHash`, and an inline `# VERIFIED 2026-06-13 (fact-verifier): <verbatim>` comment; every kicked-back claim keeps `status: UNVERIFIED` with an inline `# KICKED BACK …` note. **Granular per-claim records are those inline comments + `sourceHash` fields in each `src/content/corridors/us-*.yaml`** (732 claims — not re-tabulated here). Zero sources unreachable; zero material content drift between the research capture and the verification re-fetch.
+
+| corridor | verifier | verified | kicked | total | notes |
+|---|---|---|---|---|---|
+| us-de | fact-verifier-de | 94 | 0 | 94 | **CLEAN.** EU Blue Card thresholds, AufenthV §41 visa-free (USA listed), Anmeldung 2 weeks, §16b 140 days, §20 18-month search — verbatim. |
+| us-gb | fact-verifier-gb | 106 | 0 | 106 | **CLEAN.** Skilled Worker £41,700/£33,400, all visa fees + IHS amounts, US English-exemption, Graduate-route cutover — verbatim. |
+| us-fr | fact-verifier-fr | 107 | 4 | 111 | Kicked: FATCA note not on cited page; PUMa "from first day" should be "from application acceptance" (×3). |
+| us-ie | fact-verifier-ie | 78 | 6 | 84 | Kicked: tax remittance/PRSI/USC on a companion page; "fingerprints at registration" unsupportable on any live ISD page; €300 fee on docs page. |
+| us-at | fact-verifier-at | 80 | 11 | 91 | Kicked: housing/MRG (×4); bank-account/FATCA on a generic landing page (×5); 2 mis-pointed health links. |
+| us-be | fact-verifier-be | 41 | 9 | 50 | Kicked: 7× fact-cited-to-adjacent-page; 1 date variant (1 vs 3 Jan 2019); 1 unsupported "longer for long-stay" gloss. |
+| us-nl | fact-verifier-nl | 72 | 20 | 92 | Kicked: mostly IND quiz-gated SPA conditions absent from served HTML; BRP 5-day figure absent; health "permanent" qualifier dropped. Load-bearing figures (HSM thresholds, 30% ruling) verbatim. |
+| us-lu | fact-verifier-lu | 92 | 12 | 104 | Kicked: €50 visa fee bundled to wrong page (×2); type-D 3-month detail on adjacent page (×3); bank-account claims cite a nav hub (×5); 2 declaration-of-arrival details. |
+
+**Batch totals (2026-06-13):** **670 VERIFIED / 62 UNVERIFIED (kicked back) of 732 claims.** **Fully clean: us-de (94/94), us-gb (106/106)** — eligible for the founder publish gate. **Recurring kick-back pattern across the other six: sourcing precision, not fabrication** — a true claim cited to an adjacent/generic official page, or a detail the site renders only behind a JS quiz/SPA the fetcher can't see. Fix path = a short content-researcher re-sourcing pass (re-point or trim the 62 claims) then re-verify; no claim text was edited by the verifiers. All corridors remain `published: false`.

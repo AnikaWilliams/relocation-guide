@@ -30,7 +30,7 @@
     "fetchedAt": "2026-06-13",
     "fetchMethod": "curl",
     "sha256": "abb9ef7638bc7c490a5ac19e71b2174fc63d84f42e741de214a28884177c60c4",
-    "byteSize": 195420,
+    "byteSize": 195446,
     "contentType": "text/html;charset=UTF-8",
     "textPath": "sources/us-fr/abb9ef76.txt",
     "capturedBy": "snapshot-source"
@@ -42,7 +42,7 @@
     "fetchedAt": "2026-06-13",
     "fetchMethod": "curl",
     "sha256": "11b4b0e6f5d65fe6dc2cb90f730d25b4f405788c4f12503f6600c32a02ea57ce",
-    "byteSize": 288267,
+    "byteSize": 288292,
     "contentType": "text/html;charset=UTF-8",
     "textPath": "sources/us-fr/11b4b0e6.txt",
     "capturedBy": "snapshot-source"
@@ -78,7 +78,7 @@
     "fetchedAt": "2026-06-13",
     "fetchMethod": "curl",
     "sha256": "0fffc5ec8486b66f1f1baadb6a86599a2aedb2d85fc69a09c337c28c08c32dc5",
-    "byteSize": 125880,
+    "byteSize": 125881,
     "contentType": "text/html;charset=UTF-8",
     "textPath": "sources/us-fr/0fffc5ec.txt",
     "capturedBy": "snapshot-source"
@@ -90,7 +90,7 @@
     "fetchedAt": "2026-06-13",
     "fetchMethod": "curl",
     "sha256": "442654f214beccf49d6d590931681cb49a4d0699e1ecbaf4350c17866271cc77",
-    "byteSize": 81066,
+    "byteSize": 81074,
     "contentType": "text/html;charset=UTF-8",
     "textPath": "sources/us-fr/442654f2.txt",
     "capturedBy": "snapshot-source"
@@ -102,7 +102,7 @@
     "fetchedAt": "2026-06-13",
     "fetchMethod": "curl",
     "sha256": "b5fe2a8abeedc0b79df4a89018aa246e095c0270318673be5509ec3f649faacc",
-    "byteSize": 196260,
+    "byteSize": 196268,
     "contentType": "text/html;charset=UTF-8",
     "textPath": "sources/us-fr/b5fe2a8a.txt",
     "capturedBy": "snapshot-source"
@@ -121,7 +121,7 @@
   },
   {
     "sourceUrl": "https://www.service-public.gouv.fr/particuliers/vosdroits/F2417?lang=en",
-    "sourceName": "Service-Public — Refusal to open a bank account: right to an account (droit au compte)",
+    "sourceName": "Service-Public — Right to a bank account (droit au compte)",
     "claimIds": [],
     "fetchedAt": "2026-06-13",
     "fetchMethod": "curl",
@@ -150,7 +150,7 @@
     "fetchedAt": "2026-06-13",
     "fetchMethod": "curl",
     "sha256": "fbe956ba6a2fe1ec928edc6083dd1f1e636416d52f40f0a2b0ec75dd55e1597c",
-    "byteSize": 120961,
+    "byteSize": 120944,
     "contentType": "text/html;charset=UTF-8",
     "textPath": "sources/us-fr/fbe956ba.txt",
     "capturedBy": "snapshot-source"
@@ -198,7 +198,7 @@
     "fetchedAt": "2026-06-13",
     "fetchMethod": "curl",
     "sha256": "31a34b53128eb4a287a57d9bf5f2bd0307e3102c8d761f9daab63cb084aebabd",
-    "byteSize": 165111,
+    "byteSize": 165110,
     "contentType": "text/html;charset=UTF-8",
     "textPath": "sources/us-fr/31a34b53.txt",
     "capturedBy": "snapshot-source"
@@ -210,7 +210,7 @@
     "fetchedAt": "2026-06-13",
     "fetchMethod": "curl",
     "sha256": "6619681eeeae1cd812f9c6c926d757e162e2c9bc8dfdc4c109ce61daf20f5095",
-    "byteSize": 146703,
+    "byteSize": 146705,
     "contentType": "text/html;charset=UTF-8",
     "textPath": "sources/us-fr/6619681e.txt",
     "capturedBy": "snapshot-source"
