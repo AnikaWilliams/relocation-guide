@@ -10,6 +10,78 @@ coming next. Newest updates are at the top.
 
 ---
 
+## 2026-06-12 — Removed the blue "Personalised for you" banner
+
+**What changed.** You asked to drop the blue strip that appeared above a plan reading "Personalised for you: N of M steps apply… Skipped: …". It's gone. The personalisation itself is unchanged — the plan still quietly shows only the steps that apply to a person's situation; we just no longer call attention to what was left out. The legal-advice disclaimer and the honest "your route isn't covered yet" notice both stay exactly as they were.
+
+**Why it matters.** Less visual clutter at the top of the plan, your call on the product's voice.
+
+**What you'd notice today.** Open any plan — the blue "Personalised for you" bar no longer appears; everything else is the same.
+
+**What's next.** Your thumbs-up on the first step's document checklist, then the remaining 20 steps.
+
+---
+
+## 2026-06-12 — First step's document checklist is fact-checked and working — ready for your look
+
+**What changed.** The two-person check passed on the first step: all 7 new facts confirmed (rejected none), including the careful one — that a third-country work permit is the authorities' decision, not a right. The employer-sponsored work-permit step now shows, in a real browser: a tidy "Key facts" box (who applies, where, legal basis, quota, right-vs-discretion) instead of a wall of text, the long explanation tucked into a "Read the details" drop-down, and a checkable document list — four documents you provide plus the official cantonal work form, with a "Get form from Canton de Vaud" button that opens the government's own page in a new tab. You can't mark the step done until each document is ticked or skipped. The site builds cleanly.
+
+**Why it matters.** This is the feature working on real, fact-checked content — proof the pattern is sound before we repeat it across the other 20 steps.
+
+**What you'd notice today.** Open the work permit step: scannable facts up top, a real document checklist below.
+
+**What's next.** Your thumbs-up, then the same treatment for the remaining 20 steps.
+
+---
+
+## 2026-06-12 — First step's document checklist drafted; independent fact-check underway
+
+**What changed.** Restarting the stalled job worked: the first step (the employer-sponsored work permit) now has a real, written-out document checklist — four documents you provide (job offer/contract, passport, CV with proof of qualifications, passport photos) and one official form, the cantonal work-authorisation application, linked to the issuing authority's own page (Canton de Vaud's office, used as the worked example) rather than a copied PDF that could go stale. A separate fact-checker is now re-opening every source to confirm it before anything shows.
+
+**Why it matters.** This is the first proof that the document-checklist feature works on real, sourced content — the pattern we'll repeat across the other 20 steps once you've seen it.
+
+**What you'd notice today.** Still nothing live — it's in checking.
+
+**What's next.** Fact-check passes → I preview this one step for you → your go-ahead before the rest.
+
+---
+
+## 2026-06-12 — Set a cost rule for our AI helpers, and caught a stalled job before it bit us
+
+**What changed.** Two housekeeping wins. First, we set a clear rule for which "tier" of AI does which job — the top (most expensive) tier only for customer-facing design and the genuinely hard engineering, and the cheaper, very-capable tier for everything else (research, fact-checking, content drafting, routine edits). Think of it like not sending a senior partner to do filing: same quality where it matters, lower bill overall. Second, while picking work back up I discovered that one of the background "drafting" helpers had quietly stalled hours earlier, having barely started, and that a finished, fact-checked piece of work (the study route) had never been safely filed away. I locked the finished work down, separated it from the half-done bits, and restarted the stalled job properly — scoped to just the first step, the way you asked.
+
+**Why it matters.** The cost rule keeps our running expenses sane as we lean on these helpers more. Catching the stall protects hours of verified work from being lost or muddled.
+
+**What you'd notice today.** Nothing visible yet — this is plumbing and cleanup.
+
+**What's next.** Finish and fact-check the document checklist for the first step, then show you the preview before doing the rest.
+
+---
+
+## 2026-06-12 — The study route is live — all four questionnaire answers now lead to real, fact-checked plans
+
+**What changed.** The independent fact-checker confirmed all 23 study-route facts (it found the researcher had miscounted — 23, not 24 — checked every one anyway, rejected none). The figures that matter most to a student survived word-for-word checking against both the English guidance and the German legal text: no side jobs in the first six months, then at most 15 hours a week during term, employer files the paperwork, and a six-month window after graduating to find a job that serves Switzerland's "high academic or economic interest". With that, the study route switched on — six steps, including one most students would miss: you may be able to opt out of Swiss health insurance if your US coverage qualifies. The guide now answers every questionnaire choice except "Another reason" with a genuine, personalised, fact-checked plan: **92 verified facts, 21 steps, four routes**, all built in one day on the assembly line.
+
+**Why it matters.** "Pick your situation, get your plan" is now true for work, family, retirement, and study — that's the product, working.
+
+**What you'd notice using the app today.** Pick "Study": a six-step student plan, including the work-hours rules and the insurance opt-out.
+
+**What's next.** Your preview of the document-checklist feature (running at localhost), and the document research now underway.
+
+---
+
+## 2026-06-12 — Built: document checklists inside every step, and a calmer step page (awaiting your preview)
+
+**What changed.** Two features you asked for are built and tested, but not saved into the official record yet — you wanted a preview first, and that's queued behind a fact-check finishing up. First: every step in the journey can now open into a checklist of the exact documents and official forms it needs — like a packing list inside each leg of a trip. You tick documents off as you gather them (or skip ones that don't apply), each step shows "2/5 documents", official forms get a "Get form from SEM" button that opens the authority's own site (we never host their PDFs ourselves), and a step can't be marked done until its paperwork is handled. Second: the step page is no longer a wall of text — a two-sentence summary up top, a scannable "Key facts" box, and the long explanation folded away under "Read the details".
+
+**Why it matters.** Paperwork is the product. A checklist someone works through over weeks is the stickiest thing we can build.
+
+**What you'd notice using the app today.** Nothing yet — preview coming to you before anything is committed.
+
+**What's next.** Your preview; then researchers fill in the real SEM/Vaud document lists, independently fact-checked.
+
+---
+
 ## 2026-06-12 — The watchdog's first false alarm — investigated and fixed within the hour
 
 **What changed.** The new link watchdog raised its first alarm: from the automated checker's computers, six pages on ch.ch (the Swiss portal we cite most after SEM) appeared to be broken. We investigated before believing it — and the pages are fine: ch.ch shows an error page to traffic from data centres (where the automated checker runs) while serving normal visitors perfectly; we confirmed the same pages load fine from a normal connection, the same day the fact-checker had used them. It's like a shop that won't open the door for couriers but welcomes walk-in customers. The watchdog now knows this about ch.ch: in its automated weekly round it marks those pages "check by hand" instead of crying wolf, while full checks of ch.ch still happen from a normal connection. We also future-proofed the watchdog's machinery for an upcoming change GitHub announced for June 16.

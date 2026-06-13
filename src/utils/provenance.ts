@@ -127,12 +127,22 @@ export function collectClaims(corridor: Corridor): LocatedClaim[] {
   for (const task of corridor.tasks) {
     const base = `tasks[${task.id}]`;
     out.push({ claim: task.summary, location: `${base}.summary` });
+    if (task.tldr) out.push({ claim: task.tldr, location: `${base}.tldr` });
+    task.keyFacts?.forEach((fact, fi) => {
+      out.push({ claim: fact, location: `${base}.keyFacts[${fi}] (${fact.label})` });
+    });
     if (task.timeline) out.push({ claim: task.timeline, location: `${base}.timeline` });
     if (task.cost) out.push({ claim: task.cost, location: `${base}.cost` });
     task.steps.forEach((step, si) => {
       step.links?.forEach((link, li) => {
         out.push({ claim: link, location: `${base}.steps[${si}].links[${li}]` });
       });
+    });
+    task.documents.forEach((doc, di) => {
+      // Legacy string documents carry no claim; structured 'form' documents do.
+      if (typeof doc !== 'string' && doc.form) {
+        out.push({ claim: doc.form, location: `${base}.documents[${di}] (${doc.name})` });
+      }
     });
   }
   return out;

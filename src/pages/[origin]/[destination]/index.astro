@@ -25,13 +25,26 @@ const appTasks: TaskData[] = corridor.tasks.map((t) => ({
   title: t.title,
   category: t.category,
   summary: { text: t.summary.text, sourceUrl: t.summary.sourceUrl, sourceName: t.summary.sourceName },
+  tldr: t.tldr ? { text: t.tldr.text, sourceUrl: t.tldr.sourceUrl, sourceName: t.tldr.sourceName } : undefined,
+  keyFacts: t.keyFacts?.map((f) => ({ label: f.label, text: f.text, sourceUrl: f.sourceUrl, sourceName: f.sourceName })),
   detail: t.detail,
   steps: t.steps.map((s) => ({
     text: s.text,
     tip: s.tip,
     links: s.links?.map((l) => ({ text: l.text, sourceUrl: l.sourceUrl, sourceName: l.sourceName })),
   })),
-  documents: t.documents,
+  documents: t.documents.map((d) =>
+    typeof d === 'string'
+      ? d
+      : {
+          name: d.name,
+          type: d.type,
+          description: d.description,
+          form: d.form
+            ? { text: d.form.text, sourceUrl: d.form.sourceUrl, sourceName: d.form.sourceName, lastVerified: d.form.lastVerified }
+            : undefined,
+        },
+  ),
   timeline: t.timeline ? { text: t.timeline.text, sourceUrl: t.timeline.sourceUrl, sourceName: t.timeline.sourceName } : undefined,
   cost: t.cost ? { text: t.cost.text, sourceUrl: t.cost.sourceUrl, sourceName: t.cost.sourceName } : undefined,
   warning: t.warning,
@@ -177,7 +190,22 @@ const jsonLd = (data: unknown) => JSON.stringify(data).replace(/</g, '\\u003c');
               <>
                 <h4 class="mt-4 font-semibold text-slate-900">Documents</h4>
                 <ul class="mt-2 list-disc space-y-1 pl-6 text-slate-700">
-                  {task.documents.map((doc) => <li>{doc}</li>)}
+                  {task.documents.map((doc) =>
+                    typeof doc === 'string' ? (
+                      <li>{doc}</li>
+                    ) : (
+                      <li>
+                        {doc.name}
+                        {doc.description && <span class="text-slate-500"> — {doc.description}</span>}
+                        {doc.form && (
+                          <span class="block text-sm">
+                            Form from {doc.form.sourceName}:{' '}
+                            <a href={doc.form.sourceUrl} rel="noopener" class="text-blue-700 underline">{doc.form.text}</a>
+                          </span>
+                        )}
+                      </li>
+                    ),
+                  )}
                 </ul>
               </>
             )}

@@ -307,3 +307,28 @@ The seo-analyst audit (2026-06-12) found the corridor page's verified content ex
 - The corridor page now ships ~2× the HTML (guide markup is real instead of noscript-inert); zero added JS.
 - Verified in the hydrated DOM: guide section visible with all 12 task headings and sources while the app stays interactive above it.
 - The guide section renders ALL corridor tasks (not filtered by `appliesIf`) — correct for a reference document; the app remains the personalised view.
+
+---
+
+## ADR-0012 — Document substeps + scannable task detail (founder request, 2026-06-12)
+
+**Date:** 2026-06-12
+**Status:** Accepted (machinery); content pending the pipeline + founder preview
+
+### Context
+Founder request: (1) each journey step should expand into checkable document substeps (user-supplied documents vs official forms, with deep links to the issuing authority), gating step completion; (2) the task detail panel is too text-dense — restructure as short summary + scannable key facts + collapsed full prose.
+
+### Decision
+1. **Schema** (`schema.ts`): `TaskDocumentSchema` — `{ name, type: 'provide' | 'form', description, form?: Claim }`, with `form` REQUIRED for type `form`. **Form links are full Claims**: `sourceUrl` = the authority's current link, `sourceName` = issuer (e.g. "SEM", "Canton de Vaud — SPOP"), standard provenance fields. This means form links are automatically (a) two-agent verified, (b) blocked by the build gate when unverified/stale, and (c) watched weekly by link-auditor. We never self-host official PDFs; when a deep link can't be confirmed current, the claim points at the authority's forms index and says so. `Task.documents` becomes `(string | TaskDocument)[]` — legacy strings remain valid (rendered as 'provide' items) so migration is per-corridor, not big-bang.
+2. **Schema**: `Task.tldr?: Claim` (1–2 sentence distilled summary) and `Task.keyFacts?: (Claim & {label})[]` (3–5 scannable facts). Both claim-grade: distilled copy is still factual assertion, so it goes researcher → verifier like everything else. UI falls back to the verified `summary` when `tldr` is absent; the verified `timeline`/`cost` claims auto-append to the Key facts grid (researchers must not duplicate them in `keyFacts`).
+3. **Gate** (`provenance.ts`): `collectClaims` now collects `tldr`, `keyFacts[]`, and `documents[].form` (tests added).
+4. **UI** (`CorridorApp.tsx`): document checklist in both the sidebar (compact, expandable per step, auto-expands the active step, "n/m" chip) and the detail panel (full: descriptions, "Get form from {issuer}" new-tab link with "link verified {date}" caption, per-document **Skip** for conditional items). Checked/skipped state persists in localStorage (`docState`) — deliberately NOT in share URLs (progress is personal; the F-08 fragment stays answers-only). **A step cannot be marked done while documents remain unhandled** (done or skipped); the button disables with an explanation. Detail panel order: tldr → Key facts grid → warning → "Read the details" `<details>` accordion (closed; holds the long summary + detail prose) → steps → document checklist → sources/disclaimers (unchanged).
+
+### Content rule (unchanged, restated)
+WHICH documents a step requires, per SEM / Canton de Vaud guidance, is factual content: drafted by content-researcher with official sources, independently verified, founder-approved. The machinery ships first; document lists and distilled tldr/keyFacts copy land as UNVERIFIED drafts and go through the standard pipeline before rendering.
+
+### Consequences
+- `documents` strings and structured entries coexist; the corridor page maps both shapes into the island and the indexable guide section.
+- Per-task doc progress is derived state (no schema for "checked" — it's user-local).
+- Renaming a document in content resets users' checkmarks for that item (key = task id + doc name) — acceptable; names are stable post-verification.
+- The all-done completion screen is now genuinely earned: every applicable task's documents were handled first.

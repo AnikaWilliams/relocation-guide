@@ -69,15 +69,57 @@ const StepSchema = z.object({
 });
 export type Step = z.infer<typeof StepSchema>;
 
+/**
+ * A document or official form needed to complete a task (a checkable substep,
+ * ADR-0012). `type: 'provide'` = the user supplies it (e.g. passport copy);
+ * `type: 'form'` = an official form to obtain and fill out.
+ *
+ * For forms, `form` is a full Claim: `sourceUrl` is the issuing authority's
+ * current link (we NEVER self-host official PDFs), `sourceName` is the issuer
+ * (e.g. "SEM", "Canton de Vaud — SPOP"), and the standard provenance fields
+ * apply — so form links go through fact-verifier, are enforced by the build
+ * gate, and are watched weekly by link-auditor like every other claim. When a
+ * deep PDF link can't be confirmed current, the claim links the authority's
+ * forms index page instead and says so in its text.
+ */
+export const TaskDocumentSchema = z
+  .object({
+    name: z.string().min(1),
+    type: z.enum(['provide', 'form']),
+    /** One sentence max: what it is / where it comes from. */
+    description: z.string().min(1),
+    form: ClaimSchema.optional(),
+  })
+  .refine((d) => d.type !== 'form' || d.form !== undefined, {
+    message: "documents of type 'form' must carry a `form` claim (officialUrl + issuer + provenance)",
+  });
+export type TaskDocument = z.infer<typeof TaskDocumentSchema>;
+
+/** A scannable key fact (label + claim), e.g. "Who applies" / "Processing time" (ADR-0012). */
+export const KeyFactSchema = ClaimSchema.extend({
+  label: z.string().min(1),
+});
+export type KeyFact = z.infer<typeof KeyFactSchema>;
+
 /** A corridor task — one step in the relocation journey. */
 export const TaskSchema = z.object({
   id: z.string().min(1),
   title: z.string().min(1),
   category: CategoryEnum,
   summary: ClaimSchema, // The task summary is itself a verifiable claim
+  /** 1–2 sentence distilled "what and why" shown at the top of the detail panel (ADR-0012). */
+  tldr: ClaimSchema.optional(),
+  /** 3–5 scannable facts (who applies, where, processing time, …) — each one a Claim (ADR-0012). */
+  keyFacts: z.array(KeyFactSchema).optional(),
   detail: z.string(),
   steps: z.array(StepSchema),
-  documents: z.array(z.string()),
+  /**
+   * Documents/forms needed for this task. Plain strings are the legacy shape
+   * (rendered as type 'provide' with no description); structured entries are
+   * the ADR-0012 substep model. The content pipeline migrates strings to
+   * structured entries corridor by corridor.
+   */
+  documents: z.array(z.union([z.string(), TaskDocumentSchema])),
   timeline: ClaimSchema.optional(),
   cost: ClaimSchema.optional(),
   warning: z.string().optional(),

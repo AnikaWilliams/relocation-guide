@@ -127,6 +127,31 @@ describe('collectClaims', () => {
     expect(claims.map((lc) => lc.location)).not.toContain('tasks[work-visa].timeline');
     expect(claims.map((lc) => lc.location)).not.toContain('tasks[work-visa].cost');
   });
+
+  it('collects ADR-0012 claims: tldr, keyFacts, and form-document links', () => {
+    const c = corridor();
+    c.tasks[0].tldr = verifiedClaim({ text: 'tldr claim' });
+    c.tasks[0].keyFacts = [{ ...verifiedClaim({ text: 'who applies' }), label: 'Who applies' }];
+    c.tasks[0].documents = [
+      'Passport', // legacy string — carries no claim
+      { name: 'Visa form', type: 'form', description: 'Official form.', form: verifiedClaim({ text: 'form link' }) },
+      { name: 'CV', type: 'provide', description: 'Your CV.' }, // provide — no claim
+    ];
+    const locations = collectClaims(c).map((lc) => lc.location);
+    expect(locations).toContain('tasks[work-visa].tldr');
+    expect(locations).toContain('tasks[work-visa].keyFacts[0] (Who applies)');
+    expect(locations).toContain('tasks[work-visa].documents[1] (Visa form)');
+    // 4 original + tldr + keyFact + form = 7
+    expect(locations).toHaveLength(7);
+  });
+
+  it('build gate fails on an UNVERIFIED form-document link', () => {
+    const c = corridor();
+    c.tasks[0].documents = [
+      { name: 'Visa form', type: 'form', description: 'Official form.', form: { ...verifiedClaim(), status: 'UNVERIFIED' } },
+    ];
+    expect(() => assertCorridorPublishable(c, NOW)).toThrow(/documents\[0\] \(Visa form\)/);
+  });
 });
 
 describe('assertCorridorPublishable (build gate)', () => {

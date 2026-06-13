@@ -41,6 +41,7 @@ interface ClaimData {
   text: string;
   sourceUrl: string;
   sourceName: string;
+  lastVerified?: string;
 }
 
 interface StepData {
@@ -49,20 +50,47 @@ interface StepData {
   links?: ClaimData[];
 }
 
+/** Structured document substep (ADR-0012). Plain strings are the legacy shape. */
+export interface TaskDocumentData {
+  name: string;
+  type: 'provide' | 'form';
+  description: string;
+  /** For type 'form': sourceUrl = official link, sourceName = issuer. */
+  form?: ClaimData;
+}
+
 export interface TaskData {
   id: string;
   title: string;
   category: string;
   summary: ClaimData;
+  /** 1–2 sentence distilled summary; falls back to summary.text when absent. */
+  tldr?: ClaimData;
+  keyFacts?: (ClaimData & { label: string })[];
   detail: string;
   steps: StepData[];
-  documents: string[];
+  documents: (string | TaskDocumentData)[];
   timeline?: ClaimData;
   cost?: ClaimData;
   warning?: string;
   dependsOn: string[];
   appliesIf?: string;
 }
+
+/** Legacy string documents render as 'provide' items with no description. */
+function normalizeDocs(documents: (string | TaskDocumentData)[]): TaskDocumentData[] {
+  return documents.map((d) =>
+    typeof d === 'string' ? { name: d, type: 'provide' as const, description: '' } : d,
+  );
+}
+
+/** Stable key for a document's checked/skipped state. */
+function docKey(taskId: string, docName: string): string {
+  return `${taskId}::${docName}`;
+}
+
+type DocMark = 'done' | 'skipped';
+type DocState = Record<string, DocMark>;
 
 export interface CorridorPair {
   origin: string;
@@ -540,8 +568,107 @@ function CopyLinkButton() {
   );
 }
 
+/** Per-task document completion: skipped counts as handled (conditional docs). */
+function docProgress(task: TaskData, docState: DocState): { completed: number; total: number } {
+  const docs = normalizeDocs(task.documents);
+  return {
+    completed: docs.filter((d) => docState[docKey(task.id, d.name)]).length,
+    total: docs.length,
+  };
+}
+
+/**
+ * Checkable document list for a task (ADR-0012). `compact` renders the
+ * sidebar variant (checkbox + name only); the full variant adds descriptions,
+ * the "Get form from …" link (official URL, new tab — we never self-host
+ * official PDFs), and the per-document Skip affordance for conditional items.
+ */
+function DocChecklist({
+  task, docState, onToggle, compact = false,
+}: {
+  task: TaskData;
+  docState: DocState;
+  onToggle: (taskId: string, docName: string, mark: DocMark) => void;
+  compact?: boolean;
+}) {
+  const docs = normalizeDocs(task.documents);
+  if (docs.length === 0) return null;
+  return (
+    <ul className={compact ? 'space-y-1' : 'space-y-2'}>
+      {docs.map((doc) => {
+        const mark = docState[docKey(task.id, doc.name)];
+        const done = mark === 'done';
+        const skipped = mark === 'skipped';
+        return (
+          <li key={doc.name} className={compact ? '' : 'rounded-lg border border-slate-100 bg-white px-3 py-2'}>
+            <div className="flex items-start gap-2">
+              <button
+                type="button"
+                role="checkbox"
+                aria-checked={done}
+                aria-label={`${doc.name}${doc.type === 'form' ? ' (official form)' : ''}${skipped ? ' — skipped' : ''}`}
+                onClick={() => onToggle(task.id, doc.name, 'done')}
+                className={`shrink-0 mt-0.5 w-4 h-4 rounded border flex items-center justify-center text-[10px] leading-none transition-colors ${
+                  done
+                    ? 'bg-emerald-500 border-emerald-500 text-white'
+                    : skipped
+                    ? 'bg-slate-100 border-slate-200 text-slate-400'
+                    : 'border-slate-300 text-transparent hover:border-emerald-400'
+                }`}
+              >
+                {skipped ? '–' : '✓'}
+              </button>
+              <div className="min-w-0 flex-1">
+                <span
+                  className={`block leading-snug ${compact ? 'text-xs' : 'text-sm'} ${
+                    skipped ? 'text-slate-400 line-through' : done ? 'text-slate-500' : 'text-slate-700'
+                  }`}
+                >
+                  {doc.name}
+                  {doc.type === 'form' && (
+                    <span className="ml-1.5 inline-block align-middle rounded bg-blue-50 px-1 text-[10px] font-semibold uppercase tracking-wide text-blue-600">
+                      form
+                    </span>
+                  )}
+                </span>
+                {!compact && doc.description && (
+                  <span className="mt-0.5 block text-xs text-slate-500">{doc.description}</span>
+                )}
+                {!compact && doc.type === 'form' && doc.form && (
+                  <span className="mt-1.5 block">
+                    <a
+                      href={doc.form.sourceUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 rounded-md border border-blue-200 bg-blue-50 px-2 py-1 text-xs font-medium text-blue-700 hover:bg-blue-100"
+                    >
+                      Get form from {doc.form.sourceName} ↗
+                    </a>
+                    {doc.form.lastVerified && (
+                      <span className="ml-2 text-[11px] text-slate-400">link verified {doc.form.lastVerified}</span>
+                    )}
+                  </span>
+                )}
+              </div>
+              {!compact && (
+                <button
+                  type="button"
+                  onClick={() => onToggle(task.id, doc.name, 'skipped')}
+                  className="shrink-0 text-[11px] text-slate-400 underline hover:text-slate-600"
+                >
+                  {skipped ? 'Undo skip' : 'Skip'}
+                </button>
+              )}
+            </div>
+          </li>
+        );
+      })}
+    </ul>
+  );
+}
+
 function Sidebar({
-  orderedTasks, statusFor, activeId, onSelect, recap, onEdit, doneCount, total,
+  orderedTasks, statusFor, activeId, onSelect, recap, onEdit, doneCount, total, docState, onToggleDoc,
 }: {
   orderedTasks: TaskData[];
   statusFor: (id: string) => TaskStatus;
@@ -551,7 +678,12 @@ function Sidebar({
   onEdit: (stepId: string) => void;
   doneCount: number;
   total: number;
+  docState: DocState;
+  onToggleDoc: (taskId: string, docName: string, mark: DocMark) => void;
 }) {
+  // Substeps: the active step auto-expands; any unlocked step can be toggled.
+  const [expandedId, setExpandedId] = useState<string | null>(null);
+  const shownExpandedId = expandedId ?? activeId;
   const pct = total > 0 ? Math.round((doneCount / total) * 100) : 0;
   return (
     <div className="flex flex-col gap-5">
@@ -592,26 +724,49 @@ function Sidebar({
             const status = statusFor(t.id);
             const isActive = activeId === t.id;
             const locked = status === 'locked';
+            const { completed, total: docTotal } = docProgress(t, docState);
+            const isExpanded = !locked && docTotal > 0 && shownExpandedId === t.id;
             return (
-              <button
-                key={t.id}
-                type="button"
-                disabled={locked}
-                aria-current={isActive ? 'step' : undefined}
-                onClick={() => onSelect(t.id)}
-                className={`flex items-center gap-2.5 rounded-lg px-2 py-2 text-left transition-colors ${
-                  isActive ? 'bg-blue-50' : locked ? 'cursor-not-allowed' : 'hover:bg-slate-50'
-                }`}
-              >
-                <StatusDot status={status} />
-                <span className={`text-sm leading-snug ${
-                  isActive ? 'font-medium text-blue-700' : locked ? 'text-slate-400' : status === 'done' ? 'text-slate-500' : 'text-slate-700'
+              <div key={t.id} className={`rounded-lg ${isActive ? 'bg-blue-50' : ''}`}>
+                <div className={`flex items-center gap-2.5 rounded-lg px-2 py-2 ${
+                  isActive ? '' : locked ? '' : 'hover:bg-slate-50'
                 }`}>
-                  {status === 'done' && <span className="sr-only">Done: </span>}
-                  {locked && <span className="sr-only">Locked (finish earlier steps first): </span>}
-                  {t.title}
-                </span>
-              </button>
+                  <button
+                    type="button"
+                    disabled={locked}
+                    aria-current={isActive ? 'step' : undefined}
+                    onClick={() => onSelect(t.id)}
+                    className={`flex flex-1 items-center gap-2.5 text-left min-w-0 ${locked ? 'cursor-not-allowed' : ''}`}
+                  >
+                    <StatusDot status={status} />
+                    <span className={`text-sm leading-snug min-w-0 ${
+                      isActive ? 'font-medium text-blue-700' : locked ? 'text-slate-400' : status === 'done' ? 'text-slate-500' : 'text-slate-700'
+                    }`}>
+                      {status === 'done' && <span className="sr-only">Done: </span>}
+                      {locked && <span className="sr-only">Locked (finish earlier steps first): </span>}
+                      {t.title}
+                    </span>
+                  </button>
+                  {!locked && docTotal > 0 && (
+                    <button
+                      type="button"
+                      aria-expanded={isExpanded}
+                      aria-label={`Documents for "${t.title}" (${completed} of ${docTotal} handled)`}
+                      onClick={() => setExpandedId(isExpanded ? 'NONE' : t.id)}
+                      className="shrink-0 flex items-center gap-1 rounded px-1 py-0.5 text-[11px] text-slate-400 hover:text-slate-600"
+                    >
+                      {completed}/{docTotal}
+                      <span aria-hidden="true">{isExpanded ? '▾' : '▸'}</span>
+                    </button>
+                  )}
+                </div>
+                {isExpanded && (
+                  <div className="ml-9 mr-2 pb-2">
+                    <p className="mb-1 text-[11px] text-slate-400">{completed}/{docTotal} documents</p>
+                    <DocChecklist task={t} docState={docState} onToggle={onToggleDoc} compact />
+                  </div>
+                )}
+              </div>
             );
           })}
         </div>
@@ -623,7 +778,7 @@ function Sidebar({
 // ── Task card (one task at a time) ───────────────────────────────────────────
 
 function TaskCard({
-  task, status, hasPrev, onBack, onMarkDone, onNext, headingRef,
+  task, status, hasPrev, onBack, onMarkDone, onNext, headingRef, docState, onToggleDoc,
 }: {
   task: TaskData;
   status: TaskStatus;
@@ -632,8 +787,12 @@ function TaskCard({
   onMarkDone: () => void;
   onNext: () => void;
   headingRef?: React.Ref<HTMLHeadingElement>;
+  docState: DocState;
+  onToggleDoc: (taskId: string, docName: string, mark: DocMark) => void;
 }) {
   const done = status === 'done';
+  const { completed: docsHandled, total: docsTotal } = docProgress(task, docState);
+  const docsRemaining = docsTotal - docsHandled;
   return (
     <div className="flex flex-col h-full">
       <div className="flex-1 overflow-y-auto px-6 sm:px-8 py-6 space-y-5">
@@ -643,38 +802,74 @@ function TaskCard({
               keyboard/screen-reader users hear the new task and never lose
               focus to <body> (e.g. when the Back button unmounts). */}
           <h2 ref={headingRef} tabIndex={-1} className="text-2xl font-bold text-slate-900 leading-snug focus:outline-none">{task.title}</h2>
-          <span className={`inline-flex items-center gap-1.5 text-sm font-medium ${
-            done ? 'text-green-600' : 'text-blue-600'
-          }`}>
-            <span className={`w-1.5 h-1.5 rounded-full ${done ? 'bg-green-500' : 'bg-blue-500'}`} />
-            {done ? 'Completed' : 'Ready to start'}
+          <span className="flex flex-wrap items-center gap-3">
+            <span className={`inline-flex items-center gap-1.5 text-sm font-medium ${
+              done ? 'text-green-600' : 'text-blue-600'
+            }`}>
+              <span className={`w-1.5 h-1.5 rounded-full ${done ? 'bg-green-500' : 'bg-blue-500'}`} />
+              {done ? 'Completed' : 'Ready to start'}
+            </span>
+            {docsTotal > 0 && (
+              <span className="inline-flex items-center rounded-full bg-slate-100 px-2 py-0.5 text-xs font-medium text-slate-600">
+                {docsHandled}/{docsTotal} documents
+              </span>
+            )}
           </span>
         </div>
 
-        <p className="text-slate-700 leading-relaxed">{task.summary.text}</p>
-        {task.detail && <p className="text-sm text-slate-600 leading-relaxed">{task.detail}</p>}
+        {/* 1–2 sentence "what and why" (ADR-0012). Falls back to the verified
+            summary claim until the distilled tldr passes the content pipeline. */}
+        <p className="text-slate-700 leading-relaxed">{(task.tldr ?? task.summary).text}</p>
 
-        {(task.timeline || task.cost) && (
-          <dl className="grid gap-3 sm:grid-cols-2">
-            {task.timeline && (
-              <div className="rounded-lg bg-slate-50 border border-slate-200 px-4 py-3">
-                <dt className="text-xs font-semibold uppercase tracking-wide text-slate-500 mb-1">Timeline</dt>
-                <dd className="text-sm text-slate-800">{task.timeline.text}</dd>
-              </div>
-            )}
-            {task.cost && (
-              <div className="rounded-lg bg-slate-50 border border-slate-200 px-4 py-3">
-                <dt className="text-xs font-semibold uppercase tracking-wide text-slate-500 mb-1">Cost</dt>
-                <dd className="text-sm text-slate-800">{task.cost.text}</dd>
-              </div>
-            )}
-          </dl>
+        {/* Key facts: scannable grid. keyFacts come from the content pipeline;
+            the verified timeline/cost claims are appended automatically (the
+            researcher does not duplicate them in keyFacts). */}
+        {(task.keyFacts?.length || task.timeline || task.cost) && (
+          <div>
+            <h3 className="font-semibold text-slate-900 mb-2">Key facts</h3>
+            <dl className="grid gap-2 sm:grid-cols-2">
+              {task.keyFacts?.map((fact) => (
+                <div key={fact.label} className="rounded-lg bg-slate-50 border border-slate-200 px-4 py-2.5">
+                  <dt className="text-xs font-semibold uppercase tracking-wide text-slate-500 mb-0.5">{fact.label}</dt>
+                  <dd className="text-sm text-slate-800">{fact.text}</dd>
+                </div>
+              ))}
+              {task.timeline && (
+                <div className="rounded-lg bg-slate-50 border border-slate-200 px-4 py-2.5">
+                  <dt className="text-xs font-semibold uppercase tracking-wide text-slate-500 mb-0.5">Processing time</dt>
+                  <dd className="text-sm text-slate-800">{task.timeline.text}</dd>
+                </div>
+              )}
+              {task.cost && (
+                <div className="rounded-lg bg-slate-50 border border-slate-200 px-4 py-2.5">
+                  <dt className="text-xs font-semibold uppercase tracking-wide text-slate-500 mb-0.5">Cost</dt>
+                  <dd className="text-sm text-slate-800">{task.cost.text}</dd>
+                </div>
+              )}
+            </dl>
+          </div>
         )}
 
         {task.warning && (
           <div className="rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-800">
             <span className="font-semibold">Note: </span>{task.warning}
           </div>
+        )}
+
+        {/* Full prose, collapsed by default (ADR-0012). When a distilled tldr
+            exists, the verified long summary moves in here with the detail. */}
+        {(task.detail || task.tldr) && (
+          <details className="group rounded-lg border border-slate-200">
+            <summary className="cursor-pointer select-none px-4 py-3 text-sm font-medium text-slate-700 hover:bg-slate-50 rounded-lg group-open:rounded-b-none group-open:border-b group-open:border-slate-100">
+              Read the details
+              <span className="float-right text-slate-400 group-open:hidden" aria-hidden="true">▸</span>
+              <span className="float-right text-slate-400 hidden group-open:inline" aria-hidden="true">▾</span>
+            </summary>
+            <div className="px-4 py-3 space-y-3">
+              {task.tldr && <p className="text-sm text-slate-700 leading-relaxed">{task.summary.text}</p>}
+              {task.detail && <p className="text-sm text-slate-600 leading-relaxed">{task.detail}</p>}
+            </div>
+          </details>
         )}
 
         {task.steps.length > 0 && (
@@ -705,17 +900,14 @@ function TaskCard({
 
         {task.documents.length > 0 && (
           <div>
-            <h3 className="font-semibold text-slate-900 mb-2">Documents needed</h3>
-            <ul className="space-y-1">
-              {task.documents.map((doc, i) => (
-                <li key={i} className="flex items-start gap-2 text-sm text-slate-700">
-                  <svg className="shrink-0 mt-0.5 w-4 h-4 text-blue-500" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                  </svg>
-                  {doc}
-                </li>
-              ))}
-            </ul>
+            <div className="flex items-baseline justify-between mb-2">
+              <h3 className="font-semibold text-slate-900">Documents needed</h3>
+              <span role="status" className="text-xs text-slate-500">{docsHandled}/{docsTotal} handled</span>
+            </div>
+            <DocChecklist task={task} docState={docState} onToggle={onToggleDoc} />
+            <p className="mt-2 text-xs text-slate-400">
+              Check off each document as you gather it — or skip ones that don't apply to your case.
+            </p>
           </div>
         )}
 
@@ -734,15 +926,29 @@ function TaskCard({
         </div>
       </div>
 
-      <div className="shrink-0 px-6 sm:px-8 py-4 border-t border-slate-200 flex gap-3 bg-white">
+      <div className="shrink-0 px-6 sm:px-8 py-4 border-t border-slate-200 bg-white">
+        {!done && docsRemaining > 0 && (
+          <p className="mb-2 text-xs text-slate-500 text-center">
+            {docsRemaining} document{docsRemaining === 1 ? '' : 's'} left to check off (or skip) before this step can be marked done.
+          </p>
+        )}
+        <div className="flex gap-3">
         {hasPrev && (
           <button type="button" onClick={onBack} className="rounded-xl px-4 py-3 text-sm font-medium text-slate-600 hover:bg-slate-100">← Back</button>
         )}
         {done ? (
           <button type="button" onClick={onNext} className="flex-1 rounded-xl py-3 font-medium text-white bg-blue-500 hover:bg-blue-600 transition-colors">Next →</button>
         ) : (
-          <button type="button" onClick={onMarkDone} className="flex-1 rounded-xl py-3 font-medium text-white bg-emerald-500 hover:bg-emerald-600 transition-colors">Mark done &amp; continue</button>
+          <button
+            type="button"
+            onClick={onMarkDone}
+            disabled={docsRemaining > 0}
+            className={`flex-1 rounded-xl py-3 font-medium text-white transition-colors ${
+              docsRemaining > 0 ? 'bg-emerald-300 cursor-not-allowed' : 'bg-emerald-500 hover:bg-emerald-600'
+            }`}
+          >Mark done &amp; continue</button>
         )}
+        </div>
       </div>
     </div>
   );
@@ -758,6 +964,7 @@ export default function CorridorApp({ tasks, corridorTitle, originIso2, destinat
   const [stepId, setStepId] = useState<string>(STEPS[0].id);
   const [answers, setAnswers] = useState<Intake>(() => defaultIntake(originIso2, destinationIso2));
   const [doneIds, setDoneIds] = useState<Set<string>>(() => new Set());
+  const [docState, setDocState] = useState<DocState>({});
   const [activeTaskId, setActiveTaskId] = useState<string | null>(null);
   const [mobilePanelOpen, setMobilePanelOpen] = useState(false);
   const [hydrated, setHydrated] = useState(false);
@@ -808,6 +1015,7 @@ export default function CorridorApp({ tasks, corridorTitle, originIso2, destinat
       stepId?: string;
       answers?: Partial<Intake>;
       doneIds?: unknown;
+      docState?: unknown;
       activeTaskId?: string;
     } | null = null;
     try {
@@ -836,6 +1044,13 @@ export default function CorridorApp({ tasks, corridorTitle, originIso2, destinat
     else if (saved?.phase) setPhase(saved.phase);
     if (saved?.stepId) setStepId(saved.stepId);
     if (Array.isArray(saved?.doneIds)) setDoneIds(new Set(saved.doneIds));
+    if (saved?.docState && typeof saved.docState === 'object' && !Array.isArray(saved.docState)) {
+      const clean: DocState = {};
+      for (const [k, v] of Object.entries(saved.docState as Record<string, unknown>)) {
+        if (v === 'done' || v === 'skipped') clean[k] = v;
+      }
+      setDocState(clean);
+    }
     if (saved?.activeTaskId) setActiveTaskId(saved.activeTaskId);
     setHydrated(true);
   }, []);
@@ -846,12 +1061,12 @@ export default function CorridorApp({ tasks, corridorTitle, originIso2, destinat
     if (!hydrated) return;
     try {
       localStorage.setItem(STORAGE_KEY, JSON.stringify({
-        phase, stepId, answers, doneIds: [...doneIds], activeTaskId,
+        phase, stepId, answers, doneIds: [...doneIds], docState, activeTaskId,
       }));
     } catch {
       // storage unavailable — silent
     }
-  }, [hydrated, phase, stepId, answers, doneIds, activeTaskId]);
+  }, [hydrated, phase, stepId, answers, doneIds, docState, activeTaskId]);
 
   // F-08: mirror the intake into the URL fragment while the plan is showing,
   // so the URL is shareable/bookmarkable; strip it in the wizard so a
@@ -929,17 +1144,16 @@ export default function CorridorApp({ tasks, corridorTitle, originIso2, destinat
     hasChildren: answers.hasChildren,
   }), [answers]);
 
-  const { applicableTasks, excludedTasks } = useMemo(() => {
+  const applicableTasks = useMemo(() => {
     const applicable: TaskData[] = [];
-    const excluded: TaskData[] = [];
     for (const t of tasks) {
       const r = evaluateAppliesIf(t.appliesIf, appliesCtx);
       if (r.error) {
         console.warn(`appliesIf on task "${t.id}" is invalid (${r.error}); showing the task (fail-open).`);
       }
-      (r.applies ? applicable : excluded).push(t);
+      if (r.applies) applicable.push(t);
     }
-    return { applicableTasks: applicable, excludedTasks: excluded };
+    return applicable;
   }, [tasks, appliesCtx]);
 
   // The ordered journey + status helpers (over the applicable tasks only).
@@ -1019,6 +1233,17 @@ export default function CorridorApp({ tasks, corridorTitle, originIso2, destinat
     setActiveTaskId(next ?? id);
   }
 
+  /** Toggle a document between unchecked and `mark` ('done' or 'skipped'). */
+  function handleToggleDoc(taskId: string, docName: string, mark: DocMark) {
+    setDocState((s) => {
+      const key = docKey(taskId, docName);
+      const next = { ...s };
+      if (next[key] === mark) delete next[key];
+      else next[key] = mark;
+      return next;
+    });
+  }
+
   function gotoAdjacentTask(dir: -1 | 1) {
     if (!activeTaskId) return;
     const idx = orderedTasks.findIndex((t) => t.id === activeTaskId);
@@ -1037,6 +1262,7 @@ export default function CorridorApp({ tasks, corridorTitle, originIso2, destinat
     setStepId(STEPS[0].id);
     setAnswers(defaultIntake(originIso2, destinationIso2));
     setDoneIds(new Set());
+    setDocState({});
     setActiveTaskId(null);
     setMobilePanelOpen(false);
     try { localStorage.removeItem(STORAGE_KEY); } catch { /* ignore */ }
@@ -1217,6 +1443,8 @@ export default function CorridorApp({ tasks, corridorTitle, originIso2, destinat
       onEdit={handleEditAnswer}
       doneCount={doneCount}
       total={applicableTasks.length}
+      docState={docState}
+      onToggleDoc={handleToggleDoc}
     />
   );
 
@@ -1241,6 +1469,8 @@ export default function CorridorApp({ tasks, corridorTitle, originIso2, destinat
       onBack={() => gotoAdjacentTask(-1)}
       onMarkDone={() => handleMarkDone(activeTask.id)}
       onNext={() => gotoAdjacentTask(1)}
+      docState={docState}
+      onToggleDoc={handleToggleDoc}
     />
   ) : (
     <div className="flex-1 flex items-center justify-center text-slate-500 p-8">Select a step from your journey to begin.</div>
@@ -1282,15 +1512,6 @@ export default function CorridorApp({ tasks, corridorTitle, originIso2, destinat
             the {coveredLabel} route and may not apply to your situation — treat them as background
             reading, not a plan you can rely on. For your route, go directly to the official
             authority or a licensed immigration adviser.
-          </p>
-        </div>
-      )}
-
-      {routeCovered && excludedTasks.length > 0 && (
-        <div className="shrink-0 bg-blue-50 border-b border-blue-100 px-4 py-2">
-          <p role="status" className="text-xs text-blue-800">
-            <strong>Personalised for you:</strong> {applicableTasks.length} of {tasks.length} steps apply to
-            your situation. Skipped: {excludedTasks.map((t) => t.title).join(' · ')}.
           </p>
         </div>
       )}
