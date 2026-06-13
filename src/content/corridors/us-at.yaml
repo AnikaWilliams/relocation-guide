@@ -1,0 +1,1136 @@
+originIso2: us
+destinationIso2: at
+title: "Moving from the USA to Austria"
+description: "How US citizens (non-EU/EEA third-country nationals) relocate to Austria for work, study, or family: the points-based Red-White-Red Card (skilled workers, very highly qualified workers, other key workers), the EU Blue Card, the entry (type D) visa, registering your residence (Meldezettel), compulsory health insurance, housing, banking, and Austrian income-tax residency."
+lastReviewed: "2026-06-13"
+reviewedBy: "research-2"
+# RESEARCH DRAFT (ADR-0016 research run). Every claim is status: UNVERIFIED with
+# a primary official sourceUrl (migration.gv.at / oesterreich.gv.at / bmf.gv.at),
+# captured via scripts/snapshot-source.mjs into sources/us-at/. published:false
+# until the SEPARATE fact-verifier team run re-derives each claim from its live
+# source and flips it VERIFIED (two-agent rule). Nothing here is verified.
+# Covered routes drafted: work (Red-White-Red Card variants + EU Blue Card),
+# study, family reunification. Retirement/non-gainful settlement is NOT covered:
+# Austria's "settlement permit excepting gainful employment" is quota-limited and
+# was not researched here — left out of coversMotivations honestly.
+published: false
+coversMotivations: [work, study, family]
+tasks:
+  # ===========================================================================
+  - id: rwr-card-other-key-workers
+    title: "Apply for the Red-White-Red Card as an Other Key Worker (job offer in hand)"
+    category: visa-permit
+    summary:
+      text: "If you already have a job offer in Austria, the most common route for a US citizen is the Red-White-Red Card as an «Other Key Worker». You qualify if your employer pays at least the statutory minimum (€3,465 gross per month in 2026), the labour-market test (Arbeitsmarktprüfung) shows no equally qualified jobseeker registered with the Public Employment Service (AMS) can be placed, and you reach at least 55 of 90 points for qualification, work experience, language skills and age. The card is valid for 24 months and ties you to the employer named in the application."
+      sourceUrl: "https://www.migration.gv.at/en/types-of-immigration/permanent-immigration/other-key-workers/"
+      sourceName: "Austria Migration — Other Key Workers (Red-White-Red Card)"
+      status: UNVERIFIED
+      lastVerified: "2026-06-13"
+      verifiedBy: ""
+      # 30-day window: contains the €3,465 minimum-salary figure and points threshold.
+      reviewBy: "2026-07-13"
+    tldr:
+      text: "With a job offer, US citizens usually apply for the Red-White-Red Card as an «Other Key Worker». You need an employer paying at least €3,465 gross a month (2026), a passed labour-market test (no equally qualified AMS jobseeker available), and at least 55 of 90 points across qualification, experience, language and age. The card lasts 24 months and is tied to that employer."
+      sourceUrl: "https://www.migration.gv.at/en/types-of-immigration/permanent-immigration/other-key-workers/"
+      sourceName: "Austria Migration — Other Key Workers (Red-White-Red Card)"
+      status: UNVERIFIED
+      lastVerified: "2026-06-13"
+      verifiedBy: ""
+      reviewBy: "2026-07-13"
+    keyFacts:
+      - label: "Minimum salary"
+        text: "Your employer must pay at least the statutory minimum of €3,465 gross per month (2026)."
+        sourceUrl: "https://www.migration.gv.at/en/types-of-immigration/permanent-immigration/other-key-workers/"
+        sourceName: "Austria Migration — Other Key Workers (Red-White-Red Card)"
+        status: UNVERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: ""
+        # 30-day window: salary figure.
+        reviewBy: "2026-07-13"
+      - label: "Points"
+        text: "You must reach at least 55 of a possible 90 points across qualification (max 30), work experience (max 20), language skills (max 25) and age (max 15); English as the company's predominant language adds 5 points."
+        sourceUrl: "https://www.migration.gv.at/en/types-of-immigration/permanent-immigration/other-key-workers/"
+        sourceName: "Austria Migration — Other Key Workers (Red-White-Red Card)"
+        status: UNVERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: ""
+        reviewBy: "2026-09-11"
+      - label: "Labour-market test"
+        text: "The AMS checks that no equally qualified person registered as a jobseeker can be placed (labour-market test / Arbeitsmarktprüfung)."
+        sourceUrl: "https://www.migration.gv.at/en/types-of-immigration/permanent-immigration/other-key-workers/"
+        sourceName: "Austria Migration — Other Key Workers (Red-White-Red Card)"
+        status: UNVERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: ""
+        reviewBy: "2026-09-11"
+      - label: "Who files"
+        text: "You can file at the Austrian embassy or consulate of your country of residence, or your employer can file with the competent residence authority in Austria; the AMS then assesses the points, salary and labour-market test."
+        sourceUrl: "https://www.migration.gv.at/en/types-of-immigration/permanent-immigration/other-key-workers/"
+        sourceName: "Austria Migration — Other Key Workers (Red-White-Red Card)"
+        status: UNVERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: ""
+        reviewBy: "2026-09-11"
+      - label: "Validity"
+        text: "The Red-White-Red Card is generally issued for 24 months and entitles you to fixed-term settlement and employment by the employer specified in the application."
+        sourceUrl: "https://www.migration.gv.at/en/types-of-immigration/permanent-immigration/other-key-workers/"
+        sourceName: "Austria Migration — Other Key Workers (Red-White-Red Card)"
+        status: UNVERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: ""
+        reviewBy: "2026-09-11"
+    detail: >
+      Austria's flexible immigration model, the Red-White-Red Card, gives qualified third-country
+      workers a single permit for working and settling. The «Other Key Worker» category is the
+      catch-all for people with a concrete job offer who do not fall under the highly-specific
+      categories (very highly qualified, shortage occupation, graduate, start-up). You must meet
+      a minimum salary (€3,465 gross/month in 2026), pass the AMS labour-market test, and score at
+      least 55 points. Either you apply at the Austrian representation in the USA or your employer
+      applies at the residence authority in Austria; the AMS assesses the criteria and, if met and
+      the general settlement requirements (notably health insurance) are satisfied, the residence
+      authority issues the card. If you are subject to visa requirements you then collect the card
+      after entering Austria on a category D visa. After 21 of the preceding 24 months in eligible
+      employment you can move to the Red-White-Red Card plus (free labour-market access). Use the
+      official Points Calculator to self-check before applying.
+    steps:
+      - text: "Check you meet the salary, labour-market and points criteria — use the official Points Calculator on migration.gv.at."
+        links:
+          - text: "Austria Migration — Other Key Workers: criteria and points"
+            sourceUrl: "https://www.migration.gv.at/en/types-of-immigration/permanent-immigration/other-key-workers/"
+            sourceName: "Austria Migration — Other Key Workers (Red-White-Red Card)"
+            status: UNVERIFIED
+            lastVerified: "2026-06-13"
+            verifiedBy: ""
+            reviewBy: "2026-07-13"
+      - text: "File the application — either personally at the Austrian embassy/consulate in the USA, or have your employer file with the competent residence authority in Austria."
+        tip: "ABA WORK in AUSTRIA (the federal counselling centre) can support companies and workers through the procedure, though it has no party status."
+        links:
+          - text: "Austria Migration — Other Key Workers: where to file"
+            sourceUrl: "https://www.migration.gv.at/en/types-of-immigration/permanent-immigration/other-key-workers/"
+            sourceName: "Austria Migration — Other Key Workers (Red-White-Red Card)"
+            status: UNVERIFIED
+            lastVerified: "2026-06-13"
+            verifiedBy: ""
+            reviewBy: "2026-09-11"
+      - text: "After the AMS confirms the criteria and the card is approved, apply for a category D visa to enter Austria and collect your residence title (see the entry-visa task)."
+        links:
+          - text: "Austria Migration — issuance of the card and collection via a category D visa"
+            sourceUrl: "https://www.migration.gv.at/en/types-of-immigration/permanent-immigration/other-key-workers/"
+            sourceName: "Austria Migration — Other Key Workers (Red-White-Red Card)"
+            status: UNVERIFIED
+            lastVerified: "2026-06-13"
+            verifiedBy: ""
+            reviewBy: "2026-09-11"
+    documents:
+      - name: "Red-White-Red Card application"
+        type: form
+        description: "The Red-White-Red Card application, filed at the Austrian representation abroad or by the employer at the residence authority; obtain the current forms from the official migration portal."
+        form:
+          text: "Apply for the Red-White-Red Card. The official migration portal hosts the procedure and links the current application forms; we link the authority page rather than a deep PDF so it stays current."
+          sourceUrl: "https://www.migration.gv.at/en/types-of-immigration/permanent-immigration/other-key-workers/"
+          sourceName: "Austria Migration — Other Key Workers (Red-White-Red Card)"
+          status: UNVERIFIED
+          lastVerified: "2026-06-13"
+          verifiedBy: ""
+          reviewBy: "2026-09-11"
+      - name: "Valid US passport"
+        type: provide
+        description: "Your valid US passport, your travel and identity document throughout the procedure."
+      - name: "Evidence for the points criteria (qualifications, experience, language)"
+        type: provide
+        description: "Diplomas/qualification certificates, work-experience evidence, and German (or English) language certificates assessed under the points system."
+      - name: "Employment contract / employer declaration"
+        type: provide
+        description: "Your employment contract or the employer's declaration showing the role and the salary meeting the statutory minimum."
+      - name: "Criminal record extract"
+        type: provide
+        description: "A recent criminal record extract from your country of origin/residence (many authorities require it to be no more than three months old)."
+      - name: "Evidence of health insurance"
+        type: provide
+        description: "Evidence of health insurance coverage, a general settlement requirement for the card."
+    warning: >
+      The minimum salary (€3,465 gross/month) is the 2026 figure and is revised annually, and the
+      labour-market test and points are mandatory — there is no automatic entitlement. Confirm the
+      current salary and shortage lists on migration.gv.at before relying on them.
+    dependsOn: []
+    appliesIf: "motivation == 'work'"
+
+  # ===========================================================================
+  - id: rwr-card-very-highly-qualified
+    title: "Use the Job-Seeker Visa / RWR Card if you are a Very Highly Qualified Worker"
+    category: visa-permit
+    summary:
+      text: "If you are very highly qualified but do not yet have a job offer, you can come to Austria for six months on a Job-Seeker Visa to look for work, then apply for a Red-White-Red Card. Both require reaching at least 70 of 100 points for special qualifications and skills, work experience, language skills, age, and studies in Austria. The Job-Seeker Visa is a category D visa applied for at the Austrian representation in your home or residence country, and the AMS confirms your points."
+      sourceUrl: "https://www.migration.gv.at/en/types-of-immigration/permanent-immigration/very-highly-qualified-workers/"
+      sourceName: "Austria Migration — Very Highly Qualified Workers (Red-White-Red Card)"
+      status: UNVERIFIED
+      lastVerified: "2026-06-13"
+      verifiedBy: ""
+      reviewBy: "2026-09-11"
+    tldr:
+      text: "Very highly qualified people without a job offer can enter Austria on a six-month Job-Seeker Visa, then apply for a Red-White-Red Card once hired. Both need at least 70 of 100 points (qualifications/skills, experience, language, age, study in Austria). The Job-Seeker Visa is a category D visa from the Austrian embassy/consulate; the AMS confirms your points."
+      sourceUrl: "https://www.migration.gv.at/en/types-of-immigration/permanent-immigration/very-highly-qualified-workers/"
+      sourceName: "Austria Migration — Very Highly Qualified Workers (Red-White-Red Card)"
+      status: UNVERIFIED
+      lastVerified: "2026-06-13"
+      verifiedBy: ""
+      reviewBy: "2026-09-11"
+    keyFacts:
+      - label: "Points threshold"
+        text: "You must reach at least 70 of a possible 100 points across special qualifications/skills (max 40), work experience (max 20), language skills (max 10), age (max 20) and studies in Austria (max 10)."
+        sourceUrl: "https://www.migration.gv.at/en/types-of-immigration/permanent-immigration/very-highly-qualified-workers/"
+        sourceName: "Austria Migration — Very Highly Qualified Workers (Red-White-Red Card)"
+        status: UNVERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: ""
+        reviewBy: "2026-09-11"
+      - label: "Job-Seeker Visa"
+        text: "Without a job offer you can come to Austria to look for work for six months on a Job-Seeker Visa (a category D visa) applied for personally at the Austrian embassy/consulate; if you entered visa-free you do not need it."
+        sourceUrl: "https://www.migration.gv.at/en/types-of-immigration/permanent-immigration/very-highly-qualified-workers/"
+        sourceName: "Austria Migration — Very Highly Qualified Workers (Red-White-Red Card)"
+        status: UNVERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: ""
+        reviewBy: "2026-09-11"
+      - label: "Salary points"
+        text: "Points are awarded for a high gross annual salary earned the previous year in a senior management position (e.g. 20 points for €50,000–60,000, 25 for €60,000–70,000, 30 for more than €70,000)."
+        sourceUrl: "https://www.migration.gv.at/en/types-of-immigration/permanent-immigration/very-highly-qualified-workers/"
+        sourceName: "Austria Migration — Very Highly Qualified Workers (Red-White-Red Card)"
+        status: UNVERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: ""
+        # 30-day window: salary point bands.
+        reviewBy: "2026-07-13"
+    detail: >
+      The «Very Highly Qualified Worker» route is designed for top talent and is the only
+      Red-White-Red Card category that lets you enter Austria to search for work before you have a
+      job. You must reach 70 points; points come from graduation from higher education, a high
+      prior salary in senior management, research/innovation, awards, work experience, language,
+      youth, and prior study in Austria. With 70 points you can obtain a six-month Job-Seeker Visa
+      (a category D visa) at the Austrian representation; the AMS confirms your points to that
+      authority. Once you find a job that matches your qualifications you (or your employer) apply
+      for the Red-White-Red Card for Very Highly Qualified Workers. If you entered Austria under a
+      visa-free regime you do not need the Job-Seeker Visa to search.
+    steps:
+      - text: "Self-assess your points (aim for 70+) using the official Points Calculator."
+        links:
+          - text: "Austria Migration — Very Highly Qualified Workers: points criteria"
+            sourceUrl: "https://www.migration.gv.at/en/types-of-immigration/permanent-immigration/very-highly-qualified-workers/"
+            sourceName: "Austria Migration — Very Highly Qualified Workers (Red-White-Red Card)"
+            status: UNVERIFIED
+            lastVerified: "2026-06-13"
+            verifiedBy: ""
+            reviewBy: "2026-09-11"
+      - text: "If you have no job offer, apply for the six-month Job-Seeker Visa at the Austrian embassy/consulate; once hired, apply for the Red-White-Red Card."
+        links:
+          - text: "Austria Migration — where to file the Job-Seeker Visa"
+            sourceUrl: "https://www.migration.gv.at/en/types-of-immigration/permanent-immigration/very-highly-qualified-workers/"
+            sourceName: "Austria Migration — Very Highly Qualified Workers (Red-White-Red Card)"
+            status: UNVERIFIED
+            lastVerified: "2026-06-13"
+            verifiedBy: ""
+            reviewBy: "2026-09-11"
+    documents:
+      - name: "Job-Seeker Visa (category D) application"
+        type: form
+        description: "The Job-Seeker Visa application (a category D visa), filed personally at the Austrian representation; forms are available at the representation."
+        form:
+          text: "Apply for the Job-Seeker Visa (category D) at the competent Austrian embassy/consulate; application forms are available at the representation. The migration portal describes the procedure and points."
+          sourceUrl: "https://www.migration.gv.at/en/types-of-immigration/permanent-immigration/very-highly-qualified-workers/"
+          sourceName: "Austria Migration — Very Highly Qualified Workers (Red-White-Red Card)"
+          status: UNVERIFIED
+          lastVerified: "2026-06-13"
+          verifiedBy: ""
+          reviewBy: "2026-09-11"
+      - name: "Valid US passport"
+        type: provide
+        description: "Your valid US passport for the visa and card application."
+      - name: "Evidence for the points (degree, prior salary, experience, etc.)"
+        type: provide
+        description: "Higher-education diploma, evidence of prior senior-management salary, research/awards, work experience and language certificates as relevant to your points."
+    dependsOn: []
+    appliesIf: "motivation == 'work'"
+
+  # ===========================================================================
+  - id: eu-blue-card
+    title: "Consider the EU Blue Card for a higher-paid graduate role"
+    category: visa-permit
+    summary:
+      text: "If you hold a university degree (minimum three years) — or, for ICT professionals, at least three years of relevant experience — and have a binding job offer of at least six months matching your education, you can apply for the EU Blue Card. You must earn at least the average gross annual income of full-time employees (in 2026: at least €55,678, annual salary plus special payments) and pass the AMS labour-market test. The Blue Card is issued for 24 months; the application fee is €218."
+      sourceUrl: "https://www.migration.gv.at/en/types-of-immigration/permanent-immigration-red-white-red-card/eu-blue-card.html"
+      sourceName: "Austria Migration — EU Blue Card"
+      status: UNVERIFIED
+      lastVerified: "2026-06-13"
+      verifiedBy: ""
+      # 30-day window: contains salary threshold (€55,678) and fee (€218).
+      reviewBy: "2026-07-13"
+    tldr:
+      text: "The EU Blue Card suits degree-holders with a higher-paid Austrian job offer: a university degree (≥3 years, or 3 years' ICT experience), a binding offer ≥6 months matching your education, a gross annual salary of at least €55,678 (2026), and a passed labour-market test. It is valid 24 months; the application fee is €218."
+      sourceUrl: "https://www.migration.gv.at/en/types-of-immigration/permanent-immigration-red-white-red-card/eu-blue-card.html"
+      sourceName: "Austria Migration — EU Blue Card"
+      status: UNVERIFIED
+      lastVerified: "2026-06-13"
+      verifiedBy: ""
+      reviewBy: "2026-07-13"
+    keyFacts:
+      - label: "Qualification"
+        text: "A completed course of study at a university/tertiary institution of at least three years; for ICT professionals and service managers, at least three years of relevant experience comparable to such a degree, acquired in the last seven years, suffices."
+        sourceUrl: "https://www.migration.gv.at/en/types-of-immigration/permanent-immigration-red-white-red-card/eu-blue-card.html"
+        sourceName: "Austria Migration — EU Blue Card"
+        status: UNVERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: ""
+        reviewBy: "2026-09-11"
+      - label: "Salary threshold"
+        text: "You must earn at least the average gross annual income of full-time employees — in 2026, at least €55,678 (annual salary plus special payments)."
+        sourceUrl: "https://www.migration.gv.at/en/types-of-immigration/permanent-immigration-red-white-red-card/eu-blue-card.html"
+        sourceName: "Austria Migration — EU Blue Card"
+        status: UNVERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: ""
+        # 30-day window: salary threshold.
+        reviewBy: "2026-07-13"
+      - label: "Job offer & labour-market test"
+        text: "A binding job offer of at least six months matching your education, and a labour-market test (Arbeitsmarktprüfung) showing no equally qualified registered worker is available."
+        sourceUrl: "https://www.migration.gv.at/en/types-of-immigration/permanent-immigration-red-white-red-card/eu-blue-card.html"
+        sourceName: "Austria Migration — EU Blue Card"
+        status: UNVERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: ""
+        reviewBy: "2026-09-11"
+      - label: "Validity & fee"
+        text: "The EU Blue Card is issued for 24 months; the application fee is €218."
+        sourceUrl: "https://www.migration.gv.at/en/types-of-immigration/permanent-immigration-red-white-red-card/eu-blue-card.html"
+        sourceName: "Austria Migration — EU Blue Card"
+        status: UNVERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: ""
+        # 30-day window: fee.
+        reviewBy: "2026-07-13"
+    detail: >
+      The EU Blue Card is Austria's implementation of the EU-wide highly-skilled-worker permit and
+      can be a cleaner fit than the points-based Red-White-Red Card for degree-holders with a
+      well-paid offer. The core requirements are a recognised degree (or, for ICT roles, three
+      years of comparable experience), a binding job offer of at least six months that matches your
+      education, a salary at or above the statutory average (€55,678 in 2026), and a passed AMS
+      labour-market test. It is valid for 24 months and allows fixed-term settlement and employment
+      with the specific employer; you can also work self-employed if subsidiary to the main job.
+      After 21 of the preceding 24 months employed in line with the Blue Card rules you can apply
+      for the Red-White-Red Card plus. The application fee is €218.
+    steps:
+      - text: "Confirm your degree (or ICT experience), the matching job offer (≥6 months), and that the salary meets the statutory threshold (€55,678 in 2026)."
+        links:
+          - text: "Austria Migration — EU Blue Card: requirements"
+            sourceUrl: "https://www.migration.gv.at/en/types-of-immigration/permanent-immigration-red-white-red-card/eu-blue-card.html"
+            sourceName: "Austria Migration — EU Blue Card"
+            status: UNVERIFIED
+            lastVerified: "2026-06-13"
+            verifiedBy: ""
+            reviewBy: "2026-07-13"
+      - text: "File the EU Blue Card application (with the €218 fee); the AMS examines the degree, salary and labour-market test."
+        links:
+          - text: "Austria Migration — EU Blue Card: application fee and forms"
+            sourceUrl: "https://www.migration.gv.at/en/types-of-immigration/permanent-immigration-red-white-red-card/eu-blue-card.html"
+            sourceName: "Austria Migration — EU Blue Card"
+            status: UNVERIFIED
+            lastVerified: "2026-06-13"
+            verifiedBy: ""
+            reviewBy: "2026-07-13"
+    documents:
+      - name: "EU Blue Card application"
+        type: form
+        description: "The EU Blue Card application and the employer's declaration; obtain the current forms from the official migration portal."
+        form:
+          text: "Apply for the EU Blue Card. The official migration portal hosts the procedure, the application fee (€218) and links to the application forms and employer's declaration."
+          sourceUrl: "https://www.migration.gv.at/en/types-of-immigration/permanent-immigration-red-white-red-card/eu-blue-card.html"
+          sourceName: "Austria Migration — EU Blue Card"
+          status: UNVERIFIED
+          lastVerified: "2026-06-13"
+          verifiedBy: ""
+          reviewBy: "2026-07-13"
+      - name: "University degree certificate (or ICT experience evidence)"
+        type: provide
+        description: "Your graduation certificate from a tertiary programme of at least three years, or evidence of at least three years' comparable ICT experience."
+      - name: "Binding job offer / employment contract (≥6 months)"
+        type: provide
+        description: "A binding job offer or contract of at least six months that matches your education and meets the salary threshold."
+      - name: "Evidence of health insurance"
+        type: provide
+        description: "Evidence of health insurance providing benefits in Austria and covering all risks."
+      - name: "Valid US passport"
+        type: provide
+        description: "Your valid US passport for the application and entry."
+    cost:
+      text: "The EU Blue Card application fee is €218."
+      sourceUrl: "https://www.migration.gv.at/en/types-of-immigration/permanent-immigration-red-white-red-card/eu-blue-card.html"
+      sourceName: "Austria Migration — EU Blue Card"
+      status: UNVERIFIED
+      lastVerified: "2026-06-13"
+      verifiedBy: ""
+      # 30-day window: fee.
+      reviewBy: "2026-07-13"
+    warning: >
+      The salary threshold (€55,678 for 2026) is revised annually; confirm the current figure on
+      migration.gv.at before relying on it.
+    dependsOn: []
+    appliesIf: "motivation == 'work'"
+
+  # ===========================================================================
+  - id: entry-d-visa
+    title: "Apply for the entry (category D) visa to collect your residence title"
+    category: visa-permit
+    summary:
+      text: "Once your Red-White-Red Card or EU Blue Card application is approved, if you are subject to visa requirements you must apply for a category D visa to enter Austria and collect your residence title. The category D visa is applied for at the Austrian representation (embassy or consulate) responsible for your place of residence. (US citizens can enter the Schengen area visa-free for short stays, but a category D visa is required to take up residence to collect the card.)"
+      sourceUrl: "https://www.migration.gv.at/en/types-of-immigration/permanent-immigration/other-key-workers/"
+      sourceName: "Austria Migration — Other Key Workers (Red-White-Red Card)"
+      status: UNVERIFIED
+      lastVerified: "2026-06-13"
+      verifiedBy: ""
+      reviewBy: "2026-09-11"
+    tldr:
+      text: "After your Red-White-Red Card / EU Blue Card is approved, you (if visa-subject) apply for a category D visa at the Austrian embassy/consulate to enter Austria and collect the residence card. The Job-Seeker route uses the same category D visa to enter and look for work."
+      sourceUrl: "https://www.migration.gv.at/en/types-of-immigration/permanent-immigration/other-key-workers/"
+      sourceName: "Austria Migration — Other Key Workers (Red-White-Red Card)"
+      status: UNVERIFIED
+      lastVerified: "2026-06-13"
+      verifiedBy: ""
+      reviewBy: "2026-09-11"
+    keyFacts:
+      - label: "When"
+        text: "After your card application is approved and you are notified by the Austrian representative authority; if you are subject to visa requirements you then apply for the category D visa to enter and collect the title."
+        sourceUrl: "https://www.migration.gv.at/en/types-of-immigration/permanent-immigration/other-key-workers/"
+        sourceName: "Austria Migration — Other Key Workers (Red-White-Red Card)"
+        status: UNVERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: ""
+        reviewBy: "2026-09-11"
+      - label: "Where"
+        text: "Apply at the Austrian representation (embassy or consulate) responsible for your place of residence in the USA."
+        sourceUrl: "https://www.migration.gv.at/en/types-of-immigration/permanent-immigration/other-key-workers/"
+        sourceName: "Austria Migration — Other Key Workers (Red-White-Red Card)"
+        status: UNVERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: ""
+        reviewBy: "2026-09-11"
+    detail: >
+      The category D (national) visa is the entry document that lets you travel to Austria to take
+      up residence and collect your Red-White-Red Card or EU Blue Card after the underlying
+      application has been approved. It is applied for at the Austrian embassy or consulate
+      responsible for your US place of residence; the Very-Highly-Qualified Job-Seeker Visa is the
+      same category D visa used to enter and search for work. Confirm the competent Austrian
+      representation for your US state and its exact appointment and document requirements before
+      applying.
+    steps:
+      - text: "After approval, identify the competent Austrian embassy/consulate for your US state and apply for the category D visa."
+        links:
+          - text: "Austria Migration — collect the residence title via a category D visa"
+            sourceUrl: "https://www.migration.gv.at/en/types-of-immigration/permanent-immigration/other-key-workers/"
+            sourceName: "Austria Migration — Other Key Workers (Red-White-Red Card)"
+            status: UNVERIFIED
+            lastVerified: "2026-06-13"
+            verifiedBy: ""
+            reviewBy: "2026-09-11"
+      - text: "Travel to Austria on the visa, collect your residence card, and register your residence within three days (see the registration task)."
+        links:
+          - text: "oesterreich.gv.at — register your residence after arrival"
+            sourceUrl: "https://www.oesterreich.gv.at/en/themen/persoenliche_dokumente_und_bestaetigungen/an__abmeldung_des_wohnsitzes/Seite.1180200"
+            sourceName: "oesterreich.gv.at — Registration of a new main residence (Meldezettel)"
+            status: UNVERIFIED
+            lastVerified: "2026-06-13"
+            verifiedBy: ""
+            reviewBy: "2026-09-11"
+    documents:
+      - name: "Category D visa application (Austrian representation)"
+        type: form
+        description: "The category D (national) visa application at the Austrian embassy/consulate for your place of residence; forms are available at the representation."
+        form:
+          text: "Apply for the category D visa at the competent Austrian representation. The migration portal states the card is collected after entering on a category D visa; confirm the representation's forms and appointment process."
+          sourceUrl: "https://www.migration.gv.at/en/types-of-immigration/permanent-immigration/other-key-workers/"
+          sourceName: "Austria Migration — Other Key Workers (Red-White-Red Card)"
+          status: UNVERIFIED
+          lastVerified: "2026-06-13"
+          verifiedBy: ""
+          reviewBy: "2026-09-11"
+      - name: "Approval notification of your residence title"
+        type: provide
+        description: "The notification from the Austrian authority that your Red-White-Red Card / EU Blue Card application was approved."
+      - name: "Valid US passport"
+        type: provide
+        description: "Your valid US passport for the category D visa."
+    dependsOn: []
+    appliesIf: "motivation == 'work'"
+
+  # ===========================================================================
+  - id: study-residence-permit
+    title: "Apply for a student residence permit to study in Austria"
+    category: education
+    summary:
+      text: "Third-country nationals who are neither EEA citizens nor Swiss, and who do not already have a right of residence, need a residence permit to study at an Austrian university. You must be admitted to a degree programme (a place must be available; you must meet the general university entrance qualification or prove a completed three-year post-secondary study), have sufficient German knowledge (an exam may be required), and the matriculation deadline is 5 September (winter) or 5 February (summer). Third-country students who wish to work also need an employment permit (Beschäftigungsbewilligung)."
+      sourceUrl: "https://www.migration.gv.at/en/living-and-working-in-austria/study-in-austria/"
+      sourceName: "Austria Migration — Study in Austria"
+      status: UNVERIFIED
+      lastVerified: "2026-06-13"
+      verifiedBy: ""
+      reviewBy: "2026-09-11"
+    tldr:
+      text: "To study in Austria as a US citizen you need a student residence permit: admission to an Austrian university degree (with the entrance qualification or a completed 3-year post-secondary study), sufficient German, and to meet the matriculation deadline (5 September for winter, 5 February for summer). Working alongside study needs a separate employment permit."
+      sourceUrl: "https://www.migration.gv.at/en/living-and-working-in-austria/study-in-austria/"
+      sourceName: "Austria Migration — Study in Austria"
+      status: UNVERIFIED
+      lastVerified: "2026-06-13"
+      verifiedBy: ""
+      reviewBy: "2026-09-11"
+    keyFacts:
+      - label: "Who needs a permit"
+        text: "Persons who are neither EEA citizens nor Swiss and who do not already have a right of residence require a residence permit to study in Austria."
+        sourceUrl: "https://www.migration.gv.at/en/living-and-working-in-austria/study-in-austria/"
+        sourceName: "Austria Migration — Study in Austria"
+        status: UNVERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: ""
+        reviewBy: "2026-09-11"
+      - label: "Admission requirements"
+        text: "A study place must be available; you must hold the general university entrance qualification (or prove completion of at least a three-year post-secondary study sufficient for the chosen course) and have sufficient German knowledge."
+        sourceUrl: "https://www.migration.gv.at/en/living-and-working-in-austria/study-in-austria/"
+        sourceName: "Austria Migration — Study in Austria"
+        status: UNVERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: ""
+        reviewBy: "2026-09-11"
+      - label: "Matriculation deadline"
+        text: "Apply for matriculation by 5 September for the winter semester or 5 February for the summer semester."
+        sourceUrl: "https://www.migration.gv.at/en/living-and-working-in-austria/study-in-austria/"
+        sourceName: "Austria Migration — Study in Austria"
+        status: UNVERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: ""
+        reviewBy: "2026-09-11"
+      - label: "Working while studying"
+        text: "A third-country student who wants to work is subject to the Act Governing the Employment of Foreign Nationals and needs an employment permit (Beschäftigungsbewilligung)."
+        sourceUrl: "https://www.migration.gv.at/en/living-and-working-in-austria/study-in-austria/"
+        sourceName: "Austria Migration — Study in Austria"
+        status: UNVERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: ""
+        reviewBy: "2026-09-11"
+    detail: >
+      Studying in Austria as a US citizen requires both academic admission and an immigration
+      residence permit. Academically, a study place must be available, you must hold the general
+      university entrance qualification (or prove a completed three-year post-secondary study that
+      qualifies you for the chosen course in the country where it was obtained), satisfy any
+      study-specific entrance requirements, and demonstrate sufficient German. The matriculation
+      deadlines are 5 September (winter semester) and 5 February (summer semester); the university
+      (the vice chancellor) decides admission. On the immigration side you apply for a student
+      residence permit; if you want to work alongside your studies you additionally need an
+      employment permit (Beschäftigungsbewilligung). Confirm the exact residence-permit document
+      list and any financial-means requirement with the competent authority.
+    steps:
+      - text: "Secure a study place and confirm you meet the university entrance and German-language requirements by the matriculation deadline (5 Sept / 5 Feb)."
+        links:
+          - text: "Austria Migration — Study in Austria: admission requirements and deadlines"
+            sourceUrl: "https://www.migration.gv.at/en/living-and-working-in-austria/study-in-austria/"
+            sourceName: "Austria Migration — Study in Austria"
+            status: UNVERIFIED
+            lastVerified: "2026-06-13"
+            verifiedBy: ""
+            reviewBy: "2026-09-11"
+      - text: "Apply for the student residence permit at the competent authority; add an employment permit if you intend to work."
+        links:
+          - text: "Austria Migration — Study in Austria: residence permit and employment permit"
+            sourceUrl: "https://www.migration.gv.at/en/living-and-working-in-austria/study-in-austria/"
+            sourceName: "Austria Migration — Study in Austria"
+            status: UNVERIFIED
+            lastVerified: "2026-06-13"
+            verifiedBy: ""
+            reviewBy: "2026-09-11"
+    documents:
+      - name: "Student residence permit application"
+        type: form
+        description: "The student residence-permit application at the competent residence authority; obtain the current procedure and forms from the official migration portal."
+        form:
+          text: "Apply for the student residence permit. The official migration portal describes who needs a permit and links the procedure; confirm the document list with the competent authority."
+          sourceUrl: "https://www.migration.gv.at/en/living-and-working-in-austria/study-in-austria/"
+          sourceName: "Austria Migration — Study in Austria"
+          status: UNVERIFIED
+          lastVerified: "2026-06-13"
+          verifiedBy: ""
+          reviewBy: "2026-09-11"
+      - name: "University admission documents"
+        type: provide
+        description: "The admission application form, registration form, and proof of your entrance qualification / prior study."
+      - name: "Proof of German knowledge"
+        type: provide
+        description: "Evidence of sufficient German language knowledge (an examination may be required)."
+      - name: "Valid US passport"
+        type: provide
+        description: "Your valid US passport for the residence-permit application."
+    dependsOn: []
+    appliesIf: "motivation == 'study'"
+
+  # ===========================================================================
+  - id: family-reunification
+    title: "Bring your spouse and children (Red-White-Red Card plus)"
+    category: family-dependents
+    summary:
+      text: "Family members of a Red-White-Red Card or EU Blue Card holder who will reside in Austria for more than six months can obtain the «Red-White-Red Card plus», which grants free access to the labour market. Family members are spouses or registered partners (who must be at least 21 when applying) and unmarried minor children (including adoptive and step-children). General requirements apply: adequate means of subsistence (the 2026 standard income rate is €1,308.39 for singles and €2,064.12 for married couples, plus €201.88 per child), health insurance, and adequate accommodation. Family members must also show German on A1 level («German prior to immigration»)."
+      sourceUrl: "https://www.migration.gv.at/en/types-of-immigration/permanent-immigration/family-reunification/"
+      sourceName: "Austria Migration — Family reunification"
+      status: UNVERIFIED
+      lastVerified: "2026-06-13"
+      verifiedBy: ""
+      # 30-day window: contains the standard income-rate figures.
+      reviewBy: "2026-07-13"
+    tldr:
+      text: "Family of Red-White-Red Card / EU Blue Card holders get the «Red-White-Red Card plus» (free labour-market access) for stays over six months. Spouses/registered partners must be 21+; minor children also qualify. You must show adequate income (2026: €1,308.39 single, €2,064.12 couple, +€201.88 per child), health insurance and suitable housing, and family members need German at A1 before immigrating. No quota applies to RWR/Blue Card family."
+      sourceUrl: "https://www.migration.gv.at/en/types-of-immigration/permanent-immigration/family-reunification/"
+      sourceName: "Austria Migration — Family reunification"
+      status: UNVERIFIED
+      lastVerified: "2026-06-13"
+      verifiedBy: ""
+      reviewBy: "2026-07-13"
+    keyFacts:
+      - label: "Who is a family member"
+        text: "Spouses and registered partners (at least 21 years old when applying) and unmarried minor children, including adoptive and step-children."
+        sourceUrl: "https://www.migration.gv.at/en/types-of-immigration/permanent-immigration/family-reunification/"
+        sourceName: "Austria Migration — Family reunification"
+        status: UNVERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: ""
+        reviewBy: "2026-09-11"
+      - label: "Residence title"
+        text: "Family members of Red-White-Red Card or EU Blue Card holders obtain the «Red-White-Red Card plus», which grants free access to the labour market; no quota applies to them."
+        sourceUrl: "https://www.migration.gv.at/en/types-of-immigration/permanent-immigration/family-reunification/"
+        sourceName: "Austria Migration — Family reunification"
+        status: UNVERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: ""
+        reviewBy: "2026-09-11"
+      - label: "Income requirement"
+        text: "Adequate means of subsistence at or above the standard income rate — in 2026, €1,308.39 for singles, €2,064.12 for married couples, plus €201.88 for each child."
+        sourceUrl: "https://www.migration.gv.at/en/types-of-immigration/permanent-immigration/family-reunification/"
+        sourceName: "Austria Migration — Family reunification"
+        status: UNVERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: ""
+        # 30-day window: income-rate figures.
+        reviewBy: "2026-07-13"
+      - label: "Other requirements"
+        text: "Health insurance covering all risks in Austria, adequate accommodation for the family size by local standards, and proof of German at A1 level («German prior to immigration»)."
+        sourceUrl: "https://www.migration.gv.at/en/types-of-immigration/permanent-immigration/family-reunification/"
+        sourceName: "Austria Migration — Family reunification"
+        status: UNVERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: ""
+        reviewBy: "2026-09-11"
+    detail: >
+      Family reunification lets the spouse/registered partner and minor children of a third-country
+      resident move to Austria. For family of Red-White-Red Card and EU Blue Card holders the
+      residence title is the «Red-White-Red Card plus», which gives free labour-market access and
+      is not subject to quota — a significant advantage over other settlement categories where
+      quota space may be required. The spouse or registered partner must be at least 21 at
+      application. General granting requirements apply across the board: adequate, regular income
+      at or above the standard income rate (Ausgleichszulagenrichtsatz), health insurance covering
+      all risks in Austria (family of RWR/Blue Card holders are usually co-insured by the sponsor),
+      and adequate accommodation. Family members must additionally evidence German at A1 level
+      before immigrating. Confirm the current income figures, which are revised annually.
+    steps:
+      - text: "Confirm the family member qualifies (spouse/partner 21+, minor child) and that you meet the income, health-insurance, accommodation and A1-German requirements."
+        links:
+          - text: "Austria Migration — Family reunification: who qualifies and general requirements"
+            sourceUrl: "https://www.migration.gv.at/en/types-of-immigration/permanent-immigration/family-reunification/"
+            sourceName: "Austria Migration — Family reunification"
+            status: UNVERIFIED
+            lastVerified: "2026-06-13"
+            verifiedBy: ""
+            reviewBy: "2026-07-13"
+      - text: "File the family-reunification application for the «Red-White-Red Card plus» at the competent authority."
+        links:
+          - text: "Austria Migration — Family reunification: filing the application"
+            sourceUrl: "https://www.migration.gv.at/en/types-of-immigration/permanent-immigration/family-reunification/"
+            sourceName: "Austria Migration — Family reunification"
+            status: UNVERIFIED
+            lastVerified: "2026-06-13"
+            verifiedBy: ""
+            reviewBy: "2026-09-11"
+    documents:
+      - name: "Family-reunification application (Red-White-Red Card plus)"
+        type: form
+        description: "The «Red-White-Red Card plus» family-reunification application at the competent residence authority; obtain the current procedure and forms from the official migration portal."
+        form:
+          text: "Apply for the «Red-White-Red Card plus» for your family member. The official migration portal describes who qualifies, the general requirements and the procedure."
+          sourceUrl: "https://www.migration.gv.at/en/types-of-immigration/permanent-immigration/family-reunification/"
+          sourceName: "Austria Migration — Family reunification"
+          status: UNVERIFIED
+          lastVerified: "2026-06-13"
+          verifiedBy: ""
+          reviewBy: "2026-09-11"
+      - name: "Marriage / birth certificates"
+        type: provide
+        description: "Civil-status documents proving the family relationship (marriage or registered-partnership certificate; children's birth certificates)."
+      - name: "Proof of income"
+        type: provide
+        description: "Evidence of regular income at or above the standard income rate for your household size."
+      - name: "Evidence of A1 German"
+        type: provide
+        description: "Proof of German language skills at A1 level («German prior to immigration») for the family member."
+      - name: "Proof of accommodation and health insurance"
+        type: provide
+        description: "Evidence of adequate accommodation (e.g. a lease) and health insurance covering all risks in Austria."
+    warning: >
+      The standard income-rate figures (e.g. €1,308.39 single, 2026) are revised annually; confirm
+      the current rate on migration.gv.at. Quota space can be required for some family categories,
+      but NOT for family of Red-White-Red Card or EU Blue Card holders.
+    dependsOn: []
+    appliesIf: "motivation == 'family'"
+
+  # ===========================================================================
+  - id: register-residence
+    title: "Register your residence (Meldezettel) within three days"
+    category: registration-bureaucracy
+    summary:
+      text: "Anyone who takes up accommodation in Austria must register their residence (and any co-habiting minors) with the registration authority within three days of moving in. You complete a registration form (Meldezettel) that your accommodation provider (e.g. landlord) must sign, and you receive a written confirmation of registration. There are no fees. You can register in person, by post, or online with ID Austria."
+      sourceUrl: "https://www.oesterreich.gv.at/en/themen/persoenliche_dokumente_und_bestaetigungen/an__abmeldung_des_wohnsitzes/Seite.1180200"
+      sourceName: "oesterreich.gv.at — Registration of a new main residence (Meldezettel)"
+      status: UNVERIFIED
+      lastVerified: "2026-06-13"
+      verifiedBy: ""
+      reviewBy: "2026-09-11"
+    tldr:
+      text: "Within three days of moving into accommodation in Austria you must register (Meldezettel) with the registration authority. Your landlord/accommodation provider signs the form; you get a written confirmation of registration. It is free and can be done in person, by post, or online with ID Austria."
+      sourceUrl: "https://www.oesterreich.gv.at/en/themen/persoenliche_dokumente_und_bestaetigungen/an__abmeldung_des_wohnsitzes/Seite.1180200"
+      sourceName: "oesterreich.gv.at — Registration of a new main residence (Meldezettel)"
+      status: UNVERIFIED
+      lastVerified: "2026-06-13"
+      verifiedBy: ""
+      reviewBy: "2026-09-11"
+    keyFacts:
+      - label: "Deadline"
+        text: "You must register within three days of moving into the accommodation."
+        sourceUrl: "https://www.oesterreich.gv.at/en/themen/persoenliche_dokumente_und_bestaetigungen/an__abmeldung_des_wohnsitzes/Seite.1180200"
+        sourceName: "oesterreich.gv.at — Registration of a new main residence (Meldezettel)"
+        status: UNVERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: ""
+        reviewBy: "2026-09-11"
+      - label: "Accommodation provider signs"
+        text: "The accommodation provider (e.g. landlord) must sign the registration form, confirming you have actually taken up the accommodation; a sham registration is punishable by law."
+        sourceUrl: "https://www.oesterreich.gv.at/en/themen/persoenliche_dokumente_und_bestaetigungen/an__abmeldung_des_wohnsitzes/Seite.1180200"
+        sourceName: "oesterreich.gv.at — Registration of a new main residence (Meldezettel)"
+        status: UNVERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: ""
+        reviewBy: "2026-09-11"
+      - label: "Cost"
+        text: "There are no fees or charges payable for registering a residence."
+        sourceUrl: "https://www.oesterreich.gv.at/en/themen/persoenliche_dokumente_und_bestaetigungen/an__abmeldung_des_wohnsitzes/Seite.1180200"
+        sourceName: "oesterreich.gv.at — Registration of a new main residence (Meldezettel)"
+        status: UNVERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: ""
+        reviewBy: "2026-09-11"
+      - label: "Legal basis"
+        text: "The registration obligation is set out in the Registration Act (Meldegesetz, MeldeG)."
+        sourceUrl: "https://www.oesterreich.gv.at/en/themen/persoenliche_dokumente_und_bestaetigungen/an__abmeldung_des_wohnsitzes/Seite.1180200"
+        sourceName: "oesterreich.gv.at — Registration of a new main residence (Meldezettel)"
+        status: UNVERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: ""
+        reviewBy: "2026-09-11"
+    detail: >
+      Residence registration (Anmeldung / Meldezettel) is a core, fast-deadline administrative step
+      in Austria: anyone taking up accommodation must register within three days, including any
+      co-habiting minors. You fill in a registration form that the accommodation provider (the
+      person who actually provides the accommodation — usually the landlord) must sign; registering
+      a residence without actually living there (sham registration) is a punishable offence. You
+      receive a written confirmation of registration (the document formerly called the Meldezettel),
+      which you will need for many other steps (banking, contracts). Registration is free and can be
+      done in person, by post, or online via oesterreich.gv.at with ID Austria. The legal basis is
+      the Meldegesetz (MeldeG).
+    steps:
+      - text: "Within three days of moving in, complete the registration form and have your accommodation provider sign it."
+        links:
+          - text: "oesterreich.gv.at — registration form and the accommodation provider's signature"
+            sourceUrl: "https://www.oesterreich.gv.at/en/themen/persoenliche_dokumente_und_bestaetigungen/an__abmeldung_des_wohnsitzes/Seite.1180200"
+            sourceName: "oesterreich.gv.at — Registration of a new main residence (Meldezettel)"
+            status: UNVERIFIED
+            lastVerified: "2026-06-13"
+            verifiedBy: ""
+            reviewBy: "2026-09-11"
+      - text: "Submit the registration in person, by post, or online with ID Austria, and keep the written confirmation of registration."
+        links:
+          - text: "oesterreich.gv.at — submitting the registration (in person / post / online)"
+            sourceUrl: "https://www.oesterreich.gv.at/en/themen/persoenliche_dokumente_und_bestaetigungen/an__abmeldung_des_wohnsitzes/Seite.1180200"
+            sourceName: "oesterreich.gv.at — Registration of a new main residence (Meldezettel)"
+            status: UNVERIFIED
+            lastVerified: "2026-06-13"
+            verifiedBy: ""
+            reviewBy: "2026-09-11"
+    documents:
+      - name: "Residence registration form (Meldezettel)"
+        type: form
+        description: "The official residence-registration form, signed by you and your accommodation provider; available from oesterreich.gv.at (and as an online service with ID Austria)."
+        form:
+          text: "Complete the residence-registration form (Meldezettel). oesterreich.gv.at provides the form and an online registration service; the accommodation provider must sign it."
+          sourceUrl: "https://www.oesterreich.gv.at/en/themen/persoenliche_dokumente_und_bestaetigungen/an__abmeldung_des_wohnsitzes/Seite.1180200"
+          sourceName: "oesterreich.gv.at — Registration of a new main residence (Meldezettel)"
+          status: UNVERIFIED
+          lastVerified: "2026-06-13"
+          verifiedBy: ""
+          reviewBy: "2026-09-11"
+      - name: "Valid passport / identity document"
+        type: provide
+        description: "Your valid US passport (and documents for any co-habiting minors)."
+      - name: "Proof of the accommodation"
+        type: provide
+        description: "Details of the accommodation; the provider's signature on the form confirms you have taken it up."
+    warning: >
+      The three-day deadline is short — arrange registration as soon as you move in. Make sure your
+      landlord signs the form; you cannot register without the accommodation provider's signature.
+    dependsOn: [entry-d-visa]
+
+  # ===========================================================================
+  - id: health-insurance
+    title: "Get covered by Austrian health insurance"
+    category: healthcare-insurance
+    summary:
+      text: "Compulsory health insurance applies to almost everyone in paid employment in Austria; as an employee you are insured with the Austrian Health Insurance Fund (Österreichische Gesundheitskasse, ÖGK) and receive an e-card. The insured and their dependants are entitled to medical care from contracted doctors. You pay a prescription charge (€7.55 per item in 2026) and an annual e-card fee (€25.00 in 2026). Health insurance coverage is also a general requirement for the residence permit."
+      sourceUrl: "https://www.migration.gv.at/en/living-and-working-in-austria/health/health-insurance/"
+      sourceName: "Austria Migration — Health insurance"
+      status: UNVERIFIED
+      lastVerified: "2026-06-13"
+      verifiedBy: ""
+      # 30-day window: contains the €7.55 prescription and €25.00 e-card fees.
+      reviewBy: "2026-07-13"
+    tldr:
+      text: "Working in Austria means compulsory health insurance with the ÖGK and an e-card; you and your dependants get care from contracted doctors. Expect a €7.55 prescription charge per item and a €25.00 annual e-card fee (2026). Holding health insurance is also a condition of your residence permit."
+      sourceUrl: "https://www.migration.gv.at/en/living-and-working-in-austria/health/health-insurance/"
+      sourceName: "Austria Migration — Health insurance"
+      status: UNVERIFIED
+      lastVerified: "2026-06-13"
+      verifiedBy: ""
+      reviewBy: "2026-07-13"
+    keyFacts:
+      - label: "Compulsory for employees"
+        text: "Compulsory health insurance applies to almost all those in paid employment; employees are insured with the Austrian Health Insurance Fund (Österreichische Gesundheitskasse, ÖGK)."
+        sourceUrl: "https://www.migration.gv.at/en/living-and-working-in-austria/health/health-insurance/"
+        sourceName: "Austria Migration — Health insurance"
+        status: UNVERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: ""
+        reviewBy: "2026-09-11"
+      - label: "Coverage"
+        text: "The insured and their dependants are entitled to care from a GP, specialist or dentist contracted with the health insurance fund; medicines are dispensed at pharmacies."
+        sourceUrl: "https://www.migration.gv.at/en/living-and-working-in-austria/health/health-insurance/"
+        sourceName: "Austria Migration — Health insurance"
+        status: UNVERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: ""
+        reviewBy: "2026-09-11"
+      - label: "Charges"
+        text: "A prescription charge of €7.55 per item (2026) applies; the annual e-card (social insurance card) fee is €25.00 (2026). Exemptions apply for low income."
+        sourceUrl: "https://www.migration.gv.at/en/living-and-working-in-austria/health/health-insurance/"
+        sourceName: "Austria Migration — Health insurance"
+        status: UNVERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: ""
+        # 30-day window: fee figures.
+        reviewBy: "2026-07-13"
+    detail: >
+      Austria's statutory health insurance is compulsory for almost everyone in paid employment;
+      when you start a job your employer registers you and you are insured with the ÖGK, receiving
+      an e-card (the social insurance card). You and your dependants can then see doctors and
+      dentists contracted with the fund, and get medicines at pharmacies for a per-item
+      prescription charge (€7.55 in 2026). The e-card carries an annual fee (€25.00 in 2026), with
+      exemptions for low income. If you are unable to work through illness, the employer normally
+      continues pay for up to twelve weeks, after which the fund pays sickness benefit. Holding
+      health insurance covering all risks in Austria is also a general requirement for your
+      residence permit, so non-employees must arrange qualifying cover separately.
+    steps:
+      - text: "When you start employment, your employer registers you with the ÖGK; you then receive your e-card."
+        links:
+          - text: "Austria Migration — health insurance: compulsory for employees, e-card"
+            sourceUrl: "https://www.migration.gv.at/en/living-and-working-in-austria/health/health-insurance/"
+            sourceName: "Austria Migration — Health insurance"
+            status: UNVERIFIED
+            lastVerified: "2026-06-13"
+            verifiedBy: ""
+            reviewBy: "2026-09-11"
+      - text: "If you are not employed, arrange qualifying health insurance covering all risks in Austria (a residence-permit requirement)."
+        links:
+          - text: "Austria Migration — health insurance coverage as a residence requirement"
+            sourceUrl: "https://www.migration.gv.at/en/living-and-working-in-austria/health/health-insurance/"
+            sourceName: "Austria Migration — Health insurance"
+            status: UNVERIFIED
+            lastVerified: "2026-06-13"
+            verifiedBy: ""
+            reviewBy: "2026-09-11"
+    documents:
+      - name: "ÖGK registration (via your employer)"
+        type: form
+        description: "Registration with the Austrian Health Insurance Fund (ÖGK), normally arranged by your employer when you start work; the migration portal describes the system."
+        form:
+          text: "Employees are registered with the ÖGK by their employer on starting work. The migration portal is the authority describing compulsory insurance and the e-card; non-employees arrange qualifying cover."
+          sourceUrl: "https://www.migration.gv.at/en/living-and-working-in-austria/health/health-insurance/"
+          sourceName: "Austria Migration — Health insurance"
+          status: UNVERIFIED
+          lastVerified: "2026-06-13"
+          verifiedBy: ""
+          reviewBy: "2026-09-11"
+      - name: "Employment contract / proof of employment"
+        type: provide
+        description: "Your employment contract, which triggers compulsory ÖGK insurance via your employer."
+      - name: "Valid residence permit"
+        type: provide
+        description: "Your residence permit / registration, linking your insurance to your legal residence."
+    dependsOn: []
+
+  # ===========================================================================
+  - id: housing
+    title: "Find and rent housing in Austria"
+    category: housing
+    summary:
+      text: "Most newcomers rent. Austrian rental law distinguishes a primary leasehold (Hauptmiete) — a tenancy directly with the owner — from a sublet (Untermiete), with different rent levels and notice protection. Rents for many primary-leasehold and housing-association apartments are regulated by the Landlord and Tenant Act (Mietrechtsgesetz, MRG). Tenancy agreements may be limited or unlimited; a limited tenancy has a legal minimum term of three years. There are obligatory housing-related registrations to observe (notably the Meldezettel)."
+      sourceUrl: "https://www.migration.gv.at/en/living-and-working-in-austria/housing/housing.html"
+      sourceName: "Austria Migration — Housing"
+      status: UNVERIFIED
+      lastVerified: "2026-06-13"
+      verifiedBy: ""
+      reviewBy: "2026-09-11"
+    tldr:
+      text: "Renting in Austria: a Hauptmiete (primary lease, directly with the owner) gives more rent regulation and notice protection than an Untermiete (sublet). Many primary-lease and housing-association rents fall under the Landlord and Tenant Act (MRG). Limited tenancies have a three-year minimum term. Remember the obligatory residence registration (Meldezettel)."
+      sourceUrl: "https://www.migration.gv.at/en/living-and-working-in-austria/housing/housing.html"
+      sourceName: "Austria Migration — Housing"
+      status: UNVERIFIED
+      lastVerified: "2026-06-13"
+      verifiedBy: ""
+      reviewBy: "2026-09-11"
+    keyFacts:
+      - label: "Lease types"
+        text: "A primary leasehold (Hauptmiete) is a tenancy directly with the building/apartment owner; a sublet (Untermiete) is with a primary leaseholder — they differ in rent level and protection against notice to leave."
+        sourceUrl: "https://www.migration.gv.at/en/living-and-working-in-austria/housing/housing.html"
+        sourceName: "Austria Migration — Housing"
+        status: UNVERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: ""
+        reviewBy: "2026-09-11"
+      - label: "Rent regulation"
+        text: "Rents for the majority of primary-leasehold and housing-association apartments are regulated by the Landlord and Tenant Act (Mietrechtsgesetz, MRG)."
+        sourceUrl: "https://www.migration.gv.at/en/living-and-working-in-austria/housing/housing.html"
+        sourceName: "Austria Migration — Housing"
+        status: UNVERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: ""
+        reviewBy: "2026-09-11"
+      - label: "Tenancy term"
+        text: "Tenancy agreements may be limited or unlimited; a limited tenancy has a legal minimum term of three years (which also applies on extension)."
+        sourceUrl: "https://www.migration.gv.at/en/living-and-working-in-austria/housing/housing.html"
+        sourceName: "Austria Migration — Housing"
+        status: UNVERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: ""
+        reviewBy: "2026-09-11"
+    detail: >
+      Renting is the norm for newcomers, especially in cities. Austrian rental law distinguishes a
+      Hauptmiete (primary lease, contracted directly with the owner) from an Untermiete (sublet via
+      a primary leaseholder); the two differ in how rent is set and in the strength of protection
+      against termination. Many primary-lease and housing-association apartments fall under the
+      Mietrechtsgesetz (MRG), which categorises apartments and caps rents. Tenancy agreements can
+      be limited or unlimited — a limited agreement has a legal minimum term of three years, also
+      on extension, while the tenant is generally not bound for the whole term. Buying property
+      instead requires registration in the land register, for which a notary or lawyer is
+      recommended. Whatever you choose, complete the obligatory residence registration (Meldezettel)
+      within three days of moving in.
+    steps:
+      - text: "Decide between a primary lease (Hauptmiete) and a sublet (Untermiete), checking rent regulation (MRG) and the tenancy term."
+        links:
+          - text: "Austria Migration — Housing: Hauptmiete vs Untermiete and the MRG"
+            sourceUrl: "https://www.migration.gv.at/en/living-and-working-in-austria/housing/housing.html"
+            sourceName: "Austria Migration — Housing"
+            status: UNVERIFIED
+            lastVerified: "2026-06-13"
+            verifiedBy: ""
+            reviewBy: "2026-09-11"
+      - text: "After signing a lease and moving in, complete your residence registration (Meldezettel) within three days."
+        links:
+          - text: "oesterreich.gv.at — residence registration after moving in"
+            sourceUrl: "https://www.oesterreich.gv.at/en/themen/persoenliche_dokumente_und_bestaetigungen/an__abmeldung_des_wohnsitzes/Seite.1180200"
+            sourceName: "oesterreich.gv.at — Registration of a new main residence (Meldezettel)"
+            status: UNVERIFIED
+            lastVerified: "2026-06-13"
+            verifiedBy: ""
+            reviewBy: "2026-09-11"
+    documents:
+      - name: "Tenancy agreement (Mietvertrag)"
+        type: provide
+        description: "Your signed lease — a Hauptmiete (with the owner) or Untermiete (sublet); check the term and whether the MRG applies."
+      - name: "Proof of identity and residence status"
+        type: provide
+        description: "Your passport and residence documents, typically required by landlords/agents."
+    dependsOn: []
+
+  # ===========================================================================
+  - id: open-bank-account
+    title: "Open an Austrian bank account"
+    category: finance-banking
+    summary:
+      text: "You will generally need an Austrian bank account for salary, rent and bills. Banks set their own onboarding requirements, typically a valid passport, your residence registration (Meldezettel) and proof of residence status; as a US person, banks must apply FATCA reporting and some are more cautious about onboarding US citizens. The official migration portal's «Living and working in Austria» pages are the starting point for everyday-life topics. (Confirm a specific bank's requirements and US-person policy directly with the bank.)"
+      sourceUrl: "https://www.migration.gv.at/en/living-and-working-in-austria/"
+      sourceName: "Austria Migration — Living and working in Austria (overview)"
+      status: UNVERIFIED
+      lastVerified: "2026-06-13"
+      verifiedBy: ""
+      reviewBy: "2026-09-11"
+    tldr:
+      text: "An Austrian bank account is needed for salary, rent and bills. Expect to show your passport, your residence registration (Meldezettel) and residence status; as a US person, FATCA applies and some banks are cautious about onboarding US citizens, so check a bank's US-person policy first. Specific requirements vary by bank — confirm with the bank."
+      sourceUrl: "https://www.migration.gv.at/en/living-and-working-in-austria/"
+      sourceName: "Austria Migration — Living and working in Austria (overview)"
+      status: UNVERIFIED
+      lastVerified: "2026-06-13"
+      verifiedBy: ""
+      reviewBy: "2026-09-11"
+    keyFacts:
+      - label: "Typically needed"
+        text: "Banks generally ask for a valid passport, your residence registration (Meldezettel) and proof of your residence status; exact requirements vary by bank. (Confirm with the bank.)"
+        sourceUrl: "https://www.migration.gv.at/en/living-and-working-in-austria/"
+        sourceName: "Austria Migration — Living and working in Austria (overview)"
+        status: UNVERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: ""
+        reviewBy: "2026-09-11"
+      - label: "US-person note"
+        text: "As a US person, Austrian banks must apply FATCA reporting; some banks are more reluctant to onboard US citizens — confirm a bank's US-person policy before applying. (Confirm with the bank.)"
+        sourceUrl: "https://www.migration.gv.at/en/living-and-working-in-austria/"
+        sourceName: "Austria Migration — Living and working in Austria (overview)"
+        status: UNVERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: ""
+        reviewBy: "2026-09-11"
+    detail: >
+      A current account is needed in practice to receive salary and pay rent and bills in Austria.
+      Banks decide their own documentary requirements, but a passport, your residence registration
+      (Meldezettel) and proof of residence status are the usual core; bring your confirmation of
+      registration. US citizens should note that Austrian banks must report US-person accounts under
+      FATCA and that some banks are wary of onboarding US clients — ask about a bank's US-person
+      policy up front. The official «Living and working in Austria» pages are the government's entry
+      point for everyday-life topics; for the precise account-opening requirements, confirm directly
+      with the bank you choose.
+    steps:
+      - text: "Gather your passport, residence registration (Meldezettel) and residence documents, and ask a bank about its account-opening and US-person (FATCA) requirements."
+        links:
+          - text: "Austria Migration — Living and working in Austria (everyday-life overview)"
+            sourceUrl: "https://www.migration.gv.at/en/living-and-working-in-austria/"
+            sourceName: "Austria Migration — Living and working in Austria (overview)"
+            status: UNVERIFIED
+            lastVerified: "2026-06-13"
+            verifiedBy: ""
+            reviewBy: "2026-09-11"
+    documents:
+      - name: "Valid US passport"
+        type: provide
+        description: "Your valid US passport as your identity document."
+      - name: "Residence registration (Meldezettel) confirmation"
+        type: provide
+        description: "Your written confirmation of residence registration, commonly required to open an account."
+      - name: "Proof of residence status"
+        type: provide
+        description: "Your residence permit / registration; requirements vary by bank."
+    dependsOn: [register-residence]
+
+  # ===========================================================================
+  - id: income-tax
+    title: "Understand your Austrian income-tax residency"
+    category: taxes
+    summary:
+      text: "If you live in Austria you are likely subject to «unlimited» income-tax liability, meaning Austria taxes your worldwide income. A person who stays overnight in Austria during the working week and spends more than six months of the year in Austria is considered ordinarily resident and therefore subject to unlimited taxation. Where you remain liable to tax elsewhere too, double-tax conventions (DTCs) determine which country may tax which income and prevent double taxation."
+      sourceUrl: "https://www.oesterreich.gv.at/en/themen/arbeit_beruf_und_pension/arbeitnehmerveranlagung/einkommensteuerrechtliche-regelungen-fuer-grenzgaenger-nach-oesterreich"
+      sourceName: "oesterreich.gv.at — Tax rules / unlimited tax liability in Austria"
+      status: UNVERIFIED
+      lastVerified: "2026-06-13"
+      verifiedBy: ""
+      reviewBy: "2026-09-11"
+    tldr:
+      text: "Living in Austria usually means «unlimited» tax liability — Austria taxes your worldwide income. Spending more than six months a year in Austria (with overnight stays in the working week) makes you ordinarily resident and so subject to unlimited taxation. Double-tax conventions split taxing rights and avoid double taxation; as a US citizen, get cross-border advice because the US also taxes by citizenship."
+      sourceUrl: "https://www.oesterreich.gv.at/en/themen/arbeit_beruf_und_pension/arbeitnehmerveranlagung/einkommensteuerrechtliche-regelungen-fuer-grenzgaenger-nach-oesterreich"
+      sourceName: "oesterreich.gv.at — Tax rules / unlimited tax liability in Austria"
+      status: UNVERIFIED
+      lastVerified: "2026-06-13"
+      verifiedBy: ""
+      reviewBy: "2026-09-11"
+    keyFacts:
+      - label: "When you are taxed on worldwide income"
+        text: "If you stay overnight in Austria during the working week and spend more than six months of the year in Austria, you can be considered ordinarily resident and therefore subject to unlimited (worldwide-income) taxation in Austria."
+        sourceUrl: "https://www.oesterreich.gv.at/en/themen/arbeit_beruf_und_pension/arbeitnehmerveranlagung/einkommensteuerrechtliche-regelungen-fuer-grenzgaenger-nach-oesterreich"
+        sourceName: "oesterreich.gv.at — Tax rules / unlimited tax liability in Austria"
+        status: UNVERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: ""
+        reviewBy: "2026-09-11"
+      - label: "Double-tax conventions"
+        text: "Where double-tax conventions (DTCs) apply, they must be taken into account for income-tax purposes and they allocate taxing rights to prevent double taxation; provisions vary by individual DTC."
+        sourceUrl: "https://www.oesterreich.gv.at/en/themen/arbeit_beruf_und_pension/arbeitnehmerveranlagung/einkommensteuerrechtliche-regelungen-fuer-grenzgaenger-nach-oesterreich"
+        sourceName: "oesterreich.gv.at — Tax rules / unlimited tax liability in Austria"
+        status: UNVERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: ""
+        reviewBy: "2026-09-11"
+      - label: "Ministry of Finance"
+        text: "The Austrian Ministry of Finance (BMF) publishes guidance on paying taxes and double-taxation agreements for people entering and living in Austria."
+        sourceUrl: "https://www.bmf.gv.at/en/top-subjects/Entering-and-living-in-Austria-2/living-in-austria.html"
+        sourceName: "Austria — Ministry of Finance: Living in Austria (income tax)"
+        status: UNVERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: ""
+        reviewBy: "2026-09-11"
+    detail: >
+      Austria draws the key distinction between «unlimited» tax liability (taxed on worldwide
+      income, for those resident or ordinarily resident in Austria) and «limited» liability (taxed
+      only on Austrian-source income, for non-residents). Spending more than six months a year in
+      Austria, with overnight stays during the working week, makes you ordinarily resident and so
+      unlimitedly liable. Where you also have a tax nexus elsewhere, the applicable double-tax
+      convention decides which country may tax which income and provides relief from double taxation.
+      For US citizens this matters especially because the United States taxes its citizens on
+      worldwide income regardless of residence: the Austria–US treaty and foreign tax credits are
+      meant to prevent double taxation, but the interaction is complex. This is general information,
+      not tax advice — get specialist Austria–US cross-border tax advice (including on US reporting,
+      FBAR/FATCA) before your first return. The BMF is the authority for Austrian tax guidance.
+    steps:
+      - text: "Work out whether you are unlimitedly liable (ordinarily resident / more than six months in Austria) or only limitedly liable."
+        links:
+          - text: "oesterreich.gv.at — unlimited vs limited tax liability and the six-month test"
+            sourceUrl: "https://www.oesterreich.gv.at/en/themen/arbeit_beruf_und_pension/arbeitnehmerveranlagung/einkommensteuerrechtliche-regelungen-fuer-grenzgaenger-nach-oesterreich"
+            sourceName: "oesterreich.gv.at — Tax rules / unlimited tax liability in Austria"
+            status: UNVERIFIED
+            lastVerified: "2026-06-13"
+            verifiedBy: ""
+            reviewBy: "2026-09-11"
+      - text: "Apply the Austria–US double-tax convention and, as a US citizen, get cross-border advice on Austrian and US obligations before filing."
+        tip: "The US taxes citizens on worldwide income regardless of residence; foreign tax credits and the treaty exist to avoid double taxation but the interaction is complex."
+        links:
+          - text: "Austria — Ministry of Finance: double-taxation agreements and living in Austria"
+            sourceUrl: "https://www.bmf.gv.at/en/top-subjects/Entering-and-living-in-Austria-2/living-in-austria.html"
+            sourceName: "Austria — Ministry of Finance: Living in Austria (income tax)"
+            status: UNVERIFIED
+            lastVerified: "2026-06-13"
+            verifiedBy: ""
+            reviewBy: "2026-09-11"
+    documents:
+      - name: "Austrian income-tax assessment"
+        type: form
+        description: "Your Austrian income-tax assessment / return, filed with the Tax Authority Austria once liable; the BMF publishes the guidance and forms."
+        form:
+          text: "File your Austrian income-tax assessment with the Tax Authority Austria once you are liable. The BMF is the authority for tax guidance and double-taxation agreements; confirm the current forms and deadlines."
+          sourceUrl: "https://www.bmf.gv.at/en/top-subjects/Entering-and-living-in-Austria-2/living-in-austria.html"
+          sourceName: "Austria — Ministry of Finance: Living in Austria (income tax)"
+          status: UNVERIFIED
+          lastVerified: "2026-06-13"
+          verifiedBy: ""
+          reviewBy: "2026-09-11"
+      - name: "Income and foreign-income records"
+        type: provide
+        description: "Records of your Austrian and foreign income needed to determine liability and apply the double-tax convention."
+    warning: >
+      US citizens remain subject to US worldwide taxation by citizenship even while resident in
+      Austria. The Austria–US tax treaty and foreign tax credits exist to avoid double taxation but
+      the interaction is complex — this is general information, not tax advice. Confirm your position
+      and US obligations (FBAR/FATCA) with a qualified Austria–US cross-border adviser.
+    dependsOn: []

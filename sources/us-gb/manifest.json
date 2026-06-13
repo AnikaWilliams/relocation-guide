@@ -1,0 +1,184 @@
+[
+  {
+    "sourceUrl": "https://www.gov.uk/skilled-worker-visa",
+    "sourceName": "GOV.UK (UK Visas & Immigration) — Skilled Worker visa: Overview",
+    "claimIds": [
+      "probe"
+    ],
+    "fetchedAt": "2026-06-13",
+    "fetchMethod": "curl",
+    "sha256": "7f1e03639e350a4f751e4a552b9076d813e477dc98f3c29712415494ab2a0420",
+    "byteSize": 179166,
+    "contentType": "text/html; charset=utf-8",
+    "textPath": "sources/us-gb/7f1e0363.txt",
+    "capturedBy": "snapshot-source"
+  },
+  {
+    "sourceUrl": "https://www.gov.uk/skilled-worker-visa/your-job",
+    "sourceName": "GOV.UK — Skilled Worker visa: Your job (salary and eligibility)",
+    "claimIds": [
+      "gb-sw-job"
+    ],
+    "fetchedAt": "2026-06-13",
+    "fetchMethod": "curl",
+    "sha256": "50764181d7e67233d2e5a25a78eb42579220b0e634d37293161845f809543cea",
+    "byteSize": 89301,
+    "contentType": "text/html; charset=utf-8",
+    "textPath": "sources/us-gb/50764181.txt",
+    "capturedBy": "snapshot-source"
+  },
+  {
+    "sourceUrl": "https://www.gov.uk/skilled-worker-visa/how-much-it-costs",
+    "sourceName": "GOV.UK — Skilled Worker visa: How much it costs",
+    "claimIds": [
+      "gb-sw-cost"
+    ],
+    "fetchedAt": "2026-06-13",
+    "fetchMethod": "curl",
+    "sha256": "5ff69ae5009e40209534ba9341a731947c22aa83110d38c0e03d69ded0df6e0e",
+    "byteSize": 81153,
+    "contentType": "text/html; charset=utf-8",
+    "textPath": "sources/us-gb/5ff69ae5.txt",
+    "capturedBy": "snapshot-source"
+  },
+  {
+    "sourceUrl": "https://www.gov.uk/skilled-worker-visa/documents-you-must-provide",
+    "sourceName": "GOV.UK — Skilled Worker visa: Documents you must provide",
+    "claimIds": [
+      "gb-sw-docs"
+    ],
+    "fetchedAt": "2026-06-13",
+    "fetchMethod": "curl",
+    "sha256": "c3fdcc3e4169aa275687532647dd2447c0fd94cd93b0439aa6fd446947658cf6",
+    "byteSize": 81442,
+    "contentType": "text/html; charset=utf-8",
+    "textPath": "sources/us-gb/c3fdcc3e.txt",
+    "capturedBy": "snapshot-source"
+  },
+  {
+    "sourceUrl": "https://www.gov.uk/skilled-worker-visa/your-partner-and-children",
+    "sourceName": "GOV.UK — Skilled Worker visa: Your partner and children",
+    "claimIds": [
+      "gb-sw-family"
+    ],
+    "fetchedAt": "2026-06-13",
+    "fetchMethod": "curl",
+    "sha256": "9f697ef29fd102224c65443f3eb69f1180f631c88749e0d0160e694cf45ab8a7",
+    "byteSize": 104827,
+    "contentType": "text/html; charset=utf-8",
+    "textPath": "sources/us-gb/9f697ef2.txt",
+    "capturedBy": "snapshot-source"
+  },
+  {
+    "sourceUrl": "https://www.gov.uk/student-visa",
+    "sourceName": "GOV.UK — Student visa: Overview",
+    "claimIds": [
+      "gb-student"
+    ],
+    "fetchedAt": "2026-06-13",
+    "fetchMethod": "curl",
+    "sha256": "110eba201cdb8fb0c902407a0a4a72bbf2f0467143ef489d90270bd854579597",
+    "byteSize": 148386,
+    "contentType": "text/html; charset=utf-8",
+    "textPath": "sources/us-gb/110eba20.txt",
+    "capturedBy": "snapshot-source"
+  },
+  {
+    "sourceUrl": "https://www.gov.uk/student-visa/course",
+    "sourceName": "GOV.UK — Student visa: Course (eligibility, CAS)",
+    "claimIds": [
+      "gb-student-course"
+    ],
+    "fetchedAt": "2026-06-13",
+    "fetchMethod": "curl",
+    "sha256": "49f5001e4670c6866b917135ec0900313024c268e742765bc971f4f0f8ed3614",
+    "byteSize": 92273,
+    "contentType": "text/html; charset=utf-8",
+    "textPath": "sources/us-gb/49f5001e.txt",
+    "capturedBy": "snapshot-source"
+  },
+  {
+    "sourceUrl": "https://www.gov.uk/uk-family-visa",
+    "sourceName": "GOV.UK — UK family visa: Overview",
+    "claimIds": [
+      "gb-family"
+    ],
+    "fetchedAt": "2026-06-13",
+    "fetchMethod": "curl",
+    "sha256": "216d9e440114ca33b4de5c001fc1fe751672d0819d6882d4d2b3b638389fa8be",
+    "byteSize": 149195,
+    "contentType": "text/html; charset=utf-8",
+    "textPath": "sources/us-gb/216d9e44.txt",
+    "capturedBy": "snapshot-source"
+  },
+  {
+    "sourceUrl": "https://www.gov.uk/uk-family-visa/partner-spouse",
+    "sourceName": "GOV.UK — UK family visa: Partner or spouse",
+    "claimIds": [
+      "gb-family-partner"
+    ],
+    "fetchedAt": "2026-06-13",
+    "fetchMethod": "curl",
+    "sha256": "196822e2e422b704cfd3568a9e8fb04069f90bb5a64a394b0496fee4240d3c4b",
+    "byteSize": 90731,
+    "contentType": "text/html; charset=utf-8",
+    "textPath": "sources/us-gb/196822e2.txt",
+    "capturedBy": "snapshot-source"
+  },
+  {
+    "sourceUrl": "https://www.gov.uk/uk-family-visa/proof-income-partner",
+    "sourceName": "GOV.UK — UK family visa: Proof of income (partner)",
+    "claimIds": [
+      "gb-family-income"
+    ],
+    "fetchedAt": "2026-06-13",
+    "fetchMethod": "curl",
+    "sha256": "9803dfe877cf9fc30bb3d21f081702a92be5c2273bf569af0abf624bea3a8908",
+    "byteSize": 77225,
+    "contentType": "text/html; charset=utf-8",
+    "textPath": "sources/us-gb/9803dfe8.txt",
+    "capturedBy": "snapshot-source"
+  },
+  {
+    "sourceUrl": "https://www.gov.uk/graduate-visa",
+    "sourceName": "GOV.UK — Graduate visa",
+    "claimIds": [
+      "gb-graduate"
+    ],
+    "fetchedAt": "2026-06-13",
+    "fetchMethod": "curl",
+    "sha256": "d134b5cb7e440af44406ad65b9226832522b4ae5dd49cd960c197b4415d32ef8",
+    "byteSize": 106291,
+    "contentType": "text/html; charset=utf-8",
+    "textPath": "sources/us-gb/d134b5cb.txt",
+    "capturedBy": "snapshot-source"
+  },
+  {
+    "sourceUrl": "https://www.gov.uk/healthcare-immigration-application",
+    "sourceName": "GOV.UK — Pay for UK healthcare as part of your immigration application (Immigration Health Surcharge)",
+    "claimIds": [
+      "gb-ihs"
+    ],
+    "fetchedAt": "2026-06-13",
+    "fetchMethod": "curl",
+    "sha256": "a98043672be9bf30bff6125ef92b9bff024572c6f8c852c69485f627fd4abbbe",
+    "byteSize": 90075,
+    "contentType": "text/html; charset=utf-8",
+    "textPath": "sources/us-gb/a9804367.txt",
+    "capturedBy": "snapshot-source"
+  },
+  {
+    "sourceUrl": "https://www.gov.uk/get-access-evisa",
+    "sourceName": "GOV.UK — Get access to your eVisa",
+    "claimIds": [
+      "gb-evisa"
+    ],
+    "fetchedAt": "2026-06-13",
+    "fetchMethod": "curl",
+    "sha256": "a290ce29d8229fcadbd70c3e4eff4341252fb749e8b9a30a63869d059ed98a5b",
+    "byteSize": 83680,
+    "contentType": "text/html; charset=utf-8",
+    "textPath": "sources/us-gb/a290ce29.txt",
+    "capturedBy": "snapshot-source"
+  }
+]

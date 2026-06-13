@@ -1,0 +1,166 @@
+[
+  {
+    "sourceUrl": "https://guichet.public.lu/en/citoyens/immigration.html",
+    "sourceName": "guichet.lu — Immigration (overview)",
+    "claimIds": [],
+    "fetchedAt": "2026-06-13",
+    "fetchMethod": "curl",
+    "sha256": "70e71737f8952070d7b03d2f4970d9b304560295af7e33e6cb8348bba5ae513f",
+    "byteSize": 181162,
+    "contentType": "text/html; charset=utf-8",
+    "textPath": "sources/us-lu/70e71737.txt",
+    "capturedBy": "snapshot-source"
+  },
+  {
+    "sourceUrl": "https://guichet.public.lu/en/citoyens/immigration/plus-3-mois/ressortissant-tiers/salarie/salarie-pays-tiers.html",
+    "sourceName": "guichet.lu — Conditions of residence for third-country salaried workers",
+    "claimIds": [
+      "work-salaried-permit"
+    ],
+    "fetchedAt": "2026-06-13",
+    "fetchMethod": "curl",
+    "sha256": "e8d880612afdde51c6931b20fa53c4f1c6491918a8d843d89fd5e779404189e6",
+    "byteSize": 1006819,
+    "contentType": "text/html; charset=utf-8",
+    "textPath": "sources/us-lu/e8d88061.txt",
+    "capturedBy": "snapshot-source"
+  },
+  {
+    "sourceUrl": "https://guichet.public.lu/en/citoyens/immigration/plus-3-mois/ressortissant-tiers/hautement-qualifie/salarie-hautement-qualifie.html",
+    "sourceName": "guichet.lu — Salaried work for highly qualified workers (EU Blue Card)",
+    "claimIds": [
+      "work-blue-card"
+    ],
+    "fetchedAt": "2026-06-13",
+    "fetchMethod": "curl",
+    "sha256": "4eafb0e373a0c1ab0301f5f40c824129b188bc6ed5ed60c3405c067f56015a4a",
+    "byteSize": 1010775,
+    "contentType": "text/html; charset=utf-8",
+    "textPath": "sources/us-lu/4eafb0e3.txt",
+    "capturedBy": "snapshot-source"
+  },
+  {
+    "sourceUrl": "https://guichet.public.lu/en/citoyens/immigration/plus-3-mois/ressortissant-tiers/membre-famille/regroupement-familial.html",
+    "sourceName": "guichet.lu — Family reunification for third-country nationals",
+    "claimIds": [
+      "family-reunification"
+    ],
+    "fetchedAt": "2026-06-13",
+    "fetchMethod": "curl",
+    "sha256": "d444f57cbb5a61704e8391d12c6019aaec96702b3f0bec52743eefb6ea981867",
+    "byteSize": 1016553,
+    "contentType": "text/html; charset=utf-8",
+    "textPath": "sources/us-lu/d444f57c.txt",
+    "capturedBy": "snapshot-source"
+  },
+  {
+    "sourceUrl": "https://guichet.public.lu/en/citoyens/immigration/plus-3-mois/ressortissant-tiers/etudiant/etudiant-pays-tiers.html",
+    "sourceName": "Guichet.lu — Conditions for residence in Luxembourg for students from third countries",
+    "claimIds": [
+      "study-permit"
+    ],
+    "fetchedAt": "2026-06-13",
+    "fetchMethod": "curl",
+    "sha256": "1cc41f8b7b2892be70dd337155d0f85023b3550ec042c6eaaf70fe7e000dce62",
+    "byteSize": 1014179,
+    "contentType": "text/html; charset=utf-8",
+    "textPath": "sources/us-lu/1cc41f8b.txt",
+    "capturedBy": "snapshot-source"
+  },
+  {
+    "sourceUrl": "https://guichet.public.lu/en/citoyens/immigration/nouveau-resident-luxembourg/arrivee-luxembourg/depart-arrivee-commune.html",
+    "sourceName": "Guichet.lu — Declaring a move to a new commune of residence",
+    "claimIds": [
+      "declaration-arrival"
+    ],
+    "fetchedAt": "2026-06-13",
+    "fetchMethod": "curl",
+    "sha256": "ab2da09224926d3f88c4548830e93dca1c2a8746b85e580c0a5a9dbfff1bd6c5",
+    "byteSize": 981596,
+    "contentType": "text/html; charset=utf-8",
+    "textPath": "sources/us-lu/ab2da092.txt",
+    "capturedBy": "snapshot-source"
+  },
+  {
+    "sourceUrl": "https://guichet.public.lu/en/citoyens/immigration/plus-3-mois/ressortissant-tiers/demarches-communes/controle-medical.html",
+    "sourceName": "Guichet.lu — Medical check-up for third-country nationals",
+    "claimIds": [
+      "medical-check"
+    ],
+    "fetchedAt": "2026-06-13",
+    "fetchMethod": "curl",
+    "sha256": "c7ce164ffa161d34422399b2ef02404dabd81fa261038261e99e5b7b39fa8eab",
+    "byteSize": 249712,
+    "contentType": "text/html; charset=utf-8",
+    "textPath": "sources/us-lu/c7ce164f.txt",
+    "capturedBy": "snapshot-source"
+  },
+  {
+    "sourceUrl": "https://guichet.public.lu/en/citoyens/immigration/moins-3-mois/ressortissant-tiers/sejour.html",
+    "sourceName": "Guichet.lu — Staying in Luxembourg for less than 90 days as a third-country national",
+    "claimIds": [
+      "entry-authorisation"
+    ],
+    "fetchedAt": "2026-06-13",
+    "fetchMethod": "curl",
+    "sha256": "ecf408ba7455fc7aef11537b03b1a912c06309a96aea75624b2d05c62dc56896",
+    "byteSize": 247393,
+    "contentType": "text/html; charset=utf-8",
+    "textPath": "sources/us-lu/ecf408ba.txt",
+    "capturedBy": "snapshot-source"
+  },
+  {
+    "sourceUrl": "https://guichet.public.lu/en/citoyens/sante/affiliation-securite-sociale/salarie-independant-famille/affiliation-resident.html",
+    "sourceName": "guichet.lu — Registration with social security (CCSS / CNS)",
+    "claimIds": [
+      "social-security-affiliation"
+    ],
+    "fetchedAt": "2026-06-13",
+    "fetchMethod": "curl",
+    "sha256": "c23814d68b37efceab07d747622c1c78f3092ed84ecbef279faced7368ea5407",
+    "byteSize": 237265,
+    "contentType": "text/html; charset=utf-8",
+    "textPath": "sources/us-lu/c23814d6.txt",
+    "capturedBy": "snapshot-source"
+  },
+  {
+    "sourceUrl": "https://guichet.public.lu/en/citoyens/immigration/plus-3-mois/ressortissant-tiers/raisons-privees/sejour-raisons-privees.html",
+    "sourceName": "guichet.lu — Residence for private reasons (third-country nationals)",
+    "claimIds": [
+      "entry-authorisation"
+    ],
+    "fetchedAt": "2026-06-13",
+    "fetchMethod": "curl",
+    "sha256": "8beb31f4c52cd27cc5ac28145645a0de51c31bc7cfa06244e11de7d3374c269a",
+    "byteSize": 1005769,
+    "contentType": "text/html; charset=utf-8",
+    "textPath": "sources/us-lu/8beb31f4.txt",
+    "capturedBy": "snapshot-source"
+  },
+  {
+    "sourceUrl": "https://guichet.public.lu/en/citoyens/immigration/moins-3-mois/ressortissant-tiers/entree-visa.html",
+    "sourceName": "Guichet.lu — Luxembourg entry visa for third-country nationals",
+    "claimIds": [
+      "entry-authorisation"
+    ],
+    "fetchedAt": "2026-06-13",
+    "fetchMethod": "curl",
+    "sha256": "666602b951d60757f1ce8a1d1b5c5fe85e630e608b98b21e930ffe2470cf642b",
+    "byteSize": 285991,
+    "contentType": "text/html; charset=utf-8",
+    "textPath": "sources/us-lu/666602b9.txt",
+    "capturedBy": "snapshot-source"
+  },
+  {
+    "sourceUrl": "https://guichet.public.lu/en/citoyens/fiscalite/declaration-impot-decompte/activite-professionnelle/declaration-revenus/declaration-impot.html",
+    "sourceName": "guichet.lu — Income tax return for natural persons (residents)",
+    "claimIds": [],
+    "fetchedAt": "2026-06-13",
+    "fetchMethod": "curl",
+    "sha256": "9915204014ad1c2b106c9caf9afe87627dd4074ef63f065deab703c8649250bc",
+    "byteSize": 263662,
+    "contentType": "text/html; charset=utf-8",
+    "textPath": "sources/us-lu/99152040.txt",
+    "capturedBy": "snapshot-source"
+  }
+]

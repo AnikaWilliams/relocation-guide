@@ -1,0 +1,1173 @@
+originIso2: us
+destinationIso2: nl
+title: "Moving from the USA to the Netherlands"
+description: "How US citizens (non-EU/EEA third-country nationals) relocate to the Netherlands for work, family, or study: the right residence permit for your route, why US nationals are exempt from the MVV (entry visa), municipal registration in the BRP and your citizen service number (BSN), mandatory Dutch health insurance, and the 30% expat tax ruling."
+lastReviewed: "2026-06-13"
+reviewedBy: "research-3"
+published: false
+# ---------------------------------------------------------------------------
+# RESEARCH-RUN DRAFT (ADR-0016). Every claim below is status: UNVERIFIED and the
+# corridor is published: false. A SEPARATE fact-verifier team must independently
+# re-derive each claim from its captured primary source before any claim is set
+# VERIFIED or the corridor is published (two-agent rule, CLAUDE.md).
+#
+# Sources captured this run via scripts/snapshot-source.mjs (ADR-0017); see
+# sources/us-nl/manifest.json. Facts were extracted by READING the captured
+# .txt snapshots, and each claim cites the exact captured sourceUrl. sourceHash
+# is deliberately NOT set (verifier's job).
+#
+# KEY CORRIDOR-SPECIFIC DIVERGENCE FROM us-ch (flagged for the verifier):
+# US nationals are EXEMPT from the MVV (the Netherlands' long-stay entry visa /
+# type-D sticker). IND's MVV-exemptions page lists "United States" among the
+# exempt nationalities. So this corridor has NO national-D-visa task like us-ch.
+# Instead: a residence-permit task (applied for by the recognised sponsor for
+# work/study, or by the sponsor-partner for family) plus an explicit
+# "MVV not required for US citizens" explainer, and the residence permit is
+# collected in the Netherlands after a positive decision.
+# ---------------------------------------------------------------------------
+coversMotivations: [work, family, study]
+tasks:
+  # ---------------------------------------------------------------------------
+  - id: work-hsm-permit
+    title: "Get sponsored as a highly skilled migrant (kennismigrant)"
+    category: visa-permit
+    summary:
+      text: "As a US citizen you are a non-EU/EEA third-country national, so to work in the Netherlands you need a residence permit. The most common route for qualified professionals is the highly skilled migrant (kennismigrant) permit: you cannot apply yourself — only an employer recognised by the IND can apply for your permit, and the agreed salary must meet the IND income requirement for your category and be in line with the market rate."
+      sourceUrl: "https://ind.nl/en/residence-permits/work/highly-skilled-migrant"
+      sourceName: "Immigration and Naturalisation Service (IND) — Highly skilled migrant"
+      status: UNVERIFIED
+      lastVerified: "2026-06-13"
+      verifiedBy: ""
+      reviewBy: "2026-09-11"
+    tldr:
+      text: "The highly skilled migrant (kennismigrant) permit is the main work route to the Netherlands for US professionals. You cannot apply on your own: only an employer recognised by the IND can apply for your permit, and your salary must meet the IND's income requirement for your category and match the market rate. The permit combines the right to work and to reside."
+      sourceUrl: "https://ind.nl/en/residence-permits/work/highly-skilled-migrant"
+      sourceName: "Immigration and Naturalisation Service (IND) — Highly skilled migrant"
+      status: UNVERIFIED
+      lastVerified: "2026-06-13"
+      verifiedBy: ""
+      reviewBy: "2026-09-11"
+    keyFacts:
+      - label: "Who applies"
+        text: "Your employer applies, not you: “Only an employer recognised by the IND can apply for your permit.” Recognition is required in order to employ highly skilled migrants."
+        sourceUrl: "https://ind.nl/en/residence-permits/work/highly-skilled-migrant"
+        sourceName: "Immigration and Naturalisation Service (IND) — Highly skilled migrant"
+        status: UNVERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: ""
+        reviewBy: "2026-09-11"
+      - label: "Where"
+        text: "Your recognised-sponsor employer applies to the Immigration and Naturalisation Service (IND), the Dutch immigration authority, in the Netherlands."
+        sourceUrl: "https://ind.nl/en/residence-permits/work/employing-a-foreign-national"
+        sourceName: "Immigration and Naturalisation Service (IND) — Employing a foreign national"
+        status: UNVERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: ""
+        reviewBy: "2026-09-11"
+      - label: "Salary requirement (2026)"
+        text: "The 2026 highly-skilled-migrant required amount (gross per month, excluding the 8% holiday allowance) is €5,942.00 if you are 30 or older, €4,357.00 if you are under 30, and €3,122.00 under the reduced salary criterion (e.g. shortly after a Dutch graduation or orientation year). The amount that applies on the application date must be met; figures change every year on 1 January. Confirm the current figure before relying on it."
+        sourceUrl: "https://ind.nl/en/required-amounts-income-requirements"
+        sourceName: "Immigration and Naturalisation Service (IND) — Required amounts (income requirements)"
+        # FEE/THRESHOLD figure -> 30-day review window.
+        status: UNVERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: ""
+        reviewBy: "2026-07-13"
+      - label: "Recognised sponsor required"
+        text: "Recognition as an IND sponsor is required in order to employ highly skilled migrants; by employing a foreign employee an employer automatically becomes the sponsor, but only a recognised sponsor can apply for the highly skilled migrant permit."
+        sourceUrl: "https://ind.nl/en/residence-permits/work/employing-a-foreign-national"
+        sourceName: "Immigration and Naturalisation Service (IND) — Employing a foreign national"
+        status: UNVERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: ""
+        reviewBy: "2026-09-11"
+      - label: "Right or discretion"
+        text: "Conditional, not automatic: the permit is granted only if a recognised sponsor applies and the salary and other conditions are met — there is no entitlement to a highly skilled migrant permit. US citizens are outside EU/EEA free movement and so always need a residence permit to work."
+        sourceUrl: "https://ind.nl/en/residence-permits/work/highly-skilled-migrant"
+        sourceName: "Immigration and Naturalisation Service (IND) — Highly skilled migrant"
+        status: UNVERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: ""
+        reviewBy: "2026-09-11"
+    detail: >
+      The Netherlands separates EU/EEA/Swiss nationals (who move freely and need no permit)
+      from third-country nationals such as US citizens, who need a residence permit to work.
+      The highly skilled migrant (kennismigrant) scheme is the fast, employer-driven route
+      for qualified professionals: a single permit covers both work and residence, but it
+      hinges on the employer. The employer must be recognised by the IND as a sponsor, must
+      file the application, and must pay at least the IND required amount for your category
+      (a higher figure for those 30+, a lower one for under-30s, and a reduced criterion for
+      recent Dutch graduates / orientation-year holders). The salary must also be in line
+      with the market rate for the role. Because you are an MVV-exempt US national you do not
+      need the entry visa (see the residence-permit task), but you still receive a residence
+      permit, which you collect in the Netherlands after a positive decision.
+    steps:
+      - text: "Secure a job with a Dutch employer that is — or is willing to become — a recognised IND sponsor; confirm the offered salary meets the IND required amount for your age/category and the market rate."
+        tip: "Ask the employer directly whether they are on the IND public register of recognised sponsors. Recognition is mandatory to hire a highly skilled migrant."
+        links:
+          - text: "IND — highly skilled migrant: requirements and how your employer applies"
+            sourceUrl: "https://ind.nl/en/residence-permits/work/highly-skilled-migrant"
+            sourceName: "Immigration and Naturalisation Service (IND) — Highly skilled migrant"
+            status: UNVERIFIED
+            lastVerified: "2026-06-13"
+            verifiedBy: ""
+            reviewBy: "2026-09-11"
+      - text: "Your recognised-sponsor employer files the residence permit application with the IND. As a recognised sponsor they can apply quickly; the IND has up to 90 days to decide, but with direct debit a decision often follows within about two weeks."
+        links:
+          - text: "IND — employing a foreign national: the recognised-sponsor application process and decision period"
+            sourceUrl: "https://ind.nl/en/residence-permits/work/employing-a-foreign-national"
+            sourceName: "Immigration and Naturalisation Service (IND) — Employing a foreign national"
+            status: UNVERIFIED
+            lastVerified: "2026-06-13"
+            verifiedBy: ""
+            reviewBy: "2026-09-11"
+      - text: "After a positive decision, travel to the Netherlands (no MVV needed for US citizens) and collect your residence permit, then register with your municipality."
+    documents:
+      - name: "Residence permit application for highly skilled migrant work (sponsor-filed)"
+        type: form
+        description: "The recognised sponsor files the work/residence application with the IND, usually online via the IND Business Portal or in writing — there is no separate worker-filed form for the recognised-sponsor route. We link the IND employer page rather than a deep form so it stays current."
+        form:
+          text: "There is no separate worker-filed application form for the recognised-sponsor highly skilled migrant route — the recognised sponsor submits the application to the IND (online via the Business Portal or in writing). Use the IND 'Employing a foreign national' page as the authority index for the current procedure and forms; the brochure 'Residence permit for work as a highly skilled migrant' (IND form 3072) explains the requirements."
+          sourceUrl: "https://ind.nl/en/residence-permits/work/employing-a-foreign-national"
+          sourceName: "Immigration and Naturalisation Service (IND) — Employing a foreign national"
+          status: UNVERIFIED
+          lastVerified: "2026-06-13"
+          verifiedBy: ""
+          reviewBy: "2026-09-11"
+      - name: "Signed Dutch employment contract"
+        type: provide
+        description: "Your signed employment contract with the recognised sponsor, stating a salary that meets the IND required amount for your category and is in line with the market rate."
+      - name: "Valid US passport"
+        type: provide
+        description: "Your valid US passport — your identity and travel document throughout the process."
+      - name: "Proof of qualifications"
+        type: provide
+        description: "Evidence of your qualifications and experience as a skilled professional (degrees, diplomas, references), to the extent the IND or employer requests them."
+    cost:
+      text: "An IND application fee applies (paid by the sponsor) and is set by the IND. Fees are adjusted on 1 January each year. Confirm the current amount on the IND fees page before relying on it; this corridor does not quote a specific figure."
+      sourceUrl: "https://ind.nl/en/fees-costs-of-an-application"
+      sourceName: "Immigration and Naturalisation Service (IND) — Fees: costs of an application"
+      # Fee-related -> 30-day review window.
+      status: UNVERIFIED
+      lastVerified: "2026-06-13"
+      verifiedBy: ""
+      reviewBy: "2026-07-13"
+    warning: >
+      The highly skilled migrant salary thresholds are reset by the IND every year on
+      1 January (and the wider required amounts also change on 1 July). The amount that
+      applies on the application date must be met. Do not rely on a figure without
+      confirming the current year's amount with the IND.
+    dependsOn: []
+    appliesIf: "motivation == 'work'"
+
+  # ---------------------------------------------------------------------------
+  - id: work-single-permit-gvva
+    title: "Other paid employment: the single permit (GVVA)"
+    category: visa-permit
+    summary:
+      text: "If you want to work in paid employment in the Netherlands but do not qualify as a highly skilled migrant, you need a single permit (in Dutch: gecombineerde vergunning verblijf en arbeid or GVVA). The single permit combines the residence permit and the work permit (TWV). For this route the IND asks the Employee Insurance Agency (UWV) for advice on the labour-market aspects, which can include whether a suitable worker is available within the EU/EEA."
+      sourceUrl: "https://ind.nl/en/residence-permits/work/single-permit-gvva"
+      sourceName: "Immigration and Naturalisation Service (IND) — Single Permit: GVVA"
+      status: UNVERIFIED
+      lastVerified: "2026-06-13"
+      verifiedBy: ""
+      reviewBy: "2026-09-11"
+    tldr:
+      text: "For ordinary paid employment that is not highly skilled work, US citizens need a single permit (GVVA) — one document combining the residence permit and the work permit (TWV). The IND asks the UWV (the employee-insurance agency) for advice on the labour-market aspects, so this route is more involved than the highly skilled migrant permit."
+      sourceUrl: "https://ind.nl/en/residence-permits/work/single-permit-gvva"
+      sourceName: "Immigration and Naturalisation Service (IND) — Single Permit: GVVA"
+      status: UNVERIFIED
+      lastVerified: "2026-06-13"
+      verifiedBy: ""
+      reviewBy: "2026-09-11"
+    keyFacts:
+      - label: "What it is"
+        text: "A single permit (GVVA / gecombineerde vergunning verblijf en arbeid) that combines the residence permit and the work permit (TWV) in one document."
+        sourceUrl: "https://ind.nl/en/residence-permits/work/single-permit-gvva"
+        sourceName: "Immigration and Naturalisation Service (IND) — Single Permit: GVVA"
+        status: UNVERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: ""
+        reviewBy: "2026-09-11"
+      - label: "Who applies"
+        text: "The IND advises that your employer applies in the Netherlands; the employee may also submit the application. By employing a foreign national the employer automatically becomes the sponsor."
+        sourceUrl: "https://ind.nl/en/residence-permits/work/employing-a-foreign-national"
+        sourceName: "Immigration and Naturalisation Service (IND) — Employing a foreign national"
+        status: UNVERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: ""
+        reviewBy: "2026-09-11"
+      - label: "Labour-market test"
+        text: "The IND asks the Employee Insurance Agency (UWV) for advice on the employment-market aspects of the application before the single permit is granted."
+        sourceUrl: "https://ind.nl/en/residence-permits/work/single-permit-gvva"
+        sourceName: "Immigration and Naturalisation Service (IND) — Single Permit: GVVA"
+        status: UNVERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: ""
+        reviewBy: "2026-09-11"
+      - label: "When needed"
+        text: "A US citizen coming to work in paid employment for more than 90 days needs a residence permit; the GVVA is the route when the work is not covered by a knowledge/talent permit such as the highly skilled migrant permit."
+        sourceUrl: "https://ind.nl/en/residence-permits/work/employing-a-foreign-national"
+        sourceName: "Immigration and Naturalisation Service (IND) — Employing a foreign national"
+        status: UNVERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: ""
+        reviewBy: "2026-09-11"
+    detail: >
+      The single permit (GVVA) is the general paid-employment route for third-country
+      nationals whose work does not fall under one of the knowledge/talent permits (highly
+      skilled migrant, EU Blue Card, intra-corporate transferee, researcher, essential
+      start-up personnel). It rolls the residence permit and the work permit (TWV) into one
+      document. Unlike the highly skilled migrant permit, the GVVA involves a labour-market
+      assessment: the IND asks the UWV for advice on the employment-market aspects of the
+      application. The IND advises that the employer files the application in the Netherlands.
+      Because you are an MVV-exempt US national you do not need the entry visa, but you still
+      receive a residence permit, collected in the Netherlands after a positive decision.
+    steps:
+      - text: "Confirm with your employer whether your role qualifies for a knowledge/talent permit (e.g. highly skilled migrant) or whether the single permit (GVVA) is the correct route."
+        links:
+          - text: "IND — employing a foreign national: which residence permit for which work"
+            sourceUrl: "https://ind.nl/en/residence-permits/work/employing-a-foreign-national"
+            sourceName: "Immigration and Naturalisation Service (IND) — Employing a foreign national"
+            status: UNVERIFIED
+            lastVerified: "2026-06-13"
+            verifiedBy: ""
+            reviewBy: "2026-09-11"
+      - text: "Your employer files the single permit (GVVA) application with the IND; the IND requests UWV advice on the labour-market aspects before deciding."
+        links:
+          - text: "IND — Single Permit (GVVA): requirements and how to apply"
+            sourceUrl: "https://ind.nl/en/residence-permits/work/single-permit-gvva"
+            sourceName: "Immigration and Naturalisation Service (IND) — Single Permit: GVVA"
+            status: UNVERIFIED
+            lastVerified: "2026-06-13"
+            verifiedBy: ""
+            reviewBy: "2026-09-11"
+      - text: "After a positive decision, travel to the Netherlands (no MVV needed for US citizens), collect your residence permit, and register with your municipality."
+    documents:
+      - name: "Single permit (GVVA) application"
+        type: form
+        description: "The application the employer (or employee) files with the IND for the combined residence-and-work permit; the IND then seeks UWV advice. We link the IND GVVA page as the authority index for the current procedure and form."
+        form:
+          text: "Apply for the single permit (GVVA) via the IND. The IND advises that the employer applies in the Netherlands (online via the Business Portal or in writing); the employee may also apply. Use the IND 'Single Permit: GVVA' page as the authority index for the current procedure and form rather than a deep PDF link."
+          sourceUrl: "https://ind.nl/en/residence-permits/work/single-permit-gvva"
+          sourceName: "Immigration and Naturalisation Service (IND) — Single Permit: GVVA"
+          status: UNVERIFIED
+          lastVerified: "2026-06-13"
+          verifiedBy: ""
+          reviewBy: "2026-09-11"
+      - name: "Signed Dutch employment contract"
+        type: provide
+        description: "Your signed employment contract; the role and pay are assessed as part of the labour-market advice from the UWV."
+      - name: "Valid US passport"
+        type: provide
+        description: "Your valid US passport as identity and travel document."
+      - name: "Proof of qualifications for the role"
+        type: provide
+        description: "Evidence of the qualifications and experience the role requires, as requested by the IND/UWV."
+    cost:
+      text: "An IND application fee applies and is set by the IND (adjusted annually on 1 January). Confirm the current amount on the IND fees page; this corridor does not quote a specific figure."
+      sourceUrl: "https://ind.nl/en/fees-costs-of-an-application"
+      sourceName: "Immigration and Naturalisation Service (IND) — Fees: costs of an application"
+      status: UNVERIFIED
+      lastVerified: "2026-06-13"
+      verifiedBy: ""
+      reviewBy: "2026-07-13"
+    dependsOn: []
+    appliesIf: "motivation == 'work'"
+
+  # ---------------------------------------------------------------------------
+  - id: entry-residence-permit
+    title: "Your residence permit — and why US citizens do not need an MVV"
+    category: visa-permit
+    summary:
+      text: "To stay in the Netherlands for more than 90 days you need a regular residence permit. Many nationalities also need a provisional residence permit (MVV) — a type-D entry visa sticker — but US nationals are exempt: the IND lists the United States among the nationalities that do not need an MVV. You still need the residence permit; as an MVV-exempt national you travel to the Netherlands without the entry visa and the permit is arranged for you to collect there."
+      sourceUrl: "https://ind.nl/en/mvv-exemptions"
+      sourceName: "Immigration and Naturalisation Service (IND) — MVV exemptions"
+      status: UNVERIFIED
+      lastVerified: "2026-06-13"
+      verifiedBy: ""
+      reviewBy: "2026-09-11"
+    tldr:
+      text: "Any stay over 90 days needs a residence permit. The MVV (the type-D long-stay entry visa) is required for most nationalities — but not for US citizens, who are on the IND's MVV-exemption list. So you skip the embassy MVV step that nationals of many other countries must complete: you still need the residence permit, but you enter without the entry visa and collect the permit in the Netherlands."
+      sourceUrl: "https://ind.nl/en/mvv-exemptions"
+      sourceName: "Immigration and Naturalisation Service (IND) — MVV exemptions"
+      status: UNVERIFIED
+      lastVerified: "2026-06-13"
+      verifiedBy: ""
+      reviewBy: "2026-09-11"
+    keyFacts:
+      - label: "MVV not needed for US citizens"
+        text: "“You do not need an MVV if you have the nationality of one of these countries” — the IND list includes the United States (alongside Australia, Canada, Japan, Monaco, New Zealand, Vatican City, the United Kingdom, South Korea, Switzerland and EU/EEA member states)."
+        sourceUrl: "https://ind.nl/en/mvv-exemptions"
+        sourceName: "Immigration and Naturalisation Service (IND) — MVV exemptions"
+        status: UNVERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: ""
+        reviewBy: "2026-09-11"
+      - label: "What an MVV is"
+        text: "The MVV (machtiging tot voorlopig verblijf) is an entry visa for people who want to stay in the Netherlands for more than 90 days; it is a visa sticker (Type D) placed in the passport, used to travel to the Netherlands and pick up the residence permit."
+        sourceUrl: "https://ind.nl/en/provisional-residence-permit-mvv"
+        sourceName: "Immigration and Naturalisation Service (IND) — Provisional residence permit (MVV)"
+        status: UNVERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: ""
+        reviewBy: "2026-09-11"
+      - label: "You still need a residence permit"
+        text: "Being MVV-exempt removes only the entry visa; you still need a regular residence permit to stay longer than 90 days, applied for under your purpose of stay (work, family or study)."
+        sourceUrl: "https://ind.nl/en/provisional-residence-permit-mvv"
+        sourceName: "Immigration and Naturalisation Service (IND) — Provisional residence permit (MVV)"
+        status: UNVERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: ""
+        reviewBy: "2026-09-11"
+      - label: "Legal basis"
+        text: "The MVV obligation and its exemptions are governed by the Aliens Act (Vreemdelingenwet 2000), Article 2p, and the Aliens Act Implementation Guidelines (Vreemdelingencirculaire 2000), B1/3.3."
+        sourceUrl: "https://ind.nl/en/provisional-residence-permit-mvv"
+        sourceName: "Immigration and Naturalisation Service (IND) — Provisional residence permit (MVV)"
+        status: UNVERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: ""
+        reviewBy: "2026-09-11"
+    detail: >
+      The Netherlands' long-stay entry visa is the MVV (machtiging tot voorlopig verblijf),
+      a type-D sticker placed in the passport that nationals of most countries must obtain
+      at a Dutch embassy or consulate before travelling, then use to enter and collect their
+      residence permit. US nationals are exempt: the IND's MVV-exemptions page lists the
+      United States among the nationalities that do not need an MVV. This is the central
+      difference from many other corridors — there is no embassy MVV step for US citizens.
+      You still need a regular residence permit for any stay over 90 days, applied for under
+      your purpose of stay: for work, the recognised-sponsor employer applies (see the
+      highly-skilled-migrant and single-permit tasks); for study, the recognised education
+      institution applies; for family, the sponsor in the Netherlands applies. After a
+      positive decision you travel to the Netherlands and collect your residence permit
+      (see the collect-residence-document task), then register with your municipality.
+    steps:
+      - text: "Confirm your purpose of stay (work, family or study) — your residence permit is applied for under that purpose, and for work/study the sponsor (employer or institution) applies for you."
+        links:
+          - text: "IND — provisional residence permit (MVV): when it is and is not needed"
+            sourceUrl: "https://ind.nl/en/provisional-residence-permit-mvv"
+            sourceName: "Immigration and Naturalisation Service (IND) — Provisional residence permit (MVV)"
+            status: UNVERIFIED
+            lastVerified: "2026-06-13"
+            verifiedBy: ""
+            reviewBy: "2026-09-11"
+      - text: "Confirm you are MVV-exempt as a US national, so no embassy entry-visa appointment is required for you."
+        tip: "Exemption is by nationality. If a family member travelling with you holds a different (non-exempt) nationality, check the MVV-exemptions page for their situation separately."
+        links:
+          - text: "IND — MVV exemptions: the United States is on the exemption list"
+            sourceUrl: "https://ind.nl/en/mvv-exemptions"
+            sourceName: "Immigration and Naturalisation Service (IND) — MVV exemptions"
+            status: UNVERIFIED
+            lastVerified: "2026-06-13"
+            verifiedBy: ""
+            reviewBy: "2026-09-11"
+      - text: "Once the residence permit is approved, travel to the Netherlands and collect it; then register with your municipality within 5 days of arrival."
+    documents:
+      - name: "Residence permit application (filed under your purpose of stay)"
+        type: form
+        description: "There is no MVV application for US citizens. The residence permit itself is applied for under your purpose of stay — by the recognised sponsor (employer/institution) for work/study, or by the sponsor in the Netherlands for family. We link the IND MVV page as the authority index that routes you to the right purpose-of-stay procedure."
+        form:
+          text: "As an MVV-exempt US national you do not file an MVV application. The residence permit is applied for under your purpose of stay: the recognised sponsor applies for work (see the highly-skilled-migrant and single-permit tasks) and for study (the education institution applies), and the sponsor in the Netherlands applies for family. Use the IND 'Provisional residence permit (MVV)' page to confirm the exemption and route to the correct purpose-of-stay procedure."
+          sourceUrl: "https://ind.nl/en/provisional-residence-permit-mvv"
+          sourceName: "Immigration and Naturalisation Service (IND) — Provisional residence permit (MVV)"
+          status: UNVERIFIED
+          lastVerified: "2026-06-13"
+          verifiedBy: ""
+          reviewBy: "2026-09-11"
+      - name: "Valid US passport"
+        type: provide
+        description: "Your valid US passport — your identity and travel document; biometric data for the residence permit are captured in the Netherlands or as instructed by the IND."
+      - name: "Proof of your purpose of stay"
+        type: provide
+        description: "Documentation of the basis of your stay — for work, your employment contract; for study, the institution's enrolment; for family, the relationship and the sponsor's documents."
+    warning: >
+      MVV exemption is decided by nationality. A US passport exempts you, but a partner or
+      child travelling with you who holds a different, non-exempt nationality may still need
+      an MVV. Always check the IND MVV-exemptions page for each traveller's nationality.
+    dependsOn: []
+    # No appliesIf: applies to all covered routes (work, family, study).
+
+  # ---------------------------------------------------------------------------
+  - id: collect-residence-document
+    title: "Collect your residence permit (and give biometrics)"
+    category: visa-permit
+    summary:
+      text: "After the IND approves your application, you collect your residence permit (residence document) in the Netherlands. Biometric data — your signature and fingerprints — are recorded for the residence document. As an MVV-exempt US national you do this in the Netherlands rather than picking the permit up with an MVV sticker abroad."
+      sourceUrl: "https://ind.nl/en/apply-for-mvv-and-residence-permit-from-abroad"
+      sourceName: "Immigration and Naturalisation Service (IND) — Apply for MVV and residence permit from abroad"
+      status: UNVERIFIED
+      lastVerified: "2026-06-13"
+      verifiedBy: ""
+      reviewBy: "2026-09-11"
+    tldr:
+      text: "Once your application is approved you receive a message about collecting your residence permit. Biometric data (signature and fingerprints) are recorded for the residence document. Because you are MVV-exempt, you complete this in the Netherlands rather than collecting an MVV sticker at a Dutch embassy first."
+      sourceUrl: "https://ind.nl/en/residence-permits/work/employing-a-foreign-national"
+      sourceName: "Immigration and Naturalisation Service (IND) — Employing a foreign national"
+      status: UNVERIFIED
+      lastVerified: "2026-06-13"
+      verifiedBy: ""
+      reviewBy: "2026-09-11"
+    keyFacts:
+      - label: "Biometrics"
+        text: "Biometric data are recorded for the residence document: you provide your signature and fingerprints."
+        sourceUrl: "https://ind.nl/en/apply-for-mvv-and-residence-permit-from-abroad"
+        sourceName: "Immigration and Naturalisation Service (IND) — Apply for MVV and residence permit from abroad"
+        status: UNVERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: ""
+        reviewBy: "2026-09-11"
+      - label: "After a positive decision"
+        text: "If the decision is positive, you receive a message about collecting the MVV or residence permit; for an MVV-exempt US national this is the residence permit, collected in the Netherlands."
+        sourceUrl: "https://ind.nl/en/residence-permits/work/employing-a-foreign-national"
+        sourceName: "Immigration and Naturalisation Service (IND) — Employing a foreign national"
+        status: UNVERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: ""
+        reviewBy: "2026-09-11"
+    detail: >
+      The residence document is the physical proof of your right to live in the Netherlands.
+      The IND records biometric data — your signature and fingerprints — for the document.
+      After a positive decision the IND sends a message about collecting your permit. For
+      nationals who needed an MVV, biometrics are taken at the Dutch embassy or consulate and
+      the residence permit is collected after entry; as an MVV-exempt US national you instead
+      complete this in the Netherlands. Collect your residence permit promptly and keep it
+      with you — you will need it for municipal registration, opening a bank account and
+      arranging health insurance.
+    steps:
+      - text: "Wait for the IND's message confirming the positive decision and explaining how and where to collect your residence permit."
+        links:
+          - text: "IND — employing a foreign national: the decision and collecting the permit"
+            sourceUrl: "https://ind.nl/en/residence-permits/work/employing-a-foreign-national"
+            sourceName: "Immigration and Naturalisation Service (IND) — Employing a foreign national"
+            status: UNVERIFIED
+            lastVerified: "2026-06-13"
+            verifiedBy: ""
+            reviewBy: "2026-09-11"
+      - text: "Attend the IND appointment to give biometrics (signature and fingerprints) and collect your residence document."
+        links:
+          - text: "IND — biometric data (signature and fingerprints) are recorded for the residence document"
+            sourceUrl: "https://ind.nl/en/apply-for-mvv-and-residence-permit-from-abroad"
+            sourceName: "Immigration and Naturalisation Service (IND) — Apply for MVV and residence permit from abroad"
+            status: UNVERIFIED
+            lastVerified: "2026-06-13"
+            verifiedBy: ""
+            reviewBy: "2026-09-11"
+    documents:
+      - name: "Valid US passport"
+        type: provide
+        description: "Your valid US passport, used to verify your identity when biometrics are captured and the residence document is issued."
+      - name: "IND decision letter / collection message"
+        type: provide
+        description: "The IND's positive-decision message telling you how and where to collect your residence permit."
+      - name: "Passport photo as specified by the IND"
+        type: provide
+        description: "A passport photo to the IND's specification, if requested for the residence document."
+    cost:
+      text: "Issuing the residence document is part of the IND application fee for your residence permit; the fee is set by the IND and adjusted annually. Confirm the current amount on the IND fees page."
+      sourceUrl: "https://ind.nl/en/fees-costs-of-an-application"
+      sourceName: "Immigration and Naturalisation Service (IND) — Fees: costs of an application"
+      status: UNVERIFIED
+      lastVerified: "2026-06-13"
+      verifiedBy: ""
+      reviewBy: "2026-07-13"
+    dependsOn:
+      - entry-residence-permit
+
+  # ---------------------------------------------------------------------------
+  - id: register-municipality-brp
+    title: "Register with your municipality (BRP) and get your BSN"
+    category: registration-bureaucracy
+    summary:
+      text: "If you will live in the Netherlands for longer than 4 months you must register with the municipality where you live in the Personal Records Database (Basisregistratie Personen, BRP). Everyone who registers with the BRP is automatically given a citizen service number (burgerservicenummer, BSN) — the personal number you use for all dealings with the Dutch government, healthcare and your employer."
+      sourceUrl: "https://www.government.nl/topics/personal-data/citizen-service-number-bsn"
+      sourceName: "Government of the Netherlands — Citizen service number (BSN)"
+      status: UNVERIFIED
+      lastVerified: "2026-06-13"
+      verifiedBy: ""
+      reviewBy: "2026-09-11"
+    tldr:
+      text: "Living in the Netherlands for more than 4 months means registering as a resident with your municipality in the Personal Records Database (BRP). Registration automatically gives you a citizen service number (BSN) — the single number you need for the tax office, healthcare, your salary and almost everything official. You cannot work, get health insurance or open a bank account smoothly without it."
+      sourceUrl: "https://www.government.nl/topics/personal-data/citizen-service-number-bsn"
+      sourceName: "Government of the Netherlands — Citizen service number (BSN)"
+      status: UNVERIFIED
+      lastVerified: "2026-06-13"
+      verifiedBy: ""
+      reviewBy: "2026-09-11"
+    keyFacts:
+      - label: "Who must register"
+        text: "People who live in the Netherlands as residents have their personal data recorded in the BRP by their municipality; those staying less than 4 months can instead register as non-residents in the RNI."
+        sourceUrl: "https://www.government.nl/topics/personal-data/personal-records-database-brp"
+        sourceName: "Government of the Netherlands — Personal Records Database (BRP)"
+        status: UNVERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: ""
+        reviewBy: "2026-09-11"
+      - label: "BSN issued on registration"
+        text: "“The citizen service number (BSN) is a unique personal number allocated to everyone registered in the Personal Records Database (BRP). Everyone who registers with the BRP is automatically given a BSN.”"
+        sourceUrl: "https://www.government.nl/topics/personal-data/citizen-service-number-bsn"
+        sourceName: "Government of the Netherlands — Citizen service number (BSN)"
+        status: UNVERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: ""
+        reviewBy: "2026-09-11"
+      - label: "Why the BSN matters"
+        text: "You use your BSN for any government service in the Netherlands; recognised care providers and health insurers must use it, and it is also used in education (where it is called the personal identification number, PGN)."
+        sourceUrl: "https://www.government.nl/topics/personal-data/citizen-service-number-bsn"
+        sourceName: "Government of the Netherlands — Citizen service number (BSN)"
+        status: UNVERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: ""
+        reviewBy: "2026-09-11"
+      - label: "Deadline"
+        text: "Confirm the exact registration deadline with your municipality. Government guidance is that residents register within 5 days of arrival; book a municipal appointment as soon as you have an address."
+        sourceUrl: "https://www.government.nl/topics/personal-data/personal-records-database-brp"
+        sourceName: "Government of the Netherlands — Personal Records Database (BRP)"
+        # NOTE for verifier: the captured BRP page confirms the 4-month resident
+        # threshold and BRP legal basis, but the "within 5 days of arrival"
+        # figure was NOT in the captured BRP/BSN text (it is stated on a
+        # government.nl Q&A page that returned HTTP 404 to curl this run — a
+        # JS/soft-404 like us-ch's ch.ch pattern). The claim is hedged to
+        # "confirm with your municipality"; please source the 5-day figure to a
+        # reachable official page (e.g. business.gov.nl registration page or the
+        # municipality) before setting VERIFIED.
+        status: UNVERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: ""
+        reviewBy: "2026-09-11"
+      - label: "Legal basis"
+        text: "The BRP was established by the Personal Records Database Act (Wet basisregistratie personen), which took effect on 6 January 2014; rules on using and accessing BRP data are set out in that Act."
+        sourceUrl: "https://www.government.nl/topics/personal-data/personal-records-database-brp"
+        sourceName: "Government of the Netherlands — Personal Records Database (BRP)"
+        status: UNVERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: ""
+        reviewBy: "2026-09-11"
+    detail: >
+      Registering with your municipality is the administrative anchor of life in the
+      Netherlands. If you will live here for more than 4 months you register as a resident
+      in the Personal Records Database (BRP) at the municipality where you live; municipalities
+      record residents' personal data (address, marriage, births) in the BRP. Registration
+      automatically produces your citizen service number (BSN), the personal number used for
+      every government service, by health insurers and care providers (who are legally
+      required to use it), by your employer for payroll, and in education (as the PGN). Without
+      a BSN you cannot smoothly work, take out health insurance, or open a bank account, so
+      register promptly. You make an appointment at the municipality and bring identity and
+      address documents; confirm the exact deadline and document list with your municipality,
+      as the procedure is run locally.
+    steps:
+      - text: "Arrange an address in the Netherlands and make an appointment at your municipality (gemeente) to register in the BRP."
+      - text: "Register in person, bringing your passport, your residence document, proof of your address, and civil-status documents (e.g. a marriage or birth certificate) if registering family members."
+        tip: "Bring legalised/translated civil-status documents (marriage, birth) where required — ask your municipality in advance which documents and translations it needs."
+        links:
+          - text: "Government of the Netherlands — Personal Records Database (BRP): residents and the 4-month threshold"
+            sourceUrl: "https://www.government.nl/topics/personal-data/personal-records-database-brp"
+            sourceName: "Government of the Netherlands — Personal Records Database (BRP)"
+            status: UNVERIFIED
+            lastVerified: "2026-06-13"
+            verifiedBy: ""
+            reviewBy: "2026-09-11"
+      - text: "Receive your citizen service number (BSN) on registration; use it for the tax office, health insurance, your employer and other official matters."
+        links:
+          - text: "Government of the Netherlands — citizen service number (BSN): issued automatically on BRP registration"
+            sourceUrl: "https://www.government.nl/topics/personal-data/citizen-service-number-bsn"
+            sourceName: "Government of the Netherlands — Citizen service number (BSN)"
+            status: UNVERIFIED
+            lastVerified: "2026-06-13"
+            verifiedBy: ""
+            reviewBy: "2026-09-11"
+    documents:
+      - name: "Municipal registration (BRP) — make an appointment at your gemeente"
+        type: form
+        description: "Registration in the BRP is done in person at your municipality (gemeente); there is no single national form — each municipality runs the appointment and tells you what to bring. We link the official BRP overview as the authority page."
+        form:
+          text: "There is no single national BRP registration form — you register in person at the municipality (gemeente) where you live, by appointment, and the municipality records your data in the BRP and issues your BSN. Use the official Government of the Netherlands BRP page as the authority overview and your municipality's website for the local appointment and document list."
+          sourceUrl: "https://www.government.nl/topics/personal-data/personal-records-database-brp"
+          sourceName: "Government of the Netherlands — Personal Records Database (BRP)"
+          status: UNVERIFIED
+          lastVerified: "2026-06-13"
+          verifiedBy: ""
+          reviewBy: "2026-09-11"
+      - name: "Valid US passport"
+        type: provide
+        description: "Your valid US passport as proof of identity and nationality."
+      - name: "Residence document / proof of right to reside"
+        type: provide
+        description: "Your residence permit (or proof your application has been approved) showing your right to live in the Netherlands."
+      - name: "Proof of address in the Netherlands"
+        type: provide
+        description: "Your rental contract or a written statement from the main occupant of your address; the municipality registers you at this address."
+      - name: "Civil-status documents for family members"
+        type: provide
+        description: "Marriage and birth certificates (often legalised/translated) if you are registering a spouse or children — confirm the format with your municipality."
+    dependsOn:
+      - collect-residence-document
+    # No appliesIf: every resident on every route must register and get a BSN.
+
+  # ---------------------------------------------------------------------------
+  - id: health-insurance-zvw
+    title: "Take out mandatory Dutch health insurance (Zvw)"
+    category: healthcare-insurance
+    summary:
+      text: "Anyone who lives or works in the Netherlands must take out healthcare insurance under the Healthcare Insurance Act (Zorgverzekeringswet, Zvw). For permit holders, you must take out Dutch health insurance within four months of your residence permit coming into force, and the policy must be effective from the date the permit comes into force. Important: you cannot take out Dutch health insurance until a decision has been taken on your residence permit application."
+      sourceUrl: "https://www.government.nl/topics/health-insurance/health-insurance-and-residence-permit"
+      sourceName: "Government of the Netherlands — Health insurance and residence permit"
+      status: UNVERIFIED
+      lastVerified: "2026-06-13"
+      verifiedBy: ""
+      reviewBy: "2026-09-11"
+    tldr:
+      text: "Dutch health insurance is compulsory for everyone who lives or works in the Netherlands (the Zvw). As a permit holder you must take out a Dutch policy within four months of your residence permit coming into force, effective from that date. You cannot buy Dutch health insurance before your permit is decided, so arrange bridging cover for the gap and switch as soon as the permit is in force."
+      sourceUrl: "https://www.government.nl/topics/health-insurance/health-insurance-and-residence-permit"
+      sourceName: "Government of the Netherlands — Health insurance and residence permit"
+      status: UNVERIFIED
+      lastVerified: "2026-06-13"
+      verifiedBy: ""
+      reviewBy: "2026-09-11"
+    keyFacts:
+      - label: "Compulsory"
+        text: "“Anyone who lives or works in the Netherlands must take out healthcare insurance under the Healthcare Insurance Act (Zorgverzekeringswet, Zvw).” This includes employees, entrepreneurs and the self-employed."
+        sourceUrl: "https://business.gov.nl/regulations/health-care-insurance/"
+        sourceName: "Netherlands Enterprise Agency (business.gov.nl) — Taking out compulsory healthcare insurance"
+        status: UNVERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: ""
+        reviewBy: "2026-09-11"
+      - label: "Deadline (4 months)"
+        text: "“You must take out Dutch health insurance within four months of your permanent residence permit coming into force. Your health insurance policy must be effective from the date your residence permit comes into force.”"
+        sourceUrl: "https://www.government.nl/topics/health-insurance/health-insurance-and-residence-permit"
+        sourceName: "Government of the Netherlands — Health insurance and residence permit"
+        status: UNVERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: ""
+        reviewBy: "2026-09-11"
+      - label: "Not before your permit is decided"
+        text: "“If a decision has not been taken on your application for a residence permit, you cannot take out health insurance in the Netherlands” — so arrange foreign/international cover for the interim period."
+        sourceUrl: "https://www.government.nl/topics/health-insurance/health-insurance-and-residence-permit"
+        sourceName: "Government of the Netherlands — Health insurance and residence permit"
+        status: UNVERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: ""
+        reviewBy: "2026-09-11"
+      - label: "What it covers / risk excess"
+        text: "The mandatory basic package covers default healthcare (GP, hospital, pharmacy). Dutch health insurance is subject to a mandatory risk excess (eigen risico) set annually by the government; some care, such as the GP and maternity care, is exempt from the excess."
+        sourceUrl: "https://business.gov.nl/regulations/health-care-insurance/"
+        sourceName: "Netherlands Enterprise Agency (business.gov.nl) — Taking out compulsory healthcare insurance"
+        status: UNVERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: ""
+        reviewBy: "2026-09-11"
+    detail: >
+      Dutch health insurance is not optional: under the Healthcare Insurance Act (Zvw),
+      anyone who lives or works in the Netherlands must take out a basic policy from a Dutch
+      insurer, even if they already hold insurance abroad. For permit holders the timing is
+      specific: you have four months from the date your residence permit comes into force to
+      take out a policy, and that policy must be effective from the permit's start date — if
+      it starts retroactively you pay the premium retroactively. A crucial catch for new
+      arrivals: you cannot buy Dutch health insurance until a decision has been taken on your
+      residence permit, so you need foreign or international cover for the period between
+      arrival and your permit coming into force. The basic package covers GP, hospital and
+      pharmacy care; a mandatory risk excess (eigen risico) applies each year, with some
+      care (GP, maternity) exempt. Depending on income you may be able to claim healthcare
+      benefit (zorgtoeslag) from the Tax Administration.
+    steps:
+      - text: "While your residence permit is pending, hold foreign or international health insurance that covers you in the Netherlands — you cannot take out a Dutch policy until your permit is decided."
+        links:
+          - text: "Government of the Netherlands — health insurance and residence permit: no Dutch cover before a decision"
+            sourceUrl: "https://www.government.nl/topics/health-insurance/health-insurance-and-residence-permit"
+            sourceName: "Government of the Netherlands — Health insurance and residence permit"
+            status: UNVERIFIED
+            lastVerified: "2026-06-13"
+            verifiedBy: ""
+            reviewBy: "2026-09-11"
+      - text: "Once your residence permit is in force, take out a Dutch basic health insurance policy within four months, effective from the permit's start date."
+        tip: "You need your BSN to take out a policy, so register with your municipality first. Compare insurers' basic-package prices; the basic package is standardised by law."
+        links:
+          - text: "business.gov.nl — compulsory Dutch healthcare insurance (Zvw) for everyone who lives or works in the Netherlands"
+            sourceUrl: "https://business.gov.nl/regulations/health-care-insurance/"
+            sourceName: "Netherlands Enterprise Agency (business.gov.nl) — Taking out compulsory healthcare insurance"
+            status: UNVERIFIED
+            lastVerified: "2026-06-13"
+            verifiedBy: ""
+            reviewBy: "2026-09-11"
+    documents:
+      - name: "Dutch health insurance policy (taken out with an insurer)"
+        type: form
+        description: "You take out the basic-package policy directly with a Dutch health insurer of your choice — there is no government form. We link the official overview as the authority page."
+        form:
+          text: "There is no government application form for health insurance — you take out a basic-package policy directly with a Dutch health insurer of your choice, using your BSN, effective from the date your residence permit comes into force. Use the official Government of the Netherlands health-insurance-and-residence-permit page as the authority overview of the rules and timing."
+          sourceUrl: "https://www.government.nl/topics/health-insurance/health-insurance-and-residence-permit"
+          sourceName: "Government of the Netherlands — Health insurance and residence permit"
+          status: UNVERIFIED
+          lastVerified: "2026-06-13"
+          verifiedBy: ""
+          reviewBy: "2026-09-11"
+      - name: "Citizen service number (BSN)"
+        type: provide
+        description: "Your BSN, obtained on municipal registration — health insurers are legally required to use it."
+      - name: "Residence document"
+        type: provide
+        description: "Your residence permit, showing the date it comes into force (the date from which your policy must be effective)."
+    warning: >
+      You cannot take out Dutch health insurance until your residence permit application has
+      been decided, but once the permit is in force you have only four months to take out a
+      policy, effective from the permit's start date. Keep foreign/international cover for the
+      gap and switch to a Dutch policy as soon as your permit is in force.
+    dependsOn:
+      - register-municipality-brp
+
+  # ---------------------------------------------------------------------------
+  - id: tax-30-ruling
+    title: "Check if you qualify for the 30% expat tax ruling"
+    category: taxes
+    summary:
+      text: "The expat scheme (commonly called the 30% ruling) lets an employer pay an incoming employee a percentage of their salary tax-free to compensate for the extra costs of moving to the Netherlands. The employer must apply to the Tax Administration (Belastingdienst). Key conditions: you were recruited from abroad and lived more than 150 kilometres from the Dutch border for more than 16 of the 24 months before your first working day, you have specific expertise that is scarce in the Dutch labour market, and you earn a minimum salary reflecting that expertise."
+      sourceUrl: "https://business.gov.nl/staff/employing-staff/the-expat-scheme-30-percent-ruling-in-the-netherlands/"
+      sourceName: "Netherlands Enterprise Agency (business.gov.nl) — The expat scheme (30% ruling)"
+      status: UNVERIFIED
+      lastVerified: "2026-06-13"
+      verifiedBy: ""
+      reviewBy: "2026-09-11"
+    tldr:
+      text: "The 30% ruling (the expat scheme) can make part of your Dutch salary tax-free to offset relocation costs, for up to 5 years. Your employer applies to the Tax Administration within 4 months of your first working day. It is not automatic — you must have been recruited from abroad (the 150km / 16-of-24-months rule) and have scarce specific expertise. Note: the maximum tax-free percentage drops from 30% to 27% on 1 January 2027."
+      sourceUrl: "https://business.gov.nl/staff/employing-staff/the-expat-scheme-30-percent-ruling-in-the-netherlands/"
+      sourceName: "Netherlands Enterprise Agency (business.gov.nl) — The expat scheme (30% ruling)"
+      status: UNVERIFIED
+      lastVerified: "2026-06-13"
+      verifiedBy: ""
+      reviewBy: "2026-09-11"
+    keyFacts:
+      - label: "Who applies"
+        text: "The employer applies to the Tax Administration (Belastingdienst) for approval (a beschikking); the request must be filed within 4 months after the employee's first working day, with the outcome given within 8 weeks."
+        sourceUrl: "https://business.gov.nl/staff/employing-staff/the-expat-scheme-30-percent-ruling-in-the-netherlands/"
+        sourceName: "Netherlands Enterprise Agency (business.gov.nl) — The expat scheme (30% ruling)"
+        status: UNVERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: ""
+        reviewBy: "2026-09-11"
+      - label: "Recruited from abroad (150 km / 16 of 24 months)"
+        text: "You must have been recruited from abroad or transferred within a multinational, and have lived more than 150 kilometres from the Dutch border for more than 16 of the 24 months before your first working day in the Netherlands."
+        sourceUrl: "https://business.gov.nl/staff/employing-staff/the-expat-scheme-30-percent-ruling-in-the-netherlands/"
+        sourceName: "Netherlands Enterprise Agency (business.gov.nl) — The expat scheme (30% ruling)"
+        status: UNVERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: ""
+        reviewBy: "2026-09-11"
+      - label: "Scarce expertise + minimum salary"
+        text: "You must have specific expertise that is scarce in the Dutch labour market (in some cases it must be unique) and earn a certain minimum salary reflecting that expertise (the toetsloon)."
+        sourceUrl: "https://business.gov.nl/staff/employing-staff/the-expat-scheme-30-percent-ruling-in-the-netherlands/"
+        sourceName: "Netherlands Enterprise Agency (business.gov.nl) — The expat scheme (30% ruling)"
+        status: UNVERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: ""
+        reviewBy: "2026-09-11"
+      - label: "Duration"
+        text: "The expat scheme compensates the employee's relocation costs over a maximum period of 5 years."
+        sourceUrl: "https://business.gov.nl/staff/employing-staff/the-expat-scheme-30-percent-ruling-in-the-netherlands/"
+        sourceName: "Netherlands Enterprise Agency (business.gov.nl) — The expat scheme (30% ruling)"
+        status: UNVERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: ""
+        reviewBy: "2026-09-11"
+      - label: "Rate change in 2027"
+        text: "As of 1 January 2027 the maximum reimbursement is reduced from 30% to 27%: employers can pay eligible employees a maximum of 27% of their wages tax-free."
+        sourceUrl: "https://business.gov.nl/staff/employing-staff/the-expat-scheme-30-percent-ruling-in-the-netherlands/"
+        sourceName: "Netherlands Enterprise Agency (business.gov.nl) — The expat scheme (30% ruling)"
+        status: UNVERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: ""
+        reviewBy: "2026-09-11"
+    detail: >
+      The expat scheme — widely known as the 30% ruling — is a tax advantage that lets an
+      employer reimburse, tax-free, part of the salary of an employee recruited from abroad,
+      to compensate for the extraterritorial costs of moving to the Netherlands. It is run by
+      the Tax Administration (Belastingdienst), not the immigration authority, and the
+      employer (not you) applies for approval — within four months of your first working day,
+      with a decision normally within eight weeks. To qualify you must have been recruited
+      from abroad and have lived more than 150 km from the Dutch border for more than 16 of
+      the 24 months before starting work, possess specific expertise scarce in the Dutch
+      labour market, and earn at least the applicable minimum salary (toetsloon). The benefit
+      can run for up to five years. Two changes to watch: from 1 January 2027 the maximum
+      tax-free percentage falls from 30% to 27%, and a maximum salary cap applies. Confirm
+      the current rules and the minimum-salary table with the Belastingdienst.
+    steps:
+      - text: "Check eligibility with your employer: were you recruited from abroad (the 150 km / 16-of-24-months rule), and do you have scarce specific expertise meeting the minimum salary (toetsloon)?"
+        links:
+          - text: "business.gov.nl — the expat scheme (30% ruling): conditions"
+            sourceUrl: "https://business.gov.nl/staff/employing-staff/the-expat-scheme-30-percent-ruling-in-the-netherlands/"
+            sourceName: "Netherlands Enterprise Agency (business.gov.nl) — The expat scheme (30% ruling)"
+            status: UNVERIFIED
+            lastVerified: "2026-06-13"
+            verifiedBy: ""
+            reviewBy: "2026-09-11"
+      - text: "Have your employer apply to the Tax Administration (Belastingdienst) for approval within 4 months of your first working day."
+        tip: "Applying within 4 months lets the ruling apply from your first working day; apply later and it starts from a later date. The outcome normally comes within 8 weeks."
+        links:
+          - text: "business.gov.nl — get approval from the Tax Administration (4-month application window)"
+            sourceUrl: "https://business.gov.nl/staff/employing-staff/the-expat-scheme-30-percent-ruling-in-the-netherlands/"
+            sourceName: "Netherlands Enterprise Agency (business.gov.nl) — The expat scheme (30% ruling)"
+            status: UNVERIFIED
+            lastVerified: "2026-06-13"
+            verifiedBy: ""
+            reviewBy: "2026-09-11"
+    documents:
+      - name: "30% ruling approval request (employer-filed, to the Belastingdienst)"
+        type: form
+        description: "The employer files the request for approval (beschikking) with the Tax Administration; the application form is on the Belastingdienst website. We link the official business.gov.nl overview as the authority index."
+        form:
+          text: "The employer files the request for approval (beschikking) with the Tax Administration (Belastingdienst); the application form is on the Belastingdienst website and the application must include supporting documents. Use the official business.gov.nl 'expat scheme (30% ruling)' page as the authority overview, which links to the Belastingdienst form and the expertise/minimum-salary tables."
+          sourceUrl: "https://business.gov.nl/staff/employing-staff/the-expat-scheme-30-percent-ruling-in-the-netherlands/"
+          sourceName: "Netherlands Enterprise Agency (business.gov.nl) — The expat scheme (30% ruling)"
+          status: UNVERIFIED
+          lastVerified: "2026-06-13"
+          verifiedBy: ""
+          reviewBy: "2026-09-11"
+      - name: "Proof you were recruited from abroad"
+        type: provide
+        description: "Evidence supporting the 150 km / 16-of-24-months condition (e.g. proof of your address history outside the Netherlands before your first working day)."
+      - name: "Employment contract showing salary"
+        type: provide
+        description: "Your contract showing a salary that meets the applicable minimum (toetsloon) reflecting your expertise."
+    warning: >
+      The 30% ruling is changing: from 1 January 2027 the maximum tax-free percentage drops
+      from 30% to 27%, and a maximum salary applies. The minimum-salary (toetsloon) figures
+      and the percentage are set by the Tax Administration and change over time — confirm the
+      current rules with the Belastingdienst before relying on them.
+    dependsOn: []
+    appliesIf: "motivation == 'work'"
+
+  # ---------------------------------------------------------------------------
+  - id: family-partner-permit
+    title: "Bring your partner or spouse (family reunification)"
+    category: family-dependents
+    summary:
+      text: "To bring a foreign partner or spouse to live with you in the Netherlands, your partner needs a residence permit for the purpose of staying with a partner. You are the sponsor: you must have a verifiable relationship (married, registered partnership, or an unmarried relationship), you both generally must be 21 or older, you live together at the same registered address, and you must meet the IND income requirement (independent, sustainable and sufficient income — at least the required amount for this permit)."
+      sourceUrl: "https://ind.nl/en/residence-permits/family-and-partner/residence-permit-for-partner"
+      sourceName: "Immigration and Naturalisation Service (IND) — Residence permit for partner"
+      status: UNVERIFIED
+      lastVerified: "2026-06-13"
+      verifiedBy: ""
+      reviewBy: "2026-09-11"
+    tldr:
+      text: "Your partner or spouse can join you in the Netherlands on a residence permit to stay with a partner. You are the sponsor and must meet the income requirement (independent, sustainable and sufficient income — at least the required amount for this permit). You generally both need to be 21+, in a verifiable relationship, and living together at the same registered address."
+      sourceUrl: "https://ind.nl/en/residence-permits/family-and-partner/residence-permit-for-partner"
+      sourceName: "Immigration and Naturalisation Service (IND) — Residence permit for partner"
+      status: UNVERIFIED
+      lastVerified: "2026-06-13"
+      verifiedBy: ""
+      reviewBy: "2026-09-11"
+    keyFacts:
+      - label: "Who applies"
+        text: "Your partner needs a residence permit to live with you; you act as the sponsor in the Netherlands. (Confirm with the IND whether the sponsor or the partner files, as it depends on the situation.)"
+        sourceUrl: "https://ind.nl/en/residence-permits/family-and-partner/residence-permit-for-partner"
+        sourceName: "Immigration and Naturalisation Service (IND) — Residence permit for partner"
+        status: UNVERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: ""
+        reviewBy: "2026-09-11"
+      - label: "Income requirement"
+        text: "The sponsor must have income that is independent (taxed), sustainable (lasting long enough), and sufficient (at least the IND required amount for this permit). The 2026 required amount to stay with a partner is €2,294.40 gross SV salary per month without holiday allowance (€2,477.95 with). Confirm the current figure, which changes on 1 January and 1 July."
+        sourceUrl: "https://ind.nl/en/required-amounts-income-requirements"
+        sourceName: "Immigration and Naturalisation Service (IND) — Required amounts (income requirements)"
+        # FEE/THRESHOLD figure -> 30-day review window.
+        status: UNVERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: ""
+        reviewBy: "2026-07-13"
+      - label: "Income test available"
+        text: "The IND offers an income test for a residence permit for a partner or minor child to check in advance whether your income is sufficient; the test is not decisive — the IND assesses your income after you apply."
+        sourceUrl: "https://ind.nl/en/independent-sustainable-and-sufficient-income"
+        sourceName: "Immigration and Naturalisation Service (IND) — Income requirements: independent, sustainable and sufficient income"
+        status: UNVERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: ""
+        reviewBy: "2026-09-11"
+      - label: "MVV exemption (partner's nationality)"
+        text: "MVV exemption is by nationality. If your partner is also a US national they are MVV-exempt; if your partner holds a different, non-exempt nationality they may need an MVV. Check the IND MVV-exemptions page for the partner."
+        sourceUrl: "https://ind.nl/en/mvv-exemptions"
+        sourceName: "Immigration and Naturalisation Service (IND) — MVV exemptions"
+        status: UNVERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: ""
+        reviewBy: "2026-09-11"
+    detail: >
+      Family reunification with a partner runs through the IND's residence permit for staying
+      with a partner. You are the sponsor, and the core hurdle is the income requirement:
+      your income must be independent (you pay tax and national insurance on it), sustainable
+      (for example a contract valid at least another 12 months, or — for staying with a
+      partner — at least 6 months plus a sufficient earnings history), and sufficient (at
+      least the IND required amount for this permit; for 2026, €2,294.40 gross SV salary per
+      month without holiday allowance). The IND offers an online income test to check in
+      advance, though the formal assessment happens after you apply. Other standard conditions
+      for this permit (such as a minimum age, a verifiable relationship and living together at
+      the same registered address) are set on the IND partner page — confirm the full,
+      current checklist with the IND, as several conditions are shown behind the page's
+      situation selector. Note that whether your partner needs an MVV depends on their
+      nationality: a US-national partner is exempt, but a partner with another nationality may
+      not be.
+    steps:
+      - text: "Check the income requirement first: use the IND income test to see whether your income is independent, sustainable and sufficient for a partner permit."
+        tip: "The income test is indicative only; the IND makes the binding assessment after you apply. Have salary slips, your contract and benefit/profit statements ready."
+        links:
+          - text: "IND — income requirements and the income test for a partner permit"
+            sourceUrl: "https://ind.nl/en/independent-sustainable-and-sufficient-income"
+            sourceName: "Immigration and Naturalisation Service (IND) — Income requirements: independent, sustainable and sufficient income"
+            status: UNVERIFIED
+            lastVerified: "2026-06-13"
+            verifiedBy: ""
+            reviewBy: "2026-09-11"
+      - text: "Apply to the IND for your partner's residence permit to stay with a partner, meeting the relationship, age, cohabitation and income conditions on the IND partner page."
+        links:
+          - text: "IND — residence permit for partner: conditions and how to apply"
+            sourceUrl: "https://ind.nl/en/residence-permits/family-and-partner/residence-permit-for-partner"
+            sourceName: "Immigration and Naturalisation Service (IND) — Residence permit for partner"
+            status: UNVERIFIED
+            lastVerified: "2026-06-13"
+            verifiedBy: ""
+            reviewBy: "2026-09-11"
+      - text: "Check whether your partner needs an MVV based on their nationality; if MVV-exempt (e.g. a US national), they collect the residence permit after a positive decision without an entry visa."
+        links:
+          - text: "IND — MVV exemptions: check the partner's nationality"
+            sourceUrl: "https://ind.nl/en/mvv-exemptions"
+            sourceName: "Immigration and Naturalisation Service (IND) — MVV exemptions"
+            status: UNVERIFIED
+            lastVerified: "2026-06-13"
+            verifiedBy: ""
+            reviewBy: "2026-09-11"
+    documents:
+      - name: "Residence permit application to stay with a family member/partner"
+        type: form
+        description: "The application for a residence permit to stay with a partner is filed with the IND; where an MVV is also needed it is applied for at the same time on the same form. We link the IND partner page as the authority index for the current procedure and form."
+        form:
+          text: "Apply to the IND for the residence permit to stay with a partner. For partners who also need an MVV, the MVV and residence permit are applied for together (IND form 'to stay with a family member', e.g. 9511, available via the IND apply-from-abroad page). As an MVV-exempt US-national partner no MVV form is needed. Use the IND 'Residence permit for partner' page as the authority index for the current procedure rather than a deep PDF link."
+          sourceUrl: "https://ind.nl/en/residence-permits/family-and-partner/residence-permit-for-partner"
+          sourceName: "Immigration and Naturalisation Service (IND) — Residence permit for partner"
+          status: UNVERIFIED
+          lastVerified: "2026-06-13"
+          verifiedBy: ""
+          reviewBy: "2026-09-11"
+      - name: "Proof of your relationship"
+        type: provide
+        description: "Evidence of a verifiable relationship — a marriage certificate, registered-partnership certificate, or evidence of a long-term unmarried relationship — as required by the IND."
+      - name: "Proof of the sponsor's income"
+        type: provide
+        description: "Salary slips, your employment contract, and (if relevant) benefit or self-employment profit statements showing independent, sustainable and sufficient income."
+      - name: "Valid passports"
+        type: provide
+        description: "Valid passports for you (the sponsor) and your partner."
+    warning: >
+      The income required amounts for family permits are reset on 1 January and 1 July each
+      year. Several detailed conditions for the partner permit (age, relationship and
+      cohabitation requirements) load behind the IND page's situation selector and were not
+      in the captured static text — confirm the full current checklist directly with the IND
+      before relying on it.
+    dependsOn: []
+    appliesIf: "motivation == 'family'"
+
+  # ---------------------------------------------------------------------------
+  - id: study-residence-permit
+    title: "Study route: your institution applies for your residence permit"
+    category: education
+    summary:
+      text: "To study at a Dutch university or institution of higher professional education (hbo) you need a residence permit, and a crucial rule applies: only the educational institution can apply for the residence permit for you — you cannot apply yourself. The institution must be a sponsor recognised by the IND, you enrol on a full-time programme, and you must meet the income (means of support) requirement."
+      sourceUrl: "https://ind.nl/en/residence-permits/study/student-residence-permit-for-university-or-higher-professional-education"
+      sourceName: "Immigration and Naturalisation Service (IND) — Student residence permit for university or higher professional education"
+      status: UNVERIFIED
+      lastVerified: "2026-06-13"
+      verifiedBy: ""
+      reviewBy: "2026-09-11"
+    tldr:
+      text: "For study in the Netherlands your recognised education institution — not you — applies to the IND for your residence permit. You must be admitted to a full-time programme at an IND-recognised sponsor and show enough money to support yourself (the 2026 study required amount for university/hbo is €1,130.77 per month). Get admitted first; the institution then handles the permit."
+      sourceUrl: "https://ind.nl/en/residence-permits/study/student-residence-permit-for-university-or-higher-professional-education"
+      sourceName: "Immigration and Naturalisation Service (IND) — Student residence permit for university or higher professional education"
+      # Quotes the €1,130.77/month study required amount (a threshold figure) -> 30-day review window.
+      status: UNVERIFIED
+      lastVerified: "2026-06-13"
+      verifiedBy: ""
+      reviewBy: "2026-07-13"
+    keyFacts:
+      - label: "Who applies"
+        text: "“Only this educational institution can apply for a residence permit for you.” The institution must be a sponsor recognised by the IND."
+        sourceUrl: "https://ind.nl/en/residence-permits/study/student-residence-permit-for-university-or-higher-professional-education"
+        sourceName: "Immigration and Naturalisation Service (IND) — Student residence permit for university or higher professional education"
+        status: UNVERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: ""
+        reviewBy: "2026-09-11"
+      - label: "Means of support (2026)"
+        text: "You must have enough money to support yourself. The 2026 study required amount for higher professional education (hbo) or university is €1,130.77 per month (valid 1 January–31 December 2026). Confirm the current figure with the IND."
+        sourceUrl: "https://ind.nl/en/required-amounts-income-requirements"
+        sourceName: "Immigration and Naturalisation Service (IND) — Required amounts (income requirements)"
+        # FEE/THRESHOLD figure -> 30-day review window.
+        status: UNVERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: ""
+        reviewBy: "2026-07-13"
+      - label: "Full-time enrolment"
+        text: "The student permit is for full-time study at an IND-recognised education institution; the institution applies and acts as your sponsor."
+        sourceUrl: "https://ind.nl/en/residence-permits/study/student-residence-permit-for-university-or-higher-professional-education"
+        sourceName: "Immigration and Naturalisation Service (IND) — Student residence permit for university or higher professional education"
+        status: UNVERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: ""
+        reviewBy: "2026-09-11"
+      - label: "MVV exemption"
+        text: "As a US national you are MVV-exempt, so no embassy entry-visa step applies; you still receive a student residence permit, applied for by your institution and collected after a positive decision."
+        sourceUrl: "https://ind.nl/en/mvv-exemptions"
+        sourceName: "Immigration and Naturalisation Service (IND) — MVV exemptions"
+        status: UNVERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: ""
+        reviewBy: "2026-09-11"
+    detail: >
+      Studying in the Netherlands as a US national means a student residence permit, and the
+      defining feature of the route is that the educational institution drives it: only the
+      institution — which must be a sponsor recognised by the IND — can apply for your
+      residence permit, so you cannot apply yourself. Practically, you first secure admission
+      to a full-time programme; the institution then files your permit application. You must
+      show enough money to support yourself (the 2026 required amount for university/hbo study
+      is €1,130.77 per month). Other conditions of the route — such as making sufficient study
+      progress each year (a credits requirement), a valid passport and, where indicated, a TB
+      test after arrival — are set out on the IND study pages; confirm the full current
+      checklist with your institution and the IND, as several details load behind the IND
+      page's situation selector. Because you are MVV-exempt, there is no embassy entry-visa
+      step: you collect your residence permit in the Netherlands after a positive decision and
+      then register with your municipality.
+    steps:
+      - text: "Get admitted to a full-time programme at a Dutch institution that is an IND-recognised sponsor; check it appears on the IND public register of recognised sponsors for study."
+        tip: "Admission requirements, deadlines, language requirements and tuition are set by each institution. Confirm the institution is an IND-recognised sponsor before you rely on it for your permit."
+        links:
+          - text: "IND — student residence permit: only the recognised institution can apply for you"
+            sourceUrl: "https://ind.nl/en/residence-permits/study/student-residence-permit-for-university-or-higher-professional-education"
+            sourceName: "Immigration and Naturalisation Service (IND) — Student residence permit for university or higher professional education"
+            status: UNVERIFIED
+            lastVerified: "2026-06-13"
+            verifiedBy: ""
+            reviewBy: "2026-09-11"
+      - text: "Provide your institution with the documents it needs (including proof of sufficient means of support) so it can file your residence permit application with the IND."
+        links:
+          - text: "IND — required amounts: the study means-of-support figure"
+            sourceUrl: "https://ind.nl/en/required-amounts-income-requirements"
+            sourceName: "Immigration and Naturalisation Service (IND) — Required amounts (income requirements)"
+            status: UNVERIFIED
+            lastVerified: "2026-06-13"
+            verifiedBy: ""
+            reviewBy: "2026-07-13"
+      - text: "After a positive decision, travel to the Netherlands (no MVV needed for US citizens), collect your residence permit, and register with your municipality."
+    documents:
+      - name: "Student residence permit application (institution-filed)"
+        type: form
+        description: "The recognised education institution files the residence permit application with the IND on your behalf — you cannot file it yourself. We link the IND student-permit page as the authority index for the current procedure."
+        form:
+          text: "There is no student-filed application form for this route — only the IND-recognised education institution can apply for your residence permit, and it does so with the IND (the recognised-sponsor study application, e.g. IND form 7504). Use the IND 'Student residence permit for university or higher professional education' page as the authority index, and provide your institution with whatever documents it requests."
+          sourceUrl: "https://ind.nl/en/residence-permits/study/student-residence-permit-for-university-or-higher-professional-education"
+          sourceName: "Immigration and Naturalisation Service (IND) — Student residence permit for university or higher professional education"
+          status: UNVERIFIED
+          lastVerified: "2026-06-13"
+          verifiedBy: ""
+          reviewBy: "2026-09-11"
+      - name: "Proof of admission / enrolment"
+        type: provide
+        description: "Confirmation of admission to a full-time programme at the IND-recognised institution that will sponsor your permit."
+      - name: "Proof of sufficient means of support"
+        type: provide
+        description: "Evidence you have enough money to support yourself (at least the IND study required amount per month) — e.g. a bank balance, grant or financing by a third party."
+      - name: "Valid US passport"
+        type: provide
+        description: "Your valid US passport as identity and travel document."
+    warning: >
+      The study means-of-support required amount is set by the IND and changes (the
+      university/hbo figure is fixed per calendar year). Several conditions of the study
+      route (study-progress credits, TB test, passport validity) load behind the IND page's
+      situation selector and were not in the captured static text — confirm the full current
+      checklist with your institution and the IND before relying on it.
+    dependsOn: []
+    appliesIf: "motivation == 'study'"
+
+  # ---------------------------------------------------------------------------
+  - id: study-work-alongside
+    title: "Working alongside your studies"
+    category: employment
+    summary:
+      text: "As an international student you may work, but only if your employer holds a work permit (TWV) for you, which the employer applies for at the UWV. The hours are capped: a student may work a maximum of 16 hours per week, OR full-time in June, July and August. The Netherlands Labour Authority checks compliance, and working without a TWV or beyond the limit leads to fines."
+      sourceUrl: "https://ind.nl/en/residence-permits/work/employing-a-foreign-national"
+      sourceName: "Immigration and Naturalisation Service (IND) — Employing a foreign national"
+      status: UNVERIFIED
+      lastVerified: "2026-06-13"
+      verifiedBy: ""
+      reviewBy: "2026-09-11"
+    tldr:
+      text: "Students can work in the Netherlands only if the employer has a work permit (TWV) for them, applied for at the UWV. The limit is 16 hours a week, or full-time in June, July and August — not both. Working without a TWV or over the limit means fines for the employer."
+      sourceUrl: "https://ind.nl/en/residence-permits/work/employing-a-foreign-national"
+      sourceName: "Immigration and Naturalisation Service (IND) — Employing a foreign national"
+      status: UNVERIFIED
+      lastVerified: "2026-06-13"
+      verifiedBy: ""
+      reviewBy: "2026-09-11"
+    keyFacts:
+      - label: "Work permit required"
+        text: "“A foreign student is only allowed to work if you have a work permit (in Dutch: tewerkstellingsvergunning or TWV) for the student.” The employer applies to the UWV for the TWV."
+        sourceUrl: "https://ind.nl/en/residence-permits/work/employing-a-foreign-national"
+        sourceName: "Immigration and Naturalisation Service (IND) — Employing a foreign national"
+        status: UNVERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: ""
+        reviewBy: "2026-09-11"
+      - label: "Hours cap"
+        text: "“The student is allowed to work maximally 16 hours per week, or fulltime in June, July and August.”"
+        sourceUrl: "https://ind.nl/en/residence-permits/work/employing-a-foreign-national"
+        sourceName: "Immigration and Naturalisation Service (IND) — Employing a foreign national"
+        status: UNVERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: ""
+        reviewBy: "2026-09-11"
+      - label: "Enforcement"
+        text: "The Dutch Labour Inspectorate (Netherlands Labour Authority) checks whether the employer has a TWV and whether the student does not work more than allowed; breaches are reported to the IND and the employer is fined."
+        sourceUrl: "https://ind.nl/en/residence-permits/work/employing-a-foreign-national"
+        sourceName: "Immigration and Naturalisation Service (IND) — Employing a foreign national"
+        status: UNVERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: ""
+        reviewBy: "2026-09-11"
+    detail: >
+      A student residence permit does not give an unconditional right to work. A foreign
+      student may work only if the employer holds a work permit (TWV) for them, which the
+      employer applies for at the UWV. The amount of work is strictly limited: a maximum of
+      16 hours per week during the year, or full-time during the summer months of June, July
+      and August — you cannot combine both in the same period. The Netherlands Labour
+      Authority (Dutch Labour Inspectorate) enforces this, checking that the employer holds a
+      TWV and that the student stays within the hours; violations are reported to the IND and
+      the employer is fined. If you intend to work during your studies, make sure your
+      employer arranges the TWV before you start.
+    steps:
+      - text: "Before starting any job, ensure your employer applies to the UWV for a work permit (TWV) for you as a student."
+        links:
+          - text: "IND — employing foreign students: TWV required, 16 hours/week or full-time in summer"
+            sourceUrl: "https://ind.nl/en/residence-permits/work/employing-a-foreign-national"
+            sourceName: "Immigration and Naturalisation Service (IND) — Employing a foreign national"
+            status: UNVERIFIED
+            lastVerified: "2026-06-13"
+            verifiedBy: ""
+            reviewBy: "2026-09-11"
+      - text: "Keep within the hours limit (16 hours/week, or full-time only in June, July and August) to avoid fines and risk to your permit."
+    documents:
+      - name: "Work permit (TWV) for the student — employer-filed at UWV"
+        type: form
+        description: "The employer applies to the UWV (the employee-insurance agency) for the student's work permit (TWV); the student does not file it. We link the IND employer page as the authority index for the rule."
+        form:
+          text: "The student does not apply — the employer applies to the UWV for the work permit (TWV) for the student. Use the IND 'Employing a foreign national' page as the authority index that states the TWV requirement and the hours limit, and the UWV for the TWV application itself."
+          sourceUrl: "https://ind.nl/en/residence-permits/work/employing-a-foreign-national"
+          sourceName: "Immigration and Naturalisation Service (IND) — Employing a foreign national"
+          status: UNVERIFIED
+          lastVerified: "2026-06-13"
+          verifiedBy: ""
+          reviewBy: "2026-09-11"
+      - name: "Valid student residence permit"
+        type: provide
+        description: "Your valid student residence permit, on the basis of which the employer can obtain a TWV for term-time/summer work."
+    warning: >
+      Working without a TWV, or beyond the 16-hours-per-week / summer-full-time limit, is
+      enforced by the Netherlands Labour Authority and leads to employer fines and possible
+      risk to your residence permit. Confirm the current rules and hours with the IND/UWV.
+    dependsOn:
+      - study-residence-permit
+    appliesIf: "motivation == 'study'"

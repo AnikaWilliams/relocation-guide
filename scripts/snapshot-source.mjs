@@ -27,19 +27,18 @@
  * verify anything.
  */
 
-import { spawnSync } from 'node:child_process';
 import { gzipSync } from 'node:zlib';
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { normalizeSource } from './lib/normalize-source.mjs';
+import { fetchSource } from './lib/source-fetch.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const REPO_ROOT = path.resolve(__dirname, '..');
 const SOURCES_DIR = path.join(REPO_ROOT, 'sources');
 const CACHE_DIR = path.join(SOURCES_DIR, '.cache');
 
-const CURL_TIMEOUT_S = 30;
 const CAPTURED_BY = 'snapshot-source';
 
 // ---------------------------------------------------------------------------
@@ -72,67 +71,6 @@ function usage(msg) {
   console.error(
     'usage: node scripts/snapshot-source.mjs <url> <corridor> [--name "Authority"] [--claim <taskId>]',
   );
-}
-
-// ---------------------------------------------------------------------------
-// Fetch (local curl) — returns raw body string + contentType, or throws.
-// ---------------------------------------------------------------------------
-
-/**
- * Fetch raw body via local curl. `-sL` = silent + follow redirects; `--max-time`
- * caps total time. We also ask for the final Content-Type via `-w` written to
- * stderr so it never contaminates the body on stdout.
- */
-function curlFetch(url) {
-  const res = spawnSync(
-    'curl',
-    [
-      '-sL',
-      '--max-time',
-      String(CURL_TIMEOUT_S),
-      '-w',
-      '%{http_code} %{content_type}',
-      url,
-    ],
-    { encoding: 'buffer', maxBuffer: 64 * 1024 * 1024 },
-  );
-
-  if (res.error) {
-    throw new Error(`curl could not run: ${res.error.message}`);
-  }
-  if (res.status !== 0) {
-    const stderr = res.stderr ? res.stderr.toString('utf8').trim() : '';
-    throw new Error(
-      `curl exited ${res.status}${stderr ? ` — ${stderr}` : ''} (URL unreachable: ${url})`,
-    );
-  }
-
-  // `-w` output is appended to stdout AFTER the body. Split it off the tail.
-  const stdout = res.stdout ?? Buffer.alloc(0);
-  const wInfo = (res.stderr ? res.stderr.toString('utf8') : '').trim();
-  // We sent -w to default (stdout); recover it from the tail of stdout instead.
-  const full = stdout.toString('utf8');
-  // Find the last occurrence of a trailing "<code> <type>" line.
-  const m = full.match(/(\d{3})\s+([^\s]*)\s*$/);
-  let httpCode = 0;
-  let contentType = '';
-  let body = full;
-  if (m) {
-    httpCode = Number(m[1]);
-    contentType = m[2] || '';
-    body = full.slice(0, m.index);
-  }
-
-  if (!httpCode || httpCode >= 400) {
-    throw new Error(`HTTP ${httpCode || '???'} fetching ${url} — not captured`);
-  }
-  if (!body.trim()) {
-    throw new Error(`empty body from ${url} — not captured`);
-  }
-
-  // rawBytes for the gz cache = the body bytes only (exclude the -w tail).
-  const rawBytes = Buffer.from(body, 'utf8');
-  return { body, rawBytes, contentType, httpCode };
 }
 
 // ---------------------------------------------------------------------------
@@ -179,7 +117,7 @@ function main() {
 
   let fetched;
   try {
-    fetched = curlFetch(url);
+    fetched = fetchSource(url);
   } catch (err) {
     console.error(`error: ${err.message}`);
     process.exitCode = 1;

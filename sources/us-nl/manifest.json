@@ -1,0 +1,268 @@
+[
+  {
+    "sourceUrl": "https://ind.nl/en/residence-permits/work/highly-skilled-migrant",
+    "sourceName": "Immigration and Naturalisation Service (IND) — Highly skilled migrant",
+    "claimIds": [
+      "work-hsm-permit"
+    ],
+    "fetchedAt": "2026-06-13",
+    "fetchMethod": "curl",
+    "sha256": "ac7c389c865089339f51f03c25647298e6f07420ef544bb7b8785a933651628e",
+    "byteSize": 34999,
+    "contentType": "text/html; charset=UTF-8",
+    "textPath": "sources/us-nl/ac7c389c.txt",
+    "capturedBy": "snapshot-source"
+  },
+  {
+    "sourceUrl": "https://ind.nl/en/required-amounts-income-requirements",
+    "sourceName": "IND — Required amounts (income requirements)",
+    "claimIds": [
+      "work-hsm-permit"
+    ],
+    "fetchedAt": "2026-06-13",
+    "fetchMethod": "curl",
+    "sha256": "aa2b070046f14424bbcb932aef06ba84ef663b41b2177a566ba463ace3d698be",
+    "byteSize": 82517,
+    "contentType": "text/html; charset=UTF-8",
+    "textPath": "sources/us-nl/aa2b0700.txt",
+    "capturedBy": "snapshot-source"
+  },
+  {
+    "sourceUrl": "https://www.government.nl/topics/immigration-to-the-netherlands/options-for-entrepreneurs-and-employees-from-abroad/highly-skilled-migrants",
+    "sourceName": "Government of the Netherlands — Highly skilled migrants",
+    "claimIds": [
+      "work-hsm-permit"
+    ],
+    "fetchedAt": "2026-06-13",
+    "fetchMethod": "curl",
+    "sha256": "f62f3c24e404faab6c872afcfc87fa36762bf736e1a09bec25c8088ff2014f3c",
+    "byteSize": 212115,
+    "contentType": "text/html; charset=utf-8",
+    "textPath": "sources/us-nl/f62f3c24.txt",
+    "capturedBy": "snapshot-source"
+  },
+  {
+    "sourceUrl": "https://ind.nl/en/residence-permits/work/single-permit-gvva",
+    "sourceName": "IND — Single permit (GVVA)",
+    "claimIds": [
+      "work-single-permit-gvva"
+    ],
+    "fetchedAt": "2026-06-13",
+    "fetchMethod": "curl",
+    "sha256": "900034e60b37f556eedde9c03abb5a6e44f587585d471849738b53fd25ee5200",
+    "byteSize": 35127,
+    "contentType": "text/html; charset=UTF-8",
+    "textPath": "sources/us-nl/900034e6.txt",
+    "capturedBy": "snapshot-source"
+  },
+  {
+    "sourceUrl": "https://ind.nl/en/provisional-residence-permit-mvv",
+    "sourceName": "IND — Provisional residence permit (MVV)",
+    "claimIds": [
+      "entry-mvv-exemption"
+    ],
+    "fetchedAt": "2026-06-13",
+    "fetchMethod": "curl",
+    "sha256": "0380c811c79815c5aff48801bdd847f7bd75ba2467dab3653bf48f4d485c6533",
+    "byteSize": 39986,
+    "contentType": "text/html; charset=UTF-8",
+    "textPath": "sources/us-nl/0380c811.txt",
+    "capturedBy": "snapshot-source"
+  },
+  {
+    "sourceUrl": "https://ind.nl/en/mvv-exemptions",
+    "sourceName": "IND — MVV exemptions",
+    "claimIds": [
+      "entry-mvv-exemption"
+    ],
+    "fetchedAt": "2026-06-13",
+    "fetchMethod": "curl",
+    "sha256": "ac7125e031d2d2e880a87b630eeb4bcac33c97269944a811b3a5cd1da5caa290",
+    "byteSize": 42374,
+    "contentType": "text/html; charset=UTF-8",
+    "textPath": "sources/us-nl/ac7125e0.txt",
+    "capturedBy": "snapshot-source"
+  },
+  {
+    "sourceUrl": "https://ind.nl/en/apply-for-mvv-and-residence-permit-from-abroad",
+    "sourceName": "IND — Apply for MVV and residence permit from abroad",
+    "claimIds": [
+      "entry-residence-permit"
+    ],
+    "fetchedAt": "2026-06-13",
+    "fetchMethod": "curl",
+    "sha256": "447492e79c0d2df296c45f81d4b70f79f7d7e37ef997949ed8ade2caf8c58070",
+    "byteSize": 45361,
+    "contentType": "text/html; charset=UTF-8",
+    "textPath": "sources/us-nl/447492e7.txt",
+    "capturedBy": "snapshot-source"
+  },
+  {
+    "sourceUrl": "https://ind.nl/en/residence-permits/family-and-partner/residence-permit-for-partner",
+    "sourceName": "IND — Residence permit for partner",
+    "claimIds": [
+      "family-partner-permit"
+    ],
+    "fetchedAt": "2026-06-13",
+    "fetchMethod": "curl",
+    "sha256": "a50d36bf0a5c1d8d4ea54b287660b5ea8bf669cde726b1dcc453212e82dc749d",
+    "byteSize": 36532,
+    "contentType": "text/html; charset=UTF-8",
+    "textPath": "sources/us-nl/a50d36bf.txt",
+    "capturedBy": "snapshot-source"
+  },
+  {
+    "sourceUrl": "https://ind.nl/en/independent-sustainable-and-sufficient-income",
+    "sourceName": "IND — Independent, sustainable and sufficient income",
+    "claimIds": [
+      "family-partner-permit"
+    ],
+    "fetchedAt": "2026-06-13",
+    "fetchMethod": "curl",
+    "sha256": "0bb3acd3e7a1114c8ec83923cf08dbbabf088012487a860e6749c3f4efd33968",
+    "byteSize": 63227,
+    "contentType": "text/html; charset=UTF-8",
+    "textPath": "sources/us-nl/0bb3acd3.txt",
+    "capturedBy": "snapshot-source"
+  },
+  {
+    "sourceUrl": "https://ind.nl/en/residence-permits/study/student-residence-permit-for-university-or-higher-professional-education",
+    "sourceName": "IND — Student residence permit for university or higher professional education",
+    "claimIds": [
+      "study-residence-permit"
+    ],
+    "fetchedAt": "2026-06-13",
+    "fetchMethod": "curl",
+    "sha256": "39d44662fc165dc696ee82af1d33e117229f29ecd25d28a2224a77d6efacc651",
+    "byteSize": 35788,
+    "contentType": "text/html; charset=UTF-8",
+    "textPath": "sources/us-nl/39d44662.txt",
+    "capturedBy": "snapshot-source"
+  },
+  {
+    "sourceUrl": "https://www.government.nl/topics/personal-data/citizen-service-number-bsn",
+    "sourceName": "Government of the Netherlands — Citizen service number (BSN)",
+    "claimIds": [
+      "register-municipality-brp"
+    ],
+    "fetchedAt": "2026-06-13",
+    "fetchMethod": "curl",
+    "sha256": "eddfed340d645855617ca0cb2657a5b739e9c39f7871e09d5fe6b828cdeec6d2",
+    "byteSize": 214114,
+    "contentType": "text/html; charset=utf-8",
+    "textPath": "sources/us-nl/eddfed34.txt",
+    "capturedBy": "snapshot-source"
+  },
+  {
+    "sourceUrl": "https://business.gov.nl/regulations/citizen-service-number/",
+    "sourceName": "Netherlands Enterprise Agency (business.gov.nl) — Citizen service number (BSN)",
+    "claimIds": [
+      "register-municipality-brp"
+    ],
+    "fetchedAt": "2026-06-13",
+    "fetchMethod": "curl",
+    "sha256": "7f25bcbd3aadb398e1ed5f368c8472abe739d1b2931819dbe383156661e39ae2",
+    "byteSize": 1461214,
+    "contentType": "text/html; charset=utf-8",
+    "textPath": "sources/us-nl/7f25bcbd.txt",
+    "capturedBy": "snapshot-source"
+  },
+  {
+    "sourceUrl": "https://www.government.nl/topics/health-insurance/health-insurance-and-residence-permit",
+    "sourceName": "Government of the Netherlands — Health insurance and residence permit",
+    "claimIds": [
+      "health-insurance-zvw"
+    ],
+    "fetchedAt": "2026-06-13",
+    "fetchMethod": "curl",
+    "sha256": "e4ac43fbc9590c1abc693ec695c42cf48dea0aeeb3a761ac91cbd363314fbe4b",
+    "byteSize": 219614,
+    "contentType": "text/html; charset=utf-8",
+    "textPath": "sources/us-nl/e4ac43fb.txt",
+    "capturedBy": "snapshot-source"
+  },
+  {
+    "sourceUrl": "https://www.government.nl/topics/health-insurance/standard-health-insurance/compulsory-standard-health-insurance",
+    "sourceName": "Government of the Netherlands — Compulsory standard health insurance",
+    "claimIds": [
+      "health-insurance-zvw"
+    ],
+    "fetchedAt": "2026-06-13",
+    "fetchMethod": "curl",
+    "sha256": "6bbb6b470b500d7e9cc6a9b7e884e79af4f5ad4d232e1b81818e1632abe14f66",
+    "byteSize": 223398,
+    "contentType": "text/html; charset=utf-8",
+    "textPath": "sources/us-nl/6bbb6b47.txt",
+    "capturedBy": "snapshot-source"
+  },
+  {
+    "sourceUrl": "https://ind.nl/en/fees-costs-of-an-application",
+    "sourceName": "IND — Fees: costs of an application",
+    "claimIds": [
+      "entry-residence-permit"
+    ],
+    "fetchedAt": "2026-06-13",
+    "fetchMethod": "curl",
+    "sha256": "18e1d6cacc78bf9c1fd8b034cc1de934e28bfe757f9b5e6b9115a1a6b01da73f",
+    "byteSize": 93245,
+    "contentType": "text/html; charset=UTF-8",
+    "textPath": "sources/us-nl/18e1d6ca.txt",
+    "capturedBy": "snapshot-source"
+  },
+  {
+    "sourceUrl": "https://business.gov.nl/staff/employing-staff/the-expat-scheme-30-percent-ruling-in-the-netherlands/",
+    "sourceName": "Netherlands Enterprise Agency (business.gov.nl) — The expat scheme (30% ruling)",
+    "claimIds": [
+      "tax-30-ruling"
+    ],
+    "fetchedAt": "2026-06-13",
+    "fetchMethod": "curl",
+    "sha256": "bde437a8fa911f43e13aa0e334790b9202268725e7dc21d466371f834d24092c",
+    "byteSize": 1518231,
+    "contentType": "text/html; charset=utf-8",
+    "textPath": "sources/us-nl/bde437a8.txt",
+    "capturedBy": "snapshot-source"
+  },
+  {
+    "sourceUrl": "https://www.government.nl/topics/personal-data/personal-records-database-brp",
+    "sourceName": "Government of the Netherlands — Personal Records Database (BRP)",
+    "claimIds": [
+      "register-municipality-brp"
+    ],
+    "fetchedAt": "2026-06-13",
+    "fetchMethod": "curl",
+    "sha256": "88dbec0123c2a2ccb9021f18c776d1c7c26c86a3b14ee4dd87eb24c6cfc4a234",
+    "byteSize": 225808,
+    "contentType": "text/html; charset=utf-8",
+    "textPath": "sources/us-nl/88dbec01.txt",
+    "capturedBy": "snapshot-source"
+  },
+  {
+    "sourceUrl": "https://ind.nl/en/residence-permits/work/employing-a-foreign-national",
+    "sourceName": "IND — Employing a foreign national",
+    "claimIds": [
+      "work-single-permit-gvva"
+    ],
+    "fetchedAt": "2026-06-13",
+    "fetchMethod": "curl",
+    "sha256": "46506145b47cb3139c5f90a94dd3a17e30ff6afc3cfbc34383e9014ffa719e47",
+    "byteSize": 71303,
+    "contentType": "text/html; charset=UTF-8",
+    "textPath": "sources/us-nl/46506145.txt",
+    "capturedBy": "snapshot-source"
+  },
+  {
+    "sourceUrl": "https://business.gov.nl/regulations/health-care-insurance/",
+    "sourceName": "Netherlands Enterprise Agency (business.gov.nl) — Healthcare insurance in the Netherlands",
+    "claimIds": [
+      "health-insurance-zvw"
+    ],
+    "fetchedAt": "2026-06-13",
+    "fetchMethod": "curl",
+    "sha256": "00fee87d9c1e9cdda69a4b99091db677b79f0452b281c7342f4f3fa313b57ee5",
+    "byteSize": 1463993,
+    "contentType": "text/html; charset=utf-8",
+    "textPath": "sources/us-nl/00fee87d.txt",
+    "capturedBy": "snapshot-source"
+  }
+]

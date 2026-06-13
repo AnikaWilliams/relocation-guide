@@ -10,6 +10,43 @@ coming next. Newest updates are at the top.
 
 ---
 
+## 2026-06-13 — Drafting progress: USA → Western Europe batch
+
+**What changed.** Running tally of the eight-guide batch (I'll update this line as they land). All are drafts — every fact unverified and the guide hidden — until the separate fact-checking team runs.
+**Done so far: 6 of 8** — 🇫🇷 France (11 topics / 111 facts), 🇩🇪 Germany (14 / 94), 🇳🇱 Netherlands (10 / 92), 🇦🇹 Austria (11 / 91), 🇧🇪 Belgium (7 / 50), 🇮🇪 Ireland (11 / 84). **Remaining: Luxembourg + UK** — their official sources are already captured (receipts saved), but the research team's parallel sessions ended during a long pause before those two guides were written, so they need a short finishing pass.
+
+**Why it matters.** Steady expansion of the catalogue beyond Switzerland, each fact captured with a dated official-source receipt.
+
+**What you'd notice today.** Nothing live — all drafts, hidden from visitors.
+
+**What's next.** Finish the remaining guides, then the fact-checking team verifies before any publish. (Where a site uses an aggressive bot-wall, we source the fact from the official statute/agency page instead, or mark it "confirm" — never guess.)
+
+---
+
+## 2026-06-13 — First new guide drafted: USA → France
+
+**What changed.** The research team finished the first of the eight new guides — USA → France — at the same depth as our Switzerland one: 11 topics (work permits, the "Passeport Talent" and EU Blue Card, students, retirees, the long-stay visa, integration, health cover, family reunification, opening a bank account, income tax) with 111 individual facts, each tied to an official French government page and its dated "receipt." It is a draft only: every fact is marked unverified and the guide is switched off (not public) until the separate fact-checking team confirms each one. (One French health-contribution figure isn't settled in law yet, so we deliberately say "confirm current position" rather than print a number.)
+
+**Why it matters.** It proves the assembly line runs end-to-end — research → sourced draft → receipts — and it's the first brick in growing beyond Switzerland.
+
+**What you'd notice today.** Nothing live yet — it's an unverified draft, hidden from visitors.
+
+**What's next.** Seven more guides are in progress; then the fact-checking team verifies them before any publish.
+
+---
+
+## 2026-06-13 — Started drafting 8 new country guides (USA → Western Europe)
+
+**What changed.** I pointed the AI research team at eight new routes from the USA — to Germany, France, the Netherlands, Ireland, Austria, Belgium, Luxembourg, and the UK — drafting them in parallel against official government sources, with each fact's "receipt" captured automatically. These are first drafts only: every fact is marked unverified, and a separate fact-checking team must confirm each one before anything can go live. Early on the team hit a couple of snags reading European government sites — one refused our automated reader, and a formatting quirk in how others labelled their pages tripped up the capture tool — both of which I fixed quickly (and made the tool sturdier so it won't recur).
+
+**Why it matters.** This is how we grow from one country pair (USA → Switzerland) to broad coverage — the catalogue of guides people can actually use.
+
+**What you'd notice today.** Nothing live yet — these are unverified drafts being written behind the scenes.
+
+**What's next.** Let the drafts finish, then run the separate fact-checking team before any of them publish.
+
+---
+
 ## 2026-06-13 — Built "receipts" for every official fact
 
 **What changed.** I built the behind-the-scenes "receipts drawer" for our research. Before, when we confirmed a fact (a visa fee, a deadline) we saved the official web *address* we used — but not a copy of what that page actually *said* that day. Now the system can snapshot the page itself, time-stamp it, and take a fingerprint of its wording, kept alongside the guide — so we can prove "on this date, the government's own page said exactly this," and an automatic check re-reads those pages and flags any that have quietly changed. I built it with a small team of AI assistants working in parallel (the capability we just switched on) — a deliberate low-risk trial before the big country-research push. It passed every test (90 automated checks green).

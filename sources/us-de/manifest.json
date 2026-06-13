@@ -1,0 +1,184 @@
+[
+  {
+    "sourceUrl": "https://www.bamf.de/EN/Startseite/startseite_node.html",
+    "sourceName": "Federal Office for Migration and Refugees (BAMF)",
+    "claimIds": [
+      "probe"
+    ],
+    "fetchedAt": "2026-06-13",
+    "fetchMethod": "curl",
+    "sha256": "0ef5cbf1480c0489e970eb4caaae45edfe7ac638ce03085cd5b3219de35abb31",
+    "byteSize": 52185,
+    "contentType": "text/html;charset=utf-8",
+    "textPath": "sources/us-de/0ef5cbf1.txt",
+    "capturedBy": "snapshot-source"
+  },
+  {
+    "sourceUrl": "https://www.gesetze-im-internet.de/englisch_aufenthg/englisch_aufenthg.html",
+    "sourceName": "Residence Act (Aufenthaltsgesetz, AufenthG) — official English translation, Federal Ministry of Justice (gesetze-im-internet.de)",
+    "claimIds": [
+      "aufenthg"
+    ],
+    "fetchedAt": "2026-06-13",
+    "fetchMethod": "curl",
+    "sha256": "763ff507f3bcea4599f3e5a38abb6cd079cda00070b27fb90675cae27e01fd3e",
+    "byteSize": 747706,
+    "contentType": "text/html",
+    "textPath": "sources/us-de/763ff507.txt",
+    "capturedBy": "snapshot-source"
+  },
+  {
+    "sourceUrl": "https://www.auswaertiges-amt.de/en/visa-service/-/231148",
+    "sourceName": "Federal Foreign Office — Visa regulations / entry requirements",
+    "claimIds": [
+      "visa-general"
+    ],
+    "fetchedAt": "2026-06-13",
+    "fetchMethod": "curl",
+    "sha256": "976e1b84e192a7c76b104f0d9562ef17535a5010df386d585ee47271430168f2",
+    "byteSize": 63944,
+    "contentType": "text/html;charset=UTF-8",
+    "textPath": "sources/us-de/976e1b84.txt",
+    "capturedBy": "snapshot-source"
+  },
+  {
+    "sourceUrl": "https://www.gesetze-im-internet.de/englisch_aufenthv/englisch_aufenthv.html",
+    "sourceName": "Residence Ordinance (Aufenthaltsverordnung, AufenthV) — official English translation (gesetze-im-internet.de)",
+    "claimIds": [
+      "aufenthv"
+    ],
+    "fetchedAt": "2026-06-13",
+    "fetchMethod": "curl",
+    "sha256": "070d9f8979e6292df7ae334b4b2fe18cfe453106aa36945129d1308497503fd6",
+    "byteSize": 259034,
+    "contentType": "text/html",
+    "textPath": "sources/us-de/070d9f89.txt",
+    "capturedBy": "snapshot-source"
+  },
+  {
+    "sourceUrl": "https://www.germany.info/us-en/service/visa",
+    "sourceName": "German Missions in the United States (germany.info) — Visa",
+    "claimIds": [
+      "germany-info-visa"
+    ],
+    "fetchedAt": "2026-06-13",
+    "fetchMethod": "curl",
+    "sha256": "d76e3fc2b72b81edc57ee811c72bdd9754e07c56fed2f3449565abe5966cc727",
+    "byteSize": 81603,
+    "contentType": "text/html;charset=UTF-8",
+    "textPath": "sources/us-de/d76e3fc2.txt",
+    "capturedBy": "snapshot-source"
+  },
+  {
+    "sourceUrl": "https://www.bamf.de/EN/Themen/MigrationAufenthalt/ZuwandererDrittstaaten/Arbeit/arbeit-node.html",
+    "sourceName": "Federal Office for Migration and Refugees (BAMF) — Working in Germany",
+    "claimIds": [
+      "bamf-work"
+    ],
+    "fetchedAt": "2026-06-13",
+    "fetchMethod": "curl",
+    "sha256": "819571b6bb90db7d777c56b55f3c25e27b6b498a7706327d3d5687557a2cc165",
+    "byteSize": 54503,
+    "contentType": "text/html;charset=utf-8",
+    "textPath": "sources/us-de/819571b6.txt",
+    "capturedBy": "snapshot-source"
+  },
+  {
+    "sourceUrl": "https://www.bamf.de/EN/Themen/MigrationAufenthalt/ZuwandererDrittstaaten/Familie/familie-node.html",
+    "sourceName": "Federal Office for Migration and Refugees (BAMF) — Family",
+    "claimIds": [
+      "bamf-family"
+    ],
+    "fetchedAt": "2026-06-13",
+    "fetchMethod": "curl",
+    "sha256": "f0650add252316f37b63bc72439ad463babae2bebd80fd50bd67a8cedf5cc6ac",
+    "byteSize": 48376,
+    "contentType": "text/html;charset=utf-8",
+    "textPath": "sources/us-de/f0650add.txt",
+    "capturedBy": "snapshot-source"
+  },
+  {
+    "sourceUrl": "https://www.bamf.de/EN/Themen/MigrationAufenthalt/ZuwandererDrittstaaten/Bildung/bildung-node.html",
+    "sourceName": "Federal Office for Migration and Refugees (BAMF) — Education / Study",
+    "claimIds": [
+      "bamf-study"
+    ],
+    "fetchedAt": "2026-06-13",
+    "fetchMethod": "curl",
+    "sha256": "5824fe26234fdd2763be5dccc12b30e3bb98ea3ccca9f6ad1a1b9ae14a50c079",
+    "byteSize": 50887,
+    "contentType": "text/html;charset=utf-8",
+    "textPath": "sources/us-de/5824fe26.txt",
+    "capturedBy": "snapshot-source"
+  },
+  {
+    "sourceUrl": "https://www.bamf.de/EN/Themen/MigrationAufenthalt/ZuwandererDrittstaaten/Migrathek/Einreisebestimmungen/einreisebestimmungen-node.html",
+    "sourceName": "Federal Office for Migration and Refugees (BAMF) — Entry regulations",
+    "claimIds": [
+      "bamf-entry"
+    ],
+    "fetchedAt": "2026-06-13",
+    "fetchMethod": "curl",
+    "sha256": "0db6a5e1a1aa1c314c7dd950c1f43345a91261c5a1b7448ddbfee34479c94f16",
+    "byteSize": 54629,
+    "contentType": "text/html;charset=utf-8",
+    "textPath": "sources/us-de/0db6a5e1.txt",
+    "capturedBy": "snapshot-source"
+  },
+  {
+    "sourceUrl": "https://www.bamf.de/EN/Themen/Integration/ZugewanderteTeilnehmende/Integrationskurse/integrationskurse-node.html",
+    "sourceName": "Federal Office for Migration and Refugees (BAMF) — Integration courses",
+    "claimIds": [
+      "bamf-integration"
+    ],
+    "fetchedAt": "2026-06-13",
+    "fetchMethod": "curl",
+    "sha256": "cc4919c03dc00949c43879190826e052efddca7f576479e83945bb45b1e6270b",
+    "byteSize": 50158,
+    "contentType": "text/html;charset=utf-8",
+    "textPath": "sources/us-de/cc4919c0.txt",
+    "capturedBy": "snapshot-source"
+  },
+  {
+    "sourceUrl": "https://www.gesetze-im-internet.de/englisch_bmg/englisch_bmg.html",
+    "sourceName": "Federal Act on Registration (Bundesmeldegesetz, BMG) — official English translation (gesetze-im-internet.de)",
+    "claimIds": [
+      "bmg-registration"
+    ],
+    "fetchedAt": "2026-06-13",
+    "fetchMethod": "curl",
+    "sha256": "d7830700a9c7e28129e43867464787506ae3a4e7543b3fa6e2708b3901f26376",
+    "byteSize": 152693,
+    "contentType": "text/html",
+    "textPath": "sources/us-de/d7830700.txt",
+    "capturedBy": "snapshot-source"
+  },
+  {
+    "sourceUrl": "https://www.gesetze-im-internet.de/sgb_5/__193.html",
+    "sourceName": "Social Code Book V (SGB V), Section 193 — Obligation to be insured (gesetze-im-internet.de)",
+    "claimIds": [
+      "sgbv-193"
+    ],
+    "fetchedAt": "2026-06-13",
+    "fetchMethod": "curl",
+    "sha256": "226a347ca1f38b6fbf33b9ac0eb112d6017a2570a2e1563ce34a86a051a71a4a",
+    "byteSize": 5310,
+    "contentType": "text/html",
+    "textPath": "sources/us-de/226a347c.txt",
+    "capturedBy": "snapshot-source"
+  },
+  {
+    "sourceUrl": "https://www.bamf.de/EN/Themen/MigrationAufenthalt/ZuwandererDrittstaaten/Migrathek/ErsteSchritte/ersteschritte-node.html",
+    "sourceName": "Federal Office for Migration and Refugees (BAMF) — First steps in Germany",
+    "claimIds": [
+      "bamf-firststeps"
+    ],
+    "fetchedAt": "2026-06-13",
+    "fetchMethod": "curl",
+    "sha256": "db8560121b4da0df9eaafad586db4febe2a86ea56dd514c0a8d03b117d1cdd52",
+    "byteSize": 51352,
+    "contentType": "text/html;charset=utf-8",
+    "textPath": "sources/us-de/db856012.txt",
+    "capturedBy": "snapshot-source"
+  }
+]
