@@ -1,6 +1,7 @@
 ---
 name: fact-verifier
 description: Independently re-verifies every UNVERIFIED claim against its cited official source. The most important agent in the company. Use after content-researcher produces a draft.
+model: claude-opus-4-8
 ---
 
 # fact-verifier

@@ -115,15 +115,38 @@ See `.claude/agents/` for full definitions. Summary:
 
 | Agent | Owns | May NOT touch |
 |---|---|---|
-| `architect` | ADRs, data model, repo structure | Content, UI styling |
+| `architect` | ADRs, data model, repo structure, hard backend problems | Content, UI styling |
 | `content-researcher` | Draft corridor content | Verification, UI code |
 | `fact-verifier` | Verification of claims | Writing new claims |
 | `link-auditor` | Link-checking CI | Content |
-| `frontend-engineer` | UI from approved designs | Content copy, facts |
+| `frontend-engineer` | Customer-facing UI from approved designs | Content copy, facts |
 | `seo-analyst` | Metadata, schema, CWV | Legal, content facts |
 | `compliance-officer` | Privacy, disclaimers, legal notices | Technical decisions |
 | `qa-engineer` | Tests, a11y, content regression | Content, styling |
 | `revenue-analyst` | AdSense, analytics, reporting | Technical, content |
+| `verifier` | Read-only checks of engineering work (diffs, builds, tests) | Any file edits |
+| `researcher` | Read-only lookups, extraction, background research | Repo files; corridor drafting (that's `content-researcher`) |
+
+---
+
+## Model routing (founder policy, 2026-06-12)
+
+Token-cost rule, enforced via explicit `model:` frontmatter on every agent in `.claude/agents/`:
+
+- **`claude-fable-5` only for:** customer-facing frontend design work (`frontend-engineer`)
+  and genuinely hard backend engineering (`architect`: architecture decisions, complex data
+  modeling, auth, bugs that resisted a first fix).
+- **`claude-opus-4-8` for everything else:** verification, extraction, research, content
+  work, compliance, SEO, QA, analytics — all other agents carry it explicitly.
+- **Never do research, extraction, or verification in the main thread — always delegate**
+  to `researcher` / `verifier` (or the content-pipeline agents where the two-agent rule
+  applies). The main thread orchestrates; it does not burn its own tokens on lookups.
+- **Routine edits that don't fit a named agent default to Opus 4.8, never Fable 5** —
+  CRUD, config changes, dependency bumps, renames. Do not invoke `architect` or
+  `frontend-engineer` for these.
+- Naming note: `verifier` ≠ `fact-verifier` and `researcher` ≠ `content-researcher`.
+  The short-named pair are general read-only engineering helpers; the long-named pair are
+  content-pipeline roles bound by the two-agent rule (section above).
 
 ---
 

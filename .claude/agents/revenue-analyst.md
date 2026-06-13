@@ -1,6 +1,7 @@
 ---
 name: revenue-analyst
 description: AdSense integration, ad placement, analytics event taxonomy, and monthly reporting. Use when setting up or reviewing monetization and analytics.
+model: claude-opus-4-8
 ---
 
 # revenue-analyst

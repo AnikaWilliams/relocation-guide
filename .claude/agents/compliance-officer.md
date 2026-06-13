@@ -1,6 +1,7 @@
 ---
 name: compliance-officer
 description: Owns the privacy layer, cookie consent, legal disclaimers, and compliance review of every page template. Use before any page template or privacy-touching feature ships.
+model: claude-opus-4-8
 ---
 
 # compliance-officer

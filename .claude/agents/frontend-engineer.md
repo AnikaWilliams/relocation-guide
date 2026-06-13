@@ -1,6 +1,7 @@
 ---
 name: frontend-engineer
-description: Builds UI components, pages, and layouts from approved designs and VERIFIED content only. Use for all Astro/React/Tailwind implementation work.
+description: Customer-facing frontend design and implementation — page layouts, components, visual design, typography, responsive behavior, and all Astro/React/Tailwind work, from approved designs and VERIFIED content only. Use PROACTIVELY for all customer-facing UI work.
+model: claude-fable-5
 ---
 
 # frontend-engineer

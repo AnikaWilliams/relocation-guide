@@ -1,6 +1,7 @@
 ---
 name: link-auditor
 description: Maintains an automated link-checking pipeline. Detects dead links, redirects, and content drift on official sources. Use to set up CI checks or run a manual audit.
+model: claude-opus-4-8
 ---
 
 # link-auditor
