@@ -168,6 +168,20 @@ export const TaskSchema = z.object({
   documents: z.array(z.union([z.string(), TaskDocumentSchema])),
   timeline: ClaimSchema.optional(),
   cost: ClaimSchema.optional(),
+  /**
+   * Presentation hint (asserts no new fact, carries no provenance): for a
+   * cantonally-administered destination (Switzerland — ADR-0021), this step's
+   * fee and processing time are set locally — by the canton (`'canton'`) or,
+   * for study admission, the educational institution (`'institution'`) — with
+   * no single federal figure. ADR-0007 omits a numeric `cost`/`timeline` here
+   * because none exists federally; rather than leave the plan silently blank,
+   * this flag surfaces a user-facing "Fees & processing time" note telling the
+   * user the figures are set locally and to confirm them with the competent
+   * authority. It restates the established cantonal-administration principle —
+   * not a new sourced claim — so it needs no source of its own, and it is only
+   * meaningful when the task carries no `cost`/`timeline` claim.
+   */
+  localCostTimeline: z.enum(['canton', 'institution']).optional(),
   warning: z.string().optional(),
   dependsOn: z.array(z.string()).default([]),
   appliesIf: z.string().optional(), // Expression evaluated at runtime

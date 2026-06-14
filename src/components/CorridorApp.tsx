@@ -115,6 +115,10 @@ export interface TaskData {
   documents: (string | TaskDocumentData)[];
   timeline?: ClaimData;
   cost?: ClaimData;
+  /** Presentation hint (ADR-0021/ADR-0007): this step's fee + processing time are set
+   *  locally — by the canton or, for study admission, the institution — with no federal
+   *  figure. Renders a "confirm locally" note only when no cost/timeline claim exists. */
+  localCostTimeline?: 'canton' | 'institution';
   warning?: string;
   dependsOn: string[];
   appliesIf?: string;
@@ -1053,6 +1057,9 @@ function CantonPanel({ canton, data }: { canton: string; data: CantonData | unde
                 <p className="mt-0.5 text-sm text-slate-700">{note.text}</p>
               </div>
             ))}
+            <p className="text-xs text-slate-500">
+              Exact fees, processing times and some procedures are set by {name} and vary across Switzerland — confirm them with the office above.
+            </p>
           </div>
         ) : (
           <div className="mt-2 space-y-1.5">
@@ -1241,7 +1248,7 @@ function TaskCard({
         {/* Key facts: scannable grid. keyFacts come from the content pipeline;
             the verified timeline/cost claims are appended automatically (the
             researcher does not duplicate them in keyFacts). */}
-        {(task.keyFacts?.length || task.timeline || task.cost) && (
+        {(task.keyFacts?.length || task.timeline || task.cost || task.localCostTimeline) && (
           <div>
             <h3 className="font-semibold text-slate-900 mb-2">Key facts</h3>
             <dl className="grid gap-2 sm:grid-cols-2">
@@ -1261,6 +1268,16 @@ function TaskCard({
                 <div className="rounded-lg bg-slate-50 border border-slate-200 px-4 py-2.5">
                   <dt className="text-xs font-semibold uppercase tracking-wide text-slate-500 mb-0.5">Cost</dt>
                   <dd className="text-sm text-slate-800">{task.cost.text}</dd>
+                </div>
+              )}
+              {task.localCostTimeline && !task.cost && !task.timeline && (
+                <div className="rounded-lg bg-slate-50 border border-slate-200 px-4 py-2.5 sm:col-span-2">
+                  <dt className="text-xs font-semibold uppercase tracking-wide text-slate-500 mb-0.5">Fees &amp; processing time</dt>
+                  <dd className="text-sm text-slate-800">
+                    {task.localCostTimeline === 'institution'
+                      ? 'Set by the educational institution, not at the federal level. Confirm the exact application fee and timing directly with the institution.'
+                      : 'Set by your canton, not at the federal level — there is no single national figure, and it varies across Switzerland. Confirm the exact amount and timing with your cantonal authorities (see “Your canton”).'}
+                  </dd>
                 </div>
               )}
             </dl>

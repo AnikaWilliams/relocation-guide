@@ -13,6 +13,7 @@ coversMotivations: [work, family, retirement, study]
 tasks:
   # ---------------------------------------------------------------------------
   - id: work-residence-permit
+    localCostTimeline: canton
     title: "Secure an employer-sponsored work and residence permit"
     category: visa-permit
     summary:
@@ -999,6 +1000,7 @@ tasks:
 
   # ---------------------------------------------------------------------------
   - id: family-permit-spouse-swiss
+    localCostTimeline: canton
     title: "Family reunification as the spouse or registered partner of a Swiss citizen"
     category: family-dependents
     appliesIf: "motivation == 'family' && familyJoineeStatus == 'citizen' && familyRelationship != 'unmarried-partner' && familyRelationship != 'parent'"
@@ -1168,6 +1170,7 @@ tasks:
 
   # ---------------------------------------------------------------------------
   - id: family-permit-spouse-settled
+    localCostTimeline: canton
     title: "Family reunification as the spouse or registered partner of a settled person (C permit)"
     category: family-dependents
     appliesIf: "motivation == 'family' && familyJoineeStatus == 'settled' && familyRelationship != 'unmarried-partner' && familyRelationship != 'parent'"
@@ -1323,6 +1326,7 @@ tasks:
 
   # ---------------------------------------------------------------------------
   - id: family-permit-spouse-b-holder
+    localCostTimeline: canton
     title: "Family reunification as the spouse or registered partner of a residence (B) permit holder"
     category: family-dependents
     appliesIf: "motivation == 'family' && familyJoineeStatus == 'permit-holder' && familyRelationship != 'unmarried-partner' && familyRelationship != 'parent'"
@@ -1479,6 +1483,7 @@ tasks:
 
   # ---------------------------------------------------------------------------
   - id: family-permit-unmarried-partner
+    localCostTimeline: canton
     title: "Joining an unmarried partner (concubinage): no general right — cantonal discretion"
     category: family-dependents
     appliesIf: "motivation == 'family' && familyRelationship == 'unmarried-partner'"
@@ -1619,6 +1624,7 @@ tasks:
 
   # ---------------------------------------------------------------------------
   - id: family-permit-children
+    localCostTimeline: canton
     title: "Family reunification for minor children"
     category: family-dependents
     # Deliberately motivation-independent: children also accompany work-route
@@ -1994,6 +2000,7 @@ tasks:
 
   # ---------------------------------------------------------------------------
   - id: retirement-residence-permit
+    localCostTimeline: canton
     title: "Apply for a retired person's residence permit (residence without gainful employment, Art. 28 FNIA)"
     category: visa-permit
     # appliesIf APPROVED 2026-06-12 (fact-verifier, ADR-0009 §4): correct.
@@ -2615,6 +2622,7 @@ tasks:
 
   # ---------------------------------------------------------------------------
   - id: study-admission
+    localCostTimeline: institution
     title: "Get admitted: secure the confirmation of a Swiss educational institution first"
     category: education
     # appliesIf (content-researcher, 2026-06-12, PENDING fact-verifier approval
@@ -2745,6 +2753,7 @@ tasks:
 
   # ---------------------------------------------------------------------------
   - id: study-residence-permit
+    localCostTimeline: canton
     title: "Apply for a residence permit for education purposes (Art. 27 FNIA)"
     category: visa-permit
     # appliesIf (content-researcher, 2026-06-12, PENDING fact-verifier approval
@@ -3100,6 +3109,7 @@ tasks:
 
   # ---------------------------------------------------------------------------
   - id: study-work-alongside
+    localCostTimeline: canton
     title: "Working alongside your studies: waiting period, hour limit and employer permit"
     category: employment
     # appliesIf (content-researcher, 2026-06-12, PENDING fact-verifier approval
@@ -3272,6 +3282,7 @@ tasks:
 
   # ---------------------------------------------------------------------------
   - id: study-health-insurance-exemption
+    localCostTimeline: canton
     title: "Check the student exemption from Swiss compulsory health insurance"
     category: healthcare-insurance
     # appliesIf (content-researcher, 2026-06-12, PENDING fact-verifier approval
@@ -3407,6 +3418,7 @@ tasks:
 
   # ---------------------------------------------------------------------------
   - id: study-after-graduation
+    localCostTimeline: canton
     title: "After graduation: the six-month stay to look for qualified work"
     category: employment
     # appliesIf (content-researcher, 2026-06-12, PENDING fact-verifier approval
