@@ -10,6 +10,18 @@ coming next. Newest updates are at the top.
 
 ---
 
+## 2026-06-14 — Your move now reads as a visible journey, not a flat to-do list
+
+**What changed.** The little "Your journey" list in the side panel is now a real **path you can see** — your steps strung along a line like stops on a route, grouped into clear stages ("Before you go", "Your permit", "After you arrive", "Settling in"). Each stop shows whether it's done (a tick), the one you're on (highlighted), open, or still locked. Locked stops now say *exactly* what unlocks them ("Unlocks after: register your address") instead of a blank padlock — and you can still read everything inside a locked step; you just can't tick it off until the step before it is done. Every step that needs documents shows a thin "gather-your-papers" bar that fills as you check them off (on the path and on the step itself). When you pick your reason for moving, we confirm in one line what that does to your plan. Returning visitors get a calm "Welcome back — you left off at…" note, and finishing a whole stage gives a quiet "you've finished Your permit" pat on the back. Crucially, **none of this is made up**: every tick, bar, and message just mirrors what you've actually done — no streaks, no countdowns, no points, and nothing that sounds like an official approval.
+
+**Why it matters.** A move is overwhelming; seeing it as a clear, honest path with visible progress makes people more likely to keep going and finish — without ever overstating where they stand or pressuring them.
+
+**What you'd notice today.** A friendlier, map-like journey panel with stages, progress bars, and gentle encouragement. (Review copy — **not live** yet.)
+
+**What's next.** Your review, then the same disclaimer/lawyer sign-off that gates the rest of the new plan experience.
+
+---
+
 ## 2026-06-14 — A calmer, friendlier plan (and a one-time disclaimer you confirm up front)
 
 **What changed.** The plan used to feel like paperwork: a gold "not legal advice" warning sat over everything, questions used legal codes, and each step buried the to-dos under reference text. We rebuilt the *feel*. The gold banner is gone; instead, right after you answer the questions, a single pop-up shows the legal disclaimer and you tap **"I've read and understand"** once before your plan opens. The plan now leads with **what to do** (the steps), tucking legal citations and fine print into a "Reference" section you can open if you want. Questions use plain words ("Less than a year" instead of "L permit path"), progress shows friendly stages, and you get a small "nice work" nudge as you finish steps. The legal notice is still everywhere it needs to be — the confirm pop-up, the footer on every page, and a short line on each step — just calm, not shouting.
