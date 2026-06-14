@@ -3,8 +3,8 @@
   "totals": {
     "references": 950,
     "uniqueUrls": 170,
-    "good": 147,
-    "flagged": 23
+    "good": 170,
+    "flagged": 0
   },
   "good": [
     {
@@ -2384,6 +2384,69 @@
       ]
     },
     {
+      "url": "https://www.fedlex.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/2007/758/20260201/en/html/fedlex-data-admin-ch-eli-cc-2007-758-20260201-en-html-3.html#art_42",
+      "host": "www.fedlex.admin.ch",
+      "sourceName": "Foreign Nationals and Integration Act (FNIA, SR 142.20), Art. 42 and 52 — Fedlex, the official publication platform of Swiss law",
+      "references": 9,
+      "checked": "auto-render-check",
+      "usages": [
+        {
+          "corridor": "us-ch",
+          "taskId": "family-permit-spouse-swiss",
+          "location": "summary",
+          "point": "The foreign spouse (and unmarried children under 18) of a Swiss citizen who live with the Swiss citizen are entitled to be granted a residence permit and to have it extended (Art. 42 para. 1 FNIA). The provisions on fore"
+        },
+        {
+          "corridor": "us-ch",
+          "taskId": "family-permit-spouse-swiss",
+          "location": "tldr",
+          "point": "If you are the foreign spouse or registered partner of a Swiss citizen and you live together, you are entitled by law to a Swiss residence permit and its extension (Art. 42 para. 1 FNIA) — this is a right, not a discreti"
+        },
+        {
+          "corridor": "us-ch",
+          "taskId": "family-permit-spouse-swiss",
+          "location": "keyFact:Who applies",
+          "point": "The foreign spouse and unmarried children under 18 of a Swiss national who live with the Swiss national are entitled to be granted a residence permit and to have their residence permit extended."
+        },
+        {
+          "corridor": "us-ch",
+          "taskId": "family-permit-spouse-swiss",
+          "location": "keyFact:Right or discretion",
+          "point": "Right (entitlement): Art. 42 FNIA states the spouse and children of a Swiss national \"are entitled to be granted a residence permit\" — unlike the discretionary B-permit case."
+        },
+        {
+          "corridor": "us-ch",
+          "taskId": "family-permit-unmarried-partner",
+          "location": "keyFact:Right or discretion",
+          "point": "No entitlement: family reunification under Arts. 42-44 FNIA covers spouses, registered partners and unmarried children under 18, not cohabiting partners. A permit for a cohabiting partner is only a discretionary derogati"
+        },
+        {
+          "corridor": "us-ch",
+          "taskId": "family-permit-children",
+          "location": "summary",
+          "point": "Unmarried children under 18 qualify for family reunification: children of a Swiss citizen who live with them are entitled to a residence permit (Art. 42 para. 1 FNIA), children of a settlement (C) permit holder are entit"
+        },
+        {
+          "corridor": "us-ch",
+          "taskId": "family-permit-children",
+          "location": "tldr",
+          "point": "Unmarried children under 18 can join a parent in Switzerland: children of a Swiss citizen are entitled to a residence permit (Art. 42), children of a C-permit holder are entitled subject to conditions (Art. 43), and chil"
+        },
+        {
+          "corridor": "us-ch",
+          "taskId": "family-permit-children",
+          "location": "keyFact:Who applies",
+          "point": "Unmarried children under 18 of a Swiss national who live with them are entitled to a residence permit (Art. 42 para. 1); children of a C-permit holder are entitled subject to the Art. 43 conditions; children of a B-permi"
+        },
+        {
+          "corridor": "us-ch",
+          "taskId": "family-permit-children",
+          "location": "keyFact:Right or discretion",
+          "point": "Children under twelve of a Swiss national or of a settlement-permit holder are entitled to be granted a settlement permit directly (Art. 42 para. 4 and Art. 43 para. 6)."
+        }
+      ]
+    },
+    {
       "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F17048?lang=en",
       "host": "www.service-public.gouv.fr",
       "sourceName": "Service-Public — Republican Integration Contract (CIR)",
@@ -3047,6 +3110,63 @@
       ]
     },
     {
+      "url": "https://www.fedlex.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/2007/758/20260201/en/html/fedlex-data-admin-ch-eli-cc-2007-758-20260201-en-html.html#art_27",
+      "host": "www.fedlex.admin.ch",
+      "sourceName": "Foreign Nationals and Integration Act (FNIA, SR 142.20), Art. 27 — Fedlex, the official publication platform of Swiss law",
+      "references": 8,
+      "checked": "auto-render-check",
+      "usages": [
+        {
+          "corridor": "us-ch",
+          "taskId": "study-admission",
+          "location": "summary",
+          "point": "Admission comes before immigration: the first statutory condition for a residence permit for education purposes is that the management of the educational establishment confirms that you are eligible for the education or "
+        },
+        {
+          "corridor": "us-ch",
+          "taskId": "study-admission",
+          "location": "tldr",
+          "point": "Admission comes before immigration: the first statutory condition for an education residence permit is that the educational establishment's management confirms you are eligible for the course (Art. 27 para. 1 let. a FNIA"
+        },
+        {
+          "corridor": "us-ch",
+          "taskId": "study-admission",
+          "location": "keyFact:Legal basis",
+          "point": "Art. 27 para. 1 let. a FNIA: foreign nationals may be admitted for education or training only if the management of the educational establishment confirms that the person concerned is eligible for the education or trainin"
+        },
+        {
+          "corridor": "us-ch",
+          "taskId": "study-residence-permit",
+          "location": "summary",
+          "point": "Foreign nationals may be admitted to Switzerland for education or training purposes if the management of the educational establishment confirms that they are eligible for the education or training, suitable accommodation"
+        },
+        {
+          "corridor": "us-ch",
+          "taskId": "study-residence-permit",
+          "location": "tldr",
+          "point": "Foreign nationals may be admitted to Switzerland for study if the school confirms you are eligible, suitable accommodation and the required financial means are available, and you meet the personal and educational require"
+        },
+        {
+          "corridor": "us-ch",
+          "taskId": "study-residence-permit",
+          "location": "keyFact:Right or discretion",
+          "point": "Discretion, not entitlement: Art. 27 FNIA says foreign nationals 'may be admitted' for education purposes — the canton decides at its discretion, and a continued stay after the course is governed by the general admission"
+        },
+        {
+          "corridor": "us-ch",
+          "taskId": "study-after-graduation",
+          "location": "keyFact:Right or discretion",
+          "point": "A derogation the authorities apply, not an entitlement: graduates 'may be admitted' to qualifying work, and outside this six-month window a continued stay is governed by the general admission requirements of the Act (Art"
+        },
+        {
+          "corridor": "us-ch",
+          "taskId": "study-after-graduation",
+          "location": "step2",
+          "point": "If you do not find qualifying work (or do not seek it), remember that staying on is governed by the general admission requirements of the Act — there is no automatic continued residence after the course."
+        }
+      ]
+    },
+    {
       "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F16162?lang=en",
       "host": "www.service-public.gouv.fr",
       "sourceName": "Service-Public — Long-stay visa (3 months to 1 year)",
@@ -3605,6 +3725,108 @@
       ]
     },
     {
+      "url": "https://www.fedlex.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/2007/758/20260201/en/html/fedlex-data-admin-ch-eli-cc-2007-758-20260201-en-html-3.html#art_47",
+      "host": "www.fedlex.admin.ch",
+      "sourceName": "Foreign Nationals and Integration Act (FNIA, SR 142.20), Art. 47 para. 1 — Fedlex",
+      "references": 7,
+      "checked": "auto-render-check",
+      "usages": [
+        {
+          "corridor": "us-ch",
+          "taskId": "family-permit-spouse-swiss",
+          "location": "keyFact:Deadline",
+          "point": "The right to family reunification must be exercised within five years; children over twelve must be reunified within twelve months (Art. 47 FNIA)."
+        },
+        {
+          "corridor": "us-ch",
+          "taskId": "family-permit-spouse-swiss",
+          "location": "step3",
+          "point": "Observe the statutory time limit: the right to family reunification must be exercised within five years (children over 12: within twelve months)."
+        },
+        {
+          "corridor": "us-ch",
+          "taskId": "family-permit-spouse-settled",
+          "location": "keyFact:Deadline",
+          "point": "The right to family reunification must be exercised within five years; children over twelve must be reunified within twelve months (Art. 47 FNIA)."
+        },
+        {
+          "corridor": "us-ch",
+          "taskId": "family-permit-spouse-b-holder",
+          "location": "keyFact:Deadline",
+          "point": "The right to family reunification must be exercised within five years; children over twelve must be reunified within twelve months (Art. 47 FNIA)."
+        },
+        {
+          "corridor": "us-ch",
+          "taskId": "family-permit-children",
+          "location": "keyFact:Deadline",
+          "point": "The right to family reunification must be exercised within five years; children over twelve must be reunified within twelve months (Art. 47 para. 1 FNIA). A subsequent reunification is authorised only if there are import"
+        },
+        {
+          "corridor": "us-ch",
+          "taskId": "family-permit-children",
+          "location": "step2",
+          "point": "Mind the deadlines: five years in general, but children over 12 must be reunified within twelve months."
+        },
+        {
+          "corridor": "us-ch",
+          "taskId": "family-d-visa",
+          "location": "keyFact:Deadline",
+          "point": "The representation issues the type D visa once the cantonal decision on family reunification is confirmed; the underlying right to family reunification must itself be exercised within five years (twelve months for childr"
+        }
+      ]
+    },
+    {
+      "url": "https://www.fedlex.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/2007/758/20260201/en/html/fedlex-data-admin-ch-eli-cc-2007-758-20260201-en-html.html#art_43",
+      "host": "www.fedlex.admin.ch",
+      "sourceName": "Foreign Nationals and Integration Act (FNIA, SR 142.20), Art. 43 and 52 — Fedlex, the official publication platform of Swiss law",
+      "references": 7,
+      "checked": "auto-render-check",
+      "usages": [
+        {
+          "corridor": "us-ch",
+          "taskId": "family-permit-spouse-settled",
+          "location": "summary",
+          "point": "The foreign spouse (and unmarried children under 18) of a person holding a settlement permit (C permit) are entitled to a residence permit and its extension provided they live with that person, suitable accommodation is "
+        },
+        {
+          "corridor": "us-ch",
+          "taskId": "family-permit-spouse-settled",
+          "location": "tldr",
+          "point": "If you are the foreign spouse or registered partner of someone who holds a Swiss settlement permit (C permit), you are entitled to a residence permit (Art. 43 FNIA) provided you live together, have suitable accommodation"
+        },
+        {
+          "corridor": "us-ch",
+          "taskId": "family-permit-spouse-settled",
+          "location": "keyFact:Who applies",
+          "point": "The foreign spouse and unmarried children under 18 of a person with a settlement permit are entitled to be granted a residence permit and to have their residence permit extended, provided the Art. 43 para. 1 conditions ("
+        },
+        {
+          "corridor": "us-ch",
+          "taskId": "family-permit-spouse-settled",
+          "location": "keyFact:Right or discretion",
+          "point": "Right (entitlement) subject to conditions: Art. 43 FNIA says the spouse and children of a C-permit holder \"are entitled to be granted a residence permit ... provided\" the listed conditions are met."
+        },
+        {
+          "corridor": "us-ch",
+          "taskId": "family-permit-spouse-settled",
+          "location": "keyFact:Legal basis",
+          "point": "Art. 43 FNIA, with five conditions: live together; suitable accommodation; no dependence on social assistance; ability to communicate in the local national language (registering for a language support programme suffices,"
+        },
+        {
+          "corridor": "us-ch",
+          "taskId": "family-permit-spouse-settled",
+          "location": "step2",
+          "point": "If you cannot yet communicate in the national language of the intended place of residence, register for a language course: a certificate of enrolment in a language support programme satisfies the language condition for t"
+        },
+        {
+          "corridor": "us-ch",
+          "taskId": "family-permit-children",
+          "location": "keyFact:Legal basis",
+          "point": "The language requirement (communicate in the national language) does not apply to unmarried children under 18 (Art. 43 para. 3 and Art. 44 para. 3 FNIA)."
+        }
+      ]
+    },
+    {
       "url": "https://www.bamf.de/EN/Themen/MigrationAufenthalt/ZuwandererDrittstaaten/Migrathek/Einreisebestimmungen/einreisebestimmungen-node.html",
       "host": "www.bamf.de",
       "sourceName": "Federal Office for Migration and Refugees (BAMF) — Entry regulations",
@@ -3946,6 +4168,141 @@
           "taskId": "work-residence-permit",
           "location": "step3",
           "point": "Admission must fit within the annual federal maximum numbers (quotas) and the labour-market priority rule (Swiss/EU/EFTA candidates first)."
+        }
+      ]
+    },
+    {
+      "url": "https://www.fedlex.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/2007/758/20260201/en/html/fedlex-data-admin-ch-eli-cc-2007-758-20260201-en-html-3.html#art_44",
+      "host": "www.fedlex.admin.ch",
+      "sourceName": "Foreign Nationals and Integration Act (FNIA, SR 142.20), Art. 44 and 52 — Fedlex, the official publication platform of Swiss law",
+      "references": 6,
+      "checked": "auto-render-check",
+      "usages": [
+        {
+          "corridor": "us-ch",
+          "taskId": "family-permit-spouse-b-holder",
+          "location": "summary",
+          "point": "The foreign spouse (and unmarried children under 18) of a person holding a residence permit (B permit) MAY be granted a residence permit — this is a discretionary decision, not an entitlement — if they live with the perm"
+        },
+        {
+          "corridor": "us-ch",
+          "taskId": "family-permit-spouse-b-holder",
+          "location": "tldr",
+          "point": "If you are the foreign spouse or registered partner of someone holding a Swiss residence (B) permit, you MAY be granted a residence permit if the Art. 44 FNIA conditions are met — but this is a discretionary cantonal dec"
+        },
+        {
+          "corridor": "us-ch",
+          "taskId": "family-permit-spouse-b-holder",
+          "location": "keyFact:Who applies",
+          "point": "The foreign spouse and unmarried children under 18 of a person with a residence permit may be granted a residence permit or an extension thereof if the Art. 44 para. 1 conditions (a-e) are met."
+        },
+        {
+          "corridor": "us-ch",
+          "taskId": "family-permit-spouse-b-holder",
+          "location": "keyFact:Right or discretion",
+          "point": "Discretion, not entitlement: Art. 44 FNIA says the spouse and children of a B-permit holder \"may be granted\" a permit — unlike Art. 42/43, which say \"are entitled\". The decision lies with the cantonal authorities."
+        },
+        {
+          "corridor": "us-ch",
+          "taskId": "family-permit-spouse-b-holder",
+          "location": "keyFact:Legal basis",
+          "point": "Art. 44 FNIA, with conditions: live together; suitable housing; no dependence on social assistance; ability to communicate in the local national language (registering for a language support programme suffices, Art. 44 pa"
+        },
+        {
+          "corridor": "us-ch",
+          "taskId": "family-permit-spouse-b-holder",
+          "location": "step2",
+          "point": "Check the conditions: living together, suitable housing, no dependence on social assistance, language (or enrolment in a language course), and no claim to supplementary benefits by the person you are joining."
+        }
+      ]
+    },
+    {
+      "url": "https://www.fedlex.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/2007/759/20260101/de/html/fedlex-data-admin-ch-eli-cc-2007-759-20260101-de-html.html#art_25",
+      "host": "www.fedlex.admin.ch",
+      "sourceName": "Ordinance on Admission, Period of Stay and Employment (VZAE/ASEO, SR 142.201), Art. 25 — Fedlex (official German text)",
+      "references": 6,
+      "checked": "auto-render-check",
+      "usages": [
+        {
+          "corridor": "us-ch",
+          "taskId": "retirement-residence-permit",
+          "location": "keyFact:Legal basis",
+          "point": "Foreign Nationals and Integration Act (FNIA) Art. 28, implemented by the Ordinance on Admission, Period of Stay and Employment (VZAE/ASEO, SR 142.201) Art. 25 — which sets the minimum age at 55, defines the special perso"
+        },
+        {
+          "corridor": "us-ch",
+          "taskId": "retirement-residence-permit",
+          "location": "keyFact:Work allowed",
+          "point": "No — with this permit no gainful activity may be carried out in Switzerland or abroad, with the sole exception of managing your own assets (VZAE/ASEO Art. 25 para. 3)."
+        },
+        {
+          "corridor": "us-ch",
+          "taskId": "retirement-residence-permit",
+          "location": "step1",
+          "point": "Check the minimum age: the Federal Council has set the minimum age for admission of retired persons at 55."
+        },
+        {
+          "corridor": "us-ch",
+          "taskId": "retirement-residence-permit",
+          "location": "step2",
+          "point": "Gather evidence of your special personal ties to Switzerland. The ordinance says such ties exist in particular where longer previous stays in Switzerland (holidays, education or gainful activity) can be shown, or where c"
+        },
+        {
+          "corridor": "us-ch",
+          "taskId": "retirement-residence-permit",
+          "location": "step3",
+          "point": "Understand the work ban: with this permit no gainful activity may be carried out in Switzerland OR abroad, with the sole exception of managing your own assets."
+        },
+        {
+          "corridor": "us-ch",
+          "taskId": "retirement-residence-permit",
+          "location": "step4",
+          "point": "Prepare proof of the required financial means. The ordinance sets no fixed franc amount: the necessary financial means exist if they exceed the amount that would entitle a Swiss national (and, where applicable, their fam"
+        }
+      ]
+    },
+    {
+      "url": "https://www.fedlex.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/1995/3867_3867_3867/20260101/de/html/fedlex-data-admin-ch-eli-cc-1995-3867_3867_3867-20260101-de-html-3.html#art_2",
+      "host": "www.fedlex.admin.ch",
+      "sourceName": "Ordinance on Health Insurance (KVV, SR 832.102), Art. 2 para. 4 — Fedlex (official German text)",
+      "references": 6,
+      "checked": "auto-render-check",
+      "usages": [
+        {
+          "corridor": "us-ch",
+          "taskId": "study-health-insurance-exemption",
+          "location": "summary",
+          "point": "Students staying in Switzerland for education or training can, on request, be exempted from the compulsory Swiss health insurance if they have equivalent insurance cover for treatment in Switzerland for the entire durati"
+        },
+        {
+          "corridor": "us-ch",
+          "taskId": "study-health-insurance-exemption",
+          "location": "tldr",
+          "point": "Students staying in Switzerland for education can, on request, be exempted from compulsory Swiss health insurance if they have equivalent cover for treatment in Switzerland for the whole exemption period, evidenced by a "
+        },
+        {
+          "corridor": "us-ch",
+          "taskId": "study-health-insurance-exemption",
+          "location": "keyFact:Who applies",
+          "point": "You request the exemption yourself; persons staying in Switzerland for education or training — expressly including students — may be exempted on request if they have equivalent cover, and the request must be accompanied "
+        },
+        {
+          "corridor": "us-ch",
+          "taskId": "study-health-insurance-exemption",
+          "location": "keyFact:Where",
+          "point": "The competent cantonal authority decides on (and grants) the exemption."
+        },
+        {
+          "corridor": "us-ch",
+          "taskId": "study-health-insurance-exemption",
+          "location": "keyFact:Legal basis",
+          "point": "Art. 2 para. 4 of the Ordinance on Health Insurance (KVV, SR 832.102), which carves out the request-based student exemption from the default compulsory-insurance rule of the Federal Health Insurance Act."
+        },
+        {
+          "corridor": "us-ch",
+          "taskId": "study-health-insurance-exemption",
+          "location": "keyFact:Right or discretion",
+          "point": "Conditional, not automatic: the exemption is granted only on request and only where equivalent cover exists for the entire exemption period; the cantonal authority may grant it for at most three years, extendable on requ"
         }
       ]
     },
@@ -5078,6 +5435,72 @@
       ]
     },
     {
+      "url": "https://www.fedlex.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/2007/758/20260201/en/html/fedlex-data-admin-ch-eli-cc-2007-758-20260201-en-html.html#art_30",
+      "host": "www.fedlex.admin.ch",
+      "sourceName": "Foreign Nationals and Integration Act (FNIA, SR 142.20), Art. 30 — Fedlex, the official publication platform of Swiss law",
+      "references": 4,
+      "checked": "auto-render-check",
+      "usages": [
+        {
+          "corridor": "us-ch",
+          "taskId": "family-permit-unmarried-partner",
+          "location": "tldr",
+          "point": "Switzerland gives unmarried cohabiting partners no general right to family reunification: the FNIA reunification provisions cover only spouses, registered partners and unmarried children under 18, and the official portal"
+        },
+        {
+          "corridor": "us-ch",
+          "taskId": "family-permit-unmarried-partner",
+          "location": "keyFact:Legal basis",
+          "point": "Art. 30 para. 1 let. b FNIA permits derogations from the admission requirements to \"take account of serious cases of personal hardship or important public interests\"; Art. 50 para. 4 FNIA refers to cohabiting partners gr"
+        },
+        {
+          "corridor": "us-ch",
+          "taskId": "family-permit-unmarried-partner",
+          "location": "keyFact:Who applies",
+          "point": "Only the cantonal migration authority can decide a cohabiting-partner case, at its discretion; there is no federal entitlement, no federal document checklist and no published federal criteria threshold."
+        },
+        {
+          "corridor": "us-ch",
+          "taskId": "family-permit-unmarried-partner",
+          "location": "step2",
+          "point": "Know the legal basis being applied: a permit for a cohabiting partner is a hardship-based derogation under Art. 30 para. 1 let. b FNIA, not family reunification under Arts. 42-44."
+        }
+      ]
+    },
+    {
+      "url": "https://www.fedlex.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/2007/758/20260201/en/html/fedlex-data-admin-ch-eli-cc-2007-758-20260201-en-html-3.html#art_28",
+      "host": "www.fedlex.admin.ch",
+      "sourceName": "Foreign Nationals and Integration Act (FNIA, SR 142.20), Art. 28 — Fedlex, the official publication platform of Swiss law",
+      "references": 4,
+      "checked": "auto-render-check",
+      "usages": [
+        {
+          "corridor": "us-ch",
+          "taskId": "retirement-residence-permit",
+          "location": "summary",
+          "point": "Foreign nationals who are no longer gainfully employed may be admitted to Switzerland if they have reached a minimum age set by the Federal Council, have special personal relations to Switzerland, and have the required f"
+        },
+        {
+          "corridor": "us-ch",
+          "taskId": "retirement-residence-permit",
+          "location": "tldr",
+          "point": "If you are no longer working, you may be admitted to live in Switzerland under Art. 28 of the Foreign Nationals and Integration Act (FNIA) — but only if you meet a minimum age (set by the Federal Council at 55), have spe"
+        },
+        {
+          "corridor": "us-ch",
+          "taskId": "retirement-residence-permit",
+          "location": "keyFact:Who applies",
+          "point": "Foreign nationals who are no longer gainfully employed and meet the minimum age, special-personal-ties and financial-means conditions of Art. 28 FNIA. As a US citizen you are a non-EU/EFTA third-country national and are "
+        },
+        {
+          "corridor": "us-ch",
+          "taskId": "retirement-residence-permit",
+          "location": "keyFact:Right or discretion",
+          "point": "Discretion: Art. 28 FNIA says retired persons \"may be admitted\", not that they \"are entitled\" — there is no legal right to a retired person's permit; the canton decides and SEM must approve."
+        }
+      ]
+    },
+    {
       "url": "https://www.ch.ch/en/school-and-education/higher-education/studying-in-switzerland/",
       "host": "www.ch.ch",
       "sourceName": "ch.ch — Studying in Switzerland (official federal portal)",
@@ -5582,6 +6005,60 @@
       ]
     },
     {
+      "url": "https://www.fedlex.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/2007/758/20260201/en/html/fedlex-data-admin-ch-eli-cc-2007-758-20260201-en-html.html#art_12",
+      "host": "www.fedlex.admin.ch",
+      "sourceName": "Foreign Nationals and Integration Act (FNIA, SR 142.20), Art. 12 — Fedlex, the official publication platform of Swiss law",
+      "references": 3,
+      "checked": "auto-render-check",
+      "usages": [
+        {
+          "corridor": "us-ch",
+          "taskId": "register-commune",
+          "location": "tldr",
+          "point": "Once you arrive in Switzerland you must register your arrival in person at the residents' registration office of your commune of residence — this is what formally starts your residence and triggers your residence permit."
+        },
+        {
+          "corridor": "us-ch",
+          "taskId": "register-commune",
+          "location": "keyFact:Who applies",
+          "point": "Foreign nationals who require a short stay, residence or settlement permit must register with the competent authority at their place of residence in Switzerland — so US (third-country) nationals on any route (work, famil"
+        },
+        {
+          "corridor": "us-ch",
+          "taskId": "register-commune",
+          "location": "keyFact:Legal basis",
+          "point": "Registration requirement: FNIA (Foreign Nationals and Integration Act, SR 142.20) Art. 12; the time limit for registration is set by the Federal Council in the implementing ordinance OASA/VZAE (SR 142.201) Art. 10."
+        }
+      ]
+    },
+    {
+      "url": "https://www.fedlex.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/2007/759/20260612/de/html/fedlex-data-admin-ch-eli-cc-2007-759-20260612-de-html-2.html#art_23",
+      "host": "www.fedlex.admin.ch",
+      "sourceName": "Ordinance on Admission, Period of Stay and Employment (VZAE/ASEO, SR 142.201), Art. 23 — Fedlex (official German text)",
+      "references": 3,
+      "checked": "auto-render-check",
+      "usages": [
+        {
+          "corridor": "us-ch",
+          "taskId": "study-residence-permit",
+          "location": "step3",
+          "point": "Prepare proof of the required financial means. The ordinance lists how they can be evidenced: a declaration of commitment plus proof of income and assets from a solvent person resident in Switzerland (a foreign national "
+        },
+        {
+          "corridor": "us-ch",
+          "taskId": "study-residence-permit",
+          "location": "step4",
+          "point": "Be aware of how your application is assessed: the personal requirements are met in particular when no previous stays, application proceedings or other circumstances indicate that the course merely serves to circumvent th"
+        },
+        {
+          "corridor": "us-ch",
+          "taskId": "study-residence-permit",
+          "location": "step5",
+          "point": "Plan the overall duration realistically: education and training stays are authorised as a rule for at most eight years in total; exceptions are possible only for courses leading to a specific goal."
+        }
+      ]
+    },
+    {
       "url": "https://www.gesetze-im-internet.de/englisch_bmg/englisch_bmg.html",
       "host": "www.gesetze-im-internet.de",
       "sourceName": "Federal Act on Registration (Bundesmeldegesetz, BMG), Section 17 — official English translation (gesetze-im-internet.de)",
@@ -6023,6 +6500,27 @@
       ]
     },
     {
+      "url": "https://www.fedlex.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/2007/759/20260101/de/html/fedlex-data-admin-ch-eli-cc-2007-759-20260101-de-html.html#art_10",
+      "host": "www.fedlex.admin.ch",
+      "sourceName": "Ordinance on Admission, Period of Stay and Employment (OASA/VZAE, SR 142.201), Art. 10 — Fedlex, the official publication platform of Swiss law",
+      "references": 2,
+      "checked": "auto-render-check",
+      "usages": [
+        {
+          "corridor": "us-ch",
+          "taskId": "register-commune",
+          "location": "keyFact:Where",
+          "point": "In person at the residents' registration office (Einwohnerkontrolle / contrôle des habitants / controllo abitanti) of your commune of residence — the body designated by your canton for arrival registration."
+        },
+        {
+          "corridor": "us-ch",
+          "taskId": "register-commune",
+          "location": "keyFact:Deadline",
+          "point": "Within 14 days of entering Switzerland you must register with the body designated by your canton (the time limit set under the ordinance for a residence stay); the exact deadline can vary by canton/commune, so confirm it"
+        }
+      ]
+    },
+    {
       "url": "https://www.vd.ch/population/population-etrangere/entree-et-sejour/formulaires-et-liens-utiles",
       "host": "www.vd.ch",
       "sourceName": "Canton de Vaud — Formulaires et liens utiles pour l'entrée et le séjour",
@@ -6040,6 +6538,69 @@
           "taskId": "study-residence-permit",
           "location": "document:Cantonal residence-permit application form for education (third-country national)",
           "point": "The official cantonal application for a residence permit for education purposes. Canton-specific — Vaud is the worked example: the SPOP forms-index lists 'Demande d'un titre de séjour temporaire Etats tiers pour effectue"
+        }
+      ]
+    },
+    {
+      "url": "https://www.fedlex.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/63/837_843_843/20260101/de/html/fedlex-data-admin-ch-eli-cc-63-837_843_843-20260101-de-html-1.html#art_1_a",
+      "host": "www.fedlex.admin.ch",
+      "sourceName": "Federal Act on Old-Age and Survivors' Insurance (OASI Act / AHVG, SR 831.10), Art. 1a — Fedlex, the official publication platform of Swiss law",
+      "references": 2,
+      "checked": "auto-render-check",
+      "usages": [
+        {
+          "corridor": "us-ch",
+          "taskId": "ahv-social-security",
+          "location": "tldr",
+          "point": "The OASI number (AHV in German, AVS in French) is Switzerland's social-insurance number for first-pillar old-age and survivors' insurance, and contributions are owed by everyone resident in Switzerland or working there. "
+        },
+        {
+          "corridor": "us-ch",
+          "taskId": "ahv-social-security",
+          "location": "keyFact:Who applies",
+          "point": "Everyone domiciled (resident) in Switzerland and everyone who carries on a gainful activity in Switzerland is insured for OASI — so the number/coverage applies to US nationals on any route, whether or not you work."
+        }
+      ]
+    },
+    {
+      "url": "https://www.fedlex.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/2007/759/20260101/de/html/fedlex-data-admin-ch-eli-cc-2007-759-20260101-de-html.html#art_38",
+      "host": "www.fedlex.admin.ch",
+      "sourceName": "Ordinance on Admission, Period of Stay and Employment (VZAE/ASEO, SR 142.201), Art. 38 — Fedlex (official German text)",
+      "references": 2,
+      "checked": "auto-render-check",
+      "usages": [
+        {
+          "corridor": "us-ch",
+          "taskId": "study-work-alongside",
+          "location": "keyFact:Legal basis",
+          "point": "Art. 38 ASEO/VZAE (general side employment), with Art. 39 (work within a mandatory internship, capped at half the total duration of the education) and Art. 40 (employment in one's scientific specialist field during conti"
+        },
+        {
+          "corridor": "us-ch",
+          "taskId": "study-work-alongside",
+          "location": "step1",
+          "point": "Plan your budget for the first six months without Swiss work income: side employment can be authorised at the earliest six months after your course starts, and never for more than 15 hours a week outside holidays."
+        }
+      ]
+    },
+    {
+      "url": "https://www.fedlex.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/2007/758/20260201/en/html/fedlex-data-admin-ch-eli-cc-2007-758-20260201-en-html-3.html#art_21",
+      "host": "www.fedlex.admin.ch",
+      "sourceName": "Foreign Nationals and Integration Act (FNIA, SR 142.20), Art. 21 — Fedlex",
+      "references": 2,
+      "checked": "auto-render-check",
+      "usages": [
+        {
+          "corridor": "us-ch",
+          "taskId": "study-after-graduation",
+          "location": "keyFact:Legal basis",
+          "point": "Art. 21 para. 3 FNIA: foreign nationals with a Swiss university degree may be admitted in derogation from the precedence rule if their work is of high academic or economic interest, and shall be admitted for a period of "
+        },
+        {
+          "corridor": "us-ch",
+          "taskId": "study-after-graduation",
+          "location": "step1",
+          "point": "Before your course ends, plan the transition: if you intend to stay, the six-month job-seeking window starts at the end of your course or training."
         }
       ]
     },
@@ -6302,6 +6863,51 @@
       ]
     },
     {
+      "url": "https://www.fedlex.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/63/837_843_843/20260101/de/html/fedlex-data-admin-ch-eli-cc-63-837_843_843-20260101-de-html.html#art_13",
+      "host": "www.fedlex.admin.ch",
+      "sourceName": "Federal Act on Old-Age and Survivors' Insurance (OASI Act / AHVG, SR 831.10), Art. 13–14 — Fedlex, the official publication platform of Swiss law",
+      "references": 1,
+      "checked": "auto-render-check",
+      "usages": [
+        {
+          "corridor": "us-ch",
+          "taskId": "ahv-social-security",
+          "location": "keyFact:Where",
+          "point": "If you are employed, your employer handles OASI through its compensation office (Ausgleichskasse / caisse de compensation) and deducts your share from your salary; if you are not working, you register with the OASI compe"
+        }
+      ]
+    },
+    {
+      "url": "https://www.fedlex.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/63/837_843_843/20260101/de/html/fedlex-data-admin-ch-eli-cc-63-837_843_843-20260101-de-html-1.html#art_3",
+      "host": "www.fedlex.admin.ch",
+      "sourceName": "Federal Act on Old-Age and Survivors' Insurance (OASI Act / AHVG, SR 831.10), Art. 3, 5 and 13 — Fedlex, the official publication platform of Swiss law",
+      "references": 1,
+      "checked": "auto-render-check",
+      "usages": [
+        {
+          "corridor": "us-ch",
+          "taskId": "ahv-social-security",
+          "location": "keyFact:Legal basis",
+          "point": "OASI Act (AHVG/LAVS, SR 831.10): gainfully employed insured persons are liable to pay contributions while they work (Art. 3); employee contributions are levied on employment income (Art. 5) and the employer pays a matchi"
+        }
+      ]
+    },
+    {
+      "url": "https://www.fedlex.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/63/837_843_843/20260101/de/html/fedlex-data-admin-ch-eli-cc-63-837_843_843-20260101-de-html.html#art_5",
+      "host": "www.fedlex.admin.ch",
+      "sourceName": "Federal Act on Old-Age and Survivors' Insurance (OASI Act / AHVG, SR 831.10), Art. 5 and 13 — Fedlex, the official publication platform of Swiss law",
+      "references": 1,
+      "checked": "auto-render-check",
+      "usages": [
+        {
+          "corridor": "us-ch",
+          "taskId": "ahv-social-security",
+          "location": "keyFact:Work allowed",
+          "point": "OASI contributions on employment income are shared 50/50: as an employee you pay 4.35% of your relevant salary and your employer pays a matching 4.35% (8.7% in total), deducted from your gross salary by the employer."
+        }
+      ]
+    },
+    {
       "url": "https://www.ch.ch/en/documents-and-register-extracts/requesting-an-oasi-card/",
       "host": "www.ch.ch",
       "sourceName": "ch.ch — Requesting an OASI card (official federal portal)",
@@ -6317,6 +6923,51 @@
       ]
     },
     {
+      "url": "https://www.fedlex.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/2007/758/20260201/en/html/fedlex-data-admin-ch-eli-cc-2007-758-20260201-en-html-3.html#art_52",
+      "host": "www.fedlex.admin.ch",
+      "sourceName": "Foreign Nationals and Integration Act (FNIA, SR 142.20), Art. 42 and 52 — Fedlex",
+      "references": 1,
+      "checked": "auto-render-check",
+      "usages": [
+        {
+          "corridor": "us-ch",
+          "taskId": "family-permit-spouse-swiss",
+          "location": "keyFact:Legal basis",
+          "point": "Art. 42 FNIA (spouse and unmarried children under 18 of a Swiss national); Art. 52 FNIA extends these provisions mutatis mutandis to registered partnerships of same-sex couples."
+        }
+      ]
+    },
+    {
+      "url": "https://www.fedlex.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/2007/758/20260201/en/html/fedlex-data-admin-ch-eli-cc-2007-758-20260201-en-html.html#art_50",
+      "host": "www.fedlex.admin.ch",
+      "sourceName": "Foreign Nationals and Integration Act (FNIA, SR 142.20), Art. 50 — Fedlex",
+      "references": 1,
+      "checked": "auto-render-check",
+      "usages": [
+        {
+          "corridor": "us-ch",
+          "taskId": "family-permit-unmarried-partner",
+          "location": "step2",
+          "point": "Know the legal basis being applied: a permit for a cohabiting partner is a hardship-based derogation under Art. 30 para. 1 let. b FNIA, not family reunification under Arts. 42-44."
+        }
+      ]
+    },
+    {
+      "url": "https://www.fedlex.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/2015/518/20250401/de/html/fedlex-data-admin-ch-eli-cc-2015-518-20250401-de-html.html#art_2",
+      "host": "www.fedlex.admin.ch",
+      "sourceName": "Ordinance of the FDJP on residence permits subject to the approval procedure (ZV-EJPD, SR 142.201.1), Art. 2 — Fedlex (official German text)",
+      "references": 1,
+      "checked": "auto-render-check",
+      "usages": [
+        {
+          "corridor": "us-ch",
+          "taskId": "retirement-residence-permit",
+          "location": "step6",
+          "point": "Be aware of the federal second stage: the canton's decision to grant a retired person's residence permit must be submitted to the State Secretariat for Migration (SEM) for approval."
+        }
+      ]
+    },
+    {
       "url": "https://www.swissuniversities.ch/en/topics/studying/admission-to-universities",
       "host": "www.swissuniversities.ch",
       "sourceName": "swissuniversities — umbrella organisation of the Swiss universities (Admission to universities)",
@@ -6328,6 +6979,36 @@
           "taskId": "study-admission",
           "location": "document:Institution's online application / admission form",
           "point": "The application form is the institution's own (each higher education institution runs its own application); the swissuniversities admission hub is the authority index that points to the institutions and their procedures."
+        }
+      ]
+    },
+    {
+      "url": "https://www.fedlex.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/2007/759/20260101/de/html/fedlex-data-admin-ch-eli-cc-2007-759-20260101-de-html.html#art_39",
+      "host": "www.fedlex.admin.ch",
+      "sourceName": "Ordinance on Admission, Period of Stay and Employment (VZAE/ASEO, SR 142.201), Art. 39 — Fedlex (official German text)",
+      "references": 1,
+      "checked": "auto-render-check",
+      "usages": [
+        {
+          "corridor": "us-ch",
+          "taskId": "study-work-alongside",
+          "location": "step2",
+          "point": "If your curriculum includes a mandatory internship, that work needs its own authorisation: it can be approved only if the internship is an integral part of your studies, and the work may not exceed half of the total dura"
+        }
+      ]
+    },
+    {
+      "url": "https://www.fedlex.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/2007/759/20260612/de/html/fedlex-data-admin-ch-eli-cc-2007-759-20260612-de-html-2.html#art_40",
+      "host": "www.fedlex.admin.ch",
+      "sourceName": "Ordinance on Admission, Period of Stay and Employment (VZAE/ASEO, SR 142.201), Art. 40 — Fedlex (official German text)",
+      "references": 1,
+      "checked": "auto-render-check",
+      "usages": [
+        {
+          "corridor": "us-ch",
+          "taskId": "study-work-alongside",
+          "location": "step3",
+          "point": "If you are in continuing education (Weiterbildung) at a university or university of applied sciences, employment in your own scientific specialist field can be authorised, provided the continuing education is not hindere"
         }
       ]
     },
@@ -6557,779 +7238,5 @@
       ]
     }
   ],
-  "flagged": [
-    {
-      "url": "https://www.fedlex.admin.ch/eli/cc/2007/758/en#art_42",
-      "host": "www.fedlex.admin.ch",
-      "sourceName": "Foreign Nationals and Integration Act (FNIA, SR 142.20), Art. 42 and 52 — Fedlex, the official publication platform of Swiss law",
-      "references": 9,
-      "problem": "The cited consolidated-EN ELI URL serves the Fedlex Angular SPA shell (cacheFile c7f3a4b4c437.html: 76889 bytes, <title>Fedlex</title>, app-root, the 'nur mit einem Javascript-fähigen Browser' notice). A user sees no article text and the #art_42 fragment resolves to nothing.",
-      "replacement": "https://www.fedlex.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/2007/758/20260201/en/html/fedlex-data-admin-ch-eli-cc-2007-758-20260201-en-html-3.html#art_42",
-      "replacementVerified": true,
-      "supportsPoint": true,
-      "note": "Static filestore HTML of FNIA (SR 142.20), in-force consolidation dated 2026-02-01 (EN). Curled live (HTTP 200, no app-root, 734KB). id=\"art_42\" present; text reads 'The foreign spouse and unmarried children under 18 of a Swiss national who live with the Swiss national are entitled to be granted a residence permit and to have their residence permit extended' (para 1) and 'Children under twelve are entitled to be granted a settlement permit' (para 4) — supports all 9 us-ch family-permit usages incl. the entitlement-vs-discretion and Art.42 para.4 keyFacts.",
-      "usages": [
-        {
-          "corridor": "us-ch",
-          "taskId": "family-permit-spouse-swiss",
-          "location": "summary",
-          "point": "The foreign spouse (and unmarried children under 18) of a Swiss citizen who live with the Swiss citizen are entitled to be granted a residence permit and to have it extended (Art. 42 para. 1 FNIA). The provisions on fore"
-        },
-        {
-          "corridor": "us-ch",
-          "taskId": "family-permit-spouse-swiss",
-          "location": "tldr",
-          "point": "If you are the foreign spouse or registered partner of a Swiss citizen and you live together, you are entitled by law to a Swiss residence permit and its extension (Art. 42 para. 1 FNIA) — this is a right, not a discreti"
-        },
-        {
-          "corridor": "us-ch",
-          "taskId": "family-permit-spouse-swiss",
-          "location": "keyFact:Who applies",
-          "point": "The foreign spouse and unmarried children under 18 of a Swiss national who live with the Swiss national are entitled to be granted a residence permit and to have their residence permit extended."
-        },
-        {
-          "corridor": "us-ch",
-          "taskId": "family-permit-spouse-swiss",
-          "location": "keyFact:Right or discretion",
-          "point": "Right (entitlement): Art. 42 FNIA states the spouse and children of a Swiss national \"are entitled to be granted a residence permit\" — unlike the discretionary B-permit case."
-        },
-        {
-          "corridor": "us-ch",
-          "taskId": "family-permit-unmarried-partner",
-          "location": "keyFact:Right or discretion",
-          "point": "No entitlement: family reunification under Arts. 42-44 FNIA covers spouses, registered partners and unmarried children under 18, not cohabiting partners. A permit for a cohabiting partner is only a discretionary derogati"
-        },
-        {
-          "corridor": "us-ch",
-          "taskId": "family-permit-children",
-          "location": "summary",
-          "point": "Unmarried children under 18 qualify for family reunification: children of a Swiss citizen who live with them are entitled to a residence permit (Art. 42 para. 1 FNIA), children of a settlement (C) permit holder are entit"
-        },
-        {
-          "corridor": "us-ch",
-          "taskId": "family-permit-children",
-          "location": "tldr",
-          "point": "Unmarried children under 18 can join a parent in Switzerland: children of a Swiss citizen are entitled to a residence permit (Art. 42), children of a C-permit holder are entitled subject to conditions (Art. 43), and chil"
-        },
-        {
-          "corridor": "us-ch",
-          "taskId": "family-permit-children",
-          "location": "keyFact:Who applies",
-          "point": "Unmarried children under 18 of a Swiss national who live with them are entitled to a residence permit (Art. 42 para. 1); children of a C-permit holder are entitled subject to the Art. 43 conditions; children of a B-permi"
-        },
-        {
-          "corridor": "us-ch",
-          "taskId": "family-permit-children",
-          "location": "keyFact:Right or discretion",
-          "point": "Children under twelve of a Swiss national or of a settlement-permit holder are entitled to be granted a settlement permit directly (Art. 42 para. 4 and Art. 43 para. 6)."
-        }
-      ]
-    },
-    {
-      "url": "https://www.fedlex.admin.ch/eli/cc/2007/758/en#art_27",
-      "host": "www.fedlex.admin.ch",
-      "sourceName": "Foreign Nationals and Integration Act (FNIA, SR 142.20), Art. 27 — Fedlex, the official publication platform of Swiss law",
-      "references": 8,
-      "problem": "The /eli/cc/2007/758/en page serves an Angular SPA shell (cached HTML is <title>Fedlex</title> + app-root, ~76 KB, visible text only the 'javascript-fähigen Browser' notice). No Art. 27 text and no id=\"art_27\" anchor render for a human; the #art_27 jump resolves to nothing.",
-      "replacement": "https://www.fedlex.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/2007/758/20260201/en/html/fedlex-data-admin-ch-eli-cc-2007-758-20260201-en-html.html#art_27",
-      "replacementVerified": true,
-      "supportsPoint": true,
-      "note": "FNIA (cc/2007/758), in-force EN dated 20260201. Curled (HTTP 200, 731 KB) and saw id=\"art_27\" plus 'Art. 27 Education and training 1 Foreign nationals may be admitted for education or training purposes if:' — supports all 8 us-ch usages (education-admission condition, school confirms eligibility, 'may be admitted' = discretion not entitlement).",
-      "usages": [
-        {
-          "corridor": "us-ch",
-          "taskId": "study-admission",
-          "location": "summary",
-          "point": "Admission comes before immigration: the first statutory condition for a residence permit for education purposes is that the management of the educational establishment confirms that you are eligible for the education or "
-        },
-        {
-          "corridor": "us-ch",
-          "taskId": "study-admission",
-          "location": "tldr",
-          "point": "Admission comes before immigration: the first statutory condition for an education residence permit is that the educational establishment's management confirms you are eligible for the course (Art. 27 para. 1 let. a FNIA"
-        },
-        {
-          "corridor": "us-ch",
-          "taskId": "study-admission",
-          "location": "keyFact:Legal basis",
-          "point": "Art. 27 para. 1 let. a FNIA: foreign nationals may be admitted for education or training only if the management of the educational establishment confirms that the person concerned is eligible for the education or trainin"
-        },
-        {
-          "corridor": "us-ch",
-          "taskId": "study-residence-permit",
-          "location": "summary",
-          "point": "Foreign nationals may be admitted to Switzerland for education or training purposes if the management of the educational establishment confirms that they are eligible for the education or training, suitable accommodation"
-        },
-        {
-          "corridor": "us-ch",
-          "taskId": "study-residence-permit",
-          "location": "tldr",
-          "point": "Foreign nationals may be admitted to Switzerland for study if the school confirms you are eligible, suitable accommodation and the required financial means are available, and you meet the personal and educational require"
-        },
-        {
-          "corridor": "us-ch",
-          "taskId": "study-residence-permit",
-          "location": "keyFact:Right or discretion",
-          "point": "Discretion, not entitlement: Art. 27 FNIA says foreign nationals 'may be admitted' for education purposes — the canton decides at its discretion, and a continued stay after the course is governed by the general admission"
-        },
-        {
-          "corridor": "us-ch",
-          "taskId": "study-after-graduation",
-          "location": "keyFact:Right or discretion",
-          "point": "A derogation the authorities apply, not an entitlement: graduates 'may be admitted' to qualifying work, and outside this six-month window a continued stay is governed by the general admission requirements of the Act (Art"
-        },
-        {
-          "corridor": "us-ch",
-          "taskId": "study-after-graduation",
-          "location": "step2",
-          "point": "If you do not find qualifying work (or do not seek it), remember that staying on is governed by the general admission requirements of the Act — there is no automatic continued residence after the course."
-        }
-      ]
-    },
-    {
-      "url": "https://www.fedlex.admin.ch/eli/cc/2007/758/en#art_47",
-      "host": "www.fedlex.admin.ch",
-      "sourceName": "Foreign Nationals and Integration Act (FNIA, SR 142.20), Art. 47 para. 1 — Fedlex",
-      "references": 7,
-      "problem": "Cited consolidated-EN ELI URL serves the Fedlex Angular SPA shell (cacheFile 537d74f11179.html, identical 76889-byte JS-required page). No article text; #art_47 anchor resolves to nothing for a user.",
-      "replacement": "https://www.fedlex.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/2007/758/20260201/en/html/fedlex-data-admin-ch-eli-cc-2007-758-20260201-en-html-3.html#art_47",
-      "replacementVerified": true,
-      "supportsPoint": true,
-      "note": "Same FNIA filestore HTML (EN, 2026-02-01). Curled live: id=\"art_47\" present; text reads 'The right to family reunification must be exercised within five years. Children over twelve must be reunified with their family within twelve months' (Art.47 para.1), plus para.4 on subsequent reunification. Matches all 7 'Deadline' usages character-for-character.",
-      "usages": [
-        {
-          "corridor": "us-ch",
-          "taskId": "family-permit-spouse-swiss",
-          "location": "keyFact:Deadline",
-          "point": "The right to family reunification must be exercised within five years; children over twelve must be reunified within twelve months (Art. 47 FNIA)."
-        },
-        {
-          "corridor": "us-ch",
-          "taskId": "family-permit-spouse-swiss",
-          "location": "step3",
-          "point": "Observe the statutory time limit: the right to family reunification must be exercised within five years (children over 12: within twelve months)."
-        },
-        {
-          "corridor": "us-ch",
-          "taskId": "family-permit-spouse-settled",
-          "location": "keyFact:Deadline",
-          "point": "The right to family reunification must be exercised within five years; children over twelve must be reunified within twelve months (Art. 47 FNIA)."
-        },
-        {
-          "corridor": "us-ch",
-          "taskId": "family-permit-spouse-b-holder",
-          "location": "keyFact:Deadline",
-          "point": "The right to family reunification must be exercised within five years; children over twelve must be reunified within twelve months (Art. 47 FNIA)."
-        },
-        {
-          "corridor": "us-ch",
-          "taskId": "family-permit-children",
-          "location": "keyFact:Deadline",
-          "point": "The right to family reunification must be exercised within five years; children over twelve must be reunified within twelve months (Art. 47 para. 1 FNIA). A subsequent reunification is authorised only if there are import"
-        },
-        {
-          "corridor": "us-ch",
-          "taskId": "family-permit-children",
-          "location": "step2",
-          "point": "Mind the deadlines: five years in general, but children over 12 must be reunified within twelve months."
-        },
-        {
-          "corridor": "us-ch",
-          "taskId": "family-d-visa",
-          "location": "keyFact:Deadline",
-          "point": "The representation issues the type D visa once the cantonal decision on family reunification is confirmed; the underlying right to family reunification must itself be exercised within five years (twelve months for childr"
-        }
-      ]
-    },
-    {
-      "url": "https://www.fedlex.admin.ch/eli/cc/2007/758/en#art_43",
-      "host": "www.fedlex.admin.ch",
-      "sourceName": "Foreign Nationals and Integration Act (FNIA, SR 142.20), Art. 43 and 52 — Fedlex, the official publication platform of Swiss law",
-      "references": 7,
-      "problem": "Angular SPA shell served (same Fedlex JS-bootstrap page, ~76 KB, no article body). No Art. 43 text and no id=\"art_43\" anchor visible to a human.",
-      "replacement": "https://www.fedlex.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/2007/758/20260201/en/html/fedlex-data-admin-ch-eli-cc-2007-758-20260201-en-html.html#art_43",
-      "replacementVerified": true,
-      "supportsPoint": true,
-      "note": "FNIA EN 20260201. Curled (HTTP 200) and saw id=\"art_43\" plus 'Art. 43 ... Spouses and children of persons with a settlement permit ... are entitled to be granted a residence permit ... provided: a. they live with that person; b. suitable accommodation is available; c. ...' — supports the entitlement-subject-to-conditions point for spouses/children of a C-permit holder.",
-      "usages": [
-        {
-          "corridor": "us-ch",
-          "taskId": "family-permit-spouse-settled",
-          "location": "summary",
-          "point": "The foreign spouse (and unmarried children under 18) of a person holding a settlement permit (C permit) are entitled to a residence permit and its extension provided they live with that person, suitable accommodation is "
-        },
-        {
-          "corridor": "us-ch",
-          "taskId": "family-permit-spouse-settled",
-          "location": "tldr",
-          "point": "If you are the foreign spouse or registered partner of someone who holds a Swiss settlement permit (C permit), you are entitled to a residence permit (Art. 43 FNIA) provided you live together, have suitable accommodation"
-        },
-        {
-          "corridor": "us-ch",
-          "taskId": "family-permit-spouse-settled",
-          "location": "keyFact:Who applies",
-          "point": "The foreign spouse and unmarried children under 18 of a person with a settlement permit are entitled to be granted a residence permit and to have their residence permit extended, provided the Art. 43 para. 1 conditions ("
-        },
-        {
-          "corridor": "us-ch",
-          "taskId": "family-permit-spouse-settled",
-          "location": "keyFact:Right or discretion",
-          "point": "Right (entitlement) subject to conditions: Art. 43 FNIA says the spouse and children of a C-permit holder \"are entitled to be granted a residence permit ... provided\" the listed conditions are met."
-        },
-        {
-          "corridor": "us-ch",
-          "taskId": "family-permit-spouse-settled",
-          "location": "keyFact:Legal basis",
-          "point": "Art. 43 FNIA, with five conditions: live together; suitable accommodation; no dependence on social assistance; ability to communicate in the local national language (registering for a language support programme suffices,"
-        },
-        {
-          "corridor": "us-ch",
-          "taskId": "family-permit-spouse-settled",
-          "location": "step2",
-          "point": "If you cannot yet communicate in the national language of the intended place of residence, register for a language course: a certificate of enrolment in a language support programme satisfies the language condition for t"
-        },
-        {
-          "corridor": "us-ch",
-          "taskId": "family-permit-children",
-          "location": "keyFact:Legal basis",
-          "point": "The language requirement (communicate in the national language) does not apply to unmarried children under 18 (Art. 43 para. 3 and Art. 44 para. 3 FNIA)."
-        }
-      ]
-    },
-    {
-      "url": "https://www.fedlex.admin.ch/eli/cc/2007/758/en#art_44",
-      "host": "www.fedlex.admin.ch",
-      "sourceName": "Foreign Nationals and Integration Act (FNIA, SR 142.20), Art. 44 and 52 — Fedlex, the official publication platform of Swiss law",
-      "references": 6,
-      "problem": "Cited consolidated-EN ELI URL serves the Fedlex Angular SPA shell (cacheFile 7d2ccd9509a1.html, 76889-byte JS-required page). No Art.44 text and the #art_44 anchor is dead for a user.",
-      "replacement": "https://www.fedlex.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/2007/758/20260201/en/html/fedlex-data-admin-ch-eli-cc-2007-758-20260201-en-html-3.html#art_44",
-      "replacementVerified": true,
-      "supportsPoint": true,
-      "note": "FNIA filestore HTML (EN, 2026-02-01). Curled live: id=\"art_44\" present; text reads 'The foreign spouse and unmarried children under 18 of a person with a residence permit may be granted a residence permit... if: a. they live with the permit holder; b. suitable housing is available; c. they do not depend on social assistance; d. able to communicate in the national language; e. ... not claiming supplementary benefits' plus para.2 (register for a language programme suffices). Confirms the discretionary 'may be granted' framing and the a–e conditions — supports all 6 spouse-of-B-holder usages.",
-      "usages": [
-        {
-          "corridor": "us-ch",
-          "taskId": "family-permit-spouse-b-holder",
-          "location": "summary",
-          "point": "The foreign spouse (and unmarried children under 18) of a person holding a residence permit (B permit) MAY be granted a residence permit — this is a discretionary decision, not an entitlement — if they live with the perm"
-        },
-        {
-          "corridor": "us-ch",
-          "taskId": "family-permit-spouse-b-holder",
-          "location": "tldr",
-          "point": "If you are the foreign spouse or registered partner of someone holding a Swiss residence (B) permit, you MAY be granted a residence permit if the Art. 44 FNIA conditions are met — but this is a discretionary cantonal dec"
-        },
-        {
-          "corridor": "us-ch",
-          "taskId": "family-permit-spouse-b-holder",
-          "location": "keyFact:Who applies",
-          "point": "The foreign spouse and unmarried children under 18 of a person with a residence permit may be granted a residence permit or an extension thereof if the Art. 44 para. 1 conditions (a-e) are met."
-        },
-        {
-          "corridor": "us-ch",
-          "taskId": "family-permit-spouse-b-holder",
-          "location": "keyFact:Right or discretion",
-          "point": "Discretion, not entitlement: Art. 44 FNIA says the spouse and children of a B-permit holder \"may be granted\" a permit — unlike Art. 42/43, which say \"are entitled\". The decision lies with the cantonal authorities."
-        },
-        {
-          "corridor": "us-ch",
-          "taskId": "family-permit-spouse-b-holder",
-          "location": "keyFact:Legal basis",
-          "point": "Art. 44 FNIA, with conditions: live together; suitable housing; no dependence on social assistance; ability to communicate in the local national language (registering for a language support programme suffices, Art. 44 pa"
-        },
-        {
-          "corridor": "us-ch",
-          "taskId": "family-permit-spouse-b-holder",
-          "location": "step2",
-          "point": "Check the conditions: living together, suitable housing, no dependence on social assistance, language (or enrolment in a language course), and no claim to supplementary benefits by the person you are joining."
-        }
-      ]
-    },
-    {
-      "url": "https://www.fedlex.admin.ch/eli/cc/2007/759/de#art_25",
-      "host": "www.fedlex.admin.ch",
-      "sourceName": "Ordinance on Admission, Period of Stay and Employment (VZAE/ASEO, SR 142.201), Art. 25 — Fedlex (official German text)",
-      "references": 6,
-      "problem": "Angular SPA shell served (Fedlex JS-bootstrap page, ~76 KB, no article body). No Art. 25 text and no id=\"art_25\" anchor visible to a human.",
-      "replacement": "https://www.fedlex.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/2007/759/20260101/de/html/fedlex-data-admin-ch-eli-cc-2007-759-20260101-de-html.html#art_25",
-      "replacementVerified": true,
-      "supportsPoint": true,
-      "note": "VZAE/ASEO (cc/2007/759), German-only in filestore (EN date paths fall back to the shell), in-force date 20260101. Curled (HTTP 200, 338 KB) and saw id=\"art_25\" plus 'Art. 25 1 Das Mindestalter ... beträgt 55 Jahre ... 3 ... mit Ausnahme der Verwaltung des eigenen Vermögens keine Erwerbstätigkeit ausgeübt werden' — confirms min age 55, special personal ties, and work ban except managing own assets. Replacement is /de (no EN exists).",
-      "usages": [
-        {
-          "corridor": "us-ch",
-          "taskId": "retirement-residence-permit",
-          "location": "keyFact:Legal basis",
-          "point": "Foreign Nationals and Integration Act (FNIA) Art. 28, implemented by the Ordinance on Admission, Period of Stay and Employment (VZAE/ASEO, SR 142.201) Art. 25 — which sets the minimum age at 55, defines the special perso"
-        },
-        {
-          "corridor": "us-ch",
-          "taskId": "retirement-residence-permit",
-          "location": "keyFact:Work allowed",
-          "point": "No — with this permit no gainful activity may be carried out in Switzerland or abroad, with the sole exception of managing your own assets (VZAE/ASEO Art. 25 para. 3)."
-        },
-        {
-          "corridor": "us-ch",
-          "taskId": "retirement-residence-permit",
-          "location": "step1",
-          "point": "Check the minimum age: the Federal Council has set the minimum age for admission of retired persons at 55."
-        },
-        {
-          "corridor": "us-ch",
-          "taskId": "retirement-residence-permit",
-          "location": "step2",
-          "point": "Gather evidence of your special personal ties to Switzerland. The ordinance says such ties exist in particular where longer previous stays in Switzerland (holidays, education or gainful activity) can be shown, or where c"
-        },
-        {
-          "corridor": "us-ch",
-          "taskId": "retirement-residence-permit",
-          "location": "step3",
-          "point": "Understand the work ban: with this permit no gainful activity may be carried out in Switzerland OR abroad, with the sole exception of managing your own assets."
-        },
-        {
-          "corridor": "us-ch",
-          "taskId": "retirement-residence-permit",
-          "location": "step4",
-          "point": "Prepare proof of the required financial means. The ordinance sets no fixed franc amount: the necessary financial means exist if they exceed the amount that would entitle a Swiss national (and, where applicable, their fam"
-        }
-      ]
-    },
-    {
-      "url": "https://www.fedlex.admin.ch/eli/cc/1995/3867_3867_3867/de#art_2",
-      "host": "www.fedlex.admin.ch",
-      "sourceName": "Ordinance on Health Insurance (KVV, SR 832.102), Art. 2 para. 4 — Fedlex (official German text)",
-      "references": 6,
-      "problem": "Cited consolidated-DE ELI URL serves the Fedlex Angular SPA shell (cacheFile 7550f5531b9b.html, 76889-byte JS-required page). The KVV Art.2 text is not rendered and the #art_2 anchor is dead for a user.",
-      "replacement": "https://www.fedlex.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/1995/3867_3867_3867/20260101/de/html/fedlex-data-admin-ch-eli-cc-1995-3867_3867_3867-20260101-de-html-3.html#art_2",
-      "replacementVerified": true,
-      "supportsPoint": true,
-      "note": "Static filestore HTML of KVV (Health Insurance Ordinance, SR 832.102), in-force consolidation 2026-01-01 (DE — matches the original /de citation; usages.json sourceName explicitly says 'official German text', so DE is intended, not a fallback). Curled live (688KB, no app-root): id=\"art_2\" present; para.4 reads 'Auf Gesuch hin von der Versicherungspflicht ausgenommen sind Personen, die sich im Rahmen einer Aus- oder Weiterbildung in der Schweiz aufhalten, wie namentlich Studierende... sofern sie während der gesamten Geltungsdauer der Befreiung... über einen gleichwertigen Versicherungsschutz verfügen', requires 'schriftliche Bestätigung der zuständigen ausländischen Stelle', and 'zuständige kantonale Behörde kann... höchstens für drei Jahre... befreien' (extendable). Supports all 6 study-health-insurance-exemption usages.",
-      "usages": [
-        {
-          "corridor": "us-ch",
-          "taskId": "study-health-insurance-exemption",
-          "location": "summary",
-          "point": "Students staying in Switzerland for education or training can, on request, be exempted from the compulsory Swiss health insurance if they have equivalent insurance cover for treatment in Switzerland for the entire durati"
-        },
-        {
-          "corridor": "us-ch",
-          "taskId": "study-health-insurance-exemption",
-          "location": "tldr",
-          "point": "Students staying in Switzerland for education can, on request, be exempted from compulsory Swiss health insurance if they have equivalent cover for treatment in Switzerland for the whole exemption period, evidenced by a "
-        },
-        {
-          "corridor": "us-ch",
-          "taskId": "study-health-insurance-exemption",
-          "location": "keyFact:Who applies",
-          "point": "You request the exemption yourself; persons staying in Switzerland for education or training — expressly including students — may be exempted on request if they have equivalent cover, and the request must be accompanied "
-        },
-        {
-          "corridor": "us-ch",
-          "taskId": "study-health-insurance-exemption",
-          "location": "keyFact:Where",
-          "point": "The competent cantonal authority decides on (and grants) the exemption."
-        },
-        {
-          "corridor": "us-ch",
-          "taskId": "study-health-insurance-exemption",
-          "location": "keyFact:Legal basis",
-          "point": "Art. 2 para. 4 of the Ordinance on Health Insurance (KVV, SR 832.102), which carves out the request-based student exemption from the default compulsory-insurance rule of the Federal Health Insurance Act."
-        },
-        {
-          "corridor": "us-ch",
-          "taskId": "study-health-insurance-exemption",
-          "location": "keyFact:Right or discretion",
-          "point": "Conditional, not automatic: the exemption is granted only on request and only where equivalent cover exists for the entire exemption period; the cantonal authority may grant it for at most three years, extendable on requ"
-        }
-      ]
-    },
-    {
-      "url": "https://www.fedlex.admin.ch/eli/cc/2007/758/en#art_30",
-      "host": "www.fedlex.admin.ch",
-      "sourceName": "Foreign Nationals and Integration Act (FNIA, SR 142.20), Art. 30 — Fedlex, the official publication platform of Swiss law",
-      "references": 4,
-      "problem": "Angular SPA shell served (Fedlex JS-bootstrap page, ~76 KB, no article body). No Art. 30 text and no id=\"art_30\" anchor visible to a human.",
-      "replacement": "https://www.fedlex.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/2007/758/20260201/en/html/fedlex-data-admin-ch-eli-cc-2007-758-20260201-en-html.html#art_30",
-      "replacementVerified": true,
-      "supportsPoint": true,
-      "note": "FNIA EN 20260201. Curled (HTTP 200) and saw id=\"art_30\" plus 'Art. 30 1 Derogations from the admission requirements (Art. 18-29) are permitted in order to: ... b. take account of serious cases of personal hardship ...' — supports the cohabiting-partner hardship-derogation point (Art. 30 para. 1 let. b).",
-      "usages": [
-        {
-          "corridor": "us-ch",
-          "taskId": "family-permit-unmarried-partner",
-          "location": "tldr",
-          "point": "Switzerland gives unmarried cohabiting partners no general right to family reunification: the FNIA reunification provisions cover only spouses, registered partners and unmarried children under 18, and the official portal"
-        },
-        {
-          "corridor": "us-ch",
-          "taskId": "family-permit-unmarried-partner",
-          "location": "keyFact:Legal basis",
-          "point": "Art. 30 para. 1 let. b FNIA permits derogations from the admission requirements to \"take account of serious cases of personal hardship or important public interests\"; Art. 50 para. 4 FNIA refers to cohabiting partners gr"
-        },
-        {
-          "corridor": "us-ch",
-          "taskId": "family-permit-unmarried-partner",
-          "location": "keyFact:Who applies",
-          "point": "Only the cantonal migration authority can decide a cohabiting-partner case, at its discretion; there is no federal entitlement, no federal document checklist and no published federal criteria threshold."
-        },
-        {
-          "corridor": "us-ch",
-          "taskId": "family-permit-unmarried-partner",
-          "location": "step2",
-          "point": "Know the legal basis being applied: a permit for a cohabiting partner is a hardship-based derogation under Art. 30 para. 1 let. b FNIA, not family reunification under Arts. 42-44."
-        }
-      ]
-    },
-    {
-      "url": "https://www.fedlex.admin.ch/eli/cc/2007/758/en#art_28",
-      "host": "www.fedlex.admin.ch",
-      "sourceName": "Foreign Nationals and Integration Act (FNIA, SR 142.20), Art. 28 — Fedlex, the official publication platform of Swiss law",
-      "references": 4,
-      "problem": "Cited consolidated-EN ELI URL serves the Fedlex Angular SPA shell (cacheFile 39d8037d46b7.html, 76889-byte JS-required page). No Art.28 text; #art_28 anchor dead for a user.",
-      "replacement": "https://www.fedlex.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/2007/758/20260201/en/html/fedlex-data-admin-ch-eli-cc-2007-758-20260201-en-html-3.html#art_28",
-      "replacementVerified": true,
-      "supportsPoint": true,
-      "note": "FNIA filestore HTML (EN, 2026-02-01). Curled live: id=\"art_28\" present; text reads 'Foreign nationals who are no longer gainfully employed may be admitted if: a. they have reached a minimum age set by the Federal Council; b. they have special personal relations to Switzerland; and c. they have the required financial means.' Confirms the discretionary 'may be admitted' and the three conditions — supports all 4 retirement-residence-permit usages. (Note: the page text does not itself state the age '55'; that figure comes from the VZAE, not Art.28 FNIA — the claim attributes 55 to the Federal Council, consistent with this article.)",
-      "usages": [
-        {
-          "corridor": "us-ch",
-          "taskId": "retirement-residence-permit",
-          "location": "summary",
-          "point": "Foreign nationals who are no longer gainfully employed may be admitted to Switzerland if they have reached a minimum age set by the Federal Council, have special personal relations to Switzerland, and have the required f"
-        },
-        {
-          "corridor": "us-ch",
-          "taskId": "retirement-residence-permit",
-          "location": "tldr",
-          "point": "If you are no longer working, you may be admitted to live in Switzerland under Art. 28 of the Foreign Nationals and Integration Act (FNIA) — but only if you meet a minimum age (set by the Federal Council at 55), have spe"
-        },
-        {
-          "corridor": "us-ch",
-          "taskId": "retirement-residence-permit",
-          "location": "keyFact:Who applies",
-          "point": "Foreign nationals who are no longer gainfully employed and meet the minimum age, special-personal-ties and financial-means conditions of Art. 28 FNIA. As a US citizen you are a non-EU/EFTA third-country national and are "
-        },
-        {
-          "corridor": "us-ch",
-          "taskId": "retirement-residence-permit",
-          "location": "keyFact:Right or discretion",
-          "point": "Discretion: Art. 28 FNIA says retired persons \"may be admitted\", not that they \"are entitled\" — there is no legal right to a retired person's permit; the canton decides and SEM must approve."
-        }
-      ]
-    },
-    {
-      "url": "https://www.fedlex.admin.ch/eli/cc/2007/758/en#art_12",
-      "host": "www.fedlex.admin.ch",
-      "sourceName": "Foreign Nationals and Integration Act (FNIA, SR 142.20), Art. 12 — Fedlex, the official publication platform of Swiss law",
-      "references": 3,
-      "problem": "Angular SPA shell served (Fedlex JS-bootstrap page, ~76 KB, no article body). No Art. 12 text and no id=\"art_12\" anchor visible to a human.",
-      "replacement": "https://www.fedlex.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/2007/758/20260201/en/html/fedlex-data-admin-ch-eli-cc-2007-758-20260201-en-html.html#art_12",
-      "replacementVerified": true,
-      "supportsPoint": true,
-      "note": "FNIA EN 20260201. Curled (HTTP 200) and saw id=\"art_12\" plus 'Art. 12 Registration requirement 1 Foreign nationals who require a short stay, residence or settlement permit, must register with the competent authority at their place of residence in Switzerland before the expiry of the period of stay ...' — supports the registration-requirement point.",
-      "usages": [
-        {
-          "corridor": "us-ch",
-          "taskId": "register-commune",
-          "location": "tldr",
-          "point": "Once you arrive in Switzerland you must register your arrival in person at the residents' registration office of your commune of residence — this is what formally starts your residence and triggers your residence permit."
-        },
-        {
-          "corridor": "us-ch",
-          "taskId": "register-commune",
-          "location": "keyFact:Who applies",
-          "point": "Foreign nationals who require a short stay, residence or settlement permit must register with the competent authority at their place of residence in Switzerland — so US (third-country) nationals on any route (work, famil"
-        },
-        {
-          "corridor": "us-ch",
-          "taskId": "register-commune",
-          "location": "keyFact:Legal basis",
-          "point": "Registration requirement: FNIA (Foreign Nationals and Integration Act, SR 142.20) Art. 12; the time limit for registration is set by the Federal Council in the implementing ordinance OASA/VZAE (SR 142.201) Art. 10."
-        }
-      ]
-    },
-    {
-      "url": "https://www.fedlex.admin.ch/eli/cc/2007/759/de#art_23",
-      "host": "www.fedlex.admin.ch",
-      "sourceName": "Ordinance on Admission, Period of Stay and Employment (VZAE/ASEO, SR 142.201), Art. 23 — Fedlex (official German text)",
-      "references": 3,
-      "problem": "Cited consolidated-DE ELI URL serves the Fedlex Angular SPA shell (cacheFile f37cb401156f.html, 76889-byte JS-required page). The VZAE Art.23 text is not rendered and #art_23 is dead for a user.",
-      "replacement": "https://www.fedlex.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/2007/759/20260612/de/html/fedlex-data-admin-ch-eli-cc-2007-759-20260612-de-html-2.html#art_23",
-      "replacementVerified": true,
-      "supportsPoint": true,
-      "note": "Static filestore HTML of VZAE/ASEO (SR 142.201), latest in-force consolidation 2026-06-12 (DE — matches original /de; sourceName says 'official German text'). Curled live (344KB, no app-root): id=\"art_23\" present (and id=\"art_24\" present for the Arts.23-24 usage). Art.23 para.1 lists financial-means evidence (Verpflichtungserklärung + Einkommens-/Vermögensnachweis of a solvent Swiss resident), para.2 the personal/circumvention requirements, para.3 'Aus- oder Weiterbildungen werden in der Regel für längstens acht Jahre bewilligt' (at most eight years, exceptions possible). Supports all 3 study-residence-permit usages.",
-      "usages": [
-        {
-          "corridor": "us-ch",
-          "taskId": "study-residence-permit",
-          "location": "step3",
-          "point": "Prepare proof of the required financial means. The ordinance lists how they can be evidenced: a declaration of commitment plus proof of income and assets from a solvent person resident in Switzerland (a foreign national "
-        },
-        {
-          "corridor": "us-ch",
-          "taskId": "study-residence-permit",
-          "location": "step4",
-          "point": "Be aware of how your application is assessed: the personal requirements are met in particular when no previous stays, application proceedings or other circumstances indicate that the course merely serves to circumvent th"
-        },
-        {
-          "corridor": "us-ch",
-          "taskId": "study-residence-permit",
-          "location": "step5",
-          "point": "Plan the overall duration realistically: education and training stays are authorised as a rule for at most eight years in total; exceptions are possible only for courses leading to a specific goal."
-        }
-      ]
-    },
-    {
-      "url": "https://www.fedlex.admin.ch/eli/cc/2007/759/de#art_10",
-      "host": "www.fedlex.admin.ch",
-      "sourceName": "Ordinance on Admission, Period of Stay and Employment (OASA/VZAE, SR 142.201), Art. 10 — Fedlex, the official publication platform of Swiss law",
-      "references": 2,
-      "problem": "Angular SPA shell served (Fedlex JS-bootstrap page, ~76 KB, no article body). No Art. 10 text and no id=\"art_10\" anchor visible to a human.",
-      "replacement": "https://www.fedlex.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/2007/759/20260101/de/html/fedlex-data-admin-ch-eli-cc-2007-759-20260101-de-html.html#art_10",
-      "replacementVerified": true,
-      "supportsPoint": true,
-      "note": "VZAE German-only, in-force 20260101. Curled (HTTP 200, 338 KB) and saw id=\"art_10\" plus 'Art. 10 Aufenthalt mit Anmeldung 1 ... müssen sich Ausländerinnen und Ausländer innerhalb von 14 Tagen nach der Einreise bei der durch den Kanton bezeichneten Stelle anmelden ...' — confirms the 14-day registration deadline and cantonal-body point. Replacement is /de (no EN exists).",
-      "usages": [
-        {
-          "corridor": "us-ch",
-          "taskId": "register-commune",
-          "location": "keyFact:Where",
-          "point": "In person at the residents' registration office (Einwohnerkontrolle / contrôle des habitants / controllo abitanti) of your commune of residence — the body designated by your canton for arrival registration."
-        },
-        {
-          "corridor": "us-ch",
-          "taskId": "register-commune",
-          "location": "keyFact:Deadline",
-          "point": "Within 14 days of entering Switzerland you must register with the body designated by your canton (the time limit set under the ordinance for a residence stay); the exact deadline can vary by canton/commune, so confirm it"
-        }
-      ]
-    },
-    {
-      "url": "https://www.fedlex.admin.ch/eli/cc/63/837_843_843/de#art_1_a",
-      "host": "www.fedlex.admin.ch",
-      "sourceName": "Federal Act on Old-Age and Survivors' Insurance (OASI Act / AHVG, SR 831.10), Art. 1a — Fedlex, the official publication platform of Swiss law",
-      "references": 2,
-      "problem": "Cited consolidated-DE ELI URL serves the Fedlex Angular SPA shell (cacheFile c2126da22390.html, 76889-byte JS-required page). The AHVG Art.1a text is not rendered and #art_1_a is dead for a user.",
-      "replacement": "https://www.fedlex.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/63/837_843_843/20260101/de/html/fedlex-data-admin-ch-eli-cc-63-837_843_843-20260101-de-html-1.html#art_1_a",
-      "replacementVerified": true,
-      "supportsPoint": true,
-      "note": "Static filestore HTML of AHVG (OASI Act, SR 831.10), in-force consolidation 2026-01-01 (DE — matches original /de; sourceName says 'official German text'). Curled live (512KB, no app-root): id=\"art_1_a\" present; text reads 'Versichert nach diesem Gesetz sind: a. die natürlichen Personen mit Wohnsitz in der Schweiz; b. die natürlichen Personen, die in der Schweiz eine Erwerbstätigkeit ausüben' — i.e. everyone resident or gainfully active in Switzerland is OASI-insured. Supports both ahv-social-security usages.",
-      "usages": [
-        {
-          "corridor": "us-ch",
-          "taskId": "ahv-social-security",
-          "location": "tldr",
-          "point": "The OASI number (AHV in German, AVS in French) is Switzerland's social-insurance number for first-pillar old-age and survivors' insurance, and contributions are owed by everyone resident in Switzerland or working there. "
-        },
-        {
-          "corridor": "us-ch",
-          "taskId": "ahv-social-security",
-          "location": "keyFact:Who applies",
-          "point": "Everyone domiciled (resident) in Switzerland and everyone who carries on a gainful activity in Switzerland is insured for OASI — so the number/coverage applies to US nationals on any route, whether or not you work."
-        }
-      ]
-    },
-    {
-      "url": "https://www.fedlex.admin.ch/eli/cc/2007/759/de#art_38",
-      "host": "www.fedlex.admin.ch",
-      "sourceName": "Ordinance on Admission, Period of Stay and Employment (VZAE/ASEO, SR 142.201), Art. 38 — Fedlex (official German text)",
-      "references": 2,
-      "problem": "Angular SPA shell served (Fedlex JS-bootstrap page, ~76 KB, no article body). No Art. 38 text and no id=\"art_38\" anchor visible to a human.",
-      "replacement": "https://www.fedlex.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/2007/759/20260101/de/html/fedlex-data-admin-ch-eli-cc-2007-759-20260101-de-html.html#art_38",
-      "replacementVerified": true,
-      "supportsPoint": true,
-      "note": "VZAE German-only, in-force 20260101. Curled (HTTP 200) and saw id=\"art_38\" plus 'Art. 38 Aus- und Weiterbildung mit Nebenerwerb ... kann frühestens sechs Monate nach Beginn der Ausbildung eine Nebenerwerbstätigkeit bewilligt werden, wenn: ... b. die wöchentliche Arbeitszeit ausserhalb der Ferien 15 Stunden nicht überschreitet ...' — confirms the 'earliest 6 months after start' and 'max 15 hours/week outside holidays' points. Replacement is /de (no EN exists).",
-      "usages": [
-        {
-          "corridor": "us-ch",
-          "taskId": "study-work-alongside",
-          "location": "keyFact:Legal basis",
-          "point": "Art. 38 ASEO/VZAE (general side employment), with Art. 39 (work within a mandatory internship, capped at half the total duration of the education) and Art. 40 (employment in one's scientific specialist field during conti"
-        },
-        {
-          "corridor": "us-ch",
-          "taskId": "study-work-alongside",
-          "location": "step1",
-          "point": "Plan your budget for the first six months without Swiss work income: side employment can be authorised at the earliest six months after your course starts, and never for more than 15 hours a week outside holidays."
-        }
-      ]
-    },
-    {
-      "url": "https://www.fedlex.admin.ch/eli/cc/2007/758/en#art_21",
-      "host": "www.fedlex.admin.ch",
-      "sourceName": "Foreign Nationals and Integration Act (FNIA, SR 142.20), Art. 21 — Fedlex",
-      "references": 2,
-      "problem": "Cited consolidated-EN ELI URL serves the Fedlex Angular SPA shell (cacheFile e2bd24da54bf.html, 76889-byte JS-required page). No Art.21 text; #art_21 anchor dead for a user.",
-      "replacement": "https://www.fedlex.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/2007/758/20260201/en/html/fedlex-data-admin-ch-eli-cc-2007-758-20260201-en-html-3.html#art_21",
-      "replacementVerified": true,
-      "supportsPoint": true,
-      "note": "FNIA filestore HTML (EN, 2026-02-01). Curled live: id=\"art_21\" present; para.3 reads 'Foreign nationals with a Swiss university degree may be admitted in derogation from paragraph 1 if their work is of high academic or economic interest. They shall be admitted for a period of six months following completion of their education or training in Switzerland in order to find suitable work.' Matches the study-after-graduation legal-basis and the six-month job-seeking window — supports both usages.",
-      "usages": [
-        {
-          "corridor": "us-ch",
-          "taskId": "study-after-graduation",
-          "location": "keyFact:Legal basis",
-          "point": "Art. 21 para. 3 FNIA: foreign nationals with a Swiss university degree may be admitted in derogation from the precedence rule if their work is of high academic or economic interest, and shall be admitted for a period of "
-        },
-        {
-          "corridor": "us-ch",
-          "taskId": "study-after-graduation",
-          "location": "step1",
-          "point": "Before your course ends, plan the transition: if you intend to stay, the six-month job-seeking window starts at the end of your course or training."
-        }
-      ]
-    },
-    {
-      "url": "https://www.fedlex.admin.ch/eli/cc/63/837_843_843/de#art_13",
-      "host": "www.fedlex.admin.ch",
-      "sourceName": "Federal Act on Old-Age and Survivors' Insurance (OASI Act / AHVG, SR 831.10), Art. 13–14 — Fedlex, the official publication platform of Swiss law",
-      "references": 1,
-      "problem": "Angular SPA shell served (Fedlex JS-bootstrap page, ~76 KB, no article body). No Art. 13 text and no id=\"art_13\" anchor visible to a human.",
-      "replacement": "https://www.fedlex.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/63/837_843_843/20260101/de/html/fedlex-data-admin-ch-eli-cc-63-837_843_843-20260101-de-html.html#art_13",
-      "replacementVerified": true,
-      "supportsPoint": true,
-      "note": "AHVG (cc/63/837_843_843), German-only in filestore, in-force 20260101. Curled (HTTP 200, 511 KB) and saw id=\"art_13\" plus 'Art. 13 Höhe des Arbeitgeberbeitrages Der Arbeitgeberbeitrag beträgt 4,35 Prozent der ... massgebenden Löhne.' — establishes the employer OASI contribution (4.35%), consistent with the 'employer handles OASI via its compensation office and deducts your share' usage. Replacement is /de (no EN exists).",
-      "usages": [
-        {
-          "corridor": "us-ch",
-          "taskId": "ahv-social-security",
-          "location": "keyFact:Where",
-          "point": "If you are employed, your employer handles OASI through its compensation office (Ausgleichskasse / caisse de compensation) and deducts your share from your salary; if you are not working, you register with the OASI compe"
-        }
-      ]
-    },
-    {
-      "url": "https://www.fedlex.admin.ch/eli/cc/63/837_843_843/de#art_3",
-      "host": "www.fedlex.admin.ch",
-      "sourceName": "Federal Act on Old-Age and Survivors' Insurance (OASI Act / AHVG, SR 831.10), Art. 3, 5 and 13 — Fedlex, the official publication platform of Swiss law",
-      "references": 1,
-      "problem": "Cited consolidated-DE ELI URL serves the Fedlex Angular SPA shell (cacheFile 7eab623a3926.html, 76889-byte JS-required page). The AHVG Art.3 text is not rendered and #art_3 is dead for a user.",
-      "replacement": "https://www.fedlex.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/63/837_843_843/20260101/de/html/fedlex-data-admin-ch-eli-cc-63-837_843_843-20260101-de-html-1.html#art_3",
-      "replacementVerified": true,
-      "supportsPoint": true,
-      "note": "AHVG filestore HTML (DE, 2026-01-01). Curled live: id=\"art_3\" present; text reads 'Die Versicherten sind beitragspflichtig, solange sie eine Erwerbstätigkeit ausüben' (gainfully employed insured pay contributions while they work). The cited usage references Art. 3, 5 and 13 together; id=\"art_5\" (employee contribution 4.35% on employment income) and id=\"art_13\" (employer pays a matching 4.35%) are also present and confirmed in the same document. Supports the ahv-social-security legal-basis usage.",
-      "usages": [
-        {
-          "corridor": "us-ch",
-          "taskId": "ahv-social-security",
-          "location": "keyFact:Legal basis",
-          "point": "OASI Act (AHVG/LAVS, SR 831.10): gainfully employed insured persons are liable to pay contributions while they work (Art. 3); employee contributions are levied on employment income (Art. 5) and the employer pays a matchi"
-        }
-      ]
-    },
-    {
-      "url": "https://www.fedlex.admin.ch/eli/cc/63/837_843_843/de#art_5",
-      "host": "www.fedlex.admin.ch",
-      "sourceName": "Federal Act on Old-Age and Survivors' Insurance (OASI Act / AHVG, SR 831.10), Art. 5 and 13 — Fedlex, the official publication platform of Swiss law",
-      "references": 1,
-      "problem": "Angular SPA shell served (Fedlex JS-bootstrap page, ~76 KB, no article body). No Art. 5 text and no id=\"art_5\" anchor visible to a human.",
-      "replacement": "https://www.fedlex.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/63/837_843_843/20260101/de/html/fedlex-data-admin-ch-eli-cc-63-837_843_843-20260101-de-html.html#art_5",
-      "replacementVerified": true,
-      "supportsPoint": true,
-      "note": "AHVG German-only, in-force 20260101. Curled (HTTP 200, 511 KB) and saw id=\"art_5\" plus 'Art. 5 Beiträge von Einkommen aus unselbständiger Erwerbstätigkeit ... wird ein Beitrag von 4,35 Prozent erhoben.' — confirms the employee OASI rate of 4.35% (matching art_13's 4.35% employer share = 8.7% total). Replacement is /de (no EN exists).",
-      "usages": [
-        {
-          "corridor": "us-ch",
-          "taskId": "ahv-social-security",
-          "location": "keyFact:Work allowed",
-          "point": "OASI contributions on employment income are shared 50/50: as an employee you pay 4.35% of your relevant salary and your employer pays a matching 4.35% (8.7% in total), deducted from your gross salary by the employer."
-        }
-      ]
-    },
-    {
-      "url": "https://www.fedlex.admin.ch/eli/cc/2007/758/en#art_52",
-      "host": "www.fedlex.admin.ch",
-      "sourceName": "Foreign Nationals and Integration Act (FNIA, SR 142.20), Art. 42 and 52 — Fedlex",
-      "references": 1,
-      "problem": "Cited consolidated-EN ELI URL serves the Fedlex Angular SPA shell (cacheFile bb3b195561e7.html, 76889-byte JS-required page). No Art.52 text; #art_52 anchor dead for a user.",
-      "replacement": "https://www.fedlex.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/2007/758/20260201/en/html/fedlex-data-admin-ch-eli-cc-2007-758-20260201-en-html-3.html#art_52",
-      "replacementVerified": true,
-      "supportsPoint": true,
-      "note": "FNIA filestore HTML (EN, 2026-02-01). Curled live: id=\"art_52\" present; text reads 'Art. 52 Registered partnership — The provisions of this Chapter on foreign spouses apply mutatis mutandis to registered partnerships of same-sex couples.' Exactly supports the family-permit-spouse-swiss legal-basis usage (Art.52 extends Art.42 to registered partnerships).",
-      "usages": [
-        {
-          "corridor": "us-ch",
-          "taskId": "family-permit-spouse-swiss",
-          "location": "keyFact:Legal basis",
-          "point": "Art. 42 FNIA (spouse and unmarried children under 18 of a Swiss national); Art. 52 FNIA extends these provisions mutatis mutandis to registered partnerships of same-sex couples."
-        }
-      ]
-    },
-    {
-      "url": "https://www.fedlex.admin.ch/eli/cc/2007/758/en#art_50",
-      "host": "www.fedlex.admin.ch",
-      "sourceName": "Foreign Nationals and Integration Act (FNIA, SR 142.20), Art. 50 — Fedlex",
-      "references": 1,
-      "problem": "Angular SPA shell served (Fedlex JS-bootstrap page, ~76 KB, no article body). No Art. 50 text and no id=\"art_50\" anchor visible to a human.",
-      "replacement": "https://www.fedlex.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/2007/758/20260201/en/html/fedlex-data-admin-ch-eli-cc-2007-758-20260201-en-html.html#art_50",
-      "replacementVerified": true,
-      "supportsPoint": true,
-      "note": "FNIA EN 20260201. Curled (HTTP 200) and saw id=\"art_50\" plus 'Art. 50 Dissolution of the family household ...' and para 4 'Paragraphs 1-3 apply mutatis mutandis to cohabiting partners who have been granted a residence permit ... in accordance with Article 30 paragraph 1 letter b because of serious personal hardship.' — directly supports the cited 'Art. 50 para. 4 refers to cohabiting partners' point.",
-      "usages": [
-        {
-          "corridor": "us-ch",
-          "taskId": "family-permit-unmarried-partner",
-          "location": "step2",
-          "point": "Know the legal basis being applied: a permit for a cohabiting partner is a hardship-based derogation under Art. 30 para. 1 let. b FNIA, not family reunification under Arts. 42-44."
-        }
-      ]
-    },
-    {
-      "url": "https://www.fedlex.admin.ch/eli/cc/2015/518/de#art_2",
-      "host": "www.fedlex.admin.ch",
-      "sourceName": "Ordinance of the FDJP on residence permits subject to the approval procedure (ZV-EJPD, SR 142.201.1), Art. 2 — Fedlex (official German text)",
-      "references": 1,
-      "problem": "Cited consolidated-DE ELI URL serves the Fedlex Angular SPA shell (cacheFile b19e35b3fa71.html, 76889-byte JS-required page). The ZV-EJPD Art.2 text is not rendered and #art_2 is dead for a user.",
-      "replacement": "https://www.fedlex.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/2015/518/20250401/de/html/fedlex-data-admin-ch-eli-cc-2015-518-20250401-de-html.html#art_2",
-      "replacementVerified": true,
-      "supportsPoint": true,
-      "note": "Static filestore HTML of ZV-EJPD (Ordinance of the FDJP on residence permits subject to the approval procedure, SR 142.201.1), latest in-force consolidation 2025-04-01 (DE — matches original /de; sourceName says 'official German text'). Curled live (21KB, no app-root): id=\"art_2\" present; lit. c reads 'Aufenthaltsbewilligungen für Rentnerinnen und Rentner (Art. 28 AIG)' must be submitted to the SEM for approval ('Dem SEM ist die Erteilung folgender Bewilligungen... zur Zustimmung zu unterbreiten'). Supports the retirement-residence-permit step6 (federal SEM approval) usage.",
-      "usages": [
-        {
-          "corridor": "us-ch",
-          "taskId": "retirement-residence-permit",
-          "location": "step6",
-          "point": "Be aware of the federal second stage: the canton's decision to grant a retired person's residence permit must be submitted to the State Secretariat for Migration (SEM) for approval."
-        }
-      ]
-    },
-    {
-      "url": "https://www.fedlex.admin.ch/eli/cc/2007/759/de#art_39",
-      "host": "www.fedlex.admin.ch",
-      "sourceName": "Ordinance on Admission, Period of Stay and Employment (VZAE/ASEO, SR 142.201), Art. 39 — Fedlex (official German text)",
-      "references": 1,
-      "problem": "Angular SPA shell served (Fedlex JS-bootstrap page, ~76 KB, no article body). No Art. 39 text and no id=\"art_39\" anchor visible to a human.",
-      "replacement": "https://www.fedlex.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/2007/759/20260101/de/html/fedlex-data-admin-ch-eli-cc-2007-759-20260101-de-html.html#art_39",
-      "replacementVerified": true,
-      "supportsPoint": true,
-      "note": "VZAE German-only, in-force 20260101. Curled (HTTP 200) and saw id=\"art_39\" plus 'Art. 39 Ausbildung mit obligatorischem Praktikum ... kann eine Erwerbstätigkeit im Rahmen eines obligatorischen Praktikums bewilligt werden, wenn: a. die Erwerbstätigkeit die Hälfte der gesamten Ausbildungsdauer nicht übersteigt ...' — confirms the 'mandatory internship needs its own authorisation, capped at half total study duration' point. Replacement is /de (no EN exists).",
-      "usages": [
-        {
-          "corridor": "us-ch",
-          "taskId": "study-work-alongside",
-          "location": "step2",
-          "point": "If your curriculum includes a mandatory internship, that work needs its own authorisation: it can be approved only if the internship is an integral part of your studies, and the work may not exceed half of the total dura"
-        }
-      ]
-    },
-    {
-      "url": "https://www.fedlex.admin.ch/eli/cc/2007/759/de#art_40",
-      "host": "www.fedlex.admin.ch",
-      "sourceName": "Ordinance on Admission, Period of Stay and Employment (VZAE/ASEO, SR 142.201), Art. 40 — Fedlex (official German text)",
-      "references": 1,
-      "problem": "Cited consolidated-DE ELI URL serves the Fedlex Angular SPA shell (cacheFile f9e8c31ce478.html, 76889-byte JS-required page). The VZAE Art.40 text is not rendered and #art_40 is dead for a user.",
-      "replacement": "https://www.fedlex.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/2007/759/20260612/de/html/fedlex-data-admin-ch-eli-cc-2007-759-20260612-de-html-2.html#art_40",
-      "replacementVerified": true,
-      "supportsPoint": true,
-      "note": "VZAE/ASEO filestore HTML (DE, 2026-06-12). Curled live: id=\"art_40\" present; text reads 'Ausländerinnen und Ausländern, die in der Schweiz an einer Hochschule oder Fachhochschule eine Weiterbildung absolvieren, kann eine Erwerbstätigkeit in ihrem wissenschaftlichen Spezialbereich bewilligt werden, wenn... b. die Lohn- und Arbeitsbedingungen... eingehalten werden' and para.2 'Die Weiterbildung darf durch die Erwerbstätigkeit nicht behindert werden.' Exactly supports the study-work-alongside step3 usage (continuing education at a Hochschule/Fachhochschule; work in own scientific field; not hindered).",
-      "usages": [
-        {
-          "corridor": "us-ch",
-          "taskId": "study-work-alongside",
-          "location": "step3",
-          "point": "If you are in continuing education (Weiterbildung) at a university or university of applied sciences, employment in your own scientific specialist field can be authorised, provided the continuing education is not hindere"
-        }
-      ]
-    }
-  ]
+  "flagged": []
 }

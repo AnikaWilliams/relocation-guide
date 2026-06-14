@@ -1,6 +1,6 @@
 # Good links — verified usable
 
-Links that return HTTP 200 **and render their cited content for a human**. 147 unique URLs across the site. `✓✓` = individually spot-checked (rendered + confirmed to support its point); `✓` = passed the automated render check (status 200, anchor/content present). See SUMMARY.md for method. Generated from links.json.
+Links that return HTTP 200 **and render their cited content for a human**. 170 unique URLs across the site. `✓✓` = individually spot-checked (rendered + confirmed to support its point); `✓` = passed the automated render check (status 200, anchor/content present). See SUMMARY.md for method. Generated from links.json.
 
 ## us-at — USA → Austria
 
@@ -79,34 +79,52 @@ Links that return HTTP 200 **and render their cited content for a human**. 147 u
 
 **ahv-social-security**
 - ✓✓ [ch.ch — Paying OASI contributions in Switzerland (official federal portal)](https://www.ch.ch/en/retirement/old-age-pension/the-first-pillar/oasi-contributions/) — _summary, cost_
+- ✓ [Federal Act on Old-Age and Survivors' Insurance (OASI Act / AHVG, SR 831.10), Art. 1a — Fedlex, the official publication platform of Swiss law](https://www.fedlex.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/63/837_843_843/20260101/de/html/fedlex-data-admin-ch-eli-cc-63-837_843_843-20260101-de-html-1.html#art_1_a) — _tldr, keyFact:Who applies_
+- ✓ [Federal Act on Old-Age and Survivors' Insurance (OASI Act / AHVG, SR 831.10), Art. 13–14 — Fedlex, the official publication platform of Swiss law](https://www.fedlex.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/63/837_843_843/20260101/de/html/fedlex-data-admin-ch-eli-cc-63-837_843_843-20260101-de-html.html#art_13) — _keyFact:Where_
+- ✓ [Federal Act on Old-Age and Survivors' Insurance (OASI Act / AHVG, SR 831.10), Art. 3, 5 and 13 — Fedlex, the official publication platform of Swiss law](https://www.fedlex.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/63/837_843_843/20260101/de/html/fedlex-data-admin-ch-eli-cc-63-837_843_843-20260101-de-html-1.html#art_3) — _keyFact:Legal basis_
+- ✓ [Federal Act on Old-Age and Survivors' Insurance (OASI Act / AHVG, SR 831.10), Art. 5 and 13 — Fedlex, the official publication platform of Swiss law](https://www.fedlex.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/63/837_843_843/20260101/de/html/fedlex-data-admin-ch-eli-cc-63-837_843_843-20260101-de-html.html#art_5) — _keyFact:Work allowed_
 - ✓ [ch.ch — Requesting an OASI card (official federal portal)](https://www.ch.ch/en/documents-and-register-extracts/requesting-an-oasi-card/) — _step1_
 
 **family-d-visa**
 - ✓✓ [State Secretariat for Migration (SEM) — FAQ: Entry](https://www.sem.admin.ch/sem/en/home/themen/einreise/faq.html) — _summary, tldr, keyFact:Where, keyFact:Legal basis, step1, timeline, cost_
 - ✓ [State Secretariat for Migration (SEM) — Visa Application Form](https://www.sem.admin.ch/sem/en/home/themen/einreise/visumantragsformular.html) — _keyFact:Who applies, step1, document:National (type D) visa application form_
+- ✓ [Foreign Nationals and Integration Act (FNIA, SR 142.20), Art. 47 para. 1 — Fedlex](https://www.fedlex.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/2007/758/20260201/en/html/fedlex-data-admin-ch-eli-cc-2007-758-20260201-en-html-3.html#art_47) — _keyFact:Deadline_
 
 **family-permit-children**
+- ✓ [Foreign Nationals and Integration Act (FNIA, SR 142.20), Art. 42 and 52 — Fedlex, the official publication platform of Swiss law](https://www.fedlex.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/2007/758/20260201/en/html/fedlex-data-admin-ch-eli-cc-2007-758-20260201-en-html-3.html#art_42) — _summary, tldr, keyFact:Who applies, keyFact:Right or discretion_
 - ✓✓ [ch.ch — Application for family reunification in Switzerland (official federal portal)](https://www.ch.ch/en/foreign-nationals-in-switzerland/living-in-switzerland/family-reunification/) — _step1, step3_
+- ✓ [Foreign Nationals and Integration Act (FNIA, SR 142.20), Art. 47 para. 1 — Fedlex](https://www.fedlex.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/2007/758/20260201/en/html/fedlex-data-admin-ch-eli-cc-2007-758-20260201-en-html-3.html#art_47) — _keyFact:Deadline, step2_
+- ✓ [Foreign Nationals and Integration Act (FNIA, SR 142.20), Art. 43 and 52 — Fedlex, the official publication platform of Swiss law](https://www.fedlex.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/2007/758/20260201/en/html/fedlex-data-admin-ch-eli-cc-2007-758-20260201-en-html.html#art_43) — _keyFact:Legal basis_
 - ✓ [Canton de Vaud — Service de la population (SPOP), Regroupement familial auprès d'un ressortissant suisse](https://www.vd.ch/population/population-etrangere/entree-et-sejour/etats-tiers/regroupement-familial-du-conjoint-partenaire-et/ou-des-enfants-aupres-dun-ressortissant-suisse) — _keyFact:Where, document:Cantonal family-reunification application (children included)_
 
 **family-permit-spouse-b-holder**
 - ✓✓ [ch.ch — Application for family reunification in Switzerland (official federal portal)](https://www.ch.ch/en/foreign-nationals-in-switzerland/living-in-switzerland/family-reunification/) — _step1_
 - ✓ [State Secretariat for Migration (SEM) — Cantonal immigration and employment market authorities](https://www.sem.admin.ch/sem/en/home/sem/kontakt/kantonale_behoerden/adressen_kantone_und.html) — _step3_
+- ✓ [Foreign Nationals and Integration Act (FNIA, SR 142.20), Art. 47 para. 1 — Fedlex](https://www.fedlex.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/2007/758/20260201/en/html/fedlex-data-admin-ch-eli-cc-2007-758-20260201-en-html-3.html#art_47) — _keyFact:Deadline_
+- ✓ [Foreign Nationals and Integration Act (FNIA, SR 142.20), Art. 44 and 52 — Fedlex, the official publication platform of Swiss law](https://www.fedlex.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/2007/758/20260201/en/html/fedlex-data-admin-ch-eli-cc-2007-758-20260201-en-html-3.html#art_44) — _summary, tldr, keyFact:Who applies, keyFact:Right or discretion, keyFact:Legal basis, step2_
 - ✓ [Canton de Vaud — Service de la population (SPOP), Regroupement familial auprès d'un étranger titulaire d'un permis B, C ou L](https://www.vd.ch/population/population-etrangere/entree-et-sejour/etats-tiers/regroupement-familial-du-conjoint-partenaire-et/ou-des-enfants-aupres-dun-etranger-titulaire-dun-permis-de-sejour-b-detablissement-c-ou-de-courte-duree-l) — _keyFact:Where, document:Cantonal family-reunification application_
 
 **family-permit-spouse-settled**
 - ✓✓ [ch.ch — Application for family reunification in Switzerland (official federal portal)](https://www.ch.ch/en/foreign-nationals-in-switzerland/living-in-switzerland/family-reunification/) — _step1_
 - ✓ [State Secretariat for Migration (SEM) — Cantonal immigration and employment market authorities](https://www.sem.admin.ch/sem/en/home/sem/kontakt/kantonale_behoerden/adressen_kantone_und.html) — _step3_
+- ✓ [Foreign Nationals and Integration Act (FNIA, SR 142.20), Art. 47 para. 1 — Fedlex](https://www.fedlex.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/2007/758/20260201/en/html/fedlex-data-admin-ch-eli-cc-2007-758-20260201-en-html-3.html#art_47) — _keyFact:Deadline_
+- ✓ [Foreign Nationals and Integration Act (FNIA, SR 142.20), Art. 43 and 52 — Fedlex, the official publication platform of Swiss law](https://www.fedlex.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/2007/758/20260201/en/html/fedlex-data-admin-ch-eli-cc-2007-758-20260201-en-html.html#art_43) — _summary, tldr, keyFact:Who applies, keyFact:Right or discretion, keyFact:Legal basis, step2_
 - ✓ [Canton de Vaud — Service de la population (SPOP), Regroupement familial auprès d'un étranger titulaire d'un permis B, C ou L](https://www.vd.ch/population/population-etrangere/entree-et-sejour/etats-tiers/regroupement-familial-du-conjoint-partenaire-et/ou-des-enfants-aupres-dun-etranger-titulaire-dun-permis-de-sejour-b-detablissement-c-ou-de-courte-duree-l) — _keyFact:Where, document:Cantonal family-reunification application_
 
 **family-permit-spouse-swiss**
+- ✓ [Foreign Nationals and Integration Act (FNIA, SR 142.20), Art. 42 and 52 — Fedlex, the official publication platform of Swiss law](https://www.fedlex.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/2007/758/20260201/en/html/fedlex-data-admin-ch-eli-cc-2007-758-20260201-en-html-3.html#art_42) — _summary, tldr, keyFact:Who applies, keyFact:Right or discretion_
 - ✓✓ [ch.ch — Application for family reunification in Switzerland (official federal portal)](https://www.ch.ch/en/foreign-nationals-in-switzerland/living-in-switzerland/family-reunification/) — _step1, step2_
 - ✓ [State Secretariat for Migration (SEM) — Cantonal immigration and employment market authorities](https://www.sem.admin.ch/sem/en/home/sem/kontakt/kantonale_behoerden/adressen_kantone_und.html) — _step2_
+- ✓ [Foreign Nationals and Integration Act (FNIA, SR 142.20), Art. 47 para. 1 — Fedlex](https://www.fedlex.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/2007/758/20260201/en/html/fedlex-data-admin-ch-eli-cc-2007-758-20260201-en-html-3.html#art_47) — _keyFact:Deadline, step3_
 - ✓ [Canton de Vaud — Service de la population (SPOP), Regroupement familial auprès d'un ressortissant suisse](https://www.vd.ch/population/population-etrangere/entree-et-sejour/etats-tiers/regroupement-familial-du-conjoint-partenaire-et/ou-des-enfants-aupres-dun-ressortissant-suisse) — _keyFact:Where, document:Cantonal family-reunification application_
+- ✓ [Foreign Nationals and Integration Act (FNIA, SR 142.20), Art. 42 and 52 — Fedlex](https://www.fedlex.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/2007/758/20260201/en/html/fedlex-data-admin-ch-eli-cc-2007-758-20260201-en-html-3.html#art_52) — _keyFact:Legal basis_
 
 **family-permit-unmarried-partner**
+- ✓ [Foreign Nationals and Integration Act (FNIA, SR 142.20), Art. 42 and 52 — Fedlex, the official publication platform of Swiss law](https://www.fedlex.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/2007/758/20260201/en/html/fedlex-data-admin-ch-eli-cc-2007-758-20260201-en-html-3.html#art_42) — _keyFact:Right or discretion_
 - ✓✓ [ch.ch — Application for family reunification in Switzerland (official federal portal)](https://www.ch.ch/en/foreign-nationals-in-switzerland/living-in-switzerland/family-reunification/) — _summary, step3_
 - ✓ [State Secretariat for Migration (SEM) — Cantonal immigration and employment market authorities](https://www.sem.admin.ch/sem/en/home/sem/kontakt/kantonale_behoerden/adressen_kantone_und.html) — _step1_
+- ✓ [Foreign Nationals and Integration Act (FNIA, SR 142.20), Art. 30 — Fedlex, the official publication platform of Swiss law](https://www.fedlex.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/2007/758/20260201/en/html/fedlex-data-admin-ch-eli-cc-2007-758-20260201-en-html.html#art_30) — _tldr, keyFact:Legal basis, keyFact:Who applies, step2_
+- ✓ [Foreign Nationals and Integration Act (FNIA, SR 142.20), Art. 50 — Fedlex](https://www.fedlex.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/2007/758/20260201/en/html/fedlex-data-admin-ch-eli-cc-2007-758-20260201-en-html.html#art_50) — _step2_
 
 **health-insurance**
 - ✓ [Federal Office of Public Health (FOPH) — Requirement to obtain insurance for persons resident in Switzerland](https://www.bag.admin.ch/en/health-insurance-requirement-to-obtain-insurance-for-persons-resident-in-switzerland) — _summary, tldr, keyFact:Who applies, keyFact:Deadline, keyFact:Where, keyFact:Legal basis, step1, timeline_
@@ -117,7 +135,9 @@ Links that return HTTP 200 **and render their cited content for a human**. 147 u
 - ✓ [State Secretariat for Migration (SEM) — Visa Application Form](https://www.sem.admin.ch/sem/en/home/themen/einreise/visumantragsformular.html) — _step2, document:National (type D) visa application form_
 
 **register-commune**
+- ✓ [Foreign Nationals and Integration Act (FNIA, SR 142.20), Art. 12 — Fedlex, the official publication platform of Swiss law](https://www.fedlex.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/2007/758/20260201/en/html/fedlex-data-admin-ch-eli-cc-2007-758-20260201-en-html.html#art_12) — _tldr, keyFact:Who applies, keyFact:Legal basis_
 - ✓ [ch.ch — Working in Switzerland as a foreign national (official federal portal)](https://www.ch.ch/en/foreign-nationals-in-switzerland/working-in-switzerland/) — _summary, timeline_
+- ✓ [Ordinance on Admission, Period of Stay and Employment (OASA/VZAE, SR 142.201), Art. 10 — Fedlex, the official publication platform of Swiss law](https://www.fedlex.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/2007/759/20260101/de/html/fedlex-data-admin-ch-eli-cc-2007-759-20260101-de-html.html#art_10) — _keyFact:Where, keyFact:Deadline_
 - ✓ [Canton de Vaud — Formulaires et liens utiles pour l'entrée et le séjour](https://www.vd.ch/population/population-etrangere/entree-et-sejour/formulaires-et-liens-utiles) — _document:Arrival registration / arrival report form for your commune_
 - ✓ [ch.ch — Notification of departure and registration (official federal portal)](https://www.ch.ch/en/housing/moving/notification-of-departure-and-registration/) — _step2_
 
@@ -135,13 +155,19 @@ Links that return HTTP 200 **and render their cited content for a human**. 147 u
 **retirement-residence-permit**
 - ✓ [State Secretariat for Migration (SEM) — Cantonal immigration and employment market authorities](https://www.sem.admin.ch/sem/en/home/sem/kontakt/kantonale_behoerden/adressen_kantone_und.html) — _step5, document:Cantonal residence-permit application (residence without gainful employment, Art. 28 FNIA)_
 - ✓ [ch.ch — Living in Switzerland without gainful employment (official federal portal)](https://www.ch.ch/en/foreign-nationals-in-switzerland/entry-and-stay-in-switzerland/living-in-switzerland-without-gainful-employment/) — _keyFact:Where, step4, step5_
+- ✓ [Ordinance on Admission, Period of Stay and Employment (VZAE/ASEO, SR 142.201), Art. 25 — Fedlex (official German text)](https://www.fedlex.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/2007/759/20260101/de/html/fedlex-data-admin-ch-eli-cc-2007-759-20260101-de-html.html#art_25) — _keyFact:Legal basis, keyFact:Work allowed, step1, step2, step3, step4_
+- ✓ [Foreign Nationals and Integration Act (FNIA, SR 142.20), Art. 28 — Fedlex, the official publication platform of Swiss law](https://www.fedlex.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/2007/758/20260201/en/html/fedlex-data-admin-ch-eli-cc-2007-758-20260201-en-html-3.html#art_28) — _summary, tldr, keyFact:Who applies, keyFact:Right or discretion_
+- ✓ [Ordinance of the FDJP on residence permits subject to the approval procedure (ZV-EJPD, SR 142.201.1), Art. 2 — Fedlex (official German text)](https://www.fedlex.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/2015/518/20250401/de/html/fedlex-data-admin-ch-eli-cc-2015-518-20250401-de-html.html#art_2) — _step6_
 
 **study-admission**
+- ✓ [Foreign Nationals and Integration Act (FNIA, SR 142.20), Art. 27 — Fedlex, the official publication platform of Swiss law](https://www.fedlex.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/2007/758/20260201/en/html/fedlex-data-admin-ch-eli-cc-2007-758-20260201-en-html.html#art_27) — _summary, tldr, keyFact:Legal basis_
 - ✓ [ch.ch — Studying in Switzerland (official federal portal)](https://www.ch.ch/en/school-and-education/higher-education/studying-in-switzerland/) — _keyFact:Who applies, keyFact:Where, keyFact:Right or discretion, step1_
 - ✓ [swissuniversities — umbrella organisation of the Swiss universities (Admission to universities)](https://www.swissuniversities.ch/en/topics/studying/admission-to-universities) — _document:Institution's online application / admission form_
 
 **study-after-graduation**
 - ✓✓ [State Secretariat for Migration (SEM) — FAQ: Working](https://www.sem.admin.ch/sem/en/home/themen/arbeit/faq.html) — _summary, tldr, keyFact:Who applies, keyFact:Deadline, document:Cantonal application for the six-month job-seeking stay_
+- ✓ [Foreign Nationals and Integration Act (FNIA, SR 142.20), Art. 27 — Fedlex, the official publication platform of Swiss law](https://www.fedlex.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/2007/758/20260201/en/html/fedlex-data-admin-ch-eli-cc-2007-758-20260201-en-html.html#art_27) — _keyFact:Right or discretion, step2_
+- ✓ [Foreign Nationals and Integration Act (FNIA, SR 142.20), Art. 21 — Fedlex](https://www.fedlex.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/2007/758/20260201/en/html/fedlex-data-admin-ch-eli-cc-2007-758-20260201-en-html-3.html#art_21) — _keyFact:Legal basis, step1_
 
 **study-d-visa**
 - ✓✓ [State Secretariat for Migration (SEM) — FAQ: Entry](https://www.sem.admin.ch/sem/en/home/themen/einreise/faq.html) — _summary, tldr, keyFact:Who applies, keyFact:Where, keyFact:Legal basis, step1, timeline, cost_
@@ -149,15 +175,21 @@ Links that return HTTP 200 **and render their cited content for a human**. 147 u
 
 **study-health-insurance-exemption**
 - ✓ [Federal Office of Public Health (FOPH) — Requirement to obtain insurance for persons resident in Switzerland](https://www.bag.admin.ch/en/health-insurance-requirement-to-obtain-insurance-for-persons-resident-in-switzerland) — _keyFact:Deadline, document:Cantonal health-insurance exemption request_
+- ✓ [Ordinance on Health Insurance (KVV, SR 832.102), Art. 2 para. 4 — Fedlex (official German text)](https://www.fedlex.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/1995/3867_3867_3867/20260101/de/html/fedlex-data-admin-ch-eli-cc-1995-3867_3867_3867-20260101-de-html-3.html#art_2) — _summary, tldr, keyFact:Who applies, keyFact:Where, keyFact:Legal basis, keyFact:Right or discretion_
 
 **study-residence-permit**
 - ✓ [State Secretariat for Migration (SEM) — Cantonal immigration and employment market authorities](https://www.sem.admin.ch/sem/en/home/sem/kontakt/kantonale_behoerden/adressen_kantone_und.html) — _keyFact:Where, step1_
 - ✓ [ch.ch — Living in Switzerland without gainful employment (official federal portal)](https://www.ch.ch/en/foreign-nationals-in-switzerland/entry-and-stay-in-switzerland/living-in-switzerland-without-gainful-employment/) — _keyFact:Who applies, step1, step2_
+- ✓ [Foreign Nationals and Integration Act (FNIA, SR 142.20), Art. 27 — Fedlex, the official publication platform of Swiss law](https://www.fedlex.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/2007/758/20260201/en/html/fedlex-data-admin-ch-eli-cc-2007-758-20260201-en-html.html#art_27) — _summary, tldr, keyFact:Right or discretion_
+- ✓ [Ordinance on Admission, Period of Stay and Employment (VZAE/ASEO, SR 142.201), Art. 23 — Fedlex (official German text)](https://www.fedlex.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/2007/759/20260612/de/html/fedlex-data-admin-ch-eli-cc-2007-759-20260612-de-html-2.html#art_23) — _step3, step4, step5_
 - ✓ [Canton de Vaud — Formulaires et liens utiles pour l'entrée et le séjour](https://www.vd.ch/population/population-etrangere/entree-et-sejour/formulaires-et-liens-utiles) — _document:Cantonal residence-permit application form for education (third-country national)_
 
 **study-work-alongside**
 - ✓✓ [State Secretariat for Migration (SEM) — FAQ: Working](https://www.sem.admin.ch/sem/en/home/themen/arbeit/faq.html) — _summary, tldr, keyFact:Who applies, keyFact:Where, keyFact:Work allowed, keyFact:Deadline, step2_
 - ✓ [Canton de Vaud — Direction générale de l'emploi et du marché du travail (DGEM), Activité salariée](https://www.vd.ch/economie/prestations-de-la-direction-generale-de-lemploi-et-du-marche-du-travail-dgem/permis-de-sejour-et-de-travail-pour-etrangers/activite-salariee) — _document:Employer's cantonal work-authorisation application_
+- ✓ [Ordinance on Admission, Period of Stay and Employment (VZAE/ASEO, SR 142.201), Art. 38 — Fedlex (official German text)](https://www.fedlex.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/2007/759/20260101/de/html/fedlex-data-admin-ch-eli-cc-2007-759-20260101-de-html.html#art_38) — _keyFact:Legal basis, step1_
+- ✓ [Ordinance on Admission, Period of Stay and Employment (VZAE/ASEO, SR 142.201), Art. 39 — Fedlex (official German text)](https://www.fedlex.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/2007/759/20260101/de/html/fedlex-data-admin-ch-eli-cc-2007-759-20260101-de-html.html#art_39) — _step2_
+- ✓ [Ordinance on Admission, Period of Stay and Employment (VZAE/ASEO, SR 142.201), Art. 40 — Fedlex (official German text)](https://www.fedlex.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/2007/759/20260612/de/html/fedlex-data-admin-ch-eli-cc-2007-759-20260612-de-html-2.html#art_40) — _step3_
 
 **work-residence-permit**
 - ✓ [State Secretariat for Migration (SEM) — Basis for admission to the Swiss employment market](https://www.sem.admin.ch/sem/en/home/themen/arbeit/nicht-eu_efta-angehoerige/grundlagen_zur_arbeitsmarktzulassung.html) — _summary, tldr, keyFact:Legal basis, keyFact:Quota-dependent, keyFact:Right or discretion, step3_

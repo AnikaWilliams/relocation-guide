@@ -10,6 +10,18 @@ coming next. Newest updates are at the top.
 
 ---
 
+## 2026-06-13 — Fixed the 23 broken Swiss law links
+
+**What changed.** Following the audit, I swapped all 23 broken Swiss "Fedlex" (the official Swiss law website) links in the Switzerland guide for working ones. The old links opened to an empty "this version is under preparation" page; the new ones open straight to the actual law article — the official static copy of the very same text — and jump to the right paragraph. The replacements were applied and the site's safety checks still pass (the build plus 271 automated tests); a second, independent fact-check is confirming each new link opens to the article it's cited for.
+
+**Why it matters.** These links are how a reader double-checks a life-changing legal fact against the government's own words. Dead links made us look unreliable even when our facts were right; now the proof is one click away.
+
+**What you'd notice today.** In the Switzerland guide, clicking a Swiss-law source (e.g. the family-reunification or unmarried-partner rules) now lands on the real article text instead of a blank page.
+
+**What's next.** Use this static-link form as the standard for any future Swiss citations.
+
+---
+
 ## 2026-06-13 — Audited every official-source link on the site
 
 **What changed.** You found a Swiss law link that opened to a useless page. So I checked **all 950 source links** across the nine guides. Result: **147 unique links are good** (I spot-checked dozens by hand across every country's official sites — they open to the right information), and **23 are broken for humans** — all Swiss "Fedlex" law links. They point to a page that says *"this version is under preparation"* and never shows the article, even though the law itself is correct. For each of the 23 I found and **tested a replacement** (the official static version of the same article) that actually opens to the right text. The full catalogue of good links and the list of 23 to fix (with tested replacements) is in a new `link-audit/` folder.
