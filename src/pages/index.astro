@@ -58,7 +58,7 @@ corridors.sort((a, b) => corridorSlug(a).localeCompare(corridorSlug(b)));
             <li>
               <a
                 href={`/${entry.data.originIso2}/${entry.data.destinationIso2}/`}
-                class="block rounded-lg border border-slate-200 p-4 hover:border-slate-400 hover:shadow-sm transition"
+                class="block rounded-lg border border-slate-200 p-4 hover:border-slate-400 hover:shadow-sm transition focus-visible:ring-2 focus-visible:ring-brand-500"
               >
                 <span class="font-medium">
                   {countryName(entry.data.originIso2)} &rarr;{' '}

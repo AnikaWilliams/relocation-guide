@@ -571,4 +571,5 @@ Adopt that design system and implement audit items **1–10**:
 
 ### Scope / caveats
 - Styling/layout only; no content or compliance text edited. The new "Verified against official sources" / "A relocation plan you can trust" copy restates existing framing but is product-visible — **flagged for a `compliance-officer` glance** (not a blocker).
-- Residual minor a11y items deferred (out of the 1–10 scope): consent/doc checkboxes still below the 24px WCAG 2.2 target-size floor; emoji glyph icons (🔒 ✎) not yet swapped for SVG (audit items #11–13).
+- **Audit items #11–13 completed in a follow-up commit:** emoji/glyph icons (🔒 lock, ✎ pencil, done ✓) swapped for inline Heroicon SVGs; consistent `focus-visible:ring-brand-500` added across the remaining interactive buttons (copy-link, sidebar task/expander, consent secondary buttons, footer cookie-settings, home corridor cards); full-guide prose tightened `max-w-3xl → max-w-2xl` for line length.
+- Residual minor a11y item deferred: the consent/doc checkboxes' visible box (20px) is still below the 24px WCAG 2.2 target-size floor — their associated label/row extends the activation area, so they remain operable.

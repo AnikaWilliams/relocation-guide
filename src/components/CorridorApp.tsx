@@ -24,6 +24,29 @@ function Flag({ iso, className = '' }: { iso: string; className?: string }) {
   );
 }
 
+/** Inline Heroicons (SVG, not emoji — render identically on every OS, unlike 🔒/✎). */
+function IconCheck({ className = '' }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5} strokeLinecap="round" strokeLinejoin="round" className={className} aria-hidden="true">
+      <path d="m4.5 12.75 6 6 9-13.5" />
+    </svg>
+  );
+}
+function IconLock({ className = '' }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" className={className} aria-hidden="true">
+      <path d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75M6.75 10.5h10.5a1.5 1.5 0 0 1 1.5 1.5v6a1.5 1.5 0 0 1-1.5 1.5H6.75a1.5 1.5 0 0 1-1.5-1.5v-6a1.5 1.5 0 0 1 1.5-1.5Z" />
+    </svg>
+  );
+}
+function IconPencil({ className = '' }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" className={className} aria-hidden="true">
+      <path d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.931-8.931Z" />
+    </svg>
+  );
+}
+
 // ── Content types (mirror the corridor schema, passed in from the Astro page) ─
 
 interface ClaimData {
@@ -525,12 +548,12 @@ function buildRecap(a: Intake): { label: ReactNode; stepId: string }[] {
 
 function StatusDot({ status }: { status: TaskStatus }) {
   if (status === 'done') {
-    return <span className="shrink-0 w-5 h-5 rounded-full bg-green-100 text-green-600 flex items-center justify-center text-xs" aria-hidden="true">✓</span>;
+    return <span className="shrink-0 w-5 h-5 rounded-full bg-green-100 text-green-600 flex items-center justify-center" aria-hidden="true"><IconCheck className="w-3 h-3" /></span>;
   }
   if (status === 'available') {
     return <span className="shrink-0 w-5 h-5 rounded-full bg-blue-500 flex items-center justify-center" aria-hidden="true"><span className="w-1.5 h-1.5 rounded-full bg-white" /></span>;
   }
-  return <span className="shrink-0 w-5 h-5 rounded-full bg-slate-100 text-slate-400 flex items-center justify-center text-[10px]" aria-hidden="true">🔒</span>;
+  return <span className="shrink-0 w-5 h-5 rounded-full bg-slate-100 text-slate-400 flex items-center justify-center" aria-hidden="true"><IconLock className="w-3 h-3" /></span>;
 }
 
 /**
@@ -558,7 +581,7 @@ function CopyLinkButton() {
     <button
       type="button"
       onClick={copy}
-      className="w-full flex items-center justify-center gap-1.5 rounded-lg border border-slate-200 px-3 py-2 text-sm font-medium text-slate-600 hover:bg-slate-50"
+      className="w-full flex items-center justify-center gap-1.5 rounded-lg border border-slate-200 px-3 py-2 text-sm font-medium text-slate-600 hover:bg-slate-50 focus-visible:ring-2 focus-visible:ring-brand-500"
     >
       {copied ? 'Link copied ✓' : 'Copy link to this plan'}
     </button>
@@ -708,7 +731,7 @@ function Sidebar({
             >
               <span className="sr-only">Edit answer: </span>
               <span className="text-sm text-slate-700 truncate">{r.label}</span>
-              <span className="text-slate-400 group-hover:text-slate-600 text-xs shrink-0" aria-hidden="true">✎</span>
+              <IconPencil className="w-4 h-4 shrink-0 text-slate-400 group-hover:text-slate-600" />
             </button>
           ))}
         </div>
@@ -733,7 +756,7 @@ function Sidebar({
                     disabled={locked}
                     aria-current={isActive ? 'step' : undefined}
                     onClick={() => onSelect(t.id)}
-                    className={`flex flex-1 items-center gap-2.5 text-left min-w-0 ${locked ? 'cursor-not-allowed' : ''}`}
+                    className={`flex flex-1 items-center gap-2.5 rounded text-left min-w-0 focus-visible:ring-2 focus-visible:ring-brand-500 ${locked ? 'cursor-not-allowed' : ''}`}
                   >
                     <StatusDot status={status} />
                     <span className={`text-sm leading-snug min-w-0 ${
@@ -750,7 +773,7 @@ function Sidebar({
                       aria-expanded={isExpanded}
                       aria-label={`Documents for "${t.title}" (${completed} of ${docTotal} handled)`}
                       onClick={() => setExpandedId(isExpanded ? 'NONE' : t.id)}
-                      className="shrink-0 flex items-center gap-1 rounded px-1 py-0.5 text-[11px] text-slate-600 hover:text-slate-800"
+                      className="shrink-0 flex items-center gap-1 rounded px-1 py-0.5 text-[11px] text-slate-600 hover:text-slate-800 focus-visible:ring-2 focus-visible:ring-brand-500"
                     >
                       {completed}/{docTotal}
                       <span aria-hidden="true">{isExpanded ? '▾' : '▸'}</span>

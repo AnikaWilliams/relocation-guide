@@ -120,14 +120,14 @@ export default function ConsentBanner() {
               <button
                 type="button"
                 onClick={() => setView('customise')}
-                className="rounded-md border border-slate-300 px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50"
+                className="rounded-md border border-slate-300 px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 focus-visible:ring-2 focus-visible:ring-brand-500"
               >
                 Customise
               </button>
               <button
                 type="button"
                 onClick={rejectAll}
-                className="rounded-md border border-slate-300 px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50"
+                className="rounded-md border border-slate-300 px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 focus-visible:ring-2 focus-visible:ring-brand-500"
               >
                 Reject non-essential
               </button>
@@ -197,7 +197,7 @@ export default function ConsentBanner() {
               <button
                 type="button"
                 onClick={rejectAll}
-                className="rounded-md border border-slate-300 px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50"
+                className="rounded-md border border-slate-300 px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 focus-visible:ring-2 focus-visible:ring-brand-500"
               >
                 Reject non-essential
               </button>
