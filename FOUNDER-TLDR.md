@@ -16,7 +16,7 @@ coming next. Newest updates are at the top.
 
 **Why it matters.** Plans drive legal decisions; this guarantees the right steps show for the right person, and the reference page no longer reads as a personal to-do list.
 
-**What you'd notice today.** The planner's last question is now **"Who's joining you?"** — tick a partner and/or children, or leave it blank if it's just you — and it shows only the family steps that match your answer (no children selected → no children steps). Each step in the complete guide below also has a small "For: … route" tag.
+**What you'd notice today.** The planner's last question is now **"Who's joining you?"** — tick a partner and/or children, or choose "It's just me" — and it shows only the family steps that match your answer (no children selected → no children steps). Each step in the complete guide below also has a small "For: … route" tag.
 
 **What's next.** A content gap to fill later: a few guides don't yet have a dedicated "bring your partner on a work/study visa" step (they point to the general family route instead) — that's new researched-and-verified content, not a settings change.
 

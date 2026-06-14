@@ -368,7 +368,7 @@ const STEPS: WizardStep[] = [
   {
     id: 'companions',
     title: "Who's joining you?",
-    subtitle: "Select everyone moving with you — leave all unchecked if it's just you. We only show the steps that apply to who's coming.",
+    subtitle: "Pick everyone moving with you, or choose “It's just me”. We only show the steps that apply to who's coming.",
     fields: [{ kind: 'companions' }],
     isComplete: () => true,
   },
@@ -1598,6 +1598,14 @@ export default function CorridorApp({ tasks, corridorTitle, originIso2, destinat
                             onClick={() => toggleCompanion(o.value as Companion)}
                           />
                         ))}
+                        {/* Explicit "solo" choice: selected when no companions are
+                            picked; choosing it clears any partner/children selection. */}
+                        <OptionCard
+                          label="It's just me"
+                          description="No partner or children are moving with you"
+                          selected={answers.companions.length === 0}
+                          onClick={() => setAnswers((a) => ({ ...a, companions: [] }))}
+                        />
                       </div>
                     );
                   }
