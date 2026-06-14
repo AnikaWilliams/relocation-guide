@@ -12,13 +12,13 @@ coming next. Newest updates are at the top.
 
 ## 2026-06-14 — Swiss plan steps now link to *your* canton's office, not a list of all 26
 
-**What changed.** You pointed out that for an unmarried partner moving to Switzerland the rules really do hinge on the canton — and they do. Until now, the steps that say "contact the migration office of the canton where your partner lives" sent everyone to one big federal list of all 26 cantonal offices, even after they'd already told us their canton. Now, if you've picked a canton we've fact-checked (Zürich, Geneva, Vaud, Zug, Basel-Stadt), those steps link **straight to that canton's own migration office** (e.g. Zürich's Migrationsamt, Geneva's OCPM). Pick any other canton and it still falls back to the federal list — so no one ever hits a dead end. This covers every "apply at your cantonal office" step: all the family-reunification routes, the unmarried-partner case, retirement, and study. It's built on a review copy and going through our automatic safety checks plus an independent accuracy review right now — **not live yet, pending your approval.**
+**What changed.** You pointed out that for an unmarried partner moving to Switzerland the rules really do hinge on the canton — and they do. Until now, the steps that say "contact the migration office of the canton where your partner lives" sent everyone to one big federal list of all 26 cantonal offices, even after they'd already told us their canton. Now, if you've picked a canton we've fact-checked (Zürich, Geneva, Vaud, Zug, Basel-Stadt), those steps link **straight to that canton's own migration office** (e.g. Zürich's Migrationsamt, Geneva's OCPM). Pick any other canton and it still falls back to the federal list — so no one ever hits a dead end. This covers every "apply at your cantonal office" step: all the family-reunification routes, the unmarried-partner case, retirement, and study. It's now passed our automatic safety checks and an independent accuracy review, I've confirmed it working in a live preview (Zürich and Geneva point to their own offices; an un-sourced canton like Bern still gets the safe federal list), and it's bundled into the batch of changes waiting for your approval — **not live yet; it goes live the moment you approve that batch.**
 
 **Why it matters.** Once someone tells us their canton, sending them to a 26-entry directory is friction and can mislead. This drops them on the right desk.
 
 **What you'd notice today.** On a Switzerland plan, choose (say) Zürich — the "contact your cantonal office" links in the steps now point to the Zürich migration office instead of the federal list.
 
-**What's next.** I'll confirm it in the live preview and, once you're happy, fold it into the release.
+**What's next.** It's in your pending release now — approve that to put it in front of users. On cantons specifically: extend this beyond the first five (sourced + double-checked the same way).
 
 ---
 
