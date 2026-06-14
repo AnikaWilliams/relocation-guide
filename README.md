@@ -49,6 +49,15 @@ until the production domain and analytics IDs exist** (nothing loads without the
 a human lawyer's review of the legal drafts, and operator details for the Impressum/Contact.
 Monetization (AdSense) is documented but not yet eligible — see [`docs/monetization.md`](docs/monetization.md).
 
+**Corridor coverage (2026-06-13):** **8 corridors are published** — USA → Switzerland, Germany,
+France, Belgium, Ireland, Luxembourg, Austria, and the UK — each fully VERIFIED via the two-agent
+pipeline (research → independent fact-verify; ADR-0016/0018), founder-approved. USA → Netherlands is
+drafted and 90/92 verified but **held as a draft** pending reconciliation of one health-insurance
+deadline (two official sources disagree; needs a human/lawyer call). The intake marks each route with
+a green dot (published, verified guide) or gray dot (join the waitlist). The USA→Western-Europe batch
+was produced via agent teams + background fact-verifier agents, with every source captured as a dated
+receipt (ADR-0017). Public go-live still gated on the domain + lawyer review.
+
 ---
 
 ## How it works

@@ -14,7 +14,7 @@ reviewedBy: "research-lu"
 # (declaration of arrival, medical check, social security/CNS, housing, banking, tax).
 # Retirement / non-gainful settlement ("residence for private reasons") was captured but
 # NOT fully researched as a route here, so it is left out of coversMotivations honestly.
-published: false
+published: true
 coversMotivations: [work, study, family]
 tasks:
   # ===========================================================================

@@ -13,7 +13,7 @@ reviewedBy: "research-2"
 # study, family reunification. Retirement/non-gainful settlement is NOT covered:
 # Austria's "settlement permit excepting gainful employment" is quota-limited and
 # was not researched here — left out of coversMotivations honestly.
-published: false
+published: true
 coversMotivations: [work, study, family]
 tasks:
   # ===========================================================================

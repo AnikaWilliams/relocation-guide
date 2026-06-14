@@ -410,12 +410,13 @@ function CategoryBadge({ category }: { category: string }) {
  * guide is revealed only after selection (the plan vs. the launch waitlist).
  */
 function CountryGrid({
-  options, selectedIso, onSelect,
-}: { options: CountryOption[]; selectedIso: string | null; onSelect: (iso: string) => void }) {
+  options, liveIso, selectedIso, onSelect,
+}: { options: CountryOption[]; liveIso: Set<string>; selectedIso: string | null; onSelect: (iso: string) => void }) {
   return (
     <div className="grid grid-cols-2 gap-1.5 sm:gap-2">
       {options.map((c) => {
         const selected = selectedIso === c.iso2;
+        const live = liveIso.has(c.iso2);
         return (
           <button
             key={c.iso2}
@@ -426,8 +427,15 @@ function CountryGrid({
               selected ? 'border-blue-500 bg-blue-50' : 'border-slate-200 bg-white hover:border-blue-300'
             }`}
           >
+            {/* Availability dot: green = a published, verified guide exists for this
+                route; gray = not yet (selecting it leads to the launch waitlist). */}
+            <span
+              aria-hidden="true"
+              className={`shrink-0 h-2 w-2 rounded-full ${live ? 'bg-emerald-500' : 'bg-slate-300'}`}
+            />
             <Flag iso={c.iso2} className="text-xl" />
             <span className="font-medium text-slate-900 truncate">{c.name}</span>
+            <span className="sr-only">{live ? '(published guide available)' : '(no published guide yet)'}</span>
             {selected && <span className="ml-auto text-blue-500 shrink-0" aria-hidden="true">✓</span>}
           </button>
         );
@@ -1282,6 +1290,16 @@ export default function CorridorApp({ tasks, corridorTitle, originIso2, destinat
     return () => window.removeEventListener('hashchange', handler);
   }, [originIso2, destinationIso2]);
 
+  // Availability-dot data: which origins/destinations have a PUBLISHED, verified
+  // corridor. An origin that heads at least one published corridor gets a green
+  // dot; a destination gets one when a published corridor exists FROM the chosen
+  // origin. (Driven by availableCorridors = getPublishedCorridorPairs.)
+  const liveOriginIso = useMemo(() => new Set(availableCorridors.map((c) => c.origin)), [availableCorridors]);
+  const liveDestinationIso = useMemo(
+    () => new Set(availableCorridors.filter((c) => c.origin === answers.origin).map((c) => c.destination)),
+    [availableCorridors, answers.origin],
+  );
+
   // The destination grid offers every country except the one chosen as origin.
   const destinationOptions = useMemo(
     () => COUNTRY_OPTIONS.filter((c) => c.iso2 !== answers.origin),
@@ -1494,9 +1512,9 @@ export default function CorridorApp({ tasks, corridorTitle, originIso2, destinat
                 {currentStep.fields.map((field, fi) => {
                   if (field.kind === 'country') {
                     if (field.scope === 'origin') {
-                      return <CountryGrid key={fi} options={COUNTRY_OPTIONS} selectedIso={answers.origin} onSelect={selectOrigin} />;
+                      return <CountryGrid key={fi} options={COUNTRY_OPTIONS} liveIso={liveOriginIso} selectedIso={answers.origin} onSelect={selectOrigin} />;
                     }
-                    return <CountryGrid key={fi} options={destinationOptions} selectedIso={answers.destination} onSelect={selectDestination} />;
+                    return <CountryGrid key={fi} options={destinationOptions} liveIso={liveDestinationIso} selectedIso={answers.destination} onSelect={selectDestination} />;
                   }
                   if (field.kind === 'countryMulti') {
                     return <CountryMultiGrid key={fi} selected={answers.passports} onToggle={togglePassport} />;

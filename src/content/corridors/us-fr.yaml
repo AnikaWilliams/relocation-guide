@@ -11,7 +11,7 @@ reviewedBy: "research-2"
 # source and flips it VERIFIED (two-agent rule). Nothing here is verified.
 # Covered routes drafted: work (employee VLS-TS + Passeport Talent + EU Blue Card),
 # study, family reunification, retirement (visitor card). "Other" uncovered.
-published: false
+published: true
 coversMotivations: [work, family, study, retirement]
 tasks:
   # ===========================================================================

@@ -10,6 +10,18 @@ coming next. Newest updates are at the top.
 
 ---
 
+## 2026-06-13 — Published the 7 finished guides + added availability dots
+
+**What changed.** With seven of the eight new guides fully fact-checked, I turned them ON: USA → Germany, France, Belgium, Ireland, Luxembourg, Austria, and the UK now render as real guides — joining Switzerland for **eight live routes**. The Netherlands stays a hidden draft until its one open health-insurance-deadline question is settled. I also added a small dot to the country picker in the planner: **green** next to a country we have a finished, verified guide for, **gray** next to one where you'd join the waitlist. The built-in safety gate independently re-confirmed every published guide is 100% verified before it would allow any of them to render.
+
+**Why it matters.** This takes the catalogue from one route to eight — the guides people can actually use — while the gate guarantees nothing half-checked slips out.
+
+**What you'd notice today.** In the planner: green dots on the eight ready countries, and picking one opens its full guide. (Not on a public web address yet — see "What's next".)
+
+**What's next.** Public launch still needs a real web address + a lawyer's pass on the legal pages; plus the one Dutch deadline question to settle before the Netherlands guide can join the rest.
+
+---
+
 ## 2026-06-13 — USA → Western Europe batch: fact-checking finished (7 of 8 guides clean)
 
 **What changed.** The whole eight-guide batch has now been all the way through the mill: drafted → independently fact-checked → flagged items re-sourced → fact-checked again. Result: **730 of 732 facts confirmed against live official sources, and 7 of the 8 guides are 100% clean** — Germany, France, Belgium, Ireland, Luxembourg, Austria, and the UK. The eighth (Netherlands) is 90 of 92, with **one genuine open question** the checker refused to wave through: the Dutch health-insurance sign-up deadline is stated two different ways by two official sources (counting from your *arrival* vs. from your *permanent permit*). Rather than publish a contradiction, it's flagged for a human — likely a quick lawyer/IND check — to settle which applies.

@@ -523,3 +523,28 @@ sources/.cache/<sha256>.html.gz                # GITIGNORED — raw payload (reg
 3. `scripts/check-sources.mjs` drift check wired into `link-audit.yml`.
 4. Wire capture into the ADR-0016 research-team prompt and the diff into the verification-team prompt.
 5. Decide + apply backfill for `us-ch`.
+
+---
+
+## ADR-0018 — Publish 7 USA → Western-Europe corridors (founder human gate) + intake availability dots
+
+**Date:** 2026-06-13
+**Status:** Accepted
+**Decided by:** Founder (Anika Williams)
+
+### Context
+The USA → Western-Europe + UK batch completed the full two-agent pipeline (ADR-0016): research → verify → re-source → re-verify. **7 of 8 corridors are 100% VERIFIED** — `us-de` (94), `us-fr` (111), `us-be` (50), `us-ie` (84), `us-lu` (104), `us-at` (91), `us-gb` (106). `us-nl` is 90/92, with 2 claims open on a genuine legal-deadline conflict in `health-insurance-zvw` (Zvw 4-month deadline stated two ways by two official sources — arrival-based vs permanent-permit-based), awaiting human/lawyer reconciliation.
+
+### Decision
+The founder approves publishing the **7 fully-verified corridors** (`published: true`): `us-de, us-fr, us-be, us-ie, us-lu, us-at, us-gb`. This records the CLAUDE.md rule-8 human gate for each. **`us-nl` stays `published: false`** until its Zvw deadline conflict is reconciled and re-verified. (`us-ch` was already published — ADR-0014.) The build gate independently confirmed all 8 published corridors are fully VERIFIED and in-date (`astro build` renders 15 pages, zero gate failures).
+
+Also: the intake survey now shows a small **availability dot** per country — **green** when a published, verified corridor exists for that route, **gray** otherwise — driven by the published set (`getPublishedCorridorPairs` → `CorridorApp.tsx`). Origin grid: green on origins heading a published corridor; destination grid: green on destinations with a published corridor from the chosen origin.
+
+### Scope / caveats
+- Approval is of each corridor's **first published version**, not public go-live. The site still isn't deployed — public launch remains blocked on the production domain + Cloudflare Pages deploy (`SITE_URL`) and a **human lawyer's review of the legal pages**, same as `us-ch` (ADR-0014).
+- "confirm with [authority]" claims in these corridors were **verified as honest gaps** where no official source publishes the detail (per-bank onboarding docs, US-person tax specifics) — acceptable to publish (CLAUDE.md rule 1), not fabricated.
+- `us-nl` is intentionally held; do not publish until the Zvw conflict is resolved.
+
+### Consequences
+- 8 corridors now render (`us-ch` + 7); the intake offers them as live routes with green dots; the catalogue crosses ~15 indexable pages (relevant to AdSense eligibility — see `docs/monetization.md`).
+- Subsequent material content changes to any published corridor require re-approval; `us-nl` and future corridors continue via the same gated pipeline.
