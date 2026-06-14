@@ -1547,6 +1547,8 @@ export default function CorridorApp({ tasks, corridorTitle, originIso2, destinat
   const [docState, setDocState] = useState<DocState>({});
   const [activeTaskId, setActiveTaskId] = useState<string | null>(null);
   const [mobilePanelOpen, setMobilePanelOpen] = useState(false);
+  // Desktop: let the user collapse the plan sidebar to give the task panel full width.
+  const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
   const [hydrated, setHydrated] = useState(false);
 
   const isMobile = useIsMobile();
@@ -2262,7 +2264,35 @@ export default function CorridorApp({ tasks, corridorTitle, originIso2, destinat
         </div>
       ) : (
         <div className="flex-1 flex overflow-hidden">
-          <aside className="w-[300px] shrink-0 border-r border-slate-200 bg-white overflow-y-auto px-5 py-6">{sidebar}</aside>
+          {sidebarCollapsed ? (
+            <div className="shrink-0 border-r border-slate-200 bg-white pt-4">
+              <button
+                type="button"
+                aria-expanded={false}
+                aria-label="Show your plan panel"
+                title="Show your plan panel"
+                onClick={() => setSidebarCollapsed(false)}
+                className="mx-1 inline-flex min-h-11 items-center rounded-lg px-2 text-slate-500 hover:bg-slate-100 hover:text-slate-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
+              >
+                <IconChevronDown className="h-5 w-5 -rotate-90" />
+              </button>
+            </div>
+          ) : (
+            <aside className="w-[300px] shrink-0 border-r border-slate-200 bg-white overflow-y-auto px-5 py-6">
+              <div className="mb-3 flex justify-end">
+                <button
+                  type="button"
+                  aria-expanded={true}
+                  aria-label="Hide your plan panel"
+                  onClick={() => setSidebarCollapsed(true)}
+                  className="inline-flex min-h-11 items-center gap-1 rounded-lg px-2 text-xs font-medium text-slate-500 hover:bg-slate-100 hover:text-slate-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
+                >
+                  Hide <IconChevronDown className="h-4 w-4 rotate-90" />
+                </button>
+              </div>
+              {sidebar}
+            </aside>
+          )}
           <div className="flex-1 overflow-hidden bg-white">{mainPanel}</div>
         </div>
       )}

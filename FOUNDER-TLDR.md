@@ -10,6 +10,18 @@ coming next. Newest updates are at the top.
 
 ---
 
+## 2026-06-14 — You can now collapse the plan's side panel
+
+**What changed.** On a wide screen, the left panel of a plan (your progress, your answers, and the step list) can now be **collapsed** with a "Hide" button — the step you're reading then expands to use the full width. A thin "›" tab on the left brings it back. (Phones already had a show/hide toggle for this; now desktop does too.)
+
+**Why it matters.** More room to read the actual step, and less on-screen clutter when you just want to focus on the task at hand.
+
+**What you'd notice today.** A small "Hide" control at the top of the left panel on desktop; click it and the panel tucks away, click the "›" tab to bring it back.
+
+**What's next.** Nothing specific — a small comfort improvement.
+
+---
+
 ## 2026-06-14 — The canton picker is now a searchable dropdown
 
 **What changed.** The "Which canton are you moving to?" question (Switzerland) was a grid of all 26 cantons; it's now a **searchable dropdown** — start typing and it filters the list (it even works without the accents, e.g. "zurich" finds "Zürich"), with arrow-key/Enter selection and an "I'm not sure yet" option. Fully keyboard- and screen-reader-friendly.
