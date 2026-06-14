@@ -2,7 +2,7 @@
 import type { GetStaticPaths } from 'astro';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Disclaimer from '../../../components/Disclaimer.astro';
-import CorridorApp, { type TaskData, type CorridorPair } from '../../../components/CorridorApp.tsx';
+import CorridorApp, { type TaskData, type CorridorPair, type CantonData } from '../../../components/CorridorApp.tsx';
 import type { Corridor } from '../../../content/schema';
 import { getPublishedCorridors, getPublishedCorridorPairs } from '../../../utils/corridors';
 
@@ -50,6 +50,31 @@ const appTasks: TaskData[] = corridor.tasks.map((t) => ({
   warning: t.warning,
   dependsOn: t.dependsOn,
   appliesIf: t.appliesIf,
+}));
+
+/** Per-canton local detail (Switzerland), projected to the island's prop shape. */
+const appCantons: CantonData[] = (corridor.cantons ?? []).map((c) => ({
+  code: c.code,
+  name: c.name,
+  migrationOffice: {
+    text: c.migrationOffice.text,
+    sourceUrl: c.migrationOffice.sourceUrl,
+    sourceName: c.migrationOffice.sourceName,
+    lastVerified: c.migrationOffice.lastVerified,
+  },
+  taxInfo: {
+    text: c.taxInfo.text,
+    sourceUrl: c.taxInfo.sourceUrl,
+    sourceName: c.taxInfo.sourceName,
+    lastVerified: c.taxInfo.lastVerified,
+  },
+  notes: c.notes?.map((n) => ({
+    label: n.label,
+    text: n.text,
+    sourceUrl: n.sourceUrl,
+    sourceName: n.sourceName,
+    lastVerified: n.lastVerified,
+  })),
 }));
 
 /**
@@ -147,6 +172,7 @@ const planScope = (appliesIf?: string): string => {
       destinationIso2={corridor.destinationIso2}
       availableCorridors={availableCorridors}
       coversMotivations={corridor.coversMotivations}
+      cantons={appCantons}
       client:load
     />
   </div>

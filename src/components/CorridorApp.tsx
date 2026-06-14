@@ -1,5 +1,6 @@
 import { useState, useEffect, useMemo, useRef, type ReactNode } from 'react';
 import { COUNTRY_OPTIONS, countryName, type CountryOption } from '../utils/countries';
+import { CH_CANTONS, cantonName } from '../utils/cantons';
 import { flagUrl } from '../utils/flags';
 import { topoOrder, statusOf, currentTaskId, type TaskStatus } from '../utils/journey';
 import { evaluateAppliesIf, type AppliesIfContext } from '../utils/appliesIf';
@@ -54,6 +55,19 @@ interface ClaimData {
   sourceUrl: string;
   sourceName: string;
   lastVerified?: string;
+}
+
+/**
+ * Per-canton local detail (mirrors CantonSchema in content/schema.ts, projected
+ * to the render-time claim shape). Surfaced in the plan once the user picks a
+ * canton; cantons absent here fall back to the federal SEM directory.
+ */
+export interface CantonData {
+  code: string;
+  name: string;
+  migrationOffice: ClaimData;
+  taxInfo: ClaimData;
+  notes?: (ClaimData & { label: string })[];
 }
 
 interface StepData {
@@ -118,6 +132,8 @@ interface CorridorAppProps {
   availableCorridors: CorridorPair[];
   /** Routes this corridor's verified content covers; answers outside it get an honest "not covered yet" notice. */
   coversMotivations?: ('work' | 'family' | 'study' | 'retirement' | 'other')[];
+  /** Per-canton local detail for cantonally-administered destinations (Switzerland). Empty when none authored. */
+  cantons?: CantonData[];
 }
 
 // ── Intake model ─────────────────────────────────────────────────────────────
@@ -148,6 +164,8 @@ interface Intake {
   /** Who is moving with the applicant; empty = moving alone. Replaces the old
       yes/no "children" question so we only show steps that actually apply. */
   companions: Companion[];
+  /** Swiss canton being moved to (lowercased CH code); null = unknown / not CH. */
+  canton: string | null;
 }
 
 const STORAGE_KEY = 'relocation-intake-v2';
@@ -213,6 +231,7 @@ function defaultIntake(): Intake {
     otherDescription: '',
     durationIntent: null,
     companions: [],
+    canton: null,
   };
 }
 
@@ -224,6 +243,7 @@ type Field =
   | { kind: 'single'; get: (a: Intake) => string | null; set: (a: Intake, v: string) => Intake; options: Opt[] | ((a: Intake) => Opt[]) }
   | { kind: 'boolean'; get: (a: Intake) => boolean | null; set: (a: Intake, v: boolean) => Intake; yes?: string; no?: string }
   | { kind: 'companions' }
+  | { kind: 'canton' }
   | { kind: 'text'; get: (a: Intake) => string; set: (a: Intake, v: string) => Intake; label?: string; placeholder?: string; textarea?: boolean; optional?: boolean };
 
 interface WizardStep {
@@ -366,6 +386,17 @@ const STEPS: WizardStep[] = [
     isComplete: (a) => !!a.durationIntent,
   },
   {
+    id: 'canton',
+    // Switzerland runs permits, taxes and registration cantonally (ADR-0021),
+    // so only show this for CH-bound users. Optional — many people don't yet
+    // know their canton, so it never blocks (isComplete is always true).
+    visibleIf: (a) => a.destination === 'ch',
+    title: 'Which canton are you moving to?',
+    subtitle: "Switzerland's permits, taxes and registration are run by the canton — this tailors the local details.",
+    fields: [{ kind: 'canton' }],
+    isComplete: () => true,
+  },
+  {
     id: 'companions',
     title: "Who's joining you?",
     subtitle: "Pick everyone moving with you, or choose “It's just me”. We only show the steps that apply to who's coming.",
@@ -505,6 +536,50 @@ function CountryMultiGrid({
   );
 }
 
+/**
+ * Single-select canton grid (Switzerland). Mirrors CountryGrid's styling —
+ * min-h-11 touch targets, brand selection state, focus-visible ring — minus the
+ * flag/availability dot (cantons have neither). Optional: an "I'm not sure yet"
+ * affordance clears the selection so the step never blocks the wizard.
+ */
+function CantonGrid({
+  selected, onSelect, onClear,
+}: { selected: string | null; onSelect: (code: string) => void; onClear: () => void }) {
+  return (
+    <div className="space-y-3">
+      <div className="grid grid-cols-2 gap-1.5 sm:gap-2">
+        {CH_CANTONS.map((c) => {
+          const isOn = selected === c.code;
+          return (
+            <button
+              key={c.code}
+              type="button"
+              aria-pressed={isOn}
+              onClick={() => onSelect(c.code)}
+              className={`flex items-center gap-2 min-h-11 border rounded-lg px-2.5 py-2 text-left text-sm transition-all focus-visible:ring-2 focus-visible:ring-brand-500 ${
+                isOn ? 'border-brand-600 bg-brand-50' : 'border-slate-200 bg-white hover:border-brand-300'
+              }`}
+            >
+              <span className="font-medium text-slate-900 truncate">{c.name}</span>
+              {isOn && <span className="ml-auto text-brand-600 shrink-0" aria-hidden="true">✓</span>}
+            </button>
+          );
+        })}
+      </div>
+      <button
+        type="button"
+        aria-pressed={selected === null}
+        onClick={onClear}
+        className={`inline-flex min-h-11 items-center text-sm font-medium underline transition-colors focus-visible:ring-2 focus-visible:ring-brand-500 ${
+          selected === null ? 'text-brand-700' : 'text-slate-500 hover:text-slate-700'
+        }`}
+      >
+        I'm not sure yet
+      </button>
+    </div>
+  );
+}
+
 // ── Answer recap (for the sidebar) ───────────────────────────────────────────
 
 function motivationLabel(m: Motivation): string {
@@ -546,6 +621,9 @@ function buildRecap(a: Intake): { label: ReactNode; stepId: string }[] {
   if (a.durationIntent) {
     const d = { short: '<1 year', long: '1 year+', permanent: 'settling' }[a.durationIntent];
     items.push({ label: `Stay: ${d}`, stepId: 'duration' });
+  }
+  if (a.canton) {
+    items.push({ label: `Canton: ${cantonName(a.canton)}`, stepId: 'canton' });
   }
   if (a.companions.length) {
     const who = a.companions.map((c) => (c === 'partner' ? 'partner' : 'children')).join(' + ');
@@ -699,8 +777,73 @@ function DocChecklist({
   );
 }
 
+/** Federal SEM directory of cantonal migration authorities — the fallback when
+ *  a canton's local detail hasn't been authored for this corridor yet. */
+const SEM_CANTONAL_DIRECTORY =
+  'https://www.sem.admin.ch/sem/en/home/sem/kontakt/kantonale_behoerden/adressen_kantone_und.html';
+
+/** Brand-styled external link to one verified canton claim (office, tax, …). */
+function CantonLink({ claim }: { claim: ClaimData }) {
+  return (
+    <a
+      href={claim.sourceUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="block rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm text-brand-700 hover:border-brand-300 hover:bg-brand-50 focus-visible:ring-2 focus-visible:ring-brand-500"
+    >
+      <span className="font-medium">{claim.sourceName} ↗</span>
+      <span className="mt-0.5 block text-xs text-slate-500">{claim.text}</span>
+    </a>
+  );
+}
+
+/**
+ * "Your canton" payoff card (CH only, once a canton is chosen). When the
+ * corridor authored this canton's local detail, show its migration office and
+ * tax pointer as titled external links plus any notes; otherwise fall back to
+ * the federal SEM cantonal-authority directory. Modest and on-brand — it sits
+ * by "Your answers" in the sidebar.
+ */
+function CantonPanel({ canton, data }: { canton: string; data: CantonData | undefined }) {
+  const name = data?.name ?? cantonName(canton);
+  return (
+    <div>
+      <h2 className="text-xs font-normal text-slate-500 mb-2">Your canton</h2>
+      <div className="rounded-lg border border-slate-200 bg-slate-50 px-3 py-3">
+        <p className="text-sm font-semibold text-slate-900">{name}</p>
+        {data ? (
+          <div className="mt-2 space-y-2">
+            <CantonLink claim={data.migrationOffice} />
+            <CantonLink claim={data.taxInfo} />
+            {data.notes?.map((note) => (
+              <div key={note.label} className="rounded-lg border border-slate-200 bg-white px-3 py-2">
+                <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">{note.label}</p>
+                <p className="mt-0.5 text-sm text-slate-700">{note.text}</p>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div className="mt-2 space-y-1.5">
+            <a
+              href={SEM_CANTONAL_DIRECTORY}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm font-medium text-brand-700 hover:border-brand-300 hover:bg-brand-50 focus-visible:ring-2 focus-visible:ring-brand-500"
+            >
+              Find {name}'s cantonal migration office ↗
+            </a>
+            <p className="text-xs text-slate-500">
+              Permits, taxes and premiums vary by canton — confirm local details with your cantonal authorities.
+            </p>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+
 function Sidebar({
-  orderedTasks, statusFor, activeId, onSelect, recap, onEdit, doneCount, total, docState, onToggleDoc,
+  orderedTasks, statusFor, activeId, onSelect, recap, onEdit, doneCount, total, docState, onToggleDoc, cantonPanel,
 }: {
   orderedTasks: TaskData[];
   statusFor: (id: string) => TaskStatus;
@@ -712,6 +855,8 @@ function Sidebar({
   total: number;
   docState: DocState;
   onToggleDoc: (taskId: string, docName: string, mark: DocMark) => void;
+  /** Rendered "Your canton" card (CH + canton chosen); null otherwise. */
+  cantonPanel?: ReactNode;
 }) {
   // Substeps: the active step auto-expands; any unlocked step can be toggled.
   const [expandedId, setExpandedId] = useState<string | null>(null);
@@ -748,6 +893,8 @@ function Sidebar({
           ))}
         </div>
       </div>
+
+      {cantonPanel}
 
       <div className="border-t border-slate-200 pt-4">
         <h2 className="text-xs font-normal text-slate-500 mb-2.5">Your journey</h2>
@@ -1160,7 +1307,7 @@ function WaitlistPanel({
 
 // ── Main component ───────────────────────────────────────────────────────────
 
-export default function CorridorApp({ tasks, corridorTitle, originIso2, destinationIso2, availableCorridors, coversMotivations }: CorridorAppProps) {
+export default function CorridorApp({ tasks, corridorTitle, originIso2, destinationIso2, availableCorridors, coversMotivations, cantons = [] }: CorridorAppProps) {
   // Deterministic defaults for the first render (must match the server so
   // hydration succeeds). Persisted state is loaded from localStorage in an
   // effect after mount — see below.
@@ -1363,6 +1510,9 @@ export default function CorridorApp({ tasks, corridorTitle, originIso2, destinat
     // derived from it so the existing children-gated tasks keep working unchanged.
     companions: answers.companions,
     hasChildren: answers.companions.includes('children'),
+    // Surfaced for future canton-gated appliesIf (e.g. a task that only applies
+    // in certain cantons). null when unknown / not a CH move.
+    canton: answers.canton,
   }), [answers]);
 
   const applicableTasks = useMemo(() => {
@@ -1517,6 +1667,9 @@ export default function CorridorApp({ tasks, corridorTitle, originIso2, destinat
       companions: a.companions.includes(c) ? a.companions.filter((x) => x !== c) : [...a.companions, c],
     }));
   }
+  function selectCanton(code: string | null) {
+    setAnswers((a) => ({ ...a, canton: code }));
+  }
 
   // ── Wizard phase ───────────────────────────────────────────────────────────
 
@@ -1607,6 +1760,16 @@ export default function CorridorApp({ tasks, corridorTitle, originIso2, destinat
                           onClick={() => setAnswers((a) => ({ ...a, companions: [] }))}
                         />
                       </div>
+                    );
+                  }
+                  if (field.kind === 'canton') {
+                    return (
+                      <CantonGrid
+                        key={fi}
+                        selected={answers.canton}
+                        onSelect={selectCanton}
+                        onClear={() => selectCanton(null)}
+                      />
                     );
                   }
                   if (field.kind === 'single') {
@@ -1753,6 +1916,17 @@ export default function CorridorApp({ tasks, corridorTitle, originIso2, destinat
   const doneCount = applicableTasks.filter((t) => doneIds.has(t.id)).length;
   const allDone = doneCount >= applicableTasks.length && applicableTasks.length > 0;
 
+  // "Your canton" payoff (CH only, once a canton is chosen). Matches the chosen
+  // code against the corridor's authored cantons; CantonPanel falls back to the
+  // federal SEM directory when there's no entry.
+  const cantonPanel =
+    answers.destination === 'ch' && answers.canton ? (
+      <CantonPanel
+        canton={answers.canton}
+        data={cantons.find((c) => c.code === answers.canton)}
+      />
+    ) : null;
+
   const sidebar = (
     <Sidebar
       orderedTasks={orderedTasks}
@@ -1765,6 +1939,7 @@ export default function CorridorApp({ tasks, corridorTitle, originIso2, destinat
       total={applicableTasks.length}
       docState={docState}
       onToggleDoc={handleToggleDoc}
+      cantonPanel={cantonPanel}
     />
   );
 

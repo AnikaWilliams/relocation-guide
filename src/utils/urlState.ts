@@ -38,6 +38,7 @@
  */
 
 import { COUNTRY_NAMES } from './countries';
+import { isCantonCode } from './cantons';
 
 /** The subset of the intake that decides which tasks apply (plan-affecting). */
 export interface PlanIntake {
@@ -52,10 +53,16 @@ export interface PlanIntake {
   durationIntent: 'short' | 'long' | 'permanent' | null;
   /** Dependants moving with the applicant (the "who's joining you?" step). */
   companions: ('partner' | 'children')[];
+  /**
+   * Swiss canton the user is moving to (lowercased ISO 3166-2:CH code), or
+   * null when unknown / the destination isn't Switzerland. Only encoded for
+   * CH destinations — permits/taxes are administered cantonally (ADR-0021).
+   */
+  canton: string | null;
 }
 
 /** Every search-param key this module owns. Anything else in the URL is left alone. */
-export const INTAKE_PARAM_KEYS = ['pp', 'm', 'ws', 'rel', 'fs', 'ss', 'dur', 'co'] as const;
+export const INTAKE_PARAM_KEYS = ['pp', 'm', 'ws', 'rel', 'fs', 'ss', 'dur', 'co', 'cn'] as const;
 
 // Allowed values per enum param (decode validation — junk values are dropped).
 const MOTIVATION_VALUES = ['work', 'family', 'study', 'retirement', 'other'] as const;
@@ -102,6 +109,9 @@ export function intakeToParams(a: PlanIntake): [string, string][] {
   if (a.motivation === 'study' && a.studyStatus) out.push(['ss', a.studyStatus]);
   if (a.durationIntent) out.push(['dur', a.durationIntent]);
   if (a.companions.length > 0) out.push(['co', a.companions.join(',')]);
+  // Canton only travels for Switzerland (the only cantonally-administered
+  // destination today) and only when it's a known code — junk never encodes.
+  if (a.destination === 'ch' && a.canton && isCantonCode(a.canton)) out.push(['cn', a.canton]);
   return out;
 }
 
@@ -141,6 +151,10 @@ export function applyIntakeParams<T extends PlanIntake>(base: T, params: URLSear
     .map((s) => s.trim().toLowerCase())
     .filter((v, i, arr): v is (typeof COMPANION_VALUES)[number] =>
       (COMPANION_VALUES as readonly string[]).includes(v) && arr.indexOf(v) === i);
+  // Canton: only meaningful for Switzerland (its destination lives in the page
+  // path → on `base`); validated against the known codes, else null.
+  const cnRaw = (params.get('cn') ?? '').trim().toLowerCase();
+  const canton = base.destination === 'ch' && isCantonCode(cnRaw) ? cnRaw : null;
   return {
     ...base,
     passports: pp.length > 0 ? pp : defaultPassports,
@@ -151,5 +165,6 @@ export function applyIntakeParams<T extends PlanIntake>(base: T, params: URLSear
     studyStatus: pickEnum(params, 'ss', STUDY_STATUS_VALUES),
     durationIntent: pickEnum(params, 'dur', DURATION_VALUES),
     companions,
+    canton,
   };
 }

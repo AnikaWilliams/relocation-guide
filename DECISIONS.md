@@ -597,3 +597,26 @@ A founder report ("USA→Austria, no children, but the plan said *bring your spo
 ### Consequences
 - The reported confusion is resolved and family/dependant steps now match who is actually coming, across all 8 corridors. Verified: `astro check` 0 errors, **271 tests**, `astro build` 15 pages (provenance gate intact). No claim/source/disclaimer text changed — only `appliesIf` gating + intake UI + display labels.
 - **Known limitation (flagged for the content pipeline):** corridors whose only family content is the family-route process (us-at/be/fr/ie/ch/de) still have no tailored "bring a partner on a work/study visa" step; a worker bringing a spouse there sees the general guidance, not a dedicated task. Adding those is content-researcher + fact-verifier work (sourced claims), not a gating change.
+
+---
+
+## ADR-0021 — Canton dimension for Switzerland (corridor-embedded, provenance-gated)
+
+**Date:** 2026-06-14
+**Status:** Accepted
+**Decided by:** Founder (Anika Williams) — requested; scope "scaffold + a few key cantons now"
+
+### Context
+Switzerland is **federal law + cantonal administration**: the Foreign Nationals & Integration Act + ordinance are uniform, but the canton decides/processes work & residence permits (and quotas are allocated per canton), and cantonal + communal **income tax** and health-insurance **premiums** vary widely. The corridor guide was destination-level (USA → Switzerland) and used Vaud only as a worked example, so a user got no canton-specific local detail. A founder asked whether canton matters (it does, materially).
+
+### Decision
+Add an optional **canton dimension**, scoped to Switzerland for now:
+
+- **Data model (corridor-embedded, NOT a new collection):** `CantonSchema` ({ code, name, `migrationOffice`: Claim, `taxInfo`: Claim, `notes?`: KeyFact[] }) on `CorridorSchema.cantons?`. Rationale: canton content is corridor-scoped, and embedding reuses the existing Zod schema, the **provenance build gate**, and the two-agent content pipeline rather than standing up a parallel collection + gate. Generalise to other destinations (German Länder, etc.) only if a second case appears (YAGNI).
+- **Build gate:** `collectClaims` now flattens canton claims, so every published canton's `migrationOffice`/`taxInfo`/`notes` must be `VERIFIED` and in-date exactly like corridor claims.
+- **Intake/UX:** a "Which canton are you moving to?" wizard step shown only when `destination === 'ch'` (all 26 cantons; "I'm not sure yet" keeps it optional/non-blocking); `canton` threaded into the `appliesIf` context and the share-URL (`cn` param, CH-only, validated). The plan shows a "Your canton" panel: the canton's offices when authored, else a **fallback to the federal SEM cantonal-authority directory** (already verified) + a "rules/taxes vary by canton" note — so unlisted cantons never dead-end.
+- **Content:** seed the five biggest cantons (Zürich, Geneva, Vaud, Zug, Basel-Stadt) via the two-agent pipeline (content-researcher → fact-verifier); remaining cantons fall back until sourced.
+
+### Consequences
+- Canton selection works immediately via the fallback; authored cantons enrich the panel. Only VERIFIED canton claims may publish (gate-enforced). Scaffold verified: `astro check` 0 errors, 277 tests.
+- A future "add a canton" = add an entry to a corridor's `cantons` (like adding a task) — sourced + fact-verified + founder-gated. Non-CH corridors are unaffected (no canton step).

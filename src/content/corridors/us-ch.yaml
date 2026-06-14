@@ -3539,3 +3539,181 @@ tasks:
       your course ends.
     dependsOn:
       - residence-permit-card
+
+# ── Per-canton local detail (ADR-0021) — two-agent verified 2026-06-14 ─────
+cantons:
+  - code: zh
+    name: Zürich
+    migrationOffice:
+      text: In Zürich, the cantonal Migrationsamt (Migration Office, part of the Security Directorate) is the authority that controls and regulates the residence of foreign nationals and decides your residence/work permit locally.
+      sourceUrl: https://www.zh.ch/de/sicherheitsdirektion/migrationsamt.html
+      sourceName: Kanton Zürich — Migrationsamt (Sicherheitsdirektion)
+      lastVerified: "2026-06-14"
+      verifiedBy: fact-verifier (canton pipeline)
+      reviewBy: "2026-09-12"
+      status: VERIFIED
+    taxInfo:
+      text: Cantonal and communal income tax applies in Zürich on top of federal direct tax; rates, tariffs and filing information are published by the canton's tax administration on the official Zürich tax pages.
+      sourceUrl: https://www.zh.ch/de/steuern-finanzen/steuern.html
+      sourceName: Kanton Zürich — Steuern (Steuern & Finanzen)
+      lastVerified: "2026-06-14"
+      verifiedBy: fact-verifier (canton pipeline)
+      reviewBy: "2026-09-12"
+      status: VERIFIED
+    notes:
+      - label: Official language
+        text: Zürich is a German-speaking canton, so cantonal forms and correspondence are in German.
+        sourceUrl: https://www.aboutswitzerland.eda.admin.ch/en/languages-and-dialects
+        sourceName: "Federal Department of Foreign Affairs (FDFA) — About Switzerland: Languages and dialects"
+        lastVerified: "2026-06-14"
+        verifiedBy: fact-verifier (canton pipeline)
+        reviewBy: "2026-09-12"
+        status: VERIFIED
+      - label: Register at your commune
+        text: After moving, you are expected to register with your new commune of residence (residents' registration office) within 14 days of your move.
+        sourceUrl: https://www.ch.ch/en/housing/moving/notification-of-departure-and-registration/
+        sourceName: ch.ch (Federal/Cantonal portal) — Notifying a change of address
+        lastVerified: "2026-06-14"
+        verifiedBy: fact-verifier (canton pipeline)
+        reviewBy: "2026-09-12"
+        status: VERIFIED
+  - code: ge
+    name: Geneva
+    migrationOffice:
+      text: In Geneva, the Office cantonal de la population et des migrations (OCPM) keeps the registers of inhabitants and foreign nationals and handles residence/work permits and registration locally.
+      sourceUrl: https://www.ge.ch/organisation/office-cantonal-population-migrations-ocpm
+      sourceName: République et canton de Genève — Office cantonal de la population et des migrations (OCPM)
+      lastVerified: "2026-06-14"
+      verifiedBy: fact-verifier (canton pipeline)
+      reviewBy: "2026-09-12"
+      status: VERIFIED
+    taxInfo:
+      text: Cantonal and communal income tax (impôt cantonal et communal) applies in Geneva on top of federal direct tax; rates and how to pay are set out by the cantonal tax administration (Administration fiscale cantonale, AFC) on the official Geneva tax pages.
+      sourceUrl: https://www.ge.ch/dossier/vos-impots
+      sourceName: République et canton de Genève — Vos impôts (Administration fiscale cantonale, AFC)
+      lastVerified: "2026-06-14"
+      verifiedBy: fact-verifier (canton pipeline)
+      reviewBy: "2026-09-12"
+      status: VERIFIED
+    notes:
+      - label: Official language
+        text: Geneva is a French-speaking canton, so cantonal forms and correspondence are in French.
+        sourceUrl: https://www.aboutswitzerland.eda.admin.ch/en/languages-and-dialects
+        sourceName: "Federal Department of Foreign Affairs (FDFA) — About Switzerland: Languages and dialects"
+        lastVerified: "2026-06-14"
+        verifiedBy: fact-verifier (canton pipeline)
+        reviewBy: "2026-09-12"
+        status: VERIFIED
+      - label: Register at your commune
+        text: After moving, you are expected to register with your new commune of residence (contrôle des habitants) within 14 days of your move.
+        sourceUrl: https://www.ch.ch/en/housing/moving/notification-of-departure-and-registration/
+        sourceName: ch.ch (Federal/Cantonal portal) — Notifying a change of address
+        lastVerified: "2026-06-14"
+        verifiedBy: fact-verifier (canton pipeline)
+        reviewBy: "2026-09-12"
+        status: VERIFIED
+  - code: vd
+    name: Vaud
+    migrationOffice:
+      text: In Vaud, the Service de la population (SPOP) is the competent cantonal authority for residence permits and entry/stay matters, and handles your permit and registration file locally.
+      sourceUrl: https://www.vd.ch/population/population-etrangere/entree-et-sejour/formulaires-et-liens-utiles
+      sourceName: Canton de Vaud — Service de la population (SPOP), Formulaires et liens utiles pour l'entrée et le séjour
+      lastVerified: "2026-06-14"
+      verifiedBy: fact-verifier (canton pipeline)
+      reviewBy: "2026-09-12"
+      status: VERIFIED
+    taxInfo:
+      text: Cantonal and communal income tax (impôt cantonal et communal) applies in Vaud on top of federal direct tax; rates and tax information are published on the official Vaud tax pages.
+      sourceUrl: https://www.vd.ch/etat-droit-finances/impots
+      sourceName: État de Vaud — Les impôts dans le canton de Vaud
+      lastVerified: "2026-06-14"
+      verifiedBy: fact-verifier (canton pipeline)
+      reviewBy: "2026-09-12"
+      status: VERIFIED
+    notes:
+      - label: Official language
+        text: Vaud is a French-speaking canton, so cantonal forms and correspondence are in French.
+        sourceUrl: https://www.aboutswitzerland.eda.admin.ch/en/languages-and-dialects
+        sourceName: "Federal Department of Foreign Affairs (FDFA) — About Switzerland: Languages and dialects"
+        lastVerified: "2026-06-14"
+        verifiedBy: fact-verifier (canton pipeline)
+        reviewBy: "2026-09-12"
+        status: VERIFIED
+      - label: Register at your commune
+        text: After moving, you are expected to register with your new commune of residence (contrôle des habitants) within 14 days of your move.
+        sourceUrl: https://www.ch.ch/en/housing/moving/notification-of-departure-and-registration/
+        sourceName: ch.ch (Federal/Cantonal portal) — Notifying a change of address
+        lastVerified: "2026-06-14"
+        verifiedBy: fact-verifier (canton pipeline)
+        reviewBy: "2026-09-12"
+        status: VERIFIED
+  - code: zg
+    name: Zug
+    migrationOffice:
+      text: In Zug, the Amt für Migration (part of the Security Directorate) administers federal immigration and asylum law and regulates the entry, residence and gainful activity of all foreign nationals in the canton — it handles your permit and registration locally.
+      sourceUrl: https://zg.ch/de/sicherheitsdirektion/amt-fuer-migration
+      sourceName: Kanton Zug — Amt für Migration (Sicherheitsdirektion)
+      lastVerified: "2026-06-14"
+      verifiedBy: fact-verifier (canton pipeline)
+      reviewBy: "2026-09-12"
+      status: VERIFIED
+    taxInfo:
+      text: Cantonal and communal income tax applies in Zug on top of federal direct tax; rates and tax information are published by the canton's tax administration on the official Zug tax pages.
+      sourceUrl: https://zg.ch/de/steuern-finanzen/steuern
+      sourceName: Kanton Zug — Steuern (Steuern & Finanzen)
+      lastVerified: "2026-06-14"
+      verifiedBy: fact-verifier (canton pipeline)
+      reviewBy: "2026-09-12"
+      status: VERIFIED
+    notes:
+      - label: Official language
+        text: Zug is a German-speaking canton, so cantonal forms and correspondence are in German.
+        sourceUrl: https://www.aboutswitzerland.eda.admin.ch/en/languages-and-dialects
+        sourceName: "Federal Department of Foreign Affairs (FDFA) — About Switzerland: Languages and dialects"
+        lastVerified: "2026-06-14"
+        verifiedBy: fact-verifier (canton pipeline)
+        reviewBy: "2026-09-12"
+        status: VERIFIED
+      - label: Register at your commune
+        text: After moving, you are expected to register with your new commune of residence (Einwohnerkontrolle) within 14 days of your move.
+        sourceUrl: https://www.ch.ch/en/housing/moving/notification-of-departure-and-registration/
+        sourceName: ch.ch (Federal/Cantonal portal) — Notifying a change of address
+        lastVerified: "2026-06-14"
+        verifiedBy: fact-verifier (canton pipeline)
+        reviewBy: "2026-09-12"
+        status: VERIFIED
+  - code: bs
+    name: Basel-Stadt
+    migrationOffice:
+      text: In Basel-Stadt, the Migrationsamt (Migration Office) issues and renews entry, residence and cross-border-commuter permits — it decides your residence/work permit and handles registration locally.
+      sourceUrl: https://www.bs.ch/jsd/bdm/migrationsamt
+      sourceName: Kanton Basel-Stadt — Migrationsamt (Bevölkerungsdienste und Migration)
+      lastVerified: "2026-06-14"
+      verifiedBy: fact-verifier (canton pipeline)
+      reviewBy: "2026-09-12"
+      status: VERIFIED
+    taxInfo:
+      text: Cantonal and communal income tax applies in Basel-Stadt on top of federal direct tax; rates and tax information are published by the cantonal tax administration (Steuerverwaltung) on the official Basel-Stadt tax pages.
+      sourceUrl: https://www.bs.ch/fd/steuerverwaltung
+      sourceName: Kanton Basel-Stadt — Steuerverwaltung (Finanzdepartement)
+      lastVerified: "2026-06-14"
+      verifiedBy: fact-verifier (canton pipeline)
+      reviewBy: "2026-09-12"
+      status: VERIFIED
+    notes:
+      - label: Official language
+        text: Basel-Stadt is a German-speaking canton, so cantonal forms and correspondence are in German.
+        sourceUrl: https://www.aboutswitzerland.eda.admin.ch/en/languages-and-dialects
+        sourceName: "Federal Department of Foreign Affairs (FDFA) — About Switzerland: Languages and dialects"
+        lastVerified: "2026-06-14"
+        verifiedBy: fact-verifier (canton pipeline)
+        reviewBy: "2026-09-12"
+        status: VERIFIED
+      - label: Register at your commune
+        text: After moving, you are expected to register with your new commune of residence (Einwohnerkontrolle) within 14 days of your move.
+        sourceUrl: https://www.ch.ch/en/housing/moving/notification-of-departure-and-registration/
+        sourceName: ch.ch (Federal/Cantonal portal) — Notifying a change of address
+        lastVerified: "2026-06-14"
+        verifiedBy: fact-verifier (canton pipeline)
+        reviewBy: "2026-09-12"
+        status: VERIFIED

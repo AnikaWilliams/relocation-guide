@@ -145,6 +145,15 @@ export function collectClaims(corridor: Corridor): LocatedClaim[] {
       }
     });
   }
+  // Per-canton claims (ADR-0021) are gated like every other rendered claim.
+  corridor.cantons?.forEach((canton) => {
+    const cbase = `cantons[${canton.code}]`;
+    out.push({ claim: canton.migrationOffice, location: `${cbase}.migrationOffice` });
+    out.push({ claim: canton.taxInfo, location: `${cbase}.taxInfo` });
+    canton.notes?.forEach((note, ni) => {
+      out.push({ claim: note, location: `${cbase}.notes[${ni}] (${note.label})` });
+    });
+  });
   return out;
 }
 

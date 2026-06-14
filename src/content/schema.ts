@@ -103,6 +103,29 @@ export const KeyFactSchema = ClaimSchema.extend({
 });
 export type KeyFact = z.infer<typeof KeyFactSchema>;
 
+/**
+ * Per-canton local detail for a destination whose rules are administered
+ * cantonally (Switzerland is federal law + cantonal administration, ADR-0021).
+ * When the user picks their canton, the plan surfaces that canton's migration
+ * office and tax pointer; cantons not listed fall back to the federal SEM
+ * cantonal-authority directory. Each field a user could act on is a Claim with
+ * full provenance — sourced + fact-verified and enforced by the build gate when
+ * the corridor is published, exactly like every other claim. This lives on the
+ * corridor (not a separate collection) because the content is corridor-scoped
+ * and reuses the same gate + two-agent pipeline.
+ */
+export const CantonSchema = z.object({
+  code: z.string().min(1), // e.g. 'zh', 'ge', 'vd'
+  name: z.string().min(1), // e.g. 'Zürich', 'Geneva', 'Vaud'
+  /** The cantonal migration/immigration office that decides permits locally. */
+  migrationOffice: ClaimSchema,
+  /** The canton's tax authority / rate information (income tax varies by canton). */
+  taxInfo: ClaimSchema,
+  /** Optional extra canton-specific facts (quota competitiveness, language, …). */
+  notes: z.array(KeyFactSchema).optional(),
+});
+export type Canton = z.infer<typeof CantonSchema>;
+
 /** A corridor task — one step in the relocation journey. */
 export const TaskSchema = z.object({
   id: z.string().min(1),
@@ -155,5 +178,12 @@ export const CorridorSchema = z.object({
    */
   coversMotivations: z.array(MotivationEnum).optional(),
   tasks: z.array(TaskSchema),
+  /**
+   * Optional per-canton local detail (Switzerland: federal law, cantonal
+   * administration — ADR-0021). Surfaced when the user picks their canton;
+   * unlisted cantons fall back to the federal SEM cantonal-authority directory.
+   * Canton claims are provenance-gated like corridor claims.
+   */
+  cantons: z.array(CantonSchema).optional(),
 });
 export type Corridor = z.infer<typeof CorridorSchema>;

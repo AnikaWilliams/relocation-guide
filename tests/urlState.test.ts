@@ -8,7 +8,7 @@ import {
   type PlanIntake,
 } from '../src/utils/urlState';
 
-/** A completed family-route intake (US → CH). */
+/** A completed family-route intake (US → CH), with a Swiss canton chosen. */
 const familyIntake: PlanIntake = {
   origin: 'us',
   destination: 'ch',
@@ -20,6 +20,7 @@ const familyIntake: PlanIntake = {
   studyStatus: null,
   durationIntent: 'long',
   companions: [],
+  canton: 'ge',
 };
 
 const workIntake: PlanIntake = {
@@ -31,17 +32,18 @@ const workIntake: PlanIntake = {
   familyJoineeStatus: null,
   durationIntent: 'permanent',
   companions: ['partner', 'children'],
+  canton: 'zh',
 };
 
 describe('intakeSearchString', () => {
   it('encodes a family profile compactly, with no percent-encoding needed', () => {
     expect(intakeSearchString(familyIntake)).toBe(
-      'pp=us,in&m=family&rel=unmarried-partner&fs=citizen&dur=long',
+      'pp=us,in&m=family&rel=unmarried-partner&fs=citizen&dur=long&cn=ge',
     );
   });
 
   it('encodes a work profile and omits other branches', () => {
-    expect(intakeSearchString(workIntake)).toBe('pp=us&m=work&ws=has-offer&dur=permanent&co=partner,children');
+    expect(intakeSearchString(workIntake)).toBe('pp=us&m=work&ws=has-offer&dur=permanent&co=partner,children&cn=zh');
   });
 
   it('omits branch params that do not belong to the chosen motivation', () => {
@@ -59,6 +61,7 @@ describe('intakeSearchString', () => {
       familyJoineeStatus: null,
       durationIntent: null,
       companions: [],
+      canton: null,
     };
     expect(intakeSearchString(blank)).toBe('');
   });
@@ -67,6 +70,17 @@ describe('intakeSearchString', () => {
     const keys = intakeToParams(familyIntake).map(([k]) => k);
     expect(keys).not.toContain('origin');
     expect(keys).not.toContain('destination');
+  });
+
+  it('omits the canton for non-CH destinations even when one is set', () => {
+    // A leftover canton from an earlier CH plan must not ride a DE URL.
+    const toDe: PlanIntake = { ...workIntake, destination: 'de', canton: 'zh' };
+    expect(intakeSearchString(toDe)).not.toContain('cn=');
+  });
+
+  it('omits an unknown canton code', () => {
+    const bad: PlanIntake = { ...familyIntake, canton: 'xx' };
+    expect(intakeSearchString(bad)).not.toContain('cn=');
   });
 });
 
@@ -84,6 +98,7 @@ describe('round trip', () => {
         studyStatus: null,
         durationIntent: null,
         companions: [],
+        canton: null,
       };
       expect(applyIntakeParams(blank, params)).toEqual(intake);
     }
@@ -127,6 +142,29 @@ describe('applyIntakeParams', () => {
 
     const junk = applyIntakeParams(familyIntake, new URLSearchParams('pp=zz,xx&m=work'));
     expect(junk.passports).toEqual(['us']); // falls back to [origin]
+  });
+
+  it('decodes a valid canton (case-folded) for a CH destination', () => {
+    const restored = applyIntakeParams(familyIntake, new URLSearchParams('m=work&cn=VD'));
+    expect(restored.canton).toBe('vd');
+  });
+
+  it('drops an unknown canton code', () => {
+    const restored = applyIntakeParams(familyIntake, new URLSearchParams('m=work&cn=xx'));
+    expect(restored.canton).toBeNull();
+  });
+
+  it('ignores the canton when the destination is not Switzerland', () => {
+    // base.destination comes from the page path; a DE corridor never gets a canton.
+    const toDe: PlanIntake = { ...familyIntake, destination: 'de' };
+    const restored = applyIntakeParams(toDe, new URLSearchParams('m=work&cn=zh'));
+    expect(restored.canton).toBeNull();
+  });
+
+  it('resets a stale canton when the URL carries none', () => {
+    // URL is the sole source of truth: a base canton must not leak through.
+    const restored = applyIntakeParams(familyIntake, new URLSearchParams('m=work'));
+    expect(restored.canton).toBeNull();
   });
 });
 

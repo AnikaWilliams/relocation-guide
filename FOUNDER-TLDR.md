@@ -10,6 +10,18 @@ coming next. Newest updates are at the top.
 
 ---
 
+## 2026-06-14 — Switzerland now asks which canton you're moving to
+
+**What changed.** You asked whether Swiss rules differ by canton — they do, a lot (which office decides your permit, your tax bill, even health-insurance prices all hinge on the canton). The first piece is now built and ready for your review: the planner asks **"Which canton are you moving to?"** (Switzerland only, all 26 cantons; you can skip it if you're not sure, so it never blocks you). When you pick a canton, your plan shows a **"Your canton"** card pointing you to that canton's official migration office. Under the hood, the data structure and our automatic safety gate now treat per-canton facts like every other claim — they must be sourced and independently double-checked before they show. The **fact-checked local details for the five biggest cantons** (Zürich, Geneva, Vaud, Zug, Basel-Stadt) are now **included** — all 20 facts independently double-checked — so picking one of those five shows its specific migration office + cantonal-tax links; every other canton points to the official federal directory of cantonal offices, so no one hits a dead end.
+
+**Why it matters.** A generic "Switzerland" answer can mislead; the canton is where the real rules and costs live.
+
+**What you'd notice today.** On a Switzerland plan you can now choose your canton and get pointed to its official office.
+
+**What's next.** Expand to more cantons over time (same sourced + independently-fact-checked process).
+
+---
+
 ## 2026-06-13 — The weekly link check now catches "looks alive but shows nothing" links
 
 **What changed.** Our automatic weekly link checker already caught dead links (the "page not found" kind). But it couldn't catch the exact problem you found — a link that loads fine (reports "OK") yet opens to a blank "under preparation" page with no article. I taught it one more test: when a link points to a *specific law article*, confirm that article actually appears on the page it opens. If a Swiss-law link ever slips back to the broken blank-shell form, the weekly run — and the check on any content change — now turns **red** and opens a tracking ticket automatically. I also stopped a French government site from raising false alarms (it blocks our checker's robot but works fine for real visitors).
