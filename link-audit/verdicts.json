@@ -1,0 +1,479 @@
+[
+  {
+    "url": "https://www.fedlex.admin.ch/eli/cc/2007/758/en#art_42",
+    "status": "weak",
+    "problem": "The cited consolidated-EN ELI URL serves the Fedlex Angular SPA shell (cacheFile c7f3a4b4c437.html: 76889 bytes, <title>Fedlex</title>, app-root, the 'nur mit einem Javascript-fähigen Browser' notice). A user sees no article text and the #art_42 fragment resolves to nothing.",
+    "replacement": "https://www.fedlex.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/2007/758/20260201/en/html/fedlex-data-admin-ch-eli-cc-2007-758-20260201-en-html-3.html#art_42",
+    "replacementVerified": true,
+    "supportsPoint": true,
+    "note": "Static filestore HTML of FNIA (SR 142.20), in-force consolidation dated 2026-02-01 (EN). Curled live (HTTP 200, no app-root, 734KB). id=\"art_42\" present; text reads 'The foreign spouse and unmarried children under 18 of a Swiss national who live with the Swiss national are entitled to be granted a residence permit and to have their residence permit extended' (para 1) and 'Children under twelve are entitled to be granted a settlement permit' (para 4) — supports all 9 us-ch family-permit usages incl. the entitlement-vs-discretion and Art.42 para.4 keyFacts."
+  },
+  {
+    "url": "https://www.fedlex.admin.ch/eli/cc/2007/758/en#art_47",
+    "status": "weak",
+    "problem": "Cited consolidated-EN ELI URL serves the Fedlex Angular SPA shell (cacheFile 537d74f11179.html, identical 76889-byte JS-required page). No article text; #art_47 anchor resolves to nothing for a user.",
+    "replacement": "https://www.fedlex.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/2007/758/20260201/en/html/fedlex-data-admin-ch-eli-cc-2007-758-20260201-en-html-3.html#art_47",
+    "replacementVerified": true,
+    "supportsPoint": true,
+    "note": "Same FNIA filestore HTML (EN, 2026-02-01). Curled live: id=\"art_47\" present; text reads 'The right to family reunification must be exercised within five years. Children over twelve must be reunified with their family within twelve months' (Art.47 para.1), plus para.4 on subsequent reunification. Matches all 7 'Deadline' usages character-for-character."
+  },
+  {
+    "url": "https://www.fedlex.admin.ch/eli/cc/2007/758/en#art_44",
+    "status": "weak",
+    "problem": "Cited consolidated-EN ELI URL serves the Fedlex Angular SPA shell (cacheFile 7d2ccd9509a1.html, 76889-byte JS-required page). No Art.44 text and the #art_44 anchor is dead for a user.",
+    "replacement": "https://www.fedlex.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/2007/758/20260201/en/html/fedlex-data-admin-ch-eli-cc-2007-758-20260201-en-html-3.html#art_44",
+    "replacementVerified": true,
+    "supportsPoint": true,
+    "note": "FNIA filestore HTML (EN, 2026-02-01). Curled live: id=\"art_44\" present; text reads 'The foreign spouse and unmarried children under 18 of a person with a residence permit may be granted a residence permit... if: a. they live with the permit holder; b. suitable housing is available; c. they do not depend on social assistance; d. able to communicate in the national language; e. ... not claiming supplementary benefits' plus para.2 (register for a language programme suffices). Confirms the discretionary 'may be granted' framing and the a–e conditions — supports all 6 spouse-of-B-holder usages."
+  },
+  {
+    "url": "https://www.fedlex.admin.ch/eli/cc/1995/3867_3867_3867/de#art_2",
+    "status": "weak",
+    "problem": "Cited consolidated-DE ELI URL serves the Fedlex Angular SPA shell (cacheFile 7550f5531b9b.html, 76889-byte JS-required page). The KVV Art.2 text is not rendered and the #art_2 anchor is dead for a user.",
+    "replacement": "https://www.fedlex.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/1995/3867_3867_3867/20260101/de/html/fedlex-data-admin-ch-eli-cc-1995-3867_3867_3867-20260101-de-html-3.html#art_2",
+    "replacementVerified": true,
+    "supportsPoint": true,
+    "note": "Static filestore HTML of KVV (Health Insurance Ordinance, SR 832.102), in-force consolidation 2026-01-01 (DE — matches the original /de citation; usages.json sourceName explicitly says 'official German text', so DE is intended, not a fallback). Curled live (688KB, no app-root): id=\"art_2\" present; para.4 reads 'Auf Gesuch hin von der Versicherungspflicht ausgenommen sind Personen, die sich im Rahmen einer Aus- oder Weiterbildung in der Schweiz aufhalten, wie namentlich Studierende... sofern sie während der gesamten Geltungsdauer der Befreiung... über einen gleichwertigen Versicherungsschutz verfügen', requires 'schriftliche Bestätigung der zuständigen ausländischen Stelle', and 'zuständige kantonale Behörde kann... höchstens für drei Jahre... befreien' (extendable). Supports all 6 study-health-insurance-exemption usages."
+  },
+  {
+    "url": "https://www.fedlex.admin.ch/eli/cc/2007/758/en#art_28",
+    "status": "weak",
+    "problem": "Cited consolidated-EN ELI URL serves the Fedlex Angular SPA shell (cacheFile 39d8037d46b7.html, 76889-byte JS-required page). No Art.28 text; #art_28 anchor dead for a user.",
+    "replacement": "https://www.fedlex.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/2007/758/20260201/en/html/fedlex-data-admin-ch-eli-cc-2007-758-20260201-en-html-3.html#art_28",
+    "replacementVerified": true,
+    "supportsPoint": true,
+    "note": "FNIA filestore HTML (EN, 2026-02-01). Curled live: id=\"art_28\" present; text reads 'Foreign nationals who are no longer gainfully employed may be admitted if: a. they have reached a minimum age set by the Federal Council; b. they have special personal relations to Switzerland; and c. they have the required financial means.' Confirms the discretionary 'may be admitted' and the three conditions — supports all 4 retirement-residence-permit usages. (Note: the page text does not itself state the age '55'; that figure comes from the VZAE, not Art.28 FNIA — the claim attributes 55 to the Federal Council, consistent with this article.)"
+  },
+  {
+    "url": "https://www.fedlex.admin.ch/eli/cc/2007/759/de#art_23",
+    "status": "weak",
+    "problem": "Cited consolidated-DE ELI URL serves the Fedlex Angular SPA shell (cacheFile f37cb401156f.html, 76889-byte JS-required page). The VZAE Art.23 text is not rendered and #art_23 is dead for a user.",
+    "replacement": "https://www.fedlex.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/2007/759/20260612/de/html/fedlex-data-admin-ch-eli-cc-2007-759-20260612-de-html-2.html#art_23",
+    "replacementVerified": true,
+    "supportsPoint": true,
+    "note": "Static filestore HTML of VZAE/ASEO (SR 142.201), latest in-force consolidation 2026-06-12 (DE — matches original /de; sourceName says 'official German text'). Curled live (344KB, no app-root): id=\"art_23\" present (and id=\"art_24\" present for the Arts.23-24 usage). Art.23 para.1 lists financial-means evidence (Verpflichtungserklärung + Einkommens-/Vermögensnachweis of a solvent Swiss resident), para.2 the personal/circumvention requirements, para.3 'Aus- oder Weiterbildungen werden in der Regel für längstens acht Jahre bewilligt' (at most eight years, exceptions possible). Supports all 3 study-residence-permit usages."
+  },
+  {
+    "url": "https://www.fedlex.admin.ch/eli/cc/63/837_843_843/de#art_1_a",
+    "status": "weak",
+    "problem": "Cited consolidated-DE ELI URL serves the Fedlex Angular SPA shell (cacheFile c2126da22390.html, 76889-byte JS-required page). The AHVG Art.1a text is not rendered and #art_1_a is dead for a user.",
+    "replacement": "https://www.fedlex.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/63/837_843_843/20260101/de/html/fedlex-data-admin-ch-eli-cc-63-837_843_843-20260101-de-html-1.html#art_1_a",
+    "replacementVerified": true,
+    "supportsPoint": true,
+    "note": "Static filestore HTML of AHVG (OASI Act, SR 831.10), in-force consolidation 2026-01-01 (DE — matches original /de; sourceName says 'official German text'). Curled live (512KB, no app-root): id=\"art_1_a\" present; text reads 'Versichert nach diesem Gesetz sind: a. die natürlichen Personen mit Wohnsitz in der Schweiz; b. die natürlichen Personen, die in der Schweiz eine Erwerbstätigkeit ausüben' — i.e. everyone resident or gainfully active in Switzerland is OASI-insured. Supports both ahv-social-security usages."
+  },
+  {
+    "url": "https://www.fedlex.admin.ch/eli/cc/2007/758/en#art_21",
+    "status": "weak",
+    "problem": "Cited consolidated-EN ELI URL serves the Fedlex Angular SPA shell (cacheFile e2bd24da54bf.html, 76889-byte JS-required page). No Art.21 text; #art_21 anchor dead for a user.",
+    "replacement": "https://www.fedlex.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/2007/758/20260201/en/html/fedlex-data-admin-ch-eli-cc-2007-758-20260201-en-html-3.html#art_21",
+    "replacementVerified": true,
+    "supportsPoint": true,
+    "note": "FNIA filestore HTML (EN, 2026-02-01). Curled live: id=\"art_21\" present; para.3 reads 'Foreign nationals with a Swiss university degree may be admitted in derogation from paragraph 1 if their work is of high academic or economic interest. They shall be admitted for a period of six months following completion of their education or training in Switzerland in order to find suitable work.' Matches the study-after-graduation legal-basis and the six-month job-seeking window — supports both usages."
+  },
+  {
+    "url": "https://www.fedlex.admin.ch/eli/cc/63/837_843_843/de#art_3",
+    "status": "weak",
+    "problem": "Cited consolidated-DE ELI URL serves the Fedlex Angular SPA shell (cacheFile 7eab623a3926.html, 76889-byte JS-required page). The AHVG Art.3 text is not rendered and #art_3 is dead for a user.",
+    "replacement": "https://www.fedlex.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/63/837_843_843/20260101/de/html/fedlex-data-admin-ch-eli-cc-63-837_843_843-20260101-de-html-1.html#art_3",
+    "replacementVerified": true,
+    "supportsPoint": true,
+    "note": "AHVG filestore HTML (DE, 2026-01-01). Curled live: id=\"art_3\" present; text reads 'Die Versicherten sind beitragspflichtig, solange sie eine Erwerbstätigkeit ausüben' (gainfully employed insured pay contributions while they work). The cited usage references Art. 3, 5 and 13 together; id=\"art_5\" (employee contribution 4.35% on employment income) and id=\"art_13\" (employer pays a matching 4.35%) are also present and confirmed in the same document. Supports the ahv-social-security legal-basis usage."
+  },
+  {
+    "url": "https://www.fedlex.admin.ch/eli/cc/2007/758/en#art_52",
+    "status": "weak",
+    "problem": "Cited consolidated-EN ELI URL serves the Fedlex Angular SPA shell (cacheFile bb3b195561e7.html, 76889-byte JS-required page). No Art.52 text; #art_52 anchor dead for a user.",
+    "replacement": "https://www.fedlex.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/2007/758/20260201/en/html/fedlex-data-admin-ch-eli-cc-2007-758-20260201-en-html-3.html#art_52",
+    "replacementVerified": true,
+    "supportsPoint": true,
+    "note": "FNIA filestore HTML (EN, 2026-02-01). Curled live: id=\"art_52\" present; text reads 'Art. 52 Registered partnership — The provisions of this Chapter on foreign spouses apply mutatis mutandis to registered partnerships of same-sex couples.' Exactly supports the family-permit-spouse-swiss legal-basis usage (Art.52 extends Art.42 to registered partnerships)."
+  },
+  {
+    "url": "https://www.fedlex.admin.ch/eli/cc/2015/518/de#art_2",
+    "status": "weak",
+    "problem": "Cited consolidated-DE ELI URL serves the Fedlex Angular SPA shell (cacheFile b19e35b3fa71.html, 76889-byte JS-required page). The ZV-EJPD Art.2 text is not rendered and #art_2 is dead for a user.",
+    "replacement": "https://www.fedlex.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/2015/518/20250401/de/html/fedlex-data-admin-ch-eli-cc-2015-518-20250401-de-html.html#art_2",
+    "replacementVerified": true,
+    "supportsPoint": true,
+    "note": "Static filestore HTML of ZV-EJPD (Ordinance of the FDJP on residence permits subject to the approval procedure, SR 142.201.1), latest in-force consolidation 2025-04-01 (DE — matches original /de; sourceName says 'official German text'). Curled live (21KB, no app-root): id=\"art_2\" present; lit. c reads 'Aufenthaltsbewilligungen für Rentnerinnen und Rentner (Art. 28 AIG)' must be submitted to the SEM for approval ('Dem SEM ist die Erteilung folgender Bewilligungen... zur Zustimmung zu unterbreiten'). Supports the retirement-residence-permit step6 (federal SEM approval) usage."
+  },
+  {
+    "url": "https://www.fedlex.admin.ch/eli/cc/2007/759/de#art_40",
+    "status": "weak",
+    "problem": "Cited consolidated-DE ELI URL serves the Fedlex Angular SPA shell (cacheFile f9e8c31ce478.html, 76889-byte JS-required page). The VZAE Art.40 text is not rendered and #art_40 is dead for a user.",
+    "replacement": "https://www.fedlex.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/2007/759/20260612/de/html/fedlex-data-admin-ch-eli-cc-2007-759-20260612-de-html-2.html#art_40",
+    "replacementVerified": true,
+    "supportsPoint": true,
+    "note": "VZAE/ASEO filestore HTML (DE, 2026-06-12). Curled live: id=\"art_40\" present; text reads 'Ausländerinnen und Ausländern, die in der Schweiz an einer Hochschule oder Fachhochschule eine Weiterbildung absolvieren, kann eine Erwerbstätigkeit in ihrem wissenschaftlichen Spezialbereich bewilligt werden, wenn... b. die Lohn- und Arbeitsbedingungen... eingehalten werden' and para.2 'Die Weiterbildung darf durch die Erwerbstätigkeit nicht behindert werden.' Exactly supports the study-work-alongside step3 usage (continuing education at a Hochschule/Fachhochschule; work in own scientific field; not hindered)."
+  },
+  {
+    "url": "https://www.fedlex.admin.ch/eli/cc/2007/758/en#art_27",
+    "status": "weak",
+    "problem": "The /eli/cc/2007/758/en page serves an Angular SPA shell (cached HTML is <title>Fedlex</title> + app-root, ~76 KB, visible text only the 'javascript-fähigen Browser' notice). No Art. 27 text and no id=\"art_27\" anchor render for a human; the #art_27 jump resolves to nothing.",
+    "replacement": "https://www.fedlex.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/2007/758/20260201/en/html/fedlex-data-admin-ch-eli-cc-2007-758-20260201-en-html.html#art_27",
+    "replacementVerified": true,
+    "supportsPoint": true,
+    "note": "FNIA (cc/2007/758), in-force EN dated 20260201. Curled (HTTP 200, 731 KB) and saw id=\"art_27\" plus 'Art. 27 Education and training 1 Foreign nationals may be admitted for education or training purposes if:' — supports all 8 us-ch usages (education-admission condition, school confirms eligibility, 'may be admitted' = discretion not entitlement)."
+  },
+  {
+    "url": "https://www.fedlex.admin.ch/eli/cc/2007/758/en#art_43",
+    "status": "weak",
+    "problem": "Angular SPA shell served (same Fedlex JS-bootstrap page, ~76 KB, no article body). No Art. 43 text and no id=\"art_43\" anchor visible to a human.",
+    "replacement": "https://www.fedlex.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/2007/758/20260201/en/html/fedlex-data-admin-ch-eli-cc-2007-758-20260201-en-html.html#art_43",
+    "replacementVerified": true,
+    "supportsPoint": true,
+    "note": "FNIA EN 20260201. Curled (HTTP 200) and saw id=\"art_43\" plus 'Art. 43 ... Spouses and children of persons with a settlement permit ... are entitled to be granted a residence permit ... provided: a. they live with that person; b. suitable accommodation is available; c. ...' — supports the entitlement-subject-to-conditions point for spouses/children of a C-permit holder."
+  },
+  {
+    "url": "https://www.fedlex.admin.ch/eli/cc/2007/759/de#art_25",
+    "status": "weak",
+    "problem": "Angular SPA shell served (Fedlex JS-bootstrap page, ~76 KB, no article body). No Art. 25 text and no id=\"art_25\" anchor visible to a human.",
+    "replacement": "https://www.fedlex.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/2007/759/20260101/de/html/fedlex-data-admin-ch-eli-cc-2007-759-20260101-de-html.html#art_25",
+    "replacementVerified": true,
+    "supportsPoint": true,
+    "note": "VZAE/ASEO (cc/2007/759), German-only in filestore (EN date paths fall back to the shell), in-force date 20260101. Curled (HTTP 200, 338 KB) and saw id=\"art_25\" plus 'Art. 25 1 Das Mindestalter ... beträgt 55 Jahre ... 3 ... mit Ausnahme der Verwaltung des eigenen Vermögens keine Erwerbstätigkeit ausgeübt werden' — confirms min age 55, special personal ties, and work ban except managing own assets. Replacement is /de (no EN exists)."
+  },
+  {
+    "url": "https://www.fedlex.admin.ch/eli/cc/2007/758/en#art_30",
+    "status": "weak",
+    "problem": "Angular SPA shell served (Fedlex JS-bootstrap page, ~76 KB, no article body). No Art. 30 text and no id=\"art_30\" anchor visible to a human.",
+    "replacement": "https://www.fedlex.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/2007/758/20260201/en/html/fedlex-data-admin-ch-eli-cc-2007-758-20260201-en-html.html#art_30",
+    "replacementVerified": true,
+    "supportsPoint": true,
+    "note": "FNIA EN 20260201. Curled (HTTP 200) and saw id=\"art_30\" plus 'Art. 30 1 Derogations from the admission requirements (Art. 18-29) are permitted in order to: ... b. take account of serious cases of personal hardship ...' — supports the cohabiting-partner hardship-derogation point (Art. 30 para. 1 let. b)."
+  },
+  {
+    "url": "https://www.fedlex.admin.ch/eli/cc/2007/758/en#art_12",
+    "status": "weak",
+    "problem": "Angular SPA shell served (Fedlex JS-bootstrap page, ~76 KB, no article body). No Art. 12 text and no id=\"art_12\" anchor visible to a human.",
+    "replacement": "https://www.fedlex.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/2007/758/20260201/en/html/fedlex-data-admin-ch-eli-cc-2007-758-20260201-en-html.html#art_12",
+    "replacementVerified": true,
+    "supportsPoint": true,
+    "note": "FNIA EN 20260201. Curled (HTTP 200) and saw id=\"art_12\" plus 'Art. 12 Registration requirement 1 Foreign nationals who require a short stay, residence or settlement permit, must register with the competent authority at their place of residence in Switzerland before the expiry of the period of stay ...' — supports the registration-requirement point."
+  },
+  {
+    "url": "https://www.fedlex.admin.ch/eli/cc/2007/759/de#art_10",
+    "status": "weak",
+    "problem": "Angular SPA shell served (Fedlex JS-bootstrap page, ~76 KB, no article body). No Art. 10 text and no id=\"art_10\" anchor visible to a human.",
+    "replacement": "https://www.fedlex.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/2007/759/20260101/de/html/fedlex-data-admin-ch-eli-cc-2007-759-20260101-de-html.html#art_10",
+    "replacementVerified": true,
+    "supportsPoint": true,
+    "note": "VZAE German-only, in-force 20260101. Curled (HTTP 200, 338 KB) and saw id=\"art_10\" plus 'Art. 10 Aufenthalt mit Anmeldung 1 ... müssen sich Ausländerinnen und Ausländer innerhalb von 14 Tagen nach der Einreise bei der durch den Kanton bezeichneten Stelle anmelden ...' — confirms the 14-day registration deadline and cantonal-body point. Replacement is /de (no EN exists)."
+  },
+  {
+    "url": "https://www.fedlex.admin.ch/eli/cc/2007/759/de#art_38",
+    "status": "weak",
+    "problem": "Angular SPA shell served (Fedlex JS-bootstrap page, ~76 KB, no article body). No Art. 38 text and no id=\"art_38\" anchor visible to a human.",
+    "replacement": "https://www.fedlex.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/2007/759/20260101/de/html/fedlex-data-admin-ch-eli-cc-2007-759-20260101-de-html.html#art_38",
+    "replacementVerified": true,
+    "supportsPoint": true,
+    "note": "VZAE German-only, in-force 20260101. Curled (HTTP 200) and saw id=\"art_38\" plus 'Art. 38 Aus- und Weiterbildung mit Nebenerwerb ... kann frühestens sechs Monate nach Beginn der Ausbildung eine Nebenerwerbstätigkeit bewilligt werden, wenn: ... b. die wöchentliche Arbeitszeit ausserhalb der Ferien 15 Stunden nicht überschreitet ...' — confirms the 'earliest 6 months after start' and 'max 15 hours/week outside holidays' points. Replacement is /de (no EN exists)."
+  },
+  {
+    "url": "https://www.fedlex.admin.ch/eli/cc/63/837_843_843/de#art_13",
+    "status": "weak",
+    "problem": "Angular SPA shell served (Fedlex JS-bootstrap page, ~76 KB, no article body). No Art. 13 text and no id=\"art_13\" anchor visible to a human.",
+    "replacement": "https://www.fedlex.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/63/837_843_843/20260101/de/html/fedlex-data-admin-ch-eli-cc-63-837_843_843-20260101-de-html.html#art_13",
+    "replacementVerified": true,
+    "supportsPoint": true,
+    "note": "AHVG (cc/63/837_843_843), German-only in filestore, in-force 20260101. Curled (HTTP 200, 511 KB) and saw id=\"art_13\" plus 'Art. 13 Höhe des Arbeitgeberbeitrages Der Arbeitgeberbeitrag beträgt 4,35 Prozent der ... massgebenden Löhne.' — establishes the employer OASI contribution (4.35%), consistent with the 'employer handles OASI via its compensation office and deducts your share' usage. Replacement is /de (no EN exists)."
+  },
+  {
+    "url": "https://www.fedlex.admin.ch/eli/cc/63/837_843_843/de#art_5",
+    "status": "weak",
+    "problem": "Angular SPA shell served (Fedlex JS-bootstrap page, ~76 KB, no article body). No Art. 5 text and no id=\"art_5\" anchor visible to a human.",
+    "replacement": "https://www.fedlex.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/63/837_843_843/20260101/de/html/fedlex-data-admin-ch-eli-cc-63-837_843_843-20260101-de-html.html#art_5",
+    "replacementVerified": true,
+    "supportsPoint": true,
+    "note": "AHVG German-only, in-force 20260101. Curled (HTTP 200, 511 KB) and saw id=\"art_5\" plus 'Art. 5 Beiträge von Einkommen aus unselbständiger Erwerbstätigkeit ... wird ein Beitrag von 4,35 Prozent erhoben.' — confirms the employee OASI rate of 4.35% (matching art_13's 4.35% employer share = 8.7% total). Replacement is /de (no EN exists)."
+  },
+  {
+    "url": "https://www.fedlex.admin.ch/eli/cc/2007/758/en#art_50",
+    "status": "weak",
+    "problem": "Angular SPA shell served (Fedlex JS-bootstrap page, ~76 KB, no article body). No Art. 50 text and no id=\"art_50\" anchor visible to a human.",
+    "replacement": "https://www.fedlex.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/2007/758/20260201/en/html/fedlex-data-admin-ch-eli-cc-2007-758-20260201-en-html.html#art_50",
+    "replacementVerified": true,
+    "supportsPoint": true,
+    "note": "FNIA EN 20260201. Curled (HTTP 200) and saw id=\"art_50\" plus 'Art. 50 Dissolution of the family household ...' and para 4 'Paragraphs 1-3 apply mutatis mutandis to cohabiting partners who have been granted a residence permit ... in accordance with Article 30 paragraph 1 letter b because of serious personal hardship.' — directly supports the cited 'Art. 50 para. 4 refers to cohabiting partners' point."
+  },
+  {
+    "url": "https://www.fedlex.admin.ch/eli/cc/2007/759/de#art_39",
+    "status": "weak",
+    "problem": "Angular SPA shell served (Fedlex JS-bootstrap page, ~76 KB, no article body). No Art. 39 text and no id=\"art_39\" anchor visible to a human.",
+    "replacement": "https://www.fedlex.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/2007/759/20260101/de/html/fedlex-data-admin-ch-eli-cc-2007-759-20260101-de-html.html#art_39",
+    "replacementVerified": true,
+    "supportsPoint": true,
+    "note": "VZAE German-only, in-force 20260101. Curled (HTTP 200) and saw id=\"art_39\" plus 'Art. 39 Ausbildung mit obligatorischem Praktikum ... kann eine Erwerbstätigkeit im Rahmen eines obligatorischen Praktikums bewilligt werden, wenn: a. die Erwerbstätigkeit die Hälfte der gesamten Ausbildungsdauer nicht übersteigt ...' — confirms the 'mandatory internship needs its own authorisation, capped at half total study duration' point. Replacement is /de (no EN exists)."
+  },
+  {
+    "url": "https://ind.nl/en/required-amounts-income-requirements",
+    "status": "good",
+    "problem": "",
+    "replacement": "",
+    "replacementVerified": false,
+    "supportsPoint": true,
+    "note": "Live page (HTTP 200) renders all four load-bearing 2026 figures cited by us-nl exactly: highly-skilled-migrant €5,942 (30+), €4,357 (<30), €3,122 (reduced criterion); partner income requirement €2,294.40; study means-of-support €1,130.77. Cached HTML matches live. visibleTextLen was high (25,619); no shell/wall. Highest-risk fee/threshold page — character-for-character confirmed."
+  },
+  {
+    "url": "https://ind.nl/en/fees-costs-of-an-application",
+    "status": "good",
+    "problem": "",
+    "replacement": "",
+    "replacementVerified": false,
+    "supportsPoint": true,
+    "note": "Live page renders 'The fees ... are adjusted on 1 January each year' fee content. The corridor deliberately does NOT quote a euro figure and tells users to confirm on this page, so the page fully supports the (intentionally non-numeric) cost claims. Correct page, real content."
+  },
+  {
+    "url": "https://ind.nl/en/residence-permits/work/highly-skilled-migrant",
+    "status": "good",
+    "problem": "",
+    "replacement": "",
+    "replacementVerified": false,
+    "supportsPoint": true,
+    "note": "Despite a low deterministic visibleTextLen (1,372), the served HTML (cached and live) contains the load-bearing text 'Only an employer recognised by the IND' and 'kennismigrant', supporting the us-nl 'employer/recognised sponsor applies, not you' and 'highly skilled migrant route' points. Not a JS shell."
+  },
+  {
+    "url": "https://ind.nl/en/provisional-residence-permit-mvv",
+    "status": "good",
+    "problem": "",
+    "replacement": "",
+    "replacementVerified": false,
+    "supportsPoint": true,
+    "note": "Live HTTP 200, title 'Provisional residence permit (MVV) | IND'. Body renders 'The MVV is an entry visa', 'machtiging tot voorlopig verblijf', and 'more than 90 days', supporting the us-nl MVV-definition point. The corridor's extra 'Type D sticker' wording is not verbatim on this page but the core definition is fully supported; the exemption nuance is sourced separately to ind.nl/en/mvv-exemptions. Low visibleTextLen (3,366) is real content, not a shell."
+  },
+  {
+    "url": "https://www.government.nl/topics/personal-data/citizen-service-number-bsn",
+    "status": "good",
+    "problem": "",
+    "replacement": "",
+    "replacementVerified": false,
+    "supportsPoint": true,
+    "note": "Cited /topics/ URL 301-redirects to /themes/government-and-democracy/personal-data/citizen-service-number-bsn (HTTP 200, correct title). This is a same-site canonical move, NOT a redirect-to-homepage. Renders 'automatically given a BSN', supporting the BSN-on-registration point. Worth a minor note that the canonical URL is now /themes/... but the cited link still works for a user."
+  },
+  {
+    "url": "https://www.government.nl/topics/personal-data/personal-records-database-brp",
+    "status": "good",
+    "problem": "",
+    "replacement": "",
+    "replacementVerified": false,
+    "supportsPoint": true,
+    "note": "Cited /topics/ URL 301-redirects to /themes/government-and-democracy/personal-data/personal-records-database-brp (HTTP 200, correct title). Renders 'Personal Records Database Act' and '6 January 2014', confirming the legal-basis date character-for-character. Same-site canonical redirect, content fully present."
+  },
+  {
+    "url": "https://www.government.nl/topics/health-insurance/health-insurance-and-residence-permit",
+    "status": "good",
+    "problem": "",
+    "replacement": "",
+    "replacementVerified": false,
+    "supportsPoint": true,
+    "note": "Cited /topics/ URL 301-redirects to /themes/family-health-and-care/health-insurance/health-insurance-and-residence-permit (HTTP 200, correct title). Renders the exact cited sentence 'You must take out Dutch health insurance within four months of your permanent residence permit coming into force' and 'cannot take out health insurance' until the permit is decided. Both us-nl deadline points confirmed verbatim. Same-site canonical redirect."
+  },
+  {
+    "url": "https://dofi.ibz.be/en/themes/third-country-nationals/work/single-permit",
+    "status": "good",
+    "problem": "",
+    "replacement": "",
+    "replacementVerified": false,
+    "supportsPoint": true,
+    "note": "Deterministic check flagged a redirect (EN -> locale path /en/themas/onderdanen-van-derde-landen/werk/single-permit). Live fetch is HTTP 200 with title 'Single Permit | IBZ' and full English content: 'Since 03/01/2019' (= 3 January 2019), 'more than 90 days', combined work+residence, decide 'within 4 months', 'one-stop counter'. Supports all 12 us-be single-permit points. The redirect is a locale rewrite, not a homepage/search redirect."
+  },
+  {
+    "url": "https://dofi.ibz.be/en/themes/third-country-nationals/study",
+    "status": "good",
+    "problem": "",
+    "replacement": "",
+    "replacementVerified": false,
+    "supportsPoint": true,
+    "note": "Low deterministic visibleTextLen (1,988) but live HTTP 200, title 'Study | IBZ' with real English content: 'more than 90 days', 'higher education', 'additional year after completing their studies', 'Search year'. Supports the us-be study points incl. post-graduation search year. Not a JS shell."
+  },
+  {
+    "url": "https://dofi.ibz.be/en/themes/third-country-nationals",
+    "status": "good",
+    "problem": "",
+    "replacement": "",
+    "replacementVerified": false,
+    "supportsPoint": true,
+    "note": "Low deterministic visibleTextLen (2,171) but live HTTP 200, title 'Third country nationals | IBZ'. Renders 'D visa (national long-stay visa)' for stays beyond 90 days, supporting the us-be 'type D long-stay visa required, all nationalities' point. Real content, not a shell."
+  },
+  {
+    "url": "https://guichet.public.lu/en/citoyens/immigration/plus-3-mois/ressortissant-tiers/salarie/salarie-pays-tiers.html",
+    "status": "good",
+    "problem": "",
+    "replacement": "",
+    "replacementVerified": false,
+    "supportsPoint": true,
+    "note": "Highest-risk page in this set (fee + IBAN + multiple deadlines). Live HTTP 200 confirms character-for-character: fee 'EUR 80 to account IBAN LU46 1111 2582 2814 0000', response time 'maximum of 4 months', ADEM labour-market test 'within 3 weeks', declaration of arrival 'within 3 days of arrival', and first-permit validity 'for a maximum of 1 year; for one profession only with all employers; in only one sector' with ISCO code. The page's separate 'period of 5 years' line refers to the renewed permit, not the first one, so it does NOT contradict the 'maximum of one year' claim. All 16 us-lu points supported."
+  },
+  {
+    "url": "https://guichet.public.lu/en/citoyens/logement/location.html",
+    "status": "good",
+    "problem": "",
+    "replacement": "",
+    "replacementVerified": false,
+    "supportsPoint": true,
+    "note": "Low deterministic visibleTextLen (4,731) but live HTTP 200, title 'Leasing - Guichet.lu - Luxembourg' with rent/leasing/housing content. The us-lu points are deliberately non-numeric (deposit/lease/agency-fee specifics 'not given as single figures' and tell users to confirm), and the page is the correct official housing overview that supports that framing. Not a shell."
+  },
+  {
+    "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F16922?lang=en",
+    "status": "good",
+    "problem": "",
+    "replacement": "",
+    "replacementVerified": false,
+    "supportsPoint": true,
+    "note": "Server-rendered despite the boilerplate 'Javascript est desactive' notice. Live HTTP 200, title 'Talent card...'. Confirms fee exactly: '€350 (stamp duty of €50 + tax of €300)' matching the corridor's '€350 (a €300 tax plus a €50 stamp duty)'; validity 'up to a maximum of 4 years'; ANEF application 'within 2 months' of entry; talent-famille accompanying-family route. Supports all us-fr Talent-card points incl. the high-risk fee."
+  },
+  {
+    "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F2417?lang=en",
+    "status": "good",
+    "problem": "",
+    "replacement": "",
+    "replacementVerified": false,
+    "supportsPoint": true,
+    "note": "Server-rendered, live HTTP 200, title 'Refusal to open a bank account: account entitlement'. Renders 'does not respond to your account opening request within 15 days' (counts as refusal) and the Banque de France droit-au-compte / designated-bank mechanism. Supports the us-fr 15-day window and right-to-account points. The corridor correctly notes FATCA/US-person policy is NOT covered by this page, which is accurate."
+  },
+  {
+    "url": "https://france-visas.gouv.fr/en/votre-arrivee-en-france",
+    "status": "good",
+    "problem": "",
+    "replacement": "",
+    "replacementVerified": false,
+    "supportsPoint": true,
+    "note": "Server-rendered, live HTTP 200, title 'Arrival in France - France-Visas'. Renders 'You must validate your VLS-TS within three months' and the ANEF portal link (administration-etrangers-en-france.interieur.gouv.fr). Supports the us-fr VLS-TS 3-month validation deadline, ANEF location, and OFII formalities points."
+  },
+  {
+    "url": "https://business.gov.nl/regulations/health-care-insurance/",
+    "status": "good",
+    "problem": "",
+    "replacement": "",
+    "replacementVerified": false,
+    "supportsPoint": true,
+    "note": "Live HTTP 200, title 'Healthcare insurance in the Netherlands | Business.gov.nl'. Renders the cited sentence verbatim: 'Anyone who lives or works in the Netherlands must take out healthcare insurance under the Healthcare Insurance Act (Zorgverzekeringswet, Zvw)' and 'Mandatory risk excess'. Supports the us-nl compulsory-insurance and risk-excess points. Low visibleTextLen (5,231) is real content."
+  },
+  {
+    "url": "https://www.gov.uk/apply-national-insurance-number",
+    "status": "good",
+    "problem": "",
+    "replacement": "",
+    "replacementVerified": false,
+    "supportsPoint": true,
+    "note": "Cache and live both render full content (visibleTextLen ~8k is genuine, not a JS shell). Live page states 'You can apply for a National Insurance number if you: live in the UK / have the right to work in the UK / are working, looking for work or have an offer to start work' and 'You can start work before you receive your National Insurance number if you can prove you have the right to work', plus the BRP/eVisa note — supports the us-gb summary, all keyFacts and the step/document citations verbatim."
+  },
+  {
+    "url": "https://www.gov.uk/global-talent",
+    "status": "good",
+    "problem": "",
+    "replacement": "",
+    "replacementVerified": false,
+    "supportsPoint": true,
+    "note": "Live route page supports leader/potential-leader in academia-research / arts-culture / digital-technology, 18+, endorsement-vs-prize, 'up to 5 years at a time', settle after 3 or 5 years. Fee claim verified live on this same route page: 'It costs £766 to apply', split '£561 when you apply for the endorsement' + '£205 when you apply for the visa', IHS 'usually £1,035 per year' — all match the us-gb cost claim character-for-character. NOTE: the cached snapshot only captured the Overview accordion tab (no fee text), so a deterministic cache-only check could under-read it; the live page a user receives contains the Fees section."
+  },
+  {
+    "url": "https://www.gov.uk/graduate-visa",
+    "status": "good",
+    "problem": "",
+    "replacement": "",
+    "replacementVerified": false,
+    "supportsPoint": true,
+    "note": "Live overview supports '2 years if you apply on or before 31 December 2026 / 18 months if you apply on or after 1 January 2027 / 3 years for a PhD', 'cannot extend', switch to Skilled Worker, must be in UK on Student/Tier 4 visa, provider must have confirmed completion. Fee claim verified on the same route's '/graduate-visa/how-much-it-costs' tab: 'pay the £937 application fee' and 'healthcare surcharge - this is usually £1,035 for each year' — matches the us-gb cost claim exactly. Cost is on the route's own 'How much it costs' tab (listed in Contents), one click from the cited URL."
+  },
+  {
+    "url": "https://www.gov.uk/skilled-worker-visa/your-partner-and-children",
+    "status": "good",
+    "problem": "",
+    "replacement": "",
+    "replacementVerified": false,
+    "supportsPoint": true,
+    "note": "Live page supports the dependant definition (husband/wife/civil/unmarried partner; child under 18 incl. UK-born; child over 18 already a dependant), separate applications, and the money figures on this same page: '£285 for your partner / £315 for one child / £200 for each additional child' held 'for at least 28 days in a row' — matches the us-gb 'Money for dependants' keyFact character-for-character."
+  },
+  {
+    "url": "https://www.migration.gv.at/en/types-of-immigration/permanent-immigration-red-white-red-card/eu-blue-card.html",
+    "status": "good",
+    "problem": "",
+    "replacement": "",
+    "replacementVerified": false,
+    "supportsPoint": true,
+    "note": "Cache == live (byte-identical). Confirms verbatim: degree min. 3 years (ICT: 3 years' experience in last 7 years), binding job offer of at least six months, salary 'in 2026: at least € 55,678; annual salary plus special payments', AMS labour-market test, 'issued for a validity of 24 months', 'Application fee: € 218'. All us-at EU Blue Card claims (incl. the €218 cost and €55,678 / 24-month figures) supported exactly."
+  },
+  {
+    "url": "https://www.migration.gv.at/en/types-of-immigration/permanent-immigration/family-reunification/",
+    "status": "good",
+    "problem": "",
+    "replacement": "",
+    "replacementVerified": false,
+    "supportsPoint": true,
+    "note": "Cache == live. Confirms 'Spouses and registered partners must be 21 years of age or older', 'no quota requirement regarding residence titles issued to family members of Red-White-Red Card holders, EU Blue Card holders', 'In 2026, this standard income rate amounted to € 1,308.39 for singles, € 2,064.12 for married couples and an additional € 201.88 for each child', and A1 German prior to immigration. All us-at family-reunification income thresholds match character-for-character."
+  },
+  {
+    "url": "https://www.gesetze-im-internet.de/englisch_aufenthg/englisch_aufenthg.html",
+    "status": "good",
+    "problem": "",
+    "replacement": "",
+    "replacementVerified": false,
+    "supportsPoint": true,
+    "note": "Cache == live (610,208 chars both). Full official AufenthG English translation. All 33 us-de citations' cited provisions present with correct substance: Section 18a/18b skilled-worker ('Skilled workers with a university degree are granted a temporary residence...'), 18g EU Blue Card with '50 per cent' and '45.3', Section 16b study, '140 working days' student allowance, Section 20 post-study job search + '18 months', Section 28 spouse-of-German 'is to be granted', Section 30 spousal reunification, Section 32 minor child 'is to be granted'. Long single-page statute, not a JS shell."
+  },
+  {
+    "url": "https://www.bamf.de/EN/Themen/MigrationAufenthalt/ZuwandererDrittstaaten/Migrathek/ErsteSchritte/ersteschritte-node.html",
+    "status": "good",
+    "problem": "",
+    "replacement": "",
+    "replacementVerified": false,
+    "supportsPoint": true,
+    "note": "Low visibleTextLen (~4.6k) is genuine — this is a concise page, not a JS shell. Cache == live. Supports all us-de claims: 'register within two weeks of taking up residence', Einwohnermeldeamt, landlord confirmation, registration certificate, tax ID; immigration authority in person, residence title as electronic card (eAT); 'mandatory to have statutory or private health insurance' and it 'covers the costs of any medical treatment'; schooling compulsory 'at least nine years from the age of six', free state schools, mid-year enrolment; bank account; driving licence 'up to six months'."
+  },
+  {
+    "url": "https://www.citizensinformation.ie/en/moving-country/moving-to-ireland/studying-in-ireland/immigration-nonEEA-students/",
+    "status": "good",
+    "problem": "",
+    "replacement": "",
+    "replacementVerified": false,
+    "supportsPoint": true,
+    "note": "Cache == live. Confirms '€833 per month (a total of €4,998 for a 6 month stay or €6,665 for an 8 month stay)', one-year course 'access to €10,000', 'level 6 or above on the National Framework of Qualifications (NFQ)', ILEP, and 'up to 20 hours a week during term time and up to 40 hours a week in the holidays' with 'Students with stamp 2A permission are not allowed to work'. All us-ie student fund and work-hour figures match character-for-character."
+  },
+  {
+    "url": "https://www.irishimmigration.ie/coming-to-live-in-ireland/i-want-to-retire-to-ireland/",
+    "status": "good",
+    "problem": "",
+    "replacement": "",
+    "replacementVerified": false,
+    "supportsPoint": true,
+    "note": "Cache == live. Confirms 'individual income of €50,000 per year' plus access to a lump sum equal to e.g. the price of a residential dwelling, finances 'certified by an Irish accountancy firm', apply for 'Stamp 0 before arriving' via 'TPER application form', 'Conditional Letter of Offer', and 'average processing time for applications is four months' processed 'in chronological order'. All us-ie retirement (Stamp 0 / person of independent means) claims supported."
+  },
+  {
+    "url": "https://www.sem.admin.ch/sem/en/home/themen/einreise/faq.html",
+    "status": "good",
+    "problem": "",
+    "replacement": "",
+    "replacementVerified": false,
+    "supportsPoint": true,
+    "note": "Cache == live (52,839 chars). Despite the body{display:none} boilerplate in textSample, real FAQ content is fully present. Confirms 'Category D visas are issued for stays exceeding 90 days', also 'national visa'; required for gainful employment / education or vocational training / family reunification (covers work, study and family corridors); 'apply for the category D visa in writing using the application form... at the Swiss representation abroad responsible for your place of residence'; 'Applications for a category D visa are processed by the cantons (a residence permit is required)'; 'one to several months must be expected'; and 'extra charge of up to 50% of the fee... urgently or outside of normal working hours' (supports the cost note). All us-ch national-D-visa claims supported."
+  },
+  {
+    "url": "https://www.sem.admin.ch/sem/en/home/themen/arbeit/faq.html",
+    "status": "good",
+    "problem": "",
+    "replacement": "",
+    "replacementVerified": false,
+    "supportsPoint": true,
+    "note": "Cache == live (18,179 chars). Confirms 'If you are living in Switzerland to train or study at a university or university of applied sciences, the competent cantonal authorities may approve a supplementary activity in accordance with Art. 38 ASEO' and 'Beginning no sooner than six months after the start of their course, foreign students may work for a maximum of 15 hours a week outside of the holidays', plus employer-files-the-application requirement. All us-ch student supplementary-employment claims supported."
+  },
+  {
+    "url": "https://www.ch.ch/en/retirement/old-age-pension/the-first-pillar/oasi-contributions/",
+    "status": "good",
+    "problem": "",
+    "replacement": "",
+    "replacementVerified": false,
+    "supportsPoint": true,
+    "note": "Cache == live. Confirms 'All persons living or working in Switzerland must pay OASI contributions from 1 January following their 20th birthday until retirement age', non-working 'minimum CHF 530 per year (depending on your situation)', non-working spouse owes nothing if working partner 'pays at least twice the minimum annual contribution (CHF 530 x 2 = CHF 1,060)', employee 'Half of your OASI contributions (8.7% of your salary)', and obligation tied to reference retirement age. All us-ch OASI figures (CHF 530 / CHF 1,060 / 8.7%) match character-for-character."
+  },
+  {
+    "url": "https://www.ch.ch/en/foreign-nationals-in-switzerland/living-in-switzerland/family-reunification/",
+    "status": "good",
+    "problem": "",
+    "replacement": "",
+    "replacementVerified": false,
+    "supportsPoint": true,
+    "note": "Cache == live. Contains the exact quoted sentence 'Unlike the C permit, the B permit does not necessarily give you the right to family reunification, which may, however, also be granted by the authorities.' For third-country nationals: 'your spouse or registered partner; your unmarried children under the age of 18'; 'Your marriage or a registered partnership must be recognised by Switzerland'; 'If you are part of a bi-national couple, you cannot bring your partner with you if you are not officially married'; accommodation by Swiss standards; 'free compulsory schooling in Switzerland at least until the age of 16'. All us-ch family-reunification step/summary citations supported."
+  }
+]

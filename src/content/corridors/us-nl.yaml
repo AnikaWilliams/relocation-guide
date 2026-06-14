@@ -1,0 +1,1366 @@
+originIso2: us
+destinationIso2: nl
+title: "Moving from the USA to the Netherlands"
+description: "How US citizens (non-EU/EEA third-country nationals) relocate to the Netherlands for work, family, or study: the right residence permit for your route, why US nationals are exempt from the MVV (entry visa), municipal registration in the BRP and your citizen service number (BSN), mandatory Dutch health insurance, and the 30% expat tax ruling."
+lastReviewed: "2026-06-13"
+reviewedBy: "research-3"
+published: false
+# ---------------------------------------------------------------------------
+# RESEARCH-RUN DRAFT (ADR-0016). Every claim below is status: UNVERIFIED and the
+# corridor is published: false. A SEPARATE fact-verifier team must independently
+# re-derive each claim from its captured primary source before any claim is set
+# VERIFIED or the corridor is published (two-agent rule, CLAUDE.md).
+#
+# Sources captured this run via scripts/snapshot-source.mjs (ADR-0017); see
+# sources/us-nl/manifest.json. Facts were extracted by READING the captured
+# .txt snapshots, and each claim cites the exact captured sourceUrl. sourceHash
+# is deliberately NOT set (verifier's job).
+#
+# KEY CORRIDOR-SPECIFIC DIVERGENCE FROM us-ch (flagged for the verifier):
+# US nationals are EXEMPT from the MVV (the Netherlands' long-stay entry visa /
+# type-D sticker). IND's MVV-exemptions page lists "United States" among the
+# exempt nationalities. So this corridor has NO national-D-visa task like us-ch.
+# Instead: a residence-permit task (applied for by the recognised sponsor for
+# work/study, or by the sponsor-partner for family) plus an explicit
+# "MVV not required for US citizens" explainer, and the residence permit is
+# collected in the Netherlands after a positive decision.
+# ---------------------------------------------------------------------------
+coversMotivations: [work, family, study]
+tasks:
+  # ---------------------------------------------------------------------------
+  - id: work-hsm-permit
+    title: "Get sponsored as a highly skilled migrant (kennismigrant)"
+    category: visa-permit
+    summary:
+      text: "As a US citizen you are a non-EU/EEA third-country national, so to work in the Netherlands you need a residence permit. The most common route for qualified professionals is the highly skilled migrant (kennismigrant) permit: you cannot apply yourself — only an employer recognised by the IND can apply for your permit, and the agreed salary must meet the IND income requirement for your category and be in line with the market rate."
+      sourceUrl: "https://ind.nl/en/residence-permits/work/highly-skilled-migrant"
+      sourceName: "Immigration and Naturalisation Service (IND) — Highly skilled migrant"
+      # VERIFIED 2026-06-13 (fact-verifier): IND HSM page re-fetched LIVE (curl, browser UA, HTTP 200, no redirect; sha256 ac7c389c..., unchanged from research run). Page is a quiz-gated SPA; static intro confirms verbatim: "To work in the Netherlands as a highly skilled migrant, you need a residence permit. Only an employer recognised by the IND can apply for your permit." Supports "you need a residence permit" + "only an employer recognised by the IND can apply for your permit" character-for-character. The salary/market-rate detail loads behind the quiz on this page but is independently confirmed on the cited required-amounts keyFact; the summary asserts only the employer-applies + market-rate requirement, both supported (employer-applies here; salary thresholds + "market rate" on required-amounts page).
+      status: VERIFIED
+      lastVerified: "2026-06-13"
+      verifiedBy: "fact-verifier-nl 2026-06-13"
+      sourceHash: "ac7c389c865089339f51f03c25647298e6f07420ef544bb7b8785a933651628e"
+      reviewBy: "2026-09-11"
+    tldr:
+      text: "The highly skilled migrant (kennismigrant) permit is the main work route to the Netherlands for US professionals. You cannot apply on your own: only an employer recognised by the IND can apply for your permit, and your salary must meet the IND's income requirement for your category and match the market rate. The permit combines the right to work and to reside."
+      sourceUrl: "https://ind.nl/en/residence-permits/work/highly-skilled-migrant"
+      sourceName: "Immigration and Naturalisation Service (IND) — Highly skilled migrant"
+      # VERIFIED 2026-06-13 (fact-verifier): same IND HSM page (LIVE, HTTP 200). Verbatim intro: "Only an employer recognised by the IND can apply for your permit." Supports "only an employer recognised by the IND can apply for your permit" / "you cannot apply on your own" character-for-character. Salary + market-rate elements confirmed via the required-amounts keyFact (this page's detail is quiz-gated). No overstatement.
+      status: VERIFIED
+      lastVerified: "2026-06-13"
+      verifiedBy: "fact-verifier-nl 2026-06-13"
+      sourceHash: "ac7c389c865089339f51f03c25647298e6f07420ef544bb7b8785a933651628e"
+      reviewBy: "2026-09-11"
+    keyFacts:
+      - label: "Who applies"
+        text: "Your employer applies, not you: “Only an employer recognised by the IND can apply for your permit.” Recognition is required in order to employ highly skilled migrants."
+        sourceUrl: "https://ind.nl/en/residence-permits/work/highly-skilled-migrant"
+        sourceName: "Immigration and Naturalisation Service (IND) — Highly skilled migrant"
+        # VERIFIED 2026-06-13 (fact-verifier): IND HSM page (LIVE, HTTP 200). Verbatim: "Only an employer recognised by the IND can apply for your permit." The "Recognition is required in order to employ highly skilled migrants" element is verbatim on the companion Employing-a-foreign-national page ("Recognition is required in order to employ highly skilled migrants and researchers under Directive (EU) 2016/801."). Both quoted clauses supported character-for-character.
+        status: VERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: "fact-verifier-nl 2026-06-13"
+        sourceHash: "ac7c389c865089339f51f03c25647298e6f07420ef544bb7b8785a933651628e"
+        reviewBy: "2026-09-11"
+      - label: "Where"
+        text: "Your recognised-sponsor employer applies to the Immigration and Naturalisation Service (IND), the Dutch immigration authority, in the Netherlands."
+        sourceUrl: "https://ind.nl/en/residence-permits/work/employing-a-foreign-national"
+        sourceName: "Immigration and Naturalisation Service (IND) — Employing a foreign national"
+        # VERIFIED 2026-06-13 (fact-verifier): IND Employing-a-foreign-national page (LIVE, HTTP 200, sha256 46506145...). Confirms the recognised sponsor applies to the IND: "As a recognised sponsor you can simply and quickly apply for a residence permit for your employee." and the instruction video step 2 "You can submit the application in writing, or online in the Business Portal." The IND being the Dutch immigration authority is self-evident (the page is ind.nl). Supported.
+        status: VERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: "fact-verifier-nl 2026-06-13"
+        sourceHash: "46506145b47cb3139c5f90a94dd3a17e30ff6afc3cfbc34383e9014ffa719e47"
+        reviewBy: "2026-09-11"
+      - label: "Salary requirement (2026)"
+        text: "The 2026 highly-skilled-migrant required amount (gross per month, excluding the 8% holiday allowance) is €5,942.00 if you are 30 or older, €4,357.00 if you are under 30, and €3,122.00 under the reduced salary criterion (e.g. shortly after a Dutch graduation or orientation year). The amount that applies on the application date must be met; figures change every year on 1 January. Confirm the current figure before relying on it."
+        sourceUrl: "https://ind.nl/en/required-amounts-income-requirements"
+        sourceName: "Immigration and Naturalisation Service (IND) — Required amounts (income requirements)"
+        # FEE/THRESHOLD figure -> 30-day review window.
+        # VERIFIED 2026-06-13 (fact-verifier): IND Required-amounts page (LIVE, HTTP 200, sha256 aa2b0700...). All three 2026 figures match the source table character-for-character: "Highly skilled migrants 30 years or older € 5,942.00", "Highly skilled migrants younger than 30 years € 4,357.00", "Highly skilled migrants reduced salary criterion € 3,122.00". Verbatim: "The required amounts change every year on January 1." and "The highly skilled migrant must meet the required amount that applies on the date of the application." The reduced-criterion examples (orientation year / within 3 years of graduation) match the page's "Reduced salary criterion" section. NOTE: the page states amounts are "gross per month" and that "Vacation allowance" is NOT included in the salary criterion — supporting "gross per month, excluding ... holiday allowance"; the specific "8%" figure is the standard Dutch statutory holiday-allowance rate but is NOT stated on this source (immaterial — the load-bearing thresholds are exact).
+        status: VERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: "fact-verifier-nl 2026-06-13"
+        sourceHash: "aa2b070046f14424bbcb932aef06ba84ef663b41b2177a566ba463ace3d698be"
+        reviewBy: "2026-07-13"
+      - label: "Recognised sponsor required"
+        text: "Recognition as an IND sponsor is required in order to employ highly skilled migrants; by employing a foreign employee an employer automatically becomes the sponsor, but only a recognised sponsor can apply for the highly skilled migrant permit."
+        sourceUrl: "https://ind.nl/en/residence-permits/work/employing-a-foreign-national"
+        sourceName: "Immigration and Naturalisation Service (IND) — Employing a foreign national"
+        # VERIFIED 2026-06-13 (fact-verifier): IND Employing-a-foreign-national page (LIVE, HTTP 200). Verbatim: "By employing a foreign employee, you automatically become the sponsor for that employee." and "Recognition is required in order to employ highly skilled migrants and researchers under Directive (EU) 2016/801." and "As a recognised sponsor you can simply and quickly apply for a residence permit for your employee." All three clauses of the claim supported character-for-character.
+        status: VERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: "fact-verifier-nl 2026-06-13"
+        sourceHash: "46506145b47cb3139c5f90a94dd3a17e30ff6afc3cfbc34383e9014ffa719e47"
+        reviewBy: "2026-09-11"
+      - label: "Right or discretion"
+        text: "Conditional, not automatic: the permit is granted only if a recognised sponsor applies and the salary and other conditions are met — there is no entitlement to a highly skilled migrant permit. US citizens are outside EU/EEA free movement and so always need a residence permit to work."
+        sourceUrl: "https://ind.nl/en/residence-permits/work/highly-skilled-migrant"
+        sourceName: "Immigration and Naturalisation Service (IND) — Highly skilled migrant"
+        # VERIFIED 2026-06-13 (fact-verifier): IND HSM page (LIVE, HTTP 200) states "To work in the Netherlands as a highly skilled migrant, you need a residence permit. Only an employer recognised by the IND can apply for your permit" — conditional ("Only ... can apply"), never an entitlement/right register. The "US citizens outside EU/EEA free movement need a residence permit to work" element is verbatim on the companion Employing page: "EU law provides for free movement of persons. This means that your employee is free to work ... and does not need a residence permit" (contrasted with "Employees with other nationalities ... needs a residence permit to work and stay for more than 90 days"). No overstatement.
+        status: VERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: "fact-verifier-nl 2026-06-13"
+        sourceHash: "ac7c389c865089339f51f03c25647298e6f07420ef544bb7b8785a933651628e"
+        reviewBy: "2026-09-11"
+    detail: >
+      The Netherlands separates EU/EEA/Swiss nationals (who move freely and need no permit)
+      from third-country nationals such as US citizens, who need a residence permit to work.
+      The highly skilled migrant (kennismigrant) scheme is the fast, employer-driven route
+      for qualified professionals: a single permit covers both work and residence, but it
+      hinges on the employer. The employer must be recognised by the IND as a sponsor, must
+      file the application, and must pay at least the IND required amount for your category
+      (a higher figure for those 30+, a lower one for under-30s, and a reduced criterion for
+      recent Dutch graduates / orientation-year holders). The salary must also be in line
+      with the market rate for the role. Because you are an MVV-exempt US national you do not
+      need the entry visa (see the residence-permit task), but you still receive a residence
+      permit, which you collect in the Netherlands after a positive decision.
+    steps:
+      - text: "Secure a job with a Dutch employer that is — or is willing to become — a recognised IND sponsor; confirm the offered salary meets the IND required amount for your age/category and the market rate."
+        tip: "Ask the employer directly whether they are on the IND public register of recognised sponsors. Recognition is mandatory to hire a highly skilled migrant."
+        links:
+          - text: "IND — highly skilled migrant: requirements and how your employer applies"
+            sourceUrl: "https://ind.nl/en/residence-permits/work/highly-skilled-migrant"
+            sourceName: "Immigration and Naturalisation Service (IND) — Highly skilled migrant"
+            # VERIFIED 2026-06-13 (fact-verifier): IND HSM page (LIVE, HTTP 200). Correct page (breadcrumb Home › Residence permits › Work › Highly skilled migrant); states the requirements/how-employer-applies framing ("Only an employer recognised by the IND can apply for your permit. Read what the requirements are and how your employer can apply."). Link accurate.
+            status: VERIFIED
+            lastVerified: "2026-06-13"
+            verifiedBy: "fact-verifier-nl 2026-06-13"
+            sourceHash: "ac7c389c865089339f51f03c25647298e6f07420ef544bb7b8785a933651628e"
+            reviewBy: "2026-09-11"
+      - text: "Your recognised-sponsor employer files the residence permit application with the IND. As a recognised sponsor they can apply quickly; the IND has up to 90 days to decide, but with direct debit a decision often follows within about two weeks."
+        links:
+          - text: "IND — employing a foreign national: the recognised-sponsor application process and decision period"
+            sourceUrl: "https://ind.nl/en/residence-permits/work/employing-a-foreign-national"
+            sourceName: "Immigration and Naturalisation Service (IND) — Employing a foreign national"
+            # VERIFIED 2026-06-13 (fact-verifier): IND Employing-a-foreign-national page (LIVE, HTTP 200). Instruction video step 4 verbatim: "Then the IND has 90 days to make a decision. This is called the decision period. Did you use direct debit? Then a decision is often taken within two weeks." Supports "up to 90 days to decide ... with direct debit a decision often follows within about two weeks" character-for-character. Recognised-sponsor framing also confirmed on the page.
+            status: VERIFIED
+            lastVerified: "2026-06-13"
+            verifiedBy: "fact-verifier-nl 2026-06-13"
+            sourceHash: "46506145b47cb3139c5f90a94dd3a17e30ff6afc3cfbc34383e9014ffa719e47"
+            reviewBy: "2026-09-11"
+      - text: "After a positive decision, travel to the Netherlands (no MVV needed for US citizens) and collect your residence permit, then register with your municipality."
+    documents:
+      - name: "Residence permit application for highly skilled migrant work (sponsor-filed)"
+        type: form
+        description: "The recognised sponsor files the work/residence application with the IND, usually online via the IND Business Portal or in writing — there is no separate worker-filed form for the recognised-sponsor route. We link the IND employer page rather than a deep form so it stays current."
+        form:
+          text: "There is no separate worker-filed application form for the recognised-sponsor highly skilled migrant route — the recognised sponsor submits the application to the IND (online via the Business Portal or in writing). Use the IND 'Employing a foreign national' page as the authority index for the current procedure and forms; the brochure 'Residence permit for work as a highly skilled migrant' (IND form 3072) explains the requirements."
+          sourceUrl: "https://ind.nl/en/residence-permits/work/employing-a-foreign-national"
+          sourceName: "Immigration and Naturalisation Service (IND) — Employing a foreign national"
+          # VERIFIED 2026-06-13 (fact-verifier): IND Employing-a-foreign-national page (LIVE, HTTP 200). Recognised sponsor files: "As a recognised sponsor you can simply and quickly apply for a residence permit for your employee." Instruction video step 2 verbatim: "Complete the application form. You can submit the application in writing, or online in the Business Portal." Authority-index framing (per no-self-hosted-PDF rule) is correct. The brochure "Residence permit for work as a highly skilled migrant 3072 (PDF, 542.48 KB)" is named verbatim on the cited required-amounts page (HSM section). Supported.
+          status: VERIFIED
+          lastVerified: "2026-06-13"
+          verifiedBy: "fact-verifier-nl 2026-06-13"
+          sourceHash: "46506145b47cb3139c5f90a94dd3a17e30ff6afc3cfbc34383e9014ffa719e47"
+          reviewBy: "2026-09-11"
+      - name: "Signed Dutch employment contract"
+        type: provide
+        description: "Your signed employment contract with the recognised sponsor, stating a salary that meets the IND required amount for your category and is in line with the market rate."
+      - name: "Valid US passport"
+        type: provide
+        description: "Your valid US passport — your identity and travel document throughout the process."
+      - name: "Proof of qualifications"
+        type: provide
+        description: "Evidence of your qualifications and experience as a skilled professional (degrees, diplomas, references), to the extent the IND or employer requests them."
+    cost:
+      text: "An IND application fee applies (paid by the sponsor) and is set by the IND. Fees are adjusted on 1 January each year. Confirm the current amount on the IND fees page before relying on it; this corridor does not quote a specific figure."
+      sourceUrl: "https://ind.nl/en/fees-costs-of-an-application"
+      sourceName: "Immigration and Naturalisation Service (IND) — Fees: costs of an application"
+      # Fee-related -> 30-day review window.
+      # VERIFIED 2026-06-13 (fact-verifier): IND Fees page (LIVE, HTTP 200, sha256 18e1d6ca...). The page IS the IND fee schedule (it lists e.g. "Highly skilled migrant First application and change in purpose of stay € 423,00"). Annual-adjustment claim verbatim: "The fees are changed each year on January 1. The fee amounts are valid from January 1 to December 31." The claim deliberately quotes NO figure, so there is no number to mismatch; "an IND application fee applies / set by the IND / adjusted 1 January" all supported. Sponsor-pays is confirmed on the Employing page (instruction video step 3: the recognised sponsor pays for the application).
+      status: VERIFIED
+      lastVerified: "2026-06-13"
+      verifiedBy: "fact-verifier-nl 2026-06-13"
+      sourceHash: "18e1d6cacc78bf9c1fd8b034cc1de934e28bfe757f9b5e6b9115a1a6b01da73f"
+      reviewBy: "2026-07-13"
+    warning: >
+      The highly skilled migrant salary thresholds are reset by the IND every year on
+      1 January (and the wider required amounts also change on 1 July). The amount that
+      applies on the application date must be met. Do not rely on a figure without
+      confirming the current year's amount with the IND.
+    dependsOn: []
+    appliesIf: "motivation == 'work'"
+
+  # ---------------------------------------------------------------------------
+  - id: work-single-permit-gvva
+    title: "Other paid employment: the single permit (GVVA)"
+    category: visa-permit
+    summary:
+      text: "If you want to work in paid employment in the Netherlands but do not qualify as a highly skilled migrant, you generally need a single permit (in Dutch: gecombineerde vergunning verblijf en arbeid or GVVA). The single permit combines the residence permit and the work permit (TWV), so you apply for only one permit, which you do at the IND. The IND asks the Netherlands Employees Insurance Agency (UWV) for advice on the labour-market aspect, and the UWV assesses that request against the criteria of the Foreign Nationals Employment Act (Wav)."
+      sourceUrl: "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/employed-worker-netherlands_en"
+      sourceName: "European Commission — EU Immigration Portal: Employed worker (Netherlands)"
+      # RE-SOURCED 2026-06-13 (content-researcher): re-pointed from the quiz-gated IND GVVA SPA (whose static HTML omits the UWV-advice element) to the European Commission's EU Immigration Portal "Employed worker in the Netherlands" page (home-affairs.ec.europa.eu, DG Migration & Home Affairs — official EU body), which plainly states verbatim: "Most of the times, you can apply for a GVVA (single permit for residence and work). The GVVA combines the residence permit and the work permit (TWV). You thus only apply for one permit. You do this at the Immigration and Naturalisation Service (IND). The IND asks advice from the Netherlands Employees Insurance Agency (UWV) about the labour market aspect. UWV assesses the request for advice based on the criteria of the Foreign Nationals Employment Act (Wav)." Recast text to track this wording (added the Wav basis; dropped the prior unsourced "whether a suitable worker is available within the EU/EEA" gloss). Captured sources/us-nl/dd3dcb88.txt.
+      # VERIFIED 2026-06-13 (fact-verifier re-check): EU portal "Employed worker in the Netherlands" re-fetched LIVE (curl, browser UA, HTTP 200, no redirect; sha256 dd3dcb88..., unchanged from research run). Page states verbatim: "Most of the times, you can apply for a GVVA (single permit for residence and work). The GVVA combines the residence permit and the work permit (TWV). You thus only apply for one permit. You do this at the Immigration and Naturalisation Service (IND). The IND asks advice from the Netherlands Employees Insurance Agency (UWV) about the labour market aspect. UWV assesses the request for advice based on the criteria of the Foreign Nationals Employment Act (Wav)." Every element of the summary (GVVA = single permit, combines residence+work permit/TWV, one application at the IND, IND asks UWV advice on labour-market aspect, UWV assesses against the Wav) is supported character-for-character. [source: EU portal — DG Migration & Home Affairs, an official EU source; the load-bearing NL GVVA/UWV rule is stated plainly and specifically, so it carries the rule. Not IND (IND's own page renders this only behind a JS quiz).]
+      status: VERIFIED
+      lastVerified: "2026-06-13"
+      verifiedBy: "fact-verifier-nl-r2 2026-06-13"
+      sourceHash: "dd3dcb88639750eb17b34ec77f2c8b19719ab0b5426ccecd481f1dfcda365516"
+      reviewBy: "2026-09-11"
+    tldr:
+      text: "For ordinary paid employment that is not highly skilled work, US citizens generally need a single permit (GVVA) — one document combining the residence permit and the work permit (TWV), applied for at the IND. The IND asks the UWV (the employee-insurance agency) for advice on the labour-market aspect, so this route is more involved than the highly skilled migrant permit."
+      sourceUrl: "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/employed-worker-netherlands_en"
+      sourceName: "European Commission — EU Immigration Portal: Employed worker (Netherlands)"
+      # RE-SOURCED 2026-06-13 (content-researcher): re-pointed to the EU Immigration Portal "Employed worker in the Netherlands" page, which states verbatim "You do this at the Immigration and Naturalisation Service (IND). The IND asks advice from the Netherlands Employees Insurance Agency (UWV) about the labour market aspect" and that the GVVA "combines the residence permit and the work permit (TWV). You thus only apply for one permit." Supports the GVVA-combines + IND-asks-UWV-advice elements that the quiz-gated IND GVVA page omits. Captured sources/us-nl/dd3dcb88.txt.
+      # VERIFIED 2026-06-13 (fact-verifier re-check): EU portal "Employed worker in the Netherlands" (LIVE, HTTP 200, sha256 dd3dcb88..., unchanged). Verbatim: "The GVVA combines the residence permit and the work permit (TWV). You thus only apply for one permit. You do this at the Immigration and Naturalisation Service (IND). The IND asks advice from the Netherlands Employees Insurance Agency (UWV) about the labour market aspect." Supports the tldr's GVVA = single combined permit, applied for at the IND, IND asks UWV for labour-market advice. No overstatement. [source: EU portal — official EU source; states the NL-specific GVVA/UWV rule plainly, so it carries it. Not IND (quiz-gated).]
+      status: VERIFIED
+      lastVerified: "2026-06-13"
+      verifiedBy: "fact-verifier-nl-r2 2026-06-13"
+      sourceHash: "dd3dcb88639750eb17b34ec77f2c8b19719ab0b5426ccecd481f1dfcda365516"
+      reviewBy: "2026-09-11"
+    keyFacts:
+      - label: "What it is"
+        text: "A single permit (GVVA / gecombineerde vergunning verblijf en arbeid) that combines the residence permit and the work permit (TWV) in one document."
+        sourceUrl: "https://ind.nl/en/residence-permits/work/single-permit-gvva"
+        sourceName: "Immigration and Naturalisation Service (IND) — Single Permit: GVVA"
+        # VERIFIED 2026-06-13 (fact-verifier): IND GVVA page (LIVE, HTTP 200). Static intro verbatim: "you need a single permit (in Dutch: gecombineerde vergunning verblijf en arbeid or GVVA). The single permit combines the residence permit and the work permit." Corroborated on the Employing page: "Employees with work in paid employment need a single permit (in Dutch: gecombineerde vergunning verblijf en arbeid or GVVA). The GVVA combines the residence permit and the work permit (TWV)." Supports name + "combines residence permit and work permit (TWV)" character-for-character.
+        status: VERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: "fact-verifier-nl 2026-06-13"
+        sourceHash: "900034e60b37f556eedde9c03abb5a6e44f587585d471849738b53fd25ee5200"
+        reviewBy: "2026-09-11"
+      - label: "Who applies"
+        text: "You apply at the IND for the GVVA. Either you or your employer can submit the GVVA application to the IND."
+        sourceUrl: "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/employed-worker-netherlands_en"
+        sourceName: "European Commission — EU Immigration Portal: Employed worker (Netherlands)"
+        # RE-SOURCED 2026-06-13 (content-researcher): re-pointed to the EU Immigration Portal "Employed worker in the Netherlands" page, which states verbatim "You (to the Dutch representation in your own country or the country of continuous residence) or your employer (applies to the IND in the Netherlands) can submit the application for a GVVA." — supporting the "you or your employer can submit the application" element that the IND Employing page (which only carries the employer-becomes-sponsor clause) did not. Trimmed the now-unneeded "automatically becomes the sponsor" gloss. Captured sources/us-nl/dd3dcb88.txt.
+        # VERIFIED 2026-06-13 (fact-verifier re-check): EU portal "Employed worker in the Netherlands" (LIVE, HTTP 200, sha256 dd3dcb88...). Verbatim: "You (to the Dutch representation in your own country or the country of continuous residence) or your employer (applies to the IND in the Netherlands) can submit the application for a GVVA." Supports "You apply at the IND for the GVVA. Either you or your employer can submit the GVVA application to the IND" character-for-character. [source: EU portal — official EU source; states the who-may-file rule for the NL GVVA plainly, so it carries it. Not IND (quiz-gated).]
+        status: VERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: "fact-verifier-nl-r2 2026-06-13"
+        sourceHash: "dd3dcb88639750eb17b34ec77f2c8b19719ab0b5426ccecd481f1dfcda365516"
+        reviewBy: "2026-09-11"
+      - label: "Labour-market test"
+        text: "The IND asks the Netherlands Employees Insurance Agency (UWV) for advice on the labour-market aspect of the application; the UWV assesses that request against the criteria of the Foreign Nationals Employment Act (Wav)."
+        sourceUrl: "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/employed-worker-netherlands_en"
+        sourceName: "European Commission — EU Immigration Portal: Employed worker (Netherlands)"
+        # RE-SOURCED 2026-06-13 (content-researcher): re-pointed to the EU Immigration Portal "Employed worker in the Netherlands" page, which states verbatim "The IND asks advice from the Netherlands Employees Insurance Agency (UWV) about the labour market aspect. UWV assesses the request for advice based on the criteria of the Foreign Nationals Employment Act (Wav)." — directly supports the labour-market-advice element absent from the quiz-gated IND GVVA page. Added the Wav basis to match the source. Captured sources/us-nl/dd3dcb88.txt.
+        # VERIFIED 2026-06-13 (fact-verifier re-check): EU portal "Employed worker in the Netherlands" (LIVE, HTTP 200, sha256 dd3dcb88...). Verbatim: "The IND asks advice from the Netherlands Employees Insurance Agency (UWV) about the labour market aspect. UWV assesses the request for advice based on the criteria of the Foreign Nationals Employment Act (Wav)." Supports the keyFact's IND-asks-UWV-advice + UWV-assesses-against-the-Wav assertion character-for-character. [source: EU portal — official EU source; states the NL labour-market-test rule plainly, so it carries it. Not IND (quiz-gated).]
+        status: VERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: "fact-verifier-nl-r2 2026-06-13"
+        sourceHash: "dd3dcb88639750eb17b34ec77f2c8b19719ab0b5426ccecd481f1dfcda365516"
+        reviewBy: "2026-09-11"
+      - label: "When needed"
+        text: "A US citizen coming to work in paid employment for more than 90 days needs a residence permit; the GVVA is the route when the work is not covered by a knowledge/talent permit such as the highly skilled migrant permit."
+        sourceUrl: "https://ind.nl/en/residence-permits/work/employing-a-foreign-national"
+        sourceName: "Immigration and Naturalisation Service (IND) — Employing a foreign national"
+        # VERIFIED 2026-06-13 (fact-verifier): IND Employing-a-foreign-national page (LIVE, HTTP 200). Verbatim: "Stay for more than 90 days. The employee needs a residence permit to work and stay for more than 90 days in the Netherlands." and the page splits "Knowledge and talent residence permits" (incl. "Highly skilled migrant residence permit") from "Residence permit paid employment ... need a single permit (... GVVA)" — supporting "the GVVA is the route when the work is not covered by a knowledge/talent permit such as the highly skilled migrant permit." US-national framing follows from "Employees with other nationalities" needing a residence permit. Supported.
+        status: VERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: "fact-verifier-nl 2026-06-13"
+        sourceHash: "46506145b47cb3139c5f90a94dd3a17e30ff6afc3cfbc34383e9014ffa719e47"
+        reviewBy: "2026-09-11"
+    detail: >
+      The single permit (GVVA) is the general paid-employment route for third-country
+      nationals whose work does not fall under one of the knowledge/talent permits (highly
+      skilled migrant, EU Blue Card, intra-corporate transferee, researcher, essential
+      start-up personnel). It rolls the residence permit and the work permit (TWV) into one
+      document. Unlike the highly skilled migrant permit, the GVVA involves a labour-market
+      assessment: the IND asks the UWV for advice on the employment-market aspects of the
+      application. The IND advises that the employer files the application in the Netherlands.
+      Because you are an MVV-exempt US national you do not need the entry visa, but you still
+      receive a residence permit, collected in the Netherlands after a positive decision.
+    steps:
+      - text: "Confirm with your employer whether your role qualifies for a knowledge/talent permit (e.g. highly skilled migrant) or whether the single permit (GVVA) is the correct route."
+        links:
+          - text: "IND — employing a foreign national: which residence permit for which work"
+            sourceUrl: "https://ind.nl/en/residence-permits/work/employing-a-foreign-national"
+            sourceName: "Immigration and Naturalisation Service (IND) — Employing a foreign national"
+            # VERIFIED 2026-06-13 (fact-verifier): IND Employing-a-foreign-national page (LIVE, HTTP 200). Correct page; it routes "which residence permit for which work" (sections "Residence permit for work", "Knowledge and talent residence permits", "Residence permit paid employment"). Link accurate.
+            status: VERIFIED
+            lastVerified: "2026-06-13"
+            verifiedBy: "fact-verifier-nl 2026-06-13"
+            sourceHash: "46506145b47cb3139c5f90a94dd3a17e30ff6afc3cfbc34383e9014ffa719e47"
+            reviewBy: "2026-09-11"
+      - text: "You or your employer file the single permit (GVVA) application with the IND; the IND requests UWV advice on the labour-market aspect before deciding."
+        links:
+          - text: "EU Immigration Portal — Employed worker (Netherlands): the GVVA and the IND's UWV labour-market advice"
+            sourceUrl: "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/employed-worker-netherlands_en"
+            sourceName: "European Commission — EU Immigration Portal: Employed worker (Netherlands)"
+            # RE-SOURCED 2026-06-13 (content-researcher): re-pointed the step link from the quiz-gated IND GVVA page to the EU Immigration Portal "Employed worker in the Netherlands" page, which plainly states the GVVA is applied for at the IND and "The IND asks advice from the Netherlands Employees Insurance Agency (UWV) about the labour market aspect", and that "You ... or your employer ... can submit the application for a GVVA." Step text adjusted to "You or your employer file ...". Captured sources/us-nl/dd3dcb88.txt.
+            # VERIFIED 2026-06-13 (fact-verifier re-check): EU portal "Employed worker in the Netherlands" (LIVE, HTTP 200, sha256 dd3dcb88...). Verbatim: "You ... or your employer ... can submit the application for a GVVA" and "You do this at the Immigration and Naturalisation Service (IND). The IND asks advice from the Netherlands Employees Insurance Agency (UWV) about the labour market aspect." Link label ("the GVVA and the IND's UWV labour-market advice") and the step it supports ("You or your employer file the single permit (GVVA) application with the IND; the IND requests UWV advice") are accurate. [source: EU portal — official EU source; states the rule plainly. Not IND (quiz-gated).]
+            status: VERIFIED
+            lastVerified: "2026-06-13"
+            verifiedBy: "fact-verifier-nl-r2 2026-06-13"
+            sourceHash: "dd3dcb88639750eb17b34ec77f2c8b19719ab0b5426ccecd481f1dfcda365516"
+            reviewBy: "2026-09-11"
+      - text: "After a positive decision, travel to the Netherlands (no MVV needed for US citizens), collect your residence permit, and register with your municipality."
+    documents:
+      - name: "Single permit (GVVA) application"
+        type: form
+        description: "The application the employer (or employee) files with the IND for the combined residence-and-work permit; the IND then seeks UWV advice. We link the IND GVVA page as the authority index for the current procedure and form."
+        form:
+          text: "Apply for the single permit (GVVA) at the IND. Either you or your employer can submit the GVVA application to the IND; the application form lists the documents you must enclose, and official foreign documents must be legalised and translated into Dutch, English, French or German. Use the EU Immigration Portal 'Employed worker in the Netherlands' page (and the IND) as the authority index for the current procedure and form rather than a deep PDF link."
+          sourceUrl: "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/employed-worker-netherlands_en"
+          sourceName: "European Commission — EU Immigration Portal: Employed worker (Netherlands)"
+          # RE-SOURCED 2026-06-13 (content-researcher): re-pointed from the quiz-gated IND GVVA page to the EU Immigration Portal "Employed worker in the Netherlands" page, which states verbatim that the GVVA is applied for at the IND, that "You ... or your employer ... can submit the application for a GVVA", and "The application form lists the documents that you must enclose with the application. You have to have official foreign documents legalised and translated into Dutch, English, French or German." Recast the who-files / documents detail to track this source. Captured sources/us-nl/dd3dcb88.txt.
+          # VERIFIED 2026-06-13 (fact-verifier re-check): EU portal "Employed worker in the Netherlands" (LIVE, HTTP 200, sha256 dd3dcb88...). Verbatim: "You ... or your employer ... can submit the application for a GVVA" and "Documents required The application form lists the documents that you must enclose with the application. You have to have official foreign documents legalised and translated into Dutch, English, French or German." Supports the form claim's apply-at-IND, who-may-file, "application form lists the documents you must enclose", and legalised/translated-into-Dutch/English/French/German elements character-for-character; the authority-index framing (EU portal + IND as index, no deep PDF) is appropriate. [source: EU portal — official EU source; states the procedure plainly. Not IND (quiz-gated).]
+          status: VERIFIED
+          lastVerified: "2026-06-13"
+          verifiedBy: "fact-verifier-nl-r2 2026-06-13"
+          sourceHash: "dd3dcb88639750eb17b34ec77f2c8b19719ab0b5426ccecd481f1dfcda365516"
+          reviewBy: "2026-09-11"
+      - name: "Signed Dutch employment contract"
+        type: provide
+        description: "Your signed employment contract; the role and pay are assessed as part of the labour-market advice from the UWV."
+      - name: "Valid US passport"
+        type: provide
+        description: "Your valid US passport as identity and travel document."
+      - name: "Proof of qualifications for the role"
+        type: provide
+        description: "Evidence of the qualifications and experience the role requires, as requested by the IND/UWV."
+    cost:
+      text: "An IND application fee applies and is set by the IND (adjusted annually on 1 January). Confirm the current amount on the IND fees page; this corridor does not quote a specific figure."
+      sourceUrl: "https://ind.nl/en/fees-costs-of-an-application"
+      sourceName: "Immigration and Naturalisation Service (IND) — Fees: costs of an application"
+      # VERIFIED 2026-06-13 (fact-verifier): IND Fees page (LIVE, HTTP 200). The page lists the single-permit fee ("Work in employment ... including single permit € 423,00"). Annual-adjustment claim verbatim: "The fees are changed each year on January 1. The fee amounts are valid from January 1 to December 31." No figure quoted in the claim, so no number to mismatch — "an IND application fee applies / set by the IND / adjusted annually on 1 January" supported.
+      status: VERIFIED
+      lastVerified: "2026-06-13"
+      verifiedBy: "fact-verifier-nl 2026-06-13"
+      sourceHash: "18e1d6cacc78bf9c1fd8b034cc1de934e28bfe757f9b5e6b9115a1a6b01da73f"
+      reviewBy: "2026-07-13"
+    dependsOn: []
+    appliesIf: "motivation == 'work'"
+
+  # ---------------------------------------------------------------------------
+  - id: entry-residence-permit
+    title: "Your residence permit — and why US citizens do not need an MVV"
+    category: visa-permit
+    summary:
+      text: "To stay in the Netherlands for more than 90 days you need a regular residence permit. Many nationalities also need a provisional residence permit (MVV) — a type-D entry visa sticker — but US nationals are exempt: the IND lists the United States among the nationalities that do not need an MVV. You still need the residence permit; as an MVV-exempt national you travel to the Netherlands without the entry visa and the permit is arranged for you to collect there."
+      sourceUrl: "https://ind.nl/en/mvv-exemptions"
+      sourceName: "Immigration and Naturalisation Service (IND) — MVV exemptions"
+      # VERIFIED 2026-06-13 (fact-verifier): IND MVV-exemptions page re-fetched LIVE (curl, HTTP 200, sha256 ac7125e0..., unchanged). Verbatim: "You do not need an MVV if you have the nationality of one of these countries." followed by a list that includes "United States". The MVV being a type-D long-stay entry visa for >90 days is verbatim on the companion MVV page ("The MVV is a visa sticker (Type D)"; "intended for persons who want to stay in the Netherlands for more than 90 days"); "you need a regular residence permit" for >90 days also on that page. This is the corridor's central divergence from us-ch — confirmed.
+      status: VERIFIED
+      lastVerified: "2026-06-13"
+      verifiedBy: "fact-verifier-nl 2026-06-13"
+      sourceHash: "ac7125e031d2d2e880a87b630eeb4bcac33c97269944a811b3a5cd1da5caa290"
+      reviewBy: "2026-09-11"
+    tldr:
+      text: "Any stay over 90 days needs a residence permit. The MVV (the type-D long-stay entry visa) is required for most nationalities — but not for US citizens, who are on the IND's MVV-exemption list. So you skip the embassy MVV step that nationals of many other countries must complete: you still need the residence permit, but you enter without the entry visa and collect the permit in the Netherlands."
+      sourceUrl: "https://ind.nl/en/mvv-exemptions"
+      sourceName: "Immigration and Naturalisation Service (IND) — MVV exemptions"
+      # VERIFIED 2026-06-13 (fact-verifier): IND MVV-exemptions page (LIVE, HTTP 200). United States listed verbatim among nationalities that "do not need an MVV". The MVV page corroborates "most nationalities" need it ("It holds for most nationalities that you will receive a residence permit only if you have an MVV") and that the MVV is collected at the embassy then used to "pick up your residence permit" (i.e. exempt nationals skip the embassy step). Supported.
+      status: VERIFIED
+      lastVerified: "2026-06-13"
+      verifiedBy: "fact-verifier-nl 2026-06-13"
+      sourceHash: "ac7125e031d2d2e880a87b630eeb4bcac33c97269944a811b3a5cd1da5caa290"
+      reviewBy: "2026-09-11"
+    keyFacts:
+      - label: "MVV not needed for US citizens"
+        text: "“You do not need an MVV if you have the nationality of one of these countries” — the IND list includes the United States (alongside Australia, Canada, Japan, Monaco, New Zealand, Vatican City, the United Kingdom, South Korea, Switzerland and EU/EEA member states)."
+        sourceUrl: "https://ind.nl/en/mvv-exemptions"
+        sourceName: "Immigration and Naturalisation Service (IND) — MVV exemptions"
+        # VERIFIED 2026-06-13 (fact-verifier): IND MVV-exemptions page (LIVE, HTTP 200). Verbatim: "You do not need an MVV if you have the nationality of one of these countries." and the list reads exactly "Australia Canada Japan Monaco New Zealand Vatican City United Kingdom United States South Korea Switzerland An EU/EEA Member State" — matches the claim's enumeration (incl. United States) character-for-character.
+        status: VERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: "fact-verifier-nl 2026-06-13"
+        sourceHash: "ac7125e031d2d2e880a87b630eeb4bcac33c97269944a811b3a5cd1da5caa290"
+        reviewBy: "2026-09-11"
+      - label: "What an MVV is"
+        text: "The MVV (machtiging tot voorlopig verblijf) is an entry visa for people who want to stay in the Netherlands for more than 90 days; it is a visa sticker (Type D) placed in the passport, used to travel to the Netherlands and pick up the residence permit."
+        sourceUrl: "https://ind.nl/en/provisional-residence-permit-mvv"
+        sourceName: "Immigration and Naturalisation Service (IND) — Provisional residence permit (MVV)"
+        # VERIFIED 2026-06-13 (fact-verifier): IND MVV page (LIVE, HTTP 200, sha256 0380c811...). Verbatim: "The MVV is an entry visa. This visa is intended for persons who want to stay in the Netherlands for more than 90 days. The MVV is a visa sticker (Type D) to be placed in your passport. With the MVV you can travel to the Netherlands and pick up your residence permit." The Dutch term "machtiging tot voorlopig verblijf or MVV" is named verbatim. Matches the claim character-for-character.
+        status: VERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: "fact-verifier-nl 2026-06-13"
+        sourceHash: "0380c811c79815c5aff48801bdd847f7bd75ba2467dab3653bf48f4d485c6533"
+        reviewBy: "2026-09-11"
+      - label: "You still need a residence permit"
+        text: "Being MVV-exempt removes only the entry visa; you still need a regular residence permit to stay longer than 90 days, applied for under your purpose of stay (work, family or study)."
+        sourceUrl: "https://ind.nl/en/provisional-residence-permit-mvv"
+        sourceName: "Immigration and Naturalisation Service (IND) — Provisional residence permit (MVV)"
+        # VERIFIED 2026-06-13 (fact-verifier): IND MVV page (LIVE, HTTP 200). Verbatim: "You want to stay in the Netherlands for more than 90 days and you need a regular residence permit." and "You apply for the MVV and the residence permit at the same time. Your sponsor in the Netherlands usually submits the application. This depends on your residence permit." — supports that the MVV exemption removes only the entry visa while the regular residence permit (under purpose of stay) is still required. Supported.
+        status: VERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: "fact-verifier-nl 2026-06-13"
+        sourceHash: "0380c811c79815c5aff48801bdd847f7bd75ba2467dab3653bf48f4d485c6533"
+        reviewBy: "2026-09-11"
+      - label: "Legal basis"
+        text: "The MVV obligation and its exemptions are governed by the Aliens Act (Vreemdelingenwet 2000), Article 2p, and the Aliens Act Implementation Guidelines (Vreemdelingencirculaire 2000), B1/3.3."
+        sourceUrl: "https://ind.nl/en/provisional-residence-permit-mvv"
+        sourceName: "Immigration and Naturalisation Service (IND) — Provisional residence permit (MVV)"
+        # VERIFIED 2026-06-13 (fact-verifier): IND MVV page (LIVE, HTTP 200), "Rules and regulations" footer verbatim: "Article 2p Aliens Act (Vreemdelingenwet 2000, only in Dutch)" and "B1/3.3 Aliens Act Implementation Guidelines (Vreemdelingencirculaire 2000, only in Dutch)" — matches "Aliens Act (Vreemdelingenwet 2000), Article 2p" and "Aliens Act Implementation Guidelines (Vreemdelingencirculaire 2000), B1/3.3" character-for-character.
+        status: VERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: "fact-verifier-nl 2026-06-13"
+        sourceHash: "0380c811c79815c5aff48801bdd847f7bd75ba2467dab3653bf48f4d485c6533"
+        reviewBy: "2026-09-11"
+    detail: >
+      The Netherlands' long-stay entry visa is the MVV (machtiging tot voorlopig verblijf),
+      a type-D sticker placed in the passport that nationals of most countries must obtain
+      at a Dutch embassy or consulate before travelling, then use to enter and collect their
+      residence permit. US nationals are exempt: the IND's MVV-exemptions page lists the
+      United States among the nationalities that do not need an MVV. This is the central
+      difference from many other corridors — there is no embassy MVV step for US citizens.
+      You still need a regular residence permit for any stay over 90 days, applied for under
+      your purpose of stay: for work, the recognised-sponsor employer applies (see the
+      highly-skilled-migrant and single-permit tasks); for study, the recognised education
+      institution applies; for family, the sponsor in the Netherlands applies. After a
+      positive decision you travel to the Netherlands and collect your residence permit
+      (see the collect-residence-document task), then register with your municipality.
+    steps:
+      - text: "Confirm your purpose of stay (work, family or study) — your residence permit is applied for under that purpose, and for work/study the sponsor (employer or institution) applies for you."
+        links:
+          - text: "IND — provisional residence permit (MVV): when it is and is not needed"
+            sourceUrl: "https://ind.nl/en/provisional-residence-permit-mvv"
+            sourceName: "Immigration and Naturalisation Service (IND) — Provisional residence permit (MVV)"
+            # VERIFIED 2026-06-13 (fact-verifier): IND MVV page (LIVE, HTTP 200). Correct page; sections "When is an MVV needed?" and "When is an MVV not needed?" — accurately described as "when it is and is not needed". Link accurate.
+            status: VERIFIED
+            lastVerified: "2026-06-13"
+            verifiedBy: "fact-verifier-nl 2026-06-13"
+            sourceHash: "0380c811c79815c5aff48801bdd847f7bd75ba2467dab3653bf48f4d485c6533"
+            reviewBy: "2026-09-11"
+      - text: "Confirm you are MVV-exempt as a US national, so no embassy entry-visa appointment is required for you."
+        tip: "Exemption is by nationality. If a family member travelling with you holds a different (non-exempt) nationality, check the MVV-exemptions page for their situation separately."
+        links:
+          - text: "IND — MVV exemptions: the United States is on the exemption list"
+            sourceUrl: "https://ind.nl/en/mvv-exemptions"
+            sourceName: "Immigration and Naturalisation Service (IND) — MVV exemptions"
+            # VERIFIED 2026-06-13 (fact-verifier): IND MVV-exemptions page (LIVE, HTTP 200). "United States" appears verbatim in the list of nationalities that "do not need an MVV". Link text accurate.
+            status: VERIFIED
+            lastVerified: "2026-06-13"
+            verifiedBy: "fact-verifier-nl 2026-06-13"
+            sourceHash: "ac7125e031d2d2e880a87b630eeb4bcac33c97269944a811b3a5cd1da5caa290"
+            reviewBy: "2026-09-11"
+      - text: "Once the residence permit is approved, travel to the Netherlands and collect it; then register with your municipality within 5 days of arrival."
+    documents:
+      - name: "Residence permit application (filed under your purpose of stay)"
+        type: form
+        description: "There is no MVV application for US citizens. The residence permit itself is applied for under your purpose of stay — by the recognised sponsor (employer/institution) for work/study, or by the sponsor in the Netherlands for family. We link the IND MVV page as the authority index that routes you to the right purpose-of-stay procedure."
+        form:
+          text: "As an MVV-exempt US national you do not file an MVV application. The residence permit is applied for under your purpose of stay: the recognised sponsor applies for work (see the highly-skilled-migrant and single-permit tasks) and for study (the education institution applies), and the sponsor in the Netherlands applies for family. Use the IND 'Provisional residence permit (MVV)' page to confirm the exemption and route to the correct purpose-of-stay procedure."
+          sourceUrl: "https://ind.nl/en/provisional-residence-permit-mvv"
+          sourceName: "Immigration and Naturalisation Service (IND) — Provisional residence permit (MVV)"
+          # VERIFIED 2026-06-13 (fact-verifier): IND MVV page (LIVE, HTTP 200). Confirms US nationals are MVV-exempt (United States is on the page's own exemption list) so no MVV application is filed, and that the residence permit is applied for under the purpose of stay: "You apply for the MVV and the residence permit at the same time. Your sponsor in the Netherlands usually submits the application. This depends on your residence permit." Using this page as the authority index that routes to the purpose-of-stay procedure is correct. Supported.
+          status: VERIFIED
+          lastVerified: "2026-06-13"
+          verifiedBy: "fact-verifier-nl 2026-06-13"
+          sourceHash: "0380c811c79815c5aff48801bdd847f7bd75ba2467dab3653bf48f4d485c6533"
+          reviewBy: "2026-09-11"
+      - name: "Valid US passport"
+        type: provide
+        description: "Your valid US passport — your identity and travel document; biometric data for the residence permit are captured in the Netherlands or as instructed by the IND."
+      - name: "Proof of your purpose of stay"
+        type: provide
+        description: "Documentation of the basis of your stay — for work, your employment contract; for study, the institution's enrolment; for family, the relationship and the sponsor's documents."
+    warning: >
+      MVV exemption is decided by nationality. A US passport exempts you, but a partner or
+      child travelling with you who holds a different, non-exempt nationality may still need
+      an MVV. Always check the IND MVV-exemptions page for each traveller's nationality.
+    dependsOn: []
+    # No appliesIf: applies to all covered routes (work, family, study).
+
+  # ---------------------------------------------------------------------------
+  - id: collect-residence-document
+    title: "Collect your residence permit (and give biometrics)"
+    category: visa-permit
+    summary:
+      text: "After the IND approves your application, you collect your residence permit (residence document) in the Netherlands: on arrival you make an online appointment to collect it in person from an IND desk. Biometric data — your signature and fingerprints — are recorded for the residence document. As an MVV-exempt US national you enter without an MVV entry-visa sticker, so this collection happens in the Netherlands."
+      sourceUrl: "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/employed-worker-netherlands_en"
+      sourceName: "European Commission — EU Immigration Portal: Employed worker (Netherlands)"
+      # RE-SOURCED 2026-06-13 (content-researcher): re-pointed the in-the-Netherlands collection element from the IND Apply-from-abroad page (which places biometrics at the embassy, cutting against the claim) to the EU Immigration Portal "Employed worker in the Netherlands" page, which states verbatim under "Further requirements / Upon arrival, you must: make an online appointment to collect the single permit in person from an Immigration and Naturalisation Service desk." Combined with the IND MVV-exemptions list (United States = no MVV), this supports an MVV-exempt US national collecting the residence document in the Netherlands after arrival. The bare biometrics (signature + fingerprints) fact remains separately sourced to the IND Apply-from-abroad page in the keyFact. Captured sources/us-nl/dd3dcb88.txt.
+      # VERIFIED 2026-06-13 (fact-verifier re-check): EU portal "Employed worker in the Netherlands" (LIVE, HTTP 200, sha256 dd3dcb88...). Verbatim under "Further requirements": "Upon arrival, you must: make an online appointment to collect the single permit in person from an Immigration and Naturalisation Service desk." This supports "on arrival you make an online appointment to collect it in person from an IND desk" and (with the US = no-MVV entry on the IND MVV-exemptions list, VERIFIED elsewhere in this file) the MVV-exempt-collect-in-NL framing. The summary's biometrics clause asserts only that signature+fingerprints are recorded for the residence document (no location claim) — supported by the sibling VERIFIED "Biometrics" keyFact (IND Apply-from-abroad page); no contradiction. [source: EU portal for the collect-on-arrival-in-NL rule — official EU source, stated plainly; biometrics cross-referenced to the IND-sourced sibling keyFact.]
+      status: VERIFIED
+      lastVerified: "2026-06-13"
+      verifiedBy: "fact-verifier-nl-r2 2026-06-13"
+      sourceHash: "dd3dcb88639750eb17b34ec77f2c8b19719ab0b5426ccecd481f1dfcda365516"
+      reviewBy: "2026-09-11"
+    tldr:
+      text: "Once your application is approved you receive a message about collecting your residence permit. On arrival in the Netherlands you make an online appointment to collect the residence document in person from an IND desk, and biometric data (signature and fingerprints) are recorded for it. Because you are MVV-exempt, you enter without an MVV sticker and collect the permit in the Netherlands."
+      sourceUrl: "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/employed-worker-netherlands_en"
+      sourceName: "European Commission — EU Immigration Portal: Employed worker (Netherlands)"
+      # RE-SOURCED 2026-06-13 (content-researcher): re-pointed from the IND Employing page (which has no biometrics / no in-NL-collection content) to the EU Immigration Portal "Employed worker in the Netherlands" page, which states verbatim "Upon arrival, you must: make an online appointment to collect the single permit in person from an Immigration and Naturalisation Service desk." With the MVV-exemptions list (US = no MVV), this supports MVV-exempt-in-NL collection. The "you receive a message about collecting your residence permit" element remains supportable on the IND Employing page; the load-bearing in-NL-collection element is now on a source that states it. Captured sources/us-nl/dd3dcb88.txt.
+      # VERIFIED 2026-06-13 (fact-verifier re-check): EU portal "Employed worker in the Netherlands" (LIVE, HTTP 200, sha256 dd3dcb88...). Verbatim: "Upon arrival, you must: make an online appointment to collect the single permit in person from an Immigration and Naturalisation Service desk." Supports the load-bearing in-NL collection element ("on arrival ... collect the residence document in person from an IND desk") and, with the US = no-MVV entry (IND MVV-exemptions, VERIFIED elsewhere), the MVV-exempt framing. Biometrics (signature+fingerprints) carries no location claim and is supported by the sibling VERIFIED "Biometrics" keyFact (IND). [source: EU portal for the collect-in-NL rule — official EU source, stated plainly; biometrics cross-referenced to the IND-sourced sibling.]
+      status: VERIFIED
+      lastVerified: "2026-06-13"
+      verifiedBy: "fact-verifier-nl-r2 2026-06-13"
+      sourceHash: "dd3dcb88639750eb17b34ec77f2c8b19719ab0b5426ccecd481f1dfcda365516"
+      reviewBy: "2026-09-11"
+    keyFacts:
+      - label: "Biometrics"
+        text: "Biometric data are recorded for the residence document: you provide your signature and fingerprints."
+        sourceUrl: "https://ind.nl/en/apply-for-mvv-and-residence-permit-from-abroad"
+        sourceName: "Immigration and Naturalisation Service (IND) — Apply for MVV and residence permit from abroad"
+        # VERIFIED 2026-06-13 (fact-verifier): IND Apply-from-abroad page (LIVE, HTTP 200, sha256 447492e7...). Verbatim: "will also take your biometric data: you have to provide your signature and fingerprints. These data are needed for the residence permit." The claim asserts only that biometric data (signature + fingerprints) are recorded for the residence document — supported character-for-character. (Claim makes no where-claim, so the abroad-vs-NL question does not affect it.)
+        status: VERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: "fact-verifier-nl 2026-06-13"
+        sourceHash: "447492e79c0d2df296c45f81d4b70f79f7d7e37ef997949ed8ade2caf8c58070"
+        reviewBy: "2026-09-11"
+      - label: "After a positive decision"
+        text: "After approval you collect your residence document in the Netherlands: on arrival you make an online appointment to collect it in person from an IND desk. As an MVV-exempt US national you enter without an MVV sticker, so this is the residence permit, collected in the Netherlands."
+        sourceUrl: "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/employed-worker-netherlands_en"
+        sourceName: "European Commission — EU Immigration Portal: Employed worker (Netherlands)"
+        # RE-SOURCED 2026-06-13 (content-researcher): re-pointed from the IND Employing page (no in-NL-collection content) to the EU Immigration Portal "Employed worker in the Netherlands" page, which states verbatim "Upon arrival, you must: make an online appointment to collect the single permit in person from an Immigration and Naturalisation Service desk." Combined with the MVV-exemptions list (US = no MVV), this supports an MVV-exempt US national collecting the residence document in the Netherlands. Recast the text to track the source's "upon arrival, collect in person from an IND desk" wording. Captured sources/us-nl/dd3dcb88.txt.
+        # VERIFIED 2026-06-13 (fact-verifier re-check): EU portal "Employed worker in the Netherlands" (LIVE, HTTP 200, sha256 dd3dcb88...). Verbatim: "Upon arrival, you must: make an online appointment to collect the single permit in person from an Immigration and Naturalisation Service desk." Supports "After approval you collect your residence document in the Netherlands: on arrival you make an online appointment to collect it in person from an IND desk" character-for-character; the MVV-exempt-US framing follows from the IND MVV-exemptions list (US = no MVV, VERIFIED elsewhere in this file). [source: EU portal — official EU source; states the collect-in-NL-on-arrival rule plainly, so it carries it.]
+        status: VERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: "fact-verifier-nl-r2 2026-06-13"
+        sourceHash: "dd3dcb88639750eb17b34ec77f2c8b19719ab0b5426ccecd481f1dfcda365516"
+        reviewBy: "2026-09-11"
+    detail: >
+      The residence document is the physical proof of your right to live in the Netherlands.
+      The IND records biometric data — your signature and fingerprints — for the document.
+      After a positive decision the IND sends a message about collecting your permit. For
+      nationals who needed an MVV, biometrics are taken at the Dutch embassy or consulate and
+      the residence permit is collected after entry; as an MVV-exempt US national you instead
+      complete this in the Netherlands. Collect your residence permit promptly and keep it
+      with you — you will need it for municipal registration, opening a bank account and
+      arranging health insurance.
+    steps:
+      - text: "Wait for the IND's message confirming the positive decision and explaining how and where to collect your residence permit."
+        links:
+          - text: "IND — employing a foreign national: the decision and collecting the permit"
+            sourceUrl: "https://ind.nl/en/residence-permits/work/employing-a-foreign-national"
+            sourceName: "Immigration and Naturalisation Service (IND) — Employing a foreign national"
+            # VERIFIED 2026-06-13 (fact-verifier): IND Employing page (LIVE, HTTP 200). Instruction video step 5 verbatim: "If the decision is positive, you will receive a message about collecting the mvv or residence permit." — supports the "wait for the IND's message confirming the positive decision and how/where to collect" step. Link accurate. (The step text makes no MVV-exempt-in-NL where-claim, unlike the kicked-back keyFact/summary.)
+            status: VERIFIED
+            lastVerified: "2026-06-13"
+            verifiedBy: "fact-verifier-nl 2026-06-13"
+            sourceHash: "46506145b47cb3139c5f90a94dd3a17e30ff6afc3cfbc34383e9014ffa719e47"
+            reviewBy: "2026-09-11"
+      - text: "Attend the IND appointment to give biometrics (signature and fingerprints) and collect your residence document."
+        links:
+          - text: "IND — biometric data (signature and fingerprints) are recorded for the residence document"
+            sourceUrl: "https://ind.nl/en/apply-for-mvv-and-residence-permit-from-abroad"
+            sourceName: "Immigration and Naturalisation Service (IND) — Apply for MVV and residence permit from abroad"
+            # VERIFIED 2026-06-13 (fact-verifier): IND Apply-from-abroad page (LIVE, HTTP 200). Verbatim: "take your biometric data: you have to provide your signature and fingerprints. These data are needed for the residence permit." — supports the link text "biometric data (signature and fingerprints) are recorded for the residence document" character-for-character. Link accurate.
+            status: VERIFIED
+            lastVerified: "2026-06-13"
+            verifiedBy: "fact-verifier-nl 2026-06-13"
+            sourceHash: "447492e79c0d2df296c45f81d4b70f79f7d7e37ef997949ed8ade2caf8c58070"
+            reviewBy: "2026-09-11"
+    documents:
+      - name: "Valid US passport"
+        type: provide
+        description: "Your valid US passport, used to verify your identity when biometrics are captured and the residence document is issued."
+      - name: "IND decision letter / collection message"
+        type: provide
+        description: "The IND's positive-decision message telling you how and where to collect your residence permit."
+      - name: "Passport photo as specified by the IND"
+        type: provide
+        description: "A passport photo to the IND's specification, if requested for the residence document."
+    cost:
+      text: "Issuing the residence document is part of the IND application fee for your residence permit; the fee is set by the IND and adjusted annually. Confirm the current amount on the IND fees page."
+      sourceUrl: "https://ind.nl/en/fees-costs-of-an-application"
+      sourceName: "Immigration and Naturalisation Service (IND) — Fees: costs of an application"
+      # VERIFIED 2026-06-13 (fact-verifier): IND Fees page (LIVE, HTTP 200). The page is the single fee schedule per application (no separate residence-document issuance fee is listed — issuance is part of the application fee), and annual-adjustment is verbatim: "The fees are changed each year on January 1." No figure quoted in the claim. Supported.
+      status: VERIFIED
+      lastVerified: "2026-06-13"
+      verifiedBy: "fact-verifier-nl 2026-06-13"
+      sourceHash: "18e1d6cacc78bf9c1fd8b034cc1de934e28bfe757f9b5e6b9115a1a6b01da73f"
+      reviewBy: "2026-07-13"
+    dependsOn:
+      - entry-residence-permit
+
+  # ---------------------------------------------------------------------------
+  - id: register-municipality-brp
+    title: "Register with your municipality (BRP) and get your BSN"
+    category: registration-bureaucracy
+    summary:
+      text: "If you will live in the Netherlands for longer than 4 months you must register with the municipality where you live in the Personal Records Database (Basisregistratie Personen, BRP). Everyone who registers with the BRP is automatically given a citizen service number (burgerservicenummer, BSN) — the personal number you use for all dealings with the Dutch government, healthcare and your employer."
+      sourceUrl: "https://www.government.nl/topics/personal-data/citizen-service-number-bsn"
+      sourceName: "Government of the Netherlands — Citizen service number (BSN)"
+      # VERIFIED 2026-06-13 (fact-verifier): government.nl BSN page re-fetched LIVE (curl, HTTP 200, sha256 eddfed34..., unchanged). Verbatim: "The citizen service number (BSN) is a unique personal number allocated to everyone registered in the Personal Records Database (BRP). Everyone who registers with the BRP is automatically given a BSN." and "You can use your BSN for any government service" + "Recognised care providers like general practice doctors and health insurance companies have to use the BSN." The >4-month resident-registration threshold is verbatim on the companion BRP page ("People who live in the Netherlands for less than 4 months ... can also be registered"). Supports the BSN-on-registration + use-for-government/healthcare/employer claim.
+      status: VERIFIED
+      lastVerified: "2026-06-13"
+      verifiedBy: "fact-verifier-nl 2026-06-13"
+      sourceHash: "eddfed340d645855617ca0cb2657a5b739e9c39f7871e09d5fe6b828cdeec6d2"
+      reviewBy: "2026-09-11"
+    tldr:
+      text: "Living in the Netherlands for more than 4 months means registering as a resident with your municipality in the Personal Records Database (BRP). Registration automatically gives you a citizen service number (BSN) — the single number you need for the tax office, healthcare, your salary and almost everything official. You cannot work, get health insurance or open a bank account smoothly without it."
+      sourceUrl: "https://www.government.nl/topics/personal-data/citizen-service-number-bsn"
+      sourceName: "Government of the Netherlands — Citizen service number (BSN)"
+      # VERIFIED 2026-06-13 (fact-verifier): government.nl BSN page (LIVE, HTTP 200). "Everyone who registers with the BRP is automatically given a BSN" + "You can use your BSN for any government service in the Netherlands" are verbatim; healthcare ("health insurance companies have to use the BSN") and the >4-month resident threshold (companion BRP page) support the rest. The "cannot work/get insurance/open a bank account smoothly without it" is a reasonable practical characterisation of "you use your BSN for any government service ... healthcare" — not an overstatement. Supported.
+      status: VERIFIED
+      lastVerified: "2026-06-13"
+      verifiedBy: "fact-verifier-nl 2026-06-13"
+      sourceHash: "eddfed340d645855617ca0cb2657a5b739e9c39f7871e09d5fe6b828cdeec6d2"
+      reviewBy: "2026-09-11"
+    keyFacts:
+      - label: "Who must register"
+        text: "People who live in the Netherlands as residents have their personal data recorded in the BRP by their municipality; those staying less than 4 months can instead register as non-residents in the RNI."
+        sourceUrl: "https://www.government.nl/topics/personal-data/personal-records-database-brp"
+        sourceName: "Government of the Netherlands — Personal Records Database (BRP)"
+        # VERIFIED 2026-06-13 (fact-verifier): government.nl BRP page (LIVE, HTTP 200, sha256 88dbec01...). Verbatim: "Municipalities record the personal data of all residents in the BRP." and "People who are in the Netherlands for less than 4 months – for example, for work or study – can also register as non-residents with the RNI. They will need a citizen service number (BSN), which they get when they register." Supports residents-recorded-in-BRP + <4-months-can-register-in-RNI character-for-character.
+        status: VERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: "fact-verifier-nl 2026-06-13"
+        sourceHash: "88dbec0123c2a2ccb9021f18c776d1c7c26c86a3b14ee4dd87eb24c6cfc4a234"
+        reviewBy: "2026-09-11"
+      - label: "BSN issued on registration"
+        text: "“The citizen service number (BSN) is a unique personal number allocated to everyone registered in the Personal Records Database (BRP). Everyone who registers with the BRP is automatically given a BSN.”"
+        sourceUrl: "https://www.government.nl/topics/personal-data/citizen-service-number-bsn"
+        sourceName: "Government of the Netherlands — Citizen service number (BSN)"
+        # VERIFIED 2026-06-13 (fact-verifier): government.nl BSN page (LIVE, HTTP 200). The quoted sentence appears verbatim on the page: "The citizen service number (BSN) is a unique personal number allocated to everyone registered in the Personal Records Database (BRP). Everyone who registers with the BRP is automatically given a BSN." Exact match.
+        status: VERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: "fact-verifier-nl 2026-06-13"
+        sourceHash: "eddfed340d645855617ca0cb2657a5b739e9c39f7871e09d5fe6b828cdeec6d2"
+        reviewBy: "2026-09-11"
+      - label: "Why the BSN matters"
+        text: "You use your BSN for any government service in the Netherlands; recognised care providers and health insurers must use it, and it is also used in education (where it is called the personal identification number, PGN)."
+        sourceUrl: "https://www.government.nl/topics/personal-data/citizen-service-number-bsn"
+        sourceName: "Government of the Netherlands — Citizen service number (BSN)"
+        # VERIFIED 2026-06-13 (fact-verifier): government.nl BSN page (LIVE, HTTP 200). Verbatim: "You can use your BSN for any government service in the Netherlands." + "Recognised care providers like general practice doctors and health insurance companies have to use the BSN." + "The BSN is also used in education, where it is called the personal identification number (PGN)." Matches the claim character-for-character.
+        status: VERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: "fact-verifier-nl 2026-06-13"
+        sourceHash: "eddfed340d645855617ca0cb2657a5b739e9c39f7871e09d5fe6b828cdeec6d2"
+        reviewBy: "2026-09-11"
+      - label: "Deadline"
+        text: "The registration deadline is set by your municipality, so always confirm it locally. The City of Amsterdam, for example, requires you to visit a City Office within 5 days of your arrival if you move there from abroad for more than 4 months; book your municipal appointment as soon as you have an address."
+        sourceUrl: "https://www.amsterdam.nl/en/civil-affairs/first-registration/"
+        sourceName: "City of Amsterdam — Moving from abroad (immigration)"
+        # RE-SOURCED 2026-06-13 (content-researcher): the prior government.nl BRP page does NOT state any registration deadline. The "5 days" figure is set per municipality (the BRP procedure is run locally), so re-pointed to an official municipal source — the City of Amsterdam "Moving from abroad (immigration)" page, which states verbatim "If you move to Amsterdam from abroad for more than 4 months, you must register with the City. Visit a City Office within 5 days of your arrival." Recast to attribute the 5-day figure explicitly to a municipality (Amsterdam, as an example) rather than to generic "government guidance", and kept the confirm-with-your-municipality hedge since the deadline varies locally. Captured sources/us-nl/93934484.txt.
+        # VERIFIED 2026-06-13 (fact-verifier re-check): City of Amsterdam "Moving from abroad (immigration)" page re-fetched LIVE (curl, HTTP 200, no redirect; sha256 93934484...). Verbatim: "If you move to Amsterdam from abroad for more than 4 months, you must register with the City. Visit a City Office within 5 days of your arrival." Supports "The City of Amsterdam ... requires you to visit a City Office within 5 days of your arrival if you move there from abroad for more than 4 months" character-for-character (5 days; >4 months). The claim correctly frames this as a municipality-specific example and keeps the "confirm it locally" hedge (deadline is set per municipality). [source: City of Amsterdam — an official municipal source; appropriate to carry a load-bearing municipal deadline, and explicitly attributed as one municipality's rule.]
+        status: VERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: "fact-verifier-nl-r2 2026-06-13"
+        sourceHash: "93934484a472ad1db36954acbe54de5087ef089ed28d6f0f31deb1fb55a26a38"
+        reviewBy: "2026-09-11"
+      - label: "Legal basis"
+        text: "The BRP was established by the Personal Records Database Act (Wet basisregistratie personen), which took effect on 6 January 2014; rules on using and accessing BRP data are set out in that Act."
+        sourceUrl: "https://www.government.nl/topics/personal-data/personal-records-database-brp"
+        sourceName: "Government of the Netherlands — Personal Records Database (BRP)"
+        # VERIFIED 2026-06-13 (fact-verifier): government.nl BRP page (LIVE, HTTP 200). Verbatim: "The BRP was established by the Personal Records Database Act, which took effect on 6 January 2014." and "Rules on using or viewing data stored in the BRP are set out in the Personal Records Database Act." Date and Act match character-for-character. (Page uses the English name "Personal Records Database Act"; the Dutch "Wet basisregistratie personen" in the claim is the standard official Dutch title of the same Act.)
+        status: VERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: "fact-verifier-nl 2026-06-13"
+        sourceHash: "88dbec0123c2a2ccb9021f18c776d1c7c26c86a3b14ee4dd87eb24c6cfc4a234"
+        reviewBy: "2026-09-11"
+    detail: >
+      Registering with your municipality is the administrative anchor of life in the
+      Netherlands. If you will live here for more than 4 months you register as a resident
+      in the Personal Records Database (BRP) at the municipality where you live; municipalities
+      record residents' personal data (address, marriage, births) in the BRP. Registration
+      automatically produces your citizen service number (BSN), the personal number used for
+      every government service, by health insurers and care providers (who are legally
+      required to use it), by your employer for payroll, and in education (as the PGN). Without
+      a BSN you cannot smoothly work, take out health insurance, or open a bank account, so
+      register promptly. You make an appointment at the municipality and bring identity and
+      address documents; confirm the exact deadline and document list with your municipality,
+      as the procedure is run locally.
+    steps:
+      - text: "Arrange an address in the Netherlands and make an appointment at your municipality (gemeente) to register in the BRP."
+      - text: "Register in person, bringing your passport, your residence document, proof of your address, and civil-status documents (e.g. a marriage or birth certificate) if registering family members."
+        tip: "Bring legalised/translated civil-status documents (marriage, birth) where required — ask your municipality in advance which documents and translations it needs."
+        links:
+          - text: "Government of the Netherlands — Personal Records Database (BRP): residents and the 4-month threshold"
+            sourceUrl: "https://www.government.nl/topics/personal-data/personal-records-database-brp"
+            sourceName: "Government of the Netherlands — Personal Records Database (BRP)"
+            # VERIFIED 2026-06-13 (fact-verifier): government.nl BRP page (LIVE, HTTP 200). Correct page; states residents are recorded in the BRP and "People who are in the Netherlands for less than 4 months ... can also register as non-residents with the RNI" — the residents / 4-month threshold the link text references. Link accurate.
+            status: VERIFIED
+            lastVerified: "2026-06-13"
+            verifiedBy: "fact-verifier-nl 2026-06-13"
+            sourceHash: "88dbec0123c2a2ccb9021f18c776d1c7c26c86a3b14ee4dd87eb24c6cfc4a234"
+            reviewBy: "2026-09-11"
+      - text: "Receive your citizen service number (BSN) on registration; use it for the tax office, health insurance, your employer and other official matters."
+        links:
+          - text: "Government of the Netherlands — citizen service number (BSN): issued automatically on BRP registration"
+            sourceUrl: "https://www.government.nl/topics/personal-data/citizen-service-number-bsn"
+            sourceName: "Government of the Netherlands — Citizen service number (BSN)"
+            # VERIFIED 2026-06-13 (fact-verifier): government.nl BSN page (LIVE, HTTP 200). Verbatim: "Everyone who registers with the BRP is automatically given a BSN." — supports "issued automatically on BRP registration". Link accurate.
+            status: VERIFIED
+            lastVerified: "2026-06-13"
+            verifiedBy: "fact-verifier-nl 2026-06-13"
+            sourceHash: "eddfed340d645855617ca0cb2657a5b739e9c39f7871e09d5fe6b828cdeec6d2"
+            reviewBy: "2026-09-11"
+    documents:
+      - name: "Municipal registration (BRP) — make an appointment at your gemeente"
+        type: form
+        description: "Registration in the BRP is done in person at your municipality (gemeente); there is no single national form — each municipality runs the appointment and tells you what to bring. We link the official BRP overview as the authority page."
+        form:
+          text: "There is no single national BRP registration form — you register in person at the municipality (gemeente) where you live, by appointment, and the municipality records your data in the BRP and issues your BSN. Use the official Government of the Netherlands BRP page as the authority overview and your municipality's website for the local appointment and document list."
+          sourceUrl: "https://www.government.nl/topics/personal-data/personal-records-database-brp"
+          sourceName: "Government of the Netherlands — Personal Records Database (BRP)"
+          # VERIFIED 2026-06-13 (fact-verifier): government.nl BRP page (LIVE, HTTP 200). Confirms municipalities (not a national form) record residents' data: "Municipalities record the personal data of all residents in the BRP." and BSN is issued on registration (companion BSN page: "Everyone who registers with the BRP is automatically given a BSN."). Using this page as the authority overview, with the municipality's own site for the local appointment/document list, is correct. Supported.
+          status: VERIFIED
+          lastVerified: "2026-06-13"
+          verifiedBy: "fact-verifier-nl 2026-06-13"
+          sourceHash: "88dbec0123c2a2ccb9021f18c776d1c7c26c86a3b14ee4dd87eb24c6cfc4a234"
+          reviewBy: "2026-09-11"
+      - name: "Valid US passport"
+        type: provide
+        description: "Your valid US passport as proof of identity and nationality."
+      - name: "Residence document / proof of right to reside"
+        type: provide
+        description: "Your residence permit (or proof your application has been approved) showing your right to live in the Netherlands."
+      - name: "Proof of address in the Netherlands"
+        type: provide
+        description: "Your rental contract or a written statement from the main occupant of your address; the municipality registers you at this address."
+      - name: "Civil-status documents for family members"
+        type: provide
+        description: "Marriage and birth certificates (often legalised/translated) if you are registering a spouse or children — confirm the format with your municipality."
+    dependsOn:
+      - collect-residence-document
+    # No appliesIf: every resident on every route must register and get a BSN.
+
+  # ---------------------------------------------------------------------------
+  - id: health-insurance-zvw
+    title: "Take out mandatory Dutch health insurance (Zvw)"
+    category: healthcare-insurance
+    summary:
+      text: "Anyone who lives or works in the Netherlands must take out healthcare insurance under the Healthcare Insurance Act (Zorgverzekeringswet, Zvw). As a new arrival you must take out Dutch health insurance within four months of your arrival in the Netherlands. Important: you cannot take out Dutch health insurance until a decision has been taken on your residence permit application, so hold foreign or international cover until then."
+      sourceUrl: "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/employed-worker-netherlands_en"
+      sourceName: "European Commission — EU Immigration Portal: Employed worker (Netherlands)"
+      # RE-SOURCED 2026-06-13 (content-researcher): the prior government.nl page states the deadline as "within four months of your PERMANENT residence permit coming into force" — the draft had dropped "permanent", broadening the rule. Rather than re-introduce the "permanent" qualifier (which would mis-state the deadline for a first/temporary permit holder), re-pointed the general new-arrival rule to the EU Immigration Portal "Employed worker in the Netherlands" page, which states verbatim "take out health insurance within 4 months following your arrival in the Netherlands." Recast the deadline to the arrival-based wording the source supports. The compulsory-Zvw clause stays sourced to business.gov.nl in the "Compulsory" keyFact, and the no-Dutch-cover-before-a-decision clause stays sourced to government.nl in its own keyFact; the verbatim "permanent residence permit" wording remains separately preserved in the VERIFIED "Deadline (4 months)" keyFact. Captured sources/us-nl/dd3dcb88.txt.
+      # KICKED BACK 2026-06-13 (fact-verifier re-check): CONTRADICTORY DEADLINES IN THE SAME TASK — human reconciliation required. The cited EU portal page WAS re-fetched LIVE (HTTP 200, sha256 dd3dcb88...) and DOES state the asserted deadline verbatim: "take out health insurance within 4 months following your arrival in the Netherlands." So the source is reachable and supports the literal text. BUT this task's own VERIFIED "Deadline (4 months)" keyFact, sourced to government.nl (Health insurance and residence permit), states a DIFFERENT trigger verbatim: "within four months of your permanent residence permit coming into force." Arrival vs permanent-permit-coming-into-force are materially different dates — especially for an MVV-exempt US national who arrives first and holds a (temporary) first permit, never a "permanent" one at this stage. Publishing two different legal deadlines for the same obligation in one task is exactly the catastrophic-fee-class risk CLAUDE.md guards against; uncertainty is cheap. Flagging rather than verifying so the researcher/founder reconciles which deadline applies to this corridor (and whether the EU-portal "arrival" framing or the government.nl "permanent permit" framing governs). NOTE for the researcher: the EU portal IS an official EU source and does state the arrival-based rule — the kickback is the internal contradiction, not the source's reachability or wording. Also note the summary's compulsory-Zvw and no-cover-before-a-decision clauses are NOT on the cited EU portal page (they rely on sibling keyFacts); if re-sourced, ensure each clause's own sourceUrl supports it.
+      status: UNVERIFIED
+      lastVerified: "2026-06-13"
+      verifiedBy: ""
+      reviewBy: "2026-09-11"
+    tldr:
+      text: "Dutch health insurance is compulsory for everyone who lives or works in the Netherlands (the Zvw). As a new arrival you must take out a Dutch policy within four months of arriving in the Netherlands. You cannot buy Dutch health insurance before your permit is decided, so arrange bridging cover for the gap and switch once the permit is in force."
+      sourceUrl: "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/employed-worker-netherlands_en"
+      sourceName: "European Commission — EU Immigration Portal: Employed worker (Netherlands)"
+      # RE-SOURCED 2026-06-13 (content-researcher): same fix as this task's summary — re-pointed the 4-month deadline from the government.nl page (which says "within four months of your PERMANENT residence permit coming into force") to the EU Immigration Portal "Employed worker in the Netherlands" page, which states verbatim "take out health insurance within 4 months following your arrival in the Netherlands." Recast to the arrival-based wording the source supports. The compulsory-Zvw and no-Dutch-cover-before-a-decision clauses remain sourced in their own keyFacts. Captured sources/us-nl/dd3dcb88.txt.
+      # KICKED BACK 2026-06-13 (fact-verifier re-check): same contradiction as this task's summary. The cited EU portal page (LIVE, HTTP 200, sha256 dd3dcb88...) DOES state "take out health insurance within 4 months following your arrival in the Netherlands" verbatim — but it contradicts this task's VERIFIED "Deadline (4 months)" keyFact (government.nl): "within four months of your permanent residence permit coming into force." Two materially different deadlines (arrival vs permanent-permit-in-force) for the same obligation cannot both be presented to a relocating user; a wrong deadline is catastrophic, so this is flagged for human reconciliation rather than verified. The EU portal is an official EU source and the kickback is the internal contradiction, not the source. (Compulsory-Zvw and no-cover-before-a-decision clauses are also not on the cited EU portal page — handle per the summary note if re-sourced.)
+      status: UNVERIFIED
+      lastVerified: "2026-06-13"
+      verifiedBy: ""
+      reviewBy: "2026-09-11"
+    keyFacts:
+      - label: "Compulsory"
+        text: "“Anyone who lives or works in the Netherlands must take out healthcare insurance under the Healthcare Insurance Act (Zorgverzekeringswet, Zvw).” This includes employees, entrepreneurs and the self-employed."
+        sourceUrl: "https://business.gov.nl/regulations/health-care-insurance/"
+        sourceName: "Netherlands Enterprise Agency (business.gov.nl) — Taking out compulsory healthcare insurance"
+        # VERIFIED 2026-06-13 (fact-verifier): business.gov.nl healthcare-insurance page (LIVE, HTTP 200, sha256 00fee87d...). The quoted sentence appears verbatim: "Anyone who lives or works in the Netherlands must take out healthcare insurance under the Healthcare Insurance Act (Zorgverzekeringswet, Zvw). This includes entrepreneurs and self-employed professionals." The quoted first sentence is exact; the trailing enumeration adds "employees" (the page lists "entrepreneurs and self-employed professionals"), which is encompassed by "Anyone who lives or works" — immaterial, the load-bearing quoted sentence is verbatim.
+        status: VERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: "fact-verifier-nl 2026-06-13"
+        sourceHash: "00fee87d9c1e9cdda69a4b99091db677b79f0452b281c7342f4f3fa313b57ee5"
+        reviewBy: "2026-09-11"
+      - label: "Deadline (4 months)"
+        text: "“You must take out Dutch health insurance within four months of your permanent residence permit coming into force. Your health insurance policy must be effective from the date your residence permit comes into force.”"
+        sourceUrl: "https://www.government.nl/topics/health-insurance/health-insurance-and-residence-permit"
+        sourceName: "Government of the Netherlands — Health insurance and residence permit"
+        # VERIFIED 2026-06-13 (fact-verifier): government.nl Health-insurance-and-residence-permit page (LIVE, HTTP 200, sha256 e4ac43fb...). The quoted text appears verbatim, INCLUDING the "permanent" qualifier: "You must take out Dutch health insurance within four months of your permanent residence permit coming into force. Your health insurance policy must be effective from the date your residence permit comes into force." This keyFact preserves "permanent" exactly — matches the source character-for-character. (NB: this task's summary/tldr drop "permanent" and were kicked back; this keyFact is correct.)
+        status: VERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: "fact-verifier-nl 2026-06-13"
+        sourceHash: "e4ac43fbc9590c1abc693ec695c42cf48dea0aeeb3a761ac91cbd363314fbe4b"
+        reviewBy: "2026-09-11"
+      - label: "Not before your permit is decided"
+        text: "“If a decision has not been taken on your application for a residence permit, you cannot take out health insurance in the Netherlands” — so arrange foreign/international cover for the interim period."
+        sourceUrl: "https://www.government.nl/topics/health-insurance/health-insurance-and-residence-permit"
+        sourceName: "Government of the Netherlands — Health insurance and residence permit"
+        # VERIFIED 2026-06-13 (fact-verifier): government.nl page (LIVE, HTTP 200). The quoted sentence appears verbatim: "If a decision has not been taken on your application for a residence permit, you cannot take out health insurance in the Netherlands, not even if you have an authorisation for temporary stay." The page also describes foreign/international cover for the interim ("Foreign or international insurance ... Some healthcare insurers offer policies to people who move to the Netherlands"). Supported.
+        status: VERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: "fact-verifier-nl 2026-06-13"
+        sourceHash: "e4ac43fbc9590c1abc693ec695c42cf48dea0aeeb3a761ac91cbd363314fbe4b"
+        reviewBy: "2026-09-11"
+      - label: "What it covers / risk excess"
+        text: "The mandatory basic package covers default healthcare (GP, hospital, pharmacy). Dutch health insurance is subject to a mandatory risk excess (eigen risico) set annually by the government; some care, such as the GP and maternity care, is exempt from the excess."
+        sourceUrl: "https://business.gov.nl/regulations/health-care-insurance/"
+        sourceName: "Netherlands Enterprise Agency (business.gov.nl) — Taking out compulsory healthcare insurance"
+        # VERIFIED 2026-06-13 (fact-verifier): business.gov.nl page (LIVE, HTTP 200). Verbatim: "The mandatory basic package of the healthcare insurance. This will cover the default healthcare provided for instance by a general practitioner, hospital, or pharmacy." and "Healthcare insurance in the Netherlands is subject to a mandatory risk excess (eigen risico)... The excess rate is set annually by the government... Some healthcare is exempt from the excess rate. Such as care received from a general practitioner, or obstetric and maternity care." Matches "basic package covers GP/hospital/pharmacy" + "mandatory risk excess (eigen risico) set annually by the government; GP and maternity care exempt" character-for-character.
+        status: VERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: "fact-verifier-nl 2026-06-13"
+        sourceHash: "00fee87d9c1e9cdda69a4b99091db677b79f0452b281c7342f4f3fa313b57ee5"
+        reviewBy: "2026-09-11"
+    detail: >
+      Dutch health insurance is not optional: under the Healthcare Insurance Act (Zvw),
+      anyone who lives or works in the Netherlands must take out a basic policy from a Dutch
+      insurer, even if they already hold insurance abroad. For permit holders the timing is
+      specific: you have four months from the date your residence permit comes into force to
+      take out a policy, and that policy must be effective from the permit's start date — if
+      it starts retroactively you pay the premium retroactively. A crucial catch for new
+      arrivals: you cannot buy Dutch health insurance until a decision has been taken on your
+      residence permit, so you need foreign or international cover for the period between
+      arrival and your permit coming into force. The basic package covers GP, hospital and
+      pharmacy care; a mandatory risk excess (eigen risico) applies each year, with some
+      care (GP, maternity) exempt. Depending on income you may be able to claim healthcare
+      benefit (zorgtoeslag) from the Tax Administration.
+    steps:
+      - text: "While your residence permit is pending, hold foreign or international health insurance that covers you in the Netherlands — you cannot take out a Dutch policy until your permit is decided."
+        links:
+          - text: "Government of the Netherlands — health insurance and residence permit: no Dutch cover before a decision"
+            sourceUrl: "https://www.government.nl/topics/health-insurance/health-insurance-and-residence-permit"
+            sourceName: "Government of the Netherlands — Health insurance and residence permit"
+            # VERIFIED 2026-06-13 (fact-verifier): government.nl page (LIVE, HTTP 200). Verbatim: "If a decision has not been taken on your application for a residence permit, you cannot take out health insurance in the Netherlands" — supports the link text "no Dutch cover before a decision". Link accurate.
+            status: VERIFIED
+            lastVerified: "2026-06-13"
+            verifiedBy: "fact-verifier-nl 2026-06-13"
+            sourceHash: "e4ac43fbc9590c1abc693ec695c42cf48dea0aeeb3a761ac91cbd363314fbe4b"
+            reviewBy: "2026-09-11"
+      - text: "Once your residence permit is in force, take out a Dutch basic health insurance policy within four months, effective from the permit's start date."
+        tip: "You need your BSN to take out a policy, so register with your municipality first. Compare insurers' basic-package prices; the basic package is standardised by law."
+        links:
+          - text: "business.gov.nl — compulsory Dutch healthcare insurance (Zvw) for everyone who lives or works in the Netherlands"
+            sourceUrl: "https://business.gov.nl/regulations/health-care-insurance/"
+            sourceName: "Netherlands Enterprise Agency (business.gov.nl) — Taking out compulsory healthcare insurance"
+            # VERIFIED 2026-06-13 (fact-verifier): business.gov.nl page (LIVE, HTTP 200). Verbatim: "Anyone who lives or works in the Netherlands must take out healthcare insurance under the Healthcare Insurance Act (Zorgverzekeringswet, Zvw)." — supports the link text "compulsory Dutch healthcare insurance (Zvw) for everyone who lives or works in the Netherlands". Link accurate.
+            status: VERIFIED
+            lastVerified: "2026-06-13"
+            verifiedBy: "fact-verifier-nl 2026-06-13"
+            sourceHash: "00fee87d9c1e9cdda69a4b99091db677b79f0452b281c7342f4f3fa313b57ee5"
+            reviewBy: "2026-09-11"
+    documents:
+      - name: "Dutch health insurance policy (taken out with an insurer)"
+        type: form
+        description: "You take out the basic-package policy directly with a Dutch health insurer of your choice — there is no government form. We link the official overview as the authority page."
+        form:
+          text: "There is no government application form for health insurance — you take out a basic-package policy directly with a Dutch health insurer of your choice, using your BSN, effective from the date your residence permit comes into force. Use the official Government of the Netherlands health-insurance-and-residence-permit page as the authority overview of the rules and timing."
+          sourceUrl: "https://www.government.nl/topics/health-insurance/health-insurance-and-residence-permit"
+          sourceName: "Government of the Netherlands — Health insurance and residence permit"
+          # VERIFIED 2026-06-13 (fact-verifier): government.nl page (LIVE, HTTP 200). The "effective from the date your residence permit comes into force" element is verbatim: "Your health insurance policy must be effective from the date your residence permit comes into force." There is indeed no government application form on the page (you take out a policy with an insurer); BSN-required-for-a-policy is supported by the BSN page ("health insurance companies have to use the BSN"). This form claim does NOT restate the 4-month deadline, so the "permanent" wording issue (which kicked back the summary/tldr) does not arise here. Supported.
+          status: VERIFIED
+          lastVerified: "2026-06-13"
+          verifiedBy: "fact-verifier-nl 2026-06-13"
+          sourceHash: "e4ac43fbc9590c1abc693ec695c42cf48dea0aeeb3a761ac91cbd363314fbe4b"
+          reviewBy: "2026-09-11"
+      - name: "Citizen service number (BSN)"
+        type: provide
+        description: "Your BSN, obtained on municipal registration — health insurers are legally required to use it."
+      - name: "Residence document"
+        type: provide
+        description: "Your residence permit, showing the date it comes into force (the date from which your policy must be effective)."
+    warning: >
+      You cannot take out Dutch health insurance until your residence permit application has
+      been decided, but once the permit is in force you have only four months to take out a
+      policy, effective from the permit's start date. Keep foreign/international cover for the
+      gap and switch to a Dutch policy as soon as your permit is in force.
+    dependsOn:
+      - register-municipality-brp
+
+  # ---------------------------------------------------------------------------
+  - id: tax-30-ruling
+    title: "Check if you qualify for the 30% expat tax ruling"
+    category: taxes
+    summary:
+      text: "The expat scheme (commonly called the 30% ruling) lets an employer pay an incoming employee a percentage of their salary tax-free to compensate for the extra costs of moving to the Netherlands. The employer must apply to the Tax Administration (Belastingdienst). Key conditions: you were recruited from abroad and lived more than 150 kilometres from the Dutch border for more than 16 of the 24 months before your first working day, you have specific expertise that is scarce in the Dutch labour market, and you earn a minimum salary reflecting that expertise."
+      sourceUrl: "https://business.gov.nl/staff/employing-staff/the-expat-scheme-30-percent-ruling-in-the-netherlands/"
+      sourceName: "Netherlands Enterprise Agency (business.gov.nl) — The expat scheme (30% ruling)"
+      # VERIFIED 2026-06-13 (fact-verifier): business.gov.nl 30%-ruling page re-fetched LIVE (curl, HTTP 200, sha256 bde437a8..., unchanged). Verbatim support: "The expat scheme is a tax advantage. It compensates for costs the expat has when moving to the Netherlands" / "formerly known as the 30% ruling"; "The employee must be recruited from abroad or transferred within a multinational company"; "The employee must have lived more than 150 kilometres away from the Dutch borders for more than 16 months of the 24 months before starting their first working day in the Netherlands"; "specific expertise that is scarce in the Dutch labour market"; "must earn a certain minimum wage which reflects their expertise. This is called the toetsloon"; "To apply for the expat scheme ... you first need approval from the Tax Administration." All conditions in the summary match character-for-character.
+      status: VERIFIED
+      lastVerified: "2026-06-13"
+      verifiedBy: "fact-verifier-nl 2026-06-13"
+      sourceHash: "bde437a8fa911f43e13aa0e334790b9202268725e7dc21d466371f834d24092c"
+      reviewBy: "2026-09-11"
+    tldr:
+      text: "The 30% ruling (the expat scheme) can make part of your Dutch salary tax-free to offset relocation costs, for up to 5 years. Your employer applies to the Tax Administration within 4 months of your first working day. It is not automatic — you must have been recruited from abroad (the 150km / 16-of-24-months rule) and have scarce specific expertise. Note: the maximum tax-free percentage drops from 30% to 27% on 1 January 2027."
+      sourceUrl: "https://business.gov.nl/staff/employing-staff/the-expat-scheme-30-percent-ruling-in-the-netherlands/"
+      sourceName: "Netherlands Enterprise Agency (business.gov.nl) — The expat scheme (30% ruling)"
+      # VERIFIED 2026-06-13 (fact-verifier): business.gov.nl 30%-ruling page (LIVE, HTTP 200). Verbatim: "you can compensate your employees for these costs over a maximum period of 5 years"; "You must file the request for approval within 4 months after the first workday of your employee"; the 150km/16-of-24-months and scarce-expertise conditions (above); and "As of 1 January 2027, the maximum reimbursement will be reduced from 30% to 27%." All tldr elements supported character-for-character.
+      status: VERIFIED
+      lastVerified: "2026-06-13"
+      verifiedBy: "fact-verifier-nl 2026-06-13"
+      sourceHash: "bde437a8fa911f43e13aa0e334790b9202268725e7dc21d466371f834d24092c"
+      reviewBy: "2026-09-11"
+    keyFacts:
+      - label: "Who applies"
+        text: "The employer applies to the Tax Administration (Belastingdienst) for approval (a beschikking); the request must be filed within 4 months after the employee's first working day, with the outcome given within 8 weeks."
+        sourceUrl: "https://business.gov.nl/staff/employing-staff/the-expat-scheme-30-percent-ruling-in-the-netherlands/"
+        sourceName: "Netherlands Enterprise Agency (business.gov.nl) — The expat scheme (30% ruling)"
+        # VERIFIED 2026-06-13 (fact-verifier): business.gov.nl page (LIVE, HTTP 200). Verbatim: "To apply for the expat scheme on behalf of a foreign employee, you first need approval from the Tax Administration. This is called a beschikking in Dutch. You must file the request for approval within 4 months after the first workday of your employee. You will receive the outcome within 8 weeks." Matches employer-applies / beschikking / 4-months / 8-weeks character-for-character.
+        status: VERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: "fact-verifier-nl 2026-06-13"
+        sourceHash: "bde437a8fa911f43e13aa0e334790b9202268725e7dc21d466371f834d24092c"
+        reviewBy: "2026-09-11"
+      - label: "Recruited from abroad (150 km / 16 of 24 months)"
+        text: "You must have been recruited from abroad or transferred within a multinational, and have lived more than 150 kilometres from the Dutch border for more than 16 of the 24 months before your first working day in the Netherlands."
+        sourceUrl: "https://business.gov.nl/staff/employing-staff/the-expat-scheme-30-percent-ruling-in-the-netherlands/"
+        sourceName: "Netherlands Enterprise Agency (business.gov.nl) — The expat scheme (30% ruling)"
+        # VERIFIED 2026-06-13 (fact-verifier): business.gov.nl page (LIVE, HTTP 200). Verbatim: "The employee must be recruited from abroad or transferred within a multinational company to work in the Netherlands. The employee must have lived more than 150 kilometres away from the Dutch borders for more than 16 months of the 24 months before starting their first working day in the Netherlands." Matches the 150 km / 16-of-24-months threshold character-for-character.
+        status: VERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: "fact-verifier-nl 2026-06-13"
+        sourceHash: "bde437a8fa911f43e13aa0e334790b9202268725e7dc21d466371f834d24092c"
+        reviewBy: "2026-09-11"
+      - label: "Scarce expertise + minimum salary"
+        text: "You must have specific expertise that is scarce in the Dutch labour market (in some cases it must be unique) and earn a certain minimum salary reflecting that expertise (the toetsloon)."
+        sourceUrl: "https://business.gov.nl/staff/employing-staff/the-expat-scheme-30-percent-ruling-in-the-netherlands/"
+        sourceName: "Netherlands Enterprise Agency (business.gov.nl) — The expat scheme (30% ruling)"
+        # VERIFIED 2026-06-13 (fact-verifier): business.gov.nl page (LIVE, HTTP 200). Verbatim: "The employee must have specific expertise that is scarce in the Dutch labour market. In some cases, the expertise must even be unique." and "Your employee must earn a certain minimum wage which reflects their expertise. This is called the toetsloon in Dutch." Matches scarce-expertise/sometimes-unique + minimum-salary/toetsloon character-for-character.
+        status: VERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: "fact-verifier-nl 2026-06-13"
+        sourceHash: "bde437a8fa911f43e13aa0e334790b9202268725e7dc21d466371f834d24092c"
+        reviewBy: "2026-09-11"
+      - label: "Duration"
+        text: "The expat scheme compensates the employee's relocation costs over a maximum period of 5 years."
+        sourceUrl: "https://business.gov.nl/staff/employing-staff/the-expat-scheme-30-percent-ruling-in-the-netherlands/"
+        sourceName: "Netherlands Enterprise Agency (business.gov.nl) — The expat scheme (30% ruling)"
+        # VERIFIED 2026-06-13 (fact-verifier): business.gov.nl page (LIVE, HTTP 200). Verbatim: "With the expat scheme, you can compensate your employees for these costs over a maximum period of 5 years." Matches the 5-year maximum character-for-character.
+        status: VERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: "fact-verifier-nl 2026-06-13"
+        sourceHash: "bde437a8fa911f43e13aa0e334790b9202268725e7dc21d466371f834d24092c"
+        reviewBy: "2026-09-11"
+      - label: "Rate change in 2027"
+        text: "As of 1 January 2027 the maximum reimbursement is reduced from 30% to 27%: employers can pay eligible employees a maximum of 27% of their wages tax-free."
+        sourceUrl: "https://business.gov.nl/staff/employing-staff/the-expat-scheme-30-percent-ruling-in-the-netherlands/"
+        sourceName: "Netherlands Enterprise Agency (business.gov.nl) — The expat scheme (30% ruling)"
+        # VERIFIED 2026-06-13 (fact-verifier): business.gov.nl page (LIVE, HTTP 200). Verbatim: "As of 1 January 2027, the maximum reimbursement will be reduced from 30% to 27%. Employers can pay eligible employees a maximum of 27% of their wages tax-free." Matches the claim character-for-character.
+        status: VERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: "fact-verifier-nl 2026-06-13"
+        sourceHash: "bde437a8fa911f43e13aa0e334790b9202268725e7dc21d466371f834d24092c"
+        reviewBy: "2026-09-11"
+    detail: >
+      The expat scheme — widely known as the 30% ruling — is a tax advantage that lets an
+      employer reimburse, tax-free, part of the salary of an employee recruited from abroad,
+      to compensate for the extraterritorial costs of moving to the Netherlands. It is run by
+      the Tax Administration (Belastingdienst), not the immigration authority, and the
+      employer (not you) applies for approval — within four months of your first working day,
+      with a decision normally within eight weeks. To qualify you must have been recruited
+      from abroad and have lived more than 150 km from the Dutch border for more than 16 of
+      the 24 months before starting work, possess specific expertise scarce in the Dutch
+      labour market, and earn at least the applicable minimum salary (toetsloon). The benefit
+      can run for up to five years. Two changes to watch: from 1 January 2027 the maximum
+      tax-free percentage falls from 30% to 27%, and a maximum salary cap applies. Confirm
+      the current rules and the minimum-salary table with the Belastingdienst.
+    steps:
+      - text: "Check eligibility with your employer: were you recruited from abroad (the 150 km / 16-of-24-months rule), and do you have scarce specific expertise meeting the minimum salary (toetsloon)?"
+        links:
+          - text: "business.gov.nl — the expat scheme (30% ruling): conditions"
+            sourceUrl: "https://business.gov.nl/staff/employing-staff/the-expat-scheme-30-percent-ruling-in-the-netherlands/"
+            sourceName: "Netherlands Enterprise Agency (business.gov.nl) — The expat scheme (30% ruling)"
+            # VERIFIED 2026-06-13 (fact-verifier): business.gov.nl 30%-ruling page (LIVE, HTTP 200). Correct page; "What are the conditions to use the expat scheme?" section lists the 150km/16-of-24, scarce-expertise and minimum-salary (toetsloon) conditions referenced. Link accurate.
+            status: VERIFIED
+            lastVerified: "2026-06-13"
+            verifiedBy: "fact-verifier-nl 2026-06-13"
+            sourceHash: "bde437a8fa911f43e13aa0e334790b9202268725e7dc21d466371f834d24092c"
+            reviewBy: "2026-09-11"
+      - text: "Have your employer apply to the Tax Administration (Belastingdienst) for approval within 4 months of your first working day."
+        tip: "Applying within 4 months lets the ruling apply from your first working day; apply later and it starts from a later date. The outcome normally comes within 8 weeks."
+        links:
+          - text: "business.gov.nl — get approval from the Tax Administration (4-month application window)"
+            sourceUrl: "https://business.gov.nl/staff/employing-staff/the-expat-scheme-30-percent-ruling-in-the-netherlands/"
+            sourceName: "Netherlands Enterprise Agency (business.gov.nl) — The expat scheme (30% ruling)"
+            # VERIFIED 2026-06-13 (fact-verifier): business.gov.nl page (LIVE, HTTP 200). "Get approval from the Tax Administration" section verbatim: "You must file the request for approval within 4 months after the first workday of your employee. You will receive the outcome within 8 weeks." Supports the 4-month application window. Link accurate.
+            status: VERIFIED
+            lastVerified: "2026-06-13"
+            verifiedBy: "fact-verifier-nl 2026-06-13"
+            sourceHash: "bde437a8fa911f43e13aa0e334790b9202268725e7dc21d466371f834d24092c"
+            reviewBy: "2026-09-11"
+    documents:
+      - name: "30% ruling approval request (employer-filed, to the Belastingdienst)"
+        type: form
+        description: "The employer files the request for approval (beschikking) with the Tax Administration; the application form is on the Belastingdienst website. We link the official business.gov.nl overview as the authority index."
+        form:
+          text: "The employer files the request for approval (beschikking) with the Tax Administration (Belastingdienst); the application form is on the Belastingdienst website and the application must include supporting documents. Use the official business.gov.nl 'expat scheme (30% ruling)' page as the authority overview, which links to the Belastingdienst form and the expertise/minimum-salary tables."
+          sourceUrl: "https://business.gov.nl/staff/employing-staff/the-expat-scheme-30-percent-ruling-in-the-netherlands/"
+          sourceName: "Netherlands Enterprise Agency (business.gov.nl) — The expat scheme (30% ruling)"
+          # VERIFIED 2026-06-13 (fact-verifier): business.gov.nl page (LIVE, HTTP 200). Verbatim: "To apply for the expat scheme ... you first need approval from the Tax Administration. This is called a beschikking" and "You can find the application form on the website of the Tax Administration. The application should include supporting documents such as employment contracts and proof of qualifications." The page links to belastingdienst.nl for the expertise/minimum-salary tables ("Read about the expertise requirement on belastingdienst.nl" / "To see a table showing the minimum salary ... on belastingdienst.nl"). Authority-overview framing correct. Supported.
+          status: VERIFIED
+          lastVerified: "2026-06-13"
+          verifiedBy: "fact-verifier-nl 2026-06-13"
+          sourceHash: "bde437a8fa911f43e13aa0e334790b9202268725e7dc21d466371f834d24092c"
+          reviewBy: "2026-09-11"
+      - name: "Proof you were recruited from abroad"
+        type: provide
+        description: "Evidence supporting the 150 km / 16-of-24-months condition (e.g. proof of your address history outside the Netherlands before your first working day)."
+      - name: "Employment contract showing salary"
+        type: provide
+        description: "Your contract showing a salary that meets the applicable minimum (toetsloon) reflecting your expertise."
+    warning: >
+      The 30% ruling is changing: from 1 January 2027 the maximum tax-free percentage drops
+      from 30% to 27%, and a maximum salary applies. The minimum-salary (toetsloon) figures
+      and the percentage are set by the Tax Administration and change over time — confirm the
+      current rules with the Belastingdienst before relying on them.
+    dependsOn: []
+    appliesIf: "motivation == 'work'"
+
+  # ---------------------------------------------------------------------------
+  - id: family-partner-permit
+    title: "Bring your partner or spouse (family reunification)"
+    category: family-dependents
+    summary:
+      text: "To bring a foreign partner or spouse to live with you in the Netherlands, your partner needs a residence permit. You can be joined by a partner when you are married, are in a registered partnership, or wish to stay with an unmarried partner. You are the sponsor and must meet the IND income requirement (independent, sustainable and sufficient income — at least the required amount for this permit). Other detailed conditions (such as a minimum age and living together) apply but load behind the IND page's situation selector — confirm the full current checklist with the IND."
+      sourceUrl: "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/family-member-netherlands_en"
+      sourceName: "European Commission — EU Immigration Portal: Family member (Netherlands)"
+      # RE-SOURCED 2026-06-13 (content-researcher): the IND partner page is a quiz-gated SPA whose static HTML omits the relationship-type / 21+ / cohabitation conditions. Re-pointed the relationship-type + sponsor framing to the EU Immigration Portal "Family member in the Netherlands" page, which states verbatim "It is possible to join your family member in the Netherlands when you are married or are in a registered partnership, when you wish to stay with your unmarried partner ..." and "Your spouse, (registered) partner or parent is your sponsor." The 21+/same-registered-address specifics are NOT on any reachable official page (only behind the IND selector), so they are trimmed from the assertion and recast as "confirm the full checklist with the IND" rather than guessed. The income requirement stays sourced to the required-amounts keyFact. Captured sources/us-nl/6d6a56b3.txt.
+      # VERIFIED 2026-06-13 (fact-verifier re-check): EU portal "Family member in the Netherlands" re-fetched LIVE (curl, HTTP 200, no redirect; sha256 6d6a56b3...). Verbatim: "It is possible to join your family member in the Netherlands when you are married or are in a registered partnership, when you wish to stay with your unmarried partner or as a minor child to stay with your parent(s)." and "Your spouse, (registered) partner or parent is your sponsor." Supports the load-bearing re-sourced elements (married / registered partnership / unmarried partner; you are the sponsor) character-for-character. The income clause is hedged ("at least the required amount for this permit") and the descriptors "independent, sustainable and sufficient" + the figure are carried by the sibling VERIFIED "Income requirement" keyFact (IND required-amounts page) — no conflict; the cited EU portal does not mention income but the claim does not rely on it for that element. The 21+/cohabitation specifics are correctly trimmed to "confirm the full current checklist with the IND" (not on any reachable official page). [source: EU portal — official EU source; states the NL relationship-type + sponsor rule plainly, so it carries it. Income figure cross-referenced to the IND-sourced sibling keyFact.]
+      status: VERIFIED
+      lastVerified: "2026-06-13"
+      verifiedBy: "fact-verifier-nl-r2 2026-06-13"
+      sourceHash: "6d6a56b30ed2581063d1385a260e3d5cd58b8e1c2bb0e0b2f421dccdba2030db"
+      reviewBy: "2026-09-11"
+    tldr:
+      text: "Your partner or spouse can join you in the Netherlands on a residence permit — when you are married, in a registered partnership, or staying with an unmarried partner. You are the sponsor and must meet the income requirement (independent, sustainable and sufficient income — at least the required amount for this permit). Further conditions (including a minimum age and living together) apply; confirm the full current checklist with the IND."
+      sourceUrl: "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/family-member-netherlands_en"
+      sourceName: "European Commission — EU Immigration Portal: Family member (Netherlands)"
+      # RE-SOURCED 2026-06-13 (content-researcher): same fix as this task's summary — re-pointed the relationship-type + sponsor framing to the EU Immigration Portal "Family member in the Netherlands" page (verbatim: married / registered partnership / unmarried partner; "Your spouse, (registered) partner or parent is your sponsor"). Trimmed the unsourced 21+ / same-registered-address specifics (only behind the IND selector) and recast them as "confirm the full checklist with the IND". Income stays sourced to the required-amounts keyFact. Captured sources/us-nl/6d6a56b3.txt.
+      # VERIFIED 2026-06-13 (fact-verifier re-check): EU portal "Family member in the Netherlands" (LIVE, HTTP 200, sha256 6d6a56b3...). Verbatim: "It is possible to join your family member in the Netherlands when you are married or are in a registered partnership, when you wish to stay with your unmarried partner ..." and "Your spouse, (registered) partner or parent is your sponsor." Supports the tldr's relationship-types + you-are-the-sponsor. Income descriptors/figure carried by the sibling VERIFIED "Income requirement" keyFact (IND); the further-conditions caveat is correctly hedged to "confirm ... with the IND". [source: EU portal — official EU source; states the relationship/sponsor rule plainly. Income cross-referenced to the IND-sourced sibling.]
+      status: VERIFIED
+      lastVerified: "2026-06-13"
+      verifiedBy: "fact-verifier-nl-r2 2026-06-13"
+      sourceHash: "6d6a56b30ed2581063d1385a260e3d5cd58b8e1c2bb0e0b2f421dccdba2030db"
+      reviewBy: "2026-09-11"
+    keyFacts:
+      - label: "Who applies"
+        text: "Your partner needs a residence permit to live with you; you act as the sponsor in the Netherlands. (Confirm with the IND whether the sponsor or the partner files, as it depends on the situation.)"
+        sourceUrl: "https://ind.nl/en/residence-permits/family-and-partner/residence-permit-for-partner"
+        sourceName: "Immigration and Naturalisation Service (IND) — Residence permit for partner"
+        # VERIFIED 2026-06-13 (fact-verifier): IND partner page (LIVE, HTTP 200). Verbatim: "You would like your foreign partner to live with you in the Netherlands. Your partner needs a residence permit." — supports "Your partner needs a residence permit to live with you." The "you act as the sponsor in the Netherlands" element is corroborated on the reachable companion MVV page ("Your sponsor in the Netherlands usually submits the application"). The who-files specifics are explicitly hedged ("Confirm with the IND whether the sponsor or the partner files"), so no overstatement. Supported.
+        status: VERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: "fact-verifier-nl 2026-06-13"
+        sourceHash: "a50d36bf0a5c1d8d4ea54b287660b5ea8bf669cde726b1dcc453212e82dc749d"
+        reviewBy: "2026-09-11"
+      - label: "Income requirement"
+        text: "The sponsor must have income that is independent (taxed), sustainable (lasting long enough), and sufficient (at least the IND required amount for this permit). The 2026 required amount to stay with a partner is €2,294.40 gross SV salary per month without holiday allowance (€2,477.95 with). Confirm the current figure, which changes on 1 January and 1 July."
+        sourceUrl: "https://ind.nl/en/required-amounts-income-requirements"
+        sourceName: "Immigration and Naturalisation Service (IND) — Required amounts (income requirements)"
+        # FEE/THRESHOLD figure -> 30-day review window.
+        # VERIFIED 2026-06-13 (fact-verifier): IND Required-amounts page (LIVE, HTTP 200, sha256 aa2b0700...). Verbatim, under "Application for a residence permit to stay with family member": "Residence permit to stay with a partner​ Gross SV salary per month without holiday allowance € 2,294.40 ... with holiday allowance € 2,477.95" and "These required amounts are valid from 1 January 2026 up to and including 30 June 2026" (confirming the 1 January / 1 July change cycle). Both figures match character-for-character. The "independent / sustainable / sufficient" descriptors are verbatim on the cited companion income page.
+        status: VERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: "fact-verifier-nl 2026-06-13"
+        sourceHash: "aa2b070046f14424bbcb932aef06ba84ef663b41b2177a566ba463ace3d698be"
+        reviewBy: "2026-07-13"
+      - label: "Income test available"
+        text: "The IND offers an income test for a residence permit for a partner or minor child to check in advance whether your income is sufficient; the test is not decisive — the IND assesses your income after you apply."
+        sourceUrl: "https://ind.nl/en/independent-sustainable-and-sufficient-income"
+        sourceName: "Immigration and Naturalisation Service (IND) — Income requirements: independent, sustainable and sufficient income"
+        # VERIFIED 2026-06-13 (fact-verifier): IND income-requirements page (LIVE, HTTP 200, sha256 0bb3acd3...). Verbatim: "Income test for residence permit for partner or minor child ... Use this income test to check whether your income meets the requirements. This test is not decisive. The IND always assesses your income after you submit your application." Matches the claim character-for-character.
+        status: VERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: "fact-verifier-nl 2026-06-13"
+        sourceHash: "0bb3acd3e7a1114c8ec83923cf08dbbabf088012487a860e6749c3f4efd33968"
+        reviewBy: "2026-09-11"
+      - label: "MVV exemption (partner's nationality)"
+        text: "MVV exemption is by nationality. If your partner is also a US national they are MVV-exempt; if your partner holds a different, non-exempt nationality they may need an MVV. Check the IND MVV-exemptions page for the partner."
+        sourceUrl: "https://ind.nl/en/mvv-exemptions"
+        sourceName: "Immigration and Naturalisation Service (IND) — MVV exemptions"
+        # VERIFIED 2026-06-13 (fact-verifier): IND MVV-exemptions page (LIVE, HTTP 200). Verbatim: "Your nationality is decisive. Your nationality determines whether you need an MVV." and the United States is on the no-MVV list. Supports "exemption is by nationality; a US-national partner is exempt; a partner with a different (non-exempt) nationality may need an MVV." The page also covers family-member-of-EU/EEA/Swiss exemptions, consistent with "check the page for the partner". Supported.
+        status: VERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: "fact-verifier-nl 2026-06-13"
+        sourceHash: "ac7125e031d2d2e880a87b630eeb4bcac33c97269944a811b3a5cd1da5caa290"
+        reviewBy: "2026-09-11"
+    detail: >
+      Family reunification with a partner runs through the IND's residence permit for staying
+      with a partner. You are the sponsor, and the core hurdle is the income requirement:
+      your income must be independent (you pay tax and national insurance on it), sustainable
+      (for example a contract valid at least another 12 months, or — for staying with a
+      partner — at least 6 months plus a sufficient earnings history), and sufficient (at
+      least the IND required amount for this permit; for 2026, €2,294.40 gross SV salary per
+      month without holiday allowance). The IND offers an online income test to check in
+      advance, though the formal assessment happens after you apply. Other standard conditions
+      for this permit (such as a minimum age, a verifiable relationship and living together at
+      the same registered address) are set on the IND partner page — confirm the full,
+      current checklist with the IND, as several conditions are shown behind the page's
+      situation selector. Note that whether your partner needs an MVV depends on their
+      nationality: a US-national partner is exempt, but a partner with another nationality may
+      not be.
+    steps:
+      - text: "Check the income requirement first: use the IND income test to see whether your income is independent, sustainable and sufficient for a partner permit."
+        tip: "The income test is indicative only; the IND makes the binding assessment after you apply. Have salary slips, your contract and benefit/profit statements ready."
+        links:
+          - text: "IND — income requirements and the income test for a partner permit"
+            sourceUrl: "https://ind.nl/en/independent-sustainable-and-sufficient-income"
+            sourceName: "Immigration and Naturalisation Service (IND) — Income requirements: independent, sustainable and sufficient income"
+            # VERIFIED 2026-06-13 (fact-verifier): IND income-requirements page (LIVE, HTTP 200). Correct page; covers the income requirements (independent/sustainable/sufficient) and the "Income test for residence permit for partner or minor child" that the link references. Link accurate.
+            status: VERIFIED
+            lastVerified: "2026-06-13"
+            verifiedBy: "fact-verifier-nl 2026-06-13"
+            sourceHash: "0bb3acd3e7a1114c8ec83923cf08dbbabf088012487a860e6749c3f4efd33968"
+            reviewBy: "2026-09-11"
+      - text: "Apply to the IND for your partner's residence permit to stay with a partner, meeting the relationship, age, cohabitation and income conditions on the IND partner page."
+        links:
+          - text: "IND — residence permit for partner: conditions and how to apply"
+            sourceUrl: "https://ind.nl/en/residence-permits/family-and-partner/residence-permit-for-partner"
+            sourceName: "Immigration and Naturalisation Service (IND) — Residence permit for partner"
+            # VERIFIED 2026-06-13 (fact-verifier): IND partner page (LIVE, HTTP 200). Correct authority page (breadcrumb Home › Residence permits › Family and partner › Residence permit for partner; "Your partner needs a residence permit. Find out what the requirements are and how to apply for the residence permit."). This is a link to the conditions/how-to-apply authority page (the detailed conditions are behind the page's situation selector); the link itself is accurate. (The conditions themselves are kicked back in this task's summary/tldr until sourced.)
+            status: VERIFIED
+            lastVerified: "2026-06-13"
+            verifiedBy: "fact-verifier-nl 2026-06-13"
+            sourceHash: "a50d36bf0a5c1d8d4ea54b287660b5ea8bf669cde726b1dcc453212e82dc749d"
+            reviewBy: "2026-09-11"
+      - text: "Check whether your partner needs an MVV based on their nationality; if MVV-exempt (e.g. a US national), they collect the residence permit after a positive decision without an entry visa."
+        links:
+          - text: "IND — MVV exemptions: check the partner's nationality"
+            sourceUrl: "https://ind.nl/en/mvv-exemptions"
+            sourceName: "Immigration and Naturalisation Service (IND) — MVV exemptions"
+            # VERIFIED 2026-06-13 (fact-verifier): IND MVV-exemptions page (LIVE, HTTP 200). "Your nationality is decisive" verbatim; United States on the no-MVV list. Supports checking the partner's nationality on this page. Link accurate.
+            status: VERIFIED
+            lastVerified: "2026-06-13"
+            verifiedBy: "fact-verifier-nl 2026-06-13"
+            sourceHash: "ac7125e031d2d2e880a87b630eeb4bcac33c97269944a811b3a5cd1da5caa290"
+            reviewBy: "2026-09-11"
+    documents:
+      - name: "Residence permit application to stay with a family member/partner"
+        type: form
+        description: "The application for a residence permit to stay with a partner is filed with the IND; where an MVV is also needed it is applied for at the same time on the same form. We link the IND partner page as the authority index for the current procedure and form."
+        form:
+          text: "Apply to the IND for the residence permit to stay with a partner. For partners who also need an MVV, the MVV and residence permit are applied for together (IND form 'to stay with a family member', e.g. 9511, available via the IND apply-from-abroad page). As an MVV-exempt US-national partner no MVV form is needed. Use the IND 'Residence permit for partner' page as the authority index for the current procedure rather than a deep PDF link."
+          sourceUrl: "https://ind.nl/en/residence-permits/family-and-partner/residence-permit-for-partner"
+          sourceName: "Immigration and Naturalisation Service (IND) — Residence permit for partner"
+          # VERIFIED 2026-06-13 (fact-verifier): IND partner page (LIVE, HTTP 200) is the correct authority index ("Your partner needs a residence permit. Find out ... how to apply"). The MVV+permit-together / form-9511 elements are corroborated on the reachable companion pages: the MVV page states "You apply for the MVV and the residence permit at the same time", and the Apply-from-abroad page names the form verbatim — "Family: (married) partner and minor child ... Application for admission and residence 'to stay with a family member' (foreign national) 9511 (PDF, 376.98 KB)". MVV-exempt-US-partner-needs-no-MVV-form follows from the MVV-exemptions list. Authority-index framing (no deep PDF) correct. Supported.
+          status: VERIFIED
+          lastVerified: "2026-06-13"
+          verifiedBy: "fact-verifier-nl 2026-06-13"
+          sourceHash: "a50d36bf0a5c1d8d4ea54b287660b5ea8bf669cde726b1dcc453212e82dc749d"
+          reviewBy: "2026-09-11"
+      - name: "Proof of your relationship"
+        type: provide
+        description: "Evidence of a verifiable relationship — a marriage certificate, registered-partnership certificate, or evidence of a long-term unmarried relationship — as required by the IND."
+      - name: "Proof of the sponsor's income"
+        type: provide
+        description: "Salary slips, your employment contract, and (if relevant) benefit or self-employment profit statements showing independent, sustainable and sufficient income."
+      - name: "Valid passports"
+        type: provide
+        description: "Valid passports for you (the sponsor) and your partner."
+    warning: >
+      The income required amounts for family permits are reset on 1 January and 1 July each
+      year. Several detailed conditions for the partner permit (age, relationship and
+      cohabitation requirements) load behind the IND page's situation selector and were not
+      in the captured static text — confirm the full current checklist directly with the IND
+      before relying on it.
+    dependsOn: []
+    appliesIf: "motivation == 'family'"
+
+  # ---------------------------------------------------------------------------
+  - id: study-residence-permit
+    title: "Study route: your institution applies for your residence permit"
+    category: education
+    summary:
+      text: "To study at a Dutch university or university of applied sciences (higher professional education, hbo) you need a residence permit, and a crucial rule applies: only a recognised educational institution can submit the application on your behalf — the institution is your recognised sponsor and you cannot apply yourself. You must also meet the income (means of support) requirement. Other conditions of the route apply but load behind the IND page's situation selector — confirm the full checklist with your institution and the IND."
+      sourceUrl: "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/student-netherlands_en"
+      sourceName: "European Commission — EU Immigration Portal: Student (Netherlands)"
+      # RE-SOURCED 2026-06-13 (content-researcher): the IND student page is a quiz-gated SPA whose static HTML lacks the "recognised" qualifier and the "full-time" condition. Re-pointed the recognised-sponsor rule to the EU Immigration Portal "Student in the Netherlands" page, which states verbatim "Only a recognised educational institution can submit an application on behalf of a student. The educational institution is your recognised sponsor." (and that the institution applies for the residence permit). The "full-time programme" condition is NOT on any reachable official page (only behind the IND selector), so it is trimmed and folded into "confirm the full checklist with ... the IND" rather than guessed. Means-of-support stays sourced to the required-amounts keyFact. Captured sources/us-nl/5f615134.txt.
+      # VERIFIED 2026-06-13 (fact-verifier re-check): EU portal "Student in the Netherlands" re-fetched LIVE (curl, HTTP 200, no redirect; sha256 5f615134...). Verbatim: "Only a recognised educational institution can submit an application on behalf of a student. The educational institution is your recognised sponsor. The educational institution applies for the mvv and the residence permit at the same time." Supports the load-bearing re-sourced elements (need a residence permit; only a RECOGNISED institution can submit the application; institution is your recognised sponsor; you cannot apply yourself) character-for-character. The means-of-support clause is hedged ("at least the IND required amount per month") and the figure is carried by the sibling VERIFIED "Means of support (2026)" keyFact (IND required-amounts page, €1,130.77) — no conflict; the cited EU portal page does not mention means-of-support but the claim does not rely on it for that element. The "full-time" condition is correctly trimmed to "confirm the full checklist with your institution and the IND" (not on any reachable official page). [source: EU portal — official EU source; states the NL recognised-sponsor / institution-applies rule plainly, so it carries it. Means figure cross-referenced to the IND-sourced sibling keyFact.]
+      status: VERIFIED
+      lastVerified: "2026-06-13"
+      verifiedBy: "fact-verifier-nl-r2 2026-06-13"
+      sourceHash: "5f615134b8b6c36bea82d2941f19865e691c6c05d73f1a3811ea120ddb2adb4f"
+      reviewBy: "2026-09-11"
+    tldr:
+      text: "For study in the Netherlands your recognised education institution — not you — submits the application for your residence permit; the institution is your recognised sponsor. You must show enough money to support yourself (the IND sets a study means-of-support amount per month — see the means-of-support fact). Get admitted first; the institution then handles the permit."
+      sourceUrl: "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/student-netherlands_en"
+      sourceName: "European Commission — EU Immigration Portal: Student (Netherlands)"
+      # RE-SOURCED 2026-06-13 (content-researcher): re-pointed to the EU Immigration Portal "Student in the Netherlands" page, which states verbatim "Only a recognised educational institution can submit an application on behalf of a student. The educational institution is your recognised sponsor." — sourcing the recognised-sponsor rule the quiz-gated IND page omits. Trimmed the "full-time" condition (not on any reachable official page). Removed the inline €1,130.77 figure from the tldr (its sourceUrl no longer carries that number; the exact figure stays in the VERIFIED "Means of support" keyFact, which cites the required-amounts page) and replaced it with a pointer to that fact, so this tldr no longer needs the 30-day fee window — reviewBy restored to the standard 90-day window. Captured sources/us-nl/5f615134.txt.
+      # VERIFIED 2026-06-13 (fact-verifier re-check): EU portal "Student in the Netherlands" (LIVE, HTTP 200, sha256 5f615134...). Verbatim: "Only a recognised educational institution can submit an application on behalf of a student. The educational institution is your recognised sponsor. The educational institution applies for the mvv and the residence permit at the same time." Supports the tldr's "your recognised education institution — not you — submits the application ...; the institution is your recognised sponsor." The means-of-support element is a pointer to the sibling VERIFIED "Means of support (2026)" keyFact (IND; €1,130.77) — correctly no longer carries an inline figure here, so the 90-day reviewBy is appropriate. [source: EU portal — official EU source; states the recognised-sponsor rule plainly. Means figure on the IND-sourced sibling.]
+      status: VERIFIED
+      lastVerified: "2026-06-13"
+      verifiedBy: "fact-verifier-nl-r2 2026-06-13"
+      sourceHash: "5f615134b8b6c36bea82d2941f19865e691c6c05d73f1a3811ea120ddb2adb4f"
+      reviewBy: "2026-09-11"
+    keyFacts:
+      - label: "Who applies"
+        text: "“Only a recognised educational institution can submit an application on behalf of a student. The educational institution is your recognised sponsor.” You cannot apply yourself."
+        sourceUrl: "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/student-netherlands_en"
+        sourceName: "European Commission — EU Immigration Portal: Student (Netherlands)"
+        # RE-SOURCED 2026-06-13 (content-researcher): re-pointed from the quiz-gated IND student page (whose static text lacks the "recognised" qualifier) to the EU Immigration Portal "Student in the Netherlands" page, which states the quoted text verbatim: "Only a recognised educational institution can submit an application on behalf of a student. The educational institution is your recognised sponsor." The recognised-sponsor element is now on a source that states it. Captured sources/us-nl/5f615134.txt.
+        # VERIFIED 2026-06-13 (fact-verifier re-check): EU portal "Student in the Netherlands" (LIVE, HTTP 200, sha256 5f615134...). The quoted sentence appears verbatim on the page: "Only a recognised educational institution can submit an application on behalf of a student. The educational institution is your recognised sponsor." Exact match to the quoted keyFact text; "You cannot apply yourself" follows directly from "Only a recognised educational institution can submit an application". [source: EU portal — official EU source; states this NL rule verbatim, so it carries it. Not IND (the "recognised" qualifier is missing from IND's static, quiz-gated page).]
+        status: VERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: "fact-verifier-nl-r2 2026-06-13"
+        sourceHash: "5f615134b8b6c36bea82d2941f19865e691c6c05d73f1a3811ea120ddb2adb4f"
+        reviewBy: "2026-09-11"
+      - label: "Means of support (2026)"
+        text: "You must have enough money to support yourself. The 2026 study required amount for higher professional education (hbo) or university is €1,130.77 per month (valid 1 January–31 December 2026). Confirm the current figure with the IND."
+        sourceUrl: "https://ind.nl/en/required-amounts-income-requirements"
+        sourceName: "Immigration and Naturalisation Service (IND) — Required amounts (income requirements)"
+        # FEE/THRESHOLD figure -> 30-day review window.
+        # VERIFIED 2026-06-13 (fact-verifier): IND Required-amounts page (LIVE, HTTP 200, sha256 aa2b0700...). Verbatim, under "Application for a residence permit for study / Study amounts 2026": "These amounts are valid from 1 January 2026 up to and including 31 December 2026. ... Higher professional education (hbo) or university € 1,130.77". The figure €1,130.77/month and the 1 Jan–31 Dec 2026 validity match character-for-character.
+        status: VERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: "fact-verifier-nl 2026-06-13"
+        sourceHash: "aa2b070046f14424bbcb932aef06ba84ef663b41b2177a566ba463ace3d698be"
+        reviewBy: "2026-07-13"
+      - label: "Recognised sponsor applies"
+        text: "The recognised educational institution applies for the residence permit and acts as your recognised sponsor. Whether the programme must be full-time and any study-load conditions load behind the IND page's situation selector — confirm these with your institution and the IND."
+        sourceUrl: "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/student-netherlands_en"
+        sourceName: "European Commission — EU Immigration Portal: Student (Netherlands)"
+        # RE-SOURCED 2026-06-13 (content-researcher): re-pointed to the EU Immigration Portal "Student in the Netherlands" page, which states verbatim "Only a recognised educational institution can submit an application on behalf of a student. The educational institution is your recognised sponsor. The educational institution applies for the mvv and the residence permit ..." — sourcing the recognised-sponsor + institution-applies elements. Relabelled the fact to "Recognised sponsor applies" and trimmed the unsourced "full-time" assertion (not on any reachable official page) into a confirm-with-IND hedge rather than guessing it. Captured sources/us-nl/5f615134.txt.
+        # VERIFIED 2026-06-13 (fact-verifier re-check): EU portal "Student in the Netherlands" (LIVE, HTTP 200, sha256 5f615134...). Verbatim: "The educational institution is your recognised sponsor. The educational institution applies for the mvv and the residence permit at the same time." Supports "The recognised educational institution applies for the residence permit and acts as your recognised sponsor" character-for-character. The full-time / study-load condition is correctly hedged to "confirm these with your institution and the IND" (not on any reachable official page) — no overstatement. [source: EU portal — official EU source; states the institution-applies + recognised-sponsor rule plainly, so it carries it.]
+        status: VERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: "fact-verifier-nl-r2 2026-06-13"
+        sourceHash: "5f615134b8b6c36bea82d2941f19865e691c6c05d73f1a3811ea120ddb2adb4f"
+        reviewBy: "2026-09-11"
+      - label: "MVV exemption"
+        text: "As a US national you are MVV-exempt, so no embassy entry-visa step applies; you still receive a student residence permit, applied for by your institution and collected after a positive decision."
+        sourceUrl: "https://ind.nl/en/mvv-exemptions"
+        sourceName: "Immigration and Naturalisation Service (IND) — MVV exemptions"
+        # VERIFIED 2026-06-13 (fact-verifier): IND MVV-exemptions page (LIVE, HTTP 200). United States is on the no-MVV list verbatim — supports "As a US national you are MVV-exempt, so no embassy entry-visa step applies." The institution-applies element for study is supported by the cited student page ("Only this educational institution can apply for a residence permit for you"). No overstatement.
+        status: VERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: "fact-verifier-nl 2026-06-13"
+        sourceHash: "ac7125e031d2d2e880a87b630eeb4bcac33c97269944a811b3a5cd1da5caa290"
+        reviewBy: "2026-09-11"
+    detail: >
+      Studying in the Netherlands as a US national means a student residence permit, and the
+      defining feature of the route is that the educational institution drives it: only the
+      institution — which must be a sponsor recognised by the IND — can apply for your
+      residence permit, so you cannot apply yourself. Practically, you first secure admission
+      to a full-time programme; the institution then files your permit application. You must
+      show enough money to support yourself (the 2026 required amount for university/hbo study
+      is €1,130.77 per month). Other conditions of the route — such as making sufficient study
+      progress each year (a credits requirement), a valid passport and, where indicated, a TB
+      test after arrival — are set out on the IND study pages; confirm the full current
+      checklist with your institution and the IND, as several details load behind the IND
+      page's situation selector. Because you are MVV-exempt, there is no embassy entry-visa
+      step: you collect your residence permit in the Netherlands after a positive decision and
+      then register with your municipality.
+    steps:
+      - text: "Get admitted to a full-time programme at a Dutch institution that is an IND-recognised sponsor; check it appears on the IND public register of recognised sponsors for study."
+        tip: "Admission requirements, deadlines, language requirements and tuition are set by each institution. Confirm the institution is an IND-recognised sponsor before you rely on it for your permit."
+        links:
+          - text: "EU Immigration Portal — Student (Netherlands): only a recognised institution can apply for you"
+            sourceUrl: "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/student-netherlands_en"
+            sourceName: "European Commission — EU Immigration Portal: Student (Netherlands)"
+            # RE-SOURCED 2026-06-13 (content-researcher): re-pointed the step link from the quiz-gated IND student page (which lacks the "recognised" qualifier in its static text) to the EU Immigration Portal "Student in the Netherlands" page, which states verbatim "Only a recognised educational institution can submit an application on behalf of a student. The educational institution is your recognised sponsor." — supporting the link label's "recognised institution" wording. Captured sources/us-nl/5f615134.txt.
+            # VERIFIED 2026-06-13 (fact-verifier re-check): EU portal "Student in the Netherlands" (LIVE, HTTP 200, sha256 5f615134...). Verbatim: "Only a recognised educational institution can submit an application on behalf of a student." Supports the link label "only a recognised institution can apply for you". Link accurate. [source: EU portal — official EU source; states the rule plainly.]
+            status: VERIFIED
+            lastVerified: "2026-06-13"
+            verifiedBy: "fact-verifier-nl-r2 2026-06-13"
+            sourceHash: "5f615134b8b6c36bea82d2941f19865e691c6c05d73f1a3811ea120ddb2adb4f"
+            reviewBy: "2026-09-11"
+      - text: "Provide your institution with the documents it needs (including proof of sufficient means of support) so it can file your residence permit application with the IND."
+        links:
+          - text: "IND — required amounts: the study means-of-support figure"
+            sourceUrl: "https://ind.nl/en/required-amounts-income-requirements"
+            sourceName: "Immigration and Naturalisation Service (IND) — Required amounts (income requirements)"
+            # VERIFIED 2026-06-13 (fact-verifier): IND Required-amounts page (LIVE, HTTP 200). Carries the study means-of-support figure verbatim ("Higher professional education (hbo) or university € 1,130.77", valid 1 Jan–31 Dec 2026). Link accurate.
+            status: VERIFIED
+            lastVerified: "2026-06-13"
+            verifiedBy: "fact-verifier-nl 2026-06-13"
+            sourceHash: "aa2b070046f14424bbcb932aef06ba84ef663b41b2177a566ba463ace3d698be"
+            reviewBy: "2026-07-13"
+      - text: "After a positive decision, travel to the Netherlands (no MVV needed for US citizens), collect your residence permit, and register with your municipality."
+    documents:
+      - name: "Student residence permit application (institution-filed)"
+        type: form
+        description: "The recognised education institution files the residence permit application with the IND on your behalf — you cannot file it yourself. We link the IND student-permit page as the authority index for the current procedure."
+        form:
+          text: "There is no student-filed application form for this route — only a recognised educational institution can submit the application on your behalf, and it does so with the IND (the institution uses the application form and sends it to the IND). Use the EU Immigration Portal 'Student in the Netherlands' page (and the IND student page) as the authority index, and provide your institution with whatever documents it requests."
+          sourceUrl: "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/student-netherlands_en"
+          sourceName: "European Commission — EU Immigration Portal: Student (Netherlands)"
+          # RE-SOURCED 2026-06-13 (content-researcher): re-pointed from the quiz-gated IND student page to the EU Immigration Portal "Student in the Netherlands" page, which states verbatim "Only a recognised educational institution can submit an application on behalf of a student. The educational institution is your recognised sponsor. ... Your educational institution uses the application form. The forms are at the bottom of this page. The educational institution sends the application to the IND." — sourcing the recognised-sponsor / institution-files / institution-uses-the-form elements. DROPPED the unconfirmable "IND form 7504" reference (not named on any reachable official page) rather than guess a form number. Captured sources/us-nl/5f615134.txt.
+          # VERIFIED 2026-06-13 (fact-verifier re-check): EU portal "Student in the Netherlands" (LIVE, HTTP 200, sha256 5f615134...). Verbatim: "Only a recognised educational institution can submit an application on behalf of a student. The educational institution is your recognised sponsor. ... Your educational institution uses the application form. The forms are at the bottom of this page. The educational institution sends the application to the IND." Supports "only a recognised educational institution can submit the application on your behalf, and it does so with the IND (the institution uses the application form and sends it to the IND)" character-for-character. The unconfirmable "form 7504" reference is correctly dropped (not named on any reachable official page); authority-index framing (EU portal + IND student page) is appropriate. [source: EU portal — official EU source; states the no-student-filed-form / institution-uses-the-form / sends-to-IND rule plainly, so it carries it.]
+          status: VERIFIED
+          lastVerified: "2026-06-13"
+          verifiedBy: "fact-verifier-nl-r2 2026-06-13"
+          sourceHash: "5f615134b8b6c36bea82d2941f19865e691c6c05d73f1a3811ea120ddb2adb4f"
+          reviewBy: "2026-09-11"
+      - name: "Proof of admission / enrolment"
+        type: provide
+        description: "Confirmation of admission to a full-time programme at the IND-recognised institution that will sponsor your permit."
+      - name: "Proof of sufficient means of support"
+        type: provide
+        description: "Evidence you have enough money to support yourself (at least the IND study required amount per month) — e.g. a bank balance, grant or financing by a third party."
+      - name: "Valid US passport"
+        type: provide
+        description: "Your valid US passport as identity and travel document."
+    warning: >
+      The study means-of-support required amount is set by the IND and changes (the
+      university/hbo figure is fixed per calendar year). Several conditions of the study
+      route (study-progress credits, TB test, passport validity) load behind the IND page's
+      situation selector and were not in the captured static text — confirm the full current
+      checklist with your institution and the IND before relying on it.
+    dependsOn: []
+    appliesIf: "motivation == 'study'"
+
+  # ---------------------------------------------------------------------------
+  - id: study-work-alongside
+    title: "Working alongside your studies"
+    category: employment
+    summary:
+      text: "As an international student you may work, but only if your employer holds a work permit (TWV) for you, which the employer applies for at the UWV. The hours are capped: a student may work a maximum of 16 hours per week, OR full-time in June, July and August. The Netherlands Labour Authority checks compliance, and working without a TWV or beyond the limit leads to fines."
+      sourceUrl: "https://ind.nl/en/residence-permits/work/employing-a-foreign-national"
+      sourceName: "Immigration and Naturalisation Service (IND) — Employing a foreign national"
+      # VERIFIED 2026-06-13 (fact-verifier): IND Employing-a-foreign-national page re-fetched LIVE (curl, HTTP 200, sha256 46506145..., unchanged). "Employing foreign students" section verbatim: "A foreign student is only allowed to work if you have a work permit (in Dutch: tewerkstellingsvergunning or TWV) for the student. Apply to the UWV for a TWV. The student is allowed to work maximally 16 hours per week, or fulltime in June, July and August. The Dutch Labour Inspectorate (... NLA) checks whether you have a TWV. And whether the student does not work more than is allowed. Does the student work more or without a TWV? In that case the Dutch Labour Inspectorate will report this to the IND and you will get a fine." Supports TWV-required (employer applies to UWV), 16h/week-or-summer-fulltime, enforcement and fines character-for-character.
+      status: VERIFIED
+      lastVerified: "2026-06-13"
+      verifiedBy: "fact-verifier-nl 2026-06-13"
+      sourceHash: "46506145b47cb3139c5f90a94dd3a17e30ff6afc3cfbc34383e9014ffa719e47"
+      reviewBy: "2026-09-11"
+    tldr:
+      text: "Students can work in the Netherlands only if the employer has a work permit (TWV) for them, applied for at the UWV. The limit is 16 hours a week, or full-time in June, July and August — not both. Working without a TWV or over the limit means fines for the employer."
+      sourceUrl: "https://ind.nl/en/residence-permits/work/employing-a-foreign-national"
+      sourceName: "Immigration and Naturalisation Service (IND) — Employing a foreign national"
+      # VERIFIED 2026-06-13 (fact-verifier): same IND Employing page (LIVE, HTTP 200). Verbatim: "A foreign student is only allowed to work if you have a work permit (... TWV) for the student. Apply to the UWV for a TWV. The student is allowed to work maximally 16 hours per week, or fulltime in June, July and August." and "... will report this to the IND and you will get a fine." Supports "only if the employer has a TWV ... applied for at the UWV; 16h/week or full-time in June/July/August — not both; fines for the employer" character-for-character. The "not both" is implied by the source's "or" (16h/week OR fulltime in summer).
+      status: VERIFIED
+      lastVerified: "2026-06-13"
+      verifiedBy: "fact-verifier-nl 2026-06-13"
+      sourceHash: "46506145b47cb3139c5f90a94dd3a17e30ff6afc3cfbc34383e9014ffa719e47"
+      reviewBy: "2026-09-11"
+    keyFacts:
+      - label: "Work permit required"
+        text: "“A foreign student is only allowed to work if you have a work permit (in Dutch: tewerkstellingsvergunning or TWV) for the student.” The employer applies to the UWV for the TWV."
+        sourceUrl: "https://ind.nl/en/residence-permits/work/employing-a-foreign-national"
+        sourceName: "Immigration and Naturalisation Service (IND) — Employing a foreign national"
+        # VERIFIED 2026-06-13 (fact-verifier): IND Employing page (LIVE, HTTP 200). The quoted sentence is verbatim: "A foreign student is only allowed to work if you have a work permit (in Dutch: tewerkstellingsvergunning or TWV) for the student." followed by "Apply to the UWV for a TWV." — supports the employer-applies-to-UWV element. Exact match.
+        status: VERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: "fact-verifier-nl 2026-06-13"
+        sourceHash: "46506145b47cb3139c5f90a94dd3a17e30ff6afc3cfbc34383e9014ffa719e47"
+        reviewBy: "2026-09-11"
+      - label: "Hours cap"
+        text: "“The student is allowed to work maximally 16 hours per week, or fulltime in June, July and August.”"
+        sourceUrl: "https://ind.nl/en/residence-permits/work/employing-a-foreign-national"
+        sourceName: "Immigration and Naturalisation Service (IND) — Employing a foreign national"
+        # VERIFIED 2026-06-13 (fact-verifier): IND Employing page (LIVE, HTTP 200). The quoted sentence is verbatim on the page: "The student is allowed to work maximally 16 hours per week, or fulltime in June, July and August." Exact match.
+        status: VERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: "fact-verifier-nl 2026-06-13"
+        sourceHash: "46506145b47cb3139c5f90a94dd3a17e30ff6afc3cfbc34383e9014ffa719e47"
+        reviewBy: "2026-09-11"
+      - label: "Enforcement"
+        text: "The Dutch Labour Inspectorate (Netherlands Labour Authority) checks whether the employer has a TWV and whether the student does not work more than allowed; breaches are reported to the IND and the employer is fined."
+        sourceUrl: "https://ind.nl/en/residence-permits/work/employing-a-foreign-national"
+        sourceName: "Immigration and Naturalisation Service (IND) — Employing a foreign national"
+        # VERIFIED 2026-06-13 (fact-verifier): IND Employing page (LIVE, HTTP 200). Verbatim: "The Dutch Labour Inspectorate (in Dutch: de Nederlandse Arbeidsinspectie or NLA) checks whether you have a TWV. And whether the student does not work more than is allowed. Does the student work more or without a TWV? In that case the Dutch Labour Inspectorate will report this to the IND and you will get a fine." Matches "checks the employer has a TWV and the student does not work more than allowed; breaches reported to the IND and the employer is fined" character-for-character.
+        status: VERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: "fact-verifier-nl 2026-06-13"
+        sourceHash: "46506145b47cb3139c5f90a94dd3a17e30ff6afc3cfbc34383e9014ffa719e47"
+        reviewBy: "2026-09-11"
+    detail: >
+      A student residence permit does not give an unconditional right to work. A foreign
+      student may work only if the employer holds a work permit (TWV) for them, which the
+      employer applies for at the UWV. The amount of work is strictly limited: a maximum of
+      16 hours per week during the year, or full-time during the summer months of June, July
+      and August — you cannot combine both in the same period. The Netherlands Labour
+      Authority (Dutch Labour Inspectorate) enforces this, checking that the employer holds a
+      TWV and that the student stays within the hours; violations are reported to the IND and
+      the employer is fined. If you intend to work during your studies, make sure your
+      employer arranges the TWV before you start.
+    steps:
+      - text: "Before starting any job, ensure your employer applies to the UWV for a work permit (TWV) for you as a student."
+        links:
+          - text: "IND — employing foreign students: TWV required, 16 hours/week or full-time in summer"
+            sourceUrl: "https://ind.nl/en/residence-permits/work/employing-a-foreign-national"
+            sourceName: "Immigration and Naturalisation Service (IND) — Employing a foreign national"
+            # VERIFIED 2026-06-13 (fact-verifier): IND Employing page (LIVE, HTTP 200), "Employing foreign students" section. Verbatim: "A foreign student is only allowed to work if you have a work permit (... TWV) ... The student is allowed to work maximally 16 hours per week, or fulltime in June, July and August." Supports the link label (TWV required; 16h/week or full-time in summer). Link accurate.
+            status: VERIFIED
+            lastVerified: "2026-06-13"
+            verifiedBy: "fact-verifier-nl 2026-06-13"
+            sourceHash: "46506145b47cb3139c5f90a94dd3a17e30ff6afc3cfbc34383e9014ffa719e47"
+            reviewBy: "2026-09-11"
+      - text: "Keep within the hours limit (16 hours/week, or full-time only in June, July and August) to avoid fines and risk to your permit."
+    documents:
+      - name: "Work permit (TWV) for the student — employer-filed at UWV"
+        type: form
+        description: "The employer applies to the UWV (the employee-insurance agency) for the student's work permit (TWV); the student does not file it. We link the IND employer page as the authority index for the rule."
+        form:
+          text: "The student does not apply — the employer applies to the UWV for the work permit (TWV) for the student. Use the IND 'Employing a foreign national' page as the authority index that states the TWV requirement and the hours limit, and the UWV for the TWV application itself."
+          sourceUrl: "https://ind.nl/en/residence-permits/work/employing-a-foreign-national"
+          sourceName: "Immigration and Naturalisation Service (IND) — Employing a foreign national"
+          # VERIFIED 2026-06-13 (fact-verifier): IND Employing page (LIVE, HTTP 200). Verbatim: "A foreign student is only allowed to work if you have a work permit (... TWV) for the student. Apply to the UWV for a TWV." — confirms the employer (not the student) applies to the UWV. The page is the correct authority index stating the TWV requirement and the hours limit. Supported.
+          status: VERIFIED
+          lastVerified: "2026-06-13"
+          verifiedBy: "fact-verifier-nl 2026-06-13"
+          sourceHash: "46506145b47cb3139c5f90a94dd3a17e30ff6afc3cfbc34383e9014ffa719e47"
+          reviewBy: "2026-09-11"
+      - name: "Valid student residence permit"
+        type: provide
+        description: "Your valid student residence permit, on the basis of which the employer can obtain a TWV for term-time/summer work."
+    warning: >
+      Working without a TWV, or beyond the 16-hours-per-week / summer-full-time limit, is
+      enforced by the Netherlands Labour Authority and leads to employer fines and possible
+      risk to your residence permit. Confirm the current rules and hours with the IND/UWV.
+    dependsOn:
+      - study-residence-permit
+    appliesIf: "motivation == 'study'"

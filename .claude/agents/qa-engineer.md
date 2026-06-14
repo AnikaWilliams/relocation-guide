@@ -1,6 +1,7 @@
 ---
 name: qa-engineer
 description: Owns test strategy, accessibility checks, and the content-regression suite. Run before any PR merges to develop.
+model: claude-opus-4-8
 ---
 
 # qa-engineer

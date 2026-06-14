@@ -1,0 +1,95 @@
+---
+/**
+ * About page — explains the product using the project's own framing.
+ * Facts are sourced from README.md / CLAUDE.md (corridor model, source-verified
+ * claims, two-reviewer rule, build gate, "informational only"). No invented claims.
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="About — Relocation Guide"
+  description="Relocation Guide gives source-backed, independently verified relocation guidance organised by origin and destination country."
+>
+  <article class="prose prose-slate max-w-2xl space-y-8">
+    <section class="space-y-3">
+      <h1 class="text-3xl font-bold">About Relocation Guide</h1>
+      <p class="text-slate-600">
+        Moving to another country means making legal, financial, and life-altering
+        decisions from scattered, fast-changing information. Relocation Guide brings the
+        steps for your specific move into one place &mdash; and shows you exactly where
+        each fact comes from.
+      </p>
+    </section>
+
+    <section class="space-y-2">
+      <h2 class="text-xl font-semibold">Guidance by corridor</h2>
+      <p class="text-slate-700">
+        Our content is organised by <strong>corridor</strong> &mdash; your origin country
+        paired with your destination country &mdash; because the rules that apply to you
+        depend on both. You tell the planner where you are moving from and to, why you are
+        moving, and a few details about your situation; it then shows the steps that apply
+        to <em>you</em>, in order, with the documents you will need for each one.
+      </p>
+      <p class="text-slate-700">
+        Our first corridor is <strong>USA &rarr; Switzerland</strong>, covering the work,
+        family-reunification, retirement, and study routes. More corridors are in
+        preparation and will appear once they pass the same checks.
+      </p>
+    </section>
+
+    <section class="space-y-2">
+      <h2 class="text-xl font-semibold">How we keep it accurate</h2>
+      <p class="text-slate-700">
+        Accuracy is the whole point, so we built the site around it:
+      </p>
+      <ul class="list-disc pl-6 text-slate-700">
+        <li>
+          <strong>Every claim has an official source.</strong> Each fact is traced to a
+          primary, official authority &mdash; not a blog or a forum.
+        </li>
+        <li>
+          <strong>Two independent checks.</strong> The person who writes a claim and the
+          person who verifies it are never the same. A claim is only published after a
+          separate reviewer confirms it against the source.
+        </li>
+        <li>
+          <strong>Dated and shown to you.</strong> Each page displays its sources and the
+          date the facts were last verified, so you can judge how current they are.
+        </li>
+        <li>
+          <strong>Stale facts can't slip through.</strong> Our publishing process refuses
+          to release a page if any claim on it is unverified or overdue for re-checking.
+        </li>
+      </ul>
+    </section>
+
+    <section class="space-y-2">
+      <h2 class="text-xl font-semibold">Your answers stay with you</h2>
+      <p class="text-slate-700">
+        The planner runs in your browser. The answers you give are saved on your own
+        device, not on our servers, and there are no accounts to create. You can clear
+        everything at any time. See our <a href="/privacy">Privacy policy</a> for details.
+      </p>
+    </section>
+
+    <section class="space-y-2">
+      <h2 class="text-xl font-semibold">What we are not</h2>
+      <p class="text-slate-700">
+        Relocation Guide is <strong>information, not advice</strong>. We are not a law firm
+        and not licensed immigration advisers, and using the site does not create an
+        advisory relationship. Immigration rules change often, so always confirm your
+        situation with the official authority or a licensed adviser before acting.
+      </p>
+    </section>
+
+    <section class="space-y-2">
+      <h2 class="text-xl font-semibold">Get in touch</h2>
+      <p class="text-slate-700">
+        Spotted something out of date, or have a question? See our
+        <a href="/contact">Contact page</a>. Operator details are in our
+        <a href="/impressum">Impressum</a>.
+      </p>
+    </section>
+  </article>
+</BaseLayout>

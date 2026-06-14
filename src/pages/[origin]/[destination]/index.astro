@@ -1,80 +1,292 @@
 ---
 import type { GetStaticPaths } from 'astro';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
-import Provenance from '../../../components/Provenance.astro';
-import CorridorFlowchart from '../../../components/CorridorFlowchart.tsx';
-import { getPublishedCorridors, countryName } from '../../../utils/corridors';
-import { collectClaims } from '../../../utils/provenance';
-import type { Claim } from '../../../content/schema';
+import Disclaimer from '../../../components/Disclaimer.astro';
+import CorridorApp, { type TaskData, type CorridorPair, type CantonData } from '../../../components/CorridorApp.tsx';
+import type { Corridor } from '../../../content/schema';
+import { getPublishedCorridors, getPublishedCorridorPairs } from '../../../utils/corridors';
 
 export const getStaticPaths = (async () => {
-  // getPublishedCorridors applies the provenance gate — a published corridor
-  // with an unrenderable claim throws here and fails the build (Phase 3 rule 5).
   const corridors = await getPublishedCorridors();
+  const availableCorridors = await getPublishedCorridorPairs();
   return corridors.map((entry) => ({
     params: { origin: entry.data.originIso2, destination: entry.data.destinationIso2 },
-    props: { corridor: entry.data },
+    props: { corridor: entry.data, availableCorridors },
   }));
 }) satisfies GetStaticPaths;
 
-const { corridor } = Astro.props;
-const allClaims: Claim[] = collectClaims(corridor).map((c) => c.claim);
-const flowTasks = corridor.tasks.map((t) => ({
+const { corridor, availableCorridors } = Astro.props as {
+  corridor: Corridor;
+  availableCorridors: CorridorPair[];
+};
+
+const appTasks: TaskData[] = corridor.tasks.map((t) => ({
   id: t.id,
   title: t.title,
   category: t.category,
+  summary: { text: t.summary.text, sourceUrl: t.summary.sourceUrl, sourceName: t.summary.sourceName },
+  tldr: t.tldr ? { text: t.tldr.text, sourceUrl: t.tldr.sourceUrl, sourceName: t.tldr.sourceName } : undefined,
+  keyFacts: t.keyFacts?.map((f) => ({ label: f.label, text: f.text, sourceUrl: f.sourceUrl, sourceName: f.sourceName })),
+  detail: t.detail,
+  steps: t.steps.map((s) => ({
+    text: s.text,
+    tip: s.tip,
+    links: s.links?.map((l) => ({ text: l.text, sourceUrl: l.sourceUrl, sourceName: l.sourceName, cantonOffice: l.cantonOffice })),
+  })),
+  documents: t.documents.map((d) =>
+    typeof d === 'string'
+      ? d
+      : {
+          name: d.name,
+          type: d.type,
+          description: d.description,
+          form: d.form
+            ? { text: d.form.text, sourceUrl: d.form.sourceUrl, sourceName: d.form.sourceName, lastVerified: d.form.lastVerified }
+            : undefined,
+        },
+  ),
+  timeline: t.timeline ? { text: t.timeline.text, sourceUrl: t.timeline.sourceUrl, sourceName: t.timeline.sourceName } : undefined,
+  cost: t.cost ? { text: t.cost.text, sourceUrl: t.cost.sourceUrl, sourceName: t.cost.sourceName } : undefined,
+  warning: t.warning,
   dependsOn: t.dependsOn,
+  appliesIf: t.appliesIf,
 }));
+
+/** Per-canton local detail (Switzerland), projected to the island's prop shape. */
+const appCantons: CantonData[] = (corridor.cantons ?? []).map((c) => ({
+  code: c.code,
+  name: c.name,
+  migrationOffice: {
+    text: c.migrationOffice.text,
+    sourceUrl: c.migrationOffice.sourceUrl,
+    sourceName: c.migrationOffice.sourceName,
+    lastVerified: c.migrationOffice.lastVerified,
+  },
+  taxInfo: {
+    text: c.taxInfo.text,
+    sourceUrl: c.taxInfo.sourceUrl,
+    sourceName: c.taxInfo.sourceName,
+    lastVerified: c.taxInfo.lastVerified,
+  },
+  notes: c.notes?.map((n) => ({
+    label: n.label,
+    text: n.text,
+    sourceUrl: n.sourceUrl,
+    sourceName: n.sourceName,
+    lastVerified: n.lastVerified,
+  })),
+}));
+
+/**
+ * SEO: structured data (seo-analyst owned).
+ *
+ * Built ONLY from VERIFIED corridor content already rendered to this page
+ * (corridor title/description, task titles, task summary claims).
+ *
+ * Schema choice (vs Article / FAQPage):
+ * - `HowTo` is the semantically honest type — the corridor IS an ordered,
+ *   step-by-step procedure. Google retired HowTo *rich results* (2023), so we
+ *   claim no SERP feature; the markup is purely descriptive, not spam bait.
+ * - `FAQPage` is rejected: the content is not Q&A, and Google restricts FAQ
+ *   rich results to gov/health sites — marking this up as FAQ would be spam.
+ */
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
+const homeUrl = new URL('/', Astro.site).href;
+
+const howToJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'HowTo',
+  name: corridor.title,
+  description: corridor.description,
+  inLanguage: 'en',
+  dateModified: corridor.lastReviewed,
+  mainEntityOfPage: canonical,
+  step: corridor.tasks.map((t, i) => ({
+    '@type': 'HowToStep',
+    position: i + 1,
+    name: t.title,
+    text: t.summary.text,
+  })),
+};
+
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Relocation Guide', item: homeUrl },
+    { '@type': 'ListItem', position: 2, name: corridor.title, item: canonical },
+  ],
+};
+
+/** Serialize for a JSON-LD <script>, escaping `<` so content can never close the tag. */
+const jsonLd = (data: unknown) => JSON.stringify(data).replace(/</g, '\\u003c');
+
+/**
+ * Human label for which route a task belongs to, derived from its `appliesIf`.
+ * The complete guide below lists EVERY task (all routes, for SEO + no-JS readers),
+ * so each one is tagged with its route — making clear that e.g. a family task is
+ * not part of a work-route reader's plan. Display-only; the interactive planner
+ * uses the real `evaluateAppliesIf`.
+ */
+const planScope = (appliesIf?: string): string => {
+  if (!appliesIf || !appliesIf.trim()) return 'Everyone';
+  // Structural always-true guards (e.g. `destination == 'ie'` on the us-ie corridor)
+  // reference no user-answer field — they apply to everyone, not "specific situations".
+  if (!/motivation|hasChildren|familyRelationship|studyStatus|workStatus|passports/.test(appliesIf)) {
+    return 'Everyone';
+  }
+  const routes: string[] = [];
+  if (/motivation\s*==\s*['"]work['"]/.test(appliesIf)) routes.push('Work');
+  if (/motivation\s*==\s*['"]study['"]/.test(appliesIf)) routes.push('Study');
+  if (/motivation\s*==\s*['"]family['"]/.test(appliesIf)) routes.push('Family');
+  if (/motivation\s*==\s*['"]retirement['"]/.test(appliesIf)) routes.push('Retirement');
+  if (/hasChildren\s*==\s*true|familyRelationship\s*==\s*['"]parent['"]/.test(appliesIf)) {
+    routes.push('If you have children');
+  }
+  if (routes.length === 0) return /motivation\s*!=/.test(appliesIf) ? 'Most routes' : 'Specific situations';
+  return routes.join(' · ');
+};
+
 ---
 
-<BaseLayout title={corridor.title} description={corridor.description}>
-  <article class="space-y-8">
-    <header class="space-y-2">
-      <p class="text-sm uppercase tracking-wide text-slate-500">
-        {countryName(corridor.originIso2)} &rarr; {countryName(corridor.destinationIso2)}
-      </p>
-      <h1 class="text-3xl font-bold">{corridor.title}</h1>
-      <p class="max-w-2xl text-slate-600">{corridor.description}</p>
-    </header>
+<BaseLayout title={corridor.title} description={corridor.description} fullBleed>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={jsonLd(howToJsonLd)} />
+    <script type="application/ld+json" set:html={jsonLd(breadcrumbJsonLd)} />
+  </Fragment>
 
-    <section aria-label="Relocation steps overview">
-      <h2 class="text-xl font-semibold mb-3">How the steps fit together</h2>
-      <CorridorFlowchart tasks={flowTasks} client:visible />
-    </section>
+  {/* The page's primary heading. The app island renders its own visual header,
+      so this is screen-reader-only — a standard a11y pattern, same text as
+      <title>, not hidden keyword stuffing. */}
+  <h1 class="sr-only">{corridor.title}</h1>
 
-    <section class="space-y-6">
-      <h2 class="text-xl font-semibold">Steps</h2>
-      {
-        corridor.tasks.map((task) => (
-          <div class="rounded-lg border border-slate-200 p-5">
-            <div class="flex items-baseline justify-between gap-3">
-              <h3 class="text-lg font-semibold">{task.title}</h3>
-              <span class="text-xs rounded bg-slate-100 px-2 py-0.5 text-slate-600">
-                {task.category}
-              </span>
-            </div>
-            <p class="mt-2 text-slate-700">{task.summary.text}</p>
-            {task.detail && <p class="mt-2 text-sm text-slate-600">{task.detail}</p>}
-            <dl class="mt-3 grid gap-2 text-sm sm:grid-cols-2">
-              <div>
-                <dt class="font-medium text-slate-900">Timeline</dt>
-                <dd class="text-slate-600">{task.timeline.text}</dd>
-              </div>
-              <div>
-                <dt class="font-medium text-slate-900">Cost</dt>
-                <dd class="text-slate-600">{task.cost.text}</dd>
-              </div>
-            </dl>
+  {/* App shell: exactly one viewport tall; the page scrolls past it into the
+      guide below. The app's internal panels keep their own scrolling. The
+      inline 100dvh wins where supported (mobile URL-bar correctness) and is
+      ignored by older browsers, which fall back to h-screen. */}
+  <div class="h-screen flex flex-col" style="height: calc(100dvh - var(--cb-h, 0px))">
+    <CorridorApp
+      tasks={appTasks}
+      corridorTitle={corridor.title}
+      originIso2={corridor.originIso2}
+      destinationIso2={corridor.destinationIso2}
+      availableCorridors={availableCorridors}
+      coversMotivations={corridor.coversMotivations}
+      cantons={appCantons}
+      client:load
+    />
+  </div>
+
+  <noscript>
+    <div class="border-b border-amber-200 bg-amber-50 px-4 py-3 text-center text-sm text-amber-900">
+      JavaScript is off, so the interactive planner above won't respond — the complete
+      guide is published in full just below.
+    </div>
+  </noscript>
+
+  {/* The complete guide as real, indexable markup (ADR-0011). Progressive
+      enhancement: identical VERIFIED corridor data to what the app renders,
+      genuinely visible to every visitor — crawlers index real content, readers
+      can skim past the app, no cloaking. */}
+  <section id="full-guide" aria-label="The complete written guide">
+      <article class="mx-auto max-w-2xl px-4 py-12">
+        <header class="mb-8 space-y-4">
+          <h2 class="font-serif text-3xl font-bold text-slate-900">The complete guide: {corridor.title}</h2>
+          <p class="text-slate-600">{corridor.description}</p>
+          <Disclaimer />
+          <p class="text-sm text-slate-500">
+            This is the <strong>complete reference</strong> for this corridor — every step for
+            <em>every</em> route (work, study, family, and more). Your personalised planner above shows
+            only the steps that match your answers, so it is usually shorter than this. Each step below
+            is tagged with the route it belongs to. Content last reviewed: {corridor.lastReviewed}.
+          </p>
+        </header>
+
+        {corridor.tasks.map((task, i) => (
+          <section class="mb-10 border-t border-slate-200 pt-8">
+            <h3 class="font-serif text-xl font-semibold text-slate-900">
+              {i + 1}. {task.title}
+            </h3>
+            <p class="mt-1 inline-flex items-center rounded-full bg-brand-50 px-2.5 py-0.5 text-xs font-semibold text-brand-700">
+              For: {planScope(task.appliesIf)}
+            </p>
+            <p class="mt-3 text-slate-700">{task.summary.text}</p>
+            <p class="mt-3 text-slate-700">{task.detail}</p>
+
             {task.warning && (
-              <p class="mt-3 rounded border border-red-200 bg-red-50 p-2 text-sm text-red-800">
+              <p class="mt-3 rounded-md border border-amber-300 bg-amber-50 p-3 text-sm text-amber-900">
                 {task.warning}
               </p>
             )}
-          </div>
-        ))
-      }
-    </section>
 
-    <Provenance claims={allClaims} lastReviewed={corridor.lastReviewed} />
-  </article>
+            <h4 class="mt-4 font-semibold text-slate-900">Steps</h4>
+            <ol class="mt-2 list-decimal space-y-2 pl-6 text-slate-700">
+              {task.steps.map((step) => (
+                <li>
+                  {step.text}
+                  {step.tip && <span class="block text-sm text-slate-500">Tip: {step.tip}</span>}
+                  {step.links && step.links.length > 0 && (
+                    <span class="block text-sm">
+                      {step.links.map((link, j) => (
+                        <>
+                          {j > 0 && ' · '}
+                          <a
+                            href={link.sourceUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="text-blue-700 underline"
+                          >{link.text} ({link.sourceName})</a>
+                        </>
+                      ))}
+                    </span>
+                  )}
+                </li>
+              ))}
+            </ol>
+
+            {task.documents.length > 0 && (
+              <>
+                <h4 class="mt-4 font-semibold text-slate-900">Documents</h4>
+                <ul class="mt-2 list-disc space-y-1 pl-6 text-slate-700">
+                  {task.documents.map((doc) =>
+                    typeof doc === 'string' ? (
+                      <li>{doc}</li>
+                    ) : (
+                      <li>
+                        {doc.name}
+                        {doc.description && <span class="text-slate-500"> — {doc.description}</span>}
+                        {doc.form && (
+                          <span class="block text-sm">
+                            Form from {doc.form.sourceName}:{' '}
+                            <a href={doc.form.sourceUrl} target="_blank" rel="noopener noreferrer" class="text-blue-700 underline">{doc.form.text}</a>
+                          </span>
+                        )}
+                      </li>
+                    ),
+                  )}
+                </ul>
+              </>
+            )}
+
+            {task.timeline && (
+              <p class="mt-4 text-slate-700">
+                <strong>Timeline:</strong> {task.timeline.text}{' '}
+                (<a href={task.timeline.sourceUrl} target="_blank" rel="noopener noreferrer" class="text-blue-700 underline">{task.timeline.sourceName}</a>)
+              </p>
+            )}
+            {task.cost && (
+              <p class="mt-2 text-slate-700">
+                <strong>Cost:</strong> {task.cost.text}{' '}
+                (<a href={task.cost.sourceUrl} target="_blank" rel="noopener noreferrer" class="text-blue-700 underline">{task.cost.sourceName}</a>)
+              </p>
+            )}
+
+            <p class="mt-4 text-sm text-slate-500">
+              Source: <a href={task.summary.sourceUrl} target="_blank" rel="noopener noreferrer" class="underline">{task.summary.sourceName}</a>
+              {task.summary.lastVerified && <> · Last verified {task.summary.lastVerified}</>}
+            </p>
+          </section>
+        ))}
+      </article>
+  </section>
 </BaseLayout>

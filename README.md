@@ -20,13 +20,50 @@ progress tracker. Snapshot:
 |---|---|---|
 | **Phase 0** | Governance scaffold: `CLAUDE.md`, ADRs, agent definitions | ✅ Done |
 | **Phase 1** | Technical foundation: Astro app, content schema, **provenance build gate**, UI shell, tests | ✅ Done |
-| **Phase 2** | First corridors through the content pipeline; SEO; compliance pages; analytics | ⏳ Planned |
+| **Phase 2** | First corridors through the content pipeline; SEO; compliance pages; analytics | 🚧 In progress |
 | **Phase 3** | Accuracy system (provenance rules) — enforced continuously from Phase 1 onward | 🔁 Ongoing |
 | **Phase 4** | Monetisation (AdSense) + scale to more corridors/destinations | 🗓️ Backlog |
 
-**Right now:** the application builds, type-checks, and passes tests, but **no corridor content
-is published yet** — the accuracy gate is proven by tests and an end-to-end build check. Real
-content enters only through the verification pipeline below.
+**Right now:** USA → Switzerland (`us-ch`) covers **four verified routes — work, family
+reunification, retirement (non-gainful, FNIA Art. 28), and study (Art. 27) — with 218/218 claims
+independently verified** across **21 tasks**. The corridor app is a **guided form** (ADR-0008): a
+branching intake (origin, destination, passports, motivation + follow-ups, stay, children) →
+a one-task-at-a-time plan with a journey/answer-history sidebar; `appliesIf` rules (ADR-0009)
+route each user to their own steps. **Every country is selectable** in the intake (nothing
+is preselected on first open); a route with no published guide leads to a **launch
+waitlist** — an email/phone capture with explicit consent, dormant by default so nothing
+leaves the browser until a backend is wired (ADR-0015) — rather than a dead end.
+The dependency graph is backend-only (`src/utils/journey.ts`);
+the visual flowchart was retired (island bundle ~59 kB → ~9 kB gzip then; ~14.5 kB gzip now with the waitlist). Every step now carries a
+**document checklist + scannable key facts** (ADR-0012): each task lists what you provide vs. the
+official form to obtain, with form links to the issuing authority's own page (never self-hosted).
+Plans are shareable via the URL fragment (F-08, no answers sent to servers); the full guide also
+renders as indexable markup below the app (ADR-0011). A weekly link-auditor CI watches every
+source URL. The corridor is **founder-approved** (human gate, ADR-0014).
+
+**Launch readiness (2026-06-13):** draft Privacy / Cookie / Terms / About / Contact pages (legal
+ones clearly marked DRAFT pending lawyer review), a branded og:image social card, and a
+reject-by-default **cookie-consent banner** gating Plausible + GA4 + AdSense — all **dormant
+until the production domain and analytics IDs exist** (nothing loads without them; ADR-0013).
+**Remaining go-live blockers are infrastructural:** a production domain + Cloudflare Pages deploy,
+a human lawyer's review of the legal drafts, and operator details for the Impressum/Contact.
+Monetization (AdSense) is documented but not yet eligible — see [`docs/monetization.md`](docs/monetization.md).
+
+**Design (2026-06-13):** the customer-facing UI adopted a **"Trust & Authority" design system** (UI/UX
+Pro Max audit, ADR-0019) — WCAG-AA-contrast buttons, 44px touch targets, readable legal/source text,
+**self-hosted** EB Garamond + Lato fonts (no Google CDN, GDPR-safe), brand design tokens, a
+`prefers-reduced-motion` guard, a consent-banner overlap fix, and home/wizard trust framing. Styling
+only — no content, claim, or disclaimer wording changed (independently verified). The persisted system
+lives in [`design-system/relocation-guide/MASTER.md`](design-system/relocation-guide/MASTER.md).
+
+**Corridor coverage (2026-06-13):** **8 corridors are published** — USA → Switzerland, Germany,
+France, Belgium, Ireland, Luxembourg, Austria, and the UK — each fully VERIFIED via the two-agent
+pipeline (research → independent fact-verify; ADR-0016/0018), founder-approved. USA → Netherlands is
+drafted and 90/92 verified but **held as a draft** pending reconciliation of one health-insurance
+deadline (two official sources disagree; needs a human/lawyer call). The intake marks each route with
+a green dot (published, verified guide) or gray dot (join the waitlist). The USA→Western-Europe batch
+was produced via agent teams + background fact-verifier agents, with every source captured as a dated
+receipt (ADR-0017). Public go-live still gated on the domain + lawyer review.
 
 ---
 
@@ -60,7 +97,7 @@ for the file shape.
 ## Tech stack
 
 - **Framework:** Astro 4.x (zero-JS by default for SEO / Core Web Vitals)
-- **Interactivity:** React islands (`@astrojs/react`) — corridor flowchart (`@xyflow/react`)
+- **Interactivity:** React islands (`@astrojs/react`) — guided intake + plan app (`CorridorApp`)
 - **Content:** Astro Content Collections + Zod (provenance enforced at compile + build time)
 - **Styling:** Tailwind CSS
 - **Hosting:** Cloudflare Pages (static output)
@@ -79,7 +116,7 @@ relocation-guide/
 ├── VERIFICATION_LOG.md  ← per-claim verification record
 ├── .claude/agents/      ← sub-agent definitions
 ├── src/
-│   ├── components/      ← Disclaimer, Provenance, CorridorFlowchart (island)
+│   ├── components/      ← Disclaimer, Provenance, CorridorApp (island)
 │   ├── content/         ← schema.ts (canonical model), config.ts, corridors/
 │   ├── layouts/         ← BaseLayout
 │   ├── pages/           ← index + [origin]/[destination] corridor route

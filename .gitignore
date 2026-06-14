@@ -24,8 +24,36 @@ npm-debug.log*
 # Testing
 /coverage
 
+# Link-audit run output (CI artifact; baseline scripts/link-baseline.json IS committed)
+/link-audit-report.md
+
 # Claude Code local settings (per-developer, not shared)
 .claude/settings.local.json
+
+# Source-snapshot raw cache (ADR-0017): regenerable raw payloads, keyed by
+# content hash. The tracked manifest.json + normalized .txt files are committed;
+# the gzipped raw bytes are not.
+sources/.cache/
+
+# Throwaway preview/audit screenshots at repo root (debug artifacts, regenerable)
+/*.png
+/*.jpeg
+/.playwright-mcp/
+
+# Dated audit research artifacts (raw fetches / studies; the curated audit reports are committed)
+/audit/fetch-*/
+/audit/verify-study-*/
+
+# UI/UX Pro Max skill: the skill is committed, but its compiled Python bytecode is not
+.claude/skills/**/__pycache__/
+
+# Link-audit raw fetched HTML (regenerable via scripts/audit-fetch-links.mjs).
+# The curated link-audit/*.md + links.json + verdicts.json ARE committed; the
+# bulky intermediate inventories below are regenerable from the scripts.
+link-audit/.cache/
+link-audit/usages.json
+link-audit/unique-urls.json
+link-audit/fetch-results.json
 
 # Misc
 *.local

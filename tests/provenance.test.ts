@@ -110,11 +110,47 @@ function corridor(overrides: Partial<Corridor> = {}): Corridor {
 }
 
 describe('collectClaims', () => {
-  it('collects summary, timeline, cost, and step links', () => {
+  it('collects summary, timeline, cost, and step links when all present', () => {
     const claims = collectClaims(corridor());
     // 1 summary + 1 timeline + 1 cost + 1 step link = 4
     expect(claims).toHaveLength(4);
     expect(claims.map((c) => c.location)).toContain('tasks[work-visa].steps[0].links[0]');
+  });
+
+  it('skips absent optional timeline and cost fields', () => {
+    const c = corridor();
+    delete (c.tasks[0] as Record<string, unknown>).timeline;
+    delete (c.tasks[0] as Record<string, unknown>).cost;
+    const claims = collectClaims(c);
+    // 1 summary + 0 timeline + 0 cost + 1 step link = 2
+    expect(claims).toHaveLength(2);
+    expect(claims.map((lc) => lc.location)).not.toContain('tasks[work-visa].timeline');
+    expect(claims.map((lc) => lc.location)).not.toContain('tasks[work-visa].cost');
+  });
+
+  it('collects ADR-0012 claims: tldr, keyFacts, and form-document links', () => {
+    const c = corridor();
+    c.tasks[0].tldr = verifiedClaim({ text: 'tldr claim' });
+    c.tasks[0].keyFacts = [{ ...verifiedClaim({ text: 'who applies' }), label: 'Who applies' }];
+    c.tasks[0].documents = [
+      'Passport', // legacy string — carries no claim
+      { name: 'Visa form', type: 'form', description: 'Official form.', form: verifiedClaim({ text: 'form link' }) },
+      { name: 'CV', type: 'provide', description: 'Your CV.' }, // provide — no claim
+    ];
+    const locations = collectClaims(c).map((lc) => lc.location);
+    expect(locations).toContain('tasks[work-visa].tldr');
+    expect(locations).toContain('tasks[work-visa].keyFacts[0] (Who applies)');
+    expect(locations).toContain('tasks[work-visa].documents[1] (Visa form)');
+    // 4 original + tldr + keyFact + form = 7
+    expect(locations).toHaveLength(7);
+  });
+
+  it('build gate fails on an UNVERIFIED form-document link', () => {
+    const c = corridor();
+    c.tasks[0].documents = [
+      { name: 'Visa form', type: 'form', description: 'Official form.', form: { ...verifiedClaim(), status: 'UNVERIFIED' } },
+    ];
+    expect(() => assertCorridorPublishable(c, NOW)).toThrow(/documents\[0\] \(Visa form\)/);
   });
 });
 
@@ -177,5 +213,29 @@ describe('CorridorSchema defaults', () => {
     expect(parsed.published).toBe(false);
     expect(parsed.tasks[0].summary.status).toBe('UNVERIFIED');
     expect(parsed.tasks[0].dependsOn).toEqual([]);
+  });
+
+  it('accepts tasks without timeline or cost (both are optional)', () => {
+    const parsed = CorridorSchema.parse({
+      originIso2: 'us',
+      destinationIso2: 'ch',
+      title: 'USA to Switzerland',
+      description: 'desc',
+      lastReviewed: '2026-06-01',
+      reviewedBy: 'content-researcher',
+      tasks: [
+        {
+          id: 't1',
+          title: 'Task',
+          category: 'housing',
+          summary: { text: 'x', sourceUrl: 'https://official.example/x', sourceName: 'Auth' },
+          detail: '',
+          steps: [],
+          documents: [],
+        },
+      ],
+    });
+    expect(parsed.tasks[0].timeline).toBeUndefined();
+    expect(parsed.tasks[0].cost).toBeUndefined();
   });
 });
