@@ -999,9 +999,11 @@ tasks:
             sourceUrl: "https://www.migration.gv.at/en/types-of-immigration/permanent-immigration/other-key-workers/"
             sourceName: "Austria Migration — Other Key Workers (Red-White-Red Card)"
             # RE-SOURCED 2026-06-13 (content-researcher): re-pointed from the Health-insurance page (which only covers compulsory employee insurance/e-card/benefits, not the residence requirement) to the Other Key Workers permit page, which states the settlement requirement "health insurance covering all risks (compulsory health insurance or equivalent insurance policy)" and that "the general requirements under Austrian settlement and residence law are met (health insurance coverage)". Source captured at sources/us-at/cd0f7feb.txt.
-            status: UNVERIFIED
+            # VERIFIED 2026-06-13 (fact-verifier re-check): live re-fetch (sha256 cd0f7feb…, HTTP 200, no drift). OKW page lists among documents to submit "Evidence of health insurance covering all risks (compulsory health insurance or equivalent insurance policy)" and states the card is issued "provided that the general requirements under Austrian settlement and residence law are met (health insurance coverage)." Supports the non-employee residence-permit health-insurance requirement.
+            status: VERIFIED
             lastVerified: "2026-06-13"
-            verifiedBy: ""
+            verifiedBy: "fact-verifier-at-r2 2026-06-13"
+            sourceHash: "cd0f7feb4c605faeb44a9f26e1e9de2a8b45349f799e943ae8a0272eb50a657b"
             reviewBy: "2026-09-11"
     documents:
       - name: "Social-security registration (via your employer)"
@@ -1012,9 +1014,11 @@ tasks:
           sourceUrl: "https://www.usp.gv.at/en/themen/mitarbeiter-und-gesundheit/einstellung-mitarbeiter-und-arten-der-beschaeftigung/einstellen-von-personal.html"
           sourceName: "USP.gv.at (Austrian Business Service Portal) — Hiring of staff"
           # RE-SOURCED 2026-06-13 (content-researcher): re-pointed from the migration Health-insurance page (which never describes employer-side registration) to USP.gv.at "Hiring of staff", the official Business Service Portal page that states verbatim "Before the person starts working, the employer must register him or her with the social security system." Recast to "social-security registration" (which the source states) rather than naming ÖGK as the registration body, since the source says "social security system" generically; ÖGK is noted as the resulting health-insurance carrier for employees. Source captured at sources/us-at/1699e880.txt.
-          status: UNVERIFIED
+          # VERIFIED 2026-06-13 (fact-verifier re-check): live re-fetch (sha256 1699e880…, HTTP 200). USP.gv.at "Hiring of staff" states verbatim "Before the person starts working, the employer must register him or her with the social security system." Supports the employer-side social-security registration claim character-for-character.
+          status: VERIFIED
           lastVerified: "2026-06-13"
-          verifiedBy: ""
+          verifiedBy: "fact-verifier-at-r2 2026-06-13"
+          sourceHash: "1699e880faefbd4ba4be506d7469134b9e1b3b123eccbf1c6bd66710c96cf5cd"
           reviewBy: "2026-09-11"
       - name: "Employment contract / proof of employment"
         type: provide
@@ -1033,18 +1037,22 @@ tasks:
       sourceUrl: "https://www.migration.gv.at/en/living-and-working-in-austria/housing/housing.html"
       sourceName: "Austria Migration — Housing"
       # RE-SOURCED 2026-06-13 (content-researcher): trimmed the unsupported MRG/Landlord-and-Tenant-Act/housing-association rent-regulation clause out of the summary so every assertion now matches the cited Housing page (Hauptmiete vs Untermiete differing in rent amount and notice protection; the three-year limited-tenancy minimum; obligatory housing registrations). The MRG fact is retained, re-sourced to the primary statute, in the dedicated "Rent regulation" keyFact below.
-      status: UNVERIFIED
+      # VERIFIED 2026-06-13 (fact-verifier re-check): live re-fetch (sha256 eff5d170…, HTTP 200, no drift). Housing page: Hauptmiete vs Untermiete "main differences are basically determined by the amount of the rent, as well as the scope of protection against being given notice to leave"; "In the case of a limited tenancy agreement there is a legal minimum term of three years … If a limited tenancy agreement is extended, the legal minimum term of three years also applies"; and "there are a number of obligatory registrations concerning housing that need to be heeded." The page contains NO mention of the MRG/Mietrechtsgesetz/Landlord-and-Tenant-Act — the unsupported clause was correctly removed; every remaining assertion is supported.
+      status: VERIFIED
       lastVerified: "2026-06-13"
-      verifiedBy: ""
+      verifiedBy: "fact-verifier-at-r2 2026-06-13"
+      sourceHash: "eff5d170eb3126653b03dcf0914a53d0be1e1a20b1afcf9c50ad1a9ab04fa560"
       reviewBy: "2026-09-11"
     tldr:
       text: "Renting in Austria: a Hauptmiete (primary lease, directly with the owner) and an Untermiete (sublet) differ in the amount of the rent and the protection against notice to leave. Limited tenancies have a three-year minimum term, which also applies on extension. Remember the obligatory residence registration (Meldezettel)."
       sourceUrl: "https://www.migration.gv.at/en/living-and-working-in-austria/housing/housing.html"
       sourceName: "Austria Migration — Housing"
       # RE-SOURCED 2026-06-13 (content-researcher): trimmed the unsupported "Many primary-lease and housing-association rents fall under the Landlord and Tenant Act (MRG)" clause; remaining tldr (Hauptmiete vs Untermiete differing in rent amount and notice protection; three-year limited-tenancy minimum incl. on extension) all matches the cited Housing page. MRG fact retained and re-sourced to the statute in the "Rent regulation" keyFact.
-      status: UNVERIFIED
+      # VERIFIED 2026-06-13 (fact-verifier re-check): same live re-fetch (sha256 eff5d170…). Housing page supports Hauptmiete (with the owner) vs Untermiete (sublet) differing in rent amount and notice protection, the three-year limited-tenancy minimum incl. on extension, and the obligatory residence registration. No MRG/Landlord-and-Tenant-Act mention on the page — the trimmed clause was correctly removed.
+      status: VERIFIED
       lastVerified: "2026-06-13"
-      verifiedBy: ""
+      verifiedBy: "fact-verifier-at-r2 2026-06-13"
+      sourceHash: "eff5d170eb3126653b03dcf0914a53d0be1e1a20b1afcf9c50ad1a9ab04fa560"
       reviewBy: "2026-09-11"
     keyFacts:
       - label: "Lease types"
@@ -1062,9 +1070,11 @@ tasks:
         sourceUrl: "https://www.ris.bka.gv.at/GeltendeFassung.wxe?Abfrage=Bundesnormen&Gesetzesnummer=10002531"
         sourceName: "RIS — Mietrechtsgesetz (MRG), consolidated federal law"
         # RE-SOURCED 2026-06-13 (content-researcher): re-pointed from the migration Housing page (which never mentions the MRG) to the primary statute on RIS (the official federal legal-information system). Recast to what §1 (Geltungsbereich) actually states — the MRG applies to the rental of apartments/parts of apartments/business premises of all kinds plus cooperative-housing use-agreements, and §1(2) lists scope exclusions — and dropped the unsupported quantitative "majority of ... housing-association apartments" framing. Source captured at sources/us-at/cdbd827a.txt (statute is in German).
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier re-check): live re-fetch of the RIS consolidated MRG (sha256 7db96583…, HTTP 200; researcher's earlier capture cdbd827a was superseded by this independent live fetch). Read the German §1: "Geltungsbereich § 1. (1) Dieses Bundesgesetz gilt für die Miete von Wohnungen, einzelnen Wohnungsteilen oder Geschäftsräumlichkeiten aller Art … und für die genossenschaftlichen Nutzungsverträge über derartige Objekte" — confirms the MRG applies to apartments, individual parts of apartments, business premises of all kinds, and cooperative-housing use-agreements (genossenschaftliche Nutzungsverträge); the statute defines/regulates the "Mietzins" (rent). §1(2) excludes certain lettings — incl. accommodation-business lets (Beherbergung), holiday/recreation second-homes ("Zweitwohnung zu Zwecken der Erholung oder der Freizeitgestaltung") and service apartments ("Wohnungen, die auf Grund eines Dienstverhältnisses") — supporting "Certain lettings are excluded from its scope (e.g. some short-term and service apartments)." Every assertion in the keyFact is backed by §1; the dropped quantitative "majority of housing-association apartments" framing is correctly absent.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-at-r2 2026-06-13"
+        sourceHash: "7db965831955a55ec9aca393de1811720dd91010f664b58de8b8f2476c0b0ed6"
         reviewBy: "2026-09-11"
       - label: "Tenancy term"
         text: "Tenancy agreements may be limited or unlimited; a limited tenancy has a legal minimum term of three years (which also applies on extension)."
@@ -1096,9 +1106,11 @@ tasks:
             sourceUrl: "https://www.migration.gv.at/en/living-and-working-in-austria/housing/housing.html"
             sourceName: "Austria Migration — Housing"
             # RE-SOURCED 2026-06-13 (content-researcher): dropped "and the MRG" from the link text and the step text (the Housing page never mentions the Mietrechtsgesetz); the link now describes only what the page covers — Hauptmiete vs Untermiete (rent level, notice protection) and the limited/unlimited tenancy term. The MRG statute is linked separately from the "Rent regulation" keyFact.
-            status: UNVERIFIED
+            # VERIFIED 2026-06-13 (fact-verifier re-check): same live re-fetch (sha256 eff5d170…). Housing page covers Hauptmiete vs Untermiete (differing in rent level and notice protection) and the limited/unlimited tenancy distinction with the three-year minimum — exactly what the link text now describes. The page has no MRG/Mietrechtsgesetz mention, so dropping "and the MRG" from the link/step text is correct. Link accurate.
+            status: VERIFIED
             lastVerified: "2026-06-13"
-            verifiedBy: ""
+            verifiedBy: "fact-verifier-at-r2 2026-06-13"
+            sourceHash: "eff5d170eb3126653b03dcf0914a53d0be1e1a20b1afcf9c50ad1a9ab04fa560"
             reviewBy: "2026-09-11"
       - text: "After signing a lease and moving in, complete your residence registration (Meldezettel) within three days."
         links:
@@ -1129,18 +1141,22 @@ tasks:
       sourceUrl: "https://www.ris.bka.gv.at/GeltendeFassung.wxe?Abfrage=Bundesnormen&Gesetzesnummer=20009087"
       sourceName: "RIS — FATCA Agreement Austria–USA (BGBl. III Nr. 16/2015)"
       # RE-SOURCED 2026-06-13 (content-researcher): re-pointed from the generic "Living and working in Austria" landing page (which has zero banking/FATCA content) to the primary legal source for FATCA in Austria — the Austria–USA FATCA intergovernmental agreement on RIS (BGBl. III Nr. 16/2015, Gesetzesnummer 20009087), which provides for Austrian financial institutions reporting "specified US person" account information to the US IRS. Recast the bank-specific documentary requirements and the "some banks cautious about US clients" point as confirm-with-the-bank rather than sourced facts (no reachable official page states them); the FATCA legal basis is now sourced. Statute is in German. Source captured at sources/us-at/199659df.txt.
-      status: UNVERIFIED
+      # VERIFIED 2026-06-13 (fact-verifier re-check): live re-fetch of the RIS Austria–USA FATCA agreement (sha256 199659df…, HTTP 200). Read the German: defines „US-Person" = "eine natürliche Person, die Staatsbürger der Vereinigten Staaten oder dort ansässig ist" and „spezifizierte US-Person" = a US-Person other than the listed carve-outs (so US citizens are specified US persons), and „US-TIN"/„meldepflichtiges …". "Artikel 2 Meldungen und Informationsaustausch — Anweisung an österreichische Finanzinstitute. Österreich willigt ein, alle meldenden österreichischen Finanzinstitute anzuweisen … a) sich … beim IRS über die IRS FATCA Registrierungswebseite zu registrieren …" — confirms the FATCA reporting basis (Austrian FIs report specified-US-person account info to the US IRS). The "document list varies by bank" and "some banks cautious about US clients" parts are explicitly framed as confirm-with-the-bank (bank policy, not asserted as sourced) per CLAUDE.md rule 1. Sourced FATCA fact supported; confirm-with framing correct.
+      status: VERIFIED
       lastVerified: "2026-06-13"
-      verifiedBy: ""
+      verifiedBy: "fact-verifier-at-r2 2026-06-13"
+      sourceHash: "199659dfef8eeb511d9abea37c7913f5cb790708e2886b38cd5f26c302efd4d7"
       reviewBy: "2026-09-11"
     tldr:
       text: "An Austrian bank account is needed for salary, rent and bills. Account-opening document lists vary by bank, so confirm them with the bank. Under the Austria–USA FATCA agreement, US citizens are «specified US persons» whose account data Austrian banks report to the US IRS; some banks are more cautious about onboarding US clients, so check a bank's US-person policy first."
       sourceUrl: "https://www.ris.bka.gv.at/GeltendeFassung.wxe?Abfrage=Bundesnormen&Gesetzesnummer=20009087"
       sourceName: "RIS — FATCA Agreement Austria–USA (BGBl. III Nr. 16/2015)"
       # RE-SOURCED 2026-06-13 (content-researcher): re-pointed from the generic overview page to the RIS FATCA agreement (BGBl. III Nr. 16/2015) for the FATCA-reporting fact; bank-specific document lists and US-client caution recast as confirm-with-the-bank. Source captured at sources/us-at/199659df.txt.
-      status: UNVERIFIED
+      # VERIFIED 2026-06-13 (fact-verifier re-check): same live re-fetch (sha256 199659df…). RIS FATCA agreement supports US citizens = „spezifizierte US-Person" and Austrian financial institutions reporting their account data to the US IRS (Artikel 2, IRS registration/reporting). The "document lists vary by bank" and "some banks cautious about onboarding US clients" points are kept as confirm-with-the-bank (bank policy). Supported.
+      status: VERIFIED
       lastVerified: "2026-06-13"
-      verifiedBy: ""
+      verifiedBy: "fact-verifier-at-r2 2026-06-13"
+      sourceHash: "199659dfef8eeb511d9abea37c7913f5cb790708e2886b38cd5f26c302efd4d7"
       reviewBy: "2026-09-11"
     keyFacts:
       - label: "Account-opening documents"
@@ -1148,18 +1164,22 @@ tasks:
         sourceUrl: "https://www.oesterreich.gv.at/en"
         sourceName: "oesterreich.gv.at — official Austrian government information portal"
         # RE-SOURCED 2026-06-13 (content-researcher): the original overview page stated nothing about banking. No reachable official page publishes a bank-account document checklist (banks set their own onboarding requirements), so this is recast as an explicit confirm-with-the-bank claim per CLAUDE.md rule 1. Linked to the official oesterreich.gv.at portal root (confirmed live, HTTP 200) as the general government anchor; the documentary specifics are deliberately NOT asserted as sourced facts. Verifier: treat as a confirm-with claim, not a sourced documentary requirement.
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier re-check): live re-fetch of the oesterreich.gv.at English portal root (sha256 f4c3e72d…, HTTP 200) — resolves to the genuine "Homepage of oesterreich.gv.at … Information and Services of the Austrian Public Administration", not a 404 or off-topic redirect. The portal publishes NO bank-account-opening document checklist, which is exactly what this claim asserts (no single official list; requirements are bank-set; confirm with the bank). Per CLAUDE.md rule 1, verified as a confirm-with-the-bank claim: the source backs what it actually asserts (general government anchor; documentary specifics deliberately not asserted as sourced facts).
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-at-r2 2026-06-13"
+        sourceHash: "f4c3e72df4e37b3701902daa428aaf37e092f60971366cadc1c17f8d089c38d5"
         reviewBy: "2026-09-11"
       - label: "US-person note (FATCA)"
         text: "Under the Austria–USA FATCA agreement, Austrian financial institutions identify accounts held by «specified US persons» (which includes US citizens) and report that account information to the US tax authority. Some banks are, in practice, more reluctant to onboard US clients, so confirm a bank's US-person policy before applying. (Whether a bank will onboard you is the bank's own policy — confirm with the bank.)"
         sourceUrl: "https://www.ris.bka.gv.at/GeltendeFassung.wxe?Abfrage=Bundesnormen&Gesetzesnummer=20009087"
         sourceName: "RIS — FATCA Agreement Austria–USA (BGBl. III Nr. 16/2015)"
         # RE-SOURCED 2026-06-13 (content-researcher): re-pointed from the generic overview page to the primary legal source — the Austria–USA FATCA intergovernmental agreement on RIS (BGBl. III Nr. 16/2015, Gesetzesnummer 20009087). The captured text defines "spezifizierte US-Person" / "meldepflichtiges Konto" and provides for Austrian financial institutions reporting account information to the US Internal Revenue Service. The "some banks reluctant to onboard US clients" point is bank policy, kept as confirm-with. Statute is in German. Source captured at sources/us-at/199659df.txt.
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier re-check): same live re-fetch (sha256 199659df…). Confirmed in the German text: „US-Person" includes "eine natürliche Person, die Staatsbürger der Vereinigten Staaten … ist"; „spezifizierte US-Person" = a US-Person other than listed carve-outs (so US citizens are included); „US-TIN" and meldepflichtiges-Konto defined; "Artikel 2 Meldungen und Informationsaustausch — Anweisung an österreichische Finanzinstitute … beim IRS … zu registrieren" establishes Austrian FIs reporting account information to the US IRS. The "some banks more reluctant to onboard US clients" point is correctly kept as confirm-with (bank policy). Sourced FATCA assertion supported.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-at-r2 2026-06-13"
+        sourceHash: "199659dfef8eeb511d9abea37c7913f5cb790708e2886b38cd5f26c302efd4d7"
         reviewBy: "2026-09-11"
     detail: >
       A current account is needed in practice to receive salary and pay rent and bills in Austria.
@@ -1177,9 +1197,11 @@ tasks:
             sourceUrl: "https://www.ris.bka.gv.at/GeltendeFassung.wxe?Abfrage=Bundesnormen&Gesetzesnummer=20009087"
             sourceName: "RIS — FATCA Agreement Austria–USA (BGBl. III Nr. 16/2015)"
             # RE-SOURCED 2026-06-13 (content-researcher): re-pointed from the generic overview page (which states nothing about banking) to the RIS FATCA agreement, the primary legal basis for Austrian banks reporting US-person account information to the US IRS. The step's documentary requirements are recast as confirm-with-the-bank (no official document checklist exists). Source captured at sources/us-at/199659df.txt.
-            status: UNVERIFIED
+            # VERIFIED 2026-06-13 (fact-verifier re-check): same live re-fetch (sha256 199659df…). The RIS Austria–USA FATCA agreement is the primary legal basis for Austrian financial institutions reporting US-person account information to the US IRS (Artikel 2 Meldungen und Informationsaustausch; spezifizierte US-Person; IRS registration/reporting). Link accurate for the FATCA basis; the step's documentary asks are correctly framed confirm-with-the-bank.
+            status: VERIFIED
             lastVerified: "2026-06-13"
-            verifiedBy: ""
+            verifiedBy: "fact-verifier-at-r2 2026-06-13"
+            sourceHash: "199659dfef8eeb511d9abea37c7913f5cb790708e2886b38cd5f26c302efd4d7"
             reviewBy: "2026-09-11"
     documents:
       - name: "Valid US passport"

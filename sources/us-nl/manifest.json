@@ -297,7 +297,7 @@
       "collect-residence-document",
       "health-insurance-zvw"
     ],
-    "fetchedAt": "2026-06-13",
+    "fetchedAt": "2026-06-14",
     "fetchMethod": "curl",
     "sha256": "dd3dcb88639750eb17b34ec77f2c8b19719ab0b5426ccecd481f1dfcda365516",
     "byteSize": 352748,
@@ -311,10 +311,10 @@
     "claimIds": [
       "family-partner-permit"
     ],
-    "fetchedAt": "2026-06-13",
+    "fetchedAt": "2026-06-14",
     "fetchMethod": "curl",
     "sha256": "6d6a56b30ed2581063d1385a260e3d5cd58b8e1c2bb0e0b2f421dccdba2030db",
-    "byteSize": 350809,
+    "byteSize": 350813,
     "contentType": "text/html; charset=UTF-8",
     "textPath": "sources/us-nl/6d6a56b3.txt",
     "capturedBy": "snapshot-source"
@@ -325,7 +325,7 @@
     "claimIds": [
       "study-residence-permit"
     ],
-    "fetchedAt": "2026-06-13",
+    "fetchedAt": "2026-06-14",
     "fetchMethod": "curl",
     "sha256": "5f615134b8b6c36bea82d2941f19865e691c6c05d73f1a3811ea120ddb2adb4f",
     "byteSize": 360040,
@@ -351,7 +351,7 @@
     "claimIds": [
       "register-municipality-brp"
     ],
-    "fetchedAt": "2026-06-13",
+    "fetchedAt": "2026-06-14",
     "fetchMethod": "curl",
     "sha256": "93934484a472ad1db36954acbe54de5087ef089ed28d6f0f31deb1fb55a26a38",
     "byteSize": 53171,

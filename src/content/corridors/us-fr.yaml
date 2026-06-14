@@ -1052,19 +1052,21 @@ tasks:
       text: "Once you work or reside in France on a stable and regular basis you are covered for your healthcare costs under Universal Health Protection (Protection universelle maladie, PUMa). If you work, you are immediately enrolled in the health insurance once your PUMa application is accepted; if you are not working, you generally must wait three months after arrival before your rights open, and must live in France at least six months a year. Family members residing with you for more than three months are also covered."
       sourceUrl: "https://www.service-public.gouv.fr/particuliers/vosdroits/F34308?lang=en"
       sourceName: "Service-Public — Universal Health Protection (PUMa)"
-      # RE-SOURCED 2026-06-13 (content-researcher): recast the worker-timing element (option b) to match F34308 verbatim. Captured snapshot sources/us-fr/442654f2.txt states: "If you work and your Puma application is accepted, you are immediately enrolled in the Health Insurance." Changed "you are enrolled in the health insurance from your first activity" → "you are immediately enrolled in the health insurance once your PUMa application is accepted." Source/link unchanged (F34308, which supports the recast wording). All other elements were already supported. Left UNVERIFIED for re-check.
-      status: UNVERIFIED
+      # VERIFIED 2026-06-13 (fact-verifier re-check): F34308 re-fetched LIVE (curl, HTTP 200, text/html; no redirect/404; sha256 442654f2… — identical to research snapshot, no drift). Worker-timing verbatim: "If you work and your Puma application is accepted, you are immediately enrolled in the Health Insurance." Other elements confirmed verbatim on the same live page: "If you work or reside in France on a stable and regular basis, the Puma guarantees you a right to cover your health costs"; non-working "you must wait 3 months before seeing your rights open" + "live in France for at least 6 months of the year"; family-over-3-months element backed by the already-VERIFIED F12859 keyFact. Recast worker clause fully supported.
+      status: VERIFIED
       lastVerified: "2026-06-13"
-      verifiedBy: ""
+      verifiedBy: "fact-verifier-fr-r2 2026-06-13"
+      sourceHash: "442654f214beccf49d6d590931681cb49a4d0699e1ecbaf4350c17866271cc77"
       reviewBy: "2026-09-11"
     tldr:
       text: "France's PUMa covers your healthcare costs once you work or reside there on a stable, regular basis. Workers are immediately enrolled once their PUMa application is accepted; the non-working generally wait three months and must live in France at least six months a year. A residence permit is required, and family living with you over three months is covered too."
       sourceUrl: "https://www.service-public.gouv.fr/particuliers/vosdroits/F34308?lang=en"
       sourceName: "Service-Public — Universal Health Protection (PUMa)"
-      # RE-SOURCED 2026-06-13 (content-researcher): recast the worker-timing element (option b) to match F34308 verbatim (snapshot sources/us-fr/442654f2.txt: "If you work and your Puma application is accepted, you are immediately enrolled in the Health Insurance"). Changed "Workers are covered from their first day of activity" → "Workers are immediately enrolled once their PUMa application is accepted." Source/link unchanged (F34308). Other elements already supported. Left UNVERIFIED for re-check.
-      status: UNVERIFIED
+      # VERIFIED 2026-06-13 (fact-verifier re-check): live F34308 (sha256 442654f2…, no drift). "Workers are immediately enrolled once their PUMa application is accepted" matches verbatim source: "If you work and your Puma application is accepted, you are immediately enrolled in the Health Insurance." Non-working three-months / six-months-a-year and stable-and-regular-basis elements also confirmed verbatim on the live page (see summary note). Recast worker clause supported.
+      status: VERIFIED
       lastVerified: "2026-06-13"
-      verifiedBy: ""
+      verifiedBy: "fact-verifier-fr-r2 2026-06-13"
+      sourceHash: "442654f214beccf49d6d590931681cb49a4d0699e1ecbaf4350c17866271cc77"
       reviewBy: "2026-09-11"
     keyFacts:
       - label: "Who is covered"
@@ -1081,10 +1083,11 @@ tasks:
         text: "Under the PUMa, if you work and your PUMa application is accepted you are immediately enrolled in the Health Insurance."
         sourceUrl: "https://www.service-public.gouv.fr/particuliers/vosdroits/F34308?lang=en"
         sourceName: "Service-Public — Universal Health Protection (PUMa)"
-        # RE-SOURCED 2026-06-13 (content-researcher): dropped the unsupported "from their first day of activity" clause (option b) and recast to mirror F34308 verbatim (snapshot sources/us-fr/442654f2.txt: "If you work and your Puma application is accepted, you are immediately enrolled in the Health Insurance"). Source/link unchanged (F34308). Left UNVERIFIED for re-check.
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier re-check): live F34308 (sha256 442654f2…, no drift). Claim mirrors the source character-for-character — verbatim: "If you work and your Puma application is accepted, you are immediately enrolled in the Health Insurance." The previously-kicked-back "from their first day of activity" clause is gone; the recast wording is fully supported.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-fr-r2 2026-06-13"
+        sourceHash: "442654f214beccf49d6d590931681cb49a4d0699e1ecbaf4350c17866271cc77"
         reviewBy: "2026-09-11"
       - label: "If you are not working"
         text: "Without a professional activity you must wait three months after arriving before your rights open, and you must live in France at least six months of the year."
@@ -1368,10 +1371,11 @@ tasks:
         text: "US-person FATCA reporting and individual banks' willingness to onboard US citizens are NOT covered by the droit-au-compte page below; confirm a bank's US-person policy directly with the bank and your tax adviser before applying. If a bank refuses, the droit-au-compte (right to a basic account, sourced below) is your legal recourse."
         sourceUrl: "https://www.service-public.gouv.fr/particuliers/vosdroits/F2417?lang=en"
         sourceName: "Service-Public — Right to a bank account (droit au compte)"
-        # RE-SOURCED 2026-06-13 (content-researcher): recast as a confirm-with note (option c). No reachable official source states French-bank FATCA reporting of US persons or that banks are reluctant to onboard US citizens — and the "reluctance" point is a market observation no official body asserts; candidate impots.gouv.fr FATCA URLs all 404'd and I will not invent one. Dropped the unsupported FATCA/reluctance assertions as sourced facts; text now (a) explicitly says those points are NOT covered by the cited page and must be confirmed with the bank / a tax adviser, and (b) keeps F2417 only for the droit-au-compte right (which that page DOES state). Source/link unchanged (F2417) since the only claim now made — the right to a basic account on refusal — is what F2417 supports. Left UNVERIFIED for re-check.
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier re-check): F2417 re-fetched LIVE (curl, HTTP 200, text/html; no redirect/404; sha256 5a871fcd… — identical to research snapshot, no drift). This is an honest confirm-with note and BOTH halves check out against the live source: (1) the only positive sourced assertion — droit-au-compte as legal recourse on refusal — is verbatim on F2417: "A bank may refuse you to open an account… you can enter the Banque de France to benefit from the account entitlement procedure. The Banque de France then designates a bank… which must open an account with basic banking services." (2) The honest NEGATIVE assertion — that FATCA / US-person onboarding is NOT covered by this page — is genuine: a live full-text scan of F2417 returned ZERO occurrences of FATCA / US person / United States / American / tax adviser / reporting. The claim makes no unsourced FATCA fact-claim; it correctly flags the gap and cites F2417 only for what it actually states. Supported.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-fr-r2 2026-06-13"
+        sourceHash: "5a871fcd81c8631aaba228b20b1b0a0114bfc3294d5ea35e18e408cb1813715a"
         reviewBy: "2026-09-11"
     detail: >
       A French current account ("compte courant") is needed in practice for receiving salary,

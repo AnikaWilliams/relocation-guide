@@ -182,9 +182,11 @@ tasks:
       sourceUrl: "https://guichet.public.lu/en/citoyens/immigration/plus-3-mois/ressortissant-tiers/salarie/salarie-pays-tiers.html"
       sourceName: "guichet.lu — Conditions of residence for third-country salaried workers"
       # RE-SOURCED 2026-06-13 (content-researcher): trimmed the EUR 50 figure off this claim, which the cited salaried page does not state. The page DOES support the EUR 80 residence-permit fee + IBAN verbatim, which is all this claim now asserts; the EUR 50 type D visa fee is stated and sourced on the entry-authorisation task (entry-visa page), so this claim now cross-references that step instead of restating an unsourced figure. Source unchanged (salaried page e8d88061); claim text now fully supported by it.
-      status: UNVERIFIED
+      # VERIFIED 2026-06-13 (fact-verifier re-check): salaried page re-fetched LIVE (HTTP 200, correct page, no redirect; fresh snapshot 276c85fe). Fee verbatim "proof of payment of a fee of EUR 80 to account IBAN LU46 1111 2582 2814 0000 (BIC: CCPLLULL; beneficiary: Ministry of Home Affairs, General Department of immigration ...)". Independently confirmed the page does NOT state EUR 50 or EUR 90 — so the trimmed claim asserts only what this page supports; the type D EUR 50 figure is correctly cross-referenced to the entry-visa task (where it is sourced). Supported.
+      status: VERIFIED
       lastVerified: "2026-06-13"
-      verifiedBy: ""
+      verifiedBy: "fact-verifier-lu-r2 2026-06-13"
+      sourceHash: "276c85fe750a4bcd732bbccdfda5cea6fbcd4f7b996d0aaa8ee468fe30f9505d"
       # 30-day window: contains the EUR 80 fee.
       reviewBy: "2026-07-13"
     warning: >
@@ -355,9 +357,11 @@ tasks:
       sourceUrl: "https://guichet.public.lu/en/citoyens/immigration/plus-3-mois/ressortissant-tiers/hautement-qualifie/salarie-hautement-qualifie.html"
       sourceName: "guichet.lu — Salaried work for highly qualified workers (EU Blue Card)"
       # RE-SOURCED 2026-06-13 (content-researcher): trimmed the EUR 50 figure off this claim, which the cited Blue Card page does not state. The page DOES support the EUR 80 residence-permit fee + IBAN verbatim, which is all this claim now asserts; the EUR 50 type D visa fee is stated and sourced on the entry-authorisation task (entry-visa page), so this claim now cross-references that step instead of restating an unsourced figure. Source unchanged (Blue Card page 4eafb0e3); claim text now fully supported by it.
-      status: UNVERIFIED
+      # VERIFIED 2026-06-13 (fact-verifier re-check): Blue Card page re-fetched LIVE (HTTP 200, correct page, no redirect; fresh snapshot f524e4c5). Fee verbatim "proof of payment of a fee of EUR 80 to account IBAN LU46 1111 2582 2814 0000 (BIC: CCPLLULL, beneficiary: TRES. DE l'ETAT - MAI DG IMMIGRATION ...)". Independently confirmed the page does NOT state EUR 50 or EUR 90 — the trimmed claim asserts only what this page supports; the type D EUR 50 figure is correctly cross-referenced to the entry-visa task (where it is sourced). Supported.
+      status: VERIFIED
       lastVerified: "2026-06-13"
-      verifiedBy: ""
+      verifiedBy: "fact-verifier-lu-r2 2026-06-13"
+      sourceHash: "f524e4c51baa6416c3c34a2111fbe45c2c6734c3908355e7e717c11522c8a5e8"
       # 30-day window: fee.
       reviewBy: "2026-07-13"
     warning: >
@@ -376,9 +380,11 @@ tasks:
       sourceUrl: "https://guichet.public.lu/en/citoyens/immigration/moins-3-mois/ressortissant-tiers/entree-visa.html"
       sourceName: "Guichet.lu — Luxembourg entry visa for third-country nationals"
       # RE-SOURCED 2026-06-13 (content-researcher): removed the "affixed in your passport and valid for a maximum of three months" clause, which the cited entry-visa page does not state for the type D visa (it gives affixing/validity only for the type C visa). What remains — type D fee EUR 50 "for all applicant categories", apply from country of legal residence after the authorisation to stay is granted, and the visa-exemption framing — is supported by the entry-visa page (the visa-exempt-on-passport-plus-authorisation detail is also on the salaried page already cited in this task's steps). The type D affixing/3-month validity is covered separately on the salaried/Blue Card tasks. Source unchanged (entry-visa page 666602b9).
-      status: UNVERIFIED
+      # VERIFIED 2026-06-13 (fact-verifier re-check): entry-visa page re-fetched LIVE (HTTP 200, correct page, no redirect; fresh snapshot 76fa1ea9). Fee table verbatim "Long stay visa (D) EUR 50 (for all applicant categories)". Apply "in the country in which the applicant legally resides, at a Luxembourg consulate or a diplomatic mission" — verbatim. Independently confirmed the type C affixing/90-day clause is page-stated for type C only ("When the visa is granted, it is affixed in the passport ... The type C visa allows for stays for a duration not exceeding 90 days"), so the researcher's removal of that clause from the type D claim is correct. Supported.
+      status: VERIFIED
       lastVerified: "2026-06-13"
-      verifiedBy: ""
+      verifiedBy: "fact-verifier-lu-r2 2026-06-13"
+      sourceHash: "76fa1ea9ace7cd523dc1227b3637703c319c251b6f1fd8b18cb162582040c45f"
       # 30-day window: contains the EUR 50 / EUR 90 visa fees.
       reviewBy: "2026-07-13"
     tldr:
@@ -386,9 +392,11 @@ tasks:
       sourceUrl: "https://guichet.public.lu/en/citoyens/immigration/moins-3-mois/ressortissant-tiers/entree-visa.html"
       sourceName: "Guichet.lu — Luxembourg entry visa for third-country nationals"
       # RE-SOURCED 2026-06-13 (content-researcher): removed the "affixed in your passport and valid up to three months" clause, which the cited entry-visa page does not state for the type D visa. Remaining text — type D fee EUR 50 "for all applicant categories", apply after the authorisation to stay is granted, and visa-exemption framing — is supported by the entry-visa page (visa-exemption detail also on the already-cited salaried page). The type D affixing/3-month validity lives on the salaried/Blue Card tasks. Source unchanged (entry-visa page 666602b9).
-      status: UNVERIFIED
+      # VERIFIED 2026-06-13 (fact-verifier re-check): same live entry-visa page (fresh snapshot 76fa1ea9). "Long stay visa (D) EUR 50 (for all applicant categories)" and apply-from-country-of-legal-residence verbatim; type C-only affixing/90-day clause confirmed (so the removed type D affixing/3-month wording is correctly absent). Supported.
+      status: VERIFIED
       lastVerified: "2026-06-13"
-      verifiedBy: ""
+      verifiedBy: "fact-verifier-lu-r2 2026-06-13"
+      sourceHash: "76fa1ea9ace7cd523dc1227b3637703c319c251b6f1fd8b18cb162582040c45f"
       reviewBy: "2026-07-13"
     keyFacts:
       - label: "Type D visa fee"
@@ -834,18 +842,22 @@ tasks:
       sourceUrl: "https://guichet.public.lu/en/citoyens/immigration/nouveau-resident-luxembourg/arrivee-luxembourg/depart-arrivee-commune.html"
       sourceName: "Guichet.lu — Declaring a move to a new commune of residence"
       # RE-SOURCED 2026-06-13 (content-researcher): trimmed this summary to what the cited commune declaration page supports — the 8-day general-residence rule, the population office (Bureau de la population), and going in person to present a valid passport (all verbatim on this page). Removed from THIS claim the third-country "within 3 days" immigration deadline, the proof-of-address element, and the "receipt acts as interim work/residence document" statement, which are not on this page; those are retained and separately sourced to the salaried/Blue Card pages in this task's keyFacts (Immigration declaration deadline; Receipt acts as interim document) and steps, so the summary now points readers there rather than restating cross-page facts under this source. Source unchanged (commune declaration page ab2da092).
-      status: UNVERIFIED
+      # VERIFIED 2026-06-13 (fact-verifier re-check): commune declaration page re-fetched LIVE (HTTP 200, correct page, no redirect; fresh snapshot 13eb542c). Verbatim "Any person, regardless of their nationality, who establishes their usual place of residence in a commune of Luxembourg must, upon their arrival, declare their presence to the census office (Bureau de la population)" and "The declaration of arrival must be filed within 8 days of occupying the new residence" and "You must go in in person and present your valid identity card or passport." The shorter immigration deadline / receipt-as-interim-document are cross-referenced to the keyFacts (sourced to the salaried/Blue Card pages) and are not asserted under this source — and are not contradicted (this page independently states the third-country "within 3 days" deadline). Supported.
+      status: VERIFIED
       lastVerified: "2026-06-13"
-      verifiedBy: ""
+      verifiedBy: "fact-verifier-lu-r2 2026-06-13"
+      sourceHash: "13eb542cd5be68c89f8ae72df852b246c57224b27fc9b1821e8b491ede0cd9be"
       reviewBy: "2026-09-11"
     tldr:
       text: "Register with your new commune after arriving. Under the general residence rule you must declare your usual residence to the commune's population office (Bureau de la population) within eight days of moving in, going in person and presenting your valid passport (plus visa/authorisation to stay where applicable). A shorter immigration deadline also applies to third-country nationals and the declaration receipt acts as an interim document — see the key facts below, which source those to each work route's page."
       sourceUrl: "https://guichet.public.lu/en/citoyens/immigration/nouveau-resident-luxembourg/arrivee-luxembourg/depart-arrivee-commune.html"
       sourceName: "Guichet.lu — Declaring a move to a new commune of residence"
       # RE-SOURCED 2026-06-13 (content-researcher): trimmed to what the cited commune declaration page supports (8-day general-residence rule, population office, go in person presenting a valid passport — all verbatim). Removed the third-country "within three days" deadline, the proof-of-address element, and the receipt-as-interim-document statement, which are not on this page and are retained + separately sourced to the salaried/Blue Card pages in this task's keyFacts; the tldr now points readers there. Source unchanged (commune declaration page ab2da092).
-      status: UNVERIFIED
+      # VERIFIED 2026-06-13 (fact-verifier re-check): same live commune page (fresh snapshot 13eb542c). 8-day rule, "Bureau de la population", and "go in in person and present your valid identity card or passport" all verbatim (see summary comment). Cross-referenced immigration deadline / receipt-as-interim facts are not asserted under this source. Supported.
+      status: VERIFIED
       lastVerified: "2026-06-13"
-      verifiedBy: ""
+      verifiedBy: "fact-verifier-lu-r2 2026-06-13"
+      sourceHash: "13eb542cd5be68c89f8ae72df852b246c57224b27fc9b1821e8b491ede0cd9be"
       reviewBy: "2026-09-11"
     keyFacts:
       - label: "Immigration declaration deadline"
@@ -873,9 +885,11 @@ tasks:
         sourceUrl: "https://guichet.public.lu/en/citoyens/immigration/nouveau-resident-luxembourg/arrivee-luxembourg/depart-arrivee-commune.html"
         sourceName: "Guichet.lu — Declaring a move to a new commune of residence"
         # RE-SOURCED 2026-06-13 (content-researcher): trimmed the standalone "valid proof of address (rental agreement, utility bill)" element, which the cited commune page does not state. What remains — the travel-document detail ("currently valid ID card or passport, accompanied, where applicable, by the required visa or residence permit issued by another EU Member State") and "You must go in person and present your valid identity card or passport" — is verbatim on this page. Proof of address is a work-route requirement on the salaried/Blue Card pages, so it is now flagged as a cross-reference rather than asserted under this commune source. Source unchanged (commune declaration page ab2da092).
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier re-check): same live commune page (fresh snapshot 13eb542c). Verbatim "a currently valid ID card or passport (accompanied, where applicable, by the required visa or residence permit issued by another EU Member State)" and "You must go in in person and present your valid identity card or passport." Proof of address appears on this page only as a hedged "normally necessary to attach ... supporting document" — NOT a flat presentation requirement — so the researcher's removal of it from the asserted text (now a work-route cross-reference) is correct. Supported.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-lu-r2 2026-06-13"
+        sourceHash: "13eb542cd5be68c89f8ae72df852b246c57224b27fc9b1821e8b491ede0cd9be"
         reviewBy: "2026-09-11"
       - label: "Receipt acts as interim document"
         text: "You receive a copy of your declaration of arrival as a receipt; together with the temporary authorisation to stay it serves as a work permit and authorisation to stay until the residence permit is issued."
@@ -1318,18 +1332,22 @@ tasks:
       sourceUrl: "https://impotsdirects.public.lu/fr/echanges_electroniques/FATCA.html"
       sourceName: "Administration des contributions directes (ACD) — FATCA (French)"
       # RE-SOURCED 2026-06-13 (content-researcher): re-pointed the FATCA/US-person element to the ACD's primary FATCA page (impotsdirects.public.lu), which states verbatim (French) that Luxembourg and the USA signed the FATCA intergovernmental agreement on 28 March 2014 (approved by the law of 24 July 2015) and that "La loi FATCA exige de chaque Institution financière déclarante ... d'identifier ses Titulaires de comptes ... et de déposer annuellement à l'Administration des contributions directes (ACD) une déclaration FATCA", reporting "les informations concernant l'identité, le compte, le solde de compte et les revenus financiers ... de chaque Compte déclarable américain". The old overview portal (27b2e4ff) had zero banking/FATCA content. The bank-onboarding document list (no single official figure — set by each bank) and "some banks reluctant to onboard US citizens" are recast here as confirm-with-the-bank, since no reachable official source states them. Snapshot captured: sources/us-lu/504e3689.txt.
-      status: UNVERIFIED
+      # VERIFIED 2026-06-13 (fact-verifier re-check): ACD FATCA page re-fetched LIVE (HTTP 200, correct ACD page impotsdirects.public.lu, no redirect; hash 504e3689 reproduced). Verbatim (FR): "le Luxembourg et les Etats-Unis d'Amérique ont signé le modèle 1 de l'Accord intergouvernemental (« Accord FATCA ») en date du 28 mars 2014" and "La loi FATCA oblige les Institutions financières luxembourgeoises à identifier leurs Titulaires de comptes ... et à déclarer à l'ACD les informations concernant l'identité, le compte, le solde de compte et les revenus financiers y relatifs de chaque Compte déclarable américain." The bank-specific US-person/onboarding element is asserted only as confirm-with-the-bank (CLAUDE.md rule 1); the ACD page urges institutions "à ne pas appliquer des mesures discriminatoires envers les citoyens américains" and does not state individual banks' onboarding stances, so the confirm-with-the-bank framing is correct. Supported.
+      status: VERIFIED
       lastVerified: "2026-06-13"
-      verifiedBy: ""
+      verifiedBy: "fact-verifier-lu-r2 2026-06-13"
+      sourceHash: "504e3689705f5e93000869c5a542a1f20c97587b24f7e20911ff6cfaae210a80"
       reviewBy: "2026-09-11"
     tldr:
       text: "A Luxembourg bank account is needed in practice for salary, rent and bills. Each bank sets its own onboarding documents (typically identity and proof of your Luxembourg address), so confirm the list with the bank. As a US person you are within scope of FATCA: under the Luxembourg–US FATCA Agreement, Luxembourg reporting financial institutions must identify account holders and report US reportable accounts to the Luxembourg tax authority (ACD). Banks also set their own policies on onboarding US citizens — check a bank's US-person policy first."
       sourceUrl: "https://impotsdirects.public.lu/fr/echanges_electroniques/FATCA.html"
       sourceName: "Administration des contributions directes (ACD) — FATCA (French)"
       # RE-SOURCED 2026-06-13 (content-researcher): re-pointed the FATCA/US-person element to the ACD FATCA page (impotsdirects.public.lu), which states the Luxembourg–US FATCA Agreement and the obligation on Luxembourg reporting financial institutions to identify account holders and report each "Compte déclarable américain" (US reportable account) to the ACD (see summary comment for verbatim French). The old overview portal (27b2e4ff) had no banking/FATCA content. Bank-onboarding documents and bank-specific US-person reluctance are recast as confirm-with-the-bank (no single official source states them). Snapshot: sources/us-lu/504e3689.txt.
-      status: UNVERIFIED
+      # VERIFIED 2026-06-13 (fact-verifier re-check): same live ACD FATCA page (hash 504e3689 reproduced). FATCA agreement + reporting-to-ACD obligation verbatim (FR) as quoted in the summary comment; bank-specific US-person element is confirm-with-the-bank only. Supported.
+      status: VERIFIED
       lastVerified: "2026-06-13"
-      verifiedBy: ""
+      verifiedBy: "fact-verifier-lu-r2 2026-06-13"
+      sourceHash: "504e3689705f5e93000869c5a542a1f20c97587b24f7e20911ff6cfaae210a80"
       reviewBy: "2026-09-11"
     keyFacts:
       - label: "Documents are set by each bank"
@@ -1337,18 +1355,22 @@ tasks:
         sourceUrl: "https://guichet.public.lu/en/citoyens/immigration/nouveau-resident-luxembourg.html"
         sourceName: "guichet.lu — Setting up in Luxembourg as a new resident (overview)"
         # RE-SOURCED 2026-06-13 (content-researcher): recast as confirm-with-the-bank per the no-unsourced-claim rule (CLAUDE.md rule 1). The old text asserted a specific bank-onboarding document list as official fact; no reachable official primary source states it (guichet.lu has no banking-onboarding page — confirmed the cited overview 27b2e4ff is a navigation index with no banking content, and probed candidate guichet.lu/finance and CSSF account pages, all HTTP 404). The claim now asserts ONLY that no single official list exists and requirements are bank-set — which is what the absence of an official source supports — and directs the reader to confirm with the bank. Mirrors the already-RE-SOURCED summary/tldr of this task. sourceUrl kept as the official guichet.lu new-resident entry point (not asserted as the document-list source). No new snapshot (no figure to capture).
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier re-check): new-resident overview re-fetched LIVE (HTTP 200, correct page "Setting up in Luxembourg as a new resident", no redirect; hash 27b2e4ff reproduced). Independently confirmed it is a short navigation index (~4.9k chars) with ZERO occurrences of "bank"/"account"/"onboard"/"FATCA" — so no official bank-onboarding document list exists here. The claim's load-bearing assertion (no single official list; requirements are bank-set; confirm with the bank) is consistent with that documented absence, and the cited page is the official new-resident entry point (not asserted as a document-list source). The "typically identity/proof of address" phrase is hedged illustration, not an official fact. Supported per CLAUDE.md rule 1 (confirm-with-the-authority pattern).
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-lu-r2 2026-06-13"
+        sourceHash: "27b2e4ff1011dfabf3fb6df40d91799841b8dbd0748c10f2f43a20886b4d6171"
         reviewBy: "2026-09-11"
       - label: "US-person note (FATCA)"
         text: "As a US person you are within scope of FATCA: under the Luxembourg–US FATCA intergovernmental agreement (signed 28 March 2014, approved by the law of 24 July 2015), Luxembourg reporting financial institutions must identify their account holders and report each US reportable account — identity, account, balance and financial income — annually to the Luxembourg tax authority (Administration des contributions directes, ACD). Banks also set their own policies on onboarding US citizens, so confirm a bank's US-person policy before applying."
         sourceUrl: "https://impotsdirects.public.lu/fr/echanges_electroniques/FATCA.html"
         sourceName: "Administration des contributions directes (ACD) — FATCA (échanges électroniques)"
         # RE-SOURCED 2026-06-13 (content-researcher): re-pointed the FATCA element from the overview page (which had no FATCA/US-person content) to the ACD primary FATCA page (impotsdirects.public.lu), snapshot sources/us-lu/504e3689.txt. That page states verbatim (FR): the Luxembourg–US FATCA intergovernmental agreement signed "28 mars 2014" and "approuvé par la loi du 24 juillet 2015"; "La loi FATCA oblige les Institutions financières luxembourgeoises à identifier leurs Titulaires de comptes ... et à déclarer à l'ACD les informations concernant l'identité, le compte, le solde de compte et les revenus financiers y relatifs de chaque Compte déclarable américain." The bank-specific US-person policy point is kept as confirm-with-the-bank (no official source states individual banks' onboarding stance; the ACD page only urges institutions "à ne pas appliquer des mesures discriminatoires envers les citoyens américains"). Snapshot already captured (504e3689) by the prior RE-SOURCED summary work — no new fetch needed.
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier re-check): ACD FATCA page re-fetched LIVE (hash 504e3689 reproduced). All dated/quantified elements verbatim: agreement "en date du 28 mars 2014", "approuvé par la loi du 24 juillet 2015"; report "identité, le compte, le solde de compte et les revenus financiers ... de chaque Compte déclarable américain"; and "annuellement" confirmed ("les Institutions financières luxembourgeoises sont tenues de fournir les informations à l'ACD, annuellement, jusqu'au 30 juin"). Bank-specific US-person policy is confirm-with-the-bank only. Supported.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-lu-r2 2026-06-13"
+        sourceHash: "504e3689705f5e93000869c5a542a1f20c97587b24f7e20911ff6cfaae210a80"
         reviewBy: "2026-09-11"
     detail: >
       A current account is needed in practice to receive your salary and pay rent and bills in
@@ -1368,9 +1390,11 @@ tasks:
             sourceUrl: "https://impotsdirects.public.lu/fr/echanges_electroniques/FATCA.html"
             sourceName: "Administration des contributions directes (ACD) — FATCA (échanges électroniques)"
             # RE-SOURCED 2026-06-13 (content-researcher): re-pointed from the new-resident overview (a navigation hub with no banking/FATCA content) to the ACD primary FATCA page (impotsdirects.public.lu), snapshot sources/us-lu/504e3689.txt, which states the Luxembourg–US FATCA agreement and the obligation on Luxembourg reporting financial institutions to report US reportable accounts to the ACD (verbatim FR quoted on the US-person keyFact). The step's bank-document-list element has no official source (set by each bank) and is now framed as confirm-with-the-bank in the step text itself. Snapshot already captured (504e3689) — no new fetch.
-            status: UNVERIFIED
+            # VERIFIED 2026-06-13 (fact-verifier re-check): link resolves LIVE to the correct ACD FATCA page (HTTP 200, no redirect; hash 504e3689 reproduced). The page supports the Luxembourg–US FATCA agreement and the reporting-to-ACD obligation on Luxembourg financial institutions (verbatim FR on the US-person keyFact). The bank-document-list element is confirm-with-the-bank in the step text. Supported.
+            status: VERIFIED
             lastVerified: "2026-06-13"
-            verifiedBy: ""
+            verifiedBy: "fact-verifier-lu-r2 2026-06-13"
+            sourceHash: "504e3689705f5e93000869c5a542a1f20c97587b24f7e20911ff6cfaae210a80"
             reviewBy: "2026-09-11"
     documents:
       - name: "Valid US passport"

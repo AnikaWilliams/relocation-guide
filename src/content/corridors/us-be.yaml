@@ -88,9 +88,23 @@ tasks:
       # the worker can to stay in Belgium for more than 90 days." (Chose to match
       # text to dofi rather than re-cite FPS Employment, so a single source backs
       # the whole claim.)
-      status: UNVERIFIED
+      # VERIFIED 2026-06-13 (fact-verifier re-check): re-fetched dofi Single Permit
+      # LIVE (sha256 6b70af30…, unchanged from research snapshot — no drift). Page
+      # states verbatim "Since 03/01/2019, any citizen from a non-European country
+      # who wants to stay and work more than 90 days in Belgium must be a single
+      # permit holder." — DD/MM 03/01/2019 = 3 January 2019, so the reconciled claim
+      # text "3 January 2019" matches its own cited source. Also verbatim: "The
+      # employer must apply to the competent Region (=the worker's principal place of
+      # work)."; "The Immigration Office and the Region handle the request together
+      # and make a decision."; "The Region will examine whether the worker can be
+      # authorised to work, and the Immigration Office will determine whether the
+      # worker can to stay in Belgium for more than 90 days." Every element of the
+      # summary supported character-for-character. FIGURE-bearing (dates/90 days) ->
+      # 30-day reviewBy kept.
+      status: VERIFIED
       lastVerified: "2026-06-13"
-      verifiedBy: ""
+      verifiedBy: "fact-verifier-be-r2 2026-06-13"
+      sourceHash: "6b70af30f7753c5024b9cf7026ceb2a2fad85ccc706f23e24af819bd9ae0ef7a"
       reviewBy: "2026-07-13"
     tldr:
       text: "To work in Belgium for more than 90 days you need a single permit — a combined work-and-residence authorisation. You do not apply yourself: your Belgian employer applies to the competent Region (where you will mainly work), and the Region (for the work) and the federal Immigration Office (for the residence) decide together. One application covers both."
@@ -145,9 +159,21 @@ tasks:
         # FPS page) and instead state the Region-examines-work / IO-determines-
         # >90-day-stay split that the dofi page supports — so one cited page now
         # backs the whole claim.
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier re-check): re-fetched dofi Single Permit
+        # LIVE (sha256 6b70af30…, unchanged — no drift). "competent Region (=the
+        # worker's principal place of work)" present verbatim; the four authorities
+        # are named (regional sites "Brussels-Capital Region / Flemish Region /
+        # Walloon Region (without the German Community) / German Community" and the
+        # cooperation-agreement reference "the Walloon Region, the Flemish Region, the
+        # Brussels-Capital Region and the German-speaking Community"); and the split
+        # "The Region will examine whether the worker can be authorised to work, and
+        # the Immigration Office will determine whether the worker can to stay in
+        # Belgium for more than 90 days." is verbatim. Claim supported; structural
+        # rule -> 90-day reviewBy.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-be-r2 2026-06-13"
+        sourceHash: "6b70af30f7753c5024b9cf7026ceb2a2fad85ccc706f23e24af819bd9ae0ef7a"
         reviewBy: "2026-09-11"
       - label: "Decision deadline"
         text: "Once the Region declares the application admissible, the Region and the Immigration Office must decide within 4 months (extendable in complex cases); if no unfavourable decision is taken within that period, the residence and work authorisations are considered granted."
@@ -317,9 +343,19 @@ tasks:
       # four-named-US-posts sentence (Embassy-page-only) — that detail is preserved
       # in the dedicated "Where (USA)" keyFact below, which is already VERIFIED with
       # the Embassy source — so one cited page now backs the whole summary.
-      status: UNVERIFIED
+      # VERIFIED 2026-06-13 (fact-verifier re-check): re-fetched dofi Third-country
+      # nationals LIVE (sha256 526f0040…, unchanged — no drift). Page states verbatim
+      # "However, all nationalities are subject to a visa requirement for a [A long
+      # stay in the Schengen Area is longer than 90 days] in Belgium. In certain
+      # exceptional circumstances, the application for residence can be submitted in
+      # Belgium." and "The C visa (Schengen visa) is intended for stays of up to 90
+      # days, while the D visa (national long-stay visa) is meant for longer stays."
+      # "including US citizens" is a fair specialization of "all nationalities". Whole
+      # summary supported. FIGURE-bearing (90 days) -> 30-day reviewBy kept.
+      status: VERIFIED
       lastVerified: "2026-06-13"
-      verifiedBy: ""
+      verifiedBy: "fact-verifier-be-r2 2026-06-13"
+      sourceHash: "526f0040c6d97f0a1457b043749e8d490f504a05f68f4c4b51fda129db0e18ba"
       reviewBy: "2026-07-13"
     tldr:
       text: "A national (type D) visa is required to enter Belgium for any stay over 90 days, and you must obtain it before travelling — all nationalities are subject to the long-stay visa requirement, and applying for residence from inside Belgium is only possible in certain exceptional circumstances. (A C / Schengen visa covers stays of up to 90 days only.)"
@@ -336,9 +372,20 @@ tasks:
       # drop the four-named-US-posts sentence (Embassy-page-only); that detail is
       # preserved in the VERIFIED "Where (USA)" keyFact citing the Embassy page. One
       # cited page now backs the whole tldr.
-      status: UNVERIFIED
+      # VERIFIED 2026-06-13 (fact-verifier re-check): re-fetched dofi Third-country
+      # nationals LIVE (sha256 526f0040…, unchanged — no drift). Same verbatim basis
+      # as the summary — "all nationalities are subject to a visa requirement for a
+      # [long stay >90 days] in Belgium. In certain exceptional circumstances, the
+      # application for residence can be submitted in Belgium." and the C/D split.
+      # "you must obtain it before travelling" is supported by the page's definition
+      # of a visa as "a sticker put into your passport by an embassy or a consulate to
+      # allow you to enter" plus residence-from-inside being only exceptional. Whole
+      # tldr supported. No figure unique to the tldr beyond the >90-day threshold;
+      # reviewBy kept at 90d (structural threshold, mirrors sibling tldr conventions).
+      status: VERIFIED
       lastVerified: "2026-06-13"
-      verifiedBy: ""
+      verifiedBy: "fact-verifier-be-r2 2026-06-13"
+      sourceHash: "526f0040c6d97f0a1457b043749e8d490f504a05f68f4c4b51fda129db0e18ba"
       reviewBy: "2026-09-11"
     keyFacts:
       - label: "When required"
@@ -400,10 +447,22 @@ tasks:
         # only the flat "at least four weeks" figure with no long-stay distinction,
         # so the "and longer for long-stay cases" gloss was dropped. Source
         # unchanged; claim now matches its cited page verbatim.
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier re-check): re-fetched belgium.be
+        # Residence-documents LIVE (sha256 2ed0d80b…, unchanged — no drift). Page
+        # states verbatim "In some cases, the visa application procedure may take a
+        # long time. You are advised to make your application at least four weeks
+        # before you plan to travel." The figure "at least four weeks before you plan
+        # to travel" matches character-for-character; "can take a long time" faithfully
+        # restates "may take a long time" without overstating. Re-sourcer's trim of the
+        # unsupported long-stay parenthetical confirmed correct (page gives only the
+        # flat four-week figure). FIGURE-bearing (four weeks) -> reviewBy corrected
+        # 2026-09-11 -> 2026-07-13 to match the file's stated 30-day rule for figure
+        # claims (header L51-52).
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
-        reviewBy: "2026-09-11"
+        verifiedBy: "fact-verifier-be-r2 2026-06-13"
+        sourceHash: "2ed0d80b6b879a73ee60e66f4c2c4836d097302eef4ede9324036354eea917fb"
+        reviewBy: "2026-07-13"
     detail: >
       A national (type D) visa is the document that lets you travel to Belgium for a long stay
       (over 90 days) — to take up the job, family life or studies for which your underlying
@@ -664,9 +723,20 @@ tasks:
       # January 2019"; the dofi page's "03/01/2019" variant is used only on the
       # work-single-permit summary, which cites dofi). One cited page now backs the
       # whole summary.
-      status: UNVERIFIED
+      # VERIFIED 2026-06-13 (fact-verifier re-check): re-fetched FPS Employment
+      # Foreign-workers LIVE (sha256 e7de09f3…, unchanged — no drift). Page states
+      # verbatim "Until 31 December 2018, this work authorisation was evidenced by a
+      # work permit. Since 1 January 2019, the single permit has been in force. Thus,
+      # the residence document now indicates whether the person concerned has a work
+      # authorisation." The date "1 January 2019" IS the figure on THIS page (distinct
+      # from dofi's 03/01/2019), so keeping "1 January 2019" against this source is
+      # correct. Load-bearing residence-document-indicates-work-authorisation element
+      # supported character-for-character; the arrival/registration framing asserts no
+      # figure. DATE-bearing structural fact -> 90-day reviewBy kept.
+      status: VERIFIED
       lastVerified: "2026-06-13"
-      verifiedBy: ""
+      verifiedBy: "fact-verifier-be-r2 2026-06-13"
+      sourceHash: "e7de09f3a83ffd1739c4b6e96ecc826c89d38a9e6852fe5ca76c9c1338a2e2fa"
       reviewBy: "2026-09-11"
     keyFacts:
       - label: "Who issues it"
@@ -767,9 +837,20 @@ tasks:
       # (c) softened the "Most residents affiliate with a mutualité / ziekenfonds"
       # sentence (not on the page) to the honest "confirm the scheme that applies to
       # you" pointer. One cited page now backs the whole summary.
-      status: UNVERIFIED
+      # VERIFIED 2026-06-13 (fact-verifier re-check): re-fetched dofi Single Permit
+      # LIVE (sha256 6b70af30…, unchanged — no drift). The residence-side documents
+      # list carries "proof of sufficient means of subsistence, the duration of the
+      # applicant's employment..." and, as a SEPARATE bullet, "proof that the
+      # applicant has health insurance covering all risks in Belgium for themselves
+      # and their family." — confirming both (a) the all-risks/for-yourself-and-family
+      # wording and (b) that it is listed separately from the means-of-subsistence
+      # document, exactly as the recast claim states. The "confirm the scheme with a
+      # Belgian health insurance fund" tail is a pointer, asserts no figure, and is
+      # not contradicted. Whole summary supported.
+      status: VERIFIED
       lastVerified: "2026-06-13"
-      verifiedBy: ""
+      verifiedBy: "fact-verifier-be-r2 2026-06-13"
+      sourceHash: "6b70af30f7753c5024b9cf7026ceb2a2fad85ccc706f23e24af819bd9ae0ef7a"
       reviewBy: "2026-09-11"
     keyFacts:
       - label: "Requirement"
@@ -949,9 +1030,18 @@ tasks:
         # preserved in the residence-permit "Work authorisation shown on the card"
         # keyFact, which cites the FPS Employment page and is already VERIFIED.
         # Source unchanged; one cited page now backs the whole claim.
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier re-check): re-fetched dofi Work LIVE
+        # (sha256 05d858a7…, unchanged — no drift). Page states verbatim "A
+        # third-country national authorised to work and reside in Belgium for more
+        # than 90 days may be accompanied or joined by his/her spouse or partner
+        # (partnership registered under a law) and minor children, under certain
+        # conditions." The claim matches character-for-character (drops only "his/her"
+        # before "spouse"). Re-sourcer's trim of the work-shown-on-residence-document
+        # clause confirmed correct — that clause is not on this page. Supported.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-be-r2 2026-06-13"
+        sourceHash: "05d858a7a1c00fe927f1acc06acdcae462002ac9f9784a893707d194e5616927"
         reviewBy: "2026-09-11"
     detail: >
       Belgium recognises a right to family reunification for family members of a Belgian or of
@@ -1055,9 +1145,22 @@ tasks:
       # Community-competence clause is preserved in the VERIFIED "Education is a
       # Community competence" keyFact, which cites the belgium.be Coming-to-study
       # page. Source unchanged; one cited page now backs the whole summary.
-      status: UNVERIFIED
+      # VERIFIED 2026-06-13 (fact-verifier re-check): re-fetched dofi Study LIVE
+      # (sha256 d974e0f1…, unchanged — no drift). Page states verbatim the study-route
+      # core "non-EU foreigners who wish to stay in Belgium for more than 90 days in
+      # order to: study at a recognized higher education institution and, at the end of
+      # their studies, obtain a degree recognized in Belgium;" and the search-year
+      # element "stay for an additional year after completing their studies in order to
+      # find a job or start a business with the aim of obtaining a residence permit for
+      # work purposes." (sidebar also lists "Search year after higher studies"). The
+      # "(a search year)" gloss and "via the Immigration Office's study route" framing
+      # supported. Re-sourcer's trim of the Community-competence clause confirmed
+      # correct — not on this page (preserved in the belgium.be-cited keyFact).
+      # Supported.
+      status: VERIFIED
       lastVerified: "2026-06-13"
-      verifiedBy: ""
+      verifiedBy: "fact-verifier-be-r2 2026-06-13"
+      sourceHash: "d974e0f1857e26306d7b7e0452f195e351b7a54f6659e3dc9164b4c47ea81082"
       reviewBy: "2026-09-11"
     keyFacts:
       - label: "Who/what"

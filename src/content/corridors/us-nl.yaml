@@ -191,18 +191,22 @@ tasks:
       sourceUrl: "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/employed-worker-netherlands_en"
       sourceName: "European Commission — EU Immigration Portal: Employed worker (Netherlands)"
       # RE-SOURCED 2026-06-13 (content-researcher): re-pointed from the quiz-gated IND GVVA SPA (whose static HTML omits the UWV-advice element) to the European Commission's EU Immigration Portal "Employed worker in the Netherlands" page (home-affairs.ec.europa.eu, DG Migration & Home Affairs — official EU body), which plainly states verbatim: "Most of the times, you can apply for a GVVA (single permit for residence and work). The GVVA combines the residence permit and the work permit (TWV). You thus only apply for one permit. You do this at the Immigration and Naturalisation Service (IND). The IND asks advice from the Netherlands Employees Insurance Agency (UWV) about the labour market aspect. UWV assesses the request for advice based on the criteria of the Foreign Nationals Employment Act (Wav)." Recast text to track this wording (added the Wav basis; dropped the prior unsourced "whether a suitable worker is available within the EU/EEA" gloss). Captured sources/us-nl/dd3dcb88.txt.
-      status: UNVERIFIED
+      # VERIFIED 2026-06-13 (fact-verifier re-check): EU portal "Employed worker in the Netherlands" re-fetched LIVE (curl, browser UA, HTTP 200, no redirect; sha256 dd3dcb88..., unchanged from research run). Page states verbatim: "Most of the times, you can apply for a GVVA (single permit for residence and work). The GVVA combines the residence permit and the work permit (TWV). You thus only apply for one permit. You do this at the Immigration and Naturalisation Service (IND). The IND asks advice from the Netherlands Employees Insurance Agency (UWV) about the labour market aspect. UWV assesses the request for advice based on the criteria of the Foreign Nationals Employment Act (Wav)." Every element of the summary (GVVA = single permit, combines residence+work permit/TWV, one application at the IND, IND asks UWV advice on labour-market aspect, UWV assesses against the Wav) is supported character-for-character. [source: EU portal — DG Migration & Home Affairs, an official EU source; the load-bearing NL GVVA/UWV rule is stated plainly and specifically, so it carries the rule. Not IND (IND's own page renders this only behind a JS quiz).]
+      status: VERIFIED
       lastVerified: "2026-06-13"
-      verifiedBy: ""
+      verifiedBy: "fact-verifier-nl-r2 2026-06-13"
+      sourceHash: "dd3dcb88639750eb17b34ec77f2c8b19719ab0b5426ccecd481f1dfcda365516"
       reviewBy: "2026-09-11"
     tldr:
       text: "For ordinary paid employment that is not highly skilled work, US citizens generally need a single permit (GVVA) — one document combining the residence permit and the work permit (TWV), applied for at the IND. The IND asks the UWV (the employee-insurance agency) for advice on the labour-market aspect, so this route is more involved than the highly skilled migrant permit."
       sourceUrl: "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/employed-worker-netherlands_en"
       sourceName: "European Commission — EU Immigration Portal: Employed worker (Netherlands)"
       # RE-SOURCED 2026-06-13 (content-researcher): re-pointed to the EU Immigration Portal "Employed worker in the Netherlands" page, which states verbatim "You do this at the Immigration and Naturalisation Service (IND). The IND asks advice from the Netherlands Employees Insurance Agency (UWV) about the labour market aspect" and that the GVVA "combines the residence permit and the work permit (TWV). You thus only apply for one permit." Supports the GVVA-combines + IND-asks-UWV-advice elements that the quiz-gated IND GVVA page omits. Captured sources/us-nl/dd3dcb88.txt.
-      status: UNVERIFIED
+      # VERIFIED 2026-06-13 (fact-verifier re-check): EU portal "Employed worker in the Netherlands" (LIVE, HTTP 200, sha256 dd3dcb88..., unchanged). Verbatim: "The GVVA combines the residence permit and the work permit (TWV). You thus only apply for one permit. You do this at the Immigration and Naturalisation Service (IND). The IND asks advice from the Netherlands Employees Insurance Agency (UWV) about the labour market aspect." Supports the tldr's GVVA = single combined permit, applied for at the IND, IND asks UWV for labour-market advice. No overstatement. [source: EU portal — official EU source; states the NL-specific GVVA/UWV rule plainly, so it carries it. Not IND (quiz-gated).]
+      status: VERIFIED
       lastVerified: "2026-06-13"
-      verifiedBy: ""
+      verifiedBy: "fact-verifier-nl-r2 2026-06-13"
+      sourceHash: "dd3dcb88639750eb17b34ec77f2c8b19719ab0b5426ccecd481f1dfcda365516"
       reviewBy: "2026-09-11"
     keyFacts:
       - label: "What it is"
@@ -220,18 +224,22 @@ tasks:
         sourceUrl: "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/employed-worker-netherlands_en"
         sourceName: "European Commission — EU Immigration Portal: Employed worker (Netherlands)"
         # RE-SOURCED 2026-06-13 (content-researcher): re-pointed to the EU Immigration Portal "Employed worker in the Netherlands" page, which states verbatim "You (to the Dutch representation in your own country or the country of continuous residence) or your employer (applies to the IND in the Netherlands) can submit the application for a GVVA." — supporting the "you or your employer can submit the application" element that the IND Employing page (which only carries the employer-becomes-sponsor clause) did not. Trimmed the now-unneeded "automatically becomes the sponsor" gloss. Captured sources/us-nl/dd3dcb88.txt.
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier re-check): EU portal "Employed worker in the Netherlands" (LIVE, HTTP 200, sha256 dd3dcb88...). Verbatim: "You (to the Dutch representation in your own country or the country of continuous residence) or your employer (applies to the IND in the Netherlands) can submit the application for a GVVA." Supports "You apply at the IND for the GVVA. Either you or your employer can submit the GVVA application to the IND" character-for-character. [source: EU portal — official EU source; states the who-may-file rule for the NL GVVA plainly, so it carries it. Not IND (quiz-gated).]
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-nl-r2 2026-06-13"
+        sourceHash: "dd3dcb88639750eb17b34ec77f2c8b19719ab0b5426ccecd481f1dfcda365516"
         reviewBy: "2026-09-11"
       - label: "Labour-market test"
         text: "The IND asks the Netherlands Employees Insurance Agency (UWV) for advice on the labour-market aspect of the application; the UWV assesses that request against the criteria of the Foreign Nationals Employment Act (Wav)."
         sourceUrl: "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/employed-worker-netherlands_en"
         sourceName: "European Commission — EU Immigration Portal: Employed worker (Netherlands)"
         # RE-SOURCED 2026-06-13 (content-researcher): re-pointed to the EU Immigration Portal "Employed worker in the Netherlands" page, which states verbatim "The IND asks advice from the Netherlands Employees Insurance Agency (UWV) about the labour market aspect. UWV assesses the request for advice based on the criteria of the Foreign Nationals Employment Act (Wav)." — directly supports the labour-market-advice element absent from the quiz-gated IND GVVA page. Added the Wav basis to match the source. Captured sources/us-nl/dd3dcb88.txt.
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier re-check): EU portal "Employed worker in the Netherlands" (LIVE, HTTP 200, sha256 dd3dcb88...). Verbatim: "The IND asks advice from the Netherlands Employees Insurance Agency (UWV) about the labour market aspect. UWV assesses the request for advice based on the criteria of the Foreign Nationals Employment Act (Wav)." Supports the keyFact's IND-asks-UWV-advice + UWV-assesses-against-the-Wav assertion character-for-character. [source: EU portal — official EU source; states the NL labour-market-test rule plainly, so it carries it. Not IND (quiz-gated).]
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-nl-r2 2026-06-13"
+        sourceHash: "dd3dcb88639750eb17b34ec77f2c8b19719ab0b5426ccecd481f1dfcda365516"
         reviewBy: "2026-09-11"
       - label: "When needed"
         text: "A US citizen coming to work in paid employment for more than 90 days needs a residence permit; the GVVA is the route when the work is not covered by a knowledge/talent permit such as the highly skilled migrant permit."
@@ -271,9 +279,11 @@ tasks:
             sourceUrl: "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/employed-worker-netherlands_en"
             sourceName: "European Commission — EU Immigration Portal: Employed worker (Netherlands)"
             # RE-SOURCED 2026-06-13 (content-researcher): re-pointed the step link from the quiz-gated IND GVVA page to the EU Immigration Portal "Employed worker in the Netherlands" page, which plainly states the GVVA is applied for at the IND and "The IND asks advice from the Netherlands Employees Insurance Agency (UWV) about the labour market aspect", and that "You ... or your employer ... can submit the application for a GVVA." Step text adjusted to "You or your employer file ...". Captured sources/us-nl/dd3dcb88.txt.
-            status: UNVERIFIED
+            # VERIFIED 2026-06-13 (fact-verifier re-check): EU portal "Employed worker in the Netherlands" (LIVE, HTTP 200, sha256 dd3dcb88...). Verbatim: "You ... or your employer ... can submit the application for a GVVA" and "You do this at the Immigration and Naturalisation Service (IND). The IND asks advice from the Netherlands Employees Insurance Agency (UWV) about the labour market aspect." Link label ("the GVVA and the IND's UWV labour-market advice") and the step it supports ("You or your employer file the single permit (GVVA) application with the IND; the IND requests UWV advice") are accurate. [source: EU portal — official EU source; states the rule plainly. Not IND (quiz-gated).]
+            status: VERIFIED
             lastVerified: "2026-06-13"
-            verifiedBy: ""
+            verifiedBy: "fact-verifier-nl-r2 2026-06-13"
+            sourceHash: "dd3dcb88639750eb17b34ec77f2c8b19719ab0b5426ccecd481f1dfcda365516"
             reviewBy: "2026-09-11"
       - text: "After a positive decision, travel to the Netherlands (no MVV needed for US citizens), collect your residence permit, and register with your municipality."
     documents:
@@ -285,9 +295,11 @@ tasks:
           sourceUrl: "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/employed-worker-netherlands_en"
           sourceName: "European Commission — EU Immigration Portal: Employed worker (Netherlands)"
           # RE-SOURCED 2026-06-13 (content-researcher): re-pointed from the quiz-gated IND GVVA page to the EU Immigration Portal "Employed worker in the Netherlands" page, which states verbatim that the GVVA is applied for at the IND, that "You ... or your employer ... can submit the application for a GVVA", and "The application form lists the documents that you must enclose with the application. You have to have official foreign documents legalised and translated into Dutch, English, French or German." Recast the who-files / documents detail to track this source. Captured sources/us-nl/dd3dcb88.txt.
-          status: UNVERIFIED
+          # VERIFIED 2026-06-13 (fact-verifier re-check): EU portal "Employed worker in the Netherlands" (LIVE, HTTP 200, sha256 dd3dcb88...). Verbatim: "You ... or your employer ... can submit the application for a GVVA" and "Documents required The application form lists the documents that you must enclose with the application. You have to have official foreign documents legalised and translated into Dutch, English, French or German." Supports the form claim's apply-at-IND, who-may-file, "application form lists the documents you must enclose", and legalised/translated-into-Dutch/English/French/German elements character-for-character; the authority-index framing (EU portal + IND as index, no deep PDF) is appropriate. [source: EU portal — official EU source; states the procedure plainly. Not IND (quiz-gated).]
+          status: VERIFIED
           lastVerified: "2026-06-13"
-          verifiedBy: ""
+          verifiedBy: "fact-verifier-nl-r2 2026-06-13"
+          sourceHash: "dd3dcb88639750eb17b34ec77f2c8b19719ab0b5426ccecd481f1dfcda365516"
           reviewBy: "2026-09-11"
       - name: "Signed Dutch employment contract"
         type: provide
@@ -450,18 +462,22 @@ tasks:
       sourceUrl: "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/employed-worker-netherlands_en"
       sourceName: "European Commission — EU Immigration Portal: Employed worker (Netherlands)"
       # RE-SOURCED 2026-06-13 (content-researcher): re-pointed the in-the-Netherlands collection element from the IND Apply-from-abroad page (which places biometrics at the embassy, cutting against the claim) to the EU Immigration Portal "Employed worker in the Netherlands" page, which states verbatim under "Further requirements / Upon arrival, you must: make an online appointment to collect the single permit in person from an Immigration and Naturalisation Service desk." Combined with the IND MVV-exemptions list (United States = no MVV), this supports an MVV-exempt US national collecting the residence document in the Netherlands after arrival. The bare biometrics (signature + fingerprints) fact remains separately sourced to the IND Apply-from-abroad page in the keyFact. Captured sources/us-nl/dd3dcb88.txt.
-      status: UNVERIFIED
+      # VERIFIED 2026-06-13 (fact-verifier re-check): EU portal "Employed worker in the Netherlands" (LIVE, HTTP 200, sha256 dd3dcb88...). Verbatim under "Further requirements": "Upon arrival, you must: make an online appointment to collect the single permit in person from an Immigration and Naturalisation Service desk." This supports "on arrival you make an online appointment to collect it in person from an IND desk" and (with the US = no-MVV entry on the IND MVV-exemptions list, VERIFIED elsewhere in this file) the MVV-exempt-collect-in-NL framing. The summary's biometrics clause asserts only that signature+fingerprints are recorded for the residence document (no location claim) — supported by the sibling VERIFIED "Biometrics" keyFact (IND Apply-from-abroad page); no contradiction. [source: EU portal for the collect-on-arrival-in-NL rule — official EU source, stated plainly; biometrics cross-referenced to the IND-sourced sibling keyFact.]
+      status: VERIFIED
       lastVerified: "2026-06-13"
-      verifiedBy: ""
+      verifiedBy: "fact-verifier-nl-r2 2026-06-13"
+      sourceHash: "dd3dcb88639750eb17b34ec77f2c8b19719ab0b5426ccecd481f1dfcda365516"
       reviewBy: "2026-09-11"
     tldr:
       text: "Once your application is approved you receive a message about collecting your residence permit. On arrival in the Netherlands you make an online appointment to collect the residence document in person from an IND desk, and biometric data (signature and fingerprints) are recorded for it. Because you are MVV-exempt, you enter without an MVV sticker and collect the permit in the Netherlands."
       sourceUrl: "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/employed-worker-netherlands_en"
       sourceName: "European Commission — EU Immigration Portal: Employed worker (Netherlands)"
       # RE-SOURCED 2026-06-13 (content-researcher): re-pointed from the IND Employing page (which has no biometrics / no in-NL-collection content) to the EU Immigration Portal "Employed worker in the Netherlands" page, which states verbatim "Upon arrival, you must: make an online appointment to collect the single permit in person from an Immigration and Naturalisation Service desk." With the MVV-exemptions list (US = no MVV), this supports MVV-exempt-in-NL collection. The "you receive a message about collecting your residence permit" element remains supportable on the IND Employing page; the load-bearing in-NL-collection element is now on a source that states it. Captured sources/us-nl/dd3dcb88.txt.
-      status: UNVERIFIED
+      # VERIFIED 2026-06-13 (fact-verifier re-check): EU portal "Employed worker in the Netherlands" (LIVE, HTTP 200, sha256 dd3dcb88...). Verbatim: "Upon arrival, you must: make an online appointment to collect the single permit in person from an Immigration and Naturalisation Service desk." Supports the load-bearing in-NL collection element ("on arrival ... collect the residence document in person from an IND desk") and, with the US = no-MVV entry (IND MVV-exemptions, VERIFIED elsewhere), the MVV-exempt framing. Biometrics (signature+fingerprints) carries no location claim and is supported by the sibling VERIFIED "Biometrics" keyFact (IND). [source: EU portal for the collect-in-NL rule — official EU source, stated plainly; biometrics cross-referenced to the IND-sourced sibling.]
+      status: VERIFIED
       lastVerified: "2026-06-13"
-      verifiedBy: ""
+      verifiedBy: "fact-verifier-nl-r2 2026-06-13"
+      sourceHash: "dd3dcb88639750eb17b34ec77f2c8b19719ab0b5426ccecd481f1dfcda365516"
       reviewBy: "2026-09-11"
     keyFacts:
       - label: "Biometrics"
@@ -479,9 +495,11 @@ tasks:
         sourceUrl: "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/employed-worker-netherlands_en"
         sourceName: "European Commission — EU Immigration Portal: Employed worker (Netherlands)"
         # RE-SOURCED 2026-06-13 (content-researcher): re-pointed from the IND Employing page (no in-NL-collection content) to the EU Immigration Portal "Employed worker in the Netherlands" page, which states verbatim "Upon arrival, you must: make an online appointment to collect the single permit in person from an Immigration and Naturalisation Service desk." Combined with the MVV-exemptions list (US = no MVV), this supports an MVV-exempt US national collecting the residence document in the Netherlands. Recast the text to track the source's "upon arrival, collect in person from an IND desk" wording. Captured sources/us-nl/dd3dcb88.txt.
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier re-check): EU portal "Employed worker in the Netherlands" (LIVE, HTTP 200, sha256 dd3dcb88...). Verbatim: "Upon arrival, you must: make an online appointment to collect the single permit in person from an Immigration and Naturalisation Service desk." Supports "After approval you collect your residence document in the Netherlands: on arrival you make an online appointment to collect it in person from an IND desk" character-for-character; the MVV-exempt-US framing follows from the IND MVV-exemptions list (US = no MVV, VERIFIED elsewhere in this file). [source: EU portal — official EU source; states the collect-in-NL-on-arrival rule plainly, so it carries it.]
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-nl-r2 2026-06-13"
+        sourceHash: "dd3dcb88639750eb17b34ec77f2c8b19719ab0b5426ccecd481f1dfcda365516"
         reviewBy: "2026-09-11"
     detail: >
       The residence document is the physical proof of your right to live in the Netherlands.
@@ -598,9 +616,11 @@ tasks:
         sourceUrl: "https://www.amsterdam.nl/en/civil-affairs/first-registration/"
         sourceName: "City of Amsterdam — Moving from abroad (immigration)"
         # RE-SOURCED 2026-06-13 (content-researcher): the prior government.nl BRP page does NOT state any registration deadline. The "5 days" figure is set per municipality (the BRP procedure is run locally), so re-pointed to an official municipal source — the City of Amsterdam "Moving from abroad (immigration)" page, which states verbatim "If you move to Amsterdam from abroad for more than 4 months, you must register with the City. Visit a City Office within 5 days of your arrival." Recast to attribute the 5-day figure explicitly to a municipality (Amsterdam, as an example) rather than to generic "government guidance", and kept the confirm-with-your-municipality hedge since the deadline varies locally. Captured sources/us-nl/93934484.txt.
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier re-check): City of Amsterdam "Moving from abroad (immigration)" page re-fetched LIVE (curl, HTTP 200, no redirect; sha256 93934484...). Verbatim: "If you move to Amsterdam from abroad for more than 4 months, you must register with the City. Visit a City Office within 5 days of your arrival." Supports "The City of Amsterdam ... requires you to visit a City Office within 5 days of your arrival if you move there from abroad for more than 4 months" character-for-character (5 days; >4 months). The claim correctly frames this as a municipality-specific example and keeps the "confirm it locally" hedge (deadline is set per municipality). [source: City of Amsterdam — an official municipal source; appropriate to carry a load-bearing municipal deadline, and explicitly attributed as one municipality's rule.]
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-nl-r2 2026-06-13"
+        sourceHash: "93934484a472ad1db36954acbe54de5087ef089ed28d6f0f31deb1fb55a26a38"
         reviewBy: "2026-09-11"
       - label: "Legal basis"
         text: "The BRP was established by the Personal Records Database Act (Wet basisregistratie personen), which took effect on 6 January 2014; rules on using and accessing BRP data are set out in that Act."
@@ -688,6 +708,7 @@ tasks:
       sourceUrl: "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/employed-worker-netherlands_en"
       sourceName: "European Commission — EU Immigration Portal: Employed worker (Netherlands)"
       # RE-SOURCED 2026-06-13 (content-researcher): the prior government.nl page states the deadline as "within four months of your PERMANENT residence permit coming into force" — the draft had dropped "permanent", broadening the rule. Rather than re-introduce the "permanent" qualifier (which would mis-state the deadline for a first/temporary permit holder), re-pointed the general new-arrival rule to the EU Immigration Portal "Employed worker in the Netherlands" page, which states verbatim "take out health insurance within 4 months following your arrival in the Netherlands." Recast the deadline to the arrival-based wording the source supports. The compulsory-Zvw clause stays sourced to business.gov.nl in the "Compulsory" keyFact, and the no-Dutch-cover-before-a-decision clause stays sourced to government.nl in its own keyFact; the verbatim "permanent residence permit" wording remains separately preserved in the VERIFIED "Deadline (4 months)" keyFact. Captured sources/us-nl/dd3dcb88.txt.
+      # KICKED BACK 2026-06-13 (fact-verifier re-check): CONTRADICTORY DEADLINES IN THE SAME TASK — human reconciliation required. The cited EU portal page WAS re-fetched LIVE (HTTP 200, sha256 dd3dcb88...) and DOES state the asserted deadline verbatim: "take out health insurance within 4 months following your arrival in the Netherlands." So the source is reachable and supports the literal text. BUT this task's own VERIFIED "Deadline (4 months)" keyFact, sourced to government.nl (Health insurance and residence permit), states a DIFFERENT trigger verbatim: "within four months of your permanent residence permit coming into force." Arrival vs permanent-permit-coming-into-force are materially different dates — especially for an MVV-exempt US national who arrives first and holds a (temporary) first permit, never a "permanent" one at this stage. Publishing two different legal deadlines for the same obligation in one task is exactly the catastrophic-fee-class risk CLAUDE.md guards against; uncertainty is cheap. Flagging rather than verifying so the researcher/founder reconciles which deadline applies to this corridor (and whether the EU-portal "arrival" framing or the government.nl "permanent permit" framing governs). NOTE for the researcher: the EU portal IS an official EU source and does state the arrival-based rule — the kickback is the internal contradiction, not the source's reachability or wording. Also note the summary's compulsory-Zvw and no-cover-before-a-decision clauses are NOT on the cited EU portal page (they rely on sibling keyFacts); if re-sourced, ensure each clause's own sourceUrl supports it.
       status: UNVERIFIED
       lastVerified: "2026-06-13"
       verifiedBy: ""
@@ -697,6 +718,7 @@ tasks:
       sourceUrl: "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/employed-worker-netherlands_en"
       sourceName: "European Commission — EU Immigration Portal: Employed worker (Netherlands)"
       # RE-SOURCED 2026-06-13 (content-researcher): same fix as this task's summary — re-pointed the 4-month deadline from the government.nl page (which says "within four months of your PERMANENT residence permit coming into force") to the EU Immigration Portal "Employed worker in the Netherlands" page, which states verbatim "take out health insurance within 4 months following your arrival in the Netherlands." Recast to the arrival-based wording the source supports. The compulsory-Zvw and no-Dutch-cover-before-a-decision clauses remain sourced in their own keyFacts. Captured sources/us-nl/dd3dcb88.txt.
+      # KICKED BACK 2026-06-13 (fact-verifier re-check): same contradiction as this task's summary. The cited EU portal page (LIVE, HTTP 200, sha256 dd3dcb88...) DOES state "take out health insurance within 4 months following your arrival in the Netherlands" verbatim — but it contradicts this task's VERIFIED "Deadline (4 months)" keyFact (government.nl): "within four months of your permanent residence permit coming into force." Two materially different deadlines (arrival vs permanent-permit-in-force) for the same obligation cannot both be presented to a relocating user; a wrong deadline is catastrophic, so this is flagged for human reconciliation rather than verified. The EU portal is an official EU source and the kickback is the internal contradiction, not the source. (Compulsory-Zvw and no-cover-before-a-decision clauses are also not on the cited EU portal page — handle per the summary note if re-sourced.)
       status: UNVERIFIED
       lastVerified: "2026-06-13"
       verifiedBy: ""
@@ -956,18 +978,22 @@ tasks:
       sourceUrl: "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/family-member-netherlands_en"
       sourceName: "European Commission — EU Immigration Portal: Family member (Netherlands)"
       # RE-SOURCED 2026-06-13 (content-researcher): the IND partner page is a quiz-gated SPA whose static HTML omits the relationship-type / 21+ / cohabitation conditions. Re-pointed the relationship-type + sponsor framing to the EU Immigration Portal "Family member in the Netherlands" page, which states verbatim "It is possible to join your family member in the Netherlands when you are married or are in a registered partnership, when you wish to stay with your unmarried partner ..." and "Your spouse, (registered) partner or parent is your sponsor." The 21+/same-registered-address specifics are NOT on any reachable official page (only behind the IND selector), so they are trimmed from the assertion and recast as "confirm the full checklist with the IND" rather than guessed. The income requirement stays sourced to the required-amounts keyFact. Captured sources/us-nl/6d6a56b3.txt.
-      status: UNVERIFIED
+      # VERIFIED 2026-06-13 (fact-verifier re-check): EU portal "Family member in the Netherlands" re-fetched LIVE (curl, HTTP 200, no redirect; sha256 6d6a56b3...). Verbatim: "It is possible to join your family member in the Netherlands when you are married or are in a registered partnership, when you wish to stay with your unmarried partner or as a minor child to stay with your parent(s)." and "Your spouse, (registered) partner or parent is your sponsor." Supports the load-bearing re-sourced elements (married / registered partnership / unmarried partner; you are the sponsor) character-for-character. The income clause is hedged ("at least the required amount for this permit") and the descriptors "independent, sustainable and sufficient" + the figure are carried by the sibling VERIFIED "Income requirement" keyFact (IND required-amounts page) — no conflict; the cited EU portal does not mention income but the claim does not rely on it for that element. The 21+/cohabitation specifics are correctly trimmed to "confirm the full current checklist with the IND" (not on any reachable official page). [source: EU portal — official EU source; states the NL relationship-type + sponsor rule plainly, so it carries it. Income figure cross-referenced to the IND-sourced sibling keyFact.]
+      status: VERIFIED
       lastVerified: "2026-06-13"
-      verifiedBy: ""
+      verifiedBy: "fact-verifier-nl-r2 2026-06-13"
+      sourceHash: "6d6a56b30ed2581063d1385a260e3d5cd58b8e1c2bb0e0b2f421dccdba2030db"
       reviewBy: "2026-09-11"
     tldr:
       text: "Your partner or spouse can join you in the Netherlands on a residence permit — when you are married, in a registered partnership, or staying with an unmarried partner. You are the sponsor and must meet the income requirement (independent, sustainable and sufficient income — at least the required amount for this permit). Further conditions (including a minimum age and living together) apply; confirm the full current checklist with the IND."
       sourceUrl: "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/family-member-netherlands_en"
       sourceName: "European Commission — EU Immigration Portal: Family member (Netherlands)"
       # RE-SOURCED 2026-06-13 (content-researcher): same fix as this task's summary — re-pointed the relationship-type + sponsor framing to the EU Immigration Portal "Family member in the Netherlands" page (verbatim: married / registered partnership / unmarried partner; "Your spouse, (registered) partner or parent is your sponsor"). Trimmed the unsourced 21+ / same-registered-address specifics (only behind the IND selector) and recast them as "confirm the full checklist with the IND". Income stays sourced to the required-amounts keyFact. Captured sources/us-nl/6d6a56b3.txt.
-      status: UNVERIFIED
+      # VERIFIED 2026-06-13 (fact-verifier re-check): EU portal "Family member in the Netherlands" (LIVE, HTTP 200, sha256 6d6a56b3...). Verbatim: "It is possible to join your family member in the Netherlands when you are married or are in a registered partnership, when you wish to stay with your unmarried partner ..." and "Your spouse, (registered) partner or parent is your sponsor." Supports the tldr's relationship-types + you-are-the-sponsor. Income descriptors/figure carried by the sibling VERIFIED "Income requirement" keyFact (IND); the further-conditions caveat is correctly hedged to "confirm ... with the IND". [source: EU portal — official EU source; states the relationship/sponsor rule plainly. Income cross-referenced to the IND-sourced sibling.]
+      status: VERIFIED
       lastVerified: "2026-06-13"
-      verifiedBy: ""
+      verifiedBy: "fact-verifier-nl-r2 2026-06-13"
+      sourceHash: "6d6a56b30ed2581063d1385a260e3d5cd58b8e1c2bb0e0b2f421dccdba2030db"
       reviewBy: "2026-09-11"
     keyFacts:
       - label: "Who applies"
@@ -1102,18 +1128,22 @@ tasks:
       sourceUrl: "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/student-netherlands_en"
       sourceName: "European Commission — EU Immigration Portal: Student (Netherlands)"
       # RE-SOURCED 2026-06-13 (content-researcher): the IND student page is a quiz-gated SPA whose static HTML lacks the "recognised" qualifier and the "full-time" condition. Re-pointed the recognised-sponsor rule to the EU Immigration Portal "Student in the Netherlands" page, which states verbatim "Only a recognised educational institution can submit an application on behalf of a student. The educational institution is your recognised sponsor." (and that the institution applies for the residence permit). The "full-time programme" condition is NOT on any reachable official page (only behind the IND selector), so it is trimmed and folded into "confirm the full checklist with ... the IND" rather than guessed. Means-of-support stays sourced to the required-amounts keyFact. Captured sources/us-nl/5f615134.txt.
-      status: UNVERIFIED
+      # VERIFIED 2026-06-13 (fact-verifier re-check): EU portal "Student in the Netherlands" re-fetched LIVE (curl, HTTP 200, no redirect; sha256 5f615134...). Verbatim: "Only a recognised educational institution can submit an application on behalf of a student. The educational institution is your recognised sponsor. The educational institution applies for the mvv and the residence permit at the same time." Supports the load-bearing re-sourced elements (need a residence permit; only a RECOGNISED institution can submit the application; institution is your recognised sponsor; you cannot apply yourself) character-for-character. The means-of-support clause is hedged ("at least the IND required amount per month") and the figure is carried by the sibling VERIFIED "Means of support (2026)" keyFact (IND required-amounts page, €1,130.77) — no conflict; the cited EU portal page does not mention means-of-support but the claim does not rely on it for that element. The "full-time" condition is correctly trimmed to "confirm the full checklist with your institution and the IND" (not on any reachable official page). [source: EU portal — official EU source; states the NL recognised-sponsor / institution-applies rule plainly, so it carries it. Means figure cross-referenced to the IND-sourced sibling keyFact.]
+      status: VERIFIED
       lastVerified: "2026-06-13"
-      verifiedBy: ""
+      verifiedBy: "fact-verifier-nl-r2 2026-06-13"
+      sourceHash: "5f615134b8b6c36bea82d2941f19865e691c6c05d73f1a3811ea120ddb2adb4f"
       reviewBy: "2026-09-11"
     tldr:
       text: "For study in the Netherlands your recognised education institution — not you — submits the application for your residence permit; the institution is your recognised sponsor. You must show enough money to support yourself (the IND sets a study means-of-support amount per month — see the means-of-support fact). Get admitted first; the institution then handles the permit."
       sourceUrl: "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/student-netherlands_en"
       sourceName: "European Commission — EU Immigration Portal: Student (Netherlands)"
       # RE-SOURCED 2026-06-13 (content-researcher): re-pointed to the EU Immigration Portal "Student in the Netherlands" page, which states verbatim "Only a recognised educational institution can submit an application on behalf of a student. The educational institution is your recognised sponsor." — sourcing the recognised-sponsor rule the quiz-gated IND page omits. Trimmed the "full-time" condition (not on any reachable official page). Removed the inline €1,130.77 figure from the tldr (its sourceUrl no longer carries that number; the exact figure stays in the VERIFIED "Means of support" keyFact, which cites the required-amounts page) and replaced it with a pointer to that fact, so this tldr no longer needs the 30-day fee window — reviewBy restored to the standard 90-day window. Captured sources/us-nl/5f615134.txt.
-      status: UNVERIFIED
+      # VERIFIED 2026-06-13 (fact-verifier re-check): EU portal "Student in the Netherlands" (LIVE, HTTP 200, sha256 5f615134...). Verbatim: "Only a recognised educational institution can submit an application on behalf of a student. The educational institution is your recognised sponsor. The educational institution applies for the mvv and the residence permit at the same time." Supports the tldr's "your recognised education institution — not you — submits the application ...; the institution is your recognised sponsor." The means-of-support element is a pointer to the sibling VERIFIED "Means of support (2026)" keyFact (IND; €1,130.77) — correctly no longer carries an inline figure here, so the 90-day reviewBy is appropriate. [source: EU portal — official EU source; states the recognised-sponsor rule plainly. Means figure on the IND-sourced sibling.]
+      status: VERIFIED
       lastVerified: "2026-06-13"
-      verifiedBy: ""
+      verifiedBy: "fact-verifier-nl-r2 2026-06-13"
+      sourceHash: "5f615134b8b6c36bea82d2941f19865e691c6c05d73f1a3811ea120ddb2adb4f"
       reviewBy: "2026-09-11"
     keyFacts:
       - label: "Who applies"
@@ -1121,9 +1151,11 @@ tasks:
         sourceUrl: "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/student-netherlands_en"
         sourceName: "European Commission — EU Immigration Portal: Student (Netherlands)"
         # RE-SOURCED 2026-06-13 (content-researcher): re-pointed from the quiz-gated IND student page (whose static text lacks the "recognised" qualifier) to the EU Immigration Portal "Student in the Netherlands" page, which states the quoted text verbatim: "Only a recognised educational institution can submit an application on behalf of a student. The educational institution is your recognised sponsor." The recognised-sponsor element is now on a source that states it. Captured sources/us-nl/5f615134.txt.
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier re-check): EU portal "Student in the Netherlands" (LIVE, HTTP 200, sha256 5f615134...). The quoted sentence appears verbatim on the page: "Only a recognised educational institution can submit an application on behalf of a student. The educational institution is your recognised sponsor." Exact match to the quoted keyFact text; "You cannot apply yourself" follows directly from "Only a recognised educational institution can submit an application". [source: EU portal — official EU source; states this NL rule verbatim, so it carries it. Not IND (the "recognised" qualifier is missing from IND's static, quiz-gated page).]
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-nl-r2 2026-06-13"
+        sourceHash: "5f615134b8b6c36bea82d2941f19865e691c6c05d73f1a3811ea120ddb2adb4f"
         reviewBy: "2026-09-11"
       - label: "Means of support (2026)"
         text: "You must have enough money to support yourself. The 2026 study required amount for higher professional education (hbo) or university is €1,130.77 per month (valid 1 January–31 December 2026). Confirm the current figure with the IND."
@@ -1141,9 +1173,11 @@ tasks:
         sourceUrl: "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/student-netherlands_en"
         sourceName: "European Commission — EU Immigration Portal: Student (Netherlands)"
         # RE-SOURCED 2026-06-13 (content-researcher): re-pointed to the EU Immigration Portal "Student in the Netherlands" page, which states verbatim "Only a recognised educational institution can submit an application on behalf of a student. The educational institution is your recognised sponsor. The educational institution applies for the mvv and the residence permit ..." — sourcing the recognised-sponsor + institution-applies elements. Relabelled the fact to "Recognised sponsor applies" and trimmed the unsourced "full-time" assertion (not on any reachable official page) into a confirm-with-IND hedge rather than guessing it. Captured sources/us-nl/5f615134.txt.
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier re-check): EU portal "Student in the Netherlands" (LIVE, HTTP 200, sha256 5f615134...). Verbatim: "The educational institution is your recognised sponsor. The educational institution applies for the mvv and the residence permit at the same time." Supports "The recognised educational institution applies for the residence permit and acts as your recognised sponsor" character-for-character. The full-time / study-load condition is correctly hedged to "confirm these with your institution and the IND" (not on any reachable official page) — no overstatement. [source: EU portal — official EU source; states the institution-applies + recognised-sponsor rule plainly, so it carries it.]
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-nl-r2 2026-06-13"
+        sourceHash: "5f615134b8b6c36bea82d2941f19865e691c6c05d73f1a3811ea120ddb2adb4f"
         reviewBy: "2026-09-11"
       - label: "MVV exemption"
         text: "As a US national you are MVV-exempt, so no embassy entry-visa step applies; you still receive a student residence permit, applied for by your institution and collected after a positive decision."
@@ -1177,9 +1211,11 @@ tasks:
             sourceUrl: "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/student-netherlands_en"
             sourceName: "European Commission — EU Immigration Portal: Student (Netherlands)"
             # RE-SOURCED 2026-06-13 (content-researcher): re-pointed the step link from the quiz-gated IND student page (which lacks the "recognised" qualifier in its static text) to the EU Immigration Portal "Student in the Netherlands" page, which states verbatim "Only a recognised educational institution can submit an application on behalf of a student. The educational institution is your recognised sponsor." — supporting the link label's "recognised institution" wording. Captured sources/us-nl/5f615134.txt.
-            status: UNVERIFIED
+            # VERIFIED 2026-06-13 (fact-verifier re-check): EU portal "Student in the Netherlands" (LIVE, HTTP 200, sha256 5f615134...). Verbatim: "Only a recognised educational institution can submit an application on behalf of a student." Supports the link label "only a recognised institution can apply for you". Link accurate. [source: EU portal — official EU source; states the rule plainly.]
+            status: VERIFIED
             lastVerified: "2026-06-13"
-            verifiedBy: ""
+            verifiedBy: "fact-verifier-nl-r2 2026-06-13"
+            sourceHash: "5f615134b8b6c36bea82d2941f19865e691c6c05d73f1a3811ea120ddb2adb4f"
             reviewBy: "2026-09-11"
       - text: "Provide your institution with the documents it needs (including proof of sufficient means of support) so it can file your residence permit application with the IND."
         links:
@@ -1202,9 +1238,11 @@ tasks:
           sourceUrl: "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal/student-netherlands_en"
           sourceName: "European Commission — EU Immigration Portal: Student (Netherlands)"
           # RE-SOURCED 2026-06-13 (content-researcher): re-pointed from the quiz-gated IND student page to the EU Immigration Portal "Student in the Netherlands" page, which states verbatim "Only a recognised educational institution can submit an application on behalf of a student. The educational institution is your recognised sponsor. ... Your educational institution uses the application form. The forms are at the bottom of this page. The educational institution sends the application to the IND." — sourcing the recognised-sponsor / institution-files / institution-uses-the-form elements. DROPPED the unconfirmable "IND form 7504" reference (not named on any reachable official page) rather than guess a form number. Captured sources/us-nl/5f615134.txt.
-          status: UNVERIFIED
+          # VERIFIED 2026-06-13 (fact-verifier re-check): EU portal "Student in the Netherlands" (LIVE, HTTP 200, sha256 5f615134...). Verbatim: "Only a recognised educational institution can submit an application on behalf of a student. The educational institution is your recognised sponsor. ... Your educational institution uses the application form. The forms are at the bottom of this page. The educational institution sends the application to the IND." Supports "only a recognised educational institution can submit the application on your behalf, and it does so with the IND (the institution uses the application form and sends it to the IND)" character-for-character. The unconfirmable "form 7504" reference is correctly dropped (not named on any reachable official page); authority-index framing (EU portal + IND student page) is appropriate. [source: EU portal — official EU source; states the no-student-filed-form / institution-uses-the-form / sends-to-IND rule plainly, so it carries it.]
+          status: VERIFIED
           lastVerified: "2026-06-13"
-          verifiedBy: ""
+          verifiedBy: "fact-verifier-nl-r2 2026-06-13"
+          sourceHash: "5f615134b8b6c36bea82d2941f19865e691c6c05d73f1a3811ea120ddb2adb4f"
           reviewBy: "2026-09-11"
       - name: "Proof of admission / enrolment"
         type: provide

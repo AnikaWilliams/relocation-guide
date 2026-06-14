@@ -173,10 +173,10 @@
     "claimIds": [
       "open-bank-account"
     ],
-    "fetchedAt": "2026-06-13",
+    "fetchedAt": "2026-06-14",
     "fetchMethod": "curl",
     "sha256": "27b2e4ff1011dfabf3fb6df40d91799841b8dbd0748c10f2f43a20886b4d6171",
-    "byteSize": 170602,
+    "byteSize": 170604,
     "contentType": "text/html; charset=utf-8",
     "textPath": "sources/us-lu/27b2e4ff.txt",
     "capturedBy": "snapshot-source"
@@ -211,16 +211,64 @@
   },
   {
     "sourceUrl": "https://impotsdirects.public.lu/fr/echanges_electroniques/FATCA.html",
-    "sourceName": "Administration des contributions directes (ACD) — FATCA (échanges électroniques)",
+    "sourceName": "Administration des contributions directes (ACD) — FATCA (French)",
     "claimIds": [
       "open-bank-account"
     ],
-    "fetchedAt": "2026-06-13",
+    "fetchedAt": "2026-06-14",
     "fetchMethod": "curl",
     "sha256": "504e3689705f5e93000869c5a542a1f20c97587b24f7e20911ff6cfaae210a80",
     "byteSize": 61059,
     "contentType": "text/html; charset=utf-8",
     "textPath": "sources/us-lu/504e3689.txt",
+    "capturedBy": "snapshot-source"
+  },
+  {
+    "sourceUrl": "https://guichet.public.lu/en/citoyens/immigration/plus-3-mois/ressortissant-tiers/salarie/salarie-pays-tiers.html",
+    "sourceName": "guichet.lu — Conditions of residence for third-country salaried workers",
+    "claimIds": [],
+    "fetchedAt": "2026-06-14",
+    "fetchMethod": "curl",
+    "sha256": "276c85fe750a4bcd732bbccdfda5cea6fbcd4f7b996d0aaa8ee468fe30f9505d",
+    "byteSize": 1006888,
+    "contentType": "text/html; charset=utf-8",
+    "textPath": "sources/us-lu/276c85fe.txt",
+    "capturedBy": "snapshot-source"
+  },
+  {
+    "sourceUrl": "https://guichet.public.lu/en/citoyens/immigration/plus-3-mois/ressortissant-tiers/hautement-qualifie/salarie-hautement-qualifie.html",
+    "sourceName": "guichet.lu — Salaried work for highly qualified workers (EU Blue Card)",
+    "claimIds": [],
+    "fetchedAt": "2026-06-14",
+    "fetchMethod": "curl",
+    "sha256": "f524e4c51baa6416c3c34a2111fbe45c2c6734c3908355e7e717c11522c8a5e8",
+    "byteSize": 1010830,
+    "contentType": "text/html; charset=utf-8",
+    "textPath": "sources/us-lu/f524e4c5.txt",
+    "capturedBy": "snapshot-source"
+  },
+  {
+    "sourceUrl": "https://guichet.public.lu/en/citoyens/immigration/moins-3-mois/ressortissant-tiers/entree-visa.html",
+    "sourceName": "Guichet.lu — Luxembourg entry visa for third-country nationals",
+    "claimIds": [],
+    "fetchedAt": "2026-06-14",
+    "fetchMethod": "curl",
+    "sha256": "76fa1ea9ace7cd523dc1227b3637703c319c251b6f1fd8b18cb162582040c45f",
+    "byteSize": 285984,
+    "contentType": "text/html; charset=utf-8",
+    "textPath": "sources/us-lu/76fa1ea9.txt",
+    "capturedBy": "snapshot-source"
+  },
+  {
+    "sourceUrl": "https://guichet.public.lu/en/citoyens/immigration/nouveau-resident-luxembourg/arrivee-luxembourg/depart-arrivee-commune.html",
+    "sourceName": "Guichet.lu — Declaring a move to a new commune of residence",
+    "claimIds": [],
+    "fetchedAt": "2026-06-14",
+    "fetchMethod": "curl",
+    "sha256": "13eb542cd5be68c89f8ae72df852b246c57224b27fc9b1821e8b491ede0cd9be",
+    "byteSize": 981653,
+    "contentType": "text/html; charset=utf-8",
+    "textPath": "sources/us-lu/13eb542c.txt",
     "capturedBy": "snapshot-source"
   }
 ]

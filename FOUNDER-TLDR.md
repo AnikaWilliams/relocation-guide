@@ -10,6 +10,18 @@ coming next. Newest updates are at the top.
 
 ---
 
+## 2026-06-13 — USA → Western Europe batch: fact-checking finished (7 of 8 guides clean)
+
+**What changed.** The whole eight-guide batch has now been all the way through the mill: drafted → independently fact-checked → flagged items re-sourced → fact-checked again. Result: **730 of 732 facts confirmed against live official sources, and 7 of the 8 guides are 100% clean** — Germany, France, Belgium, Ireland, Luxembourg, Austria, and the UK. The eighth (Netherlands) is 90 of 92, with **one genuine open question** the checker refused to wave through: the Dutch health-insurance sign-up deadline is stated two different ways by two official sources (counting from your *arrival* vs. from your *permanent permit*). Rather than publish a contradiction, it's flagged for a human — likely a quick lawyer/IND check — to settle which applies.
+
+**Why it matters.** This is the bar the whole product is built on: nothing is "true" until a second, independent pass confirms it against the government's own page. Seven guides have cleared it.
+
+**What you'd notice today.** Still nothing live — every guide stays hidden until you give the publish go-ahead.
+
+**What's next.** Your call: publish the 7 clean guides (once the web address + lawyer review are in place), and settle the one Dutch deadline question.
+
+---
+
 ## 2026-06-13 — Fixed all 62 flagged facts (re-sourcing pass)
 
 **What changed.** The fact-checkers had flagged 62 of the 732 new facts — not as *wrong*, but as cited to the wrong official page, or to a detail a government site hides behind an interactive form our reader can't see. A clean-up pass went through all 62: most were re-pointed to the correct official page (and re-captured), some trimmed to exactly what the source says, and a handful — where no official page publishes the detail (e.g. a bank's onboarding document list, US-citizen tax quirks) — rewritten as an honest "confirm with [the authority]" instead of a stated fact. Nothing was guessed or invented. (The pass got interrupted twice when the session paused and the helper agents stopped — but their finished work was saved to disk each time, so I just relaunched to finish the rest.)

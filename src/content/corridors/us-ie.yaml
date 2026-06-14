@@ -384,18 +384,22 @@ tasks:
       sourceUrl: "https://www.irishimmigration.ie/registering-your-immigration-permission/how-to-register-your-immigration-permission-for-the-first-time/required-documents/"
       sourceName: "Irish Immigration Service (ISD) — Registration required documents and fees"
       # RE-SOURCED 2026-06-13 (content-researcher): (1) re-pointed sourceUrl from the first-time-registration page to the Required-Documents page (sha256 3041f472…, already in sources/us-ie/), which states the €300 fee verbatim ("The registration fee is €300 (per person), if applicable. You can pay this fee by credit or debit card only.") — recast the fee sentence to match (per person, by card, some exempt). (2) DROPPED the unsourceable "At registration your fingerprints and photograph are taken" sentence — no reachable ISD page states fingerprints/a photograph are TAKEN at registration (ISD registration pages are JS apps); recast as "confirm the exact registration procedure (including any biometric capture) with ISD". The within-90-days and IRP-by-post-as-proof elements are stated on the companion first-time page (sha256 f17ba21c…) for the verifier to cross-check.
-      status: UNVERIFIED
+      # VERIFIED 2026-06-13 (fact-verifier re-check): ISD Required-Documents page re-fetched LIVE (curl, HTTP 200, no redirect; sha256 3041f472… — unchanged, no drift). Fee element matches character-for-character: "The registration fee is €300 (per person), if applicable. You can pay this fee by credit or debit card only." plus the exemptions list ("A minor under 18 at the time of registration A spouse, widow or widower of an Irish citizen ..."). The >90-days register-with-ISD trigger is on this page ("from a country outside the European Union or Switzerland and come to Ireland to work, study, live or join family for more than 90 days, you must register your immigration permission"); the "UK", the within-90-days-of-grant deadline, and the IRP-by-post/"proof that you are legally in the State" elements are independently VERIFIED in this same task on the companion ISD landing (sha256 a31c2c71…) and first-time (sha256 f17ba21c…) pages. The dropped fingerprint assertion is correctly gone — "fingerprint" appears 0 times on the live page. No overstatement; the unsourceable element was removed, not guessed. FEE -> 30-day window.
+      status: VERIFIED
       lastVerified: "2026-06-13"
-      verifiedBy: ""
+      verifiedBy: "fact-verifier-ie-r2 2026-06-13"
+      sourceHash: "3041f47272dfcfae131251325acebdd9cb27e787ce847b64214af6e1ae85d189"
       reviewBy: "2026-07-13"
     tldr:
       text: "For any stay over 90 days you must register your permission with Immigration Service Delivery within 90 days. You book an appointment through your online ISD account (appointments can only be made after you arrive), attend in person, pay the EUR 300 fee by credit or debit card, and are then posted your Irish Residence Permit (IRP) card — the credit-card-sized proof that you are legally resident. Your IRP's expiry date is when you must renew."
       sourceUrl: "https://www.irishimmigration.ie/registering-your-immigration-permission/how-to-register-your-immigration-permission-for-the-first-time/required-documents/"
       sourceName: "Irish Immigration Service (ISD) — Registration required documents and fees"
       # RE-SOURCED 2026-06-13 (content-researcher): sourceUrl unchanged (Required-Documents page, sha256 3041f472…, already in sources/us-ie/) — it supports the rest verbatim (€300 by credit/debit card; appointments only after arrival; IRP expiry = renewal date; credit-card-sized card). DROPPED the unsourceable "give fingerprints and a photo" element — no reachable ISD page states fingerprints/a photo are TAKEN at registration ("fingerprint" appears 0 times; "biometric"/"photograph" on this page describe only the passport's biometric/photo page). No invented source; element removed rather than guessed.
-      status: UNVERIFIED
+      # VERIFIED 2026-06-13 (fact-verifier re-check): ISD Required-Documents page re-fetched LIVE (sha256 3041f472…, unchanged). Verbatim on the live page: "€300 (per person) ... by credit or debit card only"; "appointments can only be made after your arrival in Ireland"; "credit-card sized plastic card"; "When you receive your IRP card, the expiration date will indicate when it needs to be renewed." The within-90-days deadline and IRP-by-post/"proof that you are legally in the State" elements are independently VERIFIED in this same task on the first-time page (sha256 f17ba21c…). The dropped fingerprint/photo element is correctly gone — "fingerprint" = 0 hits on the live page. Matches; no overstatement. FEE -> 30-day window.
+      status: VERIFIED
       lastVerified: "2026-06-13"
-      verifiedBy: ""
+      verifiedBy: "fact-verifier-ie-r2 2026-06-13"
+      sourceHash: "3041f47272dfcfae131251325acebdd9cb27e787ce847b64214af6e1ae85d189"
       reviewBy: "2026-07-13"
     keyFacts:
       - label: "Who must register"
@@ -633,18 +637,22 @@ tasks:
       sourceUrl: "https://www.citizensinformation.ie/en/money-and-tax/tax/moving-country-and-taxation/tax-residence-and-domicile-in-ireland/"
       sourceName: "Citizens Information (Citizens Information Board, statutory body) — Tax residence and domicile in Ireland"
       # RE-SOURCED 2026-06-13 (content-researcher): TRIMMED the summary to exactly what the cited tax-residence/domicile page (sha256 f2cea9fa…) supports verbatim — the 183/280-day test, the 1 Jan–31 Dec tax year, and "Residence and domicile are taken into account for a number of taxes including income tax". REMOVED the remittance-basis and "Income Tax, PRSI and USC" specifics from the summary (they are not on this page) and moved them to the dedicated key facts below, which are re-pointed to their correct sources (remittance + PRSI: the Citizens Information "Coming to Ireland: tax and social insurance" page; USC: Revenue). sourceUrl kept on the tax-residence page, which now supports every element the summary asserts.
-      status: UNVERIFIED
+      # VERIFIED 2026-06-13 (fact-verifier re-check): tax-residence/domicile page re-fetched LIVE (curl, HTTP 200, no redirect; sha256 f2cea9fa… — unchanged, no drift; page edited 15 December 2025). Every summary element matches: liability turns on residence/domicile not nationality ("Your liability for tax in Ireland can be affected by whether you are resident ... whether Ireland is your permanent home"; domicile "may be different to your residence or nationality"); "A tax year runs from 1 January to 31 December."; "183 days or more in Ireland in that year. Alternatively, if you spend 280 days or more in Ireland over a period of 2 consecutive tax years ... You must be in Ireland for a minimum of 31 days each year."; "Residence and domicile are taken into account for a number of taxes including income tax". The closing "covered in the key facts below" is a structural pointer, not an assertion about this page. The remittance/PRSI/USC specifics were correctly moved off the summary onto their own keyFacts (verified separately). No overstatement. (Day-count thresholds, not fees/quotas -> 90-day window.)
+      status: VERIFIED
       lastVerified: "2026-06-13"
-      verifiedBy: ""
+      verifiedBy: "fact-verifier-ie-r2 2026-06-13"
+      sourceHash: "f2cea9fa228de39a05f142340ceaeab5713b9bc41f3403d18b4036ef5f1353b6"
       reviewBy: "2026-09-11"
     tldr:
       text: "Whether Ireland taxes your worldwide income turns on tax residence — broadly, 183 days in Ireland in a year (or 280 over two years). If you are resident but not Irish-domiciled, you pay Irish tax on Irish income and on foreign income that you remit to Ireland. As a US citizen you also remain subject to US tax on worldwide income, so the US-Ireland double-tax treaty matters — get advice from a tax professional before you move."
       sourceUrl: "https://www.citizensinformation.ie/en/moving-country/working-in-ireland/migrant-workers/coming-to-ie-tax/"
       sourceName: "Citizens Information (Citizens Information Board, statutory body) — Coming to Ireland: tax and social insurance"
       # RE-SOURCED 2026-06-13 (content-researcher): re-pointed the tldr sourceUrl from the tax-residence/domicile page to the Citizens Information "Coming to Ireland: tax and social insurance" page (sha256 1185d252…, already in sources/us-ie/), which carries BOTH the tax-year/day-count framing ("Your residence for tax purposes depends on the number of days that you are present in Ireland during a tax year") AND the remittance element verbatim: "If you are resident for tax purposes but not domiciled in Ireland, you pay Irish tax on your Irish income and any foreign income that you remit to Ireland." Recast the remittance sentence to track that wording ("you pay Irish tax on Irish income and on foreign income that you remit to Ireland"). The 183/280-day figures themselves remain stated on the day-count keyFact (cited to the tax-residence page); the double-tax-treaty point stays framed as "get advice".
-      status: UNVERIFIED
+      # VERIFIED 2026-06-13 (fact-verifier re-check): "Coming to Ireland: tax and social insurance" page re-fetched LIVE (curl, HTTP 200, no redirect; sha256 1185d252… — unchanged, no drift). Supports each load-bearing element: day-count basis ("Your residence for tax purposes depends on the number of days that you are present in Ireland during a tax year (A tax year runs from 1 January to 31 December)"); remittance basis verbatim ("If you are resident for tax purposes but not domiciled in Ireland, you pay Irish tax on your Irish income and any foreign income that you remit to Ireland"); double-tax-treaty exists ("a country that has a double taxation agreement with Ireland ... There is a list of the double taxation agreements on revenue.ie") and treatment can depend "on your nationality or citizenship" — consistent with the cautious "get advice from a tax professional" framing. The specific 183/280-day numbers in the tldr ("broadly") are not enumerated on this page but are independently VERIFIED in this same task on the "Resident test" keyFact (tax-residence page, sha256 f2cea9fa…, re-read live, states them verbatim). The US-worldwide-tax point is correctly framed as "get advice", not asserted as a specific outcome. No overstatement. (Residence framing, not fees/quotas -> 90-day window.)
+      status: VERIFIED
       lastVerified: "2026-06-13"
-      verifiedBy: ""
+      verifiedBy: "fact-verifier-ie-r2 2026-06-13"
+      sourceHash: "1185d252949ce176ab0e1faab31964e4a058e4688f0c8fbc82da5f97cc5ded49"
       reviewBy: "2026-09-11"
     keyFacts:
       - label: "Resident test"
@@ -662,18 +670,22 @@ tasks:
         sourceUrl: "https://www.citizensinformation.ie/en/moving-country/working-in-ireland/migrant-workers/coming-to-ie-tax/"
         sourceName: "Citizens Information (Citizens Information Board, statutory body) — Coming to Ireland: tax and social insurance"
         # RE-SOURCED 2026-06-13 (content-researcher): re-pointed sourceUrl from the tax-residence/domicile page (which states "remit"/"remittance" 0 times) to the Citizens Information "Coming to Ireland: tax and social insurance" page (sha256 1185d252…, already in sources/us-ie/) and recast the text to track its verbatim wording: "If you are resident for tax purposes but not domiciled in Ireland, you pay Irish tax on your Irish income and any foreign income that you remit to Ireland. You remit income if you send it to Ireland from abroad by wire, mail or online transfer." No element now asserted that this cited page does not state.
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier re-check): "Coming to Ireland: tax and social insurance" page re-fetched LIVE (curl, HTTP 200, no redirect; sha256 1185d252… — unchanged). Verbatim on the live page: "If you are resident for tax purposes but not domiciled in Ireland, you pay Irish tax on your Irish income and any foreign income that you remit to Ireland. You remit income if you send it to Ireland from abroad by wire, mail or online transfer." Matches character-for-character (the parenthetical "(bring)" is a clarifying gloss, not a new assertion). Supported.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-ie-r2 2026-06-13"
+        sourceHash: "1185d252949ce176ab0e1faab31964e4a058e4688f0c8fbc82da5f97cc5ded49"
         reviewBy: "2026-09-11"
       - label: "What you pay on a salary"
         text: "Your employer deducts social insurance contributions, called PRSI (Pay Related Social Insurance), from your pay; most employees pay Class A contributions and how much you pay depends on your earnings. You may also pay the Universal Social Charge (USC), a tax on your total income (which includes employment income) once that income exceeds EUR 13,000. Confirm the exact income tax, PRSI and USC charged on your salary with Revenue."
         sourceUrl: "https://www.citizensinformation.ie/en/moving-country/working-in-ireland/migrant-workers/coming-to-ie-tax/"
         sourceName: "Citizens Information (Citizens Information Board, statutory body) — Coming to Ireland: tax and social insurance"
         # RE-SOURCED 2026-06-13 (content-researcher): the prior tax-residence page stated none of PRSI/USC/PAYE. Re-pointed the primary sourceUrl to the Citizens Information "Coming to Ireland: tax and social insurance" page (sha256 1185d252…, already in sources/us-ie/), which states the PRSI element verbatim ("Your employer will also deduct social insurance contributions, called PRSI (Pay Related Social Insurance), from your pay ... most employees pay Class A contributions, and how much you pay depends on your earnings"). The USC element (USC is "a tax payable on your total income", "Total income for USC purposes includes ... employment income", and "If your total income exceeds €13,000, you pay USC on your full income") is on the Revenue USC page (sha256 bf62ecdd…, also in sources/us-ie/) — captured for the verifier to cross-check the USC sentence. DROPPED the unsourceable "Income Tax ... deducted under PAYE" wording (no captured page states "PAYE"); recast the income-tax/USC detail as "confirm ... with Revenue" rather than asserting it. FIGURE present (EUR 13,000) -> 30-day window.
-        status: UNVERIFIED
+        # VERIFIED 2026-06-13 (fact-verifier re-check): both sources re-fetched LIVE (curl, HTTP 200, no redirect). PRSI element matches character-for-character on the "Coming to Ireland: tax and social insurance" page (sha256 1185d252…, unchanged): "Your employer will also deduct social insurance contributions, called PRSI (Pay Related Social Insurance), from your pay ... most employees pay Class A contributions, and how much you pay depends on your earnings." USC element matches character-for-character on the Revenue USC page (sha256 bf62ecdd…, unchanged; published 12 December 2025): "USC is a tax payable on your total income"; "Total income for USC purposes includes things such as: employment income ..."; "If your total income exceeds €13,000, you pay USC on your full income." The income-tax detail is correctly hedged as "confirm ... with Revenue" — the unsourceable "PAYE" wording was removed, not guessed. (Cross-source claim: PRSI on 1185d252, USC on bf62ecdd; sourceHash records the primary/PRSI source.) FIGURE (EUR 13,000) -> 30-day window.
+        status: VERIFIED
         lastVerified: "2026-06-13"
-        verifiedBy: ""
+        verifiedBy: "fact-verifier-ie-r2 2026-06-13"
+        sourceHash: "1185d252949ce176ab0e1faab31964e4a058e4688f0c8fbc82da5f97cc5ded49"
         reviewBy: "2026-07-13"
     detail: >
       Ireland taxes you according to your tax residence and domicile, not your nationality.

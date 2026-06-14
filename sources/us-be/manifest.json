@@ -1,11 +1,11 @@
 [
   {
     "sourceUrl": "https://dofi.ibz.be/en/themes/third-country-nationals",
-    "sourceName": "Immigration Office (IBZ/DOFI) — Third-country nationals",
+    "sourceName": "Immigration Office (Office des Etrangers / Dienst Vreemdelingenzaken, IBZ/DOFI) — Third-country nationals",
     "claimIds": [
       "probe"
     ],
-    "fetchedAt": "2026-06-13",
+    "fetchedAt": "2026-06-14",
     "fetchMethod": "curl",
     "sha256": "526f0040c6d97f0a1457b043749e8d490f504a05f68f4c4b51fda129db0e18ba",
     "byteSize": 26834,
@@ -15,11 +15,11 @@
   },
   {
     "sourceUrl": "https://dofi.ibz.be/en/themes/third-country-nationals/work",
-    "sourceName": "Immigration Office (IBZ/DOFI) — Work",
+    "sourceName": "Immigration Office (Office des Etrangers / Dienst Vreemdelingenzaken, IBZ/DOFI) — Work",
     "claimIds": [
       "be-work"
     ],
-    "fetchedAt": "2026-06-13",
+    "fetchedAt": "2026-06-14",
     "fetchMethod": "curl",
     "sha256": "05d858a7a1c00fe927f1acc06acdcae462002ac9f9784a893707d194e5616927",
     "byteSize": 28554,
@@ -43,11 +43,11 @@
   },
   {
     "sourceUrl": "https://dofi.ibz.be/en/themes/third-country-nationals/study",
-    "sourceName": "Immigration Office (IBZ/DOFI) — Study",
+    "sourceName": "Immigration Office (Office des Etrangers / Dienst Vreemdelingenzaken, IBZ/DOFI) — Study",
     "claimIds": [
       "be-study"
     ],
-    "fetchedAt": "2026-06-13",
+    "fetchedAt": "2026-06-14",
     "fetchMethod": "curl",
     "sha256": "d974e0f1857e26306d7b7e0452f195e351b7a54f6659e3dc9164b4c47ea81082",
     "byteSize": 24673,
@@ -71,11 +71,11 @@
   },
   {
     "sourceUrl": "https://www.belgium.be/en/family/residence_documents_for_belgium",
-    "sourceName": "belgium.be — Residence documents for Belgium",
+    "sourceName": "belgium.be (official federal portal) — Residence documents for Belgium",
     "claimIds": [
       "be-residence-docs"
     ],
-    "fetchedAt": "2026-06-13",
+    "fetchedAt": "2026-06-14",
     "fetchMethod": "curl",
     "sha256": "2ed0d80b6b879a73ee60e66f4c2c4836d097302eef4ede9324036354eea917fb",
     "byteSize": 27815,
@@ -117,7 +117,7 @@
     "claimIds": [
       "be-fps-foreign-workers"
     ],
-    "fetchedAt": "2026-06-13",
+    "fetchedAt": "2026-06-14",
     "fetchMethod": "curl",
     "sha256": "e7de09f3a83ffd1739c4b6e96ecc826c89d38a9e6852fe5ca76c9c1338a2e2fa",
     "byteSize": 42038,
@@ -141,11 +141,11 @@
   },
   {
     "sourceUrl": "https://dofi.ibz.be/en/themes/third-country-nationals/work/single-permit",
-    "sourceName": "Immigration Office (IBZ/DOFI) — Single Permit",
+    "sourceName": "Immigration Office (Office des Etrangers / Dienst Vreemdelingenzaken, IBZ/DOFI) — Single Permit",
     "claimIds": [
       "be-single-permit"
     ],
-    "fetchedAt": "2026-06-13",
+    "fetchedAt": "2026-06-14",
     "fetchMethod": "curl",
     "sha256": "6b70af30f7753c5024b9cf7026ceb2a2fad85ccc706f23e24af819bd9ae0ef7a",
     "byteSize": 60764,
