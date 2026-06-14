@@ -5,10 +5,27 @@
  * Audits every `sourceUrl` in the corridors content collection:
  *   1. Link health   — fetches each unique URL; classifies OK / permanently
  *                      moved / 4xx / 5xx / network error / soft-404.
- *   2. Staleness     — flags claims whose `reviewBy` is past (ERROR) or due
+ *   2. Anchor reach  — for every URL with a `#fragment`, after a successful
+ *                      fetch, confirms the served HTML actually contains the
+ *                      fragment's target (`id="frag"` / `name="frag"`). A
+ *                      missing anchor means the link does not reach the cited
+ *                      section. This catches the SPA-shell bug class: a page
+ *                      returns HTTP 200 but is a client-side app shell (Angular
+ *                      etc.) that never renders the article, so the `#anchor`
+ *                      never resolves for a human. The shell lacks the anchor
+ *                      for *every* client (IP-independent), so this is reliable
+ *                      from datacenter runners. Mirrors the served-HTML signal
+ *                      in scripts/audit-fetch-links.mjs.
+ *                        - SPA_DOMAINS  → missing anchor is an ERROR (fedlex-
+ *                          class regression; high confidence — see severity
+ *                          note at probeUrl).
+ *                        - other hosts → missing anchor is a WARNING (some
+ *                          sites legitimately inject anchors via JS; avoid a
+ *                          datacenter false-red).
+ *   3. Staleness     — flags claims whose `reviewBy` is past (ERROR) or due
  *                      within 14 days (WARNING), and VERIFIED claims missing
  *                      `lastVerified`/`reviewBy` (ERROR).
- *   3. Content drift — compares a normalized text hash of each page against
+ *   4. Content drift — compares a normalized text hash of each page against
  *                      the committed baseline (scripts/link-baseline.json) and
  *                      reports changes as WARNINGS (a drifted page may
  *                      invalidate a VERIFIED claim; only fact-verifier may
@@ -17,8 +34,9 @@
  * Usage:
  *   node scripts/check-links.mjs [--report <path.md>] [--update-baseline] [--skip-network]
  *
- * Exit code 1 on any ERROR (dead link, past-due review, missing provenance);
- * 0 otherwise (warnings do not fail the run).
+ * Exit code 1 on any ERROR (dead link, unreachable anchor on an SPA domain,
+ * past-due review, missing provenance); 0 otherwise (warnings do not fail
+ * the run).
  *
  * Roles (CLAUDE.md): this script never edits content. Restoring VERIFIED
  * status after a FLAGGED/drift finding is fact-verifier's job.
@@ -38,8 +56,13 @@ import { parse } from 'yaml';
  * Domains that block non-browser clients (e.g. eda.admin.ch returns 403 to
  * anything it fingerprints as a bot). Failures on these domains are reported
  * as WARNINGS ("manual check needed"), never hard failures.
+ *
+ * france-visas.gouv.fr: returns HTTP 403 to Node's fetch client (UA/TLS
+ * fingerprint) but HTTP 200 to browsers and curl; the pages render fine for
+ * users (confirmed in the 2026-06-13 link audit). Same class as eda.admin.ch —
+ * a manual-check warning, not a dead link.
  */
-const MANUAL_CHECK_DOMAINS = ['www.eda.admin.ch', 'eda.admin.ch'];
+const MANUAL_CHECK_DOMAINS = ['www.eda.admin.ch', 'eda.admin.ch', 'france-visas.gouv.fr', 'www.france-visas.gouv.fr'];
 
 /**
  * Domains that serve an error shell (or block) requests from datacenter IPs
@@ -62,6 +85,17 @@ const DATACENTER_BLOCKED_DOMAINS = ['www.ch.ch', 'ch.ch'];
  * (e.g. fedlex.admin.ch renders everything client-side). For these we trust
  * the HTTP status, skip the soft-404 "near-empty body" heuristic, and note
  * that drift detection only covers the shell.
+ *
+ * IMPORTANT (2026-06-13): trusting HTTP 200 alone is exactly what let 23
+ * broken Swiss Fedlex links slip through — `/eli/cc/.../en#art_X` served an
+ * Angular shell ("this version is under preparation") that returns 200 but
+ * never renders the cited article, so the `#art_X` anchor never resolves for a
+ * human. The anchor-reach check (see probeUrl) closes that hole: for an SPA
+ * domain a *successfully fetched* page that lacks the requested `#fragment`
+ * anchor is a hard ERROR. The shell omits the anchor for every client, so
+ * this verdict is IP-independent and reliable from GitHub's datacenter runners.
+ * The fix was to cite the static consolidated HTML on the fedlex.data.admin.ch
+ * filestore (still on this host) which DOES carry `id="art_X"`.
  */
 const SPA_DOMAINS = ['www.fedlex.admin.ch', 'fedlex.admin.ch'];
 
@@ -235,6 +269,25 @@ function extractTag(html, tag) {
   return m ? htmlToText(m[1]) : '';
 }
 
+/**
+ * Does the served HTML actually contain the target for `#fragment`?
+ * Mirrors scripts/audit-fetch-links.mjs: an anchor target is `id="frag"` /
+ * `name="frag"` (single or double quotes) or an in-page link `href="#frag"`.
+ * `frag` is matched literally — fragments here are simple slugs (e.g. art_42,
+ * art_1_a) with no regex metacharacters, so a substring scan is both correct
+ * and robust to the markup variations across admin.ch pages.
+ */
+function anchorPresent(html, frag) {
+  const a = frag.replace(/"/g, '');
+  return (
+    html.includes(`id="${a}"`) ||
+    html.includes(`name="${a}"`) ||
+    html.includes(`id='${a}'`) ||
+    html.includes(`name='${a}'`) ||
+    html.includes(`#${a}"`)
+  );
+}
+
 const FETCH_RETRIES = 2; // retry transient connection failures before giving up
 const RETRY_BACKOFF_MS = 1500;
 
@@ -274,12 +327,34 @@ async function fetchOnce(url) {
 
 /**
  * Probe one URL. Follows redirects manually so permanent moves are visible.
+ *
+ * Anchor-reach severity (the new SPA-shell check):
+ *   - When a 2xx page does NOT contain the URL's `#fragment` target:
+ *       · SPA_DOMAINS  → ERROR. The shell omits every article anchor for every
+ *         client, so a miss here is a genuine "link does not reach the cited
+ *         section" — IP-independent and safe to fail in CI. This is the exact
+ *         fedlex regression we want to catch (re-introducing `/eli/.../en#art_X`).
+ *       · other hosts  → WARNING. Some sites legitimately build in-page anchors
+ *         in client-side JS, so a server-HTML miss could be a datacenter false
+ *         positive; keep it visible without a false red. (Local `npm run links`
+ *         from a residential IP still surfaces it as a warning too.)
+ *   - manual-check / datacenter-blocked downgrades are decided BEFORE the body
+ *     is read (they short-circuit above), so an anchor miss can never override
+ *     those WARNING downgrades.
+ *
  * @returns {Promise<{url:string, verdict:string, level:'ok'|'warn'|'error',
  *                    detail:string, httpStatus?:number, finalUrl?:string,
- *                    movedTo?:string|null, textHash?:string, title?:string}>}
+ *                    movedTo?:string|null, textHash?:string, title?:string,
+ *                    anchor?:string|null, anchorOk?:boolean|null}>}
  */
 async function probeUrl(url) {
   const host = new URL(url).hostname;
+  // The fragment we must be able to reach (decoded slug, no leading '#').
+  const frag = (() => {
+    const h = new URL(url).hash;
+    if (!h || h === '#') return null;
+    try { return decodeURIComponent(h.slice(1)); } catch { return h.slice(1); }
+  })();
   const manualCheck =
     MANUAL_CHECK_DOMAINS.includes(host) ||
     (IS_CI && DATACENTER_BLOCKED_DOMAINS.includes(host));
@@ -317,8 +392,10 @@ async function probeUrl(url) {
         };
       }
 
-      // 2xx — read body for soft-404 + drift hash.
-      const raw = (await res.text()).slice(0, MAX_BODY_BYTES);
+      // 2xx — read body for soft-404 + anchor reach + drift hash.
+      const fullBody = await res.text();
+      const truncated = fullBody.length > MAX_BODY_BYTES;
+      const raw = fullBody.slice(0, MAX_BODY_BYTES);
       const title = extractTag(raw, 'title');
       const h1 = extractTag(raw, 'h1');
       const text = htmlToText(raw);
@@ -340,19 +417,51 @@ async function probeUrl(url) {
         };
       }
 
+      // -- Anchor reach: does the served HTML actually contain the #fragment?
+      // This is the SPA-shell guard. We evaluate it on a genuinely-fetched,
+      // non-error 2xx page (we are past redirects, 4xx/5xx and soft-404 above).
+      const anchorOk = frag ? anchorPresent(raw, frag) : null;
+      if (frag && anchorOk === false) {
+        // A page bigger than our read cap whose anchor would sit past the cap
+        // could false-miss — only on a NON-shell page (the fedlex shell is tiny
+        // and carries no anchors at all). Downgrade that narrow case to a warn.
+        const looksLikeShell = /app-root|ng-version|__NUXT__|__NEXT_DATA__/i.test(raw);
+        if (truncated && !looksLikeShell) {
+          return {
+            url, verdict: 'anchor-unverifiable', level: 'warn',
+            detail: `HTTP ${httpStatus} but page exceeds ${MAX_BODY_BYTES}-byte read cap and "#${frag}" was not seen in the read portion — verify the anchor manually`,
+            httpStatus, finalUrl: current, movedTo, textHash, title, anchor: frag, anchorOk: false,
+          };
+        }
+        // SPA domains: a missing anchor is a hard, IP-independent broken link
+        // (the shell never renders the article). Non-SPA: warn (anchor may be
+        // injected by client JS — avoid a datacenter false-red).
+        const level = isSpa ? 'error' : 'warn';
+        const where = isSpa
+          ? 'served page is a client-side app shell that never renders the cited section (the link does not reach the cited section)'
+          : 'anchor not found in server HTML (may be injected by client-side JS — verify in a real browser)';
+        return {
+          url, verdict: 'anchor-missing', level,
+          detail: `HTTP ${httpStatus} but "#${frag}" is absent from the served HTML — ${where}`,
+          httpStatus, finalUrl: current, movedTo, textHash, title, anchor: frag, anchorOk: false,
+        };
+      }
+
       if (movedTo) {
         return {
           url, verdict: 'moved-permanently', level: 'warn',
           detail: `source moved: now at ${current} — update sourceUrl and have fact-verifier re-confirm`,
-          httpStatus, finalUrl: current, movedTo, textHash, title,
+          httpStatus, finalUrl: current, movedTo, textHash, title, anchor: frag, anchorOk,
         };
       }
       return {
         url, verdict: isSpa ? 'ok-spa-shell' : 'ok', level: 'ok',
-        detail: isSpa
-          ? `HTTP ${httpStatus} (JS-rendered page: status check only; drift covers the HTML shell)`
-          : `HTTP ${httpStatus}`,
-        httpStatus, finalUrl: current, movedTo: null, textHash, title,
+        detail:
+          (isSpa
+            ? `HTTP ${httpStatus} (JS-rendered page: status check only; drift covers the HTML shell)`
+            : `HTTP ${httpStatus}`) +
+          (frag ? ` — anchor "#${frag}" present` : ''),
+        httpStatus, finalUrl: current, movedTo: null, textHash, title, anchor: frag, anchorOk,
       };
     }
     return downgrade('redirect-loop', `more than ${MAX_REDIRECTS} redirects`) ?? {
@@ -481,6 +590,7 @@ async function main() {
   const linkErrors = [];
   const linkWarnings = [];
   const linkOk = [];
+  const anchorFindings = []; // unreachable-anchor results (error+warn), for a dedicated breakout
   for (const [url, r] of probeResults) {
     const affected = urlClaims.get(url) ?? [];
     const locs = affected.map((c) => `${c.taskId}/${c.field}`).join(', ');
@@ -488,6 +598,9 @@ async function main() {
     if (r.level === 'error') linkErrors.push({ url, line, affected });
     else if (r.level === 'warn') linkWarnings.push({ url, line, affected });
     else linkOk.push({ url, line });
+    if (r.anchorOk === false) {
+      anchorFindings.push({ url, line, level: r.level, affected });
+    }
   }
 
   // -- console + annotations
@@ -521,6 +634,12 @@ async function main() {
       annotate('warning', w.claim.file, w.message);
     }
   }
+  if (anchorFindings.length) {
+    section(`ANCHOR REACH (${anchorFindings.length} link(s) do not reach their cited #section)`);
+    for (const a of anchorFindings) {
+      console.log(`  ${a.level === 'error' ? 'ERROR' : 'WARN'} ${a.line}`);
+    }
+  }
   if (drift.notes.length) {
     section('NOTES');
     for (const n of drift.notes) console.log(`  NOTE ${n}`);
@@ -532,7 +651,10 @@ async function main() {
 
   const errorCount = linkErrors.length + stale.errors.length;
   const warnCount = linkWarnings.length + drift.warnings.length + stale.warnings.length;
-  console.log(`\n== link-auditor summary: ${errorCount} error(s), ${warnCount} warning(s), ${linkOk.length}/${uniqueUrls.length} URLs OK ==`);
+  const anchorMisses = anchorFindings.length
+    ? `, ${anchorFindings.length} unreachable anchor(s)`
+    : '';
+  console.log(`\n== link-auditor summary: ${errorCount} error(s), ${warnCount} warning(s)${anchorMisses}, ${linkOk.length}/${uniqueUrls.length} URLs OK ==`);
 
   // -- markdown report (CI artifact / tracking issue body)
   if (REPORT_PATH) {
@@ -543,6 +665,16 @@ async function main() {
     md.push(`- Claims: ${claims.length} · Unique URLs: ${uniqueUrls.length}`);
     md.push(`- Result: **${errorCount} error(s), ${warnCount} warning(s)**`);
     md.push(``);
+    if (anchorFindings.length) {
+      // Dedicated breakout for the SPA-shell bug class — these links return
+      // HTTP 200 but their #section never resolves for a human. (Lines also
+      // appear in the failures/warnings sections below by severity.)
+      md.push(`## Unreachable anchors (link does not reach the cited #section)`);
+      for (const a of anchorFindings) {
+        md.push(`- ${a.level === 'error' ? '**[ERROR]**' : '[warn]'} ${a.line}`);
+      }
+      md.push(``);
+    }
     if (linkErrors.length) {
       md.push(`## Link failures (hard errors)`);
       for (const e of linkErrors) md.push(`- ${e.line}`);

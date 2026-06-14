@@ -10,6 +10,18 @@ coming next. Newest updates are at the top.
 
 ---
 
+## 2026-06-13 — The weekly link check now catches "looks alive but shows nothing" links
+
+**What changed.** Our automatic weekly link checker already caught dead links (the "page not found" kind). But it couldn't catch the exact problem you found — a link that loads fine (reports "OK") yet opens to a blank "under preparation" page with no article. I taught it one more test: when a link points to a *specific law article*, confirm that article actually appears on the page it opens. If a Swiss-law link ever slips back to the broken blank-shell form, the weekly run — and the check on any content change — now turns **red** and opens a tracking ticket automatically. I also stopped a French government site from raising false alarms (it blocks our checker's robot but works fine for real visitors).
+
+**Why it matters.** The fix you just asked for is now self-guarding: this class of "looks alive but shows nothing" link can't quietly come back.
+
+**What you'd notice today.** Nothing visible in the app — this is behind-the-scenes quality control. The checker currently reports **0 broken links**.
+
+**What's next.** It runs every Sunday and on every content change; a failure opens a ticket for review.
+
+---
+
 ## 2026-06-13 — Fixed the 23 broken Swiss law links
 
 **What changed.** Following the audit, I swapped all 23 broken Swiss "Fedlex" (the official Swiss law website) links in the Switzerland guide for working ones. The old links opened to an empty "this version is under preparation" page; the new ones open straight to the actual law article — the official static copy of the very same text — and jump to the right paragraph. The replacements were applied and the site's safety checks still pass (the build plus 271 automated tests); a second, independent fact-check is confirming each new link opens to the article it's cited for.

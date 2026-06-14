@@ -6,11 +6,22 @@ name: Link audit
 #   - pull_request:      any PR touching the content collection or this tooling,
 #                        so new sourceUrls are checked before merge.
 #
-# Run is RED when there are hard failures (dead links, soft-404s, past-due
-# reviewBy dates, VERIFIED claims missing provenance). Warnings (permanent
-# redirects, content drift, reviews due within 14 days, manual-check domains
-# like eda.admin.ch) keep the run green but appear as workflow annotations
-# and in the uploaded report artifact.
+# Run is RED when there are hard failures (dead links, soft-404s, an
+# unreachable #anchor on an SPA domain, past-due reviewBy dates, VERIFIED
+# claims missing provenance). Warnings (permanent redirects, content drift,
+# reviews due within 14 days, manual-check domains like eda.admin.ch, and an
+# unreachable #anchor on a NON-SPA host) keep the run green but appear as
+# workflow annotations and in the uploaded report artifact.
+#
+# Anchor-reach check (added 2026-06-13): for any sourceUrl with a #fragment,
+# the auditor confirms the served HTML actually contains that anchor target.
+# This catches the SPA-shell bug class a founder hit — a fedlex /eli/.../en#art_X
+# URL that returns HTTP 200 but is a client-side Angular shell that never
+# renders the cited article, so the anchor never resolves for a human. On
+# SPA_DOMAINS a missing anchor is a hard ERROR (the shell omits the anchor for
+# every client, so the verdict is IP-independent and reliable from datacenter
+# runners); on other hosts it is a WARNING (the anchor may be injected by
+# client-side JS). See scripts/check-links.mjs for the full rationale.
 #
 # NOTE: Swiss federal sites are unreliable from GitHub's datacenter egress —
 # www.ch.ch serves an error shell to datacenter IPs, and *.admin.ch
@@ -29,6 +40,7 @@ on:
     paths:
       - 'src/content/corridors/**'
       - 'scripts/check-links.mjs'
+      - 'scripts/audit-fetch-links.mjs' # anchor-reach logic mirrored from here
       - 'scripts/link-baseline.json'
       - '.github/workflows/link-audit.yml'
 
@@ -96,6 +108,8 @@ jobs:
             echo "Automated link audit failed. Run: $RUN_URL"
             echo
             cat link-audit-report.md 2>/dev/null || echo "_Report file missing — see the run log._"
+            echo
+            echo "Note: an \"Unreachable anchors\" section above means a sourceUrl returns HTTP 200 but its cited #section does not render (e.g. an SPA shell). Re-point the claim at a URL that actually serves the anchor, then re-verify."
             echo
             echo "Affected claims must be set to FLAGGED and re-verified by fact-verifier (link-auditor may not edit content)."
           } > "$body_file"
