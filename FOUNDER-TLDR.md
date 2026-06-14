@@ -10,6 +10,18 @@ coming next. Newest updates are at the top.
 
 ---
 
+## 2026-06-13 — Audited every official-source link on the site
+
+**What changed.** You found a Swiss law link that opened to a useless page. So I checked **all 950 source links** across the nine guides. Result: **147 unique links are good** (I spot-checked dozens by hand across every country's official sites — they open to the right information), and **23 are broken for humans** — all Swiss "Fedlex" law links. They point to a page that says *"this version is under preparation"* and never shows the article, even though the law itself is correct. For each of the 23 I found and **tested a replacement** (the official static version of the same article) that actually opens to the right text. The full catalogue of good links and the list of 23 to fix (with tested replacements) is in a new `link-audit/` folder.
+
+**Why it matters.** People click these to verify life-changing legal facts; a dead link erodes trust even when our facts are right.
+
+**What you'd notice today.** Nothing in the app changed yet — this is the audit. The 23 Swiss links still need swapping.
+
+**What's next.** Apply the 23 tested replacements (each re-checked by the fact-verifier), then those links work.
+
+---
+
 ## 2026-06-13 — Made the "complete guide" clearer + a safety net that checks every route's plan
 
 **What changed.** You spotted a USA→Austria plan (no children) that mentioned "bring your spouse and children." Great catch — but it turned out the *personalised planner* was already correct; what you saw was the **full written guide below it**, which (for search engines and no-JavaScript readers) lists every step for every route, and was worded as if it were your plan. I relabeled it "the complete reference for every route" and tagged each step with the route it belongs to (e.g. "For: Family"). I also built an **automatic checker** that tests all 8 guides against every type of mover (work / study / family / retirement, with and without children) so a wrong-route step can't silently land in someone's plan — it found the catalogue otherwise clean.

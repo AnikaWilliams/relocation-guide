@@ -47,6 +47,14 @@ sources/.cache/
 # UI/UX Pro Max skill: the skill is committed, but its compiled Python bytecode is not
 .claude/skills/**/__pycache__/
 
+# Link-audit raw fetched HTML (regenerable via scripts/audit-fetch-links.mjs).
+# The curated link-audit/*.md + links.json + verdicts.json ARE committed; the
+# bulky intermediate inventories below are regenerable from the scripts.
+link-audit/.cache/
+link-audit/usages.json
+link-audit/unique-urls.json
+link-audit/fetch-results.json
+
 # Misc
 *.local
 *.tsbuildinfo
