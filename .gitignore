@@ -35,6 +35,18 @@ npm-debug.log*
 # the gzipped raw bytes are not.
 sources/.cache/
 
+# Throwaway preview/audit screenshots at repo root (debug artifacts, regenerable)
+/*.png
+/*.jpeg
+/.playwright-mcp/
+
+# Dated audit research artifacts (raw fetches / studies; the curated audit reports are committed)
+/audit/fetch-*/
+/audit/verify-study-*/
+
+# UI/UX Pro Max skill: the skill is committed, but its compiled Python bytecode is not
+.claude/skills/**/__pycache__/
+
 # Misc
 *.local
 *.tsbuildinfo

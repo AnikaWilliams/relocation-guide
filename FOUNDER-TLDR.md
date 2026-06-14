@@ -10,6 +10,18 @@ coming next. Newest updates are at the top.
 
 ---
 
+## 2026-06-13 — Gave the site a professional, trustworthy look (and fixed real readability problems)
+
+**What changed.** I had a design expert (a specialist tool) review the look and feel, then fixed the top ten things it found. The biggest: the main buttons had **white text on colours too pale to read clearly** — now they use a deeper, properly-readable navy-blue. The fine print ("not legal advice", source links) was tiny and too faint — now it's bigger and darker. The buttons and tap-targets are now finger-friendly on phones. The cookie pop-up no longer covers the "Continue" button. And the whole site now uses two proper typefaces — an elegant heading font (the kind law firms and newspapers use) plus a clean, friendly body font — instead of the plain default. The home page now opens with a confident headline and three little trust marks: "traced to official sources / independently verified / dated and re-checked."
+
+**Why it matters.** People make legal, money, and life decisions here — it has to *look* as trustworthy as it actually is, and the text has to be readable by everyone (including the contrast/size rules that protect people with low vision). This closes the gap between "carefully fact-checked underneath" and "feels credible at a glance."
+
+**What you'd notice today.** Open the planner: nicer headings, darker readable buttons, a "Verified against official sources" badge on a plan, and — on a wide screen — a reassuring panel beside the questions instead of empty space. The fonts are hosted by us, not Google, so there's no privacy downside.
+
+**What's next.** A quick check that the new "verified" wording is fine to display, then the same public-launch blockers as before (web address + lawyer's review).
+
+---
+
 ## 2026-06-13 — Published the 7 finished guides + added availability dots
 
 **What changed.** With seven of the eight new guides fully fact-checked, I turned them ON: USA → Germany, France, Belgium, Ireland, Luxembourg, Austria, and the UK now render as real guides — joining Switzerland for **eight live routes**. The Netherlands stays a hidden draft until its one open health-insurance-deadline question is settled. I also added a small dot to the country picker in the planner: **green** next to a country we have a finished, verified guide for, **gray** next to one where you'd join the waitlist. The built-in safety gate independently re-confirmed every published guide is 100% verified before it would allow any of them to render.

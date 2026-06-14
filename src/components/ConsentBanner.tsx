@@ -14,7 +14,7 @@
  * Hydration safety: renders nothing until mounted, then reads localStorage in
  * an effect (never during first render).
  */
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import {
   CONSENT_OPEN_EVENT,
   applyConsent,
@@ -30,6 +30,7 @@ export default function ConsentBanner() {
   const [view, setView] = useState<View>('hidden');
   const [analytics, setAnalytics] = useState(false);
   const [advertising, setAdvertising] = useState(false);
+  const sectionRef = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
     setMounted(true);
@@ -55,6 +56,27 @@ export default function ConsentBanner() {
     return () => window.removeEventListener(CONSENT_OPEN_EVENT, openSettings);
   }, []);
 
+  // Publish the banner's rendered height as a CSS var so fixed-height app shells
+  // (the corridor page) can shrink and never let the banner cover their footer
+  // CTA. Reset to 0px whenever the banner is hidden or unmounted. Re-measures on
+  // view change (banner vs. customise differ in height) and on viewport resize.
+  useEffect(() => {
+    const root = document.documentElement;
+    const visible = mounted && view !== 'hidden';
+    if (!visible || !sectionRef.current) {
+      root.style.setProperty('--cb-h', '0px');
+      return;
+    }
+    const el = sectionRef.current;
+    const measure = () => root.style.setProperty('--cb-h', `${el.offsetHeight}px`);
+    measure();
+    window.addEventListener('resize', measure);
+    return () => {
+      window.removeEventListener('resize', measure);
+      root.style.setProperty('--cb-h', '0px');
+    };
+  }, [mounted, view]);
+
   if (!mounted || view === 'hidden') return null;
 
   const persist = (choice: { analytics: boolean; advertising: boolean }) => {
@@ -72,6 +94,7 @@ export default function ConsentBanner() {
   return (
     <div className="fixed inset-x-0 bottom-0 z-50 p-3 sm:p-4">
       <section
+        ref={sectionRef}
         role="dialog"
         aria-modal="false"
         aria-labelledby="consent-title"
@@ -111,7 +134,7 @@ export default function ConsentBanner() {
               <button
                 type="button"
                 onClick={acceptAll}
-                className="rounded-md border border-blue-600 bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700"
+                className="rounded-md border border-brand-600 bg-brand-600 px-4 py-2 text-sm font-medium text-white hover:bg-brand-700 focus-visible:ring-2 focus-visible:ring-brand-500"
               >
                 Accept all
               </button>
@@ -181,7 +204,7 @@ export default function ConsentBanner() {
               <button
                 type="button"
                 onClick={savePrefs}
-                className="rounded-md border border-blue-600 bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700"
+                className="rounded-md border border-brand-600 bg-brand-600 px-4 py-2 text-sm font-medium text-white hover:bg-brand-700 focus-visible:ring-2 focus-visible:ring-brand-500"
               >
                 Save choices
               </button>

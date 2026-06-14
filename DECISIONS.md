@@ -548,3 +548,27 @@ Also: the intake survey now shows a small **availability dot** per country — *
 ### Consequences
 - 8 corridors now render (`us-ch` + 7); the intake offers them as live routes with green dots; the catalogue crosses ~15 indexable pages (relevant to AdSense eligibility — see `docs/monetization.md`).
 - Subsequent material content changes to any published corridor require re-approval; `us-nl` and future corridors continue via the same gated pipeline.
+
+---
+
+## ADR-0019 — Adopt the UI/UX Pro Max "Trust & Authority" design system (audit fixes 1–10)
+
+**Date:** 2026-06-13
+**Status:** Accepted
+**Decided by:** Founder (Anika Williams) — requested; implemented via agent workflow
+
+### Context
+A design audit of the customer-facing UI (run with the `ui-ux-pro-max` skill) found: primary CTAs failed WCAG AA contrast (white on blue-500 = 3.7:1, on emerald-500 = 2.5:1); several touch targets < 44px; legal/source text at 12px `slate-400` (2.8:1); the cookie-consent banner overlapped the wizard's Continue button; desktop wizard whitespace; **no web fonts and no brand design tokens** (default system sans, ad-hoc utility colors). The skill's persisted design system for this product category (Legal Services) is **"Trust & Authority"**: navy `#0F172A`, CTA `#0369A1`, **EB Garamond** display + **Lato** body.
+
+### Decision
+Adopt that design system and implement audit items **1–10**:
+1. **CTA contrast** → `brand-600` (#0369A1, white = 5.93:1) for proceed actions; `emerald-700` (5.48:1) for "Mark done". 2. **Touch targets** → `min-h-11` (44px) on country/passport/option/edit/skip controls; checkbox 16→20px. 3. **Legal/source text** → `text-sm` + `slate-600` (7.58:1); **wording unchanged** (compliance-owned). 4. **Consent overlap** → `ConsentBanner` publishes its height as `--cb-h`; the corridor app shell uses `calc(100dvh - var(--cb-h))`. 5. **Desktop layout** → serif hero on home + a supporting value-prop/trust column beside the wizard card on `lg+`. 6. **Reduced motion** → global `prefers-reduced-motion` guard. 7. **Type system** → `brand` palette + `font-sans`=Lato / `font-serif`=EB Garamond tokens in Tailwind. 8. **Design tokens** → the `brand` 50–900 scale (kept the `status` palette). 9. **Badge hues** → muted to `{hue}-50/{hue}-700`. 10. **Trust merchandising** → home trust row + an app-phase "Verified against official sources" pill, **restating existing approved framing only — no invented claims**.
+
+### Implementation notes
+- **Fonts are self-hosted via Fontsource** (`@fontsource/lato`, `@fontsource/eb-garamond`) — deliberately **not** the Google Fonts CDN, which would leak visitor IPs to Google and break the site's GDPR posture (consistent with the self-hosted-SVG-flags decision).
+- Built by an agent **workflow**: 2 implementer agents on disjoint files against one fixed contract, then 4 parallel adversarial reviewers (contrast, a11y/touch, content-integrity, build-readiness). All four passed. **`frontend-engineer` is pinned to `claude-fable-5`, which is unavailable in this environment — the agents were run on Opus 4.8 (CLAUDE.md's designated fallback).**
+- **Zero `src/content/` changes; no claim/provenance/disclaimer wording changed** (independently confirmed by the content-integrity reviewer). Verified: `astro check` 0 errors, 90/90 tests, `astro build` 15 pages (provenance gate passes).
+
+### Scope / caveats
+- Styling/layout only; no content or compliance text edited. The new "Verified against official sources" / "A relocation plan you can trust" copy restates existing framing but is product-visible — **flagged for a `compliance-officer` glance** (not a blocker).
+- Residual minor a11y items deferred (out of the 1–10 scope): consent/doc checkboxes still below the 24px WCAG 2.2 target-size floor; emoji glyph icons (🔒 ✎) not yet swapped for SVG (audit items #11–13).

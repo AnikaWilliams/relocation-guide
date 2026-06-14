@@ -49,6 +49,13 @@ until the production domain and analytics IDs exist** (nothing loads without the
 a human lawyer's review of the legal drafts, and operator details for the Impressum/Contact.
 Monetization (AdSense) is documented but not yet eligible — see [`docs/monetization.md`](docs/monetization.md).
 
+**Design (2026-06-13):** the customer-facing UI adopted a **"Trust & Authority" design system** (UI/UX
+Pro Max audit, ADR-0019) — WCAG-AA-contrast buttons, 44px touch targets, readable legal/source text,
+**self-hosted** EB Garamond + Lato fonts (no Google CDN, GDPR-safe), brand design tokens, a
+`prefers-reduced-motion` guard, a consent-banner overlap fix, and home/wizard trust framing. Styling
+only — no content, claim, or disclaimer wording changed (independently verified). The persisted system
+lives in [`design-system/relocation-guide/MASTER.md`](design-system/relocation-guide/MASTER.md).
+
 **Corridor coverage (2026-06-13):** **8 corridors are published** — USA → Switzerland, Germany,
 France, Belgium, Ireland, Luxembourg, Austria, and the UK — each fully VERIFIED via the two-agent
 pipeline (research → independent fact-verify; ADR-0016/0018), founder-approved. USA → Netherlands is
