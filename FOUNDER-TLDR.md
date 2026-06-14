@@ -10,6 +10,18 @@ coming next. Newest updates are at the top.
 
 ---
 
+## 2026-06-14 — Official-source links open in a new tab
+
+**What changed.** When you click an official-source link in the **written guide** (the full reference below the planner), it now opens in a **new browser tab** instead of navigating you away. The interactive planner already behaved this way; this brings the written guide in line, so every outbound link across the site is consistent.
+
+**Why it matters.** You can open the government source to check a fact and still have your plan (or the guide) sitting right where you left it — no losing your place, no back-button hunting.
+
+**What you'd notice today.** Clicking a source/official link keeps your page open and opens the source in a separate tab.
+
+**What's next.** Nothing specific — a usability fix.
+
+---
+
 ## 2026-06-14 — You can now collapse the plan's side panel
 
 **What changed.** On a wide screen, the left panel of a plan (your progress, your answers, and the step list) can now be **collapsed** with a "Hide" button — the step you're reading then expands to use the full width. A thin "›" tab on the left brings it back. (Phones already had a show/hide toggle for this; now desktop does too.)

@@ -232,7 +232,8 @@ const planScope = (appliesIf?: string): string => {
                           {j > 0 && ' · '}
                           <a
                             href={link.sourceUrl}
-                            rel="noopener"
+                            target="_blank"
+                            rel="noopener noreferrer"
                             class="text-blue-700 underline"
                           >{link.text} ({link.sourceName})</a>
                         </>
@@ -257,7 +258,7 @@ const planScope = (appliesIf?: string): string => {
                         {doc.form && (
                           <span class="block text-sm">
                             Form from {doc.form.sourceName}:{' '}
-                            <a href={doc.form.sourceUrl} rel="noopener" class="text-blue-700 underline">{doc.form.text}</a>
+                            <a href={doc.form.sourceUrl} target="_blank" rel="noopener noreferrer" class="text-blue-700 underline">{doc.form.text}</a>
                           </span>
                         )}
                       </li>
@@ -270,18 +271,18 @@ const planScope = (appliesIf?: string): string => {
             {task.timeline && (
               <p class="mt-4 text-slate-700">
                 <strong>Timeline:</strong> {task.timeline.text}{' '}
-                (<a href={task.timeline.sourceUrl} rel="noopener" class="text-blue-700 underline">{task.timeline.sourceName}</a>)
+                (<a href={task.timeline.sourceUrl} target="_blank" rel="noopener noreferrer" class="text-blue-700 underline">{task.timeline.sourceName}</a>)
               </p>
             )}
             {task.cost && (
               <p class="mt-2 text-slate-700">
                 <strong>Cost:</strong> {task.cost.text}{' '}
-                (<a href={task.cost.sourceUrl} rel="noopener" class="text-blue-700 underline">{task.cost.sourceName}</a>)
+                (<a href={task.cost.sourceUrl} target="_blank" rel="noopener noreferrer" class="text-blue-700 underline">{task.cost.sourceName}</a>)
               </p>
             )}
 
             <p class="mt-4 text-sm text-slate-500">
-              Source: <a href={task.summary.sourceUrl} rel="noopener" class="underline">{task.summary.sourceName}</a>
+              Source: <a href={task.summary.sourceUrl} target="_blank" rel="noopener noreferrer" class="underline">{task.summary.sourceName}</a>
               {task.summary.lastVerified && <> · Last verified {task.summary.lastVerified}</>}
             </p>
           </section>
