@@ -573,3 +573,27 @@ Adopt that design system and implement audit items **1–10**:
 - Styling/layout only; no content or compliance text edited. The new "Verified against official sources" / "A relocation plan you can trust" copy restates existing framing but is product-visible — **flagged for a `compliance-officer` glance** (not a blocker).
 - **Audit items #11–13 completed in a follow-up commit:** emoji/glyph icons (🔒 lock, ✎ pencil, done ✓) swapped for inline Heroicon SVGs; consistent `focus-visible:ring-brand-500` added across the remaining interactive buttons (copy-link, sidebar task/expander, consent secondary buttons, footer cookie-settings, home corridor cards); full-guide prose tightened `max-w-3xl → max-w-2xl` for line length.
 - Residual minor a11y item deferred: the consent/doc checkboxes' visible box (20px) is still below the 24px WCAG 2.2 target-size floor — their associated label/row extends the activation area, so they remain operable.
+
+---
+
+## ADR-0020 — Plan-correctness audit + "who's joining you?" companion gating
+
+**Date:** 2026-06-13
+**Status:** Accepted
+**Decided by:** Founder (Anika Williams) — chose the companion-question approach
+
+### Context
+A founder report ("USA→Austria, no children, but the plan said *bring your spouse and children*") triggered a full review of every corridor's plan personalisation. Findings:
+1. The **interactive plan was correct** — `appliesIf` filtering worked; us-at's family task was already gated `motivation == 'family'`.
+2. What the founder saw was the **complete-guide section below the app** (ADR-0011), which renders *every* task (all routes, for SEO + no-JS) and was mislabeled "every step from the planner above."
+3. Two corridors over-showed family tasks to plain workers (us-lu `family-reunification`, us-gb `dependants-on-work-study` — both gated to include `motivation == 'work'`).
+4. **Root cause of the real tension:** the intake captured only a yes/no `hasChildren` and never asked work/study movers whether a **partner** was joining — so any gating choice stranded someone (a `qa-engineer` adversarial review caught a first fix that *hid* the spouse path from married, childless workers — the fail-open cardinal sin).
+
+### Decision
+- **Replace the yes/no "Are children moving with you?" step with a multi-select "Who's joining you?"** (`companions: ('partner'|'children')[]`, select-all-that-apply, empty = moving alone). `hasChildren` is now **derived** from `companions` (so existing children-gated tasks are unchanged). Family/dependant tasks are gated on the actual companions: a solo mover sees none; bringing a partner/children reveals only the relevant steps. (URL param `kids` → `co`.)
+- **Full guide:** relabel as the complete reference for *every* route and tag each task with its route ("For: Family", etc.) via a display-only `planScope()` helper.
+- **New durable regression suite** `tests/plan-correctness.test.ts` audits all corridors across a profile matrix: no fail-open; no education/retirement leak; nobody-joining + non-family → no family tasks; child tasks require children; every covered motivation has a tailored path (under-inclusion guard); and **monotonicity** — adding a companion never *removes* a task (guards the hidden-step cardinal sin).
+
+### Consequences
+- The reported confusion is resolved and family/dependant steps now match who is actually coming, across all 8 corridors. Verified: `astro check` 0 errors, **271 tests**, `astro build` 15 pages (provenance gate intact). No claim/source/disclaimer text changed — only `appliesIf` gating + intake UI + display labels.
+- **Known limitation (flagged for the content pipeline):** corridors whose only family content is the family-route process (us-at/be/fr/ie/ch/de) still have no tailored "bring a partner on a work/study visa" step; a worker bringing a spouse there sees the general guidance, not a dedicated task. Adding those is content-researcher + fact-verifier work (sourced claims), not a gating change.

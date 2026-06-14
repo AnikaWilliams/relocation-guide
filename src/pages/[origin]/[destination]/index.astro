@@ -96,6 +96,32 @@ const breadcrumbJsonLd = {
 /** Serialize for a JSON-LD <script>, escaping `<` so content can never close the tag. */
 const jsonLd = (data: unknown) => JSON.stringify(data).replace(/</g, '\\u003c');
 
+/**
+ * Human label for which route a task belongs to, derived from its `appliesIf`.
+ * The complete guide below lists EVERY task (all routes, for SEO + no-JS readers),
+ * so each one is tagged with its route — making clear that e.g. a family task is
+ * not part of a work-route reader's plan. Display-only; the interactive planner
+ * uses the real `evaluateAppliesIf`.
+ */
+const planScope = (appliesIf?: string): string => {
+  if (!appliesIf || !appliesIf.trim()) return 'Everyone';
+  // Structural always-true guards (e.g. `destination == 'ie'` on the us-ie corridor)
+  // reference no user-answer field — they apply to everyone, not "specific situations".
+  if (!/motivation|hasChildren|familyRelationship|studyStatus|workStatus|passports/.test(appliesIf)) {
+    return 'Everyone';
+  }
+  const routes: string[] = [];
+  if (/motivation\s*==\s*['"]work['"]/.test(appliesIf)) routes.push('Work');
+  if (/motivation\s*==\s*['"]study['"]/.test(appliesIf)) routes.push('Study');
+  if (/motivation\s*==\s*['"]family['"]/.test(appliesIf)) routes.push('Family');
+  if (/motivation\s*==\s*['"]retirement['"]/.test(appliesIf)) routes.push('Retirement');
+  if (/hasChildren\s*==\s*true|familyRelationship\s*==\s*['"]parent['"]/.test(appliesIf)) {
+    routes.push('If you have children');
+  }
+  if (routes.length === 0) return /motivation\s*!=/.test(appliesIf) ? 'Most routes' : 'Specific situations';
+  return routes.join(' · ');
+};
+
 ---
 
 <BaseLayout title={corridor.title} description={corridor.description} fullBleed>
@@ -143,8 +169,10 @@ const jsonLd = (data: unknown) => JSON.stringify(data).replace(/</g, '\\u003c');
           <p class="text-slate-600">{corridor.description}</p>
           <Disclaimer />
           <p class="text-sm text-slate-500">
-            Prefer reading to clicking? Every step from the interactive planner above is
-            published here in full. Content last reviewed: {corridor.lastReviewed}.
+            This is the <strong>complete reference</strong> for this corridor — every step for
+            <em>every</em> route (work, study, family, and more). Your personalised planner above shows
+            only the steps that match your answers, so it is usually shorter than this. Each step below
+            is tagged with the route it belongs to. Content last reviewed: {corridor.lastReviewed}.
           </p>
         </header>
 
@@ -153,6 +181,9 @@ const jsonLd = (data: unknown) => JSON.stringify(data).replace(/</g, '\\u003c');
             <h3 class="font-serif text-xl font-semibold text-slate-900">
               {i + 1}. {task.title}
             </h3>
+            <p class="mt-1 inline-flex items-center rounded-full bg-brand-50 px-2.5 py-0.5 text-xs font-semibold text-brand-700">
+              For: {planScope(task.appliesIf)}
+            </p>
             <p class="mt-3 text-slate-700">{task.summary.text}</p>
             <p class="mt-3 text-slate-700">{task.detail}</p>
 

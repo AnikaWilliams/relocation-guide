@@ -10,6 +10,18 @@ coming next. Newest updates are at the top.
 
 ---
 
+## 2026-06-13 — Made the "complete guide" clearer + a safety net that checks every route's plan
+
+**What changed.** You spotted a USA→Austria plan (no children) that mentioned "bring your spouse and children." Great catch — but it turned out the *personalised planner* was already correct; what you saw was the **full written guide below it**, which (for search engines and no-JavaScript readers) lists every step for every route, and was worded as if it were your plan. I relabeled it "the complete reference for every route" and tagged each step with the route it belongs to (e.g. "For: Family"). I also built an **automatic checker** that tests all 8 guides against every type of mover (work / study / family / retirement, with and without children) so a wrong-route step can't silently land in someone's plan — it found the catalogue otherwise clean.
+
+**Why it matters.** Plans drive legal decisions; this guarantees the right steps show for the right person, and the reference page no longer reads as a personal to-do list.
+
+**What you'd notice today.** The planner's last question is now **"Who's joining you?"** — tick a partner and/or children, or leave it blank if it's just you — and it shows only the family steps that match your answer (no children selected → no children steps). Each step in the complete guide below also has a small "For: … route" tag.
+
+**What's next.** A content gap to fill later: a few guides don't yet have a dedicated "bring your partner on a work/study visa" step (they point to the general family route instead) — that's new researched-and-verified content, not a settings change.
+
+---
+
 ## 2026-06-13 — Gave the site a professional, trustworthy look (and fixed real readability problems)
 
 **What changed.** I had a design expert (a specialist tool) review the look and feel, then fixed the top ten things it found. The biggest: the main buttons had **white text on colours too pale to read clearly** — now they use a deeper, properly-readable navy-blue. The fine print ("not legal advice", source links) was tiny and too faint — now it's bigger and darker. The buttons and tap-targets are now finger-friendly on phones. The cookie pop-up no longer covers the "Continue" button. And the whole site now uses two proper typefaces — an elegant heading font (the kind law firms and newspapers use) plus a clean, friendly body font — instead of the plain default. The home page now opens with a confident headline and three little trust marks: "traced to official sources / independently verified / dated and re-checked." (A small follow-up pass also swapped the last picture-style icons for crisp built-in ones, put a clear outline on every button when you tab to it with a keyboard, and shortened over-long lines of text so they're easier to read.)

@@ -5,7 +5,7 @@
  * are mirrored into a compact param string carried in the URL **fragment**,
  * so a plan can be shared or bookmarked, e.g.:
  *
- *   /us/ch/#pp=us&m=family&rel=unmarried-partner&fs=citizen&dur=long&kids=0
+ *   /us/ch/#pp=us&m=family&rel=unmarried-partner&fs=citizen&dur=long&co=children
  *
  * Why the fragment and not `?` search params: compliance ruling on share
  * links (2026-06-12, see FOUNDER-TLDR) — intake answers can be sensitive
@@ -50,11 +50,12 @@ export interface PlanIntake {
   familyJoineeStatus: 'citizen' | 'settled' | 'permit-holder' | 'other' | null;
   studyStatus: 'admitted' | 'applying' | null;
   durationIntent: 'short' | 'long' | 'permanent' | null;
-  hasChildren: boolean | null;
+  /** Dependants moving with the applicant (the "who's joining you?" step). */
+  companions: ('partner' | 'children')[];
 }
 
 /** Every search-param key this module owns. Anything else in the URL is left alone. */
-export const INTAKE_PARAM_KEYS = ['pp', 'm', 'ws', 'rel', 'fs', 'ss', 'dur', 'kids'] as const;
+export const INTAKE_PARAM_KEYS = ['pp', 'm', 'ws', 'rel', 'fs', 'ss', 'dur', 'co'] as const;
 
 // Allowed values per enum param (decode validation — junk values are dropped).
 const MOTIVATION_VALUES = ['work', 'family', 'study', 'retirement', 'other'] as const;
@@ -63,6 +64,7 @@ const FAMILY_REL_VALUES = ['spouse', 'registered-partner', 'unmarried-partner', 
 const FAMILY_STATUS_VALUES = ['citizen', 'settled', 'permit-holder', 'other'] as const;
 const STUDY_STATUS_VALUES = ['admitted', 'applying'] as const;
 const DURATION_VALUES = ['short', 'long', 'permanent'] as const;
+const COMPANION_VALUES = ['partner', 'children'] as const;
 
 /** Does the URL carry any intake state at all? */
 export function hasIntakeParams(params: URLSearchParams): boolean {
@@ -99,11 +101,11 @@ export function intakeToParams(a: PlanIntake): [string, string][] {
   }
   if (a.motivation === 'study' && a.studyStatus) out.push(['ss', a.studyStatus]);
   if (a.durationIntent) out.push(['dur', a.durationIntent]);
-  if (a.hasChildren !== null) out.push(['kids', a.hasChildren ? '1' : '0']);
+  if (a.companions.length > 0) out.push(['co', a.companions.join(',')]);
   return out;
 }
 
-/** Encode as a ready-to-append query string (no leading `?`), e.g. `pp=us&m=work&dur=long&kids=0`. */
+/** Encode as a ready-to-append query string (no leading `?`), e.g. `pp=us&m=work&dur=long&co=partner,children`. */
 export function intakeSearchString(a: PlanIntake): string {
   return intakeToParams(a)
     .map(([k, v]) => `${k}=${v}`)
@@ -134,7 +136,11 @@ export function applyIntakeParams<T extends PlanIntake>(base: T, params: URLSear
     .split(',')
     .map((s) => s.trim().toLowerCase())
     .filter((iso, i, arr) => iso in COUNTRY_NAMES && arr.indexOf(iso) === i);
-  const kids = params.get('kids');
+  const companions = (params.get('co') ?? '')
+    .split(',')
+    .map((s) => s.trim().toLowerCase())
+    .filter((v, i, arr): v is (typeof COMPANION_VALUES)[number] =>
+      (COMPANION_VALUES as readonly string[]).includes(v) && arr.indexOf(v) === i);
   return {
     ...base,
     passports: pp.length > 0 ? pp : defaultPassports,
@@ -144,6 +150,6 @@ export function applyIntakeParams<T extends PlanIntake>(base: T, params: URLSear
     familyJoineeStatus: pickEnum(params, 'fs', FAMILY_STATUS_VALUES),
     studyStatus: pickEnum(params, 'ss', STUDY_STATUS_VALUES),
     durationIntent: pickEnum(params, 'dur', DURATION_VALUES),
-    hasChildren: kids === '1' ? true : kids === '0' ? false : null,
+    companions,
   };
 }

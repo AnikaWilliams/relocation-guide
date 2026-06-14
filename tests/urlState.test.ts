@@ -19,7 +19,7 @@ const familyIntake: PlanIntake = {
   familyJoineeStatus: 'citizen',
   studyStatus: null,
   durationIntent: 'long',
-  hasChildren: false,
+  companions: [],
 };
 
 const workIntake: PlanIntake = {
@@ -30,18 +30,18 @@ const workIntake: PlanIntake = {
   familyRelationship: null,
   familyJoineeStatus: null,
   durationIntent: 'permanent',
-  hasChildren: true,
+  companions: ['partner', 'children'],
 };
 
 describe('intakeSearchString', () => {
   it('encodes a family profile compactly, with no percent-encoding needed', () => {
     expect(intakeSearchString(familyIntake)).toBe(
-      'pp=us,in&m=family&rel=unmarried-partner&fs=citizen&dur=long&kids=0',
+      'pp=us,in&m=family&rel=unmarried-partner&fs=citizen&dur=long',
     );
   });
 
   it('encodes a work profile and omits other branches', () => {
-    expect(intakeSearchString(workIntake)).toBe('pp=us&m=work&ws=has-offer&dur=permanent&kids=1');
+    expect(intakeSearchString(workIntake)).toBe('pp=us&m=work&ws=has-offer&dur=permanent&co=partner,children');
   });
 
   it('omits branch params that do not belong to the chosen motivation', () => {
@@ -58,7 +58,7 @@ describe('intakeSearchString', () => {
       familyRelationship: null,
       familyJoineeStatus: null,
       durationIntent: null,
-      hasChildren: null,
+      companions: [],
     };
     expect(intakeSearchString(blank)).toBe('');
   });
@@ -83,7 +83,7 @@ describe('round trip', () => {
         familyJoineeStatus: null,
         studyStatus: null,
         durationIntent: null,
-        hasChildren: null,
+        companions: [],
       };
       expect(applyIntakeParams(blank, params)).toEqual(intake);
     }
@@ -94,7 +94,7 @@ describe('applyIntakeParams', () => {
   it('URL wins over conflicting saved answers (family URL vs work localStorage)', () => {
     // Recipient's localStorage says "work / has-offer"; the shared URL says
     // "family / spouse". The URL must fully determine the plan.
-    const params = new URLSearchParams('pp=us&m=family&rel=spouse&fs=settled&dur=long&kids=1');
+    const params = new URLSearchParams('pp=us&m=family&rel=spouse&fs=settled&dur=long&co=children');
     const restored = applyIntakeParams(workIntake, params);
     expect(restored.motivation).toBe('family');
     expect(restored.familyRelationship).toBe('spouse');
@@ -102,7 +102,7 @@ describe('applyIntakeParams', () => {
     // The stale work answer is reset, not merged in.
     expect(restored.workStatus).toBeNull();
     expect(restored.durationIntent).toBe('long');
-    expect(restored.hasChildren).toBe(true);
+    expect(restored.companions).toEqual(['children']);
   });
 
   it('keeps origin/destination from the base (page path), even if the URL is hand-edited', () => {
@@ -113,12 +113,12 @@ describe('applyIntakeParams', () => {
   });
 
   it('drops junk enum values instead of storing them', () => {
-    const params = new URLSearchParams('m=invade&ws=ceo&dur=forever&kids=maybe');
+    const params = new URLSearchParams('m=invade&ws=ceo&dur=forever&co=maybe');
     const restored = applyIntakeParams(familyIntake, params);
     expect(restored.motivation).toBeNull();
     expect(restored.workStatus).toBeNull();
     expect(restored.durationIntent).toBeNull();
-    expect(restored.hasChildren).toBeNull();
+    expect(restored.companions).toEqual([]);
   });
 
   it('validates and dedupes passports; falls back to the origin when all are junk', () => {
@@ -133,7 +133,7 @@ describe('applyIntakeParams', () => {
 describe('hasIntakeParams', () => {
   it('detects any owned key and ignores foreign params', () => {
     expect(hasIntakeParams(new URLSearchParams('m=work'))).toBe(true);
-    expect(hasIntakeParams(new URLSearchParams('kids=0'))).toBe(true);
+    expect(hasIntakeParams(new URLSearchParams('co=partner'))).toBe(true);
     expect(hasIntakeParams(new URLSearchParams('utm_source=newsletter'))).toBe(false);
     expect(hasIntakeParams(new URLSearchParams(''))).toBe(false);
   });

@@ -982,7 +982,7 @@ tasks:
       figures and fees change. Confirm the current dependant rules for your exact
       visa and job on GOV.UK.
     dependsOn: ["skilled-worker-visa"]
-    appliesIf: "hasChildren || motivation == 'work'"
+    appliesIf: "motivation == 'work' && companions includes 'partner' || motivation == 'work' && companions includes 'children' || motivation == 'study' && companions includes 'partner' || motivation == 'study' && companions includes 'children'"
 
   # ===========================================================================
   # HEALTHCARE — Immigration Health Surcharge (IHS)

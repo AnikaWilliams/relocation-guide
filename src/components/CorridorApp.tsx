@@ -123,6 +123,8 @@ interface CorridorAppProps {
 // ── Intake model ─────────────────────────────────────────────────────────────
 
 type Motivation = 'work' | 'family' | 'study' | 'retirement' | 'other';
+/** Dependants moving WITH the primary applicant (the "who's joining you?" step). */
+type Companion = 'partner' | 'children';
 
 interface Intake {
   origin: string | null;
@@ -143,7 +145,9 @@ interface Intake {
   otherDescription: string;
   // common tail
   durationIntent: 'short' | 'long' | 'permanent' | null;
-  hasChildren: boolean | null;
+  /** Who is moving with the applicant; empty = moving alone. Replaces the old
+      yes/no "children" question so we only show steps that actually apply. */
+  companions: Companion[];
 }
 
 const STORAGE_KEY = 'relocation-intake-v2';
@@ -183,6 +187,11 @@ const DURATION: Opt[] = [
   { value: 'permanent', label: 'Indefinitely — planning to settle', description: 'B permit now; C permit later' },
 ];
 
+const COMPANIONS: Opt[] = [
+  { value: 'partner', label: 'A partner or spouse', description: 'Husband, wife, civil/registered or unmarried partner' },
+  { value: 'children', label: 'Children', description: 'Dependent children moving with you' },
+];
+
 /**
  * A blank intake — nothing is preselected. A fresh visitor picks their own
  * origin, destination, and passport(s); the page's corridor only seeds the
@@ -203,7 +212,7 @@ function defaultIntake(): Intake {
     studyInstitution: '',
     otherDescription: '',
     durationIntent: null,
-    hasChildren: null,
+    companions: [],
   };
 }
 
@@ -214,6 +223,7 @@ type Field =
   | { kind: 'countryMulti' }
   | { kind: 'single'; get: (a: Intake) => string | null; set: (a: Intake, v: string) => Intake; options: Opt[] | ((a: Intake) => Opt[]) }
   | { kind: 'boolean'; get: (a: Intake) => boolean | null; set: (a: Intake, v: boolean) => Intake; yes?: string; no?: string }
+  | { kind: 'companions' }
   | { kind: 'text'; get: (a: Intake) => string; set: (a: Intake, v: string) => Intake; label?: string; placeholder?: string; textarea?: boolean; optional?: boolean };
 
 interface WizardStep {
@@ -356,12 +366,11 @@ const STEPS: WizardStep[] = [
     isComplete: (a) => !!a.durationIntent,
   },
   {
-    id: 'children',
-    title: 'Are children moving with you?',
-    fields: [
-      { kind: 'boolean', get: (a) => a.hasChildren, set: (a, v) => ({ ...a, hasChildren: v }), yes: 'Yes, children are coming', no: 'No' },
-    ],
-    isComplete: (a) => a.hasChildren !== null,
+    id: 'companions',
+    title: "Who's joining you?",
+    subtitle: "Select everyone moving with you — leave all unchecked if it's just you. We only show the steps that apply to who's coming.",
+    fields: [{ kind: 'companions' }],
+    isComplete: () => true,
   },
 ];
 
@@ -538,8 +547,11 @@ function buildRecap(a: Intake): { label: ReactNode; stepId: string }[] {
     const d = { short: '<1 year', long: '1 year+', permanent: 'settling' }[a.durationIntent];
     items.push({ label: `Stay: ${d}`, stepId: 'duration' });
   }
-  if (a.hasChildren !== null) {
-    items.push({ label: a.hasChildren ? 'With children' : 'No children', stepId: 'children' });
+  if (a.companions.length) {
+    const who = a.companions.map((c) => (c === 'partner' ? 'partner' : 'children')).join(' + ');
+    items.push({ label: `Joining you: ${who}`, stepId: 'companions' });
+  } else {
+    items.push({ label: 'Moving alone', stepId: 'companions' });
   }
   return items;
 }
@@ -1347,7 +1359,10 @@ export default function CorridorApp({ tasks, corridorTitle, originIso2, destinat
     familyJoineeStatus: answers.familyJoineeStatus,
     studyStatus: answers.studyStatus,
     durationIntent: answers.durationIntent,
-    hasChildren: answers.hasChildren,
+    // `companions` drives the new "who's joining you" gating; `hasChildren` is
+    // derived from it so the existing children-gated tasks keep working unchanged.
+    companions: answers.companions,
+    hasChildren: answers.companions.includes('children'),
   }), [answers]);
 
   const applicableTasks = useMemo(() => {
@@ -1496,6 +1511,12 @@ export default function CorridorApp({ tasks, corridorTitle, originIso2, destinat
       passports: a.passports.includes(iso) ? a.passports.filter((p) => p !== iso) : [...a.passports, iso],
     }));
   }
+  function toggleCompanion(c: Companion) {
+    setAnswers((a) => ({
+      ...a,
+      companions: a.companions.includes(c) ? a.companions.filter((x) => x !== c) : [...a.companions, c],
+    }));
+  }
 
   // ── Wizard phase ───────────────────────────────────────────────────────────
 
@@ -1564,6 +1585,21 @@ export default function CorridorApp({ tasks, corridorTitle, originIso2, destinat
                   }
                   if (field.kind === 'countryMulti') {
                     return <CountryMultiGrid key={fi} selected={answers.passports} onToggle={togglePassport} />;
+                  }
+                  if (field.kind === 'companions') {
+                    return (
+                      <div key={fi} className="space-y-3">
+                        {COMPANIONS.map((o) => (
+                          <OptionCard
+                            key={o.value}
+                            label={o.label}
+                            description={o.description}
+                            selected={answers.companions.includes(o.value as Companion)}
+                            onClick={() => toggleCompanion(o.value as Companion)}
+                          />
+                        ))}
+                      </div>
+                    );
                   }
                   if (field.kind === 'single') {
                     const opts = resolve(field.options);

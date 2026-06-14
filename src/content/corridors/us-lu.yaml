@@ -674,7 +674,7 @@ tasks:
       sponsors may face a minimum prior-residence period; EU Blue Card holders, researchers and
       transferees do NOT, and can bring their family in with their own application.
     dependsOn: []
-    appliesIf: "motivation == 'family' || motivation == 'work'"
+    appliesIf: "motivation == 'family' || motivation == 'work' && companions includes 'partner' || motivation == 'work' && companions includes 'children'"
 
   # ===========================================================================
   - id: study-permit
