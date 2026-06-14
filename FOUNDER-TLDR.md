@@ -10,6 +10,18 @@ coming next. Newest updates are at the top.
 
 ---
 
+## 2026-06-14 — Swiss plan steps now link to *your* canton's office, not a list of all 26
+
+**What changed.** You pointed out that for an unmarried partner moving to Switzerland the rules really do hinge on the canton — and they do. Until now, the steps that say "contact the migration office of the canton where your partner lives" sent everyone to one big federal list of all 26 cantonal offices, even after they'd already told us their canton. Now, if you've picked a canton we've fact-checked (Zürich, Geneva, Vaud, Zug, Basel-Stadt), those steps link **straight to that canton's own migration office** (e.g. Zürich's Migrationsamt, Geneva's OCPM). Pick any other canton and it still falls back to the federal list — so no one ever hits a dead end. This covers every "apply at your cantonal office" step: all the family-reunification routes, the unmarried-partner case, retirement, and study. It's built on a review copy and going through our automatic safety checks plus an independent accuracy review right now — **not live yet, pending your approval.**
+
+**Why it matters.** Once someone tells us their canton, sending them to a 26-entry directory is friction and can mislead. This drops them on the right desk.
+
+**What you'd notice today.** On a Switzerland plan, choose (say) Zürich — the "contact your cantonal office" links in the steps now point to the Zürich migration office instead of the federal list.
+
+**What's next.** I'll confirm it in the live preview and, once you're happy, fold it into the release.
+
+---
+
 ## 2026-06-14 — Official-source links open in a new tab
 
 **What changed.** When you click an official-source link in the **written guide** (the full reference below the planner), it now opens in a **new browser tab** instead of navigating you away. The interactive planner already behaved this way; this brings the written guide in line, so every outbound link across the site is consistent.

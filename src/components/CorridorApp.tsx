@@ -87,7 +87,10 @@ export interface CantonData {
 interface StepData {
   text: string;
   tip?: string;
-  links?: ClaimData[];
+  /** cantonOffice: this link points at the cantonal migration authority. When the
+   *  user has picked a CH canton we authored, we swap it for their canton's office;
+   *  otherwise it renders unchanged (the federal SEM directory fallback). */
+  links?: (ClaimData & { cantonOffice?: boolean })[];
 }
 
 /** Structured document substep (ADR-0012). Plain strings are the legacy shape. */
@@ -1187,6 +1190,7 @@ function Sidebar({
 
 function TaskCard({
   task, status, hasPrev, onBack, onMarkDone, onNext, headingRef, docState, onToggleDoc,
+  cantonOfficeClaim, selectedCantonName,
 }: {
   task: TaskData;
   status: TaskStatus;
@@ -1197,6 +1201,11 @@ function TaskCard({
   headingRef?: React.Ref<HTMLHeadingElement>;
   docState: DocState;
   onToggleDoc: (taskId: string, docName: string, mark: DocMark) => void;
+  /** The user's selected canton's migration-office claim, when they picked a
+   *  canton we authored; null otherwise. Drives the cantonOffice step-link swap. */
+  cantonOfficeClaim: ClaimData | null;
+  /** Display name of the selected canton, for the personalised link cue. */
+  selectedCantonName?: string;
 }) {
   const done = status === 'done';
   const { completed: docsHandled, total: docsTotal } = docProgress(task, docState);
@@ -1292,11 +1301,26 @@ function TaskCard({
                     {s.tip && <p className="text-xs text-slate-500 italic">{s.tip}</p>}
                     {s.links && s.links.length > 0 && (
                       <ul className="mt-1 space-y-0.5">
-                        {s.links.map((link, li) => (
-                          <li key={li}>
-                            <a href={link.sourceUrl} target="_blank" rel="noopener noreferrer" className="text-xs text-blue-600 hover:underline">{link.text} ↗</a>
-                          </li>
-                        ))}
+                        {s.links.map((link, li) => {
+                          // cantonOffice links point at "the cantonal migration
+                          // authority where you live". When the user picked a
+                          // canton we authored, send them straight to THEIR
+                          // canton's office (sourceName already names the canton);
+                          // otherwise keep the authored federal SEM directory link.
+                          const useCanton = link.cantonOffice === true && cantonOfficeClaim !== null;
+                          return (
+                            <li key={li}>
+                              {useCanton ? (
+                                <a href={cantonOfficeClaim!.sourceUrl} target="_blank" rel="noopener noreferrer" className="text-xs text-blue-600 hover:underline">
+                                  {selectedCantonName && <span className="text-slate-500 not-italic">Your canton — </span>}
+                                  {cantonOfficeClaim!.sourceName} ↗
+                                </a>
+                              ) : (
+                                <a href={link.sourceUrl} target="_blank" rel="noopener noreferrer" className="text-xs text-blue-600 hover:underline">{link.text} ↗</a>
+                              )}
+                            </li>
+                          );
+                        })}
                       </ul>
                     )}
                   </div>
@@ -2150,13 +2174,20 @@ export default function CorridorApp({ tasks, corridorTitle, originIso2, destinat
   // "Your canton" payoff (CH only, once a canton is chosen). Matches the chosen
   // code against the corridor's authored cantons; CantonPanel falls back to the
   // federal SEM directory when there's no entry.
+  const selectedCantonData =
+    answers.destination === 'ch' && answers.canton
+      ? cantons.find((c) => c.code === answers.canton)
+      : undefined;
   const cantonPanel =
     answers.destination === 'ch' && answers.canton ? (
-      <CantonPanel
-        canton={answers.canton}
-        data={cantons.find((c) => c.code === answers.canton)}
-      />
+      <CantonPanel canton={answers.canton} data={selectedCantonData} />
     ) : null;
+  // When the user has picked a canton we authored, step links flagged
+  // cantonOffice swap from the federal SEM directory to their canton's migration
+  // office. Null when no canton is chosen or it isn't authored — links render as-is.
+  const cantonOfficeClaim: ClaimData | null = selectedCantonData?.migrationOffice ?? null;
+  const selectedCantonName =
+    selectedCantonData?.name ?? (answers.canton ? cantonName(answers.canton) : undefined);
 
   const sidebar = (
     <Sidebar
@@ -2197,6 +2228,8 @@ export default function CorridorApp({ tasks, corridorTitle, originIso2, destinat
       onNext={() => gotoAdjacentTask(1)}
       docState={docState}
       onToggleDoc={handleToggleDoc}
+      cantonOfficeClaim={cantonOfficeClaim}
+      selectedCantonName={selectedCantonName}
     />
   ) : (
     <div className="flex-1 flex items-center justify-center text-slate-500 p-8">Select a step from your journey to begin.</div>

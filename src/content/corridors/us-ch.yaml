@@ -1104,6 +1104,7 @@ tasks:
             verifiedBy: "fact-verifier"
             reviewBy: "2026-09-10"
           - text: "SEM — addresses of the cantonal immigration and employment market authorities"
+            cantonOffice: true
             sourceUrl: "https://www.sem.admin.ch/sem/en/home/sem/kontakt/kantonale_behoerden/adressen_kantone_und.html"
             sourceName: "State Secretariat for Migration (SEM) — Cantonal immigration and employment market authorities"
             # VERIFIED 2026-06-12 (fact-verifier): SEM page loaded (curl, browser UA, HTTP 200, title "Cantonal immigration and employment market authorities"). Page is the official per-canton address directory (entries for all cantons incl. their Migrationsamt / Amt für Migration offices). Link text accurate.
@@ -1272,6 +1273,7 @@ tasks:
       - text: "Apply via the cantonal immigration authority of the canton where your spouse or partner lives, within the statutory time limit (five years; twelve months for children over 12)."
         links:
           - text: "SEM — addresses of the cantonal immigration and employment market authorities"
+            cantonOffice: true
             sourceUrl: "https://www.sem.admin.ch/sem/en/home/sem/kontakt/kantonale_behoerden/adressen_kantone_und.html"
             sourceName: "State Secretariat for Migration (SEM) — Cantonal immigration and employment market authorities"
             # VERIFIED 2026-06-12 (fact-verifier): SEM cantonal address directory loaded (HTTP 200, title matches). Per-canton migration-office entries present. The step text's time limits (five years; twelve months for children over 12) are Art. 47 para. 1 FNIA, confirmed verbatim on the Fedlex filestore text this run. Link text accurate.
@@ -1426,6 +1428,7 @@ tasks:
       - text: "Apply via the cantonal immigration authority of the canton where your spouse or partner lives."
         links:
           - text: "SEM — addresses of the cantonal immigration and employment market authorities"
+            cantonOffice: true
             sourceUrl: "https://www.sem.admin.ch/sem/en/home/sem/kontakt/kantonale_behoerden/adressen_kantone_und.html"
             sourceName: "State Secretariat for Migration (SEM) — Cantonal immigration and employment market authorities"
             # VERIFIED 2026-06-12 (fact-verifier): SEM cantonal address directory loaded (HTTP 200, title "Cantonal immigration and employment market authorities"); per-canton migration-office entries present. Link text accurate.
@@ -1552,6 +1555,7 @@ tasks:
         tip: "Put the question in writing and keep the answer: cantonal practice differs and the decision is discretionary."
         links:
           - text: "SEM — addresses of the cantonal immigration and employment market authorities (the competent authorities for such requests)"
+            cantonOffice: true
             sourceUrl: "https://www.sem.admin.ch/sem/en/home/sem/kontakt/kantonale_behoerden/adressen_kantone_und.html"
             sourceName: "State Secretariat for Migration (SEM) — Cantonal immigration and employment market authorities"
             # VERIFIED 2026-06-12 (fact-verifier): SEM cantonal address directory loaded (HTTP 200, title matches); per-canton migration-office entries present. Link text accurate.
@@ -2140,6 +2144,7 @@ tasks:
             verifiedBy: "fact-verifier"
             reviewBy: "2026-09-10"
           - text: "SEM — addresses of the cantonal immigration and employment market authorities"
+            cantonOffice: true
             sourceUrl: "https://www.sem.admin.ch/sem/en/home/sem/kontakt/kantonale_behoerden/adressen_kantone_und.html"
             sourceName: "State Secretariat for Migration (SEM) — Cantonal immigration and employment market authorities"
             # VERIFIED 2026-06-12 (fact-verifier): SEM page loaded fresh this run (curl, browser UA, HTTP 200, title "Cantonal immigration and employment market authorities"). Official per-canton address directory confirmed (Migrationsamt / Amt für Migration / Service de la population entries present for the cantons). Link text accurate.
@@ -2833,6 +2838,7 @@ tasks:
             verifiedBy: "fact-verifier"
             reviewBy: "2026-09-10"
           - text: "SEM — addresses of the cantonal immigration and employment market authorities"
+            cantonOffice: true
             sourceUrl: "https://www.sem.admin.ch/sem/en/home/sem/kontakt/kantonale_behoerden/adressen_kantone_und.html"
             sourceName: "State Secretariat for Migration (SEM) — Cantonal immigration and employment market authorities"
             # VERIFIED 2026-06-12 (fact-verifier): SEM page loaded fresh this run (curl, browser UA, HTTP 200, title "Cantonal immigration and employment market authorities"). Official per-canton address directory with the cantonal Migrationsamt / migration-office entries present. Link text accurate.

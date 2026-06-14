@@ -64,10 +64,31 @@ export const ClaimSchema = z.object({
 });
 export type Claim = z.infer<typeof ClaimSchema>;
 
+/**
+ * A link shown beneath a step. It is a full Claim — so it carries provenance, is
+ * enforced by the build gate, and is watched by link-auditor like every other
+ * claim — plus an optional `cantonOffice` rendering hint.
+ *
+ * `cantonOffice: true` marks the link as the step's "contact your cantonal
+ * migration office" pointer. It asserts NO fact and carries NO provenance of its
+ * own; it is a presentation directive. For a cantonally-administered destination
+ * (Switzerland — federal law, cantonal administration, ADR-0021) the personalised
+ * plan resolves such a link to the migration-office claim of the canton the user
+ * picked, when that canton's local detail is authored (itself a VERIFIED claim);
+ * otherwise it renders this link unchanged — the federal SEM cantonal-authority
+ * directory, the honest fallback, never a dead end. Because the substitution is
+ * between two already-verified claims and introduces no new claim, it is a
+ * frontend concern and does not require its own verification.
+ */
+export const StepLinkSchema = ClaimSchema.extend({
+  cantonOffice: z.boolean().optional(),
+});
+export type StepLink = z.infer<typeof StepLinkSchema>;
+
 const StepSchema = z.object({
   text: z.string().min(1),
   tip: z.string().optional(),
-  links: z.array(ClaimSchema).optional(),
+  links: z.array(StepLinkSchema).optional(),
 });
 export type Step = z.infer<typeof StepSchema>;
 

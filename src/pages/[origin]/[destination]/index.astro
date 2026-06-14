@@ -31,7 +31,7 @@ const appTasks: TaskData[] = corridor.tasks.map((t) => ({
   steps: t.steps.map((s) => ({
     text: s.text,
     tip: s.tip,
-    links: s.links?.map((l) => ({ text: l.text, sourceUrl: l.sourceUrl, sourceName: l.sourceName })),
+    links: s.links?.map((l) => ({ text: l.text, sourceUrl: l.sourceUrl, sourceName: l.sourceName, cantonOffice: l.cantonOffice })),
   })),
   documents: t.documents.map((d) =>
     typeof d === 'string'
