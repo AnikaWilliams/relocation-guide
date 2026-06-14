@@ -10,6 +10,18 @@ coming next. Newest updates are at the top.
 
 ---
 
+## 2026-06-14 — A calmer, friendlier plan (and a one-time disclaimer you confirm up front)
+
+**What changed.** The plan used to feel like paperwork: a gold "not legal advice" warning sat over everything, questions used legal codes, and each step buried the to-dos under reference text. We rebuilt the *feel*. The gold banner is gone; instead, right after you answer the questions, a single pop-up shows the legal disclaimer and you tap **"I've read and understand"** once before your plan opens. The plan now leads with **what to do** (the steps), tucking legal citations and fine print into a "Reference" section you can open if you want. Questions use plain words ("Less than a year" instead of "L permit path"), progress shows friendly stages, and you get a small "nice work" nudge as you finish steps. The legal notice is still everywhere it needs to be — the confirm pop-up, the footer on every page, and a short line on each step — just calm, not shouting.
+
+**Why it matters.** People arrive stressed about a life-changing move; a wall of legal warnings scares them off. This feels like a supportive guide, not a form, while keeping every fact sourced.
+
+**What you'd notice today.** After the questions: a disclaimer pop-up you must accept, then a cleaner, encouraging plan. (On a review copy — **not live**; the new pop-up-style disclaimer needs your lawyer's OK first.)
+
+**What's next.** Your review + a lawyer's sign-off on the pop-up disclaimer approach, then it ships.
+
+---
+
 ## 2026-06-14 — Swiss plans now say *when* a fee or timeline is set by your canton
 
 **What changed.** Many Swiss steps have no single nationwide fee or processing time — the **canton** sets them (and for getting into a school, the **institution** does). Until now those steps simply showed *nothing*, which can read as "free/instant" or leave people guessing. Now each such step carries a plain note: *"Fees & processing time: set by your canton, not federally — confirm the exact amount and timing with your cantonal authorities"* (study admission says "the institution"). The "Your canton" box also now reminds you these vary by canton. Importantly, **we invented no numbers** — we only made the plan honest about where the real figures come from and who to ask. Covers 12 steps (the employer-sponsored work permit, the family-reunification routes, the retirement permit, and the study permits/sub-steps).

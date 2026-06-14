@@ -1,5 +1,6 @@
 import { useState, useEffect, useMemo, useRef, type ReactNode, type KeyboardEvent as ReactKeyboardEvent } from 'react';
 import { COUNTRY_OPTIONS, countryName, type CountryOption } from '../utils/countries';
+import { DISCLAIMER_LEAD, DISCLAIMER_BODY, DISCLAIMER_PROGRESS_NOTE, IMPRESSUM_PATH } from '../utils/disclaimer';
 import { CH_CANTONS, cantonName } from '../utils/cantons';
 import { flagUrl } from '../utils/flags';
 import { topoOrder, statusOf, currentTaskId, type TaskStatus } from '../utils/journey';
@@ -211,7 +212,7 @@ const WORK_STATUS: Opt[] = [
 const FAMILY_REL: Opt[] = [
   { value: 'spouse', label: 'Spouse', description: "We're married" },
   { value: 'registered-partner', label: 'Registered partner' },
-  { value: 'unmarried-partner', label: 'Unmarried partner', description: 'Long-term partner (concubinage)' },
+  { value: 'unmarried-partner', label: 'Unmarried partner', description: "We've been together long-term" },
   { value: 'parent', label: 'Parent or child' },
 ];
 
@@ -221,9 +222,9 @@ const STUDY_STATUS: Opt[] = [
 ];
 
 const DURATION: Opt[] = [
-  { value: 'short', label: 'Less than a year', description: 'Short-stay (L permit) path' },
-  { value: 'long', label: 'A year or more', description: 'Standard (B permit) path' },
-  { value: 'permanent', label: 'Indefinitely — planning to settle', description: 'B permit now; C permit later' },
+  { value: 'short', label: 'Less than a year' },
+  { value: 'long', label: 'A year or more' },
+  { value: 'permanent', label: "Indefinitely — I'm planning to settle" },
 ];
 
 const COMPANIONS: Opt[] = [
@@ -413,7 +414,7 @@ const STEPS: WizardStep[] = [
     // know their canton, so it never blocks (isComplete is always true).
     visibleIf: (a) => a.destination === 'ch',
     title: 'Which canton are you moving to?',
-    subtitle: "Switzerland's permits, taxes and registration are run by the canton — this tailors the local details.",
+    subtitle: "Knowing your canton lets us tailor the local details — you can add it later if you're not sure yet.",
     fields: [{ kind: 'canton' }],
     isComplete: () => true,
   },
@@ -425,6 +426,49 @@ const STEPS: WizardStep[] = [
     isComplete: () => true,
   },
 ];
+
+// ── Wizard phases (stable progress, ADR-0019 follow-up) ──────────────────────
+//
+// The wizard inserts branch questions (work/family/study/other) mid-flow, so a
+// "Step X of N" counter has a denominator that grows the moment a motivation is
+// picked — which reads as backsliding ("now there are MORE steps"). Instead we
+// group every step into three NAMED phases whose count never changes. The bar
+// fills by phase and the eyebrow names the phase, so progress only ever moves
+// forward. Every step id maps to exactly one phase.
+
+const WIZARD_PHASES = [
+  { id: 'route', label: 'Your route' },
+  { id: 'situation', label: 'Your situation' },
+  { id: 'details', label: 'Your details' },
+] as const;
+
+type WizardPhaseId = (typeof WIZARD_PHASES)[number]['id'];
+
+/** Which named phase each wizard step belongs to. */
+const STEP_PHASE: Record<string, WizardPhaseId> = {
+  origin: 'route',
+  destination: 'route',
+  passports: 'route',
+  motivation: 'situation',
+  'work-status': 'situation',
+  'work-employer': 'situation',
+  'family-rel': 'situation',
+  'family-status': 'situation',
+  'study-status': 'situation',
+  'study-inst': 'situation',
+  'other-desc': 'situation',
+  duration: 'details',
+  canton: 'details',
+  companions: 'details',
+};
+
+function phaseOfStep(stepId: string): WizardPhaseId {
+  return STEP_PHASE[stepId] ?? 'route';
+}
+
+function phaseIndex(phaseId: WizardPhaseId): number {
+  return WIZARD_PHASES.findIndex((p) => p.id === phaseId);
+}
 
 // ── Hooks ────────────────────────────────────────────────────────────────────
 
@@ -440,6 +484,92 @@ function useIsMobile() {
     return () => mq.removeEventListener('change', handler);
   }, []);
   return isMobile;
+}
+
+/** localStorage key recording that the user has read & acknowledged the
+ *  post-intake disclaimer in this browser. Bumped to -v2 etc. if the wording
+ *  materially changes and re-acknowledgement is required. */
+const DISCLAIMER_ACK_KEY = 'rg-disclaimer-ack-v1';
+
+function hasAckedDisclaimer(): boolean {
+  try {
+    return localStorage.getItem(DISCLAIMER_ACK_KEY) === '1';
+  } catch {
+    return false;
+  }
+}
+
+function persistDisclaimerAck() {
+  try {
+    localStorage.setItem(DISCLAIMER_ACK_KEY, '1');
+  } catch {
+    // storage unavailable — the modal will simply reappear next navigation.
+  }
+}
+
+/**
+ * Focus trap for a modal dialog. While `active`, Tab / Shift+Tab cycle within
+ * `containerRef`, focus is moved to `initialFocusRef` (or the first focusable
+ * element) on open, and focus is restored to the previously-focused element on
+ * close. Escape does NOT close the modal here — the disclaimer gate requires an
+ * explicit acknowledgement, so the caller intentionally does not pass an onClose
+ * for Escape.
+ */
+function useFocusTrap(
+  active: boolean,
+  containerRef: React.RefObject<HTMLElement>,
+  initialFocusRef?: React.RefObject<HTMLElement>,
+) {
+  useEffect(() => {
+    if (!active) return;
+    const container = containerRef.current;
+    if (!container) return;
+
+    const previouslyFocused = document.activeElement as HTMLElement | null;
+
+    const focusableSelector =
+      'a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])';
+
+    function focusables(): HTMLElement[] {
+      return Array.from(container!.querySelectorAll<HTMLElement>(focusableSelector)).filter(
+        (el) => el.offsetParent !== null || el === document.activeElement,
+      );
+    }
+
+    // Move focus into the dialog on open.
+    const target = initialFocusRef?.current ?? focusables()[0] ?? container;
+    target.focus();
+
+    function onKeyDown(e: KeyboardEvent) {
+      if (e.key !== 'Tab') return;
+      const items = focusables();
+      if (items.length === 0) {
+        e.preventDefault();
+        return;
+      }
+      const first = items[0];
+      const last = items[items.length - 1];
+      const activeEl = document.activeElement as HTMLElement | null;
+      if (e.shiftKey) {
+        if (activeEl === first || !container!.contains(activeEl)) {
+          e.preventDefault();
+          last.focus();
+        }
+      } else if (activeEl === last || !container!.contains(activeEl)) {
+        e.preventDefault();
+        first.focus();
+      }
+    }
+
+    document.addEventListener('keydown', onKeyDown, true);
+    return () => {
+      document.removeEventListener('keydown', onKeyDown, true);
+      // Restore focus to where it was before the dialog opened.
+      if (previouslyFocused && typeof previouslyFocused.focus === 'function') {
+        previouslyFocused.focus();
+      }
+    };
+  }, [active, containerRef, initialFocusRef]);
 }
 
 // ── Small UI atoms ───────────────────────────────────────────────────────────
@@ -1217,6 +1347,25 @@ function TaskCard({
   const done = status === 'done';
   const { completed: docsHandled, total: docsTotal } = docProgress(task, docState);
   const docsRemaining = docsTotal - docsHandled;
+
+  // Does this task carry any reference material worth folding away? (Key facts,
+  // verified cost/timeline, localCostTimeline note, long prose, or step links).
+  const hasReference =
+    !!task.keyFacts?.length ||
+    !!task.timeline ||
+    !!task.cost ||
+    !!task.localCostTimeline ||
+    !!task.detail ||
+    !!task.tldr ||
+    task.steps.some((s) => s.links && s.links.length > 0);
+
+  // A step link is "long" (a statute citation / sentence-length legal pointer)
+  // when its authored text reads as prose rather than a short label. We render
+  // those as a short label inline (sourceName) with the full authored text on
+  // hover (title=) and spelled out in full in the reference fold — never dropping
+  // sourceName / sourceUrl / lastVerified.
+  const isLongLink = (text: string) => text.trim().length > 48 || text.trim().split(/\s+/).length > 6;
+
   return (
     <div className="flex flex-col h-full">
       <div className="flex-1 overflow-y-auto px-6 sm:px-8 py-6 space-y-5">
@@ -1241,71 +1390,23 @@ function TaskCard({
           </span>
         </div>
 
-        {/* 1–2 sentence "what and why" (ADR-0012). Falls back to the verified
+        {/* ACTION FIRST (progressive disclosure). (a) one-line "what and why",
+            then (b) the numbered steps, then (c) documents. The reference grid
+            and long prose live in a single collapsed fold below. */}
+
+        {/* (a) 1–2 sentence "what and why" (ADR-0012). Falls back to the verified
             summary claim until the distilled tldr passes the content pipeline. */}
         <p className="text-slate-700 leading-relaxed">{(task.tldr ?? task.summary).text}</p>
 
-        {/* Key facts: scannable grid. keyFacts come from the content pipeline;
-            the verified timeline/cost claims are appended automatically (the
-            researcher does not duplicate them in keyFacts). */}
-        {(task.keyFacts?.length || task.timeline || task.cost || task.localCostTimeline) && (
-          <div>
-            <h3 className="font-semibold text-slate-900 mb-2">Key facts</h3>
-            <dl className="grid gap-2 sm:grid-cols-2">
-              {task.keyFacts?.map((fact) => (
-                <div key={fact.label} className="rounded-lg bg-slate-50 border border-slate-200 px-4 py-2.5">
-                  <dt className="text-xs font-semibold uppercase tracking-wide text-slate-500 mb-0.5">{fact.label}</dt>
-                  <dd className="text-sm text-slate-800">{fact.text}</dd>
-                </div>
-              ))}
-              {task.timeline && (
-                <div className="rounded-lg bg-slate-50 border border-slate-200 px-4 py-2.5">
-                  <dt className="text-xs font-semibold uppercase tracking-wide text-slate-500 mb-0.5">Processing time</dt>
-                  <dd className="text-sm text-slate-800">{task.timeline.text}</dd>
-                </div>
-              )}
-              {task.cost && (
-                <div className="rounded-lg bg-slate-50 border border-slate-200 px-4 py-2.5">
-                  <dt className="text-xs font-semibold uppercase tracking-wide text-slate-500 mb-0.5">Cost</dt>
-                  <dd className="text-sm text-slate-800">{task.cost.text}</dd>
-                </div>
-              )}
-              {task.localCostTimeline && !task.cost && !task.timeline && (
-                <div className="rounded-lg bg-slate-50 border border-slate-200 px-4 py-2.5 sm:col-span-2">
-                  <dt className="text-xs font-semibold uppercase tracking-wide text-slate-500 mb-0.5">Fees &amp; processing time</dt>
-                  <dd className="text-sm text-slate-800">
-                    {task.localCostTimeline === 'institution'
-                      ? 'Set by the educational institution, not at the federal level. Confirm the exact application fee and timing directly with the institution.'
-                      : 'Set by your canton, not at the federal level — there is no single national figure, and it varies across Switzerland. Confirm the exact amount and timing with your cantonal authorities (see “Your canton”).'}
-                  </dd>
-                </div>
-              )}
-            </dl>
-          </div>
-        )}
-
+        {/* Situational warning stays VISIBLE — it's specific to this step, not
+            boilerplate (it must not be folded away). */}
         {task.warning && (
           <div className="rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-800">
             <span className="font-semibold">Note: </span>{task.warning}
           </div>
         )}
 
-        {/* Full prose, collapsed by default (ADR-0012). When a distilled tldr
-            exists, the verified long summary moves in here with the detail. */}
-        {(task.detail || task.tldr) && (
-          <details className="group rounded-lg border border-slate-200">
-            <summary className="cursor-pointer select-none px-4 py-3 text-sm font-medium text-slate-700 hover:bg-slate-50 rounded-lg group-open:rounded-b-none group-open:border-b group-open:border-slate-100">
-              Read the details
-              <span className="float-right text-slate-400 group-open:hidden" aria-hidden="true">▸</span>
-              <span className="float-right text-slate-400 hidden group-open:inline" aria-hidden="true">▾</span>
-            </summary>
-            <div className="px-4 py-3 space-y-3">
-              {task.tldr && <p className="text-sm text-slate-700 leading-relaxed">{task.summary.text}</p>}
-              {task.detail && <p className="text-sm text-slate-600 leading-relaxed">{task.detail}</p>}
-            </div>
-          </details>
-        )}
-
+        {/* (b) The numbered "what you'll do" steps — the hero of the card. */}
         {task.steps.length > 0 && (
           <div>
             <h3 className="font-semibold text-slate-900 mb-3">What you'll do</h3>
@@ -1325,16 +1426,38 @@ function TaskCard({
                           // canton's office (sourceName already names the canton);
                           // otherwise keep the authored federal SEM directory link.
                           const useCanton = link.cantonOffice === true && cantonOfficeClaim !== null;
-                          return (
-                            <li key={li}>
-                              {useCanton ? (
+                          if (useCanton) {
+                            return (
+                              <li key={li}>
                                 <a href={cantonOfficeClaim!.sourceUrl} target="_blank" rel="noopener noreferrer" className="text-xs text-blue-600 hover:underline">
                                   {selectedCantonName && <span className="text-slate-500 not-italic">Your canton — </span>}
                                   {cantonOfficeClaim!.sourceName} ↗
                                 </a>
-                              ) : (
-                                <a href={link.sourceUrl} target="_blank" rel="noopener noreferrer" className="text-xs text-blue-600 hover:underline">{link.text} ↗</a>
-                              )}
+                              </li>
+                            );
+                          }
+                          // Long, sentence-length legal links: show a short label
+                          // (the authority's name) with the full authored text on
+                          // hover. The complete sentence is spelled out in the
+                          // reference fold below, so nothing is lost.
+                          if (isLongLink(link.text)) {
+                            return (
+                              <li key={li}>
+                                <a
+                                  href={link.sourceUrl}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  title={link.text}
+                                  className="text-xs text-blue-600 hover:underline"
+                                >
+                                  {link.sourceName} ↗
+                                </a>
+                              </li>
+                            );
+                          }
+                          return (
+                            <li key={li}>
+                              <a href={link.sourceUrl} target="_blank" rel="noopener noreferrer" className="text-xs text-blue-600 hover:underline">{link.text} ↗</a>
                             </li>
                           );
                         })}
@@ -1347,6 +1470,7 @@ function TaskCard({
           </div>
         )}
 
+        {/* (c) Documents needed. */}
         {task.documents.length > 0 && (
           <div>
             <div className="flex items-baseline justify-between mb-2">
@@ -1360,25 +1484,140 @@ function TaskCard({
           </div>
         )}
 
+        {/* (d) ONE collapsed reference fold: key facts grid (incl. cost/timeline
+            and the localCostTimeline note), legal basis, the long prose, and the
+            full text of any sentence-length legal links. Provenance is preserved:
+            every claim keeps its sourceName / sourceUrl / lastVerified. */}
+        {hasReference && (
+          <details className="group rounded-lg border border-slate-200">
+            <summary className="cursor-pointer select-none px-4 py-3 text-sm font-medium text-slate-700 hover:bg-slate-50 rounded-lg group-open:rounded-b-none group-open:border-b group-open:border-slate-100 focus-visible:ring-2 focus-visible:ring-brand-500">
+              Reference: key facts, legal basis &amp; details
+              <span className="float-right text-slate-400 group-open:hidden" aria-hidden="true">▸</span>
+              <span className="float-right text-slate-400 hidden group-open:inline" aria-hidden="true">▾</span>
+            </summary>
+            <div className="px-4 py-4 space-y-4">
+              {/* Key facts grid (incl. Legal basis facts, cost, timeline, and
+                  the canton/institution "Fees & processing time" note). */}
+              {(task.keyFacts?.length || task.timeline || task.cost || task.localCostTimeline) && (
+                <div>
+                  <h4 className="text-xs font-semibold uppercase tracking-wide text-slate-500 mb-2">Key facts</h4>
+                  <dl className="grid gap-2 sm:grid-cols-2">
+                    {task.keyFacts?.map((fact) => (
+                      <div key={fact.label} className="rounded-lg bg-slate-50 border border-slate-200 px-4 py-2.5">
+                        <dt className="text-xs font-semibold uppercase tracking-wide text-slate-500 mb-0.5">{fact.label}</dt>
+                        <dd className="text-sm text-slate-800">{fact.text}</dd>
+                      </div>
+                    ))}
+                    {task.timeline && (
+                      <div className="rounded-lg bg-slate-50 border border-slate-200 px-4 py-2.5">
+                        <dt className="text-xs font-semibold uppercase tracking-wide text-slate-500 mb-0.5">Processing time</dt>
+                        <dd className="text-sm text-slate-800">{task.timeline.text}</dd>
+                      </div>
+                    )}
+                    {task.cost && (
+                      <div className="rounded-lg bg-slate-50 border border-slate-200 px-4 py-2.5">
+                        <dt className="text-xs font-semibold uppercase tracking-wide text-slate-500 mb-0.5">Cost</dt>
+                        <dd className="text-sm text-slate-800">{task.cost.text}</dd>
+                      </div>
+                    )}
+                    {task.localCostTimeline && !task.cost && !task.timeline && (
+                      <div className="rounded-lg bg-slate-50 border border-slate-200 px-4 py-2.5 sm:col-span-2">
+                        <dt className="text-xs font-semibold uppercase tracking-wide text-slate-500 mb-0.5">Fees &amp; processing time</dt>
+                        <dd className="text-sm text-slate-800">
+                          {task.localCostTimeline === 'institution'
+                            ? 'Set by the educational institution, not at the federal level. Confirm the exact application fee and timing directly with the institution.'
+                            : 'Set by your canton, not at the federal level — there is no single national figure, and it varies across Switzerland. Confirm the exact amount and timing with your cantonal authorities (see “Your canton”).'}
+                        </dd>
+                      </div>
+                    )}
+                  </dl>
+                </div>
+              )}
+
+              {/* The long authored prose (the former "Read the details"). */}
+              {(task.detail || task.tldr) && (
+                <div className="space-y-3">
+                  {task.tldr && <p className="text-sm text-slate-700 leading-relaxed">{task.summary.text}</p>}
+                  {task.detail && <p className="text-sm text-slate-600 leading-relaxed">{task.detail}</p>}
+                </div>
+              )}
+
+              {/* Full text of any sentence-length legal step-links — spelled out
+                  here (collapsed inline above) so the authored wording, the
+                  authority name and the link are all preserved. */}
+              {task.steps.some((s) => s.links?.some((l) => l.cantonOffice !== true && isLongLink(l.text))) && (
+                <div>
+                  <h4 className="text-xs font-semibold uppercase tracking-wide text-slate-500 mb-2">Legal basis &amp; references</h4>
+                  <ul className="space-y-1.5">
+                    {task.steps.flatMap((s, si) =>
+                      (s.links ?? [])
+                        .map((link, li) => ({ link, key: `${si}-${li}` }))
+                        .filter(({ link }) => link.cantonOffice !== true && isLongLink(link.text))
+                        .map(({ link, key }) => (
+                          <li key={key} className="text-sm text-slate-600 leading-relaxed">
+                            {link.text}{' '}
+                            <a href={link.sourceUrl} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
+                              {link.sourceName} ↗
+                            </a>
+                            {link.lastVerified && (
+                              <span className="ml-1 text-xs text-slate-500">link verified {link.lastVerified}</span>
+                            )}
+                          </li>
+                        )),
+                    )}
+                  </ul>
+                </div>
+              )}
+            </div>
+          </details>
+        )}
+
+        {/* Source stays always-visible; the two boilerplate caveats are
+            consolidated into one collapsed "Sources & legal notes" disclosure —
+            present and findable, no longer triplicated. */}
         <div className="border-t border-slate-100 pt-4">
           <p className="text-sm text-slate-600">
             Source:{' '}
             <a href={task.summary.sourceUrl} target="_blank" rel="noopener noreferrer" className="hover:underline text-slate-500">{task.summary.sourceName}</a>
+            {task.summary.lastVerified && (
+              <span className="ml-2 text-xs text-slate-500">verified {task.summary.lastVerified}</span>
+            )}
           </p>
-          <p className="mt-2 text-sm text-slate-600 italic">
-            General guidance only — not legal advice. Confirm with a licensed immigration professional or the relevant authority.
-          </p>
-          <p className="mt-2 text-sm text-slate-600 italic">
-            Marking a step done only records your own progress on this site — it is not confirmation
-            that a legal requirement has been met or an application approved.
-          </p>
+          {/* Core "not legal advice" caveat kept always-visible on the surface
+              where users act on claims; the fuller notes live in the disclosure. */}
+          <p className="mt-1 text-xs text-slate-500">General guidance only — not legal advice.</p>
+          <details className="group mt-2">
+            <summary className="cursor-pointer select-none text-xs font-medium text-slate-500 hover:text-slate-700 rounded focus-visible:ring-2 focus-visible:ring-brand-500">
+              Sources &amp; legal notes
+              <span className="ml-1 text-slate-400 group-open:hidden" aria-hidden="true">▸</span>
+              <span className="ml-1 text-slate-400 hidden group-open:inline" aria-hidden="true">▾</span>
+            </summary>
+            <div className="mt-2 space-y-2">
+              <p className="text-sm text-slate-600">
+                Source:{' '}
+                <a href={task.summary.sourceUrl} target="_blank" rel="noopener noreferrer" className="hover:underline text-slate-500">{task.summary.sourceName}</a>
+                {task.summary.lastVerified && (
+                  <span className="ml-2 text-xs text-slate-500">verified {task.summary.lastVerified}</span>
+                )}
+              </p>
+              <p className="text-sm text-slate-600 italic">
+                General guidance only — not legal advice. Confirm with a licensed immigration professional or the relevant authority.
+              </p>
+              <p className="text-sm text-slate-600 italic">
+                {DISCLAIMER_PROGRESS_NOTE}
+              </p>
+            </div>
+          </details>
         </div>
       </div>
 
       <div className="shrink-0 px-6 sm:px-8 py-4 border-t border-slate-200 bg-white">
+        {/* Calmer gate: a helper near the checklist instead of a scolding line on
+            a greyed button. Only shows when documents are still outstanding. */}
         {!done && docsRemaining > 0 && (
           <p className="mb-2 text-xs text-slate-500 text-center">
-            {docsRemaining} document{docsRemaining === 1 ? '' : 's'} left to check off (or skip) before this step can be marked done.
+            A few documents to go — check the ones you have, skip what doesn't apply, and you can
+            mark this step done.
           </p>
         )}
         <div className="flex gap-3">
@@ -1575,6 +1814,132 @@ function WaitlistPanel({
   );
 }
 
+// ── Post-intake disclaimer gate (replaces the persistent plan banner) ────────
+
+/**
+ * Blocking disclaimer modal shown the first time a user reaches the plan in this
+ * browser — both when finishing the wizard and when opening a shared/bookmarked
+ * plan link cold. The plan renders beneath it, but a full-screen overlay + focus
+ * trap make the modal the gate: the plan is not readable or interactive until
+ * the user confirms. There is deliberately NO backdrop-click or Escape dismissal
+ * — acknowledgement is required (CLAUDE.md rule 7). Wording is single-sourced
+ * from `utils/disclaimer.ts`, which mirrors `Disclaimer.astro` verbatim.
+ */
+function DisclaimerModal({ onAcknowledge }: { onAcknowledge: () => void }) {
+  const dialogRef = useRef<HTMLDivElement>(null);
+  const confirmRef = useRef<HTMLButtonElement>(null);
+
+  useFocusTrap(true, dialogRef, confirmRef);
+
+  // Prevent background scroll while the gate is up.
+  useEffect(() => {
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = prev;
+    };
+  }, []);
+
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+      {/* Opaque-enough backdrop so the plan beneath is not readable. No onClick:
+          clicking the backdrop must NOT dismiss the gate. */}
+      <div aria-hidden="true" className="absolute inset-0 bg-slate-900/70 backdrop-blur-sm" />
+      <div
+        ref={dialogRef}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="rg-disclaimer-title"
+        aria-describedby="rg-disclaimer-body"
+        className="relative w-full max-w-lg rounded-2xl bg-white shadow-xl border border-slate-200 p-6 sm:p-8"
+      >
+        <h2
+          id="rg-disclaimer-title"
+          className="font-serif text-xl sm:text-2xl font-bold text-slate-900 leading-snug"
+        >
+          Before your plan — please read
+        </h2>
+        <div id="rg-disclaimer-body" className="mt-3 space-y-3 text-sm text-slate-700 leading-relaxed">
+          <p>
+            <strong>{DISCLAIMER_LEAD}</strong> {DISCLAIMER_BODY}
+          </p>
+          <p className="text-slate-600">
+            {DISCLAIMER_PROGRESS_NOTE}
+          </p>
+          <p className="text-slate-500">
+            See our{' '}
+            <a href={IMPRESSUM_PATH} className="underline hover:text-slate-800">
+              Impressum
+            </a>{' '}
+            for who runs this site.
+          </p>
+        </div>
+        <div className="mt-6">
+          <button
+            ref={confirmRef}
+            type="button"
+            onClick={onAcknowledge}
+            className="w-full rounded-xl bg-brand-600 py-3 font-medium text-white transition-colors hover:bg-brand-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
+          >
+            I've read and understand
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ── Momentum affirmation (calmer, after marking a step done) ─────────────────
+
+/**
+ * Brief, dismissible affirmation shown after the user marks a step done. Counts
+ * ONLY the user's own real progress (no fabricated reassurance). Adds a quiet
+ * milestone note as the plan crosses 25 / 50 / 75 %. Auto-dismisses; also
+ * dismissible by the user.
+ */
+function MomentumToast({
+  remaining, pct, onDismiss,
+}: { remaining: number; pct: number; onDismiss: () => void }) {
+  useEffect(() => {
+    const t = setTimeout(onDismiss, 6000);
+    return () => clearTimeout(t);
+  }, [onDismiss]);
+
+  const milestone =
+    pct >= 75 ? "You're three-quarters of the way there."
+    : pct >= 50 ? "Halfway through your plan — keep going."
+    : pct >= 25 ? "A quarter done — you've got momentum."
+    : null;
+
+  return (
+    <div
+      role="status"
+      className="pointer-events-auto flex items-start gap-3 rounded-xl border border-emerald-200 bg-emerald-50 px-4 py-3 shadow-sm"
+    >
+      <span className="mt-0.5 shrink-0 inline-flex h-5 w-5 items-center justify-center rounded-full bg-emerald-600 text-white">
+        <IconCheck className="h-3 w-3" />
+      </span>
+      <div className="min-w-0 flex-1 text-sm">
+        <p className="font-medium text-emerald-900">
+          Step done — nice work.{' '}
+          {remaining > 0
+            ? `${remaining} to go.`
+            : 'That was the last one.'}
+        </p>
+        {milestone && <p className="mt-0.5 text-emerald-700">{milestone}</p>}
+      </div>
+      <button
+        type="button"
+        onClick={onDismiss}
+        aria-label="Dismiss"
+        className="shrink-0 -mr-1 -mt-1 inline-flex h-7 w-7 items-center justify-center rounded-md text-emerald-700 hover:bg-emerald-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500"
+      >
+        <IconX className="h-4 w-4" />
+      </button>
+    </div>
+  );
+}
+
 // ── Main component ───────────────────────────────────────────────────────────
 
 export default function CorridorApp({ tasks, corridorTitle, originIso2, destinationIso2, availableCorridors, coversMotivations, cantons = [] }: CorridorAppProps) {
@@ -1591,6 +1956,12 @@ export default function CorridorApp({ tasks, corridorTitle, originIso2, destinat
   // Desktop: let the user collapse the plan sidebar to give the task panel full width.
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
   const [hydrated, setHydrated] = useState(false);
+  // Post-intake disclaimer gate. `null` until we've read localStorage after
+  // mount (must not differ from the server's first render); then true/false.
+  // The modal shows whenever we're in the plan phase and this is false.
+  const [disclaimerAcked, setDisclaimerAcked] = useState<boolean | null>(null);
+  // Momentum affirmation after marking a step done (calmer than a banner).
+  const [momentum, setMomentum] = useState<{ remaining: number; pct: number } | null>(null);
 
   const isMobile = useIsMobile();
 
@@ -1675,6 +2046,10 @@ export default function CorridorApp({ tasks, corridorTitle, originIso2, destinat
       setDocState(clean);
     }
     if (saved?.activeTaskId) setActiveTaskId(saved.activeTaskId);
+    // Disclaimer acknowledgement is read here (after mount) so it never differs
+    // from the server's first render. The gate appears in the plan phase until
+    // this is true.
+    setDisclaimerAcked(hasAckedDisclaimer());
     setHydrated(true);
   }, []);
 
@@ -1828,6 +2203,22 @@ export default function CorridorApp({ tasks, corridorTitle, originIso2, destinat
   const currentStep = visibleSteps[currentIndex] ?? visibleSteps[0];
   const ready = currentStep.isComplete(answers);
 
+  // Phase-based progress (item 5). The current step maps to one of three stable
+  // named phases; the bar fills the current phase proportionally to how far the
+  // user is through that phase's currently-visible steps, so inserting branch
+  // questions never grows a denominator or pushes progress backward.
+  const currentPhaseId = phaseOfStep(currentStep.id);
+  const currentPhase = WIZARD_PHASES[phaseIndex(currentPhaseId)];
+  const phaseProgressPct = (() => {
+    const stepsInPhase = visibleSteps.filter((s) => phaseOfStep(s.id) === currentPhaseId);
+    const idxInPhase = stepsInPhase.findIndex((s) => s.id === currentStep.id);
+    if (stepsInPhase.length === 0) return 0;
+    // Fill is "steps already passed" within the phase, out of the phase's steps,
+    // nudged so the very first step of a phase still reads as started.
+    const passed = Math.max(0, idxInPhase);
+    return Math.round(((passed + 0.5) / stepsInPhase.length) * 100);
+  })();
+
   function resolve<T>(v: T | ((a: Intake) => T)): T {
     return typeof v === 'function' ? (v as (a: Intake) => T)(answers) : v;
   }
@@ -1873,14 +2264,32 @@ export default function CorridorApp({ tasks, corridorTitle, originIso2, destinat
     setPhase('wizard');
     setStepId(targetStepId);
     setMobilePanelOpen(false);
+    setMomentum(null);
     pushHistory('wizard', targetStepId);
   }
 
   function handleMarkDone(id: string) {
     const nextDone = new Set([...doneIds, id]);
     setDoneIds(nextDone);
+    // Affirmation counts ONLY the user's own real progress over applicable tasks.
+    const doneApplicable = applicableTasks.filter((t) => nextDone.has(t.id)).length;
+    const totalApplicable = applicableTasks.length;
+    const remaining = Math.max(0, totalApplicable - doneApplicable);
+    const pct = totalApplicable > 0 ? Math.round((doneApplicable / totalApplicable) * 100) : 0;
+    // Don't show the brief toast when the whole plan is finished — the all-done
+    // panel already celebrates that.
+    setMomentum(remaining > 0 ? { remaining, pct } : null);
     const next = currentTaskId(orderedTasks, nextDone);
     setActiveTaskId(next ?? id);
+  }
+
+  function handleAcknowledgeDisclaimer() {
+    persistDisclaimerAck();
+    setDisclaimerAcked(true);
+    // Move focus somewhere sensible once the gate clears: the active task heading
+    // (or the all-done heading) so keyboard / screen-reader users land in the
+    // plan rather than on <body>. Runs after the modal unmounts on the next tick.
+    setTimeout(() => taskHeadingRef.current?.focus(), 0);
   }
 
   /** Toggle a document between unchecked and `mark` ('done' or 'skipped'). */
@@ -1915,6 +2324,7 @@ export default function CorridorApp({ tasks, corridorTitle, originIso2, destinat
     setDocState({});
     setActiveTaskId(null);
     setMobilePanelOpen(false);
+    setMomentum(null);
     try { localStorage.removeItem(STORAGE_KEY); } catch { /* ignore */ }
   }
 
@@ -1951,7 +2361,7 @@ export default function CorridorApp({ tasks, corridorTitle, originIso2, destinat
         <div className="shrink-0 bg-white border-b border-slate-200 px-4 sm:px-8 py-3 sm:py-4 flex items-center justify-between gap-3">
           <div className="min-w-0">
             <p className="font-serif text-lg sm:text-xl font-bold text-slate-900">Relocation Guide</p>
-            <p className="text-xs sm:text-sm text-slate-500 mt-0.5 truncate">A few questions, then a step-by-step plan built for your situation</p>
+            <p className="text-xs sm:text-sm text-slate-500 mt-0.5 truncate">A few questions, then a plan made for your move — about 2 minutes.</p>
           </div>
           {currentIndex > 0 && (
             <button type="button" onClick={handleReset} className="shrink-0 text-sm text-slate-500 hover:text-slate-700 font-medium whitespace-nowrap">Start over</button>
@@ -1959,10 +2369,35 @@ export default function CorridorApp({ tasks, corridorTitle, originIso2, destinat
         </div>
 
         <div className="flex-1 min-h-0 bg-slate-50 flex flex-col items-center px-4 sm:px-6 py-3 sm:py-5">
-          <div className="shrink-0 flex gap-2 w-full max-w-xl lg:max-w-5xl mb-3 sm:mb-4">
-            {visibleSteps.map((s, i) => (
-              <div key={s.id} className={`h-1 flex-1 rounded-full transition-colors ${i <= currentIndex ? 'bg-brand-600' : 'bg-slate-200'}`} />
-            ))}
+          {/* Phase-based progress: three STABLE named phases whose count never
+              grows when branch questions are inserted, so the bar only ever moves
+              forward. The current phase fills proportionally to honest position. */}
+          <div
+            className="shrink-0 w-full max-w-xl lg:max-w-5xl mb-3 sm:mb-4"
+            role="progressbar"
+            aria-valuemin={1}
+            aria-valuemax={WIZARD_PHASES.length}
+            aria-valuenow={phaseIndex(currentPhaseId) + 1}
+            aria-label={`${currentPhase.label} — phase ${phaseIndex(currentPhaseId) + 1} of ${WIZARD_PHASES.length}`}
+          >
+            <span className="sr-only">
+              {currentPhase.label} — phase {phaseIndex(currentPhaseId) + 1} of {WIZARD_PHASES.length}
+            </span>
+            {/* Decorative bar segments — the position is announced via the
+                progressbar role above, so the visual segments stay hidden from AT. */}
+            <div className="flex gap-2" aria-hidden="true">
+              {WIZARD_PHASES.map((p, pi) => {
+                const curPi = phaseIndex(currentPhaseId);
+                let fill = 0;
+                if (pi < curPi) fill = 100;
+                else if (pi === curPi) fill = phaseProgressPct;
+                return (
+                  <div key={p.id} className="h-1 flex-1 rounded-full bg-slate-200 overflow-hidden">
+                    <div className="h-full rounded-full bg-brand-600 transition-all duration-300" style={{ width: `${fill}%` }} />
+                  </div>
+                );
+              })}
+            </div>
           </div>
 
           {/* The card caps at the available height: question header and footer
@@ -1972,29 +2407,49 @@ export default function CorridorApp({ tasks, corridorTitle, originIso2, destinat
               stays a centered single column and the card internals are unchanged. */}
           <div className="w-full max-w-xl lg:max-w-5xl flex-1 min-h-0 flex flex-col lg:grid lg:grid-cols-[1fr_minmax(0,36rem)] lg:items-stretch lg:gap-8">
             <aside className="hidden lg:flex lg:flex-col lg:justify-center lg:min-h-0 lg:pr-2">
-              <p className="font-serif text-2xl font-bold text-slate-900 leading-snug">A relocation plan you can trust.</p>
+              <p className="font-serif text-2xl font-bold text-slate-900 leading-snug">Let's map out your move.</p>
               <p className="mt-3 text-sm text-slate-600 leading-relaxed">
-                Answer a few questions and we build a step-by-step plan for your exact route — every step traced to an official source.
+                Tell us a little about your situation and we'll build a step-by-step plan for your
+                exact route — every fact traced to an official source.
               </p>
-              <ul className="mt-6 space-y-3">
-                <li className="flex items-start gap-2.5 text-sm text-slate-700">
-                  <svg aria-hidden="true" viewBox="0 0 20 20" fill="currentColor" className="mt-0.5 h-5 w-5 shrink-0 text-brand-600"><path fillRule="evenodd" d="M9.661 2.237a.531.531 0 0 1 .678 0 11.947 11.947 0 0 0 7.078 2.749.5.5 0 0 1 .479.425c.069.52.104 1.05.104 1.59 0 5.162-3.26 9.563-7.834 11.256a.48.48 0 0 1-.332 0C5.26 16.564 2 12.163 2 7c0-.538.035-1.069.104-1.589a.5.5 0 0 1 .48-.425 11.947 11.947 0 0 0 7.077-2.75Zm4.196 5.954a.75.75 0 0 0-1.214-.882l-3.236 4.53-1.847-1.846a.75.75 0 0 0-1.06 1.06l2.5 2.5a.75.75 0 0 0 1.137-.089l3.72-5.273Z" clipRule="evenodd" /></svg>
+              {/* Trust points stay present, but quiet — small chips, not a checklist. */}
+              <ul className="mt-6 flex flex-wrap gap-2">
+                <li className="inline-flex items-center gap-1.5 rounded-full bg-white border border-slate-200 px-2.5 py-1 text-xs text-slate-600">
+                  <svg aria-hidden="true" viewBox="0 0 20 20" fill="currentColor" className="h-3.5 w-3.5 shrink-0 text-brand-600"><path fillRule="evenodd" d="M9.661 2.237a.531.531 0 0 1 .678 0 11.947 11.947 0 0 0 7.078 2.749.5.5 0 0 1 .479.425c.069.52.104 1.05.104 1.59 0 5.162-3.26 9.563-7.834 11.256a.48.48 0 0 1-.332 0C5.26 16.564 2 12.163 2 7c0-.538.035-1.069.104-1.589a.5.5 0 0 1 .48-.425 11.947 11.947 0 0 0 7.077-2.75Zm4.196 5.954a.75.75 0 0 0-1.214-.882l-3.236 4.53-1.847-1.846a.75.75 0 0 0-1.06 1.06l2.5 2.5a.75.75 0 0 0 1.137-.089l3.72-5.273Z" clipRule="evenodd" /></svg>
                   Traced to official sources
                 </li>
-                <li className="flex items-start gap-2.5 text-sm text-slate-700">
-                  <svg aria-hidden="true" viewBox="0 0 20 20" fill="currentColor" className="mt-0.5 h-5 w-5 shrink-0 text-brand-600"><path fillRule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clipRule="evenodd" /></svg>
+                <li className="inline-flex items-center gap-1.5 rounded-full bg-white border border-slate-200 px-2.5 py-1 text-xs text-slate-600">
+                  <svg aria-hidden="true" viewBox="0 0 20 20" fill="currentColor" className="h-3.5 w-3.5 shrink-0 text-brand-600"><path fillRule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clipRule="evenodd" /></svg>
                   Independently fact-checked
                 </li>
-                <li className="flex items-start gap-2.5 text-sm text-slate-700">
-                  <svg aria-hidden="true" viewBox="0 0 20 20" fill="currentColor" className="mt-0.5 h-5 w-5 shrink-0 text-brand-600"><path fillRule="evenodd" d="M5.75 2a.75.75 0 0 1 .75.75V4h7V2.75a.75.75 0 0 1 1.5 0V4h.25A2.75 2.75 0 0 1 18 6.75v8.5A2.75 2.75 0 0 1 15.25 18H4.75A2.75 2.75 0 0 1 2 15.25v-8.5A2.75 2.75 0 0 1 4.75 4H5V2.75A.75.75 0 0 1 5.75 2Zm-1 5.5c-.69 0-1.25.56-1.25 1.25v6.5c0 .69.56 1.25 1.25 1.25h10.5c.69 0 1.25-.56 1.25-1.25v-6.5c0-.69-.56-1.25-1.25-1.25H4.75Z" clipRule="evenodd" /></svg>
+                <li className="inline-flex items-center gap-1.5 rounded-full bg-white border border-slate-200 px-2.5 py-1 text-xs text-slate-600">
+                  <svg aria-hidden="true" viewBox="0 0 20 20" fill="currentColor" className="h-3.5 w-3.5 shrink-0 text-brand-600"><path fillRule="evenodd" d="M5.75 2a.75.75 0 0 1 .75.75V4h7V2.75a.75.75 0 0 1 1.5 0V4h.25A2.75 2.75 0 0 1 18 6.75v8.5A2.75 2.75 0 0 1 15.25 18H4.75A2.75 2.75 0 0 1 2 15.25v-8.5A2.75 2.75 0 0 1 4.75 4H5V2.75A.75.75 0 0 1 5.75 2Zm-1 5.5c-.69 0-1.25.56-1.25 1.25v6.5c0 .69.56 1.25 1.25 1.25h10.5c.69 0 1.25-.56 1.25-1.25v-6.5c0-.69-.56-1.25-1.25-1.25H4.75Z" clipRule="evenodd" /></svg>
                   Dated and re-checked
                 </li>
               </ul>
             </aside>
             <div className="w-full max-h-full bg-white rounded-2xl shadow-sm border border-slate-100 flex flex-col overflow-hidden lg:min-h-0">
+              {/* Warm intro on EVERY breakpoint above the first country grid. On
+                  lg+ the aside carries the warmth, so this in-card version only
+                  shows below lg (where there is no aside). Shown on the very first
+                  step only. */}
+              {currentStep.id === STEPS[0].id && (
+                <div className="lg:hidden shrink-0 px-6 sm:px-8 pt-5 sm:pt-7 -mb-1">
+                  <p className="font-serif text-lg font-bold text-slate-900 leading-snug">Let's map out your move.</p>
+                  <p className="mt-1.5 text-sm text-slate-600 leading-relaxed">
+                    Tell us a little about your situation and we'll build a step-by-step plan for your
+                    exact route — every fact traced to an official source.
+                  </p>
+                  <ul className="mt-3 flex flex-wrap gap-1.5">
+                    <li className="inline-flex items-center rounded-full bg-slate-50 border border-slate-200 px-2 py-0.5 text-[11px] text-slate-600">Traced to official sources</li>
+                    <li className="inline-flex items-center rounded-full bg-slate-50 border border-slate-200 px-2 py-0.5 text-[11px] text-slate-600">Independently fact-checked</li>
+                    <li className="inline-flex items-center rounded-full bg-slate-50 border border-slate-200 px-2 py-0.5 text-[11px] text-slate-600">Dated and re-checked</li>
+                  </ul>
+                </div>
+              )}
               <div className="shrink-0 px-6 sm:px-8 pt-5 sm:pt-7">
                 <p className="text-xs font-bold text-brand-700 uppercase tracking-widest mb-2 sm:mb-3">
-                  Step {currentIndex + 1} of {visibleSteps.length}
+                  {currentPhase.label}
                 </p>
                 <h2 ref={stepHeadingRef} tabIndex={-1} className="text-xl sm:text-2xl font-bold text-slate-900 mb-1 focus:outline-none">{resolve(currentStep.title)}</h2>
                 {currentStep.subtitle && <p className="text-sm text-slate-500">{resolve(currentStep.subtitle)}</p>}
@@ -2127,10 +2582,15 @@ export default function CorridorApp({ tasks, corridorTitle, originIso2, destinat
             </div>
           </div>
 
-          <p className="shrink-0 text-xs text-slate-600 text-center mt-3 max-w-md px-4">
-            General guidance only — not legal advice. Rules change frequently; always verify with
-            the official authority or a licensed immigration adviser before acting.{' '}
-            <a href="/impressum" className="underline hover:text-slate-800">Impressum</a>
+          {/* Slim, calm reassurance line (replaces the old legal-heavy banner).
+              The full disclaimer lives in the footer + the post-intake modal gate;
+              the Impressum stays reachable here. */}
+          <p className="shrink-0 text-xs text-slate-500 text-center mt-3 max-w-md px-4">
+            Your answers stay on this device{' '}
+            <span aria-hidden="true">·</span>{' '}
+            Informational only — not legal advice{' '}
+            <span aria-hidden="true">·</span>{' '}
+            <a href={IMPRESSUM_PATH} className="underline hover:text-slate-700">Impressum</a>
           </p>
         </div>
       </div>
@@ -2156,12 +2616,14 @@ export default function CorridorApp({ tasks, corridorTitle, originIso2, destinat
           <button type="button" onClick={handleReset} className="shrink-0 text-sm text-brand-700 hover:text-brand-800 font-medium whitespace-nowrap focus-visible:ring-2 focus-visible:ring-brand-500">← Start over</button>
         </div>
 
-        <div className="shrink-0 bg-amber-50 border-b border-amber-100 px-4 py-2">
-          <p className="text-xs text-amber-800">
-            <strong>General guidance only — not legal advice.</strong>{' '}
-            Rules change frequently; always verify with the official authority or a licensed
-            immigration adviser before acting.{' '}
-            <a href="/impressum" className="underline hover:text-amber-900">Impressum</a>
+        {/* Slim, calm caveat line (replaces the old gold/amber banner, per the
+            founder's directive — the gold banner is gone everywhere). Mirrors the
+            intake slim line; the full disclaimer lives in the footer + modal gate. */}
+        <div className="shrink-0 border-b border-slate-200 px-4 py-2 text-center">
+          <p className="text-xs text-slate-500">
+            Informational only — not legal advice{' '}
+            <span aria-hidden="true">·</span>{' '}
+            <a href={IMPRESSUM_PATH} className="underline hover:text-slate-700">Impressum</a>
           </p>
         </div>
 
@@ -2252,8 +2714,24 @@ export default function CorridorApp({ tasks, corridorTitle, originIso2, destinat
     <div className="flex-1 flex items-center justify-center text-slate-500 p-8">Select a step from your journey to begin.</div>
   );
 
+  // Post-intake gate: show the blocking disclaimer modal the first time the plan
+  // is reached in this browser — both finishing the wizard AND opening a shared /
+  // bookmarked link cold (both paths set phase='app'). `disclaimerAcked` is null
+  // until localStorage is read after mount, so the modal never renders during the
+  // server / first client render (no hydration mismatch). While gated, the plan
+  // renders beneath but is inert (aria-hidden + no pointer events) so it can't be
+  // read or interacted with until acknowledged.
+  const showDisclaimerGate = disclaimerAcked === false;
+
   return (
-    <div className="flex-1 flex flex-col overflow-hidden">
+    <>
+    <div
+      className="flex-1 flex flex-col overflow-hidden"
+      aria-hidden={showDisclaimerGate ? true : undefined}
+      // While the gate is up the plan beneath must not be interactive; the modal
+      // is the only thing the user can reach.
+      style={showDisclaimerGate ? { pointerEvents: 'none' } : undefined}
+    >
       <div className="shrink-0 bg-white border-b border-slate-200 px-4 sm:px-8 py-3 sm:py-5 flex items-center justify-between gap-3 min-w-0">
         <div className="min-w-0">
           <p className="text-base sm:text-xl font-bold text-slate-900 flex items-center gap-1.5 min-w-0">
@@ -2276,14 +2754,9 @@ export default function CorridorApp({ tasks, corridorTitle, originIso2, destinat
         <button type="button" onClick={handleReset} className="shrink-0 text-sm text-brand-700 hover:text-brand-800 font-medium whitespace-nowrap focus-visible:ring-2 focus-visible:ring-brand-500">← Start over</button>
       </div>
 
-      <div className="shrink-0 bg-amber-50 border-b border-amber-100 px-4 py-2">
-        <p className="text-xs text-amber-800">
-          <strong>General guidance only — not legal advice.</strong>{' '}
-          Rules change frequently; always verify with the official authority or a licensed
-          immigration adviser before acting.{' '}
-          <a href="/impressum" className="underline hover:text-amber-900">Impressum</a>
-        </p>
-      </div>
+      {/* The persistent "not legal advice" banner that used to frame the plan is
+          replaced by the post-intake DisclaimerModal gate (rendered below). The
+          full disclaimer still lives in the site footer on every page. */}
 
       {!routeCovered && answers.motivation && (
         <div className="shrink-0 bg-rose-50 border-b border-rose-100 px-4 py-2.5">
@@ -2347,5 +2820,20 @@ export default function CorridorApp({ tasks, corridorTitle, originIso2, destinat
         </div>
       )}
     </div>
+
+    {/* Momentum affirmation (calmer than a banner) — only after the user marks a
+        real step done; counts their own progress only. Sits above the plan, below
+        the gate. */}
+    {momentum && !showDisclaimerGate && (
+      <div className="pointer-events-none fixed inset-x-0 bottom-4 z-40 flex justify-center px-4">
+        <div className="w-full max-w-sm">
+          <MomentumToast remaining={momentum.remaining} pct={momentum.pct} onDismiss={() => setMomentum(null)} />
+        </div>
+      </div>
+    )}
+
+    {/* Blocking post-intake disclaimer gate. */}
+    {showDisclaimerGate && <DisclaimerModal onAcknowledge={handleAcknowledgeDisclaimer} />}
+    </>
   );
 }
