@@ -10,6 +10,18 @@ coming next. Newest updates are at the top.
 
 ---
 
+## 2026-06-14 — The canton picker is now a searchable dropdown
+
+**What changed.** The "Which canton are you moving to?" question (Switzerland) was a grid of all 26 cantons; it's now a **searchable dropdown** — start typing and it filters the list (it even works without the accents, e.g. "zurich" finds "Zürich"), with arrow-key/Enter selection and an "I'm not sure yet" option. Fully keyboard- and screen-reader-friendly.
+
+**Why it matters.** 26 options is a lot to scan; type-to-find is faster and tidier, especially on a phone.
+
+**What you'd notice today.** On a Switzerland plan, the canton step is now a search box rather than a wall of buttons.
+
+**What's next.** Same as before — expand the sourced per-canton detail beyond the first five.
+
+---
+
 ## 2026-06-14 — Switzerland now asks which canton you're moving to
 
 **What changed.** You asked whether Swiss rules differ by canton — they do, a lot (which office decides your permit, your tax bill, even health-insurance prices all hinge on the canton). The first piece is now built and ready for your review: the planner asks **"Which canton are you moving to?"** (Switzerland only, all 26 cantons; you can skip it if you're not sure, so it never blocks you). When you pick a canton, your plan shows a **"Your canton"** card pointing you to that canton's official migration office. Under the hood, the data structure and our automatic safety gate now treat per-canton facts like every other claim — they must be sourced and independently double-checked before they show. The **fact-checked local details for the five biggest cantons** (Zürich, Geneva, Vaud, Zug, Basel-Stadt) are now **included** — all 20 facts independently double-checked — so picking one of those five shows its specific migration office + cantonal-tax links; every other canton points to the official federal directory of cantonal offices, so no one hits a dead end.

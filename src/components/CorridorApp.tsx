@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo, useRef, type ReactNode } from 'react';
+import { useState, useEffect, useMemo, useRef, type ReactNode, type KeyboardEvent as ReactKeyboardEvent } from 'react';
 import { COUNTRY_OPTIONS, countryName, type CountryOption } from '../utils/countries';
 import { CH_CANTONS, cantonName } from '../utils/cantons';
 import { flagUrl } from '../utils/flags';
@@ -44,6 +44,20 @@ function IconPencil({ className = '' }: { className?: string }) {
   return (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" className={className} aria-hidden="true">
       <path d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.931-8.931Z" />
+    </svg>
+  );
+}
+function IconChevronDown({ className = '' }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className={className} aria-hidden="true">
+      <path d="m6 9 6 6 6-6" />
+    </svg>
+  );
+}
+function IconX({ className = '' }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className={className} aria-hidden="true">
+      <path d="M6 18 18 6M6 6l12 12" />
     </svg>
   );
 }
@@ -537,45 +551,260 @@ function CountryMultiGrid({
 }
 
 /**
- * Single-select canton grid (Switzerland). Mirrors CountryGrid's styling —
- * min-h-11 touch targets, brand selection state, focus-visible ring — minus the
- * flag/availability dot (cantons have neither). Optional: an "I'm not sure yet"
- * affordance clears the selection so the step never blocks the wizard.
+ * Single-select canton picker (Switzerland) as a searchable ARIA combobox.
+ * Type to filter the 26 cantons by name or 2-letter code; arrow keys move the
+ * active option, Enter selects, Escape closes (reverting the query to the
+ * current selection), outside-click / Tab closes. The listbox renders in-flow
+ * (a block under the input, not absolutely positioned) so it is never clipped by
+ * the wizard card's `overflow-y-auto`; it scrolls internally when long.
+ *
+ * Mirrors CorridorApp styling — min-h-11 touch targets, brand selection state,
+ * focus-visible ring, inline SVG icons (no emoji). An "I'm not sure yet" row +
+ * a clear "✕" affordance call `onClear()`, so the step never blocks the wizard.
  */
-function CantonGrid({
+function CantonCombobox({
   selected, onSelect, onClear,
 }: { selected: string | null; onSelect: (code: string) => void; onClear: () => void }) {
+  const selectedName = selected ? cantonName(selected) : '';
+  const [open, setOpen] = useState(false);
+  const [query, setQuery] = useState('');
+  const [activeIndex, setActiveIndex] = useState(-1);
+
+  const rootRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
+  const listRef = useRef<HTMLUListElement>(null);
+
+  const listboxId = 'canton-combobox-listbox';
+  const optionId = (i: number) => `canton-combobox-option-${i}`;
+
+  // Fold case + diacritics so an ASCII query ("zur", "neuchatel", "graubunden")
+  // still finds accented canton names ("Zürich", "Neuchâtel", "Graubünden").
+  // ̀-ͯ is the Unicode "Combining Diacritical Marks" block.
+  const fold = (s: string) =>
+    s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
+
+  // Filter by name or 2-letter code. While the field shows the current selection
+  // verbatim (no edits yet), treat the query as empty so the full list is
+  // browsable on open.
+  const filtered = (() => {
+    const q = fold(query.trim());
+    const showAll = q === '' || q === fold(selectedName);
+    if (showAll) return CH_CANTONS;
+    return CH_CANTONS.filter(
+      (c) => fold(c.name).includes(q) || c.code.toLowerCase().startsWith(q),
+    );
+  })();
+
+  // Rows are: [0] = "I'm not sure yet", then one row per filtered canton.
+  // activeIndex 0 === the not-sure row; activeIndex >= 1 maps to filtered[i-1].
+  const rowCount = filtered.length + 1;
+
+  function openList() {
+    if (!open) {
+      setOpen(true);
+      // Pre-highlight the selected canton if it's in view, else the not-sure row.
+      const selIdx = selected ? filtered.findIndex((c) => c.code === selected) : -1;
+      setActiveIndex(selIdx >= 0 ? selIdx + 1 : 0);
+    }
+  }
+
+  function closeList(revert = true) {
+    setOpen(false);
+    setActiveIndex(-1);
+    if (revert) setQuery(''); // revert typed text back to the current selection
+  }
+
+  function commit(rowIndex: number) {
+    if (rowIndex <= 0) {
+      onClear();
+    } else {
+      const c = filtered[rowIndex - 1];
+      if (c) onSelect(c.code);
+    }
+    setQuery('');
+    setOpen(false);
+    setActiveIndex(-1);
+    inputRef.current?.focus();
+  }
+
+  // Keep the query in sync when the field is not being actively edited (e.g. the
+  // selection changed elsewhere, or the list closed): reflect the selection.
+  useEffect(() => {
+    if (!open) setQuery('');
+  }, [open]);
+
+  // Clamp the active row whenever the filtered set shrinks.
+  useEffect(() => {
+    if (open && activeIndex > rowCount - 1) setActiveIndex(rowCount - 1);
+  }, [open, rowCount, activeIndex]);
+
+  // Scroll the active option into view as the user arrows through.
+  useEffect(() => {
+    if (!open || activeIndex < 0) return;
+    const el = listRef.current?.querySelector<HTMLElement>(`#${optionId(activeIndex)}`);
+    el?.scrollIntoView({ block: 'nearest' });
+  }, [open, activeIndex]);
+
+  // Close on outside pointerdown; cleaned up on unmount.
+  useEffect(() => {
+    if (!open) return;
+    function onPointerDown(e: PointerEvent) {
+      if (rootRef.current && !rootRef.current.contains(e.target as Node)) closeList();
+    }
+    document.addEventListener('pointerdown', onPointerDown);
+    return () => document.removeEventListener('pointerdown', onPointerDown);
+  }, [open]);
+
+  function onKeyDown(e: ReactKeyboardEvent<HTMLInputElement>) {
+    switch (e.key) {
+      case 'ArrowDown':
+        e.preventDefault();
+        if (!open) { openList(); return; }
+        setActiveIndex((i) => (i + 1 > rowCount - 1 ? 0 : i + 1));
+        break;
+      case 'ArrowUp':
+        e.preventDefault();
+        if (!open) { openList(); return; }
+        setActiveIndex((i) => (i - 1 < 0 ? rowCount - 1 : i - 1));
+        break;
+      case 'Enter':
+        if (open && activeIndex >= 0) {
+          e.preventDefault();
+          commit(activeIndex);
+        }
+        break;
+      case 'Escape':
+        if (open) {
+          e.preventDefault();
+          closeList();
+        }
+        break;
+      case 'Tab':
+        if (open) closeList();
+        break;
+      default:
+        break;
+    }
+  }
+
+  // What the input displays: the live query while editing, otherwise the
+  // current selection's name (empty when nothing is selected).
+  const inputValue = open ? query : selectedName;
+
   return (
     <div className="space-y-3">
-      <div className="grid grid-cols-2 gap-1.5 sm:gap-2">
-        {CH_CANTONS.map((c) => {
-          const isOn = selected === c.code;
-          return (
+      <div ref={rootRef} className="relative">
+        <label htmlFor="canton-combobox-input" className="sr-only">
+          Search and select your canton
+        </label>
+        <div
+          className={`flex items-center min-h-11 border rounded-lg bg-white transition-all focus-within:ring-2 focus-within:ring-brand-500 ${
+            selected ? 'border-brand-600 bg-brand-50' : 'border-slate-200'
+          }`}
+        >
+          <input
+            ref={inputRef}
+            id="canton-combobox-input"
+            type="text"
+            role="combobox"
+            autoComplete="off"
+            aria-expanded={open}
+            aria-controls={listboxId}
+            aria-autocomplete="list"
+            aria-activedescendant={open && activeIndex >= 0 ? optionId(activeIndex) : undefined}
+            placeholder="Search cantons…"
+            value={inputValue}
+            onChange={(e) => {
+              if (!open) setOpen(true);
+              setQuery(e.target.value);
+              setActiveIndex(0);
+            }}
+            onFocus={openList}
+            onClick={openList}
+            onKeyDown={onKeyDown}
+            className={`flex-1 min-w-0 bg-transparent px-3 py-2 text-sm outline-none placeholder:text-slate-400 ${
+              selected ? 'text-brand-700 font-medium' : 'text-slate-900'
+            }`}
+          />
+          {selected && (
             <button
-              key={c.code}
               type="button"
-              aria-pressed={isOn}
-              onClick={() => onSelect(c.code)}
-              className={`flex items-center gap-2 min-h-11 border rounded-lg px-2.5 py-2 text-left text-sm transition-all focus-visible:ring-2 focus-visible:ring-brand-500 ${
-                isOn ? 'border-brand-600 bg-brand-50' : 'border-slate-200 bg-white hover:border-brand-300'
-              }`}
+              onClick={() => { onClear(); setQuery(''); inputRef.current?.focus(); }}
+              aria-label="Clear selected canton"
+              className="shrink-0 inline-flex items-center justify-center w-8 h-8 mr-0.5 rounded-md text-slate-500 hover:text-slate-700 hover:bg-slate-100 focus-visible:ring-2 focus-visible:ring-brand-500"
             >
-              <span className="font-medium text-slate-900 truncate">{c.name}</span>
-              {isOn && <span className="ml-auto text-brand-600 shrink-0" aria-hidden="true">✓</span>}
+              <IconX className="w-4 h-4" />
             </button>
-          );
-        })}
+          )}
+          <button
+            type="button"
+            tabIndex={-1}
+            aria-label={open ? 'Close canton list' : 'Open canton list'}
+            onClick={() => {
+              if (open) { closeList(); return; }
+              inputRef.current?.focus();
+              openList();
+            }}
+            className="shrink-0 inline-flex items-center justify-center w-9 h-9 mr-1 rounded-md text-slate-500 hover:text-slate-700 focus-visible:ring-2 focus-visible:ring-brand-500"
+          >
+            <IconChevronDown className={`w-4 h-4 transition-transform ${open ? 'rotate-180' : ''}`} />
+          </button>
+        </div>
+
+        {open && (
+          <ul
+            ref={listRef}
+            id={listboxId}
+            role="listbox"
+            aria-label="Cantons"
+            className="mt-1.5 max-h-64 overflow-y-auto border border-slate-200 rounded-lg bg-white shadow-sm py-1"
+          >
+            {/* Row 0: the always-present "I'm not sure yet" / clear option. */}
+            <li
+              id={optionId(0)}
+              role="option"
+              aria-selected={selected === null}
+              onMouseEnter={() => setActiveIndex(0)}
+              onClick={() => commit(0)}
+              className={`flex items-center gap-2 min-h-11 px-3 py-2 text-sm cursor-pointer ${
+                activeIndex === 0 ? 'bg-slate-100' : ''
+              } ${selected === null ? 'text-brand-700 font-medium' : 'text-slate-600'}`}
+            >
+              <span className="flex-1">I'm not sure yet</span>
+              {selected === null && <IconCheck className="w-4 h-4 text-brand-600 shrink-0" />}
+            </li>
+
+            {filtered.length === 0 ? (
+              <li role="presentation" className="px-3 py-3 text-sm text-slate-500">
+                No cantons match
+              </li>
+            ) : (
+              filtered.map((c, i) => {
+                const rowIndex = i + 1;
+                const isSelected = selected === c.code;
+                const isActive = activeIndex === rowIndex;
+                return (
+                  <li
+                    key={c.code}
+                    id={optionId(rowIndex)}
+                    role="option"
+                    aria-selected={isSelected}
+                    onMouseEnter={() => setActiveIndex(rowIndex)}
+                    onClick={() => commit(rowIndex)}
+                    className={`flex items-center gap-2 min-h-11 px-3 py-2 text-sm cursor-pointer transition-colors ${
+                      isActive ? 'bg-slate-100' : ''
+                    } ${isSelected ? 'bg-brand-50 text-brand-700 font-medium' : 'text-slate-900'}`}
+                  >
+                    <span className="flex-1 truncate">{c.name}</span>
+                    <span className="text-xs uppercase text-slate-400 shrink-0">{c.code}</span>
+                    {isSelected && <IconCheck className="w-4 h-4 text-brand-600 shrink-0" />}
+                  </li>
+                );
+              })
+            )}
+          </ul>
+        )}
       </div>
-      <button
-        type="button"
-        aria-pressed={selected === null}
-        onClick={onClear}
-        className={`inline-flex min-h-11 items-center text-sm font-medium underline transition-colors focus-visible:ring-2 focus-visible:ring-brand-500 ${
-          selected === null ? 'text-brand-700' : 'text-slate-500 hover:text-slate-700'
-        }`}
-      >
-        I'm not sure yet
-      </button>
     </div>
   );
 }
@@ -1764,7 +1993,7 @@ export default function CorridorApp({ tasks, corridorTitle, originIso2, destinat
                   }
                   if (field.kind === 'canton') {
                     return (
-                      <CantonGrid
+                      <CantonCombobox
                         key={fi}
                         selected={answers.canton}
                         onSelect={selectCanton}
