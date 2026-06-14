@@ -1,0 +1,125 @@
+name: Link audit
+
+# Weekly source-URL health check (link-auditor, Phase 3):
+#   - schedule:          every Sunday 00:00 UTC
+#   - workflow_dispatch: on demand
+#   - pull_request:      any PR touching the content collection or this tooling,
+#                        so new sourceUrls are checked before merge.
+#
+# Run is RED when there are hard failures (dead links, soft-404s, an
+# unreachable #anchor on an SPA domain, past-due reviewBy dates, VERIFIED
+# claims missing provenance). Warnings (permanent redirects, content drift,
+# reviews due within 14 days, manual-check domains like eda.admin.ch, and an
+# unreachable #anchor on a NON-SPA host) keep the run green but appear as
+# workflow annotations and in the uploaded report artifact.
+#
+# Anchor-reach check (added 2026-06-13): for any sourceUrl with a #fragment,
+# the auditor confirms the served HTML actually contains that anchor target.
+# This catches the SPA-shell bug class a founder hit — a fedlex /eli/.../en#art_X
+# URL that returns HTTP 200 but is a client-side Angular shell that never
+# renders the cited article, so the anchor never resolves for a human. On
+# SPA_DOMAINS a missing anchor is a hard ERROR (the shell omits the anchor for
+# every client, so the verdict is IP-independent and reliable from datacenter
+# runners); on other hosts it is a WARNING (the anchor may be injected by
+# client-side JS). See scripts/check-links.mjs for the full rationale.
+#
+# NOTE: Swiss federal sites are unreliable from GitHub's datacenter egress —
+# www.ch.ch serves an error shell to datacenter IPs, and *.admin.ch
+# (sem/fedlex/bag) intermittently refuses TCP connections (UND_ERR_CONNECT_TIMEOUT).
+# The auditor retries transient failures, and in CI a connection-level failure
+# (timeout/DNS/refused, after retries) is downgraded to a WARNING — it reflects
+# the runner's reachability, not a dead link. HTTP errors (4xx/5xx/soft-404) and
+# past-due reviews stay RED everywhere. Authoritative full coverage of these
+# domains comes from local `npm run links` runs (residential IP reaches them).
+
+on:
+  schedule:
+    - cron: '0 0 * * 0' # Sundays 00:00 UTC
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'src/content/corridors/**'
+      - 'scripts/check-links.mjs'
+      - 'scripts/audit-fetch-links.mjs' # anchor-reach logic mirrored from here
+      - 'scripts/link-baseline.json'
+      - '.github/workflows/link-audit.yml'
+
+permissions:
+  contents: read
+  issues: write
+
+# Cancel superseded runs on the same ref.
+concurrency:
+  group: link-audit-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  link-audit:
+    name: Check source URLs, staleness & drift
+    runs-on: ubuntu-latest
+    env:
+      # GitHub forces JS actions onto Node 24 from 2026-06-16; opt in early.
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: 'true'
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run link audit
+        id: audit
+        run: npm run links -- --report link-audit-report.md
+
+      # ADR-0017: re-fetch each tracked source live, normalize, hash, and compare
+      # to the stored snapshot to detect content drift. Informational (non-strict)
+      # for now — it surfaces drift without failing the run.
+      - name: Source content-drift check
+        run: node scripts/check-sources.mjs
+
+      - name: Upload report artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: link-audit-report
+          path: link-audit-report.md
+          if-no-files-found: ignore
+
+      # Maintain a single open tracking issue (label: link-audit) on scheduled
+      # / manual runs. Skipped on pull_request: PR runs already surface the
+      # failure on the PR itself, and fork PR tokens cannot write issues.
+      - name: Open or update tracking issue on failure
+        if: failure() && github.event_name != 'pull_request'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          gh label create link-audit --repo "$REPO" \
+            --description "Automated link-audit failures" --color D93F0B 2>/dev/null || true
+
+          title="Link audit: failures detected"
+          body_file=issue-body.md
+          {
+            echo "Automated link audit failed. Run: $RUN_URL"
+            echo
+            cat link-audit-report.md 2>/dev/null || echo "_Report file missing — see the run log._"
+            echo
+            echo "Note: an \"Unreachable anchors\" section above means a sourceUrl returns HTTP 200 but its cited #section does not render (e.g. an SPA shell). Re-point the claim at a URL that actually serves the anchor, then re-verify."
+            echo
+            echo "Affected claims must be set to FLAGGED and re-verified by fact-verifier (link-auditor may not edit content)."
+          } > "$body_file"
+
+          existing="$(gh issue list --repo "$REPO" --label link-audit --state open \
+            --search "$title in:title" --json number --jq '.[0].number')"
+          if [ -n "$existing" ]; then
+            gh issue comment "$existing" --repo "$REPO" --body-file "$body_file"
+            echo "Updated tracking issue #$existing"
+          else
+            gh issue create --repo "$REPO" --title "$title" \
+              --label link-audit --body-file "$body_file"
+          fi

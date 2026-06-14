@@ -1,0 +1,170 @@
+[
+  {
+    "sourceUrl": "https://dofi.ibz.be/en/themes/third-country-nationals",
+    "sourceName": "Immigration Office (Office des Etrangers / Dienst Vreemdelingenzaken, IBZ/DOFI) — Third-country nationals",
+    "claimIds": [
+      "probe"
+    ],
+    "fetchedAt": "2026-06-14",
+    "fetchMethod": "curl",
+    "sha256": "526f0040c6d97f0a1457b043749e8d490f504a05f68f4c4b51fda129db0e18ba",
+    "byteSize": 26834,
+    "contentType": "text/html; charset=UTF-8",
+    "textPath": "sources/us-be/526f0040.txt",
+    "capturedBy": "snapshot-source"
+  },
+  {
+    "sourceUrl": "https://dofi.ibz.be/en/themes/third-country-nationals/work",
+    "sourceName": "Immigration Office (Office des Etrangers / Dienst Vreemdelingenzaken, IBZ/DOFI) — Work",
+    "claimIds": [
+      "be-work"
+    ],
+    "fetchedAt": "2026-06-14",
+    "fetchMethod": "curl",
+    "sha256": "05d858a7a1c00fe927f1acc06acdcae462002ac9f9784a893707d194e5616927",
+    "byteSize": 28554,
+    "contentType": "text/html; charset=UTF-8",
+    "textPath": "sources/us-be/05d858a7.txt",
+    "capturedBy": "snapshot-source"
+  },
+  {
+    "sourceUrl": "https://dofi.ibz.be/en/themes/third-country-nationals/family-reunification",
+    "sourceName": "Immigration Office (IBZ/DOFI) — Family reunification",
+    "claimIds": [
+      "be-family"
+    ],
+    "fetchedAt": "2026-06-13",
+    "fetchMethod": "curl",
+    "sha256": "1ab78bb497cbfd81c7c10466b205c85ab8c0149ac2ac2872e0d621f0e468cd22",
+    "byteSize": 35293,
+    "contentType": "text/html; charset=UTF-8",
+    "textPath": "sources/us-be/1ab78bb4.txt",
+    "capturedBy": "snapshot-source"
+  },
+  {
+    "sourceUrl": "https://dofi.ibz.be/en/themes/third-country-nationals/study",
+    "sourceName": "Immigration Office (Office des Etrangers / Dienst Vreemdelingenzaken, IBZ/DOFI) — Study",
+    "claimIds": [
+      "be-study"
+    ],
+    "fetchedAt": "2026-06-14",
+    "fetchMethod": "curl",
+    "sha256": "d974e0f1857e26306d7b7e0452f195e351b7a54f6659e3dc9164b4c47ea81082",
+    "byteSize": 24673,
+    "contentType": "text/html; charset=UTF-8",
+    "textPath": "sources/us-be/d974e0f1.txt",
+    "capturedBy": "snapshot-source"
+  },
+  {
+    "sourceUrl": "https://www.belgium.be/en/work/coming_to_work_in_belgium",
+    "sourceName": "belgium.be (official federal portal) — Coming to work in Belgium",
+    "claimIds": [
+      "be-belgiumbe-work"
+    ],
+    "fetchedAt": "2026-06-13",
+    "fetchMethod": "curl",
+    "sha256": "6b9ef7e4b798d2ff14156f9811dc9d91bf9abb6501eae1a5e651bf5216260eac",
+    "byteSize": 26668,
+    "contentType": "text/html; charset=UTF-8",
+    "textPath": "sources/us-be/6b9ef7e4.txt",
+    "capturedBy": "snapshot-source"
+  },
+  {
+    "sourceUrl": "https://www.belgium.be/en/family/residence_documents_for_belgium",
+    "sourceName": "belgium.be (official federal portal) — Residence documents for Belgium",
+    "claimIds": [
+      "be-residence-docs"
+    ],
+    "fetchedAt": "2026-06-14",
+    "fetchMethod": "curl",
+    "sha256": "2ed0d80b6b879a73ee60e66f4c2c4836d097302eef4ede9324036354eea917fb",
+    "byteSize": 27815,
+    "contentType": "text/html; charset=UTF-8",
+    "textPath": "sources/us-be/2ed0d80b.txt",
+    "capturedBy": "snapshot-source"
+  },
+  {
+    "sourceUrl": "https://www.belgium.be/en/housing/moving_to_belgium",
+    "sourceName": "belgium.be — Moving to Belgium",
+    "claimIds": [
+      "be-moving"
+    ],
+    "fetchedAt": "2026-06-13",
+    "fetchMethod": "curl",
+    "sha256": "77e94d0085e3b7041827fb08b586e4364d39e92e70e84c1d0c5aae9e74063aad",
+    "byteSize": 24981,
+    "contentType": "text/html; charset=UTF-8",
+    "textPath": "sources/us-be/77e94d00.txt",
+    "capturedBy": "snapshot-source"
+  },
+  {
+    "sourceUrl": "https://www.belgium.be/en/education/coming_to_study_in_belgium",
+    "sourceName": "belgium.be — Coming to study in Belgium",
+    "claimIds": [
+      "be-belgiumbe-study"
+    ],
+    "fetchedAt": "2026-06-13",
+    "fetchMethod": "curl",
+    "sha256": "963fb6f42c404bc5558675ef2351c3c4778b3cd5cbe8ce8f5a75bd1e5b70c456",
+    "byteSize": 25826,
+    "contentType": "text/html; charset=UTF-8",
+    "textPath": "sources/us-be/963fb6f4.txt",
+    "capturedBy": "snapshot-source"
+  },
+  {
+    "sourceUrl": "https://employment.belgium.be/en/themes/international/foreign-workers",
+    "sourceName": "FPS Employment, Labour and Social Dialogue — Foreign workers",
+    "claimIds": [
+      "be-fps-foreign-workers"
+    ],
+    "fetchedAt": "2026-06-14",
+    "fetchMethod": "curl",
+    "sha256": "e7de09f3a83ffd1739c4b6e96ecc826c89d38a9e6852fe5ca76c9c1338a2e2fa",
+    "byteSize": 42038,
+    "contentType": "text/html; charset=UTF-8",
+    "textPath": "sources/us-be/e7de09f3.txt",
+    "capturedBy": "snapshot-source"
+  },
+  {
+    "sourceUrl": "https://www.vlaanderen.be/werken/in-vlaanderen-komen-werken",
+    "sourceName": "Flemish Government (vlaanderen.be) — Coming to work in Flanders (single permit, worked example)",
+    "claimIds": [
+      "be-flanders-single-permit"
+    ],
+    "fetchedAt": "2026-06-13",
+    "fetchMethod": "curl",
+    "sha256": "ea07f73be0773eb84d0266f0ab244a4f191396276c473e6d4fea91533e025a1d",
+    "byteSize": 53514,
+    "contentType": "text/html;charset=UTF-8",
+    "textPath": "sources/us-be/ea07f73b.txt",
+    "capturedBy": "snapshot-source"
+  },
+  {
+    "sourceUrl": "https://dofi.ibz.be/en/themes/third-country-nationals/work/single-permit",
+    "sourceName": "Immigration Office (Office des Etrangers / Dienst Vreemdelingenzaken, IBZ/DOFI) — Single Permit",
+    "claimIds": [
+      "be-single-permit"
+    ],
+    "fetchedAt": "2026-06-14",
+    "fetchMethod": "curl",
+    "sha256": "6b70af30f7753c5024b9cf7026ceb2a2fad85ccc706f23e24af819bd9ae0ef7a",
+    "byteSize": 60764,
+    "contentType": "text/html; charset=UTF-8",
+    "textPath": "sources/us-be/6b70af30.txt",
+    "capturedBy": "snapshot-source"
+  },
+  {
+    "sourceUrl": "https://unitedstates.diplomatie.belgium.be/en/travel-belgium/visa-belgium",
+    "sourceName": "Embassy of Belgium in the United States — Visa for Belgium",
+    "claimIds": [
+      "be-embassy-visa"
+    ],
+    "fetchedAt": "2026-06-13",
+    "fetchMethod": "curl",
+    "sha256": "a8b9049a04637a46b7e3f3128a79175c3518c3f05832dc85175c10895c83f17f",
+    "byteSize": 146873,
+    "contentType": "text/html; charset=UTF-8",
+    "textPath": "sources/us-be/a8b9049a.txt",
+    "capturedBy": "snapshot-source"
+  }
+]

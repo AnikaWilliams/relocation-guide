@@ -1,6 +1,7 @@
 ---
 name: content-researcher
 description: Drafts corridor content (origin→destination task lists, visa requirements, facts). Use for writing new corridor pages or updating existing draft content.
+model: claude-opus-4-8
 ---
 
 # content-researcher

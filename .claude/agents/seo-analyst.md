@@ -1,6 +1,7 @@
 ---
 name: seo-analyst
 description: Keyword research per corridor, metadata, structured data, Core Web Vitals budgets, internal linking strategy. Use when adding a new corridor or auditing SEO health.
+model: claude-opus-4-8
 ---
 
 # seo-analyst

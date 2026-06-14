@@ -1,0 +1,184 @@
+---
+/**
+ * Cookie & local-storage policy — DRAFT (compliance scope, CLAUDE.md).
+ *
+ * Status: DRAFT — placeholders in [BRACKETS] must be completed by the operator
+ * and the whole page MUST be reviewed by a qualified lawyer before launch
+ * (CLAUDE.md: cookie policy is draft-only until human lawyer review). Do NOT
+ * remove the draft banner until lawyer sign-off is recorded in DECISIONS.md.
+ *
+ * Inventory below reflects ACTUAL + PLANNED storage:
+ * - relocation-intake-v2 (localStorage): planner answers + progress. Strictly
+ *   necessary; no consent needed. Set TODAY.
+ * - rg-consent-v1 (localStorage): the visitor's own consent choices. Strictly
+ *   necessary; no consent needed. Set when the banner ships.
+ * - rg-waitlist-v1 (localStorage): launch-waitlist signups the visitor made for
+ *   not-yet-live routes. Set only when the visitor submits the waitlist form.
+ *   Dormant by default — nothing is transmitted off-device unless
+ *   PUBLIC_WAITLIST_ENDPOINT is configured (then email/phone are sent with the
+ *   visitor's explicit consent).
+ * - Plausible (cookieless analytics): no storage, no consent. PLANNED at launch.
+ * - GA4 (_ga / _ga_*): analytics cookies, CONSENT REQUIRED. PLANNED at launch.
+ * - AdSense (advertising cookies): CONSENT REQUIRED. PLANNED post-launch.
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+interface StorageRow {
+  name: string;
+  type: string;
+  purpose: string;
+  lifetime: string;
+  consent: string;
+  status: string;
+}
+
+const inventory: StorageRow[] = [
+  {
+    name: 'relocation-intake-v2',
+    type: 'Local storage',
+    purpose: 'Remembers your planner answers and checklist progress on your device.',
+    lifetime: 'Until you clear it ("Start over" or browser settings)',
+    consent: 'Not required (strictly necessary)',
+    status: 'Active',
+  },
+  {
+    name: 'rg-consent-v1',
+    type: 'Local storage',
+    purpose: 'Remembers your own cookie/analytics choices so we do not ask again.',
+    lifetime: 'Until you clear it or change your choice',
+    consent: 'Not required (strictly necessary)',
+    status: 'Active when the banner ships',
+  },
+  {
+    name: 'rg-waitlist-v1',
+    type: 'Local storage',
+    purpose:
+      'If you ask to be notified about a route that is not live yet, remembers that request (and the email/phone you gave) on your device, so we can confirm it and not ask twice.',
+    lifetime: 'Until you clear it',
+    consent: 'You actively submit the form; off-device sending needs your explicit consent',
+    status: 'Set only if you use the launch-waitlist form',
+  },
+  {
+    name: 'Plausible Analytics',
+    type: 'No cookie / no storage',
+    purpose: 'Privacy-friendly, aggregate visitor measurement. Sets no cookies, collects no personal data.',
+    lifetime: 'n/a',
+    consent: 'Not required (cookieless, no personal data)',
+    status: 'Planned at launch',
+  },
+  {
+    name: '_ga, _ga_*',
+    type: 'Cookie (Google Analytics 4)',
+    purpose: 'Distinguishes visitors and sessions for usage statistics. Loads only with consent.',
+    lifetime: 'Up to ~13 months [confirm]',
+    consent: 'Required (Analytics)',
+    status: 'Planned at launch',
+  },
+  {
+    name: 'Google AdSense cookies',
+    type: 'Cookie (advertising)',
+    purpose: 'Serves and frequency-caps ads; supports personalised advertising. Loads only with consent.',
+    lifetime: 'Varies by cookie [confirm]',
+    consent: 'Required (Advertising)',
+    status: 'Planned post-launch',
+  },
+];
+---
+
+<BaseLayout
+  title="Cookie & storage policy — Relocation Guide"
+  description="What this site stores in your browser and which technologies require your consent."
+>
+  <!-- DRAFT banner — remove only after human lawyer sign-off -->
+  <aside
+    role="note"
+    aria-label="Draft status"
+    class="rounded-md border border-rose-300 bg-rose-50 p-4 text-sm text-rose-900"
+  >
+    <p>
+      <strong>DRAFT — not yet in force.</strong> This policy contains placeholder values
+      in [BRACKETS] and has not been reviewed by a lawyer. Lifetimes and cookie names for
+      third-party tools must be confirmed against the providers' own documentation before
+      launch.
+    </p>
+  </aside>
+
+  <article class="prose prose-slate mt-8 max-w-3xl space-y-8">
+    <section class="space-y-3">
+      <h1 class="text-3xl font-bold">Cookie &amp; storage policy</h1>
+      <p class="text-slate-600">
+        This page lists everything Relocation Guide stores in your browser and explains
+        which items need your consent. See also our
+        <a href="/privacy">Privacy policy</a>.
+      </p>
+    </section>
+
+    <section class="space-y-2">
+      <h2 class="text-xl font-semibold">Two kinds of storage</h2>
+      <p class="text-slate-700">
+        <strong>Strictly necessary</strong> storage makes the site work &mdash; it
+        remembers your planner answers and your cookie choices, on your device only. It
+        needs no consent. <strong>Optional</strong> technologies (analytics that use
+        cookies, and advertising) load <strong>only after you agree</strong> in the cookie
+        banner, and you can change your mind at any time.
+      </p>
+    </section>
+
+    <section class="space-y-3">
+      <h2 class="text-xl font-semibold">What we store</h2>
+      <div class="overflow-x-auto">
+        <table class="w-full border-collapse text-left text-sm">
+          <thead>
+            <tr class="border-b border-slate-300 align-bottom">
+              <th class="py-2 pr-4 font-semibold">Name</th>
+              <th class="py-2 pr-4 font-semibold">Type</th>
+              <th class="py-2 pr-4 font-semibold">Purpose</th>
+              <th class="py-2 pr-4 font-semibold">Lifetime</th>
+              <th class="py-2 pr-4 font-semibold">Consent</th>
+              <th class="py-2 font-semibold">Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            {inventory.map((row) => (
+              <tr class="border-b border-slate-200 align-top">
+                <td class="py-2 pr-4"><code class="text-xs">{row.name}</code></td>
+                <td class="py-2 pr-4 text-slate-700">{row.type}</td>
+                <td class="py-2 pr-4 text-slate-700">{row.purpose}</td>
+                <td class="py-2 pr-4 text-slate-700">{row.lifetime}</td>
+                <td class="py-2 pr-4 text-slate-700">{row.consent}</td>
+                <td class="py-2 text-slate-700">{row.status}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="space-y-2">
+      <h2 class="text-xl font-semibold">Managing your choices</h2>
+      <ul class="list-disc pl-6 text-slate-700">
+        <li>
+          Use the <strong>cookie settings</strong> link in the footer to accept or reject
+          optional categories, or to change a previous choice.
+        </li>
+        <li>
+          Use the planner's <strong>"Start over"</strong> control to clear your saved
+          answers and progress.
+        </li>
+        <li>
+          You can also clear all of this site's storage through your browser's privacy
+          settings.
+        </li>
+      </ul>
+      <p class="text-slate-700">
+        Blocking strictly-necessary storage may stop the planner from remembering your
+        progress, but you can still read every step.
+      </p>
+    </section>
+
+    <p class="text-sm text-slate-500">
+      Last updated: [DATE — set when placeholders are filled in]. Draft pending human
+      lawyer review.
+    </p>
+  </article>
+</BaseLayout>

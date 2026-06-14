@@ -1,0 +1,3 @@
+# Flagged links — replace in the next step
+
+0 links resolve to an **unusable page for a human** — all on Fedlex (`fedlex.admin.ch/eli/.../en` or `/de` "latest consolidated" view), which serves an Angular JS shell / "this version is under preparation" page: no article text, dead `#art_X` anchor. **The law text is correct; only the link is broken for users.** Each proposed replacement is the Fedlex **static filestore HTML** for an in-force dated version — curl-verified to render the article text + anchor and to support the cited point. Applying these touches provenance, so each changed source must be re-confirmed by `fact-verifier` (two-agent rule) before publish.

@@ -1,0 +1,1542 @@
+originIso2: us
+destinationIso2: lu
+title: "Moving from the USA to Luxembourg"
+description: "How US citizens (non-EU/EEA third-country nationals) relocate to Luxembourg for work, study, or family: the two-step procedure (temporary authorisation to stay, then a type D visa where required, then a residence permit), the salaried-worker authorisation, the EU Blue Card for highly qualified workers, family reunification, study, the declaration of arrival at the commune, the compulsory medical check, social-security registration (CCSS / CNS health insurance), housing, banking, and Luxembourg income-tax residency."
+lastReviewed: "2026-06-13"
+reviewedBy: "research-lu"
+# RESEARCH DRAFT (ADR-0016 research run). Every claim is status: UNVERIFIED with a
+# primary official sourceUrl (guichet.public.lu / mae.gouvernement.lu), captured via
+# scripts/snapshot-source.mjs into sources/us-lu/. published:false until the SEPARATE
+# fact-verifier team run re-derives each claim from its live source and flips it
+# VERIFIED (two-agent rule, ADR-0016). Nothing here is verified.
+# Covered routes drafted: work (third-country salaried worker + EU Blue Card), study,
+# family reunification, plus the shared post-arrival steps every newcomer needs
+# (declaration of arrival, medical check, social security/CNS, housing, banking, tax).
+# Retirement / non-gainful settlement ("residence for private reasons") was captured but
+# NOT fully researched as a route here, so it is left out of coversMotivations honestly.
+published: true
+coversMotivations: [work, study, family]
+tasks:
+  # ===========================================================================
+  - id: work-salaried-permit
+    title: "Get a residence permit as a third-country salaried worker (job offer in hand)"
+    category: visa-permit
+    summary:
+      text: "If you have a job offer in Luxembourg, the standard route for a US citizen is the residence permit for third-country salaried workers, obtained in a two-step procedure. Before you travel you apply for a temporary authorisation to stay from the General Department of Immigration (Ministry of Home Affairs); after you arrive you make a declaration of arrival at your commune, undergo a medical check, and apply for the residence permit. Your future employer must first have declared the vacancy to the National Employment Agency (ADEM) and obtained a certificate allowing them to hire a third-country national, because ADEM could not place a suitable registered candidate within three weeks (a labour-market test)."
+      sourceUrl: "https://guichet.public.lu/en/citoyens/immigration/plus-3-mois/ressortissant-tiers/salarie/salarie-pays-tiers.html"
+      sourceName: "guichet.lu — Conditions of residence for third-country salaried workers"
+      # VERIFIED 2026-06-13 (fact-verifier): salaried-worker page re-fetched live (curl, HTTP 200, no redirect). Two-step procedure verbatim ("Step 1: before entering the country: submit an application for a temporary authorisation to stay to the General Department of immigration of the Ministry of Home Affairs ... Step 2: after entering the country: make a declaration of arrival ... undergo a medical check; then submit an application for a residence permit"). ADEM labour-market test verbatim: "An employer who has not been presented with a suitable candidate from the National Employment Agency (ADEM) within 3 weeks following his declaration of a vacant position can request a certificate from the director of the ADEM which will allow him to recruit a third-country national." Supported.
+      status: VERIFIED
+      lastVerified: "2026-06-13"
+      verifiedBy: "fact-verifier-lu 2026-06-13"
+      sourceHash: "e8d880612afdde51c6931b20fa53c4f1c6491918a8d843d89fd5e779404189e6"
+      reviewBy: "2026-09-11"
+    tldr:
+      text: "With a job offer, US citizens usually apply for the third-country salaried-worker residence permit in two steps: a temporary authorisation to stay (applied for before travel), then — after arriving, declaring arrival, and a medical check — the residence permit itself. Your employer must first have run the ADEM labour-market test (vacancy declared; no suitable registered candidate placed within three weeks) and obtained a certificate to hire you. The first permit is valid for one profession and sector for up to one year."
+      sourceUrl: "https://guichet.public.lu/en/citoyens/immigration/plus-3-mois/ressortissant-tiers/salarie/salarie-pays-tiers.html"
+      sourceName: "guichet.lu — Conditions of residence for third-country salaried workers"
+      # VERIFIED 2026-06-13 (fact-verifier): same live page. First-permit validity verbatim: "The first residence permit for salaried worker is valid: for a maximum of 1 year; for one profession only with all employers; in only one sector." ADEM 3-week test and two-step framing as above. Supported.
+      status: VERIFIED
+      lastVerified: "2026-06-13"
+      verifiedBy: "fact-verifier-lu 2026-06-13"
+      sourceHash: "e8d880612afdde51c6931b20fa53c4f1c6491918a8d843d89fd5e779404189e6"
+      reviewBy: "2026-09-11"
+    keyFacts:
+      - label: "Two-step procedure"
+        text: "Step 1 (before entry): apply for a temporary authorisation to stay from the General Department of Immigration; if you are visa-subject, then apply for a type D visa. Step 2 (after entry): make a declaration of arrival at your commune, undergo a medical check, and apply for the residence permit."
+        sourceUrl: "https://guichet.public.lu/en/citoyens/immigration/plus-3-mois/ressortissant-tiers/salarie/salarie-pays-tiers.html"
+        sourceName: "guichet.lu — Conditions of residence for third-country salaried workers"
+        # VERIFIED 2026-06-13 (fact-verifier): live page, verbatim "Step 1: before entering the country ... request a type D visa after having obtained the temporary authorisation to stay; Step 2: after entering the country: make a declaration of arrival ...; undergo a medical check; then submit an application for a residence permit". Supported.
+        status: VERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: "fact-verifier-lu 2026-06-13"
+        sourceHash: "e8d880612afdde51c6931b20fa53c4f1c6491918a8d843d89fd5e779404189e6"
+        reviewBy: "2026-09-11"
+      - label: "Labour-market test (ADEM)"
+        text: "Before recruiting, the employer must declare the vacant position to the National Employment Agency (ADEM). If no suitable registered candidate can be placed within three weeks, the employer may request a certificate from ADEM's director authorising them to hire a third-country national; that original certificate is attached to your authorisation-to-stay application."
+        sourceUrl: "https://guichet.public.lu/en/citoyens/immigration/plus-3-mois/ressortissant-tiers/salarie/salarie-pays-tiers.html"
+        sourceName: "guichet.lu — Conditions of residence for third-country salaried workers"
+        # VERIFIED 2026-06-13 (fact-verifier): verbatim "An employer who has not been presented with a suitable candidate from the National Employment Agency (ADEM) within 3 weeks following his declaration of a vacant position can request a certificate from the director of the ADEM which will allow him to recruit a third-country national." Also "The employer must hand over the original certificate to the third-country national, who will attach it to his application for the authorisation to stay." Supported.
+        status: VERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: "fact-verifier-lu 2026-06-13"
+        sourceHash: "e8d880612afdde51c6931b20fa53c4f1c6491918a8d843d89fd5e779404189e6"
+        reviewBy: "2026-09-11"
+      - label: "Where the authorisation is applied for"
+        text: "You apply for the temporary authorisation to stay (on plain paper) from your country of origin, addressed to the General Department of Immigration or a Luxembourg diplomatic/consular representation. Applications submitted from within Luxembourg are inadmissible; the authorisation must be approved before you come to Luxembourg."
+        sourceUrl: "https://guichet.public.lu/en/citoyens/immigration/plus-3-mois/ressortissant-tiers/salarie/salarie-pays-tiers.html"
+        sourceName: "guichet.lu — Conditions of residence for third-country salaried workers"
+        # VERIFIED 2026-06-13 (fact-verifier): verbatim "submit an application for a temporary authorisation to stay (on plain paper) from his country of origin: to the General Department of immigration; or to a Luxembourg diplomatic or consular representation ... The application must be submitted and approved before coming to Luxembourg ... Applications submitted from Luxembourg are inadmissible." Supported.
+        status: VERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: "fact-verifier-lu 2026-06-13"
+        sourceHash: "e8d880612afdde51c6931b20fa53c4f1c6491918a8d843d89fd5e779404189e6"
+        reviewBy: "2026-09-11"
+      - label: "Response time"
+        text: "The response time from the Ministry of Home Affairs on the authorisation-to-stay application is normally a maximum of four months; if you receive no response in that time, you should consider the application denied. The temporary authorisation to stay is valid for 90 days."
+        sourceUrl: "https://guichet.public.lu/en/citoyens/immigration/plus-3-mois/ressortissant-tiers/salarie/salarie-pays-tiers.html"
+        sourceName: "guichet.lu — Conditions of residence for third-country salaried workers"
+        # VERIFIED 2026-06-13 (fact-verifier): verbatim "The response time from the Ministry of Home Affairs is normally a maximum of 4 months. If no response is received within this time limit, the applicant should consider their application denied." and "This temporary authorisation to stay is valid for a duration of 90 days." Supported.
+        status: VERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: "fact-verifier-lu 2026-06-13"
+        sourceHash: "e8d880612afdde51c6931b20fa53c4f1c6491918a8d843d89fd5e779404189e6"
+        reviewBy: "2026-09-11"
+      - label: "First permit validity"
+        text: "The first residence permit for a salaried worker is valid for a maximum of one year, for one profession only with all employers, and in only one sector (shown as an ISCO code in the 'observations' field). From the first renewal it is renewable for up to three years and gives access to any sector and profession."
+        sourceUrl: "https://guichet.public.lu/en/citoyens/immigration/plus-3-mois/ressortissant-tiers/salarie/salarie-pays-tiers.html"
+        sourceName: "guichet.lu — Conditions of residence for third-country salaried workers"
+        # VERIFIED 2026-06-13 (fact-verifier): verbatim "The first residence permit for salaried worker is valid: for a maximum of 1 year; for one profession only with all employers; in only one sector." ISCO-code-in-observations confirmed ("indicated on the residence permit under the field 'observations' in the form of an 'ISCO' code"). Renewal verbatim "As of the first renewal, the residence permit is renewable for a maximum duration of 3 years and gives access to any sector and any profession." Supported.
+        status: VERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: "fact-verifier-lu 2026-06-13"
+        sourceHash: "e8d880612afdde51c6931b20fa53c4f1c6491918a8d843d89fd5e779404189e6"
+        reviewBy: "2026-09-11"
+    detail: >
+      Luxembourg uses the same two-step model for almost every long-stay route. For an ordinary
+      salaried job the steps are: (1) before entering the country, apply for a temporary
+      authorisation to stay from the General Department of Immigration of the Ministry of Home
+      Affairs (and, if you are visa-subject, a type D visa once the authorisation is granted);
+      (2) after entering, make a declaration of arrival at your commune within three days,
+      undergo the compulsory medical check, and apply for the residence permit for third-country
+      nationals within three months of entry. Crucially, the route depends on your employer:
+      before hiring they must declare the vacancy to ADEM, and only if ADEM cannot place a
+      suitable registered candidate within three weeks can they obtain the certificate that lets
+      them hire a third-country national. You attach that original certificate, your signed
+      Luxembourg-law employment contract, a criminal-record extract, a CV and your diplomas to
+      the authorisation-to-stay application. The authorisation, once granted, is valid 90 days
+      and lets you travel; the first residence permit is limited to one year, one profession and
+      one sector, broadening on renewal. Confirm the current document list and fees before
+      applying — figures and forms change.
+    steps:
+      - text: "Have your employer declare the vacancy to ADEM and (if no registered candidate is placed within three weeks) obtain the certificate authorising them to hire a third-country national; they hand you the original certificate."
+        links:
+          - text: "guichet.lu — preliminary ADEM steps and the employer's certificate"
+            sourceUrl: "https://guichet.public.lu/en/citoyens/immigration/plus-3-mois/ressortissant-tiers/salarie/salarie-pays-tiers.html"
+            sourceName: "guichet.lu — Conditions of residence for third-country salaried workers"
+            # VERIFIED 2026-06-13 (fact-verifier): link resolves to the correct page; ADEM declaration-of-vacancy + 3-week test + director's certificate handed to the worker all described verbatim (see Labour-market test keyFact). Supported.
+            status: VERIFIED
+            lastVerified: "2026-06-13"
+            verifiedBy: "fact-verifier-lu 2026-06-13"
+            sourceHash: "e8d880612afdde51c6931b20fa53c4f1c6491918a8d843d89fd5e779404189e6"
+            reviewBy: "2026-09-11"
+      - text: "Before travelling, apply for the temporary authorisation to stay (on plain paper) to the General Department of Immigration, enclosing your passport copy, criminal-record extract, CV, diplomas, the signed employment contract and the original ADEM certificate."
+        links:
+          - text: "guichet.lu — applying for the temporary authorisation to stay (Step 1)"
+            sourceUrl: "https://guichet.public.lu/en/citoyens/immigration/plus-3-mois/ressortissant-tiers/salarie/salarie-pays-tiers.html"
+            sourceName: "guichet.lu — Conditions of residence for third-country salaried workers"
+            # VERIFIED 2026-06-13 (fact-verifier): correct page; the supporting-document list (copy of valid passport in its entirety; extract from criminal records or affidavit; CV; diplomas; signed employment contract; original ADEM certificate) is enumerated verbatim under "Application for an authorisation to stay". Supported.
+            status: VERIFIED
+            lastVerified: "2026-06-13"
+            verifiedBy: "fact-verifier-lu 2026-06-13"
+            sourceHash: "e8d880612afdde51c6931b20fa53c4f1c6491918a8d843d89fd5e779404189e6"
+            reviewBy: "2026-09-11"
+      - text: "Once the authorisation is granted (valid 90 days), if you are visa-subject apply for a type D visa, travel to Luxembourg, declare your arrival at the commune, do the medical check, then apply for the residence permit within three months of entry."
+        links:
+          - text: "guichet.lu — Step 2 after entry: declaration of arrival, medical check, residence permit"
+            sourceUrl: "https://guichet.public.lu/en/citoyens/immigration/plus-3-mois/ressortissant-tiers/salarie/salarie-pays-tiers.html"
+            sourceName: "guichet.lu — Conditions of residence for third-country salaried workers"
+            # VERIFIED 2026-06-13 (fact-verifier): correct page; the authorisation "valid for a duration of 90 days" period and Step 2 (declaration of arrival within 3 days, medical check, then residence-permit application) are described verbatim. Supported.
+            status: VERIFIED
+            lastVerified: "2026-06-13"
+            verifiedBy: "fact-verifier-lu 2026-06-13"
+            sourceHash: "e8d880612afdde51c6931b20fa53c4f1c6491918a8d843d89fd5e779404189e6"
+            reviewBy: "2026-09-11"
+    documents:
+      - name: "Application for a residence permit for third-country nationals"
+        type: form
+        description: "The residence-permit application, submitted online via MyGuichet.lu or by post on the official form within three months of arrival; obtain the current form from the official guichet.lu page."
+        form:
+          text: "Apply for the residence permit for third-country nationals via MyGuichet.lu or by post. The official guichet.lu page hosts the procedure and links the current application forms (we link the authority page rather than a deep PDF so it stays current)."
+          sourceUrl: "https://guichet.public.lu/en/citoyens/immigration/plus-3-mois/ressortissant-tiers/salarie/salarie-pays-tiers.html"
+          sourceName: "guichet.lu — Conditions of residence for third-country salaried workers"
+          # VERIFIED 2026-06-13 (fact-verifier): correct page; it is the official procedure page for the third-country salaried-worker residence permit and links online services/forms ("Go to online services and forms"). Claim links the authority page (not a deep PDF), which the page supports. Supported.
+          status: VERIFIED
+          lastVerified: "2026-06-13"
+          verifiedBy: "fact-verifier-lu 2026-06-13"
+          sourceHash: "e8d880612afdde51c6931b20fa53c4f1c6491918a8d843d89fd5e779404189e6"
+          reviewBy: "2026-09-11"
+      - name: "Valid US passport"
+        type: provide
+        description: "A full copy of your valid US passport (all pages). If your passport expires in less than six months, renew it before coming to Luxembourg."
+      - name: "Original ADEM certificate (right to hire a third-country national)"
+        type: provide
+        description: "The original certificate issued by ADEM's director to your employer, authorising them to hire a third-country national; you attach it to the authorisation-to-stay application."
+      - name: "Signed employment contract (Luxembourg law)"
+        type: provide
+        description: "A copy of the employment contract compliant with Luxembourg law, dated and signed by you and your future employer."
+      - name: "Criminal-record extract or affidavit"
+        type: provide
+        description: "An extract from your criminal records or a sworn affidavit established in your country of residence."
+      - name: "CV and diplomas / professional qualifications"
+        type: provide
+        description: "A curriculum vitae and copies of your diplomas or professional qualifications."
+      - name: "Proof of suitable housing"
+        type: provide
+        description: "Proof of suitable housing (rental agreement, property deed, etc.), required for the residence-permit application after arrival."
+      - name: "Proof of payment of the residence-permit fee (EUR 80)"
+        type: provide
+        description: "Proof of payment of a fee of EUR 80 to the Ministry of Home Affairs (IBAN LU46 1111 2582 2814 0000), attached to the residence-permit application."
+    cost:
+      text: "The residence-permit application requires proof of payment of a fee of EUR 80 to the Ministry of Home Affairs (General Department of Immigration), IBAN LU46 1111 2582 2814 0000. If you also need a type D entry visa, that fee is shown on the entry-visa step. (Confirm current amounts before paying.)"
+      sourceUrl: "https://guichet.public.lu/en/citoyens/immigration/plus-3-mois/ressortissant-tiers/salarie/salarie-pays-tiers.html"
+      sourceName: "guichet.lu — Conditions of residence for third-country salaried workers"
+      # RE-SOURCED 2026-06-13 (content-researcher): trimmed the EUR 50 figure off this claim, which the cited salaried page does not state. The page DOES support the EUR 80 residence-permit fee + IBAN verbatim, which is all this claim now asserts; the EUR 50 type D visa fee is stated and sourced on the entry-authorisation task (entry-visa page), so this claim now cross-references that step instead of restating an unsourced figure. Source unchanged (salaried page e8d88061); claim text now fully supported by it.
+      # VERIFIED 2026-06-13 (fact-verifier re-check): salaried page re-fetched LIVE (HTTP 200, correct page, no redirect; fresh snapshot 276c85fe). Fee verbatim "proof of payment of a fee of EUR 80 to account IBAN LU46 1111 2582 2814 0000 (BIC: CCPLLULL; beneficiary: Ministry of Home Affairs, General Department of immigration ...)". Independently confirmed the page does NOT state EUR 50 or EUR 90 — so the trimmed claim asserts only what this page supports; the type D EUR 50 figure is correctly cross-referenced to the entry-visa task (where it is sourced). Supported.
+      status: VERIFIED
+      lastVerified: "2026-06-13"
+      verifiedBy: "fact-verifier-lu-r2 2026-06-13"
+      sourceHash: "276c85fe750a4bcd732bbccdfda5cea6fbcd4f7b996d0aaa8ee468fe30f9505d"
+      # 30-day window: contains the EUR 80 fee.
+      reviewBy: "2026-07-13"
+    warning: >
+      This route depends entirely on your employer first clearing the ADEM labour-market test and
+      obtaining the certificate to hire a third-country national — there is no entitlement without
+      it. The authorisation to stay must be applied for and approved BEFORE you come to Luxembourg;
+      applications filed from inside the country are inadmissible. Confirm the current fee and
+      document list on guichet.lu before relying on them.
+    dependsOn: []
+    appliesIf: "motivation == 'work'"
+
+  # ===========================================================================
+  - id: work-blue-card
+    title: "Consider the EU Blue Card if you are a highly qualified worker"
+    category: visa-permit
+    summary:
+      text: "If you hold high professional qualifications and a higher-paid graduate offer, the EU Blue Card can be a cleaner route than the ordinary salaried-worker permit. You need an employment contract of at least six months for highly qualified work, a gross annual salary at least equal to the amount set by Grand-Ducal regulation (currently EUR 65,652), and a document proving the high professional qualification required for the role. Highly qualified workers are NOT subject to the ADEM labour-market test. The procedure is the same two steps (temporary authorisation to stay, then type D visa where required, then residence permit). The first Blue Card is valid for four years (or the contract duration plus three months if the contract is shorter)."
+      sourceUrl: "https://guichet.public.lu/en/citoyens/immigration/plus-3-mois/ressortissant-tiers/hautement-qualifie/salarie-hautement-qualifie.html"
+      sourceName: "guichet.lu — Salaried work for highly qualified workers (EU Blue Card)"
+      # VERIFIED 2026-06-13 (fact-verifier): EU Blue Card page re-fetched live (curl, HTTP 200, no redirect). Verbatim: contract "of 6 months at least for highly qualified work"; "be offered an annual salary at least equal to the amount set by Grand-Ducal regulation (EUR 65,652)"; "Highly qualified workers are not subject to the obligation of a labour market test" (employer must still "make a declaration of vacant position to the National Employment Agency (ADEM)"); first card "valid: for 4 years; or if the employment contract has a duration of less than 4 years, for the duration of the contract plus 3 months". Two-step procedure (authorisation to stay → type D visa where required → residence permit) verbatim. Supported.
+      status: VERIFIED
+      lastVerified: "2026-06-13"
+      verifiedBy: "fact-verifier-lu 2026-06-13"
+      sourceHash: "4eafb0e373a0c1ab0301f5f40c824129b188bc6ed5ed60c3405c067f56015a4a"
+      # 30-day window: contains the EUR 65,652 salary threshold.
+      reviewBy: "2026-07-13"
+    tldr:
+      text: "The EU Blue Card suits highly qualified degree-holders: an employment contract of at least six months, a gross annual salary at least equal to the regulated amount (currently EUR 65,652), and proof of high professional qualification. No ADEM labour-market test applies. Same two-step procedure as other routes; the first Blue Card is valid for four years (or contract length plus three months if shorter)."
+      sourceUrl: "https://guichet.public.lu/en/citoyens/immigration/plus-3-mois/ressortissant-tiers/hautement-qualifie/salarie-hautement-qualifie.html"
+      sourceName: "guichet.lu — Salaried work for highly qualified workers (EU Blue Card)"
+      # VERIFIED 2026-06-13 (fact-verifier): same live page; all four load-bearing facts (6-month contract, EUR 65,652 regulated salary, no labour-market test, 4-year/contract+3-months validity) verbatim as quoted in the summary comment. Supported.
+      status: VERIFIED
+      lastVerified: "2026-06-13"
+      verifiedBy: "fact-verifier-lu 2026-06-13"
+      sourceHash: "4eafb0e373a0c1ab0301f5f40c824129b188bc6ed5ed60c3405c067f56015a4a"
+      reviewBy: "2026-07-13"
+    keyFacts:
+      - label: "Salary threshold"
+        text: "You must be offered a gross annual salary at least equal to the amount set by Grand-Ducal regulation — currently EUR 65,652 (described as the average gross annual salary)."
+        sourceUrl: "https://guichet.public.lu/en/citoyens/immigration/plus-3-mois/ressortissant-tiers/hautement-qualifie/salarie-hautement-qualifie.html"
+        sourceName: "guichet.lu — Salaried work for highly qualified workers (EU Blue Card)"
+        # VERIFIED 2026-06-13 (fact-verifier): verbatim "be offered an annual salary at least equal to the amount set by Grand-Ducal regulation (EUR 65,652)" and, in the documents section, "a gross annual salary at least equal to the average gross annual salary (currently EUR 65,652)". Both the figure and the "average gross annual salary" descriptor are on the page. Supported.
+        status: VERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: "fact-verifier-lu 2026-06-13"
+        sourceHash: "4eafb0e373a0c1ab0301f5f40c824129b188bc6ed5ed60c3405c067f56015a4a"
+        # 30-day window: salary threshold.
+        reviewBy: "2026-07-13"
+      - label: "Contract & qualification"
+        text: "You need an employment contract of at least six months for highly qualified work, plus a document proving the high professional qualifications required for the activity/sector named in the contract."
+        sourceUrl: "https://guichet.public.lu/en/citoyens/immigration/plus-3-mois/ressortissant-tiers/hautement-qualifie/salarie-hautement-qualifie.html"
+        sourceName: "guichet.lu — Salaried work for highly qualified workers (EU Blue Card)"
+        # VERIFIED 2026-06-13 (fact-verifier): verbatim "have an employment contract of 6 months at least for highly qualified work" and "show a document proving that they possess the high professional qualifications required for the activity or sector mentioned in the employment contract". Supported.
+        status: VERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: "fact-verifier-lu 2026-06-13"
+        sourceHash: "4eafb0e373a0c1ab0301f5f40c824129b188bc6ed5ed60c3405c067f56015a4a"
+        reviewBy: "2026-09-11"
+      - label: "No labour-market test"
+        text: "Highly qualified workers are not subject to the obligation of a labour-market test; the employer must still declare the vacant position to ADEM."
+        sourceUrl: "https://guichet.public.lu/en/citoyens/immigration/plus-3-mois/ressortissant-tiers/hautement-qualifie/salarie-hautement-qualifie.html"
+        sourceName: "guichet.lu — Salaried work for highly qualified workers (EU Blue Card)"
+        # VERIFIED 2026-06-13 (fact-verifier): verbatim "the employer must ... make a declaration of vacant position to the National Employment Agency (ADEM). Highly qualified workers are not subject to the obligation of a labour market test." Supported.
+        status: VERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: "fact-verifier-lu 2026-06-13"
+        sourceHash: "4eafb0e373a0c1ab0301f5f40c824129b188bc6ed5ed60c3405c067f56015a4a"
+        reviewBy: "2026-09-11"
+      - label: "Validity"
+        text: "The first EU Blue Card is valid for four years, or — if the employment contract is shorter than four years — for the duration of the contract plus three months. It is valid from the date of the declaration of arrival at the commune."
+        sourceUrl: "https://guichet.public.lu/en/citoyens/immigration/plus-3-mois/ressortissant-tiers/hautement-qualifie/salarie-hautement-qualifie.html"
+        sourceName: "guichet.lu — Salaried work for highly qualified workers (EU Blue Card)"
+        # VERIFIED 2026-06-13 (fact-verifier): verbatim "The first residence permit for highly qualified workers is valid: for 4 years; or if the employment contract has a duration of less than 4 years, for the duration of the contract plus 3 months." and "The residence permit is valid from the date of the arrival declaration at the commune." Supported.
+        status: VERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: "fact-verifier-lu 2026-06-13"
+        sourceHash: "4eafb0e373a0c1ab0301f5f40c824129b188bc6ed5ed60c3405c067f56015a4a"
+        reviewBy: "2026-09-11"
+      - label: "Response time"
+        text: "The response time from the Ministry of Home Affairs on the authorisation-to-stay application is normally a maximum of three months; no decision in that time means the application is deemed rejected. The authorisation to stay, once granted, is valid 90 days."
+        sourceUrl: "https://guichet.public.lu/en/citoyens/immigration/plus-3-mois/ressortissant-tiers/hautement-qualifie/salarie-hautement-qualifie.html"
+        sourceName: "guichet.lu — Salaried work for highly qualified workers (EU Blue Card)"
+        # VERIFIED 2026-06-13 (fact-verifier): verbatim "The response time from the Ministry of Home Affairs is normally a maximum of 3 months. If no decision is received within this time, the application is deemed to have been rejected." and authorisation "valid for a duration of 90 days." Supported.
+        status: VERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: "fact-verifier-lu 2026-06-13"
+        sourceHash: "4eafb0e373a0c1ab0301f5f40c824129b188bc6ed5ed60c3405c067f56015a4a"
+        reviewBy: "2026-09-11"
+    detail: >
+      The EU Blue Card is Luxembourg's residence permit for highly qualified workers and follows the
+      same two-step procedure as the ordinary salaried route, but with two important differences:
+      the salary bar is higher (a gross annual salary at least equal to the regulated amount,
+      currently EUR 65,652) and there is no labour-market test — your employer must still declare
+      the vacancy to ADEM, but ADEM does not test the market for highly qualified roles. You need a
+      contract of at least six months and a document proving your high professional qualification.
+      Before travelling you apply for the temporary authorisation to stay (enclosing your passport,
+      criminal-record extract, CV, diplomas and the signed contract); after entry you declare your
+      arrival, do the medical check, and apply for the EU Blue Card residence permit within three
+      months. The first card is valid four years (or contract length plus three months if shorter).
+      Changing employer or sector requires advance notice to immigration, which has 30 days to
+      object. The application fee is EUR 80. Confirm the current salary threshold, which is set by
+      Grand-Ducal regulation and changes.
+    steps:
+      - text: "Confirm your offer meets the Blue Card criteria: a highly qualified role, a contract of at least six months, the gross annual salary threshold (currently EUR 65,652), and proof of your high professional qualification."
+        links:
+          - text: "guichet.lu — EU Blue Card prerequisites"
+            sourceUrl: "https://guichet.public.lu/en/citoyens/immigration/plus-3-mois/ressortissant-tiers/hautement-qualifie/salarie-hautement-qualifie.html"
+            sourceName: "guichet.lu — Salaried work for highly qualified workers (EU Blue Card)"
+            # VERIFIED 2026-06-13 (fact-verifier): correct page; prerequisites (highly qualified role, 6-month contract, EUR 65,652 regulated salary, proof of high professional qualification) all enumerated verbatim. Supported.
+            status: VERIFIED
+            lastVerified: "2026-06-13"
+            verifiedBy: "fact-verifier-lu 2026-06-13"
+            sourceHash: "4eafb0e373a0c1ab0301f5f40c824129b188bc6ed5ed60c3405c067f56015a4a"
+            reviewBy: "2026-07-13"
+      - text: "Before travelling, apply for the temporary authorisation to stay to the General Department of Immigration; once granted, apply for a type D visa if you are visa-subject."
+        links:
+          - text: "guichet.lu — EU Blue Card: temporary authorisation to stay and visa (Step 1)"
+            sourceUrl: "https://guichet.public.lu/en/citoyens/immigration/plus-3-mois/ressortissant-tiers/hautement-qualifie/salarie-hautement-qualifie.html"
+            sourceName: "guichet.lu — Salaried work for highly qualified workers (EU Blue Card)"
+            # VERIFIED 2026-06-13 (fact-verifier): correct page; Step 1 (apply for temporary authorisation to stay to the General Department of immigration; request a type D visa after obtaining the authorisation if visa-subject) described verbatim. Supported.
+            status: VERIFIED
+            lastVerified: "2026-06-13"
+            verifiedBy: "fact-verifier-lu 2026-06-13"
+            sourceHash: "4eafb0e373a0c1ab0301f5f40c824129b188bc6ed5ed60c3405c067f56015a4a"
+            reviewBy: "2026-09-11"
+      - text: "After entering Luxembourg, declare your arrival at the commune, undergo the medical check, and apply for the EU Blue Card residence permit within three months of entry (EUR 80 fee)."
+        links:
+          - text: "guichet.lu — EU Blue Card: residence-permit application (Step 2)"
+            sourceUrl: "https://guichet.public.lu/en/citoyens/immigration/plus-3-mois/ressortissant-tiers/hautement-qualifie/salarie-hautement-qualifie.html"
+            sourceName: "guichet.lu — Salaried work for highly qualified workers (EU Blue Card)"
+            # VERIFIED 2026-06-13 (fact-verifier): correct page; Step 2 (declaration of arrival within 3 working days, medical check, then residence-permit application) and the EUR 80 fee ("proof of payment of a fee of EUR 80 to account IBAN LU46 1111 2582 2814 0000") described verbatim. Supported.
+            status: VERIFIED
+            lastVerified: "2026-06-13"
+            verifiedBy: "fact-verifier-lu 2026-06-13"
+            sourceHash: "4eafb0e373a0c1ab0301f5f40c824129b188bc6ed5ed60c3405c067f56015a4a"
+            reviewBy: "2026-09-11"
+    documents:
+      - name: "Application for an EU Blue Card residence permit"
+        type: form
+        description: "The EU Blue Card residence-permit application, via MyGuichet.lu or by post on the official form within three months of arrival; obtain the current form from the official guichet.lu page."
+        form:
+          text: "Apply for the EU Blue Card residence permit via MyGuichet.lu or by post. The official guichet.lu page hosts the procedure, the EUR 80 fee and links the application forms."
+          sourceUrl: "https://guichet.public.lu/en/citoyens/immigration/plus-3-mois/ressortissant-tiers/hautement-qualifie/salarie-hautement-qualifie.html"
+          sourceName: "guichet.lu — Salaried work for highly qualified workers (EU Blue Card)"
+          # VERIFIED 2026-06-13 (fact-verifier): correct page; it is the official EU Blue Card procedure page, states the EUR 80 fee verbatim ("proof of payment of a fee of EUR 80 to account IBAN LU46 1111 2582 2814 0000") and links online services/forms. Supported.
+          status: VERIFIED
+          lastVerified: "2026-06-13"
+          verifiedBy: "fact-verifier-lu 2026-06-13"
+          sourceHash: "4eafb0e373a0c1ab0301f5f40c824129b188bc6ed5ed60c3405c067f56015a4a"
+          reviewBy: "2026-09-11"
+      - name: "Valid US passport"
+        type: provide
+        description: "A full copy of your valid US passport (all pages); renew it if it expires in under six months."
+      - name: "Signed employment contract (≥6 months, ≥ salary threshold)"
+        type: provide
+        description: "A copy of the Luxembourg-law employment contract, dated and signed, for at least six months and providing the required gross annual salary (currently EUR 65,652)."
+      - name: "Proof of high professional qualification"
+        type: provide
+        description: "A document proving the high professional qualifications required for the activity/sector (e.g. a higher-education diploma), with copies of your diplomas."
+      - name: "Criminal-record extract or affidavit, and CV"
+        type: provide
+        description: "An extract from your criminal record or a sworn affidavit from your country of legal residence, plus a curriculum vitae."
+      - name: "Proof of payment of the residence-permit fee (EUR 80)"
+        type: provide
+        description: "Proof of payment of the EUR 80 fee to the Ministry of Home Affairs (IBAN LU46 1111 2582 2814 0000)."
+    cost:
+      text: "The EU Blue Card residence-permit application requires proof of payment of a fee of EUR 80 to the Ministry of Home Affairs (IBAN LU46 1111 2582 2814 0000). If you also need a type D entry visa, that fee is shown on the entry-visa step. (Confirm current amounts before paying.)"
+      sourceUrl: "https://guichet.public.lu/en/citoyens/immigration/plus-3-mois/ressortissant-tiers/hautement-qualifie/salarie-hautement-qualifie.html"
+      sourceName: "guichet.lu — Salaried work for highly qualified workers (EU Blue Card)"
+      # RE-SOURCED 2026-06-13 (content-researcher): trimmed the EUR 50 figure off this claim, which the cited Blue Card page does not state. The page DOES support the EUR 80 residence-permit fee + IBAN verbatim, which is all this claim now asserts; the EUR 50 type D visa fee is stated and sourced on the entry-authorisation task (entry-visa page), so this claim now cross-references that step instead of restating an unsourced figure. Source unchanged (Blue Card page 4eafb0e3); claim text now fully supported by it.
+      # VERIFIED 2026-06-13 (fact-verifier re-check): Blue Card page re-fetched LIVE (HTTP 200, correct page, no redirect; fresh snapshot f524e4c5). Fee verbatim "proof of payment of a fee of EUR 80 to account IBAN LU46 1111 2582 2814 0000 (BIC: CCPLLULL, beneficiary: TRES. DE l'ETAT - MAI DG IMMIGRATION ...)". Independently confirmed the page does NOT state EUR 50 or EUR 90 — the trimmed claim asserts only what this page supports; the type D EUR 50 figure is correctly cross-referenced to the entry-visa task (where it is sourced). Supported.
+      status: VERIFIED
+      lastVerified: "2026-06-13"
+      verifiedBy: "fact-verifier-lu-r2 2026-06-13"
+      sourceHash: "f524e4c51baa6416c3c34a2111fbe45c2c6734c3908355e7e717c11522c8a5e8"
+      # 30-day window: fee.
+      reviewBy: "2026-07-13"
+    warning: >
+      The salary threshold (currently EUR 65,652) is set by Grand-Ducal regulation and is revised —
+      confirm the current figure on guichet.lu before relying on it. As with all long-stay routes,
+      the authorisation to stay must be granted before you enter Luxembourg.
+    dependsOn: []
+    appliesIf: "motivation == 'work'"
+
+  # ===========================================================================
+  - id: entry-authorisation
+    title: "Get your type D entry visa to travel to Luxembourg (if required)"
+    category: visa-permit
+    summary:
+      text: "After your temporary authorisation to stay is granted, if you are subject to visa requirements you must apply for a long-stay type D visa before travelling, from your country of legal residence. As US citizens are generally visa-exempt for short Schengen stays, in practice many can enter Luxembourg on their passport plus the temporary authorisation to stay — but you should confirm your visa obligation for a long stay before you book travel. The type D long-stay visa fee is EUR 50 (for all applicant categories) and lets you enter and complete your residence-permit steps."
+      sourceUrl: "https://guichet.public.lu/en/citoyens/immigration/moins-3-mois/ressortissant-tiers/entree-visa.html"
+      sourceName: "Guichet.lu — Luxembourg entry visa for third-country nationals"
+      # RE-SOURCED 2026-06-13 (content-researcher): removed the "affixed in your passport and valid for a maximum of three months" clause, which the cited entry-visa page does not state for the type D visa (it gives affixing/validity only for the type C visa). What remains — type D fee EUR 50 "for all applicant categories", apply from country of legal residence after the authorisation to stay is granted, and the visa-exemption framing — is supported by the entry-visa page (the visa-exempt-on-passport-plus-authorisation detail is also on the salaried page already cited in this task's steps). The type D affixing/3-month validity is covered separately on the salaried/Blue Card tasks. Source unchanged (entry-visa page 666602b9).
+      # VERIFIED 2026-06-13 (fact-verifier re-check): entry-visa page re-fetched LIVE (HTTP 200, correct page, no redirect; fresh snapshot 76fa1ea9). Fee table verbatim "Long stay visa (D) EUR 50 (for all applicant categories)". Apply "in the country in which the applicant legally resides, at a Luxembourg consulate or a diplomatic mission" — verbatim. Independently confirmed the type C affixing/90-day clause is page-stated for type C only ("When the visa is granted, it is affixed in the passport ... The type C visa allows for stays for a duration not exceeding 90 days"), so the researcher's removal of that clause from the type D claim is correct. Supported.
+      status: VERIFIED
+      lastVerified: "2026-06-13"
+      verifiedBy: "fact-verifier-lu-r2 2026-06-13"
+      sourceHash: "76fa1ea9ace7cd523dc1227b3637703c319c251b6f1fd8b18cb162582040c45f"
+      # 30-day window: contains the EUR 50 / EUR 90 visa fees.
+      reviewBy: "2026-07-13"
+    tldr:
+      text: "If you are visa-subject, apply for a long-stay type D visa (EUR 50, for all applicant categories) before travelling, after your temporary authorisation to stay is granted. US citizens are generally visa-exempt for short Schengen stays, so many can enter on passport plus the authorisation to stay — but confirm your long-stay visa obligation first. The type D visa lets you enter and finish your residence-permit steps."
+      sourceUrl: "https://guichet.public.lu/en/citoyens/immigration/moins-3-mois/ressortissant-tiers/entree-visa.html"
+      sourceName: "Guichet.lu — Luxembourg entry visa for third-country nationals"
+      # RE-SOURCED 2026-06-13 (content-researcher): removed the "affixed in your passport and valid up to three months" clause, which the cited entry-visa page does not state for the type D visa. Remaining text — type D fee EUR 50 "for all applicant categories", apply after the authorisation to stay is granted, and visa-exemption framing — is supported by the entry-visa page (visa-exemption detail also on the already-cited salaried page). The type D affixing/3-month validity lives on the salaried/Blue Card tasks. Source unchanged (entry-visa page 666602b9).
+      # VERIFIED 2026-06-13 (fact-verifier re-check): same live entry-visa page (fresh snapshot 76fa1ea9). "Long stay visa (D) EUR 50 (for all applicant categories)" and apply-from-country-of-legal-residence verbatim; type C-only affixing/90-day clause confirmed (so the removed type D affixing/3-month wording is correctly absent). Supported.
+      status: VERIFIED
+      lastVerified: "2026-06-13"
+      verifiedBy: "fact-verifier-lu-r2 2026-06-13"
+      sourceHash: "76fa1ea9ace7cd523dc1227b3637703c319c251b6f1fd8b18cb162582040c45f"
+      reviewBy: "2026-07-13"
+    keyFacts:
+      - label: "Type D visa fee"
+        text: "The long-stay (type D) visa fee is EUR 50 for all applicant categories. (A short-stay type C visa, not the long-stay route, is EUR 90.)"
+        sourceUrl: "https://guichet.public.lu/en/citoyens/immigration/moins-3-mois/ressortissant-tiers/entree-visa.html"
+        sourceName: "Guichet.lu — Luxembourg entry visa for third-country nationals"
+        # VERIFIED 2026-06-13 (fact-verifier): verbatim fee table "Airport transit visa (A) EUR 90 ... Short stay visa (C) EUR 90 ... Long stay visa (D) EUR 50 (for all applicant categories)". Both figures and the "for all applicant categories" qualifier confirmed character-for-character. Supported.
+        status: VERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: "fact-verifier-lu 2026-06-13"
+        sourceHash: "666602b951d60757f1ce8a1d1b5c5fe85e630e608b98b21e930ffe2470cf642b"
+        # 30-day window: visa fee.
+        reviewBy: "2026-07-13"
+      - label: "Where to apply"
+        text: "Apply at the Luxembourg consulate or diplomatic mission in your country of legal residence, enclosing your temporary authorisation to stay. Where Luxembourg is not represented, applications for long-stay visas are handled by the country representing Luxembourg in the Schengen area."
+        sourceUrl: "https://guichet.public.lu/en/citoyens/immigration/moins-3-mois/ressortissant-tiers/entree-visa.html"
+        sourceName: "Guichet.lu — Luxembourg entry visa for third-country nationals"
+        # VERIFIED 2026-06-13 (fact-verifier): verbatim "The visa application must be submitted in the country in which the applicant legally resides, at a Luxembourg consulate or a diplomatic mission representing Luxembourg. Should there be no Luxembourg consulate in that country and should Luxembourg not be represented there, the application must be submitted to the ..." [country representing Luxembourg in the Schengen area]. Supported.
+        status: VERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: "fact-verifier-lu 2026-06-13"
+        sourceHash: "666602b951d60757f1ce8a1d1b5c5fe85e630e608b98b21e930ffe2470cf642b"
+        reviewBy: "2026-09-11"
+      - label: "Passport validity"
+        text: "Your passport must be valid for at least three months beyond the visa's expiry date; if it is due to expire in under six months, renew it before coming to Luxembourg."
+        sourceUrl: "https://guichet.public.lu/en/citoyens/immigration/moins-3-mois/ressortissant-tiers/entree-visa.html"
+        sourceName: "Guichet.lu — Luxembourg entry visa for third-country nationals"
+        # VERIFIED 2026-06-13 (fact-verifier): load-bearing fact verbatim on the cited page — "the third country national must, before applying for a visa, have a valid passport which is valid for at least another 3 months after the expiration date of the visa applied for." The "renew if due to expire in under six months" advice is general (it appears verbatim on the salaried/Blue Card pages: "If the applicant's passport is due to expire in less than 6 months, they are advised to renew it before coming to Luxembourg") and does not contradict the cited page. Supported.
+        status: VERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: "fact-verifier-lu 2026-06-13"
+        sourceHash: "666602b951d60757f1ce8a1d1b5c5fe85e630e608b98b21e930ffe2470cf642b"
+        reviewBy: "2026-09-11"
+    detail: >
+      The type D (long-stay) visa is the entry document that lets a visa-subject third-country
+      national travel to Luxembourg to take up residence after the temporary authorisation to stay
+      has been granted. You apply before departure, from your country of legal residence, at the
+      Luxembourg consulate or diplomatic mission (or, where Luxembourg is not represented, at the
+      Schengen country that issues long-stay visas on its behalf — the salaried-worker page names
+      Belgium, and the Blue Card page names Belgium or the Netherlands; confirm the current
+      arrangement for your location). Whether you actually need the type D visa depends on your
+      nationality: US citizens are generally exempt from short-stay Schengen visas, and the guichet
+      pages note that someone who is not subject to visa requirements may enter on their passport
+      plus the temporary authorisation to stay. Do not assume — confirm your long-stay visa
+      obligation with the competent Luxembourg representation before booking travel. The type D fee
+      is EUR 50.
+    steps:
+      - text: "Confirm whether you, as a US citizen, are subject to a long-stay (type D) visa requirement; if you are, apply at the competent Luxembourg consulate/mission with your temporary authorisation to stay."
+        links:
+          - text: "Guichet.lu — entry visa: who needs one and where to apply"
+            sourceUrl: "https://guichet.public.lu/en/citoyens/immigration/moins-3-mois/ressortissant-tiers/entree-visa.html"
+            sourceName: "Guichet.lu — Luxembourg entry visa for third-country nationals"
+            # VERIFIED 2026-06-13 (fact-verifier): correct page; who-needs-a-visa (the page links the EU visa-checker and notes a residence permit from another EU Member State exempts) and where-to-apply (consulate in country of legal residence; failing that, the Schengen state representing Luxembourg) are described verbatim. Supported.
+            status: VERIFIED
+            lastVerified: "2026-06-13"
+            verifiedBy: "fact-verifier-lu 2026-06-13"
+            sourceHash: "666602b951d60757f1ce8a1d1b5c5fe85e630e608b98b21e930ffe2470cf642b"
+            reviewBy: "2026-07-13"
+      - text: "If you are visa-exempt, prepare to enter Luxembourg on your valid passport together with your temporary authorisation to stay, then complete the declaration of arrival and residence-permit steps."
+        links:
+          - text: "guichet.lu — entering on passport plus authorisation to stay (salaried route)"
+            sourceUrl: "https://guichet.public.lu/en/citoyens/immigration/plus-3-mois/ressortissant-tiers/salarie/salarie-pays-tiers.html"
+            sourceName: "guichet.lu — Conditions of residence for third-country salaried workers"
+            # VERIFIED 2026-06-13 (fact-verifier): salaried page verbatim "if he is not subject to visa requirements, enter Luxembourg territory and make a declaration to the administration of the commune where he resides. After entering Luxembourg, the third-country national must take steps to obtain a residence permit." Supports entering on passport + authorisation to stay then doing the declaration of arrival and permit steps. Supported.
+            status: VERIFIED
+            lastVerified: "2026-06-13"
+            verifiedBy: "fact-verifier-lu 2026-06-13"
+            sourceHash: "e8d880612afdde51c6931b20fa53c4f1c6491918a8d843d89fd5e779404189e6"
+            reviewBy: "2026-09-11"
+    documents:
+      - name: "Type D long-stay visa application"
+        type: form
+        description: "The long-stay (type D) visa application at the competent Luxembourg consulate/mission, submitted with your temporary authorisation to stay; obtain the current form and procedure from the official guichet.lu page."
+        form:
+          text: "Apply for the type D long-stay visa at the competent Luxembourg representation. The official guichet.lu page describes the procedure, fees and the form; confirm the representation responsible for your US location."
+          sourceUrl: "https://guichet.public.lu/en/citoyens/immigration/moins-3-mois/ressortissant-tiers/entree-visa.html"
+          sourceName: "Guichet.lu — Luxembourg entry visa for third-country nationals"
+          # VERIFIED 2026-06-13 (fact-verifier): correct page; it is the official entry-visa procedure page, states the fees, links the "Application form for a Schengen Visa", and describes applying at the competent Luxembourg representation (consulate/diplomatic mission in the country of legal residence). Supported.
+          status: VERIFIED
+          lastVerified: "2026-06-13"
+          verifiedBy: "fact-verifier-lu 2026-06-13"
+          sourceHash: "666602b951d60757f1ce8a1d1b5c5fe85e630e608b98b21e930ffe2470cf642b"
+          reviewBy: "2026-07-13"
+      - name: "Temporary authorisation to stay"
+        type: provide
+        description: "Your granted temporary authorisation to stay, which must accompany the type D visa application."
+      - name: "Valid US passport"
+        type: provide
+        description: "Your valid US passport (valid for at least three months beyond the visa's expiry)."
+    cost:
+      text: "The long-stay (type D) visa fee is EUR 50 for all applicant categories. (A short-stay type C visa is EUR 90; it is not the route to take up residence.) Confirm current fees before paying."
+      sourceUrl: "https://guichet.public.lu/en/citoyens/immigration/moins-3-mois/ressortissant-tiers/entree-visa.html"
+      sourceName: "Guichet.lu — Luxembourg entry visa for third-country nationals"
+      # VERIFIED 2026-06-13 (fact-verifier): verbatim fee table "Short stay visa (C) EUR 90 ... Long stay visa (D) EUR 50 (for all applicant categories)". Both figures confirmed character-for-character. Supported.
+      status: VERIFIED
+      lastVerified: "2026-06-13"
+      verifiedBy: "fact-verifier-lu 2026-06-13"
+      sourceHash: "666602b951d60757f1ce8a1d1b5c5fe85e630e608b98b21e930ffe2470cf642b"
+      # 30-day window: visa fee.
+      reviewBy: "2026-07-13"
+    warning: >
+      Visa obligation depends on nationality; US citizens are generally Schengen short-stay
+      visa-exempt, but you must confirm whether a long-stay type D visa is required for your move
+      before booking travel. Whether or not a visa is needed, the temporary authorisation to stay
+      must already be granted before you enter Luxembourg.
+    dependsOn: []
+    appliesIf: "motivation == 'work' || motivation == 'study' || motivation == 'family'"
+
+  # ===========================================================================
+  - id: family-reunification
+    title: "Bring your spouse/partner and children (family reunification)"
+    category: family-dependents
+    summary:
+      text: "Once you hold (or are applying for) a Luxembourg residence permit, your third-country-national family members can join you through family reunification. Family members are your spouse or registered partner aged 18 or over, and unmarried children under 18 in your custody and dependent on you. As the sponsor you must show stable, regular and sufficient resources (assessed against the minimum wage for unskilled workers over 12 months), suitable accommodation meeting legal habitability criteria, and health-insurance cover for the whole family. EU Blue Card holders, researchers and intra-corporate transferees benefit from facilitated reunification: their family can be included with their own application and is not subject to a minimum prior-residence period."
+      sourceUrl: "https://guichet.public.lu/en/citoyens/immigration/plus-3-mois/ressortissant-tiers/membre-famille/regroupement-familial.html"
+      sourceName: "guichet.lu — Family reunification for third-country nationals"
+      # VERIFIED 2026-06-13 (fact-verifier): family-reunification page re-fetched live (curl, HTTP 200, no redirect). Family-member definition verbatim ("the spouse or registered partner of the sponsor, aged 18 or over at the time of the application"; "the unmarried children under 18 of the sponsor and/or the spouse or partner for whom they have custody and where the children are dependent on them"). Resources benchmark verbatim ("the average monthly minimum wage of an unskilled worker over a period of 12 months"). Facilitated route verbatim ("The condition of a stay of a determined minimum duration in Luxembourg does not apply ... for sponsors with an 'EU Blue Card', 'transferred worker' or 'researcher' ... These persons may be accompanied by their spouse or registered partner, as well as their unmarried children"). Supported.
+      status: VERIFIED
+      lastVerified: "2026-06-13"
+      verifiedBy: "fact-verifier-lu 2026-06-13"
+      sourceHash: "d444f57cbb5a61704e8391d12c6019aaec96702b3f0bec52743eefb6ea981867"
+      reviewBy: "2026-09-11"
+    tldr:
+      text: "Your third-country family can join you through family reunification: spouse or registered partner aged 18+, and unmarried children under 18 in your custody and dependent on you. As sponsor you must show stable sufficient resources (benchmarked to the unskilled-worker minimum wage over 12 months), suitable legally-compliant housing, and health insurance for the family. EU Blue Card holders, researchers and intra-corporate transferees get facilitated reunification with no minimum prior-residence period and can apply at the same time as their own application."
+      sourceUrl: "https://guichet.public.lu/en/citoyens/immigration/plus-3-mois/ressortissant-tiers/membre-famille/regroupement-familial.html"
+      sourceName: "guichet.lu — Family reunification for third-country nationals"
+      # VERIFIED 2026-06-13 (fact-verifier): same live page; spouse/partner 18+, unmarried children under 18, unskilled-worker-minimum-wage-over-12-months benchmark, housing meeting legal habitability criteria, health insurance for sponsor + family, and the Blue Card / transferred-worker / researcher facilitated route (no minimum-duration condition, family may accompany) all verbatim. "intra-corporate transferees" maps to the page's "transferred worker". Supported.
+      status: VERIFIED
+      lastVerified: "2026-06-13"
+      verifiedBy: "fact-verifier-lu 2026-06-13"
+      sourceHash: "d444f57cbb5a61704e8391d12c6019aaec96702b3f0bec52743eefb6ea981867"
+      reviewBy: "2026-09-11"
+    keyFacts:
+      - label: "Who counts as a family member"
+        text: "The spouse or registered partner of the sponsor, aged 18 or over at the time of application, and the unmarried children under 18 of the sponsor and/or the spouse/partner who are in their custody and dependent on them (consent of any other custody-holder may be required)."
+        sourceUrl: "https://guichet.public.lu/en/citoyens/immigration/plus-3-mois/ressortissant-tiers/membre-famille/regroupement-familial.html"
+        sourceName: "guichet.lu — Family reunification for third-country nationals"
+        # VERIFIED 2026-06-13 (fact-verifier): verbatim "the spouse or registered partner of the sponsor, aged 18 or over at the time of the application for family reunification ...; the unmarried children under 18 of the sponsor and/or the spouse or partner for whom they have custody and where the children are dependent on them, or, in the case of shared custody, where the other party sharing custody has given their consent". Supported.
+        status: VERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: "fact-verifier-lu 2026-06-13"
+        sourceHash: "d444f57cbb5a61704e8391d12c6019aaec96702b3f0bec52743eefb6ea981867"
+        reviewBy: "2026-09-11"
+      - label: "Resources requirement"
+        text: "The sponsor must prove stable, regular and sufficient resources without resorting to social welfare; the level is assessed against the average monthly minimum wage of an unskilled worker over a period of 12 months, and the proof must cover the 12 months before the application."
+        sourceUrl: "https://guichet.public.lu/en/citoyens/immigration/plus-3-mois/ressortissant-tiers/membre-famille/regroupement-familial.html"
+        sourceName: "guichet.lu — Family reunification for third-country nationals"
+        # VERIFIED 2026-06-13 (fact-verifier): verbatim "provide proof that they have stable, regular and sufficient resources ... without having to resort to social welfare"; "assessed with reference to the average monthly minimum wage of an unskilled worker over a period of 12 months"; "The proof must cover the 12 months prior to submitting the application". Supported.
+        status: VERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: "fact-verifier-lu 2026-06-13"
+        sourceHash: "d444f57cbb5a61704e8391d12c6019aaec96702b3f0bec52743eefb6ea981867"
+        reviewBy: "2026-09-11"
+      - label: "Housing & health insurance"
+        text: "The sponsor must have suitable accommodation meeting legal habitability criteria (the law cites a floor area of at least 12 m² for the first occupant and 9 m² per additional occupant, with proper light, heating, running water and electricity) and health-insurance cover for themselves and each family member."
+        sourceUrl: "https://guichet.public.lu/en/citoyens/immigration/plus-3-mois/ressortissant-tiers/membre-famille/regroupement-familial.html"
+        sourceName: "guichet.lu — Family reunification for third-country nationals"
+        # VERIFIED 2026-06-13 (fact-verifier): verbatim "a floor area of at least 12 m² for the first occupant and 9 m² per additional occupant, with natural light through windows ... heating, running water, e[lectricity]" (assessed per the law of 20 December 2019 on health, safety and habitability criteria) and "have health insurance cover for themselves and the family member(s)". Supported.
+        status: VERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: "fact-verifier-lu 2026-06-13"
+        sourceHash: "d444f57cbb5a61704e8391d12c6019aaec96702b3f0bec52743eefb6ea981867"
+        reviewBy: "2026-09-11"
+      - label: "Facilitated route for Blue Card / researcher"
+        text: "Sponsors holding an EU Blue Card, transferred-worker or researcher status (or long-term-resident status in another EU Member State whose family was already established there) are not subject to the minimum prior-residence period, and their spouse/partner and unmarried children under 18 may accompany them when they enter Luxembourg."
+        sourceUrl: "https://guichet.public.lu/en/citoyens/immigration/plus-3-mois/ressortissant-tiers/membre-famille/regroupement-familial.html"
+        sourceName: "guichet.lu — Family reunification for third-country nationals"
+        # VERIFIED 2026-06-13 (fact-verifier): verbatim "The condition of a stay of a determined minimum duration in Luxembourg does not apply in the following cases: ... for sponsors with an 'EU Blue Card (highly qualified worker)', 'transferred worker' or 'researcher' or who have long-term resident status in another EU Member State ... and whose family was already established in the other Member State. These persons may be accompanied by their spouse or registered partner, as well as their unmarried children". Supported.
+        status: VERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: "fact-verifier-lu 2026-06-13"
+        sourceHash: "d444f57cbb5a61704e8391d12c6019aaec96702b3f0bec52743eefb6ea981867"
+        reviewBy: "2026-09-11"
+      - label: "Response time"
+        text: "The response time from the Ministry of Home Affairs on the family-reunification authorisation-to-stay application is normally a maximum of nine months (extendable in exceptionally complex cases); no response in that time means the application is deemed rejected."
+        sourceUrl: "https://guichet.public.lu/en/citoyens/immigration/plus-3-mois/ressortissant-tiers/membre-famille/regroupement-familial.html"
+        sourceName: "guichet.lu — Family reunification for third-country nationals"
+        # VERIFIED 2026-06-13 (fact-verifier): verbatim "The response time from the Ministry of Home Affairs is normally a maximum of 9 months. If no response is received within this time, the application shall be deemed to have been rejected. In exceptional cases linked to the complexity of the examination of [the application, the deadline may be extended]". Supported.
+        status: VERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: "fact-verifier-lu 2026-06-13"
+        sourceHash: "d444f57cbb5a61704e8391d12c6019aaec96702b3f0bec52743eefb6ea981867"
+        reviewBy: "2026-09-11"
+    detail: >
+      Family reunification lets the third-country spouse/registered partner (aged 18+) and unmarried
+      minor children of a third-country resident move to Luxembourg. The family member applies for a
+      temporary authorisation to stay from their country of origin before entering (the sponsor may
+      file on their behalf with a power of attorney), then follows the usual after-arrival steps:
+      declaration of arrival, medical check, and residence-permit application. As sponsor you must
+      demonstrate stable, regular and sufficient resources — benchmarked to the unskilled-worker
+      minimum wage over twelve months — suitable accommodation meeting the legal habitability
+      criteria, and health-insurance cover for everyone. A major advantage applies to EU Blue Card
+      holders, researchers and intra-corporate transferees: their family is exempt from the minimum
+      prior-residence period and can be included with the main applicant's own application, entering
+      together. Each residence permit carries the EUR 80 fee. Some figures (the minimum-wage
+      benchmark, habitability measurements) are set by separate regulations and change — confirm
+      current values before relying on them.
+    steps:
+      - text: "Confirm each family member qualifies (spouse/partner 18+; unmarried child under 18 in your custody and dependent on you) and that you meet the resources, accommodation and health-insurance conditions."
+        links:
+          - text: "guichet.lu — family reunification: who qualifies and sponsor prerequisites"
+            sourceUrl: "https://guichet.public.lu/en/citoyens/immigration/plus-3-mois/ressortissant-tiers/membre-famille/regroupement-familial.html"
+            sourceName: "guichet.lu — Family reunification for third-country nationals"
+            # VERIFIED 2026-06-13 (fact-verifier): correct page; who-qualifies (spouse/partner 18+, unmarried children under 18 in custody and dependent) and the sponsor's conditions (stable/regular/sufficient resources, suitable accommodation, health insurance) are enumerated verbatim. Supported.
+            status: VERIFIED
+            lastVerified: "2026-06-13"
+            verifiedBy: "fact-verifier-lu 2026-06-13"
+            sourceHash: "d444f57cbb5a61704e8391d12c6019aaec96702b3f0bec52743eefb6ea981867"
+            reviewBy: "2026-09-11"
+      - text: "Have the family member apply (or apply on their behalf with a power of attorney) for the temporary authorisation to stay before they travel, enclosing proof of resources, accommodation, health insurance and the relationship documents."
+        links:
+          - text: "guichet.lu — family reunification: authorisation to stay and supporting documents"
+            sourceUrl: "https://guichet.public.lu/en/citoyens/immigration/plus-3-mois/ressortissant-tiers/membre-famille/regroupement-familial.html"
+            sourceName: "guichet.lu — Family reunification for third-country nationals"
+            # VERIFIED 2026-06-13 (fact-verifier): correct page; the temporary-authorisation-to-stay procedure, power-of-attorney option ("third-country nationals may mandate a third party (e.g. the future employer)"), and the supporting-document list (passport, birth certificate, proof of resources/housing/health insurance) are described verbatim. Supported.
+            status: VERIFIED
+            lastVerified: "2026-06-13"
+            verifiedBy: "fact-verifier-lu 2026-06-13"
+            sourceHash: "d444f57cbb5a61704e8391d12c6019aaec96702b3f0bec52743eefb6ea981867"
+            reviewBy: "2026-09-11"
+      - text: "After arrival, the family member declares their arrival at the commune, undergoes the medical check, and applies for the residence permit (EUR 80 fee) within three months."
+        links:
+          - text: "guichet.lu — family reunification: after-entry steps and residence permit"
+            sourceUrl: "https://guichet.public.lu/en/citoyens/immigration/plus-3-mois/ressortissant-tiers/membre-famille/regroupement-familial.html"
+            sourceName: "guichet.lu — Family reunification for third-country nationals"
+            # VERIFIED 2026-06-13 (fact-verifier): correct page; after-entry steps (declaration of arrival, medical check, residence-permit application) and the EUR 80 fee ("proof of payment of a fee of EUR 80 to account IBAN LU46 1111 2582 2814 0000") are stated verbatim. Supported.
+            status: VERIFIED
+            lastVerified: "2026-06-13"
+            verifiedBy: "fact-verifier-lu 2026-06-13"
+            sourceHash: "d444f57cbb5a61704e8391d12c6019aaec96702b3f0bec52743eefb6ea981867"
+            reviewBy: "2026-09-11"
+    documents:
+      - name: "Application for a family-member residence permit"
+        type: form
+        description: "The family-member residence-permit application (after the authorisation to stay), via MyGuichet.lu or by post on the official form; obtain the current form from the official guichet.lu page."
+        form:
+          text: "Apply for the family-member residence permit. The official guichet.lu page describes who qualifies, the sponsor's conditions, the supporting documents and links the forms."
+          sourceUrl: "https://guichet.public.lu/en/citoyens/immigration/plus-3-mois/ressortissant-tiers/membre-famille/regroupement-familial.html"
+          sourceName: "guichet.lu — Family reunification for third-country nationals"
+          # VERIFIED 2026-06-13 (fact-verifier): correct page; it is the official family-reunification procedure page describing who qualifies, the sponsor's conditions and the supporting documents, and links online services/forms. Supported.
+          status: VERIFIED
+          lastVerified: "2026-06-13"
+          verifiedBy: "fact-verifier-lu 2026-06-13"
+          sourceHash: "d444f57cbb5a61704e8391d12c6019aaec96702b3f0bec52743eefb6ea981867"
+          reviewBy: "2026-09-11"
+      - name: "Marriage / partnership and birth certificates"
+        type: provide
+        description: "A certificate attesting to the marriage or registered partnership, and birth certificates / proof of the family relationship for any children (with custody documents where the parents are divorced or share custody)."
+      - name: "Sponsor's proof of resources (12 months)"
+        type: provide
+        description: "The sponsor's proof of stable, regular and sufficient resources (e.g. payslips, tax return, income from assets) covering the 12 months before the application."
+      - name: "Proof of suitable accommodation"
+        type: provide
+        description: "Proof of suitable housing meeting the legal habitability criteria (lease or property deed showing adequate floor area, light, heating, water and electricity)."
+      - name: "Proof of health-insurance cover (family)"
+        type: provide
+        description: "A health-insurance certificate or certificate of co-insurance covering the sponsor and each family member for their stay in Luxembourg."
+      - name: "Family members' passports and criminal-record extracts"
+        type: provide
+        description: "Full copies of each family member's valid passport and, for the spouse/partner and adult ascendants, a recent criminal-record extract or sworn affidavit."
+    cost:
+      text: "Each family-member residence permit requires proof of payment of a fee of EUR 80 to the Ministry of Home Affairs (IBAN LU46 1111 2582 2814 0000). (Confirm the current amount before paying.)"
+      sourceUrl: "https://guichet.public.lu/en/citoyens/immigration/plus-3-mois/ressortissant-tiers/membre-famille/regroupement-familial.html"
+      sourceName: "guichet.lu — Family reunification for third-country nationals"
+      # VERIFIED 2026-06-13 (fact-verifier): verbatim "proof of payment of a fee of EUR 80 to account IBAN LU46 1111 2582 2814 0000 (BIC: CCPLLULL, beneficiary: Ministry of Home Affairs, General Department of immigration)". Supported.
+      status: VERIFIED
+      lastVerified: "2026-06-13"
+      verifiedBy: "fact-verifier-lu 2026-06-13"
+      sourceHash: "d444f57cbb5a61704e8391d12c6019aaec96702b3f0bec52743eefb6ea981867"
+      # 30-day window: fee.
+      reviewBy: "2026-07-13"
+    warning: >
+      The resources benchmark (unskilled-worker minimum wage) and the habitability measurements are
+      set by separate regulations and change — confirm current values on guichet.lu. Ordinary
+      sponsors may face a minimum prior-residence period; EU Blue Card holders, researchers and
+      transferees do NOT, and can bring their family in with their own application.
+    dependsOn: []
+    appliesIf: "motivation == 'family' || motivation == 'work' && companions includes 'partner' || motivation == 'work' && companions includes 'children'"
+
+  # ===========================================================================
+  - id: study-permit
+    title: "Apply for a student residence permit to study in Luxembourg"
+    category: education
+    summary:
+      text: "To study in Luxembourg for more than three months as a US citizen you need a student residence permit, obtained through the same two-step procedure. You must be enrolled in a Luxembourg higher-education establishment (the University of Luxembourg, a BTS-awarding institution, or an approved private institution) for a full-time degree as your main activity. You must prove sufficient resources — monthly resources of at least 80% of the social inclusion income (REVIS) — and hold health-insurance cover. The Ministry normally responds to the authorisation-to-stay application within 60 days. Students may work a maximum of 15 hours per week."
+      sourceUrl: "https://guichet.public.lu/en/citoyens/immigration/plus-3-mois/ressortissant-tiers/etudiant/etudiant-pays-tiers.html"
+      sourceName: "Guichet.lu — Conditions for residence in Luxembourg for students from third countries"
+      # VERIFIED 2026-06-13 (fact-verifier): student page re-fetched live (curl, HTTP 200, no redirect). Verbatim: students are "persons enrolled in a higher education establishment in Luxembourg; in order to pursue, as a main activity, a complete study cycle on a full-time basis leading to an academic degree or diploma"; establishments = "the University of Luxembourg; education establishments awarding the advanced technician's certificate (BTS); approved private higher education establishments". Resources: "The monthly resources must amount to at least 80% of the current social inclusion income." Response "within 60 days". Work "(maximum 15 hours per week)". Supported. (Note: the page says "social inclusion income"; the draft's gloss "(REVIS)" is the official acronym for that scheme — used verbatim on guichet's social-security page — and does not change the figure.)
+      status: VERIFIED
+      lastVerified: "2026-06-13"
+      verifiedBy: "fact-verifier-lu 2026-06-13"
+      sourceHash: "1cc41f8b7b2892be70dd337155d0f85023b3550ec042c6eaaf70fe7e000dce62"
+      reviewBy: "2026-09-11"
+    tldr:
+      text: "Studying in Luxembourg over three months needs a student residence permit (same two-step procedure). You must be enrolled in a Luxembourg higher-education establishment for a full-time degree as your main activity, prove sufficient resources (monthly resources of at least 80% of the social inclusion income, REVIS) and hold health insurance. The Ministry normally responds within 60 days; students may work up to 15 hours per week."
+      sourceUrl: "https://guichet.public.lu/en/citoyens/immigration/plus-3-mois/ressortissant-tiers/etudiant/etudiant-pays-tiers.html"
+      sourceName: "Guichet.lu — Conditions for residence in Luxembourg for students from third countries"
+      # VERIFIED 2026-06-13 (fact-verifier): same live page; enrolment-as-main-activity-full-time, "80% of the current social inclusion income", 60-day response and 15-hours-per-week work cap all verbatim. "(REVIS)" is the official acronym gloss for the social inclusion income. Supported.
+      status: VERIFIED
+      lastVerified: "2026-06-13"
+      verifiedBy: "fact-verifier-lu 2026-06-13"
+      sourceHash: "1cc41f8b7b2892be70dd337155d0f85023b3550ec042c6eaaf70fe7e000dce62"
+      reviewBy: "2026-09-11"
+    keyFacts:
+      - label: "Who counts as a student"
+        text: "A person enrolled in a Luxembourg higher-education establishment (the University of Luxembourg, a BTS-awarding institution, or an approved private higher-education institution) to pursue, as their main activity, a full-time study cycle leading to a degree or diploma. PhD researchers in doctoral programmes also count as students."
+        sourceUrl: "https://guichet.public.lu/en/citoyens/immigration/plus-3-mois/ressortissant-tiers/etudiant/etudiant-pays-tiers.html"
+        sourceName: "Guichet.lu — Conditions for residence in Luxembourg for students from third countries"
+        # VERIFIED 2026-06-13 (fact-verifier): verbatim "persons enrolled in a higher education establishment in Luxembourg; in order to pursue, as a main activity, a complete study cycle on a full-time basis leading to an academic degree or diploma ... Researchers enrolled in doctoral programmes (PhD) are also considered as students. The following are considered to be higher education establishments: the University of Luxembourg; education establishments awarding the advanced technician's certificate (BTS); approved private higher education establishments." Supported.
+        status: VERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: "fact-verifier-lu 2026-06-13"
+        sourceHash: "1cc41f8b7b2892be70dd337155d0f85023b3550ec042c6eaaf70fe7e000dce62"
+        reviewBy: "2026-09-11"
+      - label: "Resources requirement"
+        text: "You must prove sufficient resources to cover living and return-travel costs; the monthly resources must amount to at least 80% of the current social inclusion income (REVIS), shown e.g. by a scholarship certificate, a bank certificate with six months of statements, or a sponsor's financial-support declaration."
+        sourceUrl: "https://guichet.public.lu/en/citoyens/immigration/plus-3-mois/ressortissant-tiers/etudiant/etudiant-pays-tiers.html"
+        sourceName: "Guichet.lu — Conditions for residence in Luxembourg for students from third countries"
+        # VERIFIED 2026-06-13 (fact-verifier): verbatim "sufficient resources to cover for living expenses and return-travel costs. The monthly resources must amount to at least 80% of the current social inclusion income." Proof options verbatim: "the original document of the certificate of scholarship or student loan ...; an original bank certificate and a bank statement for the past 6 months ...; the original financial statement of support ... signed by a sponsor". "(REVIS)" = official acronym for the social inclusion income. Supported.
+        status: VERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: "fact-verifier-lu 2026-06-13"
+        sourceHash: "1cc41f8b7b2892be70dd337155d0f85023b3550ec042c6eaaf70fe7e000dce62"
+        reviewBy: "2026-09-11"
+      - label: "Response time"
+        text: "The Ministry of Home Affairs normally responds to the authorisation-to-stay application within 60 days (the clock is suspended if documents are missing)."
+        sourceUrl: "https://guichet.public.lu/en/citoyens/immigration/plus-3-mois/ressortissant-tiers/etudiant/etudiant-pays-tiers.html"
+        sourceName: "Guichet.lu — Conditions for residence in Luxembourg for students from third countries"
+        # VERIFIED 2026-06-13 (fact-verifier): verbatim "The Ministry of Home Affairs normally responds within 60 days. If the information or supporting documents provided are incomplete, the Minister will inform the applicant on any additional information to be provided ..." — supports the 60-day response and the "suspended/awaiting missing documents" gloss. Supported.
+        status: VERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: "fact-verifier-lu 2026-06-13"
+        sourceHash: "1cc41f8b7b2892be70dd337155d0f85023b3550ec042c6eaaf70fe7e000dce62"
+        reviewBy: "2026-09-11"
+      - label: "Working while studying"
+        text: "Remuneration from a work contract of a maximum of 15 hours per week may be taken into account towards the resources requirement; material advantages such as free accommodation also count."
+        sourceUrl: "https://guichet.public.lu/en/citoyens/immigration/plus-3-mois/ressortissant-tiers/etudiant/etudiant-pays-tiers.html"
+        sourceName: "Guichet.lu — Conditions for residence in Luxembourg for students from third countries"
+        # VERIFIED 2026-06-13 (fact-verifier): verbatim "Material advantages granted to the student (such as free accommodation) or the remuneration from a work contract (maximum 15 hours per week), are also taken into account." Supported.
+        status: VERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: "fact-verifier-lu 2026-06-13"
+        sourceHash: "1cc41f8b7b2892be70dd337155d0f85023b3550ec042c6eaaf70fe7e000dce62"
+        reviewBy: "2026-09-11"
+    detail: >
+      Studying in Luxembourg as a US citizen for more than three months requires both enrolment and
+      a student residence permit, obtained through the standard two-step procedure. You must be
+      enrolled in a recognised higher-education establishment — the University of Luxembourg, an
+      institution awarding the advanced technician's certificate (BTS), or an approved private
+      institution — to pursue a full-time study cycle as your main activity; PhD candidates count as
+      students. Before travelling you apply for the temporary authorisation to stay, enclosing proof
+      of enrolment, a criminal-record extract, proof of sufficient resources (monthly resources of
+      at least 80% of the social inclusion income, with options including a scholarship certificate,
+      a bank certificate plus six months of statements, or a sponsor's financial-support
+      declaration), and a health-insurance certificate. The Ministry normally responds within 60
+      days. After arrival you declare your arrival, do the medical check, and apply for the student
+      residence permit. Paid work is capped at 15 hours per week. Confirm the current REVIS figure
+      and the exact document list before applying.
+    steps:
+      - text: "Get enrolled in a recognised Luxembourg higher-education establishment for a full-time degree as your main activity."
+        links:
+          - text: "Guichet.lu — who counts as a student and recognised establishments"
+            sourceUrl: "https://guichet.public.lu/en/citoyens/immigration/plus-3-mois/ressortissant-tiers/etudiant/etudiant-pays-tiers.html"
+            sourceName: "Guichet.lu — Conditions for residence in Luxembourg for students from third countries"
+            # VERIFIED 2026-06-13 (fact-verifier): correct page; who-counts-as-a-student and the recognised establishments (University of Luxembourg, BTS-awarding, approved private) are listed verbatim. Supported.
+            status: VERIFIED
+            lastVerified: "2026-06-13"
+            verifiedBy: "fact-verifier-lu 2026-06-13"
+            sourceHash: "1cc41f8b7b2892be70dd337155d0f85023b3550ec042c6eaaf70fe7e000dce62"
+            reviewBy: "2026-09-11"
+      - text: "Before travelling, apply for the temporary authorisation to stay, enclosing your enrolment proof, criminal-record extract, proof of sufficient resources (≥80% of REVIS monthly) and health insurance."
+        links:
+          - text: "Guichet.lu — student authorisation to stay and supporting documents (Step 1)"
+            sourceUrl: "https://guichet.public.lu/en/citoyens/immigration/plus-3-mois/ressortissant-tiers/etudiant/etudiant-pays-tiers.html"
+            sourceName: "Guichet.lu — Conditions for residence in Luxembourg for students from third countries"
+            # VERIFIED 2026-06-13 (fact-verifier): correct page; Step 1 authorisation-to-stay supporting documents (enrolment proof, criminal-record extract, proof of resources ≥80% of social inclusion income, health insurance) are described verbatim. Supported.
+            status: VERIFIED
+            lastVerified: "2026-06-13"
+            verifiedBy: "fact-verifier-lu 2026-06-13"
+            sourceHash: "1cc41f8b7b2892be70dd337155d0f85023b3550ec042c6eaaf70fe7e000dce62"
+            reviewBy: "2026-09-11"
+      - text: "After arrival, declare your arrival at the commune, undergo the medical check, and apply for the student residence permit within three months of entry."
+        links:
+          - text: "Guichet.lu — student after-entry steps and residence permit (Step 2)"
+            sourceUrl: "https://guichet.public.lu/en/citoyens/immigration/plus-3-mois/ressortissant-tiers/etudiant/etudiant-pays-tiers.html"
+            sourceName: "Guichet.lu — Conditions for residence in Luxembourg for students from third countries"
+            # VERIFIED 2026-06-13 (fact-verifier): correct page; Step 2 after-entry steps (declaration of arrival, medical check, then residence-permit application) and the EUR 80 fee ("proof of payment of a fee of EUR 80 to account IBAN LU46 1111 2582 2814 0000") are stated verbatim. Supported.
+            status: VERIFIED
+            lastVerified: "2026-06-13"
+            verifiedBy: "fact-verifier-lu 2026-06-13"
+            sourceHash: "1cc41f8b7b2892be70dd337155d0f85023b3550ec042c6eaaf70fe7e000dce62"
+            reviewBy: "2026-09-11"
+    documents:
+      - name: "Application for a student residence permit"
+        type: form
+        description: "The student residence-permit application (after the authorisation to stay), via MyGuichet.lu or by post on the official form within three months of arrival; obtain the current form from the official guichet.lu page."
+        form:
+          text: "Apply for the student residence permit. The official guichet.lu page describes who counts as a student, the resources rule and the procedure, and links the forms."
+          sourceUrl: "https://guichet.public.lu/en/citoyens/immigration/plus-3-mois/ressortissant-tiers/etudiant/etudiant-pays-tiers.html"
+          sourceName: "Guichet.lu — Conditions for residence in Luxembourg for students from third countries"
+          # VERIFIED 2026-06-13 (fact-verifier): correct page; it is the official student residence-permit procedure page describing who counts as a student, the resources rule and the procedure, and links online services/forms. Supported.
+          status: VERIFIED
+          lastVerified: "2026-06-13"
+          verifiedBy: "fact-verifier-lu 2026-06-13"
+          sourceHash: "1cc41f8b7b2892be70dd337155d0f85023b3550ec042c6eaaf70fe7e000dce62"
+          reviewBy: "2026-09-11"
+      - name: "Proof of enrolment"
+        type: provide
+        description: "Proof that you are enrolled in a recognised Luxembourg higher-education establishment (and, if applicable, of any mobility programme/agreement)."
+      - name: "Proof of sufficient resources"
+        type: provide
+        description: "Proof of monthly resources of at least 80% of the social inclusion income — e.g. a scholarship certificate, a bank certificate with six months of statements, or a sponsor's financial-support declaration."
+      - name: "Health-insurance certificate"
+        type: provide
+        description: "A health-insurance certificate covering illness in Luxembourg."
+      - name: "Valid US passport and criminal-record extract"
+        type: provide
+        description: "A full copy of your valid US passport and a criminal-record extract or sworn affidavit from your country of residence (plus parental authorisation if you are under 18)."
+    cost:
+      text: "The student residence-permit application requires proof of payment of a fee of EUR 80 to the Ministry of Home Affairs (IBAN LU46 1111 2582 2814 0000). (Confirm the current amount; the precise student-permit fee should be checked on guichet.lu.)"
+      sourceUrl: "https://guichet.public.lu/en/citoyens/immigration/plus-3-mois/ressortissant-tiers/etudiant/etudiant-pays-tiers.html"
+      sourceName: "Guichet.lu — Conditions for residence in Luxembourg for students from third countries"
+      # VERIFIED 2026-06-13 (fact-verifier): the cited student page states the fee verbatim — "proof of payment of a fee of EUR 80 to account IBAN LU46 1111 2582 2814 0000 (BIC: CCPLLULL, beneficiary: Ministry of Home Affairs, General Department of immigration)". The EUR 80 figure is therefore confirmed character-for-character on this page (the draft's hedge is unnecessary). Supported.
+      status: VERIFIED
+      lastVerified: "2026-06-13"
+      verifiedBy: "fact-verifier-lu 2026-06-13"
+      sourceHash: "1cc41f8b7b2892be70dd337155d0f85023b3550ec042c6eaaf70fe7e000dce62"
+      # 30-day window: fee.
+      reviewBy: "2026-07-13"
+    warning: >
+      The resources benchmark is tied to the social inclusion income (REVIS), which changes —
+      confirm the current figure on guichet.lu. Paid work is capped at 15 hours per week for
+      students; exceeding it can jeopardise your permit.
+    dependsOn: []
+    appliesIf: "motivation == 'study'"
+
+  # ===========================================================================
+  - id: declaration-arrival
+    title: "Make your declaration of arrival at the commune"
+    category: registration-bureaucracy
+    summary:
+      text: "After entering Luxembourg you must register your presence with your new commune. Under the general residence rule, anyone setting up their usual residence must declare it to the commune's population office (Bureau de la population) within eight days of occupying the home; you go in person and present your valid passport (with visa/authorisation to stay where applicable). A shorter immigration deadline also applies to third-country nationals, and the declaration receipt serves as an interim document — both are detailed in the key facts below and on each work route's page."
+      sourceUrl: "https://guichet.public.lu/en/citoyens/immigration/nouveau-resident-luxembourg/arrivee-luxembourg/depart-arrivee-commune.html"
+      sourceName: "Guichet.lu — Declaring a move to a new commune of residence"
+      # RE-SOURCED 2026-06-13 (content-researcher): trimmed this summary to what the cited commune declaration page supports — the 8-day general-residence rule, the population office (Bureau de la population), and going in person to present a valid passport (all verbatim on this page). Removed from THIS claim the third-country "within 3 days" immigration deadline, the proof-of-address element, and the "receipt acts as interim work/residence document" statement, which are not on this page; those are retained and separately sourced to the salaried/Blue Card pages in this task's keyFacts (Immigration declaration deadline; Receipt acts as interim document) and steps, so the summary now points readers there rather than restating cross-page facts under this source. Source unchanged (commune declaration page ab2da092).
+      # VERIFIED 2026-06-13 (fact-verifier re-check): commune declaration page re-fetched LIVE (HTTP 200, correct page, no redirect; fresh snapshot 13eb542c). Verbatim "Any person, regardless of their nationality, who establishes their usual place of residence in a commune of Luxembourg must, upon their arrival, declare their presence to the census office (Bureau de la population)" and "The declaration of arrival must be filed within 8 days of occupying the new residence" and "You must go in in person and present your valid identity card or passport." The shorter immigration deadline / receipt-as-interim-document are cross-referenced to the keyFacts (sourced to the salaried/Blue Card pages) and are not asserted under this source — and are not contradicted (this page independently states the third-country "within 3 days" deadline). Supported.
+      status: VERIFIED
+      lastVerified: "2026-06-13"
+      verifiedBy: "fact-verifier-lu-r2 2026-06-13"
+      sourceHash: "13eb542cd5be68c89f8ae72df852b246c57224b27fc9b1821e8b491ede0cd9be"
+      reviewBy: "2026-09-11"
+    tldr:
+      text: "Register with your new commune after arriving. Under the general residence rule you must declare your usual residence to the commune's population office (Bureau de la population) within eight days of moving in, going in person and presenting your valid passport (plus visa/authorisation to stay where applicable). A shorter immigration deadline also applies to third-country nationals and the declaration receipt acts as an interim document — see the key facts below, which source those to each work route's page."
+      sourceUrl: "https://guichet.public.lu/en/citoyens/immigration/nouveau-resident-luxembourg/arrivee-luxembourg/depart-arrivee-commune.html"
+      sourceName: "Guichet.lu — Declaring a move to a new commune of residence"
+      # RE-SOURCED 2026-06-13 (content-researcher): trimmed to what the cited commune declaration page supports (8-day general-residence rule, population office, go in person presenting a valid passport — all verbatim). Removed the third-country "within three days" deadline, the proof-of-address element, and the receipt-as-interim-document statement, which are not on this page and are retained + separately sourced to the salaried/Blue Card pages in this task's keyFacts; the tldr now points readers there. Source unchanged (commune declaration page ab2da092).
+      # VERIFIED 2026-06-13 (fact-verifier re-check): same live commune page (fresh snapshot 13eb542c). 8-day rule, "Bureau de la population", and "go in in person and present your valid identity card or passport" all verbatim (see summary comment). Cross-referenced immigration deadline / receipt-as-interim facts are not asserted under this source. Supported.
+      status: VERIFIED
+      lastVerified: "2026-06-13"
+      verifiedBy: "fact-verifier-lu-r2 2026-06-13"
+      sourceHash: "13eb542cd5be68c89f8ae72df852b246c57224b27fc9b1821e8b491ede0cd9be"
+      reviewBy: "2026-09-11"
+    keyFacts:
+      - label: "Immigration declaration deadline"
+        text: "As part of the immigration procedure, the third-country national must make a declaration of arrival at the commune of intended residence within three days of arriving in Luxembourg (the salaried-worker page states 'within 3 days'; the highly-qualified/Blue Card page states 'within 3 working days')."
+        sourceUrl: "https://guichet.public.lu/en/citoyens/immigration/plus-3-mois/ressortissant-tiers/salarie/salarie-pays-tiers.html"
+        sourceName: "guichet.lu — Conditions of residence for third-country salaried workers"
+        # VERIFIED 2026-06-13 (fact-verifier): cited salaried page verbatim "They must make a declaration of arrival at the administration of the commune where they intend to establish residence, within 3 days of arrival in Luxembourg". The Blue Card page (independently fetched) states "within 3 working days of arriving in Luxembourg" — both variants the claim cites are accurate. Supported.
+        status: VERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: "fact-verifier-lu 2026-06-13"
+        sourceHash: "e8d880612afdde51c6931b20fa53c4f1c6491918a8d843d89fd5e779404189e6"
+        reviewBy: "2026-09-11"
+      - label: "General residence declaration deadline"
+        text: "Under the general residence rules, anyone establishing their usual residence in a Luxembourg commune must declare it to the commune's population office (Bureau de la population) within eight days of occupying the new residence."
+        sourceUrl: "https://guichet.public.lu/en/citoyens/immigration/nouveau-resident-luxembourg/arrivee-luxembourg/depart-arrivee-commune.html"
+        sourceName: "Guichet.lu — Declaring a move to a new commune of residence"
+        # VERIFIED 2026-06-13 (fact-verifier): cited page verbatim "The declaration of arrival must be filed within 8 days of occupying the new residence" and "declare their presence to the census office (Bureau de la population) of the communal administration of their new place of residence". Supported.
+        status: VERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: "fact-verifier-lu 2026-06-13"
+        sourceHash: "ab2da09224926d3f88c4548830e93dca1c2a8746b85e580c0a5a9dbfff1bd6c5"
+        reviewBy: "2026-09-11"
+      - label: "What you present"
+        text: "A valid travel document — your valid ID card or passport, accompanied where applicable by the required visa or a residence permit issued by another EU Member State. You go in person and present your valid identity card or passport. (Work-route applicants are also asked for proof of address — see the salaried-worker and Blue Card pages.)"
+        sourceUrl: "https://guichet.public.lu/en/citoyens/immigration/nouveau-resident-luxembourg/arrivee-luxembourg/depart-arrivee-commune.html"
+        sourceName: "Guichet.lu — Declaring a move to a new commune of residence"
+        # RE-SOURCED 2026-06-13 (content-researcher): trimmed the standalone "valid proof of address (rental agreement, utility bill)" element, which the cited commune page does not state. What remains — the travel-document detail ("currently valid ID card or passport, accompanied, where applicable, by the required visa or residence permit issued by another EU Member State") and "You must go in person and present your valid identity card or passport" — is verbatim on this page. Proof of address is a work-route requirement on the salaried/Blue Card pages, so it is now flagged as a cross-reference rather than asserted under this commune source. Source unchanged (commune declaration page ab2da092).
+        # VERIFIED 2026-06-13 (fact-verifier re-check): same live commune page (fresh snapshot 13eb542c). Verbatim "a currently valid ID card or passport (accompanied, where applicable, by the required visa or residence permit issued by another EU Member State)" and "You must go in in person and present your valid identity card or passport." Proof of address appears on this page only as a hedged "normally necessary to attach ... supporting document" — NOT a flat presentation requirement — so the researcher's removal of it from the asserted text (now a work-route cross-reference) is correct. Supported.
+        status: VERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: "fact-verifier-lu-r2 2026-06-13"
+        sourceHash: "13eb542cd5be68c89f8ae72df852b246c57224b27fc9b1821e8b491ede0cd9be"
+        reviewBy: "2026-09-11"
+      - label: "Receipt acts as interim document"
+        text: "You receive a copy of your declaration of arrival as a receipt; together with the temporary authorisation to stay it serves as a work permit and authorisation to stay until the residence permit is issued."
+        sourceUrl: "https://guichet.public.lu/en/citoyens/immigration/plus-3-mois/ressortissant-tiers/salarie/salarie-pays-tiers.html"
+        sourceName: "guichet.lu — Conditions of residence for third-country salaried workers"
+        # VERIFIED 2026-06-13 (fact-verifier): cited salaried page verbatim "The applicant will receive a copy of their declaration of arrival as a receipt. The copy of the declaration of arrival together with the authorisation to stay both serve as a work permit and authorisation to stay until the residence permit is issued." Supported.
+        status: VERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: "fact-verifier-lu 2026-06-13"
+        sourceHash: "e8d880612afdde51c6931b20fa53c4f1c6491918a8d843d89fd5e779404189e6"
+        reviewBy: "2026-09-11"
+    detail: >
+      Registering with your commune is one of the first things you do after entering Luxembourg, and
+      two rules overlap. The immigration procedure (on each route's guichet page) tells third-country
+      nationals to make a declaration of arrival at the commune of intended residence very quickly —
+      the salaried-worker page says within three days of arrival, the highly-qualified/Blue Card page
+      says within three working days. Separately, the general residence rule (the 'declaring a move to
+      a new commune' page) gives anyone establishing their usual residence eight days from occupying
+      the home to declare it to the commune's population office. To be safe, treat the shorter
+      immigration deadline as the one to meet. You go in person (or online via MyGuichet.lu with an
+      eID/LuxTrust where available), present your passport with any visa/authorisation to stay, and
+      attach proof of your usual residence (e.g. owner's agreement, lease). You receive a receipt
+      copy of the declaration, which, with your authorisation to stay, is your interim work and
+      residence document until the residence permit card is issued. Procedures vary slightly by
+      commune (communal autonomy) — confirm with your commune.
+    steps:
+      - text: "As soon as you have an address, go in person to your commune (or use MyGuichet.lu where available) to make your declaration of arrival, bringing your passport, any visa/authorisation to stay, and proof of address."
+        links:
+          - text: "Guichet.lu — how to declare a move to your new commune"
+            sourceUrl: "https://guichet.public.lu/en/citoyens/immigration/nouveau-resident-luxembourg/arrivee-luxembourg/depart-arrivee-commune.html"
+            sourceName: "Guichet.lu — Declaring a move to a new commune of residence"
+            # VERIFIED 2026-06-13 (fact-verifier): correct page; how to declare a move (in person — "You must go in person and present your valid identity card or passport" — or online) and the 8-day deadline are described verbatim. Supported.
+            status: VERIFIED
+            lastVerified: "2026-06-13"
+            verifiedBy: "fact-verifier-lu 2026-06-13"
+            sourceHash: "ab2da09224926d3f88c4548830e93dca1c2a8746b85e580c0a5a9dbfff1bd6c5"
+            reviewBy: "2026-09-11"
+      - text: "Keep the receipt copy of your declaration of arrival — with your authorisation to stay it is your interim work and residence document until your residence permit is issued."
+        links:
+          - text: "guichet.lu — the declaration receipt as interim work/residence document"
+            sourceUrl: "https://guichet.public.lu/en/citoyens/immigration/plus-3-mois/ressortissant-tiers/salarie/salarie-pays-tiers.html"
+            sourceName: "guichet.lu — Conditions of residence for third-country salaried workers"
+            # VERIFIED 2026-06-13 (fact-verifier): cited salaried page verbatim "The copy of the declaration of arrival together with the authorisation to stay both serve as a work permit and authorisation to stay until the residence permit is issued." Supported.
+            status: VERIFIED
+            lastVerified: "2026-06-13"
+            verifiedBy: "fact-verifier-lu 2026-06-13"
+            sourceHash: "e8d880612afdde51c6931b20fa53c4f1c6491918a8d843d89fd5e779404189e6"
+            reviewBy: "2026-09-11"
+    documents:
+      - name: "Declaration of change of usual place of residence"
+        type: form
+        description: "The commune's declaration of arrival / change-of-residence form, submitted in person or online via MyGuichet.lu; obtain the current procedure from the official guichet.lu page (procedures vary by commune)."
+        form:
+          text: "Make the declaration of arrival / change of usual residence at your commune. The official guichet.lu page describes the in-person and online (MyGuichet.lu) procedures; the exact steps vary by commune."
+          sourceUrl: "https://guichet.public.lu/en/citoyens/immigration/nouveau-resident-luxembourg/arrivee-luxembourg/depart-arrivee-commune.html"
+          sourceName: "Guichet.lu — Declaring a move to a new commune of residence"
+          # VERIFIED 2026-06-13 (fact-verifier): correct page ("Declaration of change of usual place of residence"); it describes both the in-person declaration and the online declaration of the change of residence. Communal variation is consistent with the page (per-commune contact details listed). Supported.
+          status: VERIFIED
+          lastVerified: "2026-06-13"
+          verifiedBy: "fact-verifier-lu 2026-06-13"
+          sourceHash: "ab2da09224926d3f88c4548830e93dca1c2a8746b85e580c0a5a9dbfff1bd6c5"
+          reviewBy: "2026-09-11"
+      - name: "Valid US passport (with visa/authorisation to stay)"
+        type: provide
+        description: "Your valid passport and, where applicable, your visa or temporary authorisation to stay."
+      - name: "Proof of address / usual residence"
+        type: provide
+        description: "A supporting document attesting your usual place of residence (e.g. the owner's agreement, lease, or a utility bill), where required by the commune."
+    warning: >
+      Meet the SHORTER immigration deadline — three days (or three working days) after arrival,
+      depending on which guichet page applies to your route — rather than the eight-day general
+      residence rule, to be safe. Communes differ slightly in procedure; confirm with yours.
+    dependsOn: [entry-authorisation]
+
+  # ===========================================================================
+  - id: medical-check
+    title: "Undergo the compulsory medical check for third-country nationals"
+    category: healthcare-insurance
+    summary:
+      text: "Every third-country national applying for a residence permit for a stay over three months must undergo a medical check after arriving. It consists of a medical examination by a Luxembourg-based doctor (a GP, internal-medicine specialist or paediatrician) and a tuberculosis screening (at a medical-analysis laboratory for anyone aged two and over, or a tuberculin test at the Ligue médico-sociale for children aged two months to two years). The Health Directorate's Health Inspection then issues a medical certificate that is sent to immigration so your residence-permit application can be processed. You pay for the examinations yourself, and a residence permit will not be granted if you refuse the check."
+      sourceUrl: "https://guichet.public.lu/en/citoyens/immigration/plus-3-mois/ressortissant-tiers/demarches-communes/controle-medical.html"
+      sourceName: "Guichet.lu — Medical check-up for third-country nationals"
+      # VERIFIED 2026-06-13 (fact-verifier): medical-check page re-fetched live (curl, HTTP 200, no redirect). Verbatim: examination "by a doctor established in Luxembourg and authorised to work as a general practitioner, a practitioner specialised in internal medicine or paediatrics; and a tuberculosis (TB) screening performed at a medical analysis laboratory ... for any person aged 2 years and over; and a tuberculosis screening using a tuberculin test at the ... Ligue médico-sociale ... for children aged between 2 months and 2 years." "the Health Inspection of the Health Directorate (Direction de la Santé) will issue a medical certificate, which will be sent to the General Department of immigration". "Residence permits will not be granted to applicants who refuse to undergo the required medical check-up." Costs "to be paid by the third-country national". Supported.
+      status: VERIFIED
+      lastVerified: "2026-06-13"
+      verifiedBy: "fact-verifier-lu 2026-06-13"
+      sourceHash: "c7ce164ffa161d34422399b2ef02404dabd81fa261038261e99e5b7b39fa8eab"
+      reviewBy: "2026-09-11"
+    tldr:
+      text: "All third-country nationals applying for a long-stay residence permit must do a medical check after arrival: an examination by a Luxembourg GP/internal-medicine specialist/paediatrician plus a tuberculosis screening (lab test for ages 2+, tuberculin test at the Ligue médico-sociale for children 2 months–2 years). The Health Directorate issues a medical certificate sent to immigration so your permit can be processed. You pay for it yourself; refusing the check means no permit."
+      sourceUrl: "https://guichet.public.lu/en/citoyens/immigration/plus-3-mois/ressortissant-tiers/demarches-communes/controle-medical.html"
+      sourceName: "Guichet.lu — Medical check-up for third-country nationals"
+      # VERIFIED 2026-06-13 (fact-verifier): same live page; GP/internal-medicine/paediatrician examination, TB lab test (age 2+) / tuberculin test at the Ligue médico-sociale (2 months–2 years), Health Directorate certificate sent to immigration, applicant pays, and no-permit-if-refused all verbatim. Supported.
+      status: VERIFIED
+      lastVerified: "2026-06-13"
+      verifiedBy: "fact-verifier-lu 2026-06-13"
+      sourceHash: "c7ce164ffa161d34422399b2ef02404dabd81fa261038261e99e5b7b39fa8eab"
+      reviewBy: "2026-09-11"
+    keyFacts:
+      - label: "What it involves"
+        text: "A medical examination by a doctor established in Luxembourg authorised to work as a GP, internal-medicine specialist or paediatrician, plus a tuberculosis (TB) screening — at a medical-analysis laboratory for anyone aged two and over, or a tuberculin test at the Ligue médico-sociale for children aged between two months and two years."
+        sourceUrl: "https://guichet.public.lu/en/citoyens/immigration/plus-3-mois/ressortissant-tiers/demarches-communes/controle-medical.html"
+        sourceName: "Guichet.lu — Medical check-up for third-country nationals"
+        # VERIFIED 2026-06-13 (fact-verifier): verbatim "a medical examination by a doctor established in Luxembourg and authorised to work as a general practitioner, a practitioner specialised in internal medicine or paediatrics; and a tuberculosis (TB) screening performed at a medical analysis laboratory ... for any person aged 2 years and over; and a tuberculosis screening using a tuberculin test at the ... (Ligue médico-sociale - LMS) for children aged between 2 months and 2 years." Supported.
+        status: VERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: "fact-verifier-lu 2026-06-13"
+        sourceHash: "c7ce164ffa161d34422399b2ef02404dabd81fa261038261e99e5b7b39fa8eab"
+        reviewBy: "2026-09-11"
+      - label: "Who must do it"
+        text: "Mandatory for all third-country nationals applying for a residence permit for a stay over three months. It is not required for family members of an EU citizen (or of a national of a country treated as such) or for long-term residents of another EU Member State (and their family members)."
+        sourceUrl: "https://guichet.public.lu/en/citoyens/immigration/plus-3-mois/ressortissant-tiers/demarches-communes/controle-medical.html"
+        sourceName: "Guichet.lu — Medical check-up for third-country nationals"
+        # VERIFIED 2026-06-13 (fact-verifier): verbatim "The medical check is mandatory for all third-country nationals ... who wish to reside in Luxembourg for more than 3 months within the context of an application for a residence permit. Exception: the medical check-up is not mandatory for third-country nationals who: are family members of an EU citizen or a national of a country treated as such; or are long-term residents in another Member State, as is the member of their family." Supported.
+        status: VERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: "fact-verifier-lu 2026-06-13"
+        sourceHash: "c7ce164ffa161d34422399b2ef02404dabd81fa261038261e99e5b7b39fa8eab"
+        reviewBy: "2026-09-11"
+      - label: "Certificate and consequence of refusal"
+        text: "The Health Inspection of the Health Directorate issues a medical certificate that is sent to immigration so the residence-permit application can be processed; the examining doctor sends the temporary certificate within one month at most. A residence permit will not be granted to anyone who refuses the required medical check."
+        sourceUrl: "https://guichet.public.lu/en/citoyens/immigration/plus-3-mois/ressortissant-tiers/demarches-communes/controle-medical.html"
+        sourceName: "Guichet.lu — Medical check-up for third-country nationals"
+        # VERIFIED 2026-06-13 (fact-verifier): verbatim "the Health Inspection of the Health Directorate (Direction de la Santé) will issue a medical certificate, which will be sent to the General Department of immigration ... to allow the residence permit application to be processed"; "[the doctor who] issues the temporary medical certificate must send it to the Health Inspection at the Health Directorate within one month"; "Residence permits will not be granted to applicants who refuse to undergo the required medical check-up." Supported.
+        status: VERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: "fact-verifier-lu 2026-06-13"
+        sourceHash: "c7ce164ffa161d34422399b2ef02404dabd81fa261038261e99e5b7b39fa8eab"
+        reviewBy: "2026-09-11"
+      - label: "Cost"
+        text: "The costs of the medical examinations and the issuance of the medical certificate are paid by the third-country national. (The specific amounts are not stated on the page — confirm with your doctor / laboratory.)"
+        sourceUrl: "https://guichet.public.lu/en/citoyens/immigration/plus-3-mois/ressortissant-tiers/demarches-communes/controle-medical.html"
+        sourceName: "Guichet.lu — Medical check-up for third-country nationals"
+        # VERIFIED 2026-06-13 (fact-verifier): verbatim "Costs The costs of the medical examinations and issuance of the medical certificate are to be paid by the third-country national." No specific amount is on the page, matching the claim's hedge. Supported.
+        status: VERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: "fact-verifier-lu 2026-06-13"
+        sourceHash: "c7ce164ffa161d34422399b2ef02404dabd81fa261038261e99e5b7b39fa8eab"
+        reviewBy: "2026-09-11"
+    detail: >
+      The medical check is a compulsory after-arrival step for every third-country national applying
+      for a residence permit for a stay over three months (with exceptions for family members of EU
+      citizens and long-term residents of another EU Member State). It has two parts: a general
+      medical examination by a Luxembourg-based GP, internal-medicine specialist or paediatrician,
+      and a tuberculosis screening — a laboratory test for anyone aged two and over, or a tuberculin
+      test at the Ligue médico-sociale for children aged two months to two years. The examining
+      doctor issues a temporary medical certificate and sends it (within one month at most) to the
+      Health Inspection of the Health Directorate, which issues the final certificate to immigration;
+      the residence-permit application can only be processed once that certificate is received, so do
+      the check as soon as possible. You pay for the examinations and certificate yourself, and a
+      residence permit is refused to anyone who declines the check. Confirm the current procedure and
+      where to go on guichet.lu.
+    steps:
+      - text: "As soon as possible after arrival, see a Luxembourg-based GP/internal-medicine specialist/paediatrician for the medical examination."
+        links:
+          - text: "Guichet.lu — the medical examination"
+            sourceUrl: "https://guichet.public.lu/en/citoyens/immigration/plus-3-mois/ressortissant-tiers/demarches-communes/controle-medical.html"
+            sourceName: "Guichet.lu — Medical check-up for third-country nationals"
+            # VERIFIED 2026-06-13 (fact-verifier): correct page; the medical examination by a Luxembourg-established GP / internal-medicine specialist / paediatrician is described verbatim under "How to proceed > Medical examination". Supported.
+            status: VERIFIED
+            lastVerified: "2026-06-13"
+            verifiedBy: "fact-verifier-lu 2026-06-13"
+            sourceHash: "c7ce164ffa161d34422399b2ef02404dabd81fa261038261e99e5b7b39fa8eab"
+            reviewBy: "2026-09-11"
+      - text: "Complete the tuberculosis screening (laboratory test for ages two and over, or a tuberculin test at the Ligue médico-sociale for very young children); the Health Directorate then issues your medical certificate to immigration."
+        links:
+          - text: "Guichet.lu — TB screening and issuance of the certificate"
+            sourceUrl: "https://guichet.public.lu/en/citoyens/immigration/plus-3-mois/ressortissant-tiers/demarches-communes/controle-medical.html"
+            sourceName: "Guichet.lu — Medical check-up for third-country nationals"
+            # VERIFIED 2026-06-13 (fact-verifier): correct page; the TB screening (lab test for ages 2+, tuberculin test at the LMS for children 2 months–2 years) and the Health Directorate issuing the certificate to immigration are described verbatim. Supported.
+            status: VERIFIED
+            lastVerified: "2026-06-13"
+            verifiedBy: "fact-verifier-lu 2026-06-13"
+            sourceHash: "c7ce164ffa161d34422399b2ef02404dabd81fa261038261e99e5b7b39fa8eab"
+            reviewBy: "2026-09-11"
+    documents:
+      - name: "Temporary medical certificate"
+        type: form
+        description: "The temporary medical certificate (on the form provided by the Ministry of Health and Social Security), completed by your examining doctor and sent to the Health Inspection; the final certificate goes to immigration. Obtain the current procedure from the official guichet.lu page."
+        form:
+          text: "Your examining doctor completes the temporary medical certificate (Ministry of Health form) and sends it to the Health Inspection of the Health Directorate, which issues the final certificate to immigration. The official guichet.lu page describes the procedure."
+          sourceUrl: "https://guichet.public.lu/en/citoyens/immigration/plus-3-mois/ressortissant-tiers/demarches-communes/controle-medical.html"
+          sourceName: "Guichet.lu — Medical check-up for third-country nationals"
+          # VERIFIED 2026-06-13 (fact-verifier): verbatim "the doctor issues a temporary medical certificate (form provided by the Ministry of Health and Social Security), which they then send ... (within one month at the most) in a sealed envelope to the Health Inspection at the Health Directorate ... The Health Directorate must then issue the final medical certificate." Supported.
+          status: VERIFIED
+          lastVerified: "2026-06-13"
+          verifiedBy: "fact-verifier-lu 2026-06-13"
+          sourceHash: "c7ce164ffa161d34422399b2ef02404dabd81fa261038261e99e5b7b39fa8eab"
+          reviewBy: "2026-09-11"
+      - name: "Temporary authorisation to stay"
+        type: provide
+        description: "Your temporary authorisation to stay, which you must hold before the medical check is carried out in the context of the residence-permit application."
+      - name: "Valid US passport"
+        type: provide
+        description: "Your valid US passport as identification for the examination."
+    warning: >
+      A residence permit will NOT be granted if you refuse the medical check, and the permit
+      application cannot be processed until the Health Directorate's certificate is received — so do
+      the examination and TB screening as soon as possible after arrival. You pay the costs yourself.
+    dependsOn: [declaration-arrival]
+
+  # ===========================================================================
+  - id: social-security-affiliation
+    title: "Register with social security and get covered by the CNS"
+    category: healthcare-insurance
+    summary:
+      text: "Enrolment with Luxembourg social security is compulsory for anyone in paid employment. Your employer files a declaration of start of employment with the Joint Social Security Centre (Centre commun de la sécurité sociale, CCSS) within eight days of you starting work, which automatically affiliates you for sickness/maternity, pension, accident and long-term-care insurance and issues your social security card. For private-sector employees the health-insurance fund is the National Health Fund (Caisse nationale de santé, CNS). Dependent family members can be covered as co-insured parties if they are not personally enrolled."
+      sourceUrl: "https://guichet.public.lu/en/citoyens/sante/affiliation-securite-sociale/salarie-independant-famille/affiliation-resident.html"
+      sourceName: "guichet.lu — Registration with social security (CCSS / CNS)"
+      # VERIFIED 2026-06-13 (fact-verifier): social-security page re-fetched live (curl, HTTP 200, no redirect). Verbatim: "Enrolment with the Luxembourg social security services is mandatory for any person engaged in a paid professional activity in Luxembourg." "Within 8 days of an employee's starting work, their employer must file a declaration of start of employment ... with the CCSS." "Any person who is declared by their employer in this way is automatically issued a social security card." Coverage = "sickness and maternity insurance, pension insurance, accident insurance and long-term care insurance"; private-sector health fund = "the National Health Fund (Caisse nationale de santé - CNS or 'Gesondheetskees')". Co-insurance: "certain people may be co-insured under another person's health insurance, provided they do not have an individual health insurance policy." Supported.
+      status: VERIFIED
+      lastVerified: "2026-06-13"
+      verifiedBy: "fact-verifier-lu 2026-06-13"
+      sourceHash: "c23814d68b37efceab07d747622c1c78f3092ed84ecbef279faced7368ea5407"
+      reviewBy: "2026-09-11"
+    tldr:
+      text: "Social-security enrolment is compulsory for anyone in paid work in Luxembourg. Your employer files a declaration of start of employment with the CCSS within eight days of you starting, which affiliates you for sickness/maternity, pension, accident and long-term-care insurance and triggers your social security card. Private-sector employees' health fund is the CNS (Caisse nationale de santé). Dependent family members can be co-insured if not personally enrolled."
+      sourceUrl: "https://guichet.public.lu/en/citoyens/sante/affiliation-securite-sociale/salarie-independant-famille/affiliation-resident.html"
+      sourceName: "guichet.lu — Registration with social security (CCSS / CNS)"
+      # VERIFIED 2026-06-13 (fact-verifier): same live page; compulsory enrolment, employer's 8-day declaration of start of employment to the CCSS, automatic social-security-card issue, the four insurance branches, CNS as the private-sector health fund, and co-insurance of dependants all verbatim. Supported.
+      status: VERIFIED
+      lastVerified: "2026-06-13"
+      verifiedBy: "fact-verifier-lu 2026-06-13"
+      sourceHash: "c23814d68b37efceab07d747622c1c78f3092ed84ecbef279faced7368ea5407"
+      reviewBy: "2026-09-11"
+    keyFacts:
+      - label: "Compulsory enrolment"
+        text: "Enrolment with the Luxembourg social security services is mandatory for anyone engaged in a paid professional activity in Luxembourg; for employees, social contributions are deducted at source by the employer."
+        sourceUrl: "https://guichet.public.lu/en/citoyens/sante/affiliation-securite-sociale/salarie-independant-famille/affiliation-resident.html"
+        sourceName: "guichet.lu — Registration with social security (CCSS / CNS)"
+        # VERIFIED 2026-06-13 (fact-verifier): verbatim "Enrolment with the Luxembourg social security services is mandatory for any person engaged in a paid professional activity in Luxembourg" and "For employees, social contributions to the various branches of social insurance are deducted at source by the employer from the worker's pay packet." Supported.
+        status: VERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: "fact-verifier-lu 2026-06-13"
+        sourceHash: "c23814d68b37efceab07d747622c1c78f3092ed84ecbef279faced7368ea5407"
+        reviewBy: "2026-09-11"
+      - label: "Employer files within eight days"
+        text: "Within eight days of an employee starting work, the employer must file a declaration of start of employment with the Joint Social Security Centre (CCSS); the worker is then automatically issued a social security card."
+        sourceUrl: "https://guichet.public.lu/en/citoyens/sante/affiliation-securite-sociale/salarie-independant-famille/affiliation-resident.html"
+        sourceName: "guichet.lu — Registration with social security (CCSS / CNS)"
+        # VERIFIED 2026-06-13 (fact-verifier): verbatim "Within 8 days of an employee's starting work, their employer must file a declaration of start of employment for private-sector employees, temporary workers or public-sector employees with the CCSS. Any person who is declared by their employer in this way is automatically issued a social security card." Supported.
+        status: VERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: "fact-verifier-lu 2026-06-13"
+        sourceHash: "c23814d68b37efceab07d747622c1c78f3092ed84ecbef279faced7368ea5407"
+        reviewBy: "2026-09-11"
+      - label: "Coverage and the CNS"
+        text: "Enrolment provides sickness/maternity, pension, accident and long-term-care insurance; the CCSS collects contributions for all social-security bodies. For the private sector the health-insurance fund is the National Health Fund (Caisse nationale de santé, CNS / 'Gesondheetskees')."
+        sourceUrl: "https://guichet.public.lu/en/citoyens/sante/affiliation-securite-sociale/salarie-independant-famille/affiliation-resident.html"
+        sourceName: "guichet.lu — Registration with social security (CCSS / CNS)"
+        # VERIFIED 2026-06-13 (fact-verifier): verbatim "sickness and maternity insurance, pension insurance, accident insurance and long-term care insurance. The CCSS is the body that handles enrolments and the collection of contributions for all social security bodies." Private-sector fund verbatim "the National Health Fund (Caisse nationale de santé - CNS or 'Gesondheetskees'), for the private sector". Supported.
+        status: VERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: "fact-verifier-lu 2026-06-13"
+        sourceHash: "c23814d68b37efceab07d747622c1c78f3092ed84ecbef279faced7368ea5407"
+        reviewBy: "2026-09-11"
+      - label: "Co-insured family members"
+        text: "Dependent family members (e.g. spouse, partner, children entitled to family allowance) can be covered as co-insured parties under the main policyholder's insurance, provided they are not already personally enrolled."
+        sourceUrl: "https://guichet.public.lu/en/citoyens/sante/affiliation-securite-sociale/salarie-independant-famille/affiliation-resident.html"
+        sourceName: "guichet.lu — Registration with social security (CCSS / CNS)"
+        # VERIFIED 2026-06-13 (fact-verifier): verbatim "The main policyholder's health insurance coverage extends to: their spouse; their partner; ... children entitled to family allowance; children under 30 years of age ..." and "certain people may be co-insured under another person's health insurance, provided they do not have an individual health insurance policy" / "not already personally enrolled themselves". Supported.
+        status: VERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: "fact-verifier-lu 2026-06-13"
+        sourceHash: "c23814d68b37efceab07d747622c1c78f3092ed84ecbef279faced7368ea5407"
+        reviewBy: "2026-09-11"
+    detail: >
+      Luxembourg's statutory social security is compulsory for everyone in paid work, and for
+      employees it is largely automatic: your employer files a declaration of start of employment
+      with the Joint Social Security Centre (CCSS) within eight days of your first day, and you are
+      then affiliated for sickness/maternity, pension, accident and long-term-care insurance and
+      issued a social security card. The CCSS is the single body that handles enrolment and collects
+      contributions for all the social-security funds; your health-insurance fund as a private-sector
+      employee is the National Health Fund (CNS). Contributions are deducted at source from your pay.
+      Dependent family members who are not personally insured can be covered as co-insured parties.
+      Holding qualifying health-insurance cover is also a requirement of your residence permit, so if
+      you are not (yet) employed you must arrange cover separately. Confirm contribution rates and
+      the exact enrolment steps on guichet.lu and with the CCSS/CNS.
+    steps:
+      - text: "When you start work, your employer files the declaration of start of employment with the CCSS within eight days; you are then automatically affiliated and issued a social security card."
+        links:
+          - text: "guichet.lu — declaration of start of employment and automatic card issue"
+            sourceUrl: "https://guichet.public.lu/en/citoyens/sante/affiliation-securite-sociale/salarie-independant-famille/affiliation-resident.html"
+            sourceName: "guichet.lu — Registration with social security (CCSS / CNS)"
+            # VERIFIED 2026-06-13 (fact-verifier): correct page; employer's 8-day declaration of start of employment to the CCSS and automatic social-security-card issue described verbatim. Supported.
+            status: VERIFIED
+            lastVerified: "2026-06-13"
+            verifiedBy: "fact-verifier-lu 2026-06-13"
+            sourceHash: "c23814d68b37efceab07d747622c1c78f3092ed84ecbef279faced7368ea5407"
+            reviewBy: "2026-09-11"
+      - text: "Arrange co-insurance for any dependent family members who are not personally enrolled, and confirm your CNS health-insurance coverage."
+        links:
+          - text: "guichet.lu — co-insured family members and the CNS"
+            sourceUrl: "https://guichet.public.lu/en/citoyens/sante/affiliation-securite-sociale/salarie-independant-famille/affiliation-resident.html"
+            sourceName: "guichet.lu — Registration with social security (CCSS / CNS)"
+            # VERIFIED 2026-06-13 (fact-verifier): correct page; co-insurance of dependants ("provided they do not have an individual health insurance policy"; coverage extends to spouse, partner, children entitled to family allowance) and the CNS as the private-sector health fund are described verbatim. Supported.
+            status: VERIFIED
+            lastVerified: "2026-06-13"
+            verifiedBy: "fact-verifier-lu 2026-06-13"
+            sourceHash: "c23814d68b37efceab07d747622c1c78f3092ed84ecbef279faced7368ea5407"
+            reviewBy: "2026-09-11"
+    documents:
+      - name: "Declaration of start of employment (filed by employer)"
+        type: form
+        description: "The declaration of start of employment filed by your employer with the CCSS within eight days of you starting; this triggers your affiliation and social security card. The official guichet.lu page describes the procedure."
+        form:
+          text: "Your employer files the declaration of start of employment with the CCSS (within eight days), which affiliates you and issues your card automatically. The official guichet.lu page describes the procedure; self-employed and co-insured persons follow their own declarations."
+          sourceUrl: "https://guichet.public.lu/en/citoyens/sante/affiliation-securite-sociale/salarie-independant-famille/affiliation-resident.html"
+          sourceName: "guichet.lu — Registration with social security (CCSS / CNS)"
+          # VERIFIED 2026-06-13 (fact-verifier): correct page; verbatim "Within 8 days of an employee's starting work, their employer must file a declaration of start of employment ... with the CCSS. Any person who is declared by their employer in this way is automatically issued a social security card." Self-employed and co-insured declarations are also covered on the page. Supported.
+          status: VERIFIED
+          lastVerified: "2026-06-13"
+          verifiedBy: "fact-verifier-lu 2026-06-13"
+          sourceHash: "c23814d68b37efceab07d747622c1c78f3092ed84ecbef279faced7368ea5407"
+          reviewBy: "2026-09-11"
+      - name: "Employment contract / proof of employment"
+        type: provide
+        description: "Your employment contract, which triggers compulsory CCSS affiliation via your employer."
+      - name: "Documents for co-insured family members"
+        type: provide
+        description: "Relationship documents for any dependent family members you wish to co-insure (e.g. marriage/partnership certificate, children's birth certificates)."
+    warning: >
+      Holding qualifying health-insurance cover is also a condition of your residence permit. If you
+      are not employed, you must arrange your own qualifying cover rather than relying on automatic
+      employer affiliation. Confirm contribution rates and exact steps with the CCSS/CNS.
+    dependsOn: []
+
+  # ===========================================================================
+  - id: housing
+    title: "Find and rent housing in Luxembourg"
+    category: housing
+    summary:
+      text: "Most newcomers rent, and proof of suitable housing is part of several immigration steps (the residence-permit application asks for a rental agreement or property deed, and family reunification requires accommodation meeting legal habitability criteria). Luxembourg's official guichet.lu portal groups housing under Leasing, Acquisition & Sales, and Financial aid (e.g. rent subsidy), and is the government starting point. Specific rules — rental guarantee/deposit amounts, lease terms, agency fees — are set by contract and regulation and are not stated as single figures on the overview pages, so confirm them for your specific lease."
+      sourceUrl: "https://guichet.public.lu/en/citoyens/logement/location.html"
+      sourceName: "guichet.lu — Renting (Leasing) overview"
+      # VERIFIED 2026-06-13 (fact-verifier): Leasing page re-fetched live (curl, HTTP 200, no redirect). Page confirmed as the official guichet.lu "Leasing" housing sub-section, with the housing sub-sections "Acquisition & Sales / Leasing / Construction, Renovation & Transformation / ... / Financial aid" in its navigation. The claim is a NOT-A-FIGURE statement: deposit/lease-term/agency-fee amounts are not given as single figures on the overview page — confirmed by absence (searched "deposit"/"rental guarantee" — none present). The 12 m²/9 m² habitability figures referenced here are sourced separately to the family-reunification page (where they are verbatim). Supported.
+      status: VERIFIED
+      lastVerified: "2026-06-13"
+      verifiedBy: "fact-verifier-lu 2026-06-13"
+      sourceHash: "bdca738ad5516d67e42c9cafd945b40d6e9a375bd293d570ed005a27bb086b2a"
+      reviewBy: "2026-09-11"
+    tldr:
+      text: "Most newcomers rent, and proof of suitable housing feeds into the immigration steps (residence-permit application; family reunification needs legally habitable accommodation). guichet.lu groups housing under Leasing, Acquisition & Sales and Financial aid (rent subsidy) and is the official starting point. Deposit, lease-term and fee specifics are set by contract/regulation and not given as single figures on the overview pages — confirm them for your lease."
+      sourceUrl: "https://guichet.public.lu/en/citoyens/logement/location.html"
+      sourceName: "guichet.lu — Renting (Leasing) overview"
+      # VERIFIED 2026-06-13 (fact-verifier): same live page; the housing groupings (Leasing, Acquisition & Sales, Financial aid) are present in the page navigation, and deposit/lease-term/fee figures are not stated as single figures on the overview (confirmed by absence). Supported.
+      status: VERIFIED
+      lastVerified: "2026-06-13"
+      verifiedBy: "fact-verifier-lu 2026-06-13"
+      sourceHash: "bdca738ad5516d67e42c9cafd945b40d6e9a375bd293d570ed005a27bb086b2a"
+      reviewBy: "2026-09-11"
+    keyFacts:
+      - label: "Housing feeds the immigration steps"
+        text: "Proof of suitable housing (rental agreement, property deed, etc.) is required for the residence-permit application, and family reunification requires accommodation meeting legal habitability criteria (e.g. at least 12 m² for the first occupant and 9 m² per additional occupant, with proper light, heating, water and electricity)."
+        sourceUrl: "https://guichet.public.lu/en/citoyens/immigration/plus-3-mois/ressortissant-tiers/membre-famille/regroupement-familial.html"
+        sourceName: "guichet.lu — Family reunification for third-country nationals"
+        # VERIFIED 2026-06-13 (fact-verifier): cited family-reunification page verbatim — "proof of suitable housing ... (e.g. ... contract, property deed - a floor area of at least 12 m² for the first occupant and 9 m² per additional occupant, with natural light through windows ... heating, running water, e[lectricity])". The residence-permit application's "proof of suitable housing (rental agreement, property deed, etc.)" requirement is also verbatim on the salaried/Blue Card pages. Supported.
+        status: VERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: "fact-verifier-lu 2026-06-13"
+        sourceHash: "d444f57cbb5a61704e8391d12c6019aaec96702b3f0bec52743eefb6ea981867"
+        reviewBy: "2026-09-11"
+      - label: "Official housing portal"
+        text: "guichet.lu groups housing procedures under Leasing, Acquisition & Sales, Construction/Renovation, and Financial aid (including rent subsidy), and is the government's entry point for housing topics."
+        sourceUrl: "https://guichet.public.lu/en/citoyens/logement.html"
+        sourceName: "guichet.lu — Housing & Construction (overview)"
+        # VERIFIED 2026-06-13 (fact-verifier): cited Housing & Construction overview page re-fetched live (HTTP 200). Sub-sections verbatim "Acquisition & Sales / Leasing / Construction, Renovation & Transformation / Urban planning & Environment / Moving / Financial aid", and "Rent subsidy" appears as a topic of interest. Supports the listed groupings and the page as the housing entry point. Supported.
+        status: VERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: "fact-verifier-lu 2026-06-13"
+        sourceHash: "f28e26f610d5c5b109d929f86dfc75621327321573818174b40c29a2568223d6"
+        reviewBy: "2026-09-11"
+      - label: "Deposit / lease specifics"
+        text: "Rental guarantee (deposit) amounts, lease durations and agency fees are set by contract and regulation and are not given as single figures on the overview pages. (Confirm the specifics for your lease and check guichet.lu's Leasing sub-pages.)"
+        sourceUrl: "https://guichet.public.lu/en/citoyens/logement/location.html"
+        sourceName: "guichet.lu — Renting (Leasing) overview"
+        # VERIFIED 2026-06-13 (fact-verifier): cited Leasing overview page re-fetched live (HTTP 200). The claim asserts deposit/lease-term/agency-fee amounts are NOT given as single figures on the overview page — confirmed by absence (searched "deposit"/"rental guarantee"/"lease duration" — no such figures present; the page is the Leasing sub-section index). Supported.
+        status: VERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: "fact-verifier-lu 2026-06-13"
+        sourceHash: "bdca738ad5516d67e42c9cafd945b40d6e9a375bd293d570ed005a27bb086b2a"
+        reviewBy: "2026-09-11"
+    detail: >
+      Renting is the norm for most newcomers to Luxembourg, and housing is not just a practical
+      matter — proof of suitable accommodation is woven into the immigration procedure. The
+      residence-permit application asks for a rental agreement or property deed, and family
+      reunification requires accommodation that meets legal habitability criteria (the family-
+      reunification page cites a minimum floor area of 12 m² for the first occupant and 9 m² per
+      additional occupant, with proper natural light, heating, running water and electricity). The
+      government's guichet.lu portal is the authoritative starting point; it organises housing under
+      Leasing, Acquisition & Sales, Construction/Renovation and Financial aid (including a rent
+      subsidy and the 'Bëllegen Akt' notarial-fee tax credit). Concrete figures that newcomers ask
+      about — the rental guarantee/deposit, lease term, and agency fees — are set by your contract
+      and by regulation rather than stated as single numbers on the overview pages, so confirm them
+      for your specific lease (and via guichet.lu's Leasing sub-pages) before signing. Whatever you
+      rent, you must complete the declaration of arrival at your commune.
+    steps:
+      - text: "Search for housing and review the official guichet.lu Leasing and Financial-aid (rent subsidy) pages before committing to a lease."
+        links:
+          - text: "guichet.lu — Renting (Leasing) overview"
+            sourceUrl: "https://guichet.public.lu/en/citoyens/logement/location.html"
+            sourceName: "guichet.lu — Renting (Leasing) overview"
+            # VERIFIED 2026-06-13 (fact-verifier): correct page; it is the official guichet.lu Leasing overview and links the Financial aid (rent subsidy) housing sub-section. Supported.
+            status: VERIFIED
+            lastVerified: "2026-06-13"
+            verifiedBy: "fact-verifier-lu 2026-06-13"
+            sourceHash: "bdca738ad5516d67e42c9cafd945b40d6e9a375bd293d570ed005a27bb086b2a"
+            reviewBy: "2026-09-11"
+      - text: "Make sure your accommodation meets the habitability criteria you will need for the residence-permit and family-reunification applications, and complete your declaration of arrival after moving in."
+        links:
+          - text: "guichet.lu — accommodation criteria (family reunification)"
+            sourceUrl: "https://guichet.public.lu/en/citoyens/immigration/plus-3-mois/ressortissant-tiers/membre-famille/regroupement-familial.html"
+            sourceName: "guichet.lu — Family reunification for third-country nationals"
+            # VERIFIED 2026-06-13 (fact-verifier): correct page; the legal habitability criteria (12 m² first occupant / 9 m² per additional occupant, natural light, heating, running water, electricity) are stated verbatim. Supported.
+            status: VERIFIED
+            lastVerified: "2026-06-13"
+            verifiedBy: "fact-verifier-lu 2026-06-13"
+            sourceHash: "d444f57cbb5a61704e8391d12c6019aaec96702b3f0bec52743eefb6ea981867"
+            reviewBy: "2026-09-11"
+    documents:
+      - name: "Rental agreement (lease) or property deed"
+        type: provide
+        description: "Your signed lease (or property deed if buying); proof of suitable housing is required for the residence-permit application and assessed for family reunification."
+      - name: "Proof of identity and residence status"
+        type: provide
+        description: "Your passport and residence/authorisation documents, typically required by landlords and agents."
+    warning: >
+      Deposit amounts, lease terms and agency fees are not stated as single official figures on the
+      overview pages — confirm them for your specific lease before signing. Your accommodation must
+      meet legal habitability criteria to support the residence-permit and family-reunification
+      applications.
+    dependsOn: []
+
+  # ===========================================================================
+  - id: open-bank-account
+    title: "Open a Luxembourg bank account"
+    category: finance-banking
+    summary:
+      text: "You will generally need a Luxembourg bank account for salary, rent and bills. Banks set their own onboarding requirements (typically identity and proof of your Luxembourg address/residence), so confirm the exact document list with the bank you choose. As a US person you are within scope of FATCA: under the Luxembourg–US FATCA Agreement, Luxembourg reporting financial institutions must identify their account holders and report US reportable accounts to the Luxembourg tax authority (Administration des contributions directes). Individual banks also set their own policies on onboarding US citizens, so confirm a bank's US-person policy before applying."
+      sourceUrl: "https://impotsdirects.public.lu/fr/echanges_electroniques/FATCA.html"
+      sourceName: "Administration des contributions directes (ACD) — FATCA (French)"
+      # RE-SOURCED 2026-06-13 (content-researcher): re-pointed the FATCA/US-person element to the ACD's primary FATCA page (impotsdirects.public.lu), which states verbatim (French) that Luxembourg and the USA signed the FATCA intergovernmental agreement on 28 March 2014 (approved by the law of 24 July 2015) and that "La loi FATCA exige de chaque Institution financière déclarante ... d'identifier ses Titulaires de comptes ... et de déposer annuellement à l'Administration des contributions directes (ACD) une déclaration FATCA", reporting "les informations concernant l'identité, le compte, le solde de compte et les revenus financiers ... de chaque Compte déclarable américain". The old overview portal (27b2e4ff) had zero banking/FATCA content. The bank-onboarding document list (no single official figure — set by each bank) and "some banks reluctant to onboard US citizens" are recast here as confirm-with-the-bank, since no reachable official source states them. Snapshot captured: sources/us-lu/504e3689.txt.
+      # VERIFIED 2026-06-13 (fact-verifier re-check): ACD FATCA page re-fetched LIVE (HTTP 200, correct ACD page impotsdirects.public.lu, no redirect; hash 504e3689 reproduced). Verbatim (FR): "le Luxembourg et les Etats-Unis d'Amérique ont signé le modèle 1 de l'Accord intergouvernemental (« Accord FATCA ») en date du 28 mars 2014" and "La loi FATCA oblige les Institutions financières luxembourgeoises à identifier leurs Titulaires de comptes ... et à déclarer à l'ACD les informations concernant l'identité, le compte, le solde de compte et les revenus financiers y relatifs de chaque Compte déclarable américain." The bank-specific US-person/onboarding element is asserted only as confirm-with-the-bank (CLAUDE.md rule 1); the ACD page urges institutions "à ne pas appliquer des mesures discriminatoires envers les citoyens américains" and does not state individual banks' onboarding stances, so the confirm-with-the-bank framing is correct. Supported.
+      status: VERIFIED
+      lastVerified: "2026-06-13"
+      verifiedBy: "fact-verifier-lu-r2 2026-06-13"
+      sourceHash: "504e3689705f5e93000869c5a542a1f20c97587b24f7e20911ff6cfaae210a80"
+      reviewBy: "2026-09-11"
+    tldr:
+      text: "A Luxembourg bank account is needed in practice for salary, rent and bills. Each bank sets its own onboarding documents (typically identity and proof of your Luxembourg address), so confirm the list with the bank. As a US person you are within scope of FATCA: under the Luxembourg–US FATCA Agreement, Luxembourg reporting financial institutions must identify account holders and report US reportable accounts to the Luxembourg tax authority (ACD). Banks also set their own policies on onboarding US citizens — check a bank's US-person policy first."
+      sourceUrl: "https://impotsdirects.public.lu/fr/echanges_electroniques/FATCA.html"
+      sourceName: "Administration des contributions directes (ACD) — FATCA (French)"
+      # RE-SOURCED 2026-06-13 (content-researcher): re-pointed the FATCA/US-person element to the ACD FATCA page (impotsdirects.public.lu), which states the Luxembourg–US FATCA Agreement and the obligation on Luxembourg reporting financial institutions to identify account holders and report each "Compte déclarable américain" (US reportable account) to the ACD (see summary comment for verbatim French). The old overview portal (27b2e4ff) had no banking/FATCA content. Bank-onboarding documents and bank-specific US-person reluctance are recast as confirm-with-the-bank (no single official source states them). Snapshot: sources/us-lu/504e3689.txt.
+      # VERIFIED 2026-06-13 (fact-verifier re-check): same live ACD FATCA page (hash 504e3689 reproduced). FATCA agreement + reporting-to-ACD obligation verbatim (FR) as quoted in the summary comment; bank-specific US-person element is confirm-with-the-bank only. Supported.
+      status: VERIFIED
+      lastVerified: "2026-06-13"
+      verifiedBy: "fact-verifier-lu-r2 2026-06-13"
+      sourceHash: "504e3689705f5e93000869c5a542a1f20c97587b24f7e20911ff6cfaae210a80"
+      reviewBy: "2026-09-11"
+    keyFacts:
+      - label: "Documents are set by each bank"
+        text: "There is no single official list of account-opening documents: each bank sets its own onboarding requirements (typically identity and proof of your Luxembourg address/residence, such as your declaration of arrival). Confirm the exact document list with the bank you choose before applying."
+        sourceUrl: "https://guichet.public.lu/en/citoyens/immigration/nouveau-resident-luxembourg.html"
+        sourceName: "guichet.lu — Setting up in Luxembourg as a new resident (overview)"
+        # RE-SOURCED 2026-06-13 (content-researcher): recast as confirm-with-the-bank per the no-unsourced-claim rule (CLAUDE.md rule 1). The old text asserted a specific bank-onboarding document list as official fact; no reachable official primary source states it (guichet.lu has no banking-onboarding page — confirmed the cited overview 27b2e4ff is a navigation index with no banking content, and probed candidate guichet.lu/finance and CSSF account pages, all HTTP 404). The claim now asserts ONLY that no single official list exists and requirements are bank-set — which is what the absence of an official source supports — and directs the reader to confirm with the bank. Mirrors the already-RE-SOURCED summary/tldr of this task. sourceUrl kept as the official guichet.lu new-resident entry point (not asserted as the document-list source). No new snapshot (no figure to capture).
+        # VERIFIED 2026-06-13 (fact-verifier re-check): new-resident overview re-fetched LIVE (HTTP 200, correct page "Setting up in Luxembourg as a new resident", no redirect; hash 27b2e4ff reproduced). Independently confirmed it is a short navigation index (~4.9k chars) with ZERO occurrences of "bank"/"account"/"onboard"/"FATCA" — so no official bank-onboarding document list exists here. The claim's load-bearing assertion (no single official list; requirements are bank-set; confirm with the bank) is consistent with that documented absence, and the cited page is the official new-resident entry point (not asserted as a document-list source). The "typically identity/proof of address" phrase is hedged illustration, not an official fact. Supported per CLAUDE.md rule 1 (confirm-with-the-authority pattern).
+        status: VERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: "fact-verifier-lu-r2 2026-06-13"
+        sourceHash: "27b2e4ff1011dfabf3fb6df40d91799841b8dbd0748c10f2f43a20886b4d6171"
+        reviewBy: "2026-09-11"
+      - label: "US-person note (FATCA)"
+        text: "As a US person you are within scope of FATCA: under the Luxembourg–US FATCA intergovernmental agreement (signed 28 March 2014, approved by the law of 24 July 2015), Luxembourg reporting financial institutions must identify their account holders and report each US reportable account — identity, account, balance and financial income — annually to the Luxembourg tax authority (Administration des contributions directes, ACD). Banks also set their own policies on onboarding US citizens, so confirm a bank's US-person policy before applying."
+        sourceUrl: "https://impotsdirects.public.lu/fr/echanges_electroniques/FATCA.html"
+        sourceName: "Administration des contributions directes (ACD) — FATCA (échanges électroniques)"
+        # RE-SOURCED 2026-06-13 (content-researcher): re-pointed the FATCA element from the overview page (which had no FATCA/US-person content) to the ACD primary FATCA page (impotsdirects.public.lu), snapshot sources/us-lu/504e3689.txt. That page states verbatim (FR): the Luxembourg–US FATCA intergovernmental agreement signed "28 mars 2014" and "approuvé par la loi du 24 juillet 2015"; "La loi FATCA oblige les Institutions financières luxembourgeoises à identifier leurs Titulaires de comptes ... et à déclarer à l'ACD les informations concernant l'identité, le compte, le solde de compte et les revenus financiers y relatifs de chaque Compte déclarable américain." The bank-specific US-person policy point is kept as confirm-with-the-bank (no official source states individual banks' onboarding stance; the ACD page only urges institutions "à ne pas appliquer des mesures discriminatoires envers les citoyens américains"). Snapshot already captured (504e3689) by the prior RE-SOURCED summary work — no new fetch needed.
+        # VERIFIED 2026-06-13 (fact-verifier re-check): ACD FATCA page re-fetched LIVE (hash 504e3689 reproduced). All dated/quantified elements verbatim: agreement "en date du 28 mars 2014", "approuvé par la loi du 24 juillet 2015"; report "identité, le compte, le solde de compte et les revenus financiers ... de chaque Compte déclarable américain"; and "annuellement" confirmed ("les Institutions financières luxembourgeoises sont tenues de fournir les informations à l'ACD, annuellement, jusqu'au 30 juin"). Bank-specific US-person policy is confirm-with-the-bank only. Supported.
+        status: VERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: "fact-verifier-lu-r2 2026-06-13"
+        sourceHash: "504e3689705f5e93000869c5a542a1f20c97587b24f7e20911ff6cfaae210a80"
+        reviewBy: "2026-09-11"
+    detail: >
+      A current account is needed in practice to receive your salary and pay rent and bills in
+      Luxembourg. Banks decide their own documentary requirements, but a passport, proof of your
+      Luxembourg address (your declaration of arrival is the obvious document) and proof of your
+      residence status are the usual core — bring your declaration-of-arrival receipt and, once
+      issued, your residence permit. US citizens should note that Luxembourg banks must report
+      US-person accounts under FATCA and that some banks are wary of onboarding US clients, so ask
+      about a bank's US-person policy up front. The government's guichet.lu portal is the official
+      entry point for new-resident and financial topics; for the precise account-opening
+      requirements, confirm directly with the bank you choose (the specific document list is set by
+      the bank, not stated on the guichet pages).
+    steps:
+      - text: "Gather your passport and your declaration-of-arrival receipt / residence documents, ask your chosen bank for its exact account-opening document list (each bank sets its own), and ask about its US-person (FATCA) policy."
+        links:
+          - text: "ACD — FATCA: Luxembourg–US reporting on US-person accounts"
+            sourceUrl: "https://impotsdirects.public.lu/fr/echanges_electroniques/FATCA.html"
+            sourceName: "Administration des contributions directes (ACD) — FATCA (échanges électroniques)"
+            # RE-SOURCED 2026-06-13 (content-researcher): re-pointed from the new-resident overview (a navigation hub with no banking/FATCA content) to the ACD primary FATCA page (impotsdirects.public.lu), snapshot sources/us-lu/504e3689.txt, which states the Luxembourg–US FATCA agreement and the obligation on Luxembourg reporting financial institutions to report US reportable accounts to the ACD (verbatim FR quoted on the US-person keyFact). The step's bank-document-list element has no official source (set by each bank) and is now framed as confirm-with-the-bank in the step text itself. Snapshot already captured (504e3689) — no new fetch.
+            # VERIFIED 2026-06-13 (fact-verifier re-check): link resolves LIVE to the correct ACD FATCA page (HTTP 200, no redirect; hash 504e3689 reproduced). The page supports the Luxembourg–US FATCA agreement and the reporting-to-ACD obligation on Luxembourg financial institutions (verbatim FR on the US-person keyFact). The bank-document-list element is confirm-with-the-bank in the step text. Supported.
+            status: VERIFIED
+            lastVerified: "2026-06-13"
+            verifiedBy: "fact-verifier-lu-r2 2026-06-13"
+            sourceHash: "504e3689705f5e93000869c5a542a1f20c97587b24f7e20911ff6cfaae210a80"
+            reviewBy: "2026-09-11"
+    documents:
+      - name: "Valid US passport"
+        type: provide
+        description: "Your valid US passport as your identity document."
+      - name: "Declaration-of-arrival receipt / proof of address"
+        type: provide
+        description: "Your declaration-of-arrival copy (or other proof of your Luxembourg address), commonly required to open an account."
+      - name: "Proof of residence status"
+        type: provide
+        description: "Your residence permit or authorisation to stay; requirements vary by bank."
+    warning: >
+      Account-opening requirements are set by each bank, not by a single official figure — confirm
+      with your chosen bank. As a US person, FATCA reporting applies and some banks decline or limit
+      US-citizen accounts; check the bank's US-person policy before relying on it.
+    dependsOn: [declaration-arrival]
+
+  # ===========================================================================
+  - id: income-tax
+    title: "Understand your Luxembourg income-tax residency"
+    category: taxes
+    summary:
+      text: "If you become resident in Luxembourg you are, in principle, taxed on your worldwide income. Resident taxpayers must report their worldwide income (exempt and non-exempt); income exempted under a double-taxation treaty is not taxed directly but can raise the rate applied to your taxable income (exemption with progression). Many employees settle their tax through withholding, but in certain cases you must file an income-tax return (form 100, 'taxation by assessment'). The return is due no later than 31 December of the year following the tax year. As a US citizen you must also weigh US citizenship-based taxation — get specialist Luxembourg–US cross-border advice."
+      sourceUrl: "https://guichet.public.lu/en/citoyens/fiscalite/declaration-impot-decompte/activite-professionnelle/declaration-revenus/declaration-impot.html"
+      sourceName: "guichet.lu — Income tax return for natural persons (residents)"
+      # VERIFIED 2026-06-13 (fact-verifier): income-tax page re-fetched live (curl, HTTP 200, no redirect). Verbatim: "The resident taxpayer must report their worldwide income (exempt and non-exempt income). Exempt income is not taxable as such, but may be taken into account in determining the applicable tax rate for non-exempt taxable income." "Taxpayers subject to taxation by assessment must report their income by filing an income tax return for natural persons (form 100)." "the tax return must be submitted no later than 31 December of the year following the tax year." The US-citizenship-based-taxation point is framed as advice ("get cross-border advice"), not a guichet-sourced fact. Supported. (Note: the draft's "(exemption with progression)" is the standard legal name for the mechanism the page describes verbatim; the page itself does not use that phrase.)
+      status: VERIFIED
+      lastVerified: "2026-06-13"
+      verifiedBy: "fact-verifier-lu 2026-06-13"
+      sourceHash: "9915204014ad1c2b106c9caf9afe87627dd4074ef63f065deab703c8649250bc"
+      reviewBy: "2026-09-11"
+    tldr:
+      text: "Becoming resident in Luxembourg generally means worldwide-income taxation: residents report all worldwide income (exempt and non-exempt), with treaty-exempt income raising the rate on taxable income (exemption with progression). Many employees are taxed via withholding, but some must file a return (form 100, 'taxation by assessment'), due by 31 December of the year following the tax year. As a US citizen, also account for US citizenship-based taxation and get cross-border advice."
+      sourceUrl: "https://guichet.public.lu/en/citoyens/fiscalite/declaration-impot-decompte/activite-professionnelle/declaration-revenus/declaration-impot.html"
+      sourceName: "guichet.lu — Income tax return for natural persons (residents)"
+      # VERIFIED 2026-06-13 (fact-verifier): same live page; worldwide-income reporting with the rate-only treatment of exempt income, taxation-by-assessment via form 100, and the 31-December-of-the-following-year deadline all verbatim. "(exemption with progression)" is the standard name for the page's described mechanism. Supported.
+      status: VERIFIED
+      lastVerified: "2026-06-13"
+      verifiedBy: "fact-verifier-lu 2026-06-13"
+      sourceHash: "9915204014ad1c2b106c9caf9afe87627dd4074ef63f065deab703c8649250bc"
+      reviewBy: "2026-09-11"
+    keyFacts:
+      - label: "Residents taxed on worldwide income"
+        text: "A resident taxpayer must report their worldwide income (exempt and non-exempt). Treaty-exempt income is not taxable as such but may be taken into account to determine the tax rate applied to non-exempt income (exemption with progression)."
+        sourceUrl: "https://guichet.public.lu/en/citoyens/fiscalite/declaration-impot-decompte/activite-professionnelle/declaration-revenus/declaration-impot.html"
+        sourceName: "guichet.lu — Income tax return for natural persons (residents)"
+        # VERIFIED 2026-06-13 (fact-verifier): verbatim "The resident taxpayer must report their worldwide income (exempt and non-exempt income). Exempt income is not taxable as such, but may be taken into account in determining the applicable tax rate for non-exempt taxable income." (The page's worked example uses treaty-exempt foreign rental income to raise the rate.) "(exemption with progression)" is the standard name for this mechanism. Supported.
+        status: VERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: "fact-verifier-lu 2026-06-13"
+        sourceHash: "9915204014ad1c2b106c9caf9afe87627dd4074ef63f065deab703c8649250bc"
+        reviewBy: "2026-09-11"
+      - label: "When you must file a return"
+        text: "Taxpayers subject to 'taxation by assessment' must report their income on an income-tax return (form 100). Many employees are taxed at source, but in certain cases a return is required; the Luxembourg Inland Revenue (Administration des contributions directes, ACD) sets out who is concerned."
+        sourceUrl: "https://guichet.public.lu/en/citoyens/fiscalite/declaration-impot-decompte/activite-professionnelle/declaration-revenus/declaration-impot.html"
+        sourceName: "guichet.lu — Income tax return for natural persons (residents)"
+        # VERIFIED 2026-06-13 (fact-verifier): verbatim "Taxpayers subject to taxation by assessment must report their income by filing an income tax return for natural persons (form 100). In order to obtain the reimbursement of any excess tax withheld at source, employees or pensioners can - upon request - regularise their tax situation" and "You will find detailed information on persons subject to taxation by assessment on the website of the Luxembourg Inland Revenue (Administration des contributions directes - ACD)." Supported.
+        status: VERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: "fact-verifier-lu 2026-06-13"
+        sourceHash: "9915204014ad1c2b106c9caf9afe87627dd4074ef63f065deab703c8649250bc"
+        reviewBy: "2026-09-11"
+      - label: "Filing deadline"
+        text: "The income-tax return must be submitted no later than 31 December of the year following the tax year (for tax year N, the return is due by 31 December of year N+1)."
+        sourceUrl: "https://guichet.public.lu/en/citoyens/fiscalite/declaration-impot-decompte/activite-professionnelle/declaration-revenus/declaration-impot.html"
+        sourceName: "guichet.lu — Income tax return for natural persons (residents)"
+        # VERIFIED 2026-06-13 (fact-verifier): verbatim "the tax return must be submitted no later than 31 December of the year following the tax year. Consequently, for the 2024 tax year, the deadline is Wednesday 31 December 2025." — confirms the N → 31-December-of-N+1 rule character-for-character. Supported.
+        status: VERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: "fact-verifier-lu 2026-06-13"
+        sourceHash: "9915204014ad1c2b106c9caf9afe87627dd4074ef63f065deab703c8649250bc"
+        reviewBy: "2026-09-11"
+      - label: "How to file"
+        text: "You can file via the electronic assistant on MyGuichet.lu, or by sending form 100 (electronically as a PDF via MyGuichet.lu, or by post to the relevant tax office); the form is available from MyGuichet.lu or the ACD website."
+        sourceUrl: "https://guichet.public.lu/en/citoyens/fiscalite/declaration-impot-decompte/activite-professionnelle/declaration-revenus/declaration-impot.html"
+        sourceName: "guichet.lu — Income tax return for natural persons (residents)"
+        # VERIFIED 2026-06-13 (fact-verifier): verbatim — filing "via the electronic assistant on MyGuichet.lu"; and the form 100 obtained "from the 'Online services and forms' below or from the ACD website" submitted "electronically via the My Guichet.lu procedure for PDF submissions; or by post to the relevant tax office." Supported.
+        status: VERIFIED
+        lastVerified: "2026-06-13"
+        verifiedBy: "fact-verifier-lu 2026-06-13"
+        sourceHash: "9915204014ad1c2b106c9caf9afe87627dd4074ef63f065deab703c8649250bc"
+        reviewBy: "2026-09-11"
+    detail: >
+      Luxembourg taxes residents on their worldwide income: a resident taxpayer reports all
+      worldwide income (exempt and non-exempt), and income that is exempt under a double-taxation
+      treaty is not taxed directly but can be taken into account to set the rate applied to your
+      taxable Luxembourg income (exemption with progression). Many employees have their tax settled
+      through withholding at source, but in certain cases you must file an income-tax return for
+      natural persons (form 100, 'taxation by assessment') — the Luxembourg Inland Revenue (ACD)
+      defines exactly who is concerned, and you can also file to reclaim over-withheld tax. The
+      return is due no later than 31 December of the year following the tax year, and can be filed
+      via the electronic assistant on MyGuichet.lu or on form 100 (PDF via MyGuichet.lu or by post).
+      For US citizens this is doubly important: the United States taxes its citizens on worldwide
+      income regardless of residence, so the Luxembourg–US treaty and foreign tax credits matter and
+      the interaction is complex. This is general information, not tax advice — get specialist
+      Luxembourg–US cross-border advice (including on US reporting such as FBAR/FATCA) before your
+      first return.
+    steps:
+      - text: "Work out whether you are taxed purely at source or must file an income-tax return (form 100) — check the Luxembourg Inland Revenue (ACD) guidance on who is subject to taxation by assessment."
+        links:
+          - text: "guichet.lu — who must file (taxation by assessment) and worldwide-income rules"
+            sourceUrl: "https://guichet.public.lu/en/citoyens/fiscalite/declaration-impot-decompte/activite-professionnelle/declaration-revenus/declaration-impot.html"
+            sourceName: "guichet.lu — Income tax return for natural persons (residents)"
+            # VERIFIED 2026-06-13 (fact-verifier): correct page; worldwide-income reporting and the taxation-by-assessment / form-100 obligation (with ACD as the authority defining who is concerned) are described verbatim. Supported.
+            status: VERIFIED
+            lastVerified: "2026-06-13"
+            verifiedBy: "fact-verifier-lu 2026-06-13"
+            sourceHash: "9915204014ad1c2b106c9caf9afe87627dd4074ef63f065deab703c8649250bc"
+            reviewBy: "2026-09-11"
+      - text: "If you must file, submit your return via the MyGuichet.lu electronic assistant or on form 100 by the deadline (31 December of the year following the tax year); as a US citizen, get cross-border advice on the Luxembourg–US treaty and US obligations."
+        tip: "The US taxes citizens on worldwide income regardless of residence; foreign tax credits and the treaty exist to avoid double taxation, but the interaction is complex."
+        links:
+          - text: "guichet.lu — filing the return (MyGuichet.lu / form 100) and the deadline"
+            sourceUrl: "https://guichet.public.lu/en/citoyens/fiscalite/declaration-impot-decompte/activite-professionnelle/declaration-revenus/declaration-impot.html"
+            sourceName: "guichet.lu — Income tax return for natural persons (residents)"
+            # VERIFIED 2026-06-13 (fact-verifier): correct page; filing via the MyGuichet.lu electronic assistant or form 100 (PDF via MyGuichet.lu / by post) and the 31-December-of-the-following-year deadline are stated verbatim. Supported.
+            status: VERIFIED
+            lastVerified: "2026-06-13"
+            verifiedBy: "fact-verifier-lu 2026-06-13"
+            sourceHash: "9915204014ad1c2b106c9caf9afe87627dd4074ef63f065deab703c8649250bc"
+            reviewBy: "2026-09-11"
+    documents:
+      - name: "Income-tax return (form 100)"
+        type: form
+        description: "The income-tax return for natural persons (form 100), filed via the MyGuichet.lu electronic assistant or as a PDF/by post; the form is available from MyGuichet.lu or the ACD website."
+        form:
+          text: "File the income-tax return (form 100) via the MyGuichet.lu electronic assistant, or download form 100 from MyGuichet.lu / the ACD website and submit it as a PDF or by post to your tax office. The official guichet.lu page describes who must file and the deadline."
+          sourceUrl: "https://guichet.public.lu/en/citoyens/fiscalite/declaration-impot-decompte/activite-professionnelle/declaration-revenus/declaration-impot.html"
+          sourceName: "guichet.lu — Income tax return for natural persons (residents)"
+          # VERIFIED 2026-06-13 (fact-verifier): correct page; it is the official form-100 procedure page (electronic assistant on MyGuichet.lu, or form 100 from "Online services and forms"/the ACD website submitted as a PDF via MyGuichet.lu or by post to the relevant tax office), and states who must file and the deadline. Supported.
+          status: VERIFIED
+          lastVerified: "2026-06-13"
+          verifiedBy: "fact-verifier-lu 2026-06-13"
+          sourceHash: "9915204014ad1c2b106c9caf9afe87627dd4074ef63f065deab703c8649250bc"
+          reviewBy: "2026-09-11"
+      - name: "Income and foreign-income records"
+        type: provide
+        description: "Records of your Luxembourg and foreign income needed to report worldwide income and apply the double-taxation treaty."
+    warning: >
+      US citizens remain subject to US worldwide taxation by citizenship even while resident in
+      Luxembourg. The Luxembourg–US tax treaty and foreign tax credits exist to avoid double
+      taxation but the interaction is complex — this is general information, not tax advice. Confirm
+      your position and US obligations (FBAR/FATCA) with a qualified Luxembourg–US cross-border
+      adviser.
+    dependsOn: []
