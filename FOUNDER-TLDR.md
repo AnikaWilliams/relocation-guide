@@ -10,6 +10,18 @@ coming next. Newest updates are at the top.
 
 ---
 
+## 2026-06-14 — Swiss plans now say *when* a fee or timeline is set by your canton
+
+**What changed.** Many Swiss steps have no single nationwide fee or processing time — the **canton** sets them (and for getting into a school, the **institution** does). Until now those steps simply showed *nothing*, which can read as "free/instant" or leave people guessing. Now each such step carries a plain note: *"Fees & processing time: set by your canton, not federally — confirm the exact amount and timing with your cantonal authorities"* (study admission says "the institution"). The "Your canton" box also now reminds you these vary by canton. Importantly, **we invented no numbers** — we only made the plan honest about where the real figures come from and who to ask. Covers 11 steps (the family-reunification routes, the retirement permit, and the study permits/sub-steps).
+
+**Why it matters.** For legal/financial decisions, silence misleads. This sets honest expectations and points people to the right desk for the real figure — without us publishing a number we can't verify.
+
+**What you'd notice today.** On a Swiss plan, steps like family reunification, the retirement permit and study permits now show a "fees & processing time are cantonal — confirm locally" line instead of nothing.
+
+**What's next.** If/when we source the actual per-canton fee and timeline figures (currently paused), these notes can become specific numbers.
+
+---
+
 ## 2026-06-14 — Swiss plan steps now link to *your* canton's office, not a list of all 26
 
 **What changed.** You pointed out that for an unmarried partner moving to Switzerland the rules really do hinge on the canton — and they do. Until now, the steps that say "contact the migration office of the canton where your partner lives" sent everyone to one big federal list of all 26 cantonal offices, even after they'd already told us their canton. Now, if you've picked a canton we've fact-checked (Zürich, Geneva, Vaud, Zug, Basel-Stadt), those steps link **straight to that canton's own migration office** (e.g. Zürich's Migrationsamt, Geneva's OCPM). Pick any other canton and it still falls back to the federal list — so no one ever hits a dead end. This covers every "apply at your cantonal office" step: all the family-reunification routes, the unmarried-partner case, retirement, and study. It's now passed our automatic safety checks and an independent accuracy review, I've confirmed it working in a live preview (Zürich and Geneva point to their own offices; an un-sourced canton like Bern still gets the safe federal list), and it's bundled into the batch of changes waiting for your approval — **not live yet; it goes live the moment you approve that batch.**

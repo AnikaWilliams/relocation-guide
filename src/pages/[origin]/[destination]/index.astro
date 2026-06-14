@@ -47,6 +47,7 @@ const appTasks: TaskData[] = corridor.tasks.map((t) => ({
   ),
   timeline: t.timeline ? { text: t.timeline.text, sourceUrl: t.timeline.sourceUrl, sourceName: t.timeline.sourceName } : undefined,
   cost: t.cost ? { text: t.cost.text, sourceUrl: t.cost.sourceUrl, sourceName: t.cost.sourceName } : undefined,
+  localCostTimeline: t.localCostTimeline,
   warning: t.warning,
   dependsOn: t.dependsOn,
   appliesIf: t.appliesIf,
@@ -278,6 +279,14 @@ const planScope = (appliesIf?: string): string => {
               <p class="mt-2 text-slate-700">
                 <strong>Cost:</strong> {task.cost.text}{' '}
                 (<a href={task.cost.sourceUrl} target="_blank" rel="noopener noreferrer" class="text-blue-700 underline">{task.cost.sourceName}</a>)
+              </p>
+            )}
+            {task.localCostTimeline && !task.cost && !task.timeline && (
+              <p class="mt-2 text-slate-700">
+                <strong>Fees &amp; processing time:</strong>{' '}
+                {task.localCostTimeline === 'institution'
+                  ? 'set by the educational institution, not at the federal level — confirm the exact application fee and timing directly with the institution.'
+                  : 'set by your canton, not at the federal level (no single national figure; it varies across Switzerland) — confirm the exact amount and timing with your cantonal authorities.'}
               </p>
             )}
 
