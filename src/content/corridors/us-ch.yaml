@@ -147,9 +147,9 @@ tasks:
         type: provide
         description: "Recent passport photographs to the specification set by the competent cantonal authority."
     warning: >
-      Annual quotas (maximum numbers) for third-country nationals are reset each year by the
-      Federal Council in the Ordinance on Admission, Period of Stay and Employment (ASEO).
-      Do not rely on a quota figure without confirming the current year's numbers with SEM.
+      The annual cap (maximum number of permits) for non-EU/EFTA nationals is reset each
+      year by the Swiss federal government. Do not rely on any cap figure without confirming
+      the current year's numbers with the migration authority (SEM).
     dependsOn: []
     # appliesIf added 2026-06-12 (content-researcher): this task describes the
     # employer-sponsored labour-market admission only (FNIA Art. 18-22); it does
@@ -627,7 +627,7 @@ tasks:
 
   # ---------------------------------------------------------------------------
   - id: health-insurance
-    title: "Take out mandatory health insurance (KVG/LAMal)"
+    title: "Take out mandatory health insurance"
     category: healthcare-insurance
     summary:
       text: "Health insurance is compulsory. Anyone settling in Switzerland must take out basic health insurance within three months of taking up residence. If you insure within that period, cover takes effect from the start of residence and costs incurred since then are reimbursed retrospectively."
@@ -1005,7 +1005,7 @@ tasks:
     category: family-dependents
     appliesIf: "motivation == 'family' && familyJoineeStatus == 'citizen' && familyRelationship != 'unmarried-partner' && familyRelationship != 'parent'"
     summary:
-      text: "The foreign spouse (and unmarried children under 18) of a Swiss citizen who live with the Swiss citizen are entitled to be granted a residence permit and to have it extended (Art. 42 para. 1 FNIA). The provisions on foreign spouses apply mutatis mutandis to registered partnerships of same-sex couples (Art. 52 FNIA). After a law-abiding and uninterrupted stay of five years, the spouse is entitled to a settlement permit if the integration criteria of Art. 58a FNIA are met."
+      text: "The foreign spouse (and unmarried children under 18) of a Swiss citizen who live with the Swiss citizen have a legal right to be granted a residence permit and to have it extended. The same rules apply equally to registered partnerships of same-sex couples. After living in Switzerland lawfully and without interruption for five years, the spouse has a right to a permanent settlement permit if the integration requirements are met."
       sourceUrl: "https://www.fedlex.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/2007/758/20260201/en/html/fedlex-data-admin-ch-eli-cc-2007-758-20260201-en-html-3.html#art_42"
       sourceName: "Foreign Nationals and Integration Act (FNIA, SR 142.20), Art. 42 and 52 — Fedlex, the official publication platform of Swiss law"
       # VERIFIED 2026-06-12 (fact-verifier): cited www.fedlex.admin.ch URL resolves (HTTP 200) but renders client-side; text read from the SAME official Fedlex platform's static consolidated HTML (fedlex.data.admin.ch filestore, ELI cc/2007/758, in-force version 2026-02-01, English; anchor id "art_42" present). Art. 42 para. 1 verbatim: "The foreign spouse and unmarried children under 18 of a Swiss national who live with the Swiss national are entitled to be granted a residence permit and to have their residence permit extended." Art. 52 verbatim: "The provisions of this Chapter on foreign spouses apply mutatis mutandis to registered partnerships of same-sex couples." Art. 42 para. 3: after "a law-abiding and uninterrupted period of stay of five years, a foreign spouse is entitled to be granted a settlement permit if the integration criteria set out in Article 58a are met." Entitlement ("are entitled") language matches character-for-character. Doc header confirms the EN translation "has no legal force" — claim/detail state this.
@@ -1018,7 +1018,7 @@ tasks:
     # two-agent rule) — see VERIFICATION_LOG.md family-distilled run.
     # Route-neutral within the family route; entitlement (not discretion) framing.
     tldr:
-      text: "If you are the foreign spouse or registered partner of a Swiss citizen and you live together, you are entitled by law to a Swiss residence permit and its extension (Art. 42 para. 1 FNIA) — this is a right, not a discretionary admission, so it is not subject to the work-route quotas."
+      text: "If you are the foreign spouse or registered partner of a Swiss citizen and you live together, you have a legal right to a Swiss residence permit and its extension — this is a right, not a decision left to the authorities' discretion, so it is not subject to the work-route caps."
       sourceUrl: "https://www.fedlex.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/2007/758/20260201/en/html/fedlex-data-admin-ch-eli-cc-2007-758-20260201-en-html-3.html#art_42"
       sourceName: "Foreign Nationals and Integration Act (FNIA, SR 142.20), Art. 42 — Fedlex, the official publication platform of Swiss law"
       # VERIFIED 2026-06-12 (fact-verifier): entitlement language and the right-not-discretion/not-subject-to-quotas framing match the FNIA text independently verified character-for-character (F1, separate session) and the EN consolidation in force 2026-02-01. Fedlex is a JS SPA (could not WebFetch-render this session); relied on the prior independent verbatim verification plus the discretion-vs-entitlement register confirmed on SEM/Vaud. Not overstated.
@@ -1151,7 +1151,7 @@ tasks:
         description: "The certificate proving your marriage or registered partnership with the Swiss citizen; the marriage or partnership must be recognised by Switzerland."
       - name: "Proof you live together with the Swiss citizen"
         type: provide
-        description: "Evidence of a shared household (the entitlement under Art. 42 para. 1 FNIA requires living together; Art. 49 allows an exemption only where good cause is shown and the family household continues to exist)."
+        description: "Evidence of a shared household (the right to join your Swiss spouse requires living together; an exemption is allowed only where good cause is shown for living apart and the family household still exists)."
       - name: "Foreign criminal-record extract, if requested by the canton"
         type: provide
         description: "An extract from your country's criminal record (the Vaud worked example requests this for adults aged 18-65); confirm whether your canton requires it."
@@ -1163,9 +1163,9 @@ tasks:
     # cost omitted (ADR-0007): permit fees are set at cantonal level; no official
     # federal fee figure exists. Confirm with the cantonal migration office.
     warning: >
-      The right to family reunification must be exercised within five years (Art. 47 FNIA);
-      for children over 12 the limit is twelve months. A subsequent (late) reunification is
-      authorised only if there are important family reasons.
+      The right to family reunification must be exercised within five years; for children
+      over 12 the limit is twelve months. A later (late) reunification is allowed only if
+      there are important family reasons.
     dependsOn: []
 
   # ---------------------------------------------------------------------------
@@ -1175,7 +1175,7 @@ tasks:
     category: family-dependents
     appliesIf: "motivation == 'family' && familyJoineeStatus == 'settled' && familyRelationship != 'unmarried-partner' && familyRelationship != 'parent'"
     summary:
-      text: "The foreign spouse (and unmarried children under 18) of a person holding a settlement permit (C permit) are entitled to a residence permit and its extension provided they live with that person, suitable accommodation is available, they do not depend on social assistance, they are able to communicate in the national language spoken at the place of residence, and the person they are joining is not claiming (and would not become entitled to claim) supplementary benefits (Art. 43 para. 1 FNIA). Registering for a language support programme is sufficient as an alternative to the language requirement (Art. 43 para. 2). The provisions on foreign spouses apply mutatis mutandis to registered partnerships of same-sex couples (Art. 52 FNIA)."
+      text: "The foreign spouse (and unmarried children under 18) of a person holding a permanent settlement permit (C permit) have a legal right to a residence permit and its extension, provided they live with that person, suitable accommodation is available, they do not depend on social assistance, they can communicate in the national language spoken where they live, and the person they are joining is not claiming (and would not become entitled to claim) means-tested top-up benefits. Enrolling in a language-support course is enough to meet the language condition. The same rules apply equally to registered partnerships of same-sex couples."
       sourceUrl: "https://www.fedlex.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/2007/758/20260201/en/html/fedlex-data-admin-ch-eli-cc-2007-758-20260201-en-html.html#art_43"
       sourceName: "Foreign Nationals and Integration Act (FNIA, SR 142.20), Art. 43 and 52 — Fedlex, the official publication platform of Swiss law"
       # VERIFIED 2026-06-12 (fact-verifier): FNIA EN consolidated HTML read from the official Fedlex filestore (in-force 2026-02-01; anchor "art_43" present). Art. 43 para. 1 verbatim: "are entitled to be granted a residence permit and to have their residence permit extended provided: a. they live with that person; b. suitable accommodation is available; c. they do not depend on social assistance; d. they are able to communicate in the national language spoken at their place of residence; and e. the family member they are joining is not claiming supplementary benefits under the [SBA] or would not be entitled to claim such benefits due to family reunification." Para. 2 verbatim: "it is sufficient to register for a language support programme as an alternative to meeting the requirement set out in paragraph 1 letter d." Art. 52 mutatis-mutandis confirmed. All five conditions and the entitlement language match character-for-character.
@@ -1187,7 +1187,7 @@ tasks:
     # (content-researcher), independently VERIFIED 2026-06-12 (fact-verifier,
     # two-agent rule) — see VERIFICATION_LOG.md family-distilled run.
     tldr:
-      text: "If you are the foreign spouse or registered partner of someone who holds a Swiss settlement permit (C permit), you are entitled to a residence permit (Art. 43 FNIA) provided you live together, have suitable accommodation, do not rely on social assistance, can communicate in the local national language, and the sponsor is not claiming supplementary benefits."
+      text: "If you are the foreign spouse or registered partner of someone who holds a Swiss permanent settlement permit (C permit), you have a legal right to a residence permit, provided you live together, have suitable accommodation, do not rely on social assistance, can communicate in the local national language, and the person you are joining is not claiming means-tested top-up benefits."
       sourceUrl: "https://www.fedlex.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/2007/758/20260201/en/html/fedlex-data-admin-ch-eli-cc-2007-758-20260201-en-html.html#art_43"
       sourceName: "Foreign Nationals and Integration Act (FNIA, SR 142.20), Art. 43 — Fedlex, the official publication platform of Swiss law"
       # VERIFIED 2026-06-12 (fact-verifier): Art. 43 entitlement-subject-to-conditions for the spouse/registered partner of a C-permit holder, with the five conditions, logged verbatim (F2, separate session) and corroborated this session on the Vaud SPOP B/C/L page (Art. 43 al. 1 LEI; conditions). Fedlex SPA not re-renderable this session — relied on prior independent verbatim verification. Entitlement-with-conditions wording correct and not overstated.
@@ -1309,19 +1309,19 @@ tasks:
         description: "The certificate proving your marriage or registered partnership with the C-permit holder; the marriage or partnership must be recognised by Switzerland."
       - name: "Certificate of enrolment in a language course (if you cannot yet communicate in the local national language)"
         type: provide
-        description: "Proof of registration for a language support programme satisfies the language condition for the residence permit (Art. 43 para. 2 FNIA; ch.ch lists A1 level at least orally); conditional — only needed if you do not already meet the language requirement."
+        description: "Proof of registration for a language support programme satisfies the language condition for the residence permit (the official portal lists A1 level at least orally); conditional — only needed if you do not already meet the language requirement."
       - name: "Sponsor-side evidence of accommodation and that the sponsor is not on social assistance / not claiming supplementary benefits"
         type: provide
-        description: "Evidence supporting the Art. 43 conditions (suitable accommodation; no dependence on social assistance; sponsor not claiming supplementary benefits); the Vaud worked example also requests a financial-means justification."
+        description: "Evidence supporting the conditions (suitable accommodation; no dependence on social assistance; the person you are joining not claiming means-tested top-up benefits); the Vaud worked example also requests a financial-means justification."
       - name: "Confirm the full cantonal document checklist with the competent cantonal migration office"
         type: provide
         description: "Procedures and required documents are set by the canton; confirm the exact checklist with the cantonal migration authority before assembling documents."
     # timeline omitted (ADR-0007): cantonal processing; no federal figure.
     # cost omitted (ADR-0007): cantonal permit fees; no federal figure.
     warning: >
-      The right to family reunification must be exercised within five years (Art. 47 FNIA);
-      for children over 12 the limit is twelve months. A subsequent (late) reunification is
-      authorised only if there are important family reasons.
+      The right to family reunification must be exercised within five years; for children
+      over 12 the limit is twelve months. A later (late) reunification is allowed only if
+      there are important family reasons.
     dependsOn: []
 
   # ---------------------------------------------------------------------------
@@ -1331,7 +1331,7 @@ tasks:
     category: family-dependents
     appliesIf: "motivation == 'family' && familyJoineeStatus == 'permit-holder' && familyRelationship != 'unmarried-partner' && familyRelationship != 'parent'"
     summary:
-      text: "The foreign spouse (and unmarried children under 18) of a person holding a residence permit (B permit) MAY be granted a residence permit — this is a discretionary decision, not an entitlement — if they live with the permit holder, suitable housing is available, they do not depend on social assistance, they are able to communicate in the national language spoken at the place of residence (registration for a language support programme suffices), and the person they are joining is not claiming (and would not become entitled to claim) supplementary benefits (Art. 44 FNIA). The provisions on foreign spouses apply mutatis mutandis to registered partnerships of same-sex couples (Art. 52 FNIA)."
+      text: "The foreign spouse (and unmarried children under 18) of a person holding a residence (B) permit MAY be granted a residence permit — this is a decision the authorities make at their discretion, not a guaranteed right — if they live with the permit holder, suitable housing is available, they do not depend on social assistance, they can communicate in the national language spoken where they live (enrolling in a language course is enough), and the person they are joining is not claiming (and would not become entitled to claim) means-tested top-up benefits. The same rules apply equally to registered partnerships of same-sex couples."
       sourceUrl: "https://www.fedlex.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/2007/758/20260201/en/html/fedlex-data-admin-ch-eli-cc-2007-758-20260201-en-html-3.html#art_44"
       sourceName: "Foreign Nationals and Integration Act (FNIA, SR 142.20), Art. 44 and 52 — Fedlex, the official publication platform of Swiss law"
       # VERIFIED 2026-06-12 (fact-verifier): Fedlex filestore FNIA EN (in-force 2026-02-01; anchor "art_44" present). Art. 44 para. 1 verbatim: "The foreign spouse and unmarried children under 18 of a person with a residence permit MAY BE GRANTED a residence permit or an extension thereof if: a. they live with the permit holder; b. suitable housing is available; c. they do not depend on social assistance; d. they are able to communicate in the national language spoken at their place of residence; and e. the family member they are joining is not claiming supplementary benefits according to the SBA or would not be entitled to claim such benefits due to family reunification." Para. 2 language-support-programme alternative verbatim. Art. 52 mutatis-mutandis confirmed. The entitlement-vs-discretion contrast is exactly right: Art. 42/43 say "are entitled", Art. 44 says "may be granted"; the discretion reading is independently confirmed by ch.ch verbatim ("Unlike the C permit, the B permit does not necessarily give you the right to family reunification, which may, however, also be granted by the authorities.").
@@ -1343,7 +1343,7 @@ tasks:
     # (content-researcher), independently VERIFIED 2026-06-12 (fact-verifier,
     # two-agent rule) — see VERIFICATION_LOG.md family-distilled run.
     tldr:
-      text: "If you are the foreign spouse or registered partner of someone holding a Swiss residence (B) permit, you MAY be granted a residence permit if the Art. 44 FNIA conditions are met — but this is a discretionary cantonal decision, not a legal entitlement, so reunification is possible, not guaranteed."
+      text: "If you are the foreign spouse or registered partner of someone holding a Swiss residence (B) permit, you MAY be granted a residence permit if the conditions are met — but this is a decision your canton makes at its discretion, not a guaranteed right, so reunification is possible, not certain."
       sourceUrl: "https://www.fedlex.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/2007/758/20260201/en/html/fedlex-data-admin-ch-eli-cc-2007-758-20260201-en-html-3.html#art_44"
       sourceName: "Foreign Nationals and Integration Act (FNIA, SR 142.20), Art. 44 — Fedlex, the official publication platform of Swiss law"
       # VERIFIED 2026-06-12 (fact-verifier): the discretion framing is correct and load-bearing — Art. 44 FNIA "may be granted a residence permit" (not an entitlement, unlike Art. 42/43), cantonal decision, "possible not guaranteed". The "may be granted" verb is logged verbatim (F3, separate session) and the Vaud SPOP B/C/L page fetched this session expressly states no statutory right exists under Art. 44/45 LEI for B/L holders. Fedlex SPA not re-renderable — relied on prior verbatim verification + Vaud corroboration. Does NOT overstate as a "right".
@@ -1409,7 +1409,7 @@ tasks:
       Switzerland (Art. 46 FNIA). The English text of the FNIA is provided for information
       only and has no legal force.
     steps:
-      - text: "Understand that admission is discretionary: meeting the Art. 44 conditions makes reunification possible, not guaranteed. Discuss your case with the competent cantonal migration office before relocating."
+      - text: "Understand that admission is discretionary: meeting the conditions makes reunification possible, not guaranteed. Discuss your case with the competent cantonal migration office before relocating."
         links:
           - text: "ch.ch — «Unlike the C permit, the B permit does not necessarily give you the right to family reunification, which may, however, also be granted by the authorities.»"
             sourceUrl: "https://www.ch.ch/en/foreign-nationals-in-switzerland/living-in-switzerland/family-reunification/"
@@ -1465,30 +1465,31 @@ tasks:
         description: "The certificate proving your marriage or registered partnership with the B-permit holder; the marriage or partnership must be recognised by Switzerland."
       - name: "Certificate of enrolment in a language course (if you cannot yet communicate in the local national language)"
         type: provide
-        description: "Proof of registration for a language support programme satisfies the language condition for the residence permit (Art. 44 para. 2 FNIA; ch.ch lists A1 level at least orally); conditional — only needed if you do not already meet the language requirement."
+        description: "Proof of registration for a language support programme satisfies the language condition for the residence permit (the official portal lists A1 level at least orally); conditional — only needed if you do not already meet the language requirement."
       - name: "Sponsor-side evidence of suitable housing and that the sponsor is not on social assistance / not claiming supplementary benefits"
         type: provide
-        description: "Evidence supporting the Art. 44 conditions (suitable housing; no dependence on social assistance; sponsor not claiming supplementary benefits); the Vaud worked example also requests a financial-means justification."
+        description: "Evidence supporting the conditions (suitable housing; no dependence on social assistance; the person you are joining not claiming means-tested top-up benefits); the Vaud worked example also requests a financial-means justification."
       - name: "Confirm the full cantonal document checklist with the competent cantonal migration office"
         type: provide
         description: "Because this admission is discretionary and cantonal, confirm the exact requirements and the canton's position with the cantonal migration authority before making relocation arrangements."
     # timeline omitted (ADR-0007): cantonal, discretionary procedure; no federal figure.
     # cost omitted (ADR-0007): cantonal permit fees; no federal figure.
     warning: >
-      There is no entitlement in this constellation: the cantonal authorities decide at
-      their discretion (Art. 44 FNIA: "may be granted"). Do not make irreversible
-      relocation arrangements before the cantonal decision. Statutory time limits
-      (Art. 47 FNIA: five years; twelve months for children over 12) still apply.
+      There is no guaranteed right in this situation: the cantonal authorities decide at
+      their discretion (the law says the permit "may be granted", not that it must be). Do
+      not make irreversible relocation arrangements before the cantonal decision. The legal
+      time limits still apply: reunification must be applied for within five years (within
+      twelve months for children over 12).
     dependsOn: []
 
   # ---------------------------------------------------------------------------
   - id: family-permit-unmarried-partner
     localCostTimeline: canton
-    title: "Joining an unmarried partner (concubinage): no general right — cantonal discretion"
+    title: "Joining an unmarried partner: no general right — the canton decides at its discretion"
     category: family-dependents
     appliesIf: "motivation == 'family' && familyRelationship == 'unmarried-partner'"
     summary:
-      text: "Swiss law gives unmarried (cohabiting) partners no general right to family reunification: the FNIA reunification provisions cover spouses, registered partners and unmarried children under 18, and the official federal portal states that in a bi-national couple you cannot bring your partner with you if you are not officially married. A residence permit for a cohabiting partner is possible only as a discretionary derogation from the admission requirements in serious cases of personal hardship (Art. 30 para. 1 let. b FNIA; Art. 50 para. 4 FNIA refers to cohabiting partners granted a permit on this basis), decided by the cantonal migration authority."
+      text: "Swiss law gives unmarried (cohabiting) partners no general right to family reunification: the reunification rules cover spouses, registered partners and unmarried children under 18, and the official federal portal states that in a bi-national couple you cannot bring your partner with you if you are not officially married. A residence permit for a cohabiting partner is possible only as an exception that the authorities may make at their discretion in serious cases of personal hardship, decided by the cantonal migration authority."
       sourceUrl: "https://www.ch.ch/en/foreign-nationals-in-switzerland/living-in-switzerland/family-reunification/"
       sourceName: "ch.ch — Application for family reunification in Switzerland (official federal portal)"
       # VERIFIED 2026-06-12 (fact-verifier): ch.ch page loaded (HTTP 200). Confirms verbatim: "If you are part of a bi-national couple, you cannot bring your partner with you if you are not officially married." and, for third-country citizens, the eligible list is "your spouse or registered partner; your unmarried children under the age of 18" — i.e. no general reunification right for cohabiting partners. The statutory elements are confirmed on the official Fedlex FNIA text (cited as links in this task and read this run from the Fedlex filestore, in-force 2026-02-01): Art. 30 para. 1 let. b verbatim ("take account of serious cases of personal hardship or important public interests") and Art. 50 para. 4 verbatim ("apply mutatis mutandis to cohabiting partners who have been granted a residence permit to remain with their cohabitee in accordance with Article 30 paragraph 1 letter b because of serious personal hardship"). "Only" is correctly scoped to partner-based admission; "decided by the cantonal migration authority" is supported by ch.ch ("You need to contact the following cantonal immigration authorities").
@@ -1505,7 +1506,7 @@ tasks:
     # NOT written here. The existing VERIFIED summary/steps (which use the SEM
     # cantonal-authority directory, not that Vaud page) stand for "where".
     tldr:
-      text: "Switzerland gives unmarried cohabiting partners no general right to family reunification: the FNIA reunification provisions cover only spouses, registered partners and unmarried children under 18, and the official portal states you cannot bring a partner you are not officially married to. A permit is possible only as a discretionary hardship derogation (Art. 30 para. 1 let. b FNIA), decided case by case by the canton."
+      text: "Switzerland gives unmarried cohabiting partners no general right to family reunification: the reunification rules cover only spouses, registered partners and unmarried children under 18, and the official portal states you cannot bring a partner you are not officially married to. A permit is possible only as a discretionary exception for serious personal hardship, decided case by case by the canton."
       sourceUrl: "https://www.fedlex.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/2007/758/20260201/en/html/fedlex-data-admin-ch-eli-cc-2007-758-20260201-en-html.html#art_30"
       sourceName: "Foreign Nationals and Integration Act (FNIA, SR 142.20), Art. 30 — Fedlex, the official publication platform of Swiss law"
       # VERIFIED 2026-06-12 (fact-verifier): correct — no general right for unmarried cohabiting partners (FNIA reunification covers only spouses, registered partners and unmarried children under 18); ch.ch "you cannot bring your partner with you if you are not officially married" logged VERIFIED (F4, separate session); permit possible only as a discretionary hardship derogation under Art. 30 para. 1 let. b FNIA, decided case by case. Art. 30(1)(b) text logged verbatim and corroborated this session on the Vaud out-of-reunification page, which invokes "Article 30(1)(b) of the LEI". Discretion/no-entitlement framing exact.
@@ -1568,7 +1569,7 @@ tasks:
             lastVerified: "2026-06-12"
             verifiedBy: "fact-verifier"
             reviewBy: "2026-09-10"
-      - text: "Know the legal basis being applied: a permit for a cohabiting partner is a hardship-based derogation under Art. 30 para. 1 let. b FNIA, not family reunification under Arts. 42-44."
+      - text: "Know what is being applied: a permit for a cohabiting partner is a hardship-based exception decided at the canton's discretion, not ordinary family reunification of the kind available to spouses, registered partners and children."
         links:
           - text: "FNIA Art. 30 para. 1 let. b — derogations from the admission requirements to take account of serious cases of personal hardship"
             sourceUrl: "https://www.fedlex.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/2007/758/20260201/en/html/fedlex-data-admin-ch-eli-cc-2007-758-20260201-en-html.html#art_30"
@@ -1586,7 +1587,7 @@ tasks:
             lastVerified: "2026-06-12"
             verifiedBy: "fact-verifier"
             reviewBy: "2026-09-10"
-      - text: "If you marry or your partnership becomes one recognised by Switzerland, the spouse / registered-partner provisions (Arts. 42-44 FNIA) apply instead — see the corresponding task for your partner's status."
+      - text: "If you marry or your partnership becomes one recognised by Switzerland, the rules for spouses and registered partners apply instead — see the corresponding task for your partner's status."
         links:
           - text: "ch.ch — family reunification requires a marriage or registered partnership recognised by Switzerland"
             sourceUrl: "https://www.ch.ch/en/foreign-nationals-in-switzerland/living-in-switzerland/family-reunification/"
@@ -1606,7 +1607,7 @@ tasks:
     documents:
       - name: "Written enquiry to the cantonal migration authority"
         type: provide
-        description: "There is no federal cohabiting-partner application form or checklist. Submit your case in writing to the competent cantonal migration authority — found via the SEM directory of cantonal immigration and employment-market authorities (linked in the steps above) — which decides at its discretion (Art. 30 para. 1 let. b FNIA), and obtain any procedure or form directly from that authority."
+        description: "There is no federal cohabiting-partner application form or checklist. Submit your case in writing to the competent cantonal migration authority — found via the SEM directory of cantonal immigration and employment-market authorities (linked in the steps above) — which decides at its discretion, and obtain any procedure or form directly from that authority."
       - name: "Valid US passport"
         type: provide
         description: "Your valid US passport (your travel and identity document)."
@@ -1640,7 +1641,7 @@ tasks:
     # outside the Art. 42-44 minor-children scope (supported by ch.ch).
     appliesIf: "hasChildren == true || familyRelationship == 'parent'"
     summary:
-      text: "Unmarried children under 18 qualify for family reunification: children of a Swiss citizen who live with them are entitled to a residence permit (Art. 42 para. 1 FNIA), children of a settlement (C) permit holder are entitled to one subject to the Art. 43 conditions, and children of a residence (B) permit holder may be granted one at the authorities' discretion (Art. 44). Children under 12 of a Swiss citizen or of a C-permit holder are entitled to a settlement permit directly (Art. 42 para. 4 and Art. 43 para. 6). The language requirement does not apply to unmarried children under 18 (Art. 43 para. 3 and Art. 44 para. 3)."
+      text: "Unmarried children under 18 qualify for family reunification: children of a Swiss citizen who live with them have a legal right to a residence permit, children of a settlement (C) permit holder have a right to one provided the conditions are met, and children of a residence (B) permit holder may be granted one at the authorities' discretion. Children under 12 of a Swiss citizen or of a C-permit holder have a right to a permanent settlement permit directly. The language requirement does not apply to unmarried children under 18."
       sourceUrl: "https://www.fedlex.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/2007/758/20260201/en/html/fedlex-data-admin-ch-eli-cc-2007-758-20260201-en-html-3.html#art_42"
       sourceName: "Foreign Nationals and Integration Act (FNIA, SR 142.20), Art. 42-44 — Fedlex, the official publication platform of Swiss law"
       # VERIFIED 2026-06-12 (fact-verifier): Fedlex filestore FNIA EN (in-force 2026-02-01; one document covers Arts. 42-44, anchor "art_42" present). Each element verbatim: Art. 42 para. 1 "unmarried children under 18 of a Swiss national who live with the Swiss national are entitled to be granted a residence permit"; Art. 43 para. 1 children of settlement-permit holders "are entitled ... provided" conditions a-e; Art. 44 para. 1 children of residence-permit holders "may be granted"; Art. 42 para. 4 and Art. 43 para. 6 identically "Children under twelve are entitled to be granted a settlement permit."; Art. 43 para. 3 and Art. 44 para. 3 — the para. 1 let. d language requirement "does not apply" to unmarried children under 18. All ages, article/paragraph numbers and entitlement-vs-discretion language match character-for-character.
@@ -1653,7 +1654,7 @@ tasks:
     # two-agent rule) — see VERIFICATION_LOG.md family-distilled run.
     # Route-neutral: children accompany work-route users too; no employment presumed.
     tldr:
-      text: "Unmarried children under 18 can join a parent in Switzerland: children of a Swiss citizen are entitled to a residence permit (Art. 42), children of a C-permit holder are entitled subject to conditions (Art. 43), and children of a B-permit holder may be granted one at the canton's discretion (Art. 44). Children under 12 of a Swiss citizen or C-permit holder get a settlement permit directly."
+      text: "Unmarried children under 18 can join a parent in Switzerland: children of a Swiss citizen have a legal right to a residence permit, children of a C-permit holder have a right to one provided the conditions are met, and children of a B-permit holder may be granted one at the canton's discretion. Children under 12 of a Swiss citizen or C-permit holder get a permanent settlement permit directly."
       sourceUrl: "https://www.fedlex.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/2007/758/20260201/en/html/fedlex-data-admin-ch-eli-cc-2007-758-20260201-en-html-3.html#art_42"
       sourceName: "Foreign Nationals and Integration Act (FNIA, SR 142.20), Art. 42-44 — Fedlex, the official publication platform of Swiss law"
       # VERIFIED 2026-06-12 (fact-verifier): the Art. 42/43/44 split for unmarried children under 18 (Swiss-citizen children entitled; C-holder children entitled subject to conditions; B-holder children may be granted at the canton's discretion) and the under-12 direct settlement permit (Art. 42 para. 4 / Art. 43 para. 6) are all logged verbatim character-for-character (F5, separate session). Fedlex SPA not re-renderable this session — relied on prior independent verbatim verification. Age thresholds, paragraph numbers and entitlement/discretion terms exact; route-neutral.
@@ -1787,8 +1788,8 @@ tasks:
     # not a processing-time estimate.)
     # cost omitted (ADR-0007): cantonal permit fees; no federal figure.
     warning: >
-      Children over 12 must be reunified within twelve months (Art. 47 FNIA). A subsequent
-      (late) reunification is authorised only if there are important family reasons.
+      Children over 12 must be reunified within twelve months. A later (late) reunification
+      is allowed only if there are important family reasons.
     dependsOn: []
 
   # ---------------------------------------------------------------------------
@@ -2001,7 +2002,7 @@ tasks:
   # ---------------------------------------------------------------------------
   - id: retirement-residence-permit
     localCostTimeline: canton
-    title: "Apply for a retired person's residence permit (residence without gainful employment, Art. 28 FNIA)"
+    title: "Apply for a retired person's residence permit (living in Switzerland without working)"
     category: visa-permit
     # appliesIf APPROVED 2026-06-12 (fact-verifier, ADR-0009 §4): correct.
     # Art. 28 FNIA admission is specific to retired persons no longer
@@ -2009,7 +2010,7 @@ tasks:
     # until the intake offers motivation == 'retirement' — by design.
     appliesIf: "motivation == 'retirement'"
     summary:
-      text: "Foreign nationals who are no longer gainfully employed may be admitted to Switzerland if they have reached a minimum age set by the Federal Council, have special personal relations to Switzerland, and have the required financial means (Art. 28 FNIA). This is a discretionary admission — the law says «may be admitted», not «are entitled» — so there is no legal right to a retired person's permit; the cantonal authorities decide, and US citizens are not covered by EU/EFTA free movement."
+      text: "Foreign nationals who are no longer working may be admitted to Switzerland if they have reached a minimum age set by the Swiss federal government, have special personal ties to Switzerland, and have the required financial means. This is a decision the authorities make at their discretion — you may be admitted, but you are not automatically entitled — so there is no legal right to a retired person's permit; the cantonal authorities decide, and US citizens are not covered by EU/EFTA free movement."
       sourceUrl: "https://www.fedlex.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/2007/758/20260201/en/html/fedlex-data-admin-ch-eli-cc-2007-758-20260201-en-html-3.html#art_28"
       sourceName: "Foreign Nationals and Integration Act (FNIA, SR 142.20), Art. 28 — Fedlex, the official publication platform of Swiss law"
       # VERIFIED 2026-06-12 (fact-verifier): cited www.fedlex.admin.ch URL resolves (HTTP 200) but renders client-side; statute read from the SAME official Fedlex platform's static consolidated HTML (fedlex.data.admin.ch filestore). EN text (latest available EN consolidation, in-force 2026-02-01; anchor "art_28" present) Art. 28 verbatim: "Foreign nationals who are no longer gainfully employed may be admitted if: a. they have reached a minimum age set by the Federal Council; b. they have special personal relations to Switzerland; and c. they have the required financial means." NOTE: an FNIA amendment entered force TODAY (2026-06-12) with no EN manifestation yet (confirmed via Fedlex SPARQL version list); Art. 28 was therefore additionally checked in the authoritative DE consolidation in force 2026-06-12 — "können zugelassen werden, wenn ..." — substantively identical, Art. 28 unchanged. The discretion reading ("may be admitted", NOT "are entitled") matches character-for-character; "cantonal authorities decide" supported by ch.ch (apply to the cantonal authorities before arrival) and ZV-EJPD Art. 2 let. c (canton grants, SEM approves), both read this run. EN-translation-has-no-legal-force disclaimer confirmed in the document header.
@@ -2020,7 +2021,7 @@ tasks:
     # ADR-0012 distilled copy (tldr/keyFacts) drafted 2026-06-12
     # (content-researcher); independently VERIFIED 2026-06-12 (fact-verifier).
     tldr:
-      text: "If you are no longer working, you may be admitted to live in Switzerland under Art. 28 of the Foreign Nationals and Integration Act (FNIA) — but only if you meet a minimum age (set by the Federal Council at 55), have special personal ties to Switzerland, and have sufficient financial means. The law says retired persons \"may be admitted\", not that they \"are entitled\", so there is no legal right: the cantonal authorities decide at their discretion and the State Secretariat for Migration (SEM) must approve."
+      text: "If you are no longer working, you may be admitted to live in Switzerland — but only if you meet a minimum age (currently 55), have special personal ties to Switzerland, and have sufficient financial means. You may be admitted, but you are not automatically entitled, so there is no legal right: the cantonal authorities decide at their discretion and the national migration authority (SEM) must approve."
       sourceUrl: "https://www.fedlex.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/2007/758/20260201/en/html/fedlex-data-admin-ch-eli-cc-2007-758-20260201-en-html-3.html#art_28"
       sourceName: "Foreign Nationals and Integration Act (FNIA, SR 142.20), Art. 28 — Fedlex, the official publication platform of Swiss law"
       # VERIFIED 2026-06-12 (fact-verifier): Fedlex filestore consolidated HTML (FNIA EN, ELI cc/2007/758, in-force 2026-02-01). Art. 28 verbatim "Foreign nationals who are no longer gainfully employed may be admitted if: a. they have reached a minimum age set by the Federal Council; b. they have special personal relations to Switzerland; and c. they have the required financial means." — verb "may be admitted", NOT "are entitled"; discretion framing (no legal right; canton decides; SEM approves) correct. Minimum age 55 confirmed in VZAE Art. 25 para. 1 DE (filestore, in-force 2026-06-12). EN "no legal force" translation disclaimer present in the FNIA header.
@@ -2121,7 +2122,7 @@ tasks:
             lastVerified: "2026-06-12"
             verifiedBy: "fact-verifier"
             reviewBy: "2026-09-10"
-      - text: "Prepare proof of the required financial means. The ordinance sets no fixed franc amount: the necessary financial means exist if they exceed the amount that would entitle a Swiss national (and, where applicable, their family members) to supplementary benefits under the Supplementary Benefits Act (ELG). Ask the cantonal migration authority how that threshold is assessed in your case."
+      - text: "Prepare proof of the required financial means. There is no fixed franc amount: your means must exceed the level below which a Swiss resident (and, where applicable, their family members) would qualify for means-tested top-up benefits. Ask the cantonal migration authority how that threshold is assessed in your case."
         links:
           - text: "VZAE/ASEO Art. 25 para. 4 — financial means must exceed the ELG supplementary-benefits entitlement threshold"
             sourceUrl: "https://www.fedlex.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/2007/759/20260101/de/html/fedlex-data-admin-ch-eli-cc-2007-759-20260101-de-html.html#art_25"
@@ -2178,14 +2179,14 @@ tasks:
         description: "Your valid US passport — your travel and identity document throughout the process."
       - name: "Evidence of special personal ties to Switzerland"
         type: provide
-        description: "Proof of the ties the canton looks for under VZAE/ASEO Art. 25 para. 2: previous longer stays in Switzerland (holidays, education or work), and/or close relatives resident in Switzerland (parents, children, grandchildren or siblings)."
+        description: "Proof of the ties the canton looks for: previous longer stays in Switzerland (holidays, education or work), and/or close relatives resident in Switzerland (parents, children, grandchildren or siblings)."
       - name: "Proof of financial means"
         type: provide
-        description: "Pension and asset statements showing your means exceed the ELG supplementary-benefits threshold; the canton assesses this individually, so confirm the exact evidence required with the cantonal migration office."
+        description: "Pension and asset statements showing your means exceed the level below which a Swiss resident would qualify for means-tested top-up benefits; the canton assesses this individually, so confirm the exact evidence required with the cantonal migration office."
       - name: "Proof of adequate health and accident insurance cover"
         type: provide
         description: "Evidence of adequate accident and health insurance (or a declaration of how you will insure on arrival) — ch.ch lists adequate accident and health insurance as a requirement for living in Switzerland without gainful employment; confirm what the canton accepts."
-      - name: "Cantonal residence-permit application (residence without gainful employment, Art. 28 FNIA)"
+      - name: "Cantonal residence-permit application (living in Switzerland without working)"
         type: form
         description: "The official cantonal application for a residence permit without gainful employment; procedures, forms and checklists are canton-specific — Canton de Vaud (its population office, SPOP/SPOPVD) is the worked example, and the full checklist must be confirmed with the competent cantonal migration office."
         form:
@@ -2207,11 +2208,12 @@ tasks:
     # official federal fee figure exists. Confirm with the cantonal migration
     # office.
     warning: >
-      There is no entitlement to this permit: Art. 28 FNIA says retired persons "may be
-      admitted" — the canton decides at its discretion and SEM must approve. Do not sell
-      property, give notice or make other irreversible arrangements before you have the
-      cantonal decision (and SEM approval) in writing. The permit excludes all gainful
-      activity in Switzerland or abroad except managing your own assets.
+      There is no guaranteed right to this permit: the law says retired persons "may be
+      admitted", not that they must be — the canton decides at its discretion and the
+      national migration authority (SEM) must approve. Do not sell property, give notice or
+      make other irreversible arrangements before you have the cantonal decision (and SEM
+      approval) in writing. The permit excludes all gainful activity in Switzerland or
+      abroad except managing your own assets.
     dependsOn: []
 
   # ---------------------------------------------------------------------------
@@ -2235,7 +2237,7 @@ tasks:
     # ADR-0012 distilled copy (tldr/keyFacts) drafted 2026-06-12
     # (content-researcher); independently VERIFIED 2026-06-12 (fact-verifier).
     tldr:
-      text: "Because a retirement stay in Switzerland exceeds 90 days, you need a national (category D) visa to enter — the entry document that lets you travel to Switzerland to take up the residence the canton authorised (with SEM approval) under Art. 28 FNIA. You apply in writing on the national visa application form at the Swiss representation abroad responsible for your US place of residence; category D applications are processed by the cantons."
+      text: "Because a retirement stay in Switzerland exceeds 90 days, you need a national (category D) visa to enter — the entry document that lets you travel to Switzerland to take up the residence the canton authorised (with national-authority approval) as a retired person. You apply in writing on the national visa application form at the Swiss representation abroad responsible for your US place of residence; category D applications are processed by the cantons."
       sourceUrl: "https://www.sem.admin.ch/sem/en/home/themen/einreise/faq.html"
       sourceName: "State Secretariat for Migration (SEM) — FAQ: Entry"
       # VERIFIED 2026-06-12 (fact-verifier): SEM Entry FAQ (HTTP 200). "Category D visas are issued for stays exceeding 90 days"; "You must apply for the category D visa in writing using the application form or directly at the Swiss representation abroad responsible for your place of residence"; "Applications for a category D visa are processed by the cantons (a residence permit is required)." All tldr elements match. The Art. 28 dependency framing is consistent with the verified retirement-residence-permit task and the dependsOn.
@@ -2317,7 +2319,7 @@ tasks:
             lastVerified: "2026-06-12"
             verifiedBy: "fact-verifier"
             reviewBy: "2026-09-10"
-      - text: "Submit the visa application together with the supporting documents required by the representation and the canton (reference to the cantonal Art. 28 authorisation / pending application)."
+      - text: "Submit the visa application together with the supporting documents required by the representation and the canton (reference to the cantonal retired-person's permit authorisation / pending application)."
         tip: "Check the specific representation's instructions for how to submit (by post or appointment) and the exact document checklist."
       - text: "The representation issues the type D visa once the cantonal authorisation (with SEM approval) is confirmed; you then travel to Switzerland within its validity."
     # documents migrated from legacy strings to ADR-0012 structured entries
@@ -2342,7 +2344,7 @@ tasks:
       - name: "Passport photos to the required specification"
         type: provide
         description: "Recent passport photographs to the specification set by the competent Swiss representation."
-      - name: "Reference to the cantonal authorisation or pending Art. 28 permit application"
+      - name: "Reference to the cantonal authorisation or pending retired-person's permit application"
         type: provide
         description: "Proof or reference to the cantonal authorisation (or pending application) for the retired person's residence permit; the visa is issued once that cantonal authorisation, with SEM approval, is confirmed."
       - name: "Proof of financial means and insurance as requested"
@@ -2639,7 +2641,7 @@ tasks:
     # multi-route pattern.
     appliesIf: "motivation == 'study' && studyStatus == 'applying'"
     summary:
-      text: "Admission comes before immigration: the first statutory condition for a residence permit for education purposes is that the management of the educational establishment confirms that you are eligible for the education or training (Art. 27 para. 1 let. a FNIA). Until you hold an admission/confirmation from a Swiss institution there is no Swiss visa or permit application you can usefully make — get admitted first."
+      text: "Admission comes before immigration: the first requirement for a residence permit to study is that the educational institution confirms you have been accepted onto the course. Until you hold an admission/confirmation from a Swiss institution there is no Swiss visa or permit application you can usefully make — get admitted first."
       sourceUrl: "https://www.fedlex.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/2007/758/20260201/en/html/fedlex-data-admin-ch-eli-cc-2007-758-20260201-en-html.html#art_27"
       sourceName: "Foreign Nationals and Integration Act (FNIA, SR 142.20), Art. 27 — Fedlex, the official publication platform of Swiss law"
       # VERIFIED 2026-06-12 (fact-verifier): cited www.fedlex.admin.ch URL resolves (HTTP 200) but renders client-side; statute read from the SAME official Fedlex platform's static consolidated HTML (fedlex.data.admin.ch filestore, ELI cc/2007/758, EN in-force 2026-02-01 — latest EN manifestation per SPARQL version list (the consolidation in force TODAY, 2026-06-12, has no EN manifestation; HTTP 404 probe confirmed); anchor "art_27" present). Art. 27 para. 1 let. a verbatim: "the management of the educational establishment confirms that the person concerned is eligible for education or training". Cross-checked in the authoritative DE consolidation in force 2026-06-12: Art. 27 unchanged ("die Schulleitung bestätigt, dass die Aus- oder Weiterbildung aufgenommen werden kann"). Inference FAIRLY STATED: para. 1 conditions a-d are cumulative ("if: a. ... and d. ..."), so without the let. a confirmation no Art. 27 admission can be granted — "get admitted first" follows; no fact invented.
@@ -2651,7 +2653,7 @@ tasks:
     # 2026-06-12 (writer applying VERIFIED two-agent content). Each claim's
     # verdict is recorded inline; FLAGGED claims (none in this task) are omitted.
     tldr:
-      text: "Admission comes before immigration: the first statutory condition for an education residence permit is that the educational establishment's management confirms you are eligible for the course (Art. 27 para. 1 let. a FNIA). Until a Swiss institution has admitted you, there is no useful Swiss visa or permit application to make — get admitted first."
+      text: "Admission comes before immigration: the first requirement for an education residence permit is that the educational institution confirms you have been accepted onto the course. Until a Swiss institution has admitted you, there is no useful Swiss visa or permit application to make — get admitted first."
       sourceUrl: "https://www.fedlex.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/2007/758/20260201/en/html/fedlex-data-admin-ch-eli-cc-2007-758-20260201-en-html.html#art_27"
       sourceName: "Foreign Nationals and Integration Act (FNIA, SR 142.20), Art. 27 — Fedlex, the official publication platform of Swiss law"
       # VERIFIED 2026-06-12 (fact-verifier): FNIA Art. 27 para. 1 let. a confirmed verbatim on the Fedlex static filestore (ELI cc/2007/758, EN in-force 2026-02-01). The "admission comes before immigration / get admitted first" framing is a fair inference from the cumulative conditions a-d, matches the already-VERIFIED task summary; discretion register ("may be admitted") correctly observed.
@@ -2720,7 +2722,7 @@ tasks:
             lastVerified: "2026-06-12"
             verifiedBy: "fact-verifier"
             reviewBy: "2026-09-10"
-      - text: "Wait for the institution's admission/confirmation before starting any visa or permit application — the confirmation is itself the first admission condition of the permit (Art. 27 para. 1 let. a FNIA)."
+      - text: "Wait for the institution's admission/confirmation before starting any visa or permit application — that confirmation is itself the first condition the permit requires."
     # documents migrated from legacy strings to ADR-0012 structured entries
     # 2026-06-12 (writer applying VERIFIED content).
     documents:
@@ -2746,15 +2748,15 @@ tasks:
     # federal figure exists. Confirm with the institution.
     warning: >
       Do not apply for a Swiss visa or residence permit before you are admitted: without
-      the educational establishment's confirmation the statutory admission conditions of
-      Art. 27 FNIA cannot be met, and there is no separate "prospective student"
+      the institution's confirmation that you have been accepted, the admission conditions
+      for a study permit cannot be met, and there is no separate "prospective student"
       immigration track for long-term stays.
     dependsOn: []
 
   # ---------------------------------------------------------------------------
   - id: study-residence-permit
     localCostTimeline: canton
-    title: "Apply for a residence permit for education purposes (Art. 27 FNIA)"
+    title: "Apply for a residence permit to study"
     category: visa-permit
     # appliesIf (content-researcher, 2026-06-12, PENDING fact-verifier approval
     # per ADR-0009 §4): Art. 27 FNIA education admission is specific to the
@@ -2767,7 +2769,7 @@ tasks:
     # so this task is wrong for every non-study user.
     appliesIf: "motivation == 'study'"
     summary:
-      text: "Foreign nationals may be admitted to Switzerland for education or training purposes if the management of the educational establishment confirms that they are eligible for the education or training, suitable accommodation is available, the required financial means are available, and they fulfil the personal and educational requirements for the planned course (Art. 27 para. 1 FNIA). This is a discretionary admission — the law says «may be admitted», not «are entitled» — so there is no legal right to a student permit; the cantonal authorities decide, and US citizens are not covered by EU/EFTA free movement."
+      text: "Foreign nationals may be admitted to Switzerland to study or train if the educational institution confirms they have been accepted onto the course, suitable accommodation is available, the required financial means are available, and they meet the personal and educational requirements for the planned course. This is a decision the authorities make at their discretion — you may be admitted, but you are not automatically entitled — so there is no legal right to a student permit; the cantonal authorities decide, and US citizens are not covered by EU/EFTA free movement."
       sourceUrl: "https://www.fedlex.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/2007/758/20260201/en/html/fedlex-data-admin-ch-eli-cc-2007-758-20260201-en-html.html#art_27"
       sourceName: "Foreign Nationals and Integration Act (FNIA, SR 142.20), Art. 27 — Fedlex, the official publication platform of Swiss law"
       # VERIFIED 2026-06-12 (fact-verifier): Fedlex filestore FNIA EN (in-force 2026-02-01, latest EN manifestation per SPARQL; anchor "art_27" present). Art. 27 para. 1 verbatim: "Foreign nationals may be admitted for education or training purposes if: a. the management of the educational establishment confirms that the person concerned is eligible for education or training; b. suitable accommodation is available; c. the required financial means are available; and d. they fulfil the personal and educational requirements for the planned education or training course." All four conditions match character-for-character. DE consolidation in force TODAY (2026-06-12) cross-checked as requested: "können für eine Aus- oder Weiterbildung zugelassen werden" — Art. 27 unchanged. The discretion reading is exactly right: "may be admitted", NOT "are entitled" (same load-bearing distinction as the verified Art. 44 and Art. 28 findings). "Cantonal authorities decide" supported by ch.ch (apply to the cantonal immigration and employment market authorities before arrival, read this run); US-citizens-not-EU/EFTA is the corridor's verified baseline (Art. 2 FNIA scheme, work route). EN-translation-has-no-legal-force disclaimer confirmed in the document header.
@@ -2781,7 +2783,7 @@ tasks:
     # (source/claim mismatch — VZAE Art. 23-24 facts cited to FNIA Art. 27)
     # and is deliberately OMITTED here pending re-sourcing.
     tldr:
-      text: "Foreign nationals may be admitted to Switzerland for study if the school confirms you are eligible, suitable accommodation and the required financial means are available, and you meet the personal and educational requirements (Art. 27 para. 1 FNIA). This is a discretionary admission decided by the canton — the law says you 'may be admitted', not that you are entitled, and US citizens are outside EU/EFTA free movement."
+      text: "Foreign nationals may be admitted to Switzerland for study if the school confirms you have been accepted, suitable accommodation and the required financial means are available, and you meet the personal and educational requirements. This is a decision the canton makes at its discretion — you may be admitted, but you are not automatically entitled, and US citizens are outside EU/EFTA free movement."
       sourceUrl: "https://www.fedlex.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/2007/758/20260201/en/html/fedlex-data-admin-ch-eli-cc-2007-758-20260201-en-html.html#art_27"
       sourceName: "Foreign Nationals and Integration Act (FNIA, SR 142.20), Art. 27 — Fedlex, the official publication platform of Swiss law"
       # VERIFIED 2026-06-12 (fact-verifier): FNIA Art. 27 para. 1 confirmed verbatim on the Fedlex static filestore (EN in-force 2026-02-01), all four cumulative conditions present. Discretion framing exactly right and load-bearing ("may be admitted", not "are entitled"). "Decided by the canton" supported by the ch.ch text VERIFIED in this task's step link; "US citizens outside EU/EFTA free movement" is the corridor's verified baseline.
@@ -2865,7 +2867,7 @@ tasks:
             lastVerified: "2026-06-12"
             verifiedBy: "fact-verifier"
             reviewBy: "2026-09-10"
-      - text: "Prepare proof of the required financial means. The ordinance lists how they can be evidenced: a declaration of commitment plus proof of income and assets from a solvent person resident in Switzerland (a foreign national sponsor must hold a residence or settlement permit), a confirmation from a bank authorised in Switzerland of sufficient assets of the applicant, or a binding assurance of sufficient scholarships or education loans."
+      - text: "Prepare proof of the required financial means. The accepted forms of proof include: a declaration of commitment plus proof of income and assets from a solvent person resident in Switzerland (a foreign-national sponsor must hold a residence or settlement permit), a confirmation from a bank authorised in Switzerland of sufficient assets of the applicant, or a binding assurance of sufficient scholarships or education loans."
         links:
           - text: "VZAE/ASEO Art. 23 para. 1 — how the necessary financial means for education can be evidenced (declaration of commitment, Swiss-bank confirmation, or assured scholarships/loans)"
             sourceUrl: "https://www.fedlex.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/2007/759/20260612/de/html/fedlex-data-admin-ch-eli-cc-2007-759-20260612-de-html-2.html#art_23"
@@ -2905,7 +2907,7 @@ tasks:
         description: "Your valid US passport as travel and identity document."
       - name: "Admission / confirmation of the educational institution (matriculation certificate)"
         type: provide
-        description: "Proof of admission to a recognised educational institution (matriculation certificate) — the Art. 27 para. 1 let. a confirmation that you are eligible for the course."
+        description: "Proof of admission to a recognised educational institution (matriculation certificate) — the institution's confirmation that you have been accepted onto the course."
       - name: "Personal study plan"
         type: provide
         description: "A personal study plan indicating the goal of your studies, listed by the federal portal among the documents students must submit."
@@ -2917,10 +2919,10 @@ tasks:
         description: "A written confirmation that you will leave Switzerland at the end of your studies, listed by the federal portal among the documents students must submit."
       - name: "Proof of the required financial means"
         type: provide
-        description: "Evidence of sufficient means per VZAE Art. 23 para. 1: a declaration of commitment plus income/assets proof from a solvent person resident in Switzerland (a foreign sponsor must hold a residence or settlement permit), a Swiss-authorised bank's confirmation of sufficient assets, or a binding assurance of sufficient scholarships or education loans."
+        description: "Evidence of sufficient means, which can take the form of: a declaration of commitment plus income/assets proof from a solvent person resident in Switzerland (a foreign sponsor must hold a residence or settlement permit), a Swiss-authorised bank's confirmation of sufficient assets, or a binding assurance of sufficient scholarships or education loans."
       - name: "Proof of suitable accommodation in Switzerland"
         type: provide
-        description: "Evidence of suitable accommodation, one of the Art. 27 para. 1 admission conditions."
+        description: "Evidence of suitable accommodation, one of the conditions for being admitted to study."
       - name: "Cantonal residence-permit application form for education (third-country national)"
         type: form
         description: "The official cantonal application for a residence permit for education purposes. Canton-specific — Vaud is the worked example: the SPOP forms-index lists 'Demande d'un titre de séjour temporaire Etats tiers pour effectuer des études' (French and English versions)."
@@ -2940,12 +2942,12 @@ tasks:
     # official federal fee figure exists. Confirm with the cantonal migration
     # office.
     warning: >
-      There is no entitlement to a student permit: Art. 27 FNIA says foreign nationals
-      "may be admitted" — the canton decides at its discretion. The permit is tied to the
-      education purpose: staying on in Switzerland after completing or discontinuing the
-      course is governed by the general admission requirements (Art. 27 para. 3 FNIA),
-      not by the student permit. Do not make irreversible arrangements before you have
-      the cantonal decision in writing.
+      There is no guaranteed right to a student permit: the law says foreign nationals
+      "may be admitted", not that they must be — the canton decides at its discretion. The
+      permit is tied to the education purpose: staying on in Switzerland after completing or
+      discontinuing the course is judged against the ordinary admission rules, not by the
+      student permit. Do not make irreversible arrangements before you have the cantonal
+      decision in writing.
     # dependsOn references study-admission, which only renders for users with
     # studyStatus == 'applying'; for admitted users the id is filtered out and
     # ignored at runtime (ADR-0009 mechanics).
@@ -3050,7 +3052,7 @@ tasks:
             lastVerified: "2026-06-12"
             verifiedBy: "fact-verifier"
             reviewBy: "2026-09-10"
-      - text: "Submit the visa application together with the study supporting documents required by the representation and the canton (admission confirmation, reference to the cantonal Art. 27 application or authorisation)."
+      - text: "Submit the visa application together with the study supporting documents required by the representation and the canton (admission confirmation, reference to the cantonal study-permit application or authorisation)."
         tip: "Check the specific representation's instructions for how to submit (by post or appointment) and the exact document checklist."
       - text: "The representation issues the type D visa once the cantonal authorisation is confirmed; you then travel to Switzerland within its validity."
     # documents migrated from legacy strings to ADR-0012 structured entries
@@ -3127,7 +3129,7 @@ tasks:
     # and a 15-hour cap would be factually wrong for both.
     appliesIf: "motivation == 'study'"
     summary:
-      text: "Third-country students at a Swiss university or university of applied sciences may be approved for supplementary employment, subject to conditions (Art. 38 ASEO/VZAE): work may begin no sooner than six months after the start of the course, is limited to a maximum of 15 hours a week outside of the holidays, the university authorities must confirm that the work is compatible with the studies and will not delay their completion, the application must be submitted by the employer, and the employment must comply with the applicable regulations on pay and working conditions. The competent cantonal authorities decide."
+      text: "Third-country students at a Swiss university or university of applied sciences may be approved for side employment, subject to conditions: work may begin no sooner than six months after the start of the course, is limited to a maximum of 15 hours a week outside of the holidays, the university authorities must confirm that the work is compatible with the studies and will not delay their completion, the application must be submitted by the employer, and the employment must comply with the applicable rules on pay and working conditions. The competent cantonal authorities decide."
       sourceUrl: "https://www.sem.admin.ch/sem/en/home/themen/arbeit/faq.html"
       sourceName: "State Secretariat for Migration (SEM) — FAQ: Working"
       # VERIFIED 2026-06-12 (fact-verifier): SEM Working FAQ loaded (curl, browser UA, HTTP 200, title "FAQ – Working"). Every figure and condition verbatim: "If you are living in Switzerland to train or study at a university or university of applied sciences, the competent cantonal authorities may approve a supplementary activity in accordance with Art. 38 ASEO, subject to a number of conditions. Beginning no sooner than six months after the start of their course, foreign students may work for a maximum of 15 hours a week outside of the holidays. However, the university authorities must confirm that the student's work is compatible with their studies and will not delay their completion. In addition, an application must be submitted by the employer, and the employment must comply with the applicable regulations on pay and working conditions." Six-month waiting period, 15-hour weekly cap outside holidays, school confirmation, employer-files-application and pay/conditions all match character-for-character; figures cross-checked against the statutory text VZAE Art. 38 DE (in force 2026-06-12, same task): "frühestens sechs Monate nach Beginn der Ausbildung", "die wöchentliche Arbeitszeit ausserhalb der Ferien 15 Stunden nicht überschreitet" — identical. "The competent cantonal authorities decide" is the FAQ's own framing ("may approve").
@@ -3139,7 +3141,7 @@ tasks:
     # 2026-06-12 (writer applying VERIFIED two-agent content). All draft claims
     # for this task passed verification; none omitted.
     tldr:
-      text: "A student permit does not by itself let you work: side employment during study needs a separate cantonal authorisation. For students at a university or university of applied sciences it may begin at the earliest six months after the course starts, is capped at 15 hours a week outside the holidays, the school must confirm it is compatible with your studies, and it is the employer — not you — who files the application (Art. 38 ASEO/VZAE)."
+      text: "A student permit does not by itself let you work: side employment during study needs a separate cantonal authorisation. For students at a university or university of applied sciences it may begin at the earliest six months after the course starts, is capped at 15 hours a week outside the holidays, the school must confirm it is compatible with your studies, and it is the employer — not you — who files the application."
       sourceUrl: "https://www.sem.admin.ch/sem/en/home/themen/arbeit/faq.html"
       sourceName: "State Secretariat for Migration (SEM) — FAQ: Working"
       # VERIFIED 2026-06-12 (fact-verifier): SEM Working FAQ independently fetched (HTTP 200). Verbatim support for every element: side employment for students at a university/UAS beginning "no sooner than six months after the start of their course ... a maximum of 15 hours a week outside of the holidays"; the university must confirm "compatible with their studies and will not delay their completion"; "an application must be submitted by the employer". Figures cross-checked against VZAE Art. 38 DE (in force 2026-06-12) — identical. Scope correctly limited to Hochschule/Fachhochschule.
@@ -3255,7 +3257,7 @@ tasks:
         description: "Your current student residence permit — the precondition for any study-related work authorisation."
       - name: "School confirmation that the work is compatible with your studies"
         type: provide
-        description: "A written confirmation from your institution that the work is compatible with your studies and will not delay their completion (Art. 38 condition)."
+        description: "A written confirmation from your institution that the work is compatible with your studies and will not delay their completion (a required condition for side employment)."
       - name: "Employer's cantonal work-authorisation application"
         type: form
         description: "The application for the supplementary-activity authorisation, filed by your prospective EMPLOYER with the competent cantonal authority — not by you. Canton-specific; Vaud is the worked example via the DGEM employment-market authority."
@@ -3302,7 +3304,7 @@ tasks:
     # nothing today.
     appliesIf: "motivation == 'study'"
     summary:
-      text: "Students staying in Switzerland for education or training can, on request, be exempted from the compulsory Swiss health insurance if they have equivalent insurance cover for treatment in Switzerland for the entire duration of the exemption (Art. 2 para. 4 KVV, SR 832.102). A written confirmation from the competent foreign body must accompany the request. The competent cantonal authority may grant the exemption for at most three years; on request it can be extended by at most three further years. The exemption (or a waiver of it) cannot be revoked without special reason."
+      text: "Students staying in Switzerland for education or training can, on request, be exempted from the compulsory Swiss health insurance if they have equivalent insurance cover for treatment in Switzerland for the entire duration of the exemption. A written confirmation from the competent foreign body must accompany the request. The competent cantonal authority may grant the exemption for at most three years; on request it can be extended by at most three further years. The exemption (or a waiver of it) cannot be revoked without special reason."
       sourceUrl: "https://www.fedlex.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/1995/3867_3867_3867/20260101/de/html/fedlex-data-admin-ch-eli-cc-1995-3867_3867_3867-20260101-de-html-3.html#art_2"
       sourceName: "Ordinance on Health Insurance (KVV, SR 832.102), Art. 2 para. 4 — Fedlex (official German text)"
       # VERIFIED 2026-06-12 (fact-verifier): cited www.fedlex.admin.ch URL resolves (HTTP 200, client-side SPA); German text read from the official Fedlex filestore consolidated DE HTML (ELI cc/1995/3867_3867_3867, SR 832.102, "Stand am 1. Januar 2026"; anchor "art_2" present). CONSOLIDATION CURRENCY CONFIRMED via the Fedlex SPARQL version list: 2026-01-01 is the consolidation in force today (next versions 2027-01-01 and 2032-07-01 are future-dated). Art. 2 para. 4 verbatim, every element of the claim present: "Auf Gesuch hin von der Versicherungspflicht ausgenommen sind Personen, die sich im Rahmen einer Aus- oder Weiterbildung in der Schweiz aufhalten, wie namentlich Studierende ... sofern sie während der gesamten Geltungsdauer der Befreiung für Behandlungen in der Schweiz über einen gleichwertigen Versicherungsschutz verfügen. Dem Gesuch ist eine schriftliche Bestätigung der zuständigen ausländischen Stelle mit allen erforderlichen Angaben beizulegen. Die zuständige kantonale Behörde kann die betreffende Person höchstens für drei Jahre von der Versicherungspflicht befreien. Auf Gesuch hin kann die Befreiung um höchstens drei weitere Jahre verlängert werden. Die betreffende Person kann die Befreiung oder einen Verzicht auf die Befreiung ohne besonderen Grund nicht widerrufen." On-request character, equivalent-cover condition for the whole exemption period, written foreign-body confirmation, cantonal competence, max three years + one three-year extension, and the no-revocation-without-special-reason rule all match character-for-character. Statutory durations, not fees -> 90-day window. No official EN translation of the KVV exists on Fedlex — German correctly cited.
@@ -3314,7 +3316,7 @@ tasks:
     # 2026-06-12 (writer applying VERIFIED two-agent content). All draft claims
     # for this task passed verification; none omitted.
     tldr:
-      text: "Students staying in Switzerland for education can, on request, be exempted from compulsory Swiss health insurance if they have equivalent cover for treatment in Switzerland for the whole exemption period, evidenced by a written confirmation from the competent foreign body (Art. 2 para. 4 KVV). The cantonal authority grants it for at most three years (extendable by up to three more), and an exemption once granted cannot be revoked without special reason — so until it is granted, the default three-month obligation to insure still applies."
+      text: "Students staying in Switzerland for education can, on request, be exempted from compulsory Swiss health insurance if they have equivalent cover for treatment in Switzerland for the whole exemption period, evidenced by a written confirmation from the competent foreign body. The cantonal authority grants it for at most three years (extendable by up to three more), and an exemption once granted cannot be revoked without special reason — so until it is granted, the default three-month obligation to insure still applies."
       sourceUrl: "https://www.fedlex.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/1995/3867_3867_3867/20260101/de/html/fedlex-data-admin-ch-eli-cc-1995-3867_3867_3867-20260101-de-html-3.html#art_2"
       sourceName: "Ordinance on Health Insurance (KVV, SR 832.102), Art. 2 para. 4 — Fedlex (official German text)"
       # VERIFIED 2026-06-12 (fact-verifier): KVV Art. 2 para. 4 (SR 832.102) confirmed verbatim on the Fedlex static filestore (DE, "Stand am 1. Januar 2026" = the version in force today). Every element present: on request; "Studierende"; equivalent cover for the whole exemption period; written foreign-body confirmation; cantonal authority "höchstens für drei Jahre"; extension "um höchstens drei weitere Jahre"; no revocation without special reason. Default three-month obligation supported by the FOPH page. KVV has no official EN — German correctly cited. Statutory durations, not fees — 90-day window correct.
@@ -3389,7 +3391,7 @@ tasks:
     documents:
       - name: "Written confirmation of foreign insurance cover from the competent foreign body"
         type: provide
-        description: "The written confirmation from the competent foreign body, with all required details, that must accompany the exemption request (Art. 2 para. 4 KVV)."
+        description: "The written confirmation from the competent foreign body, with all required details, that must accompany the exemption request."
       - name: "Evidence that the foreign cover is equivalent for treatment in Switzerland"
         type: provide
         description: "Evidence that your cover is equivalent for treatments in Switzerland for the entire exemption period; whether a US plan qualifies is decided in your individual case — confirm requirements with the competent cantonal authority."
@@ -3432,7 +3434,7 @@ tasks:
     # only the study route produces that situation in this corridor.
     appliesIf: "motivation == 'study'"
     summary:
-      text: "Third-country nationals who have graduated from a Swiss higher education institution have a six-month period from the end of their course or training in Switzerland in which to look for a job that matches their qualifications. In derogation from the principle of precedence for Swiss and EU/EFTA candidates, they may be admitted to work if their work is of high academic or economic interest (Art. 21 para. 3 FNIA). Admission to such work remains a decision of the authorities — it is not an automatic right to a work permit."
+      text: "Third-country nationals who have graduated from a Swiss higher education institution have a six-month period from the end of their course or training in Switzerland in which to look for a job that matches their qualifications. As an exception to the usual rule that Swiss and EU/EFTA candidates get priority, they may be admitted to work if their work is of high academic or economic interest. Admission to such work remains a decision of the authorities — it is not an automatic right to a work permit."
       sourceUrl: "https://www.sem.admin.ch/sem/en/home/themen/arbeit/faq.html"
       sourceName: "State Secretariat for Migration (SEM) — FAQ: Working"
       # VERIFIED 2026-06-12 (fact-verifier): SEM Working FAQ loaded (curl, browser UA, HTTP 200, title "FAQ – Working"). Verbatim: "Third-country nationals who have graduated from a Swiss higher education institution have a six-month period from the end of their course or training in Switzerland in which to look for a job which matches their qualifications. In derogation of the principle of precedence for Swiss and EU/EFTA nationals, they may be admitted if their work represents an overriding scientific or economic interest." The claim's "high academic or economic interest" wording is the statutory EN phrase of FNIA Art. 21 para. 3 (verified verbatim this run on the Fedlex filestore text; cited as a link in this task) and is expressly attributed to that article. "Not an automatic right" is exactly supported: both FAQ and statute say "may be admitted". Six-month figure matches both sources character-for-character.
@@ -3444,7 +3446,7 @@ tasks:
     # 2026-06-12 (writer applying VERIFIED two-agent content). All draft claims
     # for this task passed verification; none omitted.
     tldr:
-      text: "Graduating from a Swiss higher education institution is not a dead end: graduates have a six-month period from the end of their course to look for work matching their qualifications, and may be admitted to that work in derogation from the usual precedence rule (Swiss and EU/EFTA candidates first) if the work is of high academic or economic interest (Art. 21 para. 3 FNIA). Admission is still an authorities' decision, not an automatic right to a work permit."
+      text: "Graduating from a Swiss higher education institution is not a dead end: graduates have a six-month period from the end of their course to look for work matching their qualifications, and may be admitted to that work as an exception to the usual rule that Swiss and EU/EFTA candidates come first, if the work is of high academic or economic interest. Admission is still an authorities' decision, not an automatic right to a work permit."
       sourceUrl: "https://www.sem.admin.ch/sem/en/home/themen/arbeit/faq.html"
       sourceName: "State Secretariat for Migration (SEM) — FAQ: Working"
       # VERIFIED 2026-06-12 (fact-verifier): SEM Working FAQ independently fetched (HTTP 200): "Third-country nationals who have graduated from a Swiss higher education institution have a six-month period from the end of their course or training in Switzerland in which to look for a job which matches their qualifications" and "may be admitted ... if their work represents an overriding scientific or economic interest", in derogation from precedence. The statutory phrase "high academic or economic interest" is FNIA Art. 21 para. 3 wording (confirmed verbatim on the Fedlex filestore), cited to that article in the keyFacts — both phrasings attributed to their own sources, not conflated. Discretion register preserved.
@@ -3512,7 +3514,7 @@ tasks:
             lastVerified: "2026-06-12"
             verifiedBy: "fact-verifier"
             reviewBy: "2026-09-10"
-      - text: "If you do not find qualifying work (or do not seek it), remember that staying on is governed by the general admission requirements of the Act — there is no automatic continued residence after the course."
+      - text: "If you do not find qualifying work (or do not seek it), remember that staying on is judged against the ordinary immigration rules — there is no automatic continued residence after the course."
         links:
           - text: "FNIA Art. 27 para. 3 — a continued stay in Switzerland following completion or discontinuation of the education or training course is governed by the general admission requirements of the Act"
             sourceUrl: "https://www.fedlex.admin.ch/filestore/fedlex.data.admin.ch/eli/cc/2007/758/20260201/en/html/fedlex-data-admin-ch-eli-cc-2007-758-20260201-en-html.html#art_27"
@@ -3529,7 +3531,7 @@ tasks:
     documents:
       - name: "Swiss higher-education degree / confirmation of completion"
         type: provide
-        description: "Your Swiss higher-education degree or confirmation of completion of the course — the precondition for the Art. 21 para. 3 derogation."
+        description: "Your Swiss higher-education degree or confirmation of completion of the course — the precondition for the six-month post-graduation job-search stay."
       - name: "Valid residence permit and passport"
         type: provide
         description: "Your valid residence permit and US passport."

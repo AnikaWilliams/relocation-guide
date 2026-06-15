@@ -1577,22 +1577,26 @@ function TaskCard({
   const docsRemaining = docsTotal - docsHandled;
 
   // Does this task carry any reference material worth folding away? (Key facts,
-  // verified cost/timeline, localCostTimeline note, long prose, or step links).
+  // verified cost/timeline, localCostTimeline note, or long prose). Step source
+  // links no longer live here — they're grouped under "Sources & legal notes".
   const hasReference =
     !!task.keyFacts?.length ||
     !!task.timeline ||
     !!task.cost ||
     !!task.localCostTimeline ||
     !!task.detail ||
-    !!task.tldr ||
-    task.steps.some((s) => s.links && s.links.length > 0);
+    !!task.tldr;
 
-  // A step link is "long" (a statute citation / sentence-length legal pointer)
-  // when its authored text reads as prose rather than a short label. We render
-  // those as a short label inline (sourceName) with the full authored text on
-  // hover (title=) and spelled out in full in the reference fold — never dropping
-  // sourceName / sourceUrl / lastVerified.
-  const isLongLink = (text: string) => text.trim().length > 48 || text.trim().split(/\s+/).length > 6;
+  // The reading surface (the numbered steps) must carry NO law-named citation
+  // links inline — those are relocated, with full provenance, into the
+  // "Sources & legal notes" disclosure below. The ONE exception is a step's
+  // cantonOffice link: it's an actionable destination ("Your canton — …"), not
+  // a legal citation, so it stays inline under its step.
+  const stepSourceLinks = task.steps.flatMap((s, si) =>
+    (s.links ?? [])
+      .map((link, li) => ({ link, stepNumber: si + 1, key: `${si}-${li}` }))
+      .filter(({ link }) => link.cantonOffice !== true),
+  );
 
   return (
     <div className="flex flex-col h-full">
@@ -1658,47 +1662,28 @@ function TaskCard({
                   <div className="space-y-1">
                     <p className="text-sm text-slate-700">{s.text}</p>
                     {s.tip && <p className="text-xs text-slate-500 italic">{s.tip}</p>}
-                    {s.links && s.links.length > 0 && (
+                    {/* Inline under a step we render ONLY a cantonOffice link —
+                        an actionable destination ("Your canton — …"), not a legal
+                        citation. Every other step link (statute / authority
+                        citations) is relocated, with full provenance, into the
+                        "Sources & legal notes" disclosure, so the step text itself
+                        reads as plain language. */}
+                    {s.links?.some((l) => l.cantonOffice === true) && (
                       <ul className="mt-1 space-y-0.5">
                         {s.links.map((link, li) => {
+                          if (link.cantonOffice !== true) return null;
                           // cantonOffice links point at "the cantonal migration
                           // authority where you live". When the user picked a
                           // canton we authored, send them straight to THEIR
                           // canton's office (sourceName already names the canton);
                           // otherwise keep the authored federal SEM directory link.
-                          const useCanton = link.cantonOffice === true && cantonOfficeClaim !== null;
-                          if (useCanton) {
-                            return (
-                              <li key={li}>
-                                <a href={cantonOfficeClaim!.sourceUrl} target="_blank" rel="noopener noreferrer" className="text-xs text-blue-600 hover:underline">
-                                  {selectedCantonName && <span className="text-slate-500 not-italic">Your canton — </span>}
-                                  {cantonOfficeClaim!.sourceName} ↗
-                                </a>
-                              </li>
-                            );
-                          }
-                          // Long, sentence-length legal links: show a short label
-                          // (the authority's name) with the full authored text on
-                          // hover. The complete sentence is spelled out in the
-                          // reference fold below, so nothing is lost.
-                          if (isLongLink(link.text)) {
-                            return (
-                              <li key={li}>
-                                <a
-                                  href={link.sourceUrl}
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                  title={link.text}
-                                  className="text-xs text-blue-600 hover:underline"
-                                >
-                                  {link.sourceName} ↗
-                                </a>
-                              </li>
-                            );
-                          }
+                          const target = cantonOfficeClaim ?? link;
                           return (
                             <li key={li}>
-                              <a href={link.sourceUrl} target="_blank" rel="noopener noreferrer" className="text-xs text-blue-600 hover:underline">{link.text} ↗</a>
+                              <a href={target.sourceUrl} target="_blank" rel="noopener noreferrer" className="text-xs text-blue-600 hover:underline">
+                                {cantonOfficeClaim && selectedCantonName && <span className="text-slate-500 not-italic">Your canton — </span>}
+                                {target.sourceName} ↗
+                              </a>
                             </li>
                           );
                         })}
@@ -1796,33 +1781,6 @@ function TaskCard({
                   {task.detail && <p className="text-sm text-slate-600 leading-relaxed">{task.detail}</p>}
                 </div>
               )}
-
-              {/* Full text of any sentence-length legal step-links — spelled out
-                  here (collapsed inline above) so the authored wording, the
-                  authority name and the link are all preserved. */}
-              {task.steps.some((s) => s.links?.some((l) => l.cantonOffice !== true && isLongLink(l.text))) && (
-                <div>
-                  <h4 className="text-xs font-semibold uppercase tracking-wide text-slate-500 mb-2">Legal basis &amp; references</h4>
-                  <ul className="space-y-1.5">
-                    {task.steps.flatMap((s, si) =>
-                      (s.links ?? [])
-                        .map((link, li) => ({ link, key: `${si}-${li}` }))
-                        .filter(({ link }) => link.cantonOffice !== true && isLongLink(link.text))
-                        .map(({ link, key }) => (
-                          <li key={key} className="text-sm text-slate-600 leading-relaxed">
-                            {link.text}{' '}
-                            <a href={link.sourceUrl} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
-                              {link.sourceName} ↗
-                            </a>
-                            {link.lastVerified && (
-                              <span className="ml-1 text-xs text-slate-500">link verified {link.lastVerified}</span>
-                            )}
-                          </li>
-                        )),
-                    )}
-                  </ul>
-                </div>
-              )}
             </div>
           </details>
         )}
@@ -1855,6 +1813,30 @@ function TaskCard({
                   <span className="ml-2 text-xs text-slate-500">verified {task.summary.lastVerified}</span>
                 )}
               </p>
+              {/* Per-step source/legal citation links, relocated here from the
+                  step list so the steps read as plain language. Provenance is
+                  preserved verbatim — authored text, authority name, link and
+                  last-verified date — and each is tagged with its step number.
+                  cantonOffice links are excluded (they stay inline on the step). */}
+              {stepSourceLinks.length > 0 && (
+                <div>
+                  <h4 className="text-xs font-semibold uppercase tracking-wide text-slate-500 mb-1.5">Sources for the steps above</h4>
+                  <ul className="space-y-1.5">
+                    {stepSourceLinks.map(({ link, stepNumber, key }) => (
+                      <li key={key} className="text-sm text-slate-600 leading-relaxed">
+                        <span className="text-slate-400">Step {stepNumber}:</span>{' '}
+                        {link.text}{' '}
+                        <a href={link.sourceUrl} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
+                          {link.sourceName} ↗
+                        </a>
+                        {link.lastVerified && (
+                          <span className="ml-1 text-xs text-slate-500">link verified {link.lastVerified}</span>
+                        )}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
               <p className="text-sm text-slate-600 italic">
                 General guidance only — not legal advice. Confirm with a licensed immigration professional or the relevant authority.
               </p>
