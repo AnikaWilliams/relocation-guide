@@ -27,252 +27,273 @@
  * PECR, CCPA / CPRA, Canada PIPEDA, Brazil LGPD.
  */
 import BaseLayout from '../layouts/BaseLayout.astro';
+
+const linkClass =
+  'text-link underline hover:text-accent-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded';
+const codeClass = 'rounded bg-surface px-1.5 py-0.5 text-[0.85em] text-label';
 ---
 
 <BaseLayout
   title="Privacy policy — Relocation Guide"
   description="How Relocation Guide handles your data: intake answers stay in your browser; analytics and advertising run only with your consent."
 >
-  <!-- DRAFT banner — remove only after human lawyer sign-off -->
-  <aside
-    role="note"
-    aria-label="Draft status"
-    class="rounded-md border border-rose-300 bg-rose-50 p-4 text-sm text-rose-900"
-  >
-    <p>
-      <strong>DRAFT — not yet in force.</strong> This policy contains placeholder values
-      in [BRACKETS] and has not been reviewed by a lawyer. It must not be treated as a
-      final legal document until the operator details are completed and a qualified
-      lawyer has approved the wording for every jurisdiction we serve.
-    </p>
-  </aside>
-
-  <article class="prose prose-slate mt-8 max-w-2xl space-y-8">
-    <section class="space-y-3">
-      <h1 class="text-3xl font-bold">Privacy policy</h1>
-      <p class="text-slate-600">
-        This policy explains what data Relocation Guide ("we", "us") collects, why, and
-        the choices you have. The short version: <strong>the answers you give the
-        planner stay in your own browser</strong> &mdash; we do not run accounts and do
-        not receive them on our servers.
+  <div class="mx-auto max-w-[680px]">
+    <!-- DRAFT banner — remove only after human lawyer sign-off -->
+    <aside
+      role="note"
+      aria-label="Draft status"
+      class="rounded-field border border-warning-border bg-warning-soft p-4 text-sm text-warning"
+    >
+      <p>
+        <strong class="font-semibold">DRAFT — not yet in force.</strong> This policy contains
+        placeholder values in [BRACKETS] and has not been reviewed by a lawyer. It must not be
+        treated as a final legal document until the operator details are completed and a
+        qualified lawyer has approved the wording for every jurisdiction we serve.
       </p>
-      <p class="text-sm text-slate-500">
-        Operator and contact details are in our <a href="/impressum">Impressum</a>.
-        Cookie and local-storage specifics are in our
-        <a href="/cookie-policy">Cookie policy</a>.
-      </p>
-    </section>
+    </aside>
 
-    <section class="space-y-2">
-      <h2 class="text-xl font-semibold">Who is responsible (controller)</h2>
-      <p class="text-slate-700">
-        The data controller for this website is [OPERATOR NAME], [STREET ADDRESS,
-        POSTCODE, CITY, COUNTRY]. Contact: [CONTACT EMAIL]. Where we determine the
-        purposes and means of processing, we act as controller under the GDPR, the
-        Swiss revised Federal Act on Data Protection (FADP), and the other laws listed
-        below.
-      </p>
-    </section>
+    <article class="mt-10 space-y-12">
+      <section class="space-y-4">
+        <h1 class="text-3xl sm:text-4xl font-semibold tracking-tight text-label">Privacy policy</h1>
+        <p class="text-lg leading-relaxed text-secondaryLabel">
+          This policy explains what data Relocation Guide ("we", "us") collects, why, and
+          the choices you have. The short version:
+          <strong class="font-semibold text-label">the answers you give the planner stay in
+          your own browser</strong> &mdash; we do not run accounts and do not receive them on
+          our servers.
+        </p>
+        <p class="text-sm leading-relaxed text-tertiaryLabel">
+          Operator and contact details are in our
+          <a href="/impressum" class={linkClass}>Impressum</a>. Cookie and local-storage
+          specifics are in our <a href="/cookie-policy" class={linkClass}>Cookie policy</a>.
+        </p>
+      </section>
 
-    <section class="space-y-2">
-      <h2 class="text-xl font-semibold">Your planner answers stay in your browser</h2>
-      <p class="text-slate-700">
-        When you use the relocation planner, your answers &mdash; origin and destination
-        country, passports you hold, your reason for moving, family and study or work
-        details, whether children are moving with you, and your progress through the
-        checklist &mdash; are saved <strong>only in your own browser's local storage</strong>
-        (a small store the browser keeps on your device, under the key
-        <code>relocation-intake-v2</code>). This data:
-      </p>
-      <ul class="list-disc pl-6 text-slate-700">
-        <li>is <strong>not transmitted to our servers</strong> and is not stored by us;</li>
-        <li>is not linked to an account &mdash; we do not offer accounts or logins;</li>
-        <li>stays on your device until you clear it (see "Your choices" below).</li>
-      </ul>
-      <p class="text-slate-700">
-        Because this data never reaches us, we cannot retrieve, export, or delete it for
-        you &mdash; but you can do all three yourself at any time from your browser.
-      </p>
-    </section>
+      <section class="space-y-3">
+        <h2 class="text-xl font-semibold tracking-tight text-label">
+          Who is responsible (controller)
+        </h2>
+        <p class="leading-relaxed text-secondaryLabel">
+          The data controller for this website is [OPERATOR NAME], [STREET ADDRESS,
+          POSTCODE, CITY, COUNTRY]. Contact: [CONTACT EMAIL]. Where we determine the
+          purposes and means of processing, we act as controller under the GDPR, the
+          Swiss revised Federal Act on Data Protection (FADP), and the other laws listed
+          below.
+        </p>
+      </section>
 
-    <section class="space-y-2">
-      <h2 class="text-xl font-semibold">Sharing a plan by link</h2>
-      <p class="text-slate-700">
-        If you copy a link to your plan, the plan-shaping answers are encoded in the part
-        of the URL after the <code>#</code> symbol (the "fragment"). By web standard,
-        browsers <strong>never send the fragment to any server</strong> &mdash; not to
-        ours, and not in the address bar's network request. Free-text entries are never
-        included in a share link. Anyone you send the link to can reconstruct the plan in
-        their own browser, so only share it with people you choose.
+      <section class="space-y-3">
+        <h2 class="text-xl font-semibold tracking-tight text-label">
+          Your planner answers stay in your browser
+        </h2>
+        <p class="leading-relaxed text-secondaryLabel">
+          When you use the relocation planner, your answers &mdash; origin and destination
+          country, passports you hold, your reason for moving, family and study or work
+          details, whether children are moving with you, and your progress through the
+          checklist &mdash; are saved
+          <strong class="font-semibold text-label">only in your own browser's local storage</strong>
+          (a small store the browser keeps on your device, under the key
+          <code class={codeClass}>relocation-intake-v2</code>). This data:
+        </p>
+        <ul class="list-disc space-y-2 pl-6 leading-relaxed text-secondaryLabel">
+          <li>is <strong class="font-semibold text-label">not transmitted to our servers</strong> and is not stored by us;</li>
+          <li>is not linked to an account &mdash; we do not offer accounts or logins;</li>
+          <li>stays on your device until you clear it (see "Your choices" below).</li>
+        </ul>
+        <p class="leading-relaxed text-secondaryLabel">
+          Because this data never reaches us, we cannot retrieve, export, or delete it for
+          you &mdash; but you can do all three yourself at any time from your browser.
+        </p>
+      </section>
+
+      <section class="space-y-3">
+        <h2 class="text-xl font-semibold tracking-tight text-label">Sharing a plan by link</h2>
+        <p class="leading-relaxed text-secondaryLabel">
+          If you copy a link to your plan, the plan-shaping answers are encoded in the part
+          of the URL after the <code class={codeClass}>#</code> symbol (the "fragment"). By web
+          standard, browsers <strong class="font-semibold text-label">never send the fragment to
+          any server</strong> &mdash; not to ours, and not in the address bar's network request.
+          Free-text entries are never included in a share link. Anyone you send the link to can
+          reconstruct the plan in their own browser, so only share it with people you choose.
+        </p>
+      </section>
+
+      <section class="space-y-3">
+        <h2 class="text-xl font-semibold tracking-tight text-label">
+          Launch waitlist (routes that aren't live yet)
+        </h2>
+        <p class="leading-relaxed text-secondaryLabel">
+          We add relocation routes one at a time, after independent fact-checking. If your route
+          isn't live yet, you can ask us to tell you when it launches by giving an
+          <strong class="font-semibold text-label">email address (and, optionally, a phone number)</strong>.
+          This is entirely optional &mdash; you never have to provide it to use the planner.
+        </p>
+        <ul class="list-disc space-y-2 pl-6 leading-relaxed text-secondaryLabel">
+          <li>
+            We ask for <strong class="font-semibold text-label">explicit, opt-in consent</strong>
+            (an unticked box) before you submit, and we use the details for
+            <strong class="font-semibold text-label">one purpose only</strong>: to notify you about
+            that one route. No newsletters, no sharing, no other use.
+          </li>
+          <li>
+            What we would store with your contact details is
+            <strong class="font-semibold text-label">coarse</strong>: the route (origin and
+            destination) and your stated reason for moving &mdash;
+            <strong class="font-semibold text-label">never</strong> your free-text entries
+            (employer, institution, "other" description).
+          </li>
+          <li>
+            <strong class="font-semibold text-label">[Current default: off-device sending is not
+            yet enabled.]</strong> Until we connect and disclose a notification provider, a signup
+            is stored only in your own browser (<code class={codeClass}>rg-waitlist-v1</code>) and
+            is not transmitted to us. When we enable sending, this section will be updated with the
+            provider, retention period, and your rights, and reviewed by a lawyer first.
+          </li>
+        </ul>
+      </section>
+
+      <section class="space-y-3">
+        <h2 class="text-xl font-semibold tracking-tight text-label">Special-category data</h2>
+        <p class="leading-relaxed text-secondaryLabel">
+          Some answers can reveal sensitive information &mdash; for example, indicating a
+          registered partnership may imply data about your relationships, which the GDPR
+          treats as a "special category" (Art. 9). We collect this
+          <strong class="font-semibold text-label">only to tailor the checklist</strong>, it is
+          processed entirely within your browser as described above, and it is never sent to us.
+          We ask for the minimum needed to show the right steps.
+        </p>
+      </section>
+
+      <section class="space-y-3">
+        <h2 class="text-xl font-semibold tracking-tight text-label">Analytics</h2>
+        <p class="leading-relaxed text-secondaryLabel">
+          [PLANNED &mdash; activates at launch.] To understand which guidance is useful, we
+          intend to use:
+        </p>
+        <ul class="list-disc space-y-2 pl-6 leading-relaxed text-secondaryLabel">
+          <li>
+            <strong class="font-semibold text-label">Plausible Analytics</strong> &mdash; a
+            privacy-friendly, cookieless measurement tool that does not collect personal data or
+            track you across sites. Because it sets no cookies and processes no personal data, it
+            runs without a consent prompt, in our legitimate interest in maintaining the site.
+          </li>
+          <li>
+            <strong class="font-semibold text-label">Google Analytics 4 (GA4)</strong> &mdash;
+            loaded <strong class="font-semibold text-label">only if you give consent</strong> via
+            our cookie banner. GA4 uses cookies and may transfer data to Google. If you do not
+            consent, GA4 is not loaded.
+          </li>
+        </ul>
+        <p class="leading-relaxed text-secondaryLabel">
+          Any analytics events we record describe actions (for example, "advanced a step"
+          or "opened an official form link") using coarse categories only. They do
+          <strong class="font-semibold text-label">not</strong> include your free-text entries,
+          the passports you listed, employer or institution names, or anything that identifies you.
+        </p>
+      </section>
+
+      <section class="space-y-3">
+        <h2 class="text-xl font-semibold tracking-tight text-label">Advertising</h2>
+        <p class="leading-relaxed text-secondaryLabel">
+          [PLANNED &mdash; post-launch.] We may display ads through Google AdSense to help
+          fund the site. If we do, ad cookies and personalised advertising will load
+          <strong class="font-semibold text-label">only with your consent</strong> via the cookie
+          banner, and never alongside legal or visa guidance, document checklists, or
+          official-source links. You can withdraw consent at any time.
+        </p>
+      </section>
+
+      <section class="space-y-3">
+        <h2 class="text-xl font-semibold tracking-tight text-label">Server logs and hosting</h2>
+        <p class="leading-relaxed text-secondaryLabel">
+          Our host ([HOSTING PROVIDER &mdash; e.g. Cloudflare Pages]) may process standard
+          technical request data (such as IP address and user-agent) to deliver the site
+          securely and to defend against abuse. This is necessary to operate the website
+          and is handled under the host's own data-processing terms. [Confirm retention and
+          the data-processing agreement with the host before launch.]
+        </p>
+      </section>
+
+      <section class="space-y-3">
+        <h2 class="text-xl font-semibold tracking-tight text-label">
+          Legal bases (GDPR / UK GDPR / FADP)
+        </h2>
+        <ul class="list-disc space-y-2 pl-6 leading-relaxed text-secondaryLabel">
+          <li>
+            <strong class="font-semibold text-label">Operating the planner in your browser</strong>
+            &mdash; strictly necessary to provide the service you requested (Art. 6(1)(b)); the
+            data does not reach us.
+          </li>
+          <li>
+            <strong class="font-semibold text-label">Cookieless analytics and secure hosting</strong>
+            &mdash; our legitimate interests in running and improving the site (Art. 6(1)(f)).
+          </li>
+          <li>
+            <strong class="font-semibold text-label">Consent-based analytics and advertising</strong>
+            &mdash; your consent (Art. 6(1)(a); and Art. 9(2)(a) for any special-category
+            processing), withdrawable at any time.
+          </li>
+        </ul>
+      </section>
+
+      <section class="space-y-3">
+        <h2 class="text-xl font-semibold tracking-tight text-label">Your choices and rights</h2>
+        <ul class="list-disc space-y-2 pl-6 leading-relaxed text-secondaryLabel">
+          <li>
+            <strong class="font-semibold text-label">Clear your planner data</strong> at any time
+            using the planner's "Start over" control, or by clearing this site's data in your
+            browser settings.
+          </li>
+          <li>
+            <strong class="font-semibold text-label">Change or withdraw consent</strong> for
+            analytics and advertising at any time from the cookie settings link in the footer.
+          </li>
+          <li>
+            Under the GDPR, UK GDPR, FADP, CCPA/CPRA, PIPEDA, and LGPD you may have rights to
+            access, correct, delete, port, or object to processing, and to lodge a complaint
+            with a supervisory authority. Because planner answers never reach us, the
+            fastest way to exercise access/deletion over them is directly in your browser; for
+            anything we do process (e.g. host logs), contact us at [CONTACT EMAIL].
+          </li>
+          <li>
+            [California] We do not sell or share personal information as defined by the
+            CCPA/CPRA. [Confirm with counsel.]
+          </li>
+        </ul>
+      </section>
+
+      <section class="space-y-3">
+        <h2 class="text-xl font-semibold tracking-tight text-label">International transfers</h2>
+        <p class="leading-relaxed text-secondaryLabel">
+          If you consent to GA4 or AdSense, data may be transferred to Google outside your
+          country (including the United States) under the transfer mechanisms Google relies
+          on. Cookieless analytics and the in-browser planner involve no such transfer by
+          us. [Confirm transfer mechanisms with counsel before launch.]
+        </p>
+      </section>
+
+      <section class="space-y-3">
+        <h2 class="text-xl font-semibold tracking-tight text-label">Children</h2>
+        <p class="leading-relaxed text-secondaryLabel">
+          This site is intended for adults planning a relocation. It is not directed at
+          children, and we do not knowingly collect data from children. (The planner asks
+          whether children are relocating with you only to show the right steps; that answer
+          stays in your browser.)
+        </p>
+      </section>
+
+      <section class="space-y-3">
+        <h2 class="text-xl font-semibold tracking-tight text-label">Changes to this policy</h2>
+        <p class="leading-relaxed text-secondaryLabel">
+          We may update this policy as the site evolves (for example, when analytics or ads
+          go live). Material changes will be reflected here with a new "last updated" date.
+        </p>
+      </section>
+
+      <p class="text-sm text-tertiaryLabel">
+        Last updated: [DATE — set when placeholders are filled in]. Draft pending human
+        lawyer review.
       </p>
-    </section>
-
-    <section class="space-y-2">
-      <h2 class="text-xl font-semibold">Launch waitlist (routes that aren't live yet)</h2>
-      <p class="text-slate-700">
-        We add relocation routes one at a time, after independent fact-checking. If your route
-        isn't live yet, you can ask us to tell you when it launches by giving an
-        <strong>email address (and, optionally, a phone number)</strong>. This is entirely
-        optional &mdash; you never have to provide it to use the planner.
-      </p>
-      <ul class="list-disc pl-6 text-slate-700">
-        <li>
-          We ask for <strong>explicit, opt-in consent</strong> (an unticked box) before you submit,
-          and we use the details for <strong>one purpose only</strong>: to notify you about that
-          one route. No newsletters, no sharing, no other use.
-        </li>
-        <li>
-          What we would store with your contact details is <strong>coarse</strong>: the route
-          (origin and destination) and your stated reason for moving &mdash; <strong>never</strong>
-          your free-text entries (employer, institution, "other" description).
-        </li>
-        <li>
-          <strong>[Current default: off-device sending is not yet enabled.]</strong> Until we
-          connect and disclose a notification provider, a signup is stored only in your own
-          browser (<code>rg-waitlist-v1</code>) and is not transmitted to us. When we enable
-          sending, this section will be updated with the provider, retention period, and your
-          rights, and reviewed by a lawyer first.
-        </li>
-      </ul>
-    </section>
-
-    <section class="space-y-2">
-      <h2 class="text-xl font-semibold">Special-category data</h2>
-      <p class="text-slate-700">
-        Some answers can reveal sensitive information &mdash; for example, indicating a
-        registered partnership may imply data about your relationships, which the GDPR
-        treats as a "special category" (Art. 9). We collect this <strong>only to tailor
-        the checklist</strong>, it is processed entirely within your browser as described
-        above, and it is never sent to us. We ask for the minimum needed to show the
-        right steps.
-      </p>
-    </section>
-
-    <section class="space-y-2">
-      <h2 class="text-xl font-semibold">Analytics</h2>
-      <p class="text-slate-700">
-        [PLANNED &mdash; activates at launch.] To understand which guidance is useful, we
-        intend to use:
-      </p>
-      <ul class="list-disc pl-6 text-slate-700">
-        <li>
-          <strong>Plausible Analytics</strong> &mdash; a privacy-friendly, cookieless
-          measurement tool that does not collect personal data or track you across sites.
-          Because it sets no cookies and processes no personal data, it runs without a
-          consent prompt, in our legitimate interest in maintaining the site.
-        </li>
-        <li>
-          <strong>Google Analytics 4 (GA4)</strong> &mdash; loaded <strong>only if you
-          give consent</strong> via our cookie banner. GA4 uses cookies and may transfer
-          data to Google. If you do not consent, GA4 is not loaded.
-        </li>
-      </ul>
-      <p class="text-slate-700">
-        Any analytics events we record describe actions (for example, "advanced a step"
-        or "opened an official form link") using coarse categories only. They do
-        <strong>not</strong> include your free-text entries, the passports you listed,
-        employer or institution names, or anything that identifies you.
-      </p>
-    </section>
-
-    <section class="space-y-2">
-      <h2 class="text-xl font-semibold">Advertising</h2>
-      <p class="text-slate-700">
-        [PLANNED &mdash; post-launch.] We may display ads through Google AdSense to help
-        fund the site. If we do, ad cookies and personalised advertising will load
-        <strong>only with your consent</strong> via the cookie banner, and never
-        alongside legal or visa guidance, document checklists, or official-source links.
-        You can withdraw consent at any time.
-      </p>
-    </section>
-
-    <section class="space-y-2">
-      <h2 class="text-xl font-semibold">Server logs and hosting</h2>
-      <p class="text-slate-700">
-        Our host ([HOSTING PROVIDER &mdash; e.g. Cloudflare Pages]) may process standard
-        technical request data (such as IP address and user-agent) to deliver the site
-        securely and to defend against abuse. This is necessary to operate the website
-        and is handled under the host's own data-processing terms. [Confirm retention and
-        the data-processing agreement with the host before launch.]
-      </p>
-    </section>
-
-    <section class="space-y-2">
-      <h2 class="text-xl font-semibold">Legal bases (GDPR / UK GDPR / FADP)</h2>
-      <ul class="list-disc pl-6 text-slate-700">
-        <li>
-          <strong>Operating the planner in your browser</strong> &mdash; strictly
-          necessary to provide the service you requested (Art. 6(1)(b)); the data does not
-          reach us.
-        </li>
-        <li>
-          <strong>Cookieless analytics and secure hosting</strong> &mdash; our legitimate
-          interests in running and improving the site (Art. 6(1)(f)).
-        </li>
-        <li>
-          <strong>Consent-based analytics and advertising</strong> &mdash; your consent
-          (Art. 6(1)(a); and Art. 9(2)(a) for any special-category processing),
-          withdrawable at any time.
-        </li>
-      </ul>
-    </section>
-
-    <section class="space-y-2">
-      <h2 class="text-xl font-semibold">Your choices and rights</h2>
-      <ul class="list-disc pl-6 text-slate-700">
-        <li>
-          <strong>Clear your planner data</strong> at any time using the planner's
-          "Start over" control, or by clearing this site's data in your browser settings.
-        </li>
-        <li>
-          <strong>Change or withdraw consent</strong> for analytics and advertising at any
-          time from the cookie settings link in the footer.
-        </li>
-        <li>
-          Under the GDPR, UK GDPR, FADP, CCPA/CPRA, PIPEDA, and LGPD you may have rights to
-          access, correct, delete, port, or object to processing, and to lodge a complaint
-          with a supervisory authority. Because planner answers never reach us, the
-          fastest way to exercise access/deletion over them is directly in your browser; for
-          anything we do process (e.g. host logs), contact us at [CONTACT EMAIL].
-        </li>
-        <li>
-          [California] We do not sell or share personal information as defined by the
-          CCPA/CPRA. [Confirm with counsel.]
-        </li>
-      </ul>
-    </section>
-
-    <section class="space-y-2">
-      <h2 class="text-xl font-semibold">International transfers</h2>
-      <p class="text-slate-700">
-        If you consent to GA4 or AdSense, data may be transferred to Google outside your
-        country (including the United States) under the transfer mechanisms Google relies
-        on. Cookieless analytics and the in-browser planner involve no such transfer by
-        us. [Confirm transfer mechanisms with counsel before launch.]
-      </p>
-    </section>
-
-    <section class="space-y-2">
-      <h2 class="text-xl font-semibold">Children</h2>
-      <p class="text-slate-700">
-        This site is intended for adults planning a relocation. It is not directed at
-        children, and we do not knowingly collect data from children. (The planner asks
-        whether children are relocating with you only to show the right steps; that answer
-        stays in your browser.)
-      </p>
-    </section>
-
-    <section class="space-y-2">
-      <h2 class="text-xl font-semibold">Changes to this policy</h2>
-      <p class="text-slate-700">
-        We may update this policy as the site evolves (for example, when analytics or ads
-        go live). Material changes will be reflected here with a new "last updated" date.
-      </p>
-    </section>
-
-    <p class="text-sm text-slate-500">
-      Last updated: [DATE — set when placeholders are filled in]. Draft pending human
-      lawyer review.
-    </p>
-  </article>
+    </article>
+  </div>
 </BaseLayout>

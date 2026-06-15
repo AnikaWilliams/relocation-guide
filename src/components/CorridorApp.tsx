@@ -602,34 +602,25 @@ function OptionCard({
       disabled={disabled}
       aria-pressed={selected}
       onClick={onClick}
-      className={`w-full min-h-11 border rounded-xl p-4 text-left transition-all focus-visible:ring-2 focus-visible:ring-brand-500 ${
+      className={`w-full min-h-11 border rounded-field p-4 text-left transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent ${
         disabled
-          ? 'border-slate-100 bg-slate-50 opacity-50 cursor-not-allowed'
+          ? 'border-separator bg-surface opacity-50 cursor-not-allowed'
           : selected
-          ? 'border-brand-600 bg-brand-50'
-          : 'border-slate-200 bg-white hover:border-brand-300'
+          ? 'border-accent bg-brand-50'
+          : 'border-separator bg-white hover:border-accent'
       }`}
     >
-      <span className={`font-medium ${disabled ? 'text-slate-400' : 'text-slate-900'}`}>{label}</span>
-      {description && <span className="block text-sm text-slate-500 mt-0.5">{description}</span>}
+      <span className={`font-medium ${disabled ? 'text-tertiaryLabel' : 'text-label'}`}>{label}</span>
+      {description && <span className="block text-sm text-secondaryLabel mt-0.5">{description}</span>}
     </button>
   );
 }
 
 function CategoryBadge({ category }: { category: string }) {
-  const colors: Record<string, string> = {
-    'visa-permit': 'bg-blue-50 text-blue-700',
-    employment: 'bg-orange-50 text-orange-700',
-    housing: 'bg-purple-50 text-purple-700',
-    'healthcare-insurance': 'bg-red-50 text-red-700',
-    'registration-bureaucracy': 'bg-slate-50 text-slate-700',
-    'finance-banking': 'bg-amber-50 text-amber-700',
-    taxes: 'bg-green-50 text-green-700',
-    'family-dependents': 'bg-pink-50 text-pink-700',
-    education: 'bg-teal-50 text-teal-700',
-  };
+  // Apple-web: a single neutral pill (the foundation's neutral badge recipe).
+  // The category label text is unchanged — only the chrome is restyled.
   return (
-    <span className={`text-xs rounded px-2 py-0.5 font-medium ${colors[category] ?? 'bg-slate-50 text-slate-700'}`}>
+    <span className="inline-flex items-center rounded-pill bg-surface px-2.5 py-0.5 text-xs font-medium text-secondaryLabel">
       {category}
     </span>
   );
@@ -656,20 +647,20 @@ function CountryGrid({
             type="button"
             aria-pressed={selected}
             onClick={() => onSelect(c.iso2)}
-            className={`flex items-center gap-2 min-h-11 border rounded-lg px-2.5 py-2 text-left text-sm transition-all focus-visible:ring-2 focus-visible:ring-brand-500 ${
-              selected ? 'border-brand-600 bg-brand-50' : 'border-slate-200 bg-white hover:border-brand-300'
+            className={`flex items-center gap-2 min-h-11 border rounded-field px-2.5 py-2 text-left text-sm transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent ${
+              selected ? 'border-accent bg-brand-50' : 'border-separator bg-white hover:border-accent'
             }`}
           >
             {/* Availability dot: green = a published, verified guide exists for this
                 route; gray = not yet (selecting it leads to the launch waitlist). */}
             <span
               aria-hidden="true"
-              className={`shrink-0 h-2 w-2 rounded-full ${live ? 'bg-emerald-500' : 'bg-slate-300'}`}
+              className={`shrink-0 h-2 w-2 rounded-full ${live ? 'bg-success' : 'bg-separator'}`}
             />
             <Flag iso={c.iso2} className="text-xl" />
-            <span className="font-medium text-slate-900 truncate">{c.name}</span>
+            <span className="font-medium text-label truncate">{c.name}</span>
             <span className="sr-only">{live ? '(published guide available)' : '(no published guide yet)'}</span>
-            {selected && <span className="ml-auto text-brand-600 shrink-0" aria-hidden="true">✓</span>}
+            {selected && <span className="ml-auto text-accent shrink-0" aria-hidden="true"><IconCheck className="h-4 w-4" /></span>}
           </button>
         );
       })}
@@ -690,15 +681,15 @@ function CountryMultiGrid({
             type="button"
             aria-pressed={isOn}
             onClick={() => onToggle(c.iso2)}
-            className={`flex items-center gap-2 min-h-11 border rounded-lg px-2.5 py-2 text-left text-sm transition-all focus-visible:ring-2 focus-visible:ring-brand-500 ${
-              isOn ? 'border-brand-600 bg-brand-50' : 'border-slate-200 bg-white hover:border-brand-300'
+            className={`flex items-center gap-2 min-h-11 border rounded-field px-2.5 py-2 text-left text-sm transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent ${
+              isOn ? 'border-accent bg-brand-50' : 'border-separator bg-white hover:border-accent'
             }`}
           >
             <Flag iso={c.iso2} className="text-xl" />
-            <span className="font-medium text-slate-900">{c.name}</span>
-            <span className={`ml-auto w-5 h-5 rounded border flex items-center justify-center text-xs ${
-              isOn ? 'bg-brand-600 border-brand-600 text-white' : 'border-slate-300 text-transparent'
-            }`} aria-hidden="true">✓</span>
+            <span className="font-medium text-label">{c.name}</span>
+            <span className={`ml-auto w-5 h-5 rounded border flex items-center justify-center ${
+              isOn ? 'bg-accent border-accent text-white' : 'border-separator text-transparent'
+            }`} aria-hidden="true"><IconCheck className="h-3 w-3" /></span>
           </button>
         );
       })}
@@ -854,8 +845,8 @@ function CantonCombobox({
           Search and select your canton
         </label>
         <div
-          className={`flex items-center min-h-11 border rounded-lg bg-white transition-all focus-within:ring-2 focus-within:ring-brand-500 ${
-            selected ? 'border-brand-600 bg-brand-50' : 'border-slate-200'
+          className={`flex items-center min-h-11 border rounded-field bg-white transition-all focus-within:ring-2 focus-within:ring-accent ${
+            selected ? 'border-accent bg-brand-50' : 'border-separator'
           }`}
         >
           <input
@@ -878,8 +869,8 @@ function CantonCombobox({
             onFocus={openList}
             onClick={openList}
             onKeyDown={onKeyDown}
-            className={`flex-1 min-w-0 bg-transparent px-3 py-2 text-sm outline-none placeholder:text-slate-400 ${
-              selected ? 'text-brand-700 font-medium' : 'text-slate-900'
+            className={`flex-1 min-w-0 bg-transparent px-3 py-2 text-sm outline-none placeholder:text-secondaryLabel ${
+              selected ? 'text-accent font-medium' : 'text-label'
             }`}
           />
           {selected && (
@@ -887,7 +878,7 @@ function CantonCombobox({
               type="button"
               onClick={() => { onClear(); setQuery(''); inputRef.current?.focus(); }}
               aria-label="Clear selected canton"
-              className="shrink-0 inline-flex items-center justify-center w-8 h-8 mr-0.5 rounded-md text-slate-500 hover:text-slate-700 hover:bg-slate-100 focus-visible:ring-2 focus-visible:ring-brand-500"
+              className="shrink-0 inline-flex items-center justify-center min-w-11 min-h-11 rounded-md text-secondaryLabel hover:text-label hover:bg-surface focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
             >
               <IconX className="w-4 h-4" />
             </button>
@@ -901,7 +892,7 @@ function CantonCombobox({
               inputRef.current?.focus();
               openList();
             }}
-            className="shrink-0 inline-flex items-center justify-center w-9 h-9 mr-1 rounded-md text-slate-500 hover:text-slate-700 focus-visible:ring-2 focus-visible:ring-brand-500"
+            className="shrink-0 inline-flex items-center justify-center min-w-11 min-h-11 rounded-md text-secondaryLabel hover:text-label focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
           >
             <IconChevronDown className={`w-4 h-4 transition-transform ${open ? 'rotate-180' : ''}`} />
           </button>
@@ -913,7 +904,7 @@ function CantonCombobox({
             id={listboxId}
             role="listbox"
             aria-label="Cantons"
-            className="mt-1.5 max-h-64 overflow-y-auto border border-slate-200 rounded-lg bg-white shadow-sm py-1"
+            className="mt-1.5 max-h-64 overflow-y-auto border border-separator rounded-field bg-white shadow-sm py-1"
           >
             {/* Row 0: the always-present "I'm not sure yet" / clear option. */}
             <li
@@ -923,15 +914,15 @@ function CantonCombobox({
               onMouseEnter={() => setActiveIndex(0)}
               onClick={() => commit(0)}
               className={`flex items-center gap-2 min-h-11 px-3 py-2 text-sm cursor-pointer ${
-                activeIndex === 0 ? 'bg-slate-100' : ''
-              } ${selected === null ? 'text-brand-700 font-medium' : 'text-slate-600'}`}
+                activeIndex === 0 ? 'bg-surface' : ''
+              } ${selected === null ? 'text-accent font-medium' : 'text-secondaryLabel'}`}
             >
               <span className="flex-1">I'm not sure yet</span>
-              {selected === null && <IconCheck className="w-4 h-4 text-brand-600 shrink-0" />}
+              {selected === null && <IconCheck className="w-4 h-4 text-accent shrink-0" />}
             </li>
 
             {filtered.length === 0 ? (
-              <li role="presentation" className="px-3 py-3 text-sm text-slate-500">
+              <li role="presentation" className="px-3 py-3 text-sm text-secondaryLabel">
                 No cantons match
               </li>
             ) : (
@@ -948,12 +939,12 @@ function CantonCombobox({
                     onMouseEnter={() => setActiveIndex(rowIndex)}
                     onClick={() => commit(rowIndex)}
                     className={`flex items-center gap-2 min-h-11 px-3 py-2 text-sm cursor-pointer transition-colors ${
-                      isActive ? 'bg-slate-100' : ''
-                    } ${isSelected ? 'bg-brand-50 text-brand-700 font-medium' : 'text-slate-900'}`}
+                      isActive ? 'bg-surface' : ''
+                    } ${isSelected ? 'bg-brand-50 text-accent font-medium' : 'text-label'}`}
                   >
                     <span className="flex-1 truncate">{c.name}</span>
-                    <span className="text-xs uppercase text-slate-400 shrink-0">{c.code}</span>
-                    {isSelected && <IconCheck className="w-4 h-4 text-brand-600 shrink-0" />}
+                    <span className="text-xs uppercase text-tertiaryLabel shrink-0">{c.code}</span>
+                    {isSelected && <IconCheck className="w-4 h-4 text-accent shrink-0" />}
                   </li>
                 );
               })
@@ -977,7 +968,7 @@ function buildRecap(a: Intake): { label: ReactNode; stepId: string }[] {
     items.push({
       label: (
         <span className="inline-flex items-center gap-1.5">
-          <Flag iso={a.origin} /> {countryName(a.origin)} <span className="text-slate-400">→</span> <Flag iso={a.destination} /> {countryName(a.destination)}
+          <Flag iso={a.origin} /> {countryName(a.origin)} <span className="text-tertiaryLabel">→</span> <Flag iso={a.destination} /> {countryName(a.destination)}
         </span>
       ),
       stepId: 'origin',
@@ -1046,9 +1037,10 @@ function CopyLinkButton() {
     <button
       type="button"
       onClick={copy}
-      className="w-full flex items-center justify-center gap-1.5 rounded-lg border border-slate-200 px-3 py-2 text-sm font-medium text-slate-600 hover:bg-slate-50 focus-visible:ring-2 focus-visible:ring-brand-500"
+      className="w-full flex items-center justify-center gap-1.5 rounded-pill border border-separator bg-white px-3 py-2 text-sm font-medium text-label transition-colors hover:bg-surface focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
     >
-      {copied ? 'Link copied ✓' : 'Copy link to this plan'}
+      {copied && <IconCheck className="h-3.5 w-3.5 text-success" />}
+      {copied ? 'Link copied' : 'Copy link to this plan'}
     </button>
   );
 }
@@ -1085,7 +1077,7 @@ function DocChecklist({
         const done = mark === 'done';
         const skipped = mark === 'skipped';
         return (
-          <li key={doc.name} className={compact ? '' : 'rounded-lg border border-slate-100 bg-white px-3 py-2'}>
+          <li key={doc.name} className={compact ? '' : 'rounded-field border border-separator bg-white px-3 py-2'}>
             <div className="flex items-start gap-2">
               <button
                 type="button"
@@ -1093,31 +1085,31 @@ function DocChecklist({
                 aria-checked={done}
                 aria-label={`${doc.name}${doc.type === 'form' ? ' (official form)' : ''}${skipped ? ' — skipped' : ''}`}
                 onClick={() => onToggle(task.id, doc.name, 'done')}
-                className={`shrink-0 mt-0.5 h-5 w-5 rounded border flex items-center justify-center text-[10px] leading-none transition-colors focus-visible:ring-2 focus-visible:ring-brand-500 ${
+                className={`shrink-0 mt-0.5 h-5 w-5 rounded border flex items-center justify-center leading-none transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent ${
                   done
-                    ? 'bg-emerald-700 border-emerald-700 text-white'
+                    ? 'bg-success border-success text-white'
                     : skipped
-                    ? 'bg-slate-100 border-slate-200 text-slate-400'
-                    : 'border-slate-300 text-transparent hover:border-emerald-500'
+                    ? 'bg-surface border-separator text-tertiaryLabel'
+                    : 'border-separator text-transparent hover:border-success'
                 }`}
               >
-                {skipped ? '–' : '✓'}
+                {skipped ? <span aria-hidden="true">–</span> : <IconCheck className="h-3 w-3" />}
               </button>
               <div className="min-w-0 flex-1">
                 <span
                   className={`block leading-snug ${compact ? 'text-xs' : 'text-sm'} ${
-                    skipped ? 'text-slate-400 line-through' : done ? 'text-slate-500' : 'text-slate-700'
+                    skipped ? 'text-tertiaryLabel line-through' : done ? 'text-secondaryLabel' : 'text-label'
                   }`}
                 >
                   {doc.name}
                   {doc.type === 'form' && (
-                    <span className="ml-1.5 inline-block align-middle rounded bg-blue-50 px-1 text-[10px] font-semibold uppercase tracking-wide text-blue-600">
+                    <span className="ml-1.5 inline-block align-middle rounded bg-brand-50 px-1 text-xs font-semibold uppercase tracking-wide text-brand-700">
                       form
                     </span>
                   )}
                 </span>
                 {!compact && doc.description && (
-                  <span className="mt-0.5 block text-xs text-slate-500">{doc.description}</span>
+                  <span className="mt-0.5 block text-xs text-secondaryLabel">{doc.description}</span>
                 )}
                 {!compact && doc.type === 'form' && doc.form && (
                   <span className="mt-1.5 block">
@@ -1125,12 +1117,12 @@ function DocChecklist({
                       href={doc.form.sourceUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 rounded-md border border-blue-200 bg-blue-50 px-2 py-1 text-xs font-medium text-blue-700 hover:bg-blue-100"
+                      className="inline-flex items-center gap-1 rounded-md border border-separator bg-brand-50 px-2 py-1 text-xs font-medium text-brand-700 transition-colors hover:bg-brand-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
                     >
                       Get form from {doc.form.sourceName} ↗
                     </a>
                     {doc.form.lastVerified && (
-                      <span className="ml-2 text-[11px] text-slate-600">link verified {doc.form.lastVerified}</span>
+                      <span className="ml-2 text-xs text-secondaryLabel">link verified {doc.form.lastVerified}</span>
                     )}
                   </span>
                 )}
@@ -1139,7 +1131,7 @@ function DocChecklist({
                 <button
                   type="button"
                   onClick={() => onToggle(task.id, doc.name, 'skipped')}
-                  className="shrink-0 -my-2 -mr-1 inline-flex min-h-11 items-center px-2 text-[11px] text-slate-600 underline hover:text-slate-800 focus-visible:ring-2 focus-visible:ring-brand-500"
+                  className="shrink-0 -my-2 -mr-1 inline-flex min-h-11 min-w-11 items-center justify-center px-2 text-xs text-secondaryLabel underline hover:text-label focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
                 >
                   {skipped ? 'Undo skip' : 'Skip'}
                 </button>
@@ -1164,10 +1156,10 @@ function CantonLink({ claim }: { claim: ClaimData }) {
       href={claim.sourceUrl}
       target="_blank"
       rel="noopener noreferrer"
-      className="block rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm text-brand-700 hover:border-brand-300 hover:bg-brand-50 focus-visible:ring-2 focus-visible:ring-brand-500"
+      className="block rounded-field border border-separator bg-white px-3 py-2 text-sm text-brand-700 transition-colors hover:border-accent hover:bg-brand-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
     >
       <span className="font-medium">{claim.sourceName} ↗</span>
-      <span className="mt-0.5 block text-xs text-slate-500">{claim.text}</span>
+      <span className="mt-0.5 block text-xs text-secondaryLabel">{claim.text}</span>
     </a>
   );
 }
@@ -1183,20 +1175,20 @@ function CantonPanel({ canton, data }: { canton: string; data: CantonData | unde
   const name = data?.name ?? cantonName(canton);
   return (
     <div>
-      <h2 className="text-xs font-normal text-slate-500 mb-2">Your canton</h2>
-      <div className="rounded-lg border border-slate-200 bg-slate-50 px-3 py-3">
-        <p className="text-sm font-semibold text-slate-900">{name}</p>
+      <h2 className="text-xs font-normal text-secondaryLabel mb-2">Your canton</h2>
+      <div className="rounded-card border border-separator bg-surface px-3 py-3">
+        <p className="text-sm font-semibold text-label">{name}</p>
         {data ? (
           <div className="mt-2 space-y-2">
             <CantonLink claim={data.migrationOffice} />
             <CantonLink claim={data.taxInfo} />
             {data.notes?.map((note) => (
-              <div key={note.label} className="rounded-lg border border-slate-200 bg-white px-3 py-2">
-                <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">{note.label}</p>
-                <p className="mt-0.5 text-sm text-slate-700">{note.text}</p>
+              <div key={note.label} className="rounded-field border border-separator bg-white px-3 py-2">
+                <p className="text-xs font-semibold uppercase tracking-wide text-secondaryLabel">{note.label}</p>
+                <p className="mt-0.5 text-sm text-label">{note.text}</p>
               </div>
             ))}
-            <p className="text-xs text-slate-500">
+            <p className="text-xs text-secondaryLabel">
               Exact fees, processing times and some procedures are set by {name} and vary across Switzerland — confirm them with the office above.
             </p>
           </div>
@@ -1206,11 +1198,11 @@ function CantonPanel({ canton, data }: { canton: string; data: CantonData | unde
               href={SEM_CANTONAL_DIRECTORY}
               target="_blank"
               rel="noopener noreferrer"
-              className="block rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm font-medium text-brand-700 hover:border-brand-300 hover:bg-brand-50 focus-visible:ring-2 focus-visible:ring-brand-500"
+              className="block rounded-field border border-separator bg-white px-3 py-2 text-sm font-medium text-brand-700 transition-colors hover:border-accent hover:bg-brand-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
             >
               Find {name}'s cantonal migration office ↗
             </a>
-            <p className="text-xs text-slate-500">
+            <p className="text-xs text-secondaryLabel">
               Permits, taxes and premiums vary by canton — confirm local details with your cantonal authorities.
             </p>
           </div>
@@ -1304,7 +1296,7 @@ function JourneyNode({
           {!isLast && (
             <span
               className={`absolute left-1/2 top-6 -ml-px h-[calc(100%-0.5rem)] w-0.5 ${
-                done ? 'bg-emerald-400' : 'bg-slate-200'
+                done ? 'bg-success' : 'bg-separator'
               }`}
             />
           )}
@@ -1312,12 +1304,12 @@ function JourneyNode({
           <span
             className={`relative z-10 mt-0.5 flex h-6 w-6 items-center justify-center rounded-full border-2 transition-transform ${
               done
-                ? 'border-emerald-600 bg-emerald-600 text-white'
+                ? 'border-success bg-success text-white'
                 : isActive
-                ? 'border-brand-600 bg-white text-brand-700'
+                ? 'border-accent bg-white text-accent'
                 : available
-                ? 'border-blue-500 bg-white text-blue-600'
-                : 'border-slate-300 bg-slate-50 text-slate-400'
+                ? 'border-accent bg-white text-accent'
+                : 'border-separator bg-surface text-tertiaryLabel'
             } ${isActive && !reducedMotion ? 'scale-110' : ''}`}
           >
             {done ? (
@@ -1325,7 +1317,7 @@ function JourneyNode({
             ) : locked ? (
               <IconLock className="h-3 w-3" />
             ) : (
-              <span className={`h-1.5 w-1.5 rounded-full ${isActive ? 'bg-brand-600' : 'bg-blue-500'}`} />
+              <span className="h-1.5 w-1.5 rounded-full bg-accent" />
             )}
           </span>
         </div>
@@ -1337,20 +1329,20 @@ function JourneyNode({
           aria-current={isActive ? 'step' : undefined}
           aria-label={accessibleName}
           onClick={() => onSelect(task.id)}
-          className={`group/node mb-2 min-w-0 flex-1 rounded-lg border px-3 py-2 text-left transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 ${
+          className={`group/node mb-2 min-w-0 flex-1 rounded-field border px-3 py-2 text-left transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent ${
             isActive
-              ? 'border-brand-300 bg-brand-50'
+              ? 'border-accent bg-brand-50'
               : done
-              ? 'border-transparent bg-transparent hover:bg-slate-50'
-              : 'border-transparent bg-transparent hover:bg-slate-50'
+              ? 'border-transparent bg-transparent hover:bg-surface'
+              : 'border-transparent bg-transparent hover:bg-surface'
           }`}
         >
           <span className="flex items-center gap-2">
-            <span className="text-[10px] font-semibold uppercase tracking-wide text-slate-400" aria-hidden="true">
+            <span className="text-xs font-semibold uppercase tracking-wide text-tertiaryLabel" aria-hidden="true">
               Step {stepIndex}
             </span>
             {locked && (
-              <span className="inline-flex items-center gap-0.5 text-[10px] font-medium text-slate-400" aria-hidden="true">
+              <span className="inline-flex items-center gap-0.5 text-xs font-medium text-tertiaryLabel" aria-hidden="true">
                 <IconLock className="h-2.5 w-2.5" /> locked
               </span>
             )}
@@ -1358,12 +1350,12 @@ function JourneyNode({
           <span
             className={`mt-0.5 block text-sm leading-snug ${
               isActive
-                ? 'font-medium text-brand-700'
+                ? 'font-medium text-accent'
                 : locked
-                ? 'text-slate-500'
+                ? 'text-secondaryLabel'
                 : done
-                ? 'text-slate-500'
-                : 'text-slate-700'
+                ? 'text-secondaryLabel'
+                : 'text-label'
             }`}
           >
             {task.title}
@@ -1372,7 +1364,7 @@ function JourneyNode({
           {/* HONEST WHY-LOCKED (item 5): name the specific prerequisite, not a
               generic lock. Content stays readable; only Mark-done is gated. */}
           {locked && prerequisiteTitle && (
-            <span className="mt-1 block text-[11px] text-slate-400">
+            <span className="mt-1 block text-sm text-tertiaryLabel">
               Unlocks after: {prerequisiteTitle}
             </span>
           )}
@@ -1383,15 +1375,15 @@ function JourneyNode({
           {docTotal > 0 && (
             <span className="mt-1.5 block">
               <span className="flex items-center gap-1.5">
-                <span className="h-1 flex-1 overflow-hidden rounded-full bg-slate-200" aria-hidden="true">
+                <span className="h-1 flex-1 overflow-hidden rounded-full bg-surface" aria-hidden="true">
                   <span
                     className={`block h-full rounded-full ${reducedMotion ? '' : 'transition-all duration-500'} ${
-                      docPct === 100 ? 'bg-emerald-500' : 'bg-blue-400'
+                      docPct === 100 ? 'bg-success' : 'bg-accent'
                     }`}
                     style={{ width: `${docPct}%` }}
                   />
                 </span>
-                <span className="shrink-0 text-[10px] tabular-nums text-slate-400" aria-hidden="true">
+                <span className="shrink-0 text-xs tabular-nums text-tertiaryLabel" aria-hidden="true">
                   {docCompleted}/{docTotal}
                 </span>
               </span>
@@ -1436,10 +1428,10 @@ function JourneyMap({
         return (
           <section key={group.chapter.id} aria-label={group.chapter.label}>
             <div className="mb-1.5 flex items-baseline justify-between gap-2 pl-9">
-              <h3 className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+              <h3 className="text-xs font-semibold uppercase tracking-wide text-secondaryLabel">
                 {group.chapter.label}
               </h3>
-              <span className="shrink-0 text-[10px] tabular-nums text-slate-400">
+              <span className="shrink-0 text-xs tabular-nums text-tertiaryLabel">
                 {doneInChapter}/{group.items.length}
               </span>
             </div>
@@ -1496,29 +1488,29 @@ function Sidebar({
     <div className="flex flex-col gap-5">
       <div>
         <div className="flex items-center justify-between mb-1.5">
-          <h2 className="text-xs font-normal text-slate-500">Your progress</h2>
-          <span role="status" className="text-xs font-medium text-slate-700">{doneCount} of {total}</span>
+          <h2 className="text-xs font-normal text-secondaryLabel">Your progress</h2>
+          <span role="status" className="text-xs font-medium text-label">{doneCount} of {total}</span>
         </div>
-        <div className="h-1.5 rounded-full bg-slate-200 overflow-hidden">
-          <div className="h-full rounded-full bg-emerald-500 transition-all duration-500" style={{ width: `${pct}%` }} />
+        <div className="h-1.5 rounded-full bg-surface overflow-hidden">
+          <div className="h-full rounded-full bg-success transition-all duration-500" style={{ width: `${pct}%` }} />
         </div>
       </div>
 
       <CopyLinkButton />
 
       <div>
-        <h2 className="text-xs font-normal text-slate-500 mb-2">Your answers</h2>
+        <h2 className="text-xs font-normal text-secondaryLabel mb-2">Your answers</h2>
         <div className="flex flex-col gap-1.5">
           {recap.map((r) => (
             <button
               key={r.stepId}
               type="button"
               onClick={() => onEdit(r.stepId)}
-              className="group flex min-h-11 items-center justify-between gap-2 rounded-lg bg-slate-50 hover:bg-slate-100 px-3 py-2 text-left focus-visible:ring-2 focus-visible:ring-brand-500"
+              className="group flex min-h-11 items-center justify-between gap-2 rounded-field bg-surface hover:bg-brand-50 px-3 py-2 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
             >
               <span className="sr-only">Edit answer: </span>
-              <span className="text-sm text-slate-700 truncate">{r.label}</span>
-              <IconPencil className="w-4 h-4 shrink-0 text-slate-400 group-hover:text-slate-600" />
+              <span className="text-sm text-label truncate">{r.label}</span>
+              <IconPencil className="w-4 h-4 shrink-0 text-tertiaryLabel group-hover:text-secondaryLabel" />
             </button>
           ))}
         </div>
@@ -1526,8 +1518,8 @@ function Sidebar({
 
       {cantonPanel}
 
-      <div className="border-t border-slate-200 pt-4">
-        <h2 className="text-xs font-normal text-slate-500 mb-3">Your journey</h2>
+      <div className="border-t border-separator pt-4">
+        <h2 className="text-xs font-normal text-secondaryLabel mb-3">Your journey</h2>
         {/* SIGNATURE: the connected, chapter-grouped visual PATH. Every node's
             state, the per-node document meter and the why-locked prerequisite
             are faithful projections of statusFor / docProgress / dependsOn —
@@ -1606,20 +1598,20 @@ function TaskCard({
           {/* tabIndex={-1}: focus lands here when the active task changes, so
               keyboard/screen-reader users hear the new task and never lose
               focus to <body> (e.g. when the Back button unmounts). */}
-          <h2 ref={headingRef} tabIndex={-1} className="text-2xl font-bold text-slate-900 leading-snug focus:outline-none">{task.title}</h2>
+          <h2 ref={headingRef} tabIndex={-1} className="text-2xl font-semibold tracking-tight text-label leading-snug focus:outline-none">{task.title}</h2>
           <span className="flex flex-wrap items-center gap-3">
             <span className={`inline-flex items-center gap-1.5 text-sm font-medium ${
-              done ? 'text-green-600' : locked ? 'text-slate-500' : 'text-blue-600'
+              done ? 'text-success' : locked ? 'text-secondaryLabel' : 'text-accent'
             }`}>
               {locked ? (
                 <IconLock className="h-3.5 w-3.5" />
               ) : (
-                <span className={`w-1.5 h-1.5 rounded-full ${done ? 'bg-green-500' : 'bg-blue-500'}`} />
+                <span className={`w-1.5 h-1.5 rounded-full ${done ? 'bg-success' : 'bg-accent'}`} />
               )}
               {done ? 'Completed' : locked ? 'Locked for now' : 'Ready to start'}
             </span>
             {docsTotal > 0 && (
-              <span className="inline-flex items-center rounded-full bg-slate-100 px-2 py-0.5 text-xs font-medium text-slate-600">
+              <span className="inline-flex items-center rounded-pill bg-surface px-2.5 py-0.5 text-xs font-medium text-secondaryLabel">
                 {docsHandled}/{docsTotal} documents
               </span>
             )}
@@ -1628,9 +1620,9 @@ function TaskCard({
               readable; this names the real prerequisite. Only Mark-done is gated
               (see the footer). */}
           {locked && prerequisiteTitle && (
-            <p className="text-sm text-slate-500">
+            <p className="text-sm text-secondaryLabel">
               You can read this step now. It unlocks once you finish{' '}
-              <span className="font-medium text-slate-700">{prerequisiteTitle}</span>.
+              <span className="font-medium text-label">{prerequisiteTitle}</span>.
             </p>
           )}
         </div>
@@ -1641,12 +1633,12 @@ function TaskCard({
 
         {/* (a) 1–2 sentence "what and why" (ADR-0012). Falls back to the verified
             summary claim until the distilled tldr passes the content pipeline. */}
-        <p className="text-slate-700 leading-relaxed">{(task.tldr ?? task.summary).text}</p>
+        <p className="text-label leading-relaxed">{(task.tldr ?? task.summary).text}</p>
 
         {/* Situational warning stays VISIBLE — it's specific to this step, not
             boilerplate (it must not be folded away). */}
         {task.warning && (
-          <div className="rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-800">
+          <div className="rounded-field border border-warning-border bg-warning-soft px-4 py-3 text-sm text-warning">
             <span className="font-semibold">Note: </span>{task.warning}
           </div>
         )}
@@ -1654,14 +1646,14 @@ function TaskCard({
         {/* (b) The numbered "what you'll do" steps — the hero of the card. */}
         {task.steps.length > 0 && (
           <div>
-            <h3 className="font-semibold text-slate-900 mb-3">What you'll do</h3>
+            <h3 className="text-xl font-semibold tracking-tight text-label mb-3">What you'll do</h3>
             <ol className="space-y-3">
               {task.steps.map((s, i) => (
                 <li key={i} className="flex gap-3">
-                  <span className="shrink-0 mt-0.5 w-5 h-5 rounded-full bg-blue-100 text-blue-700 text-xs font-bold flex items-center justify-center">{i + 1}</span>
+                  <span className="shrink-0 mt-0.5 w-5 h-5 rounded-full bg-brand-100 text-brand-700 text-xs font-semibold flex items-center justify-center">{i + 1}</span>
                   <div className="space-y-1">
-                    <p className="text-sm text-slate-700">{s.text}</p>
-                    {s.tip && <p className="text-xs text-slate-500 italic">{s.tip}</p>}
+                    <p className="text-sm text-label">{s.text}</p>
+                    {s.tip && <p className="text-xs text-secondaryLabel italic">{s.tip}</p>}
                     {/* Inline under a step we render ONLY a cantonOffice link —
                         an actionable destination ("Your canton — …"), not a legal
                         citation. Every other step link (statute / authority
@@ -1680,8 +1672,8 @@ function TaskCard({
                           const target = cantonOfficeClaim ?? link;
                           return (
                             <li key={li}>
-                              <a href={target.sourceUrl} target="_blank" rel="noopener noreferrer" className="text-xs text-blue-600 hover:underline">
-                                {cantonOfficeClaim && selectedCantonName && <span className="text-slate-500 not-italic">Your canton — </span>}
+                              <a href={target.sourceUrl} target="_blank" rel="noopener noreferrer" className="text-xs text-link hover:text-accent-hover hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded">
+                                {cantonOfficeClaim && selectedCantonName && <span className="text-secondaryLabel not-italic">Your canton — </span>}
                                 {target.sourceName} ↗
                               </a>
                             </li>
@@ -1700,25 +1692,25 @@ function TaskCard({
         {task.documents.length > 0 && (
           <div>
             <div className="flex items-baseline justify-between mb-2">
-              <h3 className="font-semibold text-slate-900">Documents needed</h3>
-              <span role="status" className="text-xs text-slate-500">{docsHandled}/{docsTotal} handled</span>
+              <h3 className="text-xl font-semibold tracking-tight text-label">Documents needed</h3>
+              <span role="status" className="text-xs text-secondaryLabel">{docsHandled}/{docsTotal} handled</span>
             </div>
             {/* PER-TASK DOCUMENT METER (item 2): the same docProgress data as the
                 journey map, so the nearer-goal gradient is felt on the card too.
                 Skipped docs already count as handled upstream — never shown as
                 'missing'. Decorative bar (the count above is the AT label). */}
             {docsTotal > 0 && (
-              <div className="mb-2.5 h-1 overflow-hidden rounded-full bg-slate-200" aria-hidden="true">
+              <div className="mb-2.5 h-1 overflow-hidden rounded-full bg-surface" aria-hidden="true">
                 <div
                   className={`h-full rounded-full ${reducedMotion ? '' : 'transition-all duration-500'} ${
-                    docsHandled >= docsTotal ? 'bg-emerald-500' : 'bg-blue-400'
+                    docsHandled >= docsTotal ? 'bg-success' : 'bg-accent'
                   }`}
                   style={{ width: `${docsTotal > 0 ? Math.round((docsHandled / docsTotal) * 100) : 0}%` }}
                 />
               </div>
             )}
             <DocChecklist task={task} docState={docState} onToggle={onToggleDoc} />
-            <p className="mt-2 text-xs text-slate-600">
+            <p className="mt-2 text-xs text-secondaryLabel">
               Check off each document as you gather it — or skip ones that don't apply to your case.
             </p>
           </div>
@@ -1729,41 +1721,41 @@ function TaskCard({
             full text of any sentence-length legal links. Provenance is preserved:
             every claim keeps its sourceName / sourceUrl / lastVerified. */}
         {hasReference && (
-          <details className="group rounded-lg border border-slate-200">
-            <summary className="cursor-pointer select-none px-4 py-3 text-sm font-medium text-slate-700 hover:bg-slate-50 rounded-lg group-open:rounded-b-none group-open:border-b group-open:border-slate-100 focus-visible:ring-2 focus-visible:ring-brand-500">
+          <details className="group rounded-card border border-separator">
+            <summary className="cursor-pointer select-none px-4 py-3 text-sm font-medium text-label hover:bg-surface rounded-card group-open:rounded-b-none group-open:border-b group-open:border-separator focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent">
               Reference: key facts, legal basis &amp; details
-              <span className="float-right text-slate-400 group-open:hidden" aria-hidden="true">▸</span>
-              <span className="float-right text-slate-400 hidden group-open:inline" aria-hidden="true">▾</span>
+              <span className="float-right text-tertiaryLabel group-open:hidden" aria-hidden="true">▸</span>
+              <span className="float-right text-tertiaryLabel hidden group-open:inline" aria-hidden="true">▾</span>
             </summary>
             <div className="px-4 py-4 space-y-4">
               {/* Key facts grid (incl. Legal basis facts, cost, timeline, and
                   the canton/institution "Fees & processing time" note). */}
               {(task.keyFacts?.length || task.timeline || task.cost || task.localCostTimeline) && (
                 <div>
-                  <h4 className="text-xs font-semibold uppercase tracking-wide text-slate-500 mb-2">Key facts</h4>
+                  <h4 className="text-xs font-semibold uppercase tracking-wide text-secondaryLabel mb-2">Key facts</h4>
                   <dl className="grid gap-2 sm:grid-cols-2">
                     {task.keyFacts?.map((fact) => (
-                      <div key={fact.label} className="rounded-lg bg-slate-50 border border-slate-200 px-4 py-2.5">
-                        <dt className="text-xs font-semibold uppercase tracking-wide text-slate-500 mb-0.5">{fact.label}</dt>
-                        <dd className="text-sm text-slate-800">{fact.text}</dd>
+                      <div key={fact.label} className="rounded-field bg-surface border border-separator px-4 py-2.5">
+                        <dt className="text-xs font-semibold uppercase tracking-wide text-secondaryLabel mb-0.5">{fact.label}</dt>
+                        <dd className="text-sm text-label">{fact.text}</dd>
                       </div>
                     ))}
                     {task.timeline && (
-                      <div className="rounded-lg bg-slate-50 border border-slate-200 px-4 py-2.5">
-                        <dt className="text-xs font-semibold uppercase tracking-wide text-slate-500 mb-0.5">Processing time</dt>
-                        <dd className="text-sm text-slate-800">{task.timeline.text}</dd>
+                      <div className="rounded-field bg-surface border border-separator px-4 py-2.5">
+                        <dt className="text-xs font-semibold uppercase tracking-wide text-secondaryLabel mb-0.5">Processing time</dt>
+                        <dd className="text-sm text-label">{task.timeline.text}</dd>
                       </div>
                     )}
                     {task.cost && (
-                      <div className="rounded-lg bg-slate-50 border border-slate-200 px-4 py-2.5">
-                        <dt className="text-xs font-semibold uppercase tracking-wide text-slate-500 mb-0.5">Cost</dt>
-                        <dd className="text-sm text-slate-800">{task.cost.text}</dd>
+                      <div className="rounded-field bg-surface border border-separator px-4 py-2.5">
+                        <dt className="text-xs font-semibold uppercase tracking-wide text-secondaryLabel mb-0.5">Cost</dt>
+                        <dd className="text-sm text-label">{task.cost.text}</dd>
                       </div>
                     )}
                     {task.localCostTimeline && !task.cost && !task.timeline && (
-                      <div className="rounded-lg bg-slate-50 border border-slate-200 px-4 py-2.5 sm:col-span-2">
-                        <dt className="text-xs font-semibold uppercase tracking-wide text-slate-500 mb-0.5">Fees &amp; processing time</dt>
-                        <dd className="text-sm text-slate-800">
+                      <div className="rounded-field bg-surface border border-separator px-4 py-2.5 sm:col-span-2">
+                        <dt className="text-xs font-semibold uppercase tracking-wide text-secondaryLabel mb-0.5">Fees &amp; processing time</dt>
+                        <dd className="text-sm text-label">
                           {task.localCostTimeline === 'institution'
                             ? 'Set by the educational institution, not at the federal level. Confirm the exact application fee and timing directly with the institution.'
                             : 'Set by your canton, not at the federal level — there is no single national figure, and it varies across Switzerland. Confirm the exact amount and timing with your cantonal authorities (see “Your canton”).'}
@@ -1777,8 +1769,8 @@ function TaskCard({
               {/* The long authored prose (the former "Read the details"). */}
               {(task.detail || task.tldr) && (
                 <div className="space-y-3">
-                  {task.tldr && <p className="text-sm text-slate-700 leading-relaxed">{task.summary.text}</p>}
-                  {task.detail && <p className="text-sm text-slate-600 leading-relaxed">{task.detail}</p>}
+                  {task.tldr && <p className="text-sm text-label leading-relaxed">{task.summary.text}</p>}
+                  {task.detail && <p className="text-sm text-secondaryLabel leading-relaxed">{task.detail}</p>}
                 </div>
               )}
             </div>
@@ -1788,29 +1780,29 @@ function TaskCard({
         {/* Source stays always-visible; the two boilerplate caveats are
             consolidated into one collapsed "Sources & legal notes" disclosure —
             present and findable, no longer triplicated. */}
-        <div className="border-t border-slate-100 pt-4">
-          <p className="text-sm text-slate-600">
+        <div className="border-t border-separator pt-4">
+          <p className="text-sm text-secondaryLabel">
             Source:{' '}
-            <a href={task.summary.sourceUrl} target="_blank" rel="noopener noreferrer" className="hover:underline text-slate-500">{task.summary.sourceName}</a>
+            <a href={task.summary.sourceUrl} target="_blank" rel="noopener noreferrer" className="text-secondaryLabel hover:text-accent-hover hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded">{task.summary.sourceName}</a>
             {task.summary.lastVerified && (
-              <span className="ml-2 text-xs text-slate-500">verified {task.summary.lastVerified}</span>
+              <span className="ml-2 text-xs text-secondaryLabel">verified {task.summary.lastVerified}</span>
             )}
           </p>
           {/* Core "not legal advice" caveat kept always-visible on the surface
               where users act on claims; the fuller notes live in the disclosure. */}
-          <p className="mt-1 text-xs text-slate-500">General guidance only — not legal advice.</p>
+          <p className="mt-1 text-xs text-secondaryLabel">General guidance only — not legal advice.</p>
           <details className="group mt-2">
-            <summary className="cursor-pointer select-none text-xs font-medium text-slate-500 hover:text-slate-700 rounded focus-visible:ring-2 focus-visible:ring-brand-500">
+            <summary className="cursor-pointer select-none text-xs font-medium text-secondaryLabel hover:text-label rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent">
               Sources &amp; legal notes
-              <span className="ml-1 text-slate-400 group-open:hidden" aria-hidden="true">▸</span>
-              <span className="ml-1 text-slate-400 hidden group-open:inline" aria-hidden="true">▾</span>
+              <span className="ml-1 text-tertiaryLabel group-open:hidden" aria-hidden="true">▸</span>
+              <span className="ml-1 text-tertiaryLabel hidden group-open:inline" aria-hidden="true">▾</span>
             </summary>
             <div className="mt-2 space-y-2">
-              <p className="text-sm text-slate-600">
+              <p className="text-sm text-secondaryLabel">
                 Source:{' '}
-                <a href={task.summary.sourceUrl} target="_blank" rel="noopener noreferrer" className="hover:underline text-slate-500">{task.summary.sourceName}</a>
+                <a href={task.summary.sourceUrl} target="_blank" rel="noopener noreferrer" className="text-secondaryLabel hover:text-accent-hover hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded">{task.summary.sourceName}</a>
                 {task.summary.lastVerified && (
-                  <span className="ml-2 text-xs text-slate-500">verified {task.summary.lastVerified}</span>
+                  <span className="ml-2 text-xs text-secondaryLabel">verified {task.summary.lastVerified}</span>
                 )}
               </p>
               {/* Per-step source/legal citation links, relocated here from the
@@ -1820,27 +1812,27 @@ function TaskCard({
                   cantonOffice links are excluded (they stay inline on the step). */}
               {stepSourceLinks.length > 0 && (
                 <div>
-                  <h4 className="text-xs font-semibold uppercase tracking-wide text-slate-500 mb-1.5">Sources for the steps above</h4>
+                  <h4 className="text-xs font-semibold uppercase tracking-wide text-secondaryLabel mb-1.5">Sources for the steps above</h4>
                   <ul className="space-y-1.5">
                     {stepSourceLinks.map(({ link, stepNumber, key }) => (
-                      <li key={key} className="text-sm text-slate-600 leading-relaxed">
-                        <span className="text-slate-400">Step {stepNumber}:</span>{' '}
+                      <li key={key} className="text-sm text-secondaryLabel leading-relaxed">
+                        <span className="text-tertiaryLabel">Step {stepNumber}:</span>{' '}
                         {link.text}{' '}
-                        <a href={link.sourceUrl} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
+                        <a href={link.sourceUrl} target="_blank" rel="noopener noreferrer" className="text-link hover:text-accent-hover hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded">
                           {link.sourceName} ↗
                         </a>
                         {link.lastVerified && (
-                          <span className="ml-1 text-xs text-slate-500">link verified {link.lastVerified}</span>
+                          <span className="ml-1 text-xs text-secondaryLabel">link verified {link.lastVerified}</span>
                         )}
                       </li>
                     ))}
                   </ul>
                 </div>
               )}
-              <p className="text-sm text-slate-600 italic">
+              <p className="text-sm text-secondaryLabel italic">
                 General guidance only — not legal advice. Confirm with a licensed immigration professional or the relevant authority.
               </p>
-              <p className="text-sm text-slate-600 italic">
+              <p className="text-sm text-secondaryLabel italic">
                 {DISCLAIMER_PROGRESS_NOTE}
               </p>
             </div>
@@ -1848,41 +1840,39 @@ function TaskCard({
         </div>
       </div>
 
-      <div className="shrink-0 px-6 sm:px-8 py-4 border-t border-slate-200 bg-white">
+      <div className="shrink-0 px-6 sm:px-8 py-4 border-t border-separator bg-white">
         {/* Mark-done is gated for a LOCKED step (item 5) — the content above stays
             fully readable, but you can't tick a step done before its real
             prerequisite. We name the prerequisite rather than greying out
             silently. */}
         {locked && (
-          <p className="mb-2 text-xs text-slate-500 text-center">
+          <p className="mb-2 text-xs text-secondaryLabel text-center">
             {prerequisiteTitle
-              ? <>This step unlocks once you finish <span className="font-medium text-slate-700">{prerequisiteTitle}</span>. You can read everything here in the meantime.</>
+              ? <>This step unlocks once you finish <span className="font-medium text-label">{prerequisiteTitle}</span>. You can read everything here in the meantime.</>
               : <>This step unlocks once you finish the steps it depends on. You can read everything here in the meantime.</>}
           </p>
         )}
         {/* Calmer gate: a helper near the checklist instead of a scolding line on
             a greyed button. Only shows when documents are still outstanding. */}
         {!done && !locked && docsRemaining > 0 && (
-          <p className="mb-2 text-xs text-slate-500 text-center">
+          <p className="mb-2 text-xs text-secondaryLabel text-center">
             A few documents to go — check the ones you have, skip what doesn't apply, and you can
             mark this step done.
           </p>
         )}
         <div className="flex gap-3">
         {hasPrev && (
-          <button type="button" onClick={onBack} className="rounded-xl px-4 py-3 text-sm font-medium text-slate-600 hover:bg-slate-100 focus-visible:ring-2 focus-visible:ring-brand-500">← Back</button>
+          <button type="button" onClick={onBack} className="rounded-pill px-5 py-3 text-sm font-medium text-secondaryLabel transition-colors hover:bg-surface focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent">← Back</button>
         )}
         {done ? (
-          <button type="button" onClick={onNext} className="flex-1 rounded-xl py-3 font-medium text-white bg-brand-600 hover:bg-brand-700 transition-colors focus-visible:ring-2 focus-visible:ring-brand-500">Next →</button>
+          <button type="button" onClick={onNext} className="flex-1 rounded-pill bg-accent py-3 font-medium text-white transition-colors hover:bg-accent-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent">Next →</button>
         ) : (
           <button
             type="button"
             onClick={onMarkDone}
             disabled={locked || docsRemaining > 0}
             aria-disabled={locked || docsRemaining > 0}
-            className={`flex-1 rounded-xl py-3 font-medium text-white transition-colors focus-visible:ring-2 focus-visible:ring-brand-500 ${
-              locked || docsRemaining > 0 ? 'bg-emerald-300 cursor-not-allowed' : 'bg-emerald-700 hover:bg-emerald-800'
-            }`}
+            className="flex-1 rounded-pill bg-accent py-3 font-medium text-white transition-colors hover:bg-accent-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent disabled:opacity-50 disabled:cursor-not-allowed"
           >{locked ? 'Locked until earlier steps are done' : 'Mark done & continue'}</button>
         )}
         </div>
@@ -1921,8 +1911,8 @@ function WaitlistPanel({
   }, [origin, destination]);
 
   const routeLabel = (
-    <span className="inline-flex items-center gap-1.5 font-semibold text-slate-900">
-      <Flag iso={origin} /> {countryName(origin)} <span className="text-slate-400">→</span> <Flag iso={destination} /> {countryName(destination)}
+    <span className="inline-flex items-center gap-1.5 font-semibold text-label">
+      <Flag iso={origin} /> {countryName(origin)} <span className="text-tertiaryLabel">→</span> <Flag iso={destination} /> {countryName(destination)}
     </span>
   );
 
@@ -1952,29 +1942,29 @@ function WaitlistPanel({
 
   return (
     <div className="mx-auto w-full max-w-xl px-4 sm:px-6 py-8 space-y-4">
-      <div className="bg-white rounded-2xl shadow-sm border border-slate-100 p-6 sm:p-8 space-y-5">
+      <div className="bg-card rounded-card shadow-sm border border-separator p-6 sm:p-8 space-y-5">
         <div className="space-y-2">
-          <span className="inline-flex items-center rounded-full bg-blue-50 px-2.5 py-0.5 text-xs font-semibold text-blue-700">
+          <span className="inline-flex items-center rounded-pill bg-brand-50 px-2.5 py-0.5 text-xs font-semibold text-brand-700">
             Not live yet
           </span>
-          <h2 ref={headingRef} tabIndex={-1} className="text-2xl font-bold text-slate-900 leading-snug focus:outline-none">
+          <h2 ref={headingRef} tabIndex={-1} className="text-2xl font-semibold tracking-tight text-label leading-snug focus:outline-none">
             We haven't built the {countryName(origin)} → {countryName(destination)} guide yet
           </h2>
-          <p className="text-slate-600 leading-relaxed">
+          <p className="text-secondaryLabel leading-relaxed">
             Every route we publish is researched against official sources and independently
             fact-checked before it goes live, so we add them one at a time. Yours isn't ready —
             but leave your details and we'll tell you the moment it launches.
           </p>
         </div>
 
-        <div className="rounded-xl bg-slate-50 border border-slate-200 px-4 py-3 text-sm text-slate-700 flex flex-wrap items-center gap-x-2 gap-y-1">
+        <div className="rounded-field bg-surface border border-separator px-4 py-3 text-sm text-label flex flex-wrap items-center gap-x-2 gap-y-1">
           {routeLabel}
-          {motivation && <span className="text-slate-400">·</span>}
+          {motivation && <span className="text-tertiaryLabel">·</span>}
           {motivation && <span>{motivationLabel(motivation)} route</span>}
         </div>
 
         {origin === 'ru' && (
-          <div className="rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-800">
+          <div className="rounded-field border border-warning-border bg-warning-soft px-4 py-3 text-sm text-warning">
             <strong>Note for moves from Russia:</strong> sanctions and banking restrictions can
             heavily affect this route. When we publish it, those blockers will be flagged
             prominently.
@@ -1982,9 +1972,9 @@ function WaitlistPanel({
         )}
 
         {done ? (
-          <div role="status" className="rounded-xl border border-emerald-200 bg-emerald-50 px-4 py-4">
-            <p className="font-semibold text-emerald-800">You're on the list ✓</p>
-            <p className="mt-1 text-sm text-emerald-700">
+          <div role="status" className="rounded-field border border-separator bg-surface px-4 py-4">
+            <p className="inline-flex items-center gap-1.5 font-semibold text-success"><IconCheck className="h-4 w-4" /> You're on the list</p>
+            <p className="mt-1 text-sm text-secondaryLabel">
               We'll contact you when the {countryName(origin)} → {countryName(destination)} guide is
               ready. You can close this page — your spot is saved on this device.
             </p>
@@ -1992,7 +1982,7 @@ function WaitlistPanel({
         ) : (
           <form onSubmit={handleSubmit} className="space-y-4" noValidate>
             <div className="space-y-1.5">
-              <label htmlFor="wl-email" className="block text-sm font-medium text-slate-700">
+              <label htmlFor="wl-email" className="block text-sm font-medium text-label">
                 Email address
               </label>
               <input
@@ -2003,12 +1993,12 @@ function WaitlistPanel({
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="you@example.com"
-                className="w-full border border-slate-200 rounded-xl px-4 py-3 text-slate-900 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none"
+                className="w-full rounded-field border border-separator bg-white px-4 py-3 text-label placeholder:text-secondaryLabel focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent"
               />
             </div>
             <div className="space-y-1.5">
-              <label htmlFor="wl-phone" className="block text-sm font-medium text-slate-700">
-                Phone number <span className="text-slate-400 font-normal">(optional, for a text)</span>
+              <label htmlFor="wl-phone" className="block text-sm font-medium text-label">
+                Phone number <span className="text-tertiaryLabel font-normal">(optional, for a text)</span>
               </label>
               <input
                 id="wl-phone"
@@ -2018,36 +2008,36 @@ function WaitlistPanel({
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
                 placeholder="+1 555 123 4567"
-                className="w-full border border-slate-200 rounded-xl px-4 py-3 text-slate-900 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none"
+                className="w-full rounded-field border border-separator bg-white px-4 py-3 text-label placeholder:text-secondaryLabel focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent"
               />
             </div>
 
-            <label className="flex items-start gap-2.5 text-sm text-slate-600">
+            <label className="flex items-start gap-2.5 text-sm text-secondaryLabel">
               <input
                 type="checkbox"
                 checked={consent}
                 onChange={(e) => setConsent(e.target.checked)}
-                className="mt-0.5 h-4 w-4 shrink-0"
+                className="mt-0.5 h-4 w-4 shrink-0 accent-accent"
               />
               <span>
                 You can contact me once, when this route launches. I can ask to be removed at any
-                time. See the <a href="/privacy" className="underline hover:text-slate-800">Privacy policy</a>.
+                time. See the <a href="/privacy" className="text-link underline hover:text-accent-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded">Privacy policy</a>.
               </span>
             </label>
 
-            {error && <p role="alert" className="text-sm text-rose-700">{error}</p>}
+            {error && <p role="alert" className="text-sm text-danger">{error}</p>}
 
             <button
               type="submit"
               disabled={status === 'submitting'}
-              className={`w-full rounded-xl py-3 font-medium text-white transition-colors focus-visible:ring-2 focus-visible:ring-brand-500 ${
-                status === 'submitting' ? 'bg-brand-300 cursor-wait' : 'bg-brand-600 hover:bg-brand-700'
+              className={`w-full rounded-pill bg-accent py-3 font-medium text-white transition-colors hover:bg-accent-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent disabled:opacity-50 ${
+                status === 'submitting' ? 'cursor-wait' : ''
               }`}
             >
               {status === 'submitting' ? 'Saving…' : 'Notify me when it launches'}
             </button>
 
-            <p className="text-xs text-slate-600">
+            <p className="text-xs text-secondaryLabel">
               We'll only use these details to tell you about this one route — nothing else.
             </p>
           </form>
@@ -2055,7 +2045,7 @@ function WaitlistPanel({
       </div>
 
       <div className="flex items-center justify-center text-sm">
-        <button type="button" onClick={onEditRoute} className="text-slate-500 hover:text-slate-700 font-medium">
+        <button type="button" onClick={onEditRoute} className="text-secondaryLabel hover:text-label font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded">
           ← Choose a different route
         </button>
       </div>
@@ -2092,32 +2082,38 @@ function DisclaimerModal({ onAcknowledge }: { onAcknowledge: () => void }) {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
       {/* Opaque-enough backdrop so the plan beneath is not readable. No onClick:
-          clicking the backdrop must NOT dismiss the gate. */}
-      <div aria-hidden="true" className="absolute inset-0 bg-slate-900/70 backdrop-blur-sm" />
+          clicking the backdrop must NOT dismiss the gate. The scrim color is set
+          inline because the Apple tokens are hex CSS vars (not RGB channels), so a
+          Tailwind /opacity modifier on them would not compile to a valid color. */}
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 backdrop-blur-md"
+        style={{ backgroundColor: 'rgba(29, 29, 31, 0.48)' }}
+      />
       <div
         ref={dialogRef}
         role="dialog"
         aria-modal="true"
         aria-labelledby="rg-disclaimer-title"
         aria-describedby="rg-disclaimer-body"
-        className="relative w-full max-w-lg rounded-2xl bg-white shadow-xl border border-slate-200 p-6 sm:p-8"
+        className="relative w-full max-w-lg rounded-card bg-card shadow-xl border border-separator p-6 sm:p-8"
       >
         <h2
           id="rg-disclaimer-title"
-          className="font-serif text-xl sm:text-2xl font-bold text-slate-900 leading-snug"
+          className="text-xl sm:text-2xl font-semibold tracking-tight text-label leading-snug"
         >
           Before your plan — please read
         </h2>
-        <div id="rg-disclaimer-body" className="mt-3 space-y-3 text-sm text-slate-700 leading-relaxed">
+        <div id="rg-disclaimer-body" className="mt-3 space-y-3 text-sm text-label leading-relaxed">
           <p>
             <strong>{DISCLAIMER_LEAD}</strong> {DISCLAIMER_BODY}
           </p>
-          <p className="text-slate-600">
+          <p className="text-secondaryLabel">
             {DISCLAIMER_PROGRESS_NOTE}
           </p>
-          <p className="text-slate-500">
+          <p className="text-secondaryLabel">
             See our{' '}
-            <a href={IMPRESSUM_PATH} className="underline hover:text-slate-800">
+            <a href={IMPRESSUM_PATH} className="text-link underline hover:text-accent-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded">
               Impressum
             </a>{' '}
             for who runs this site.
@@ -2128,7 +2124,7 @@ function DisclaimerModal({ onAcknowledge }: { onAcknowledge: () => void }) {
             ref={confirmRef}
             type="button"
             onClick={onAcknowledge}
-            className="w-full rounded-xl bg-brand-600 py-3 font-medium text-white transition-colors hover:bg-brand-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
+            className="w-full rounded-pill bg-accent py-3 font-medium text-white transition-colors hover:bg-accent-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
           >
             I've read and understand
           </button>
@@ -2165,13 +2161,13 @@ function MomentumToast({
   return (
     <div
       role="status"
-      className="pointer-events-auto flex items-start gap-3 rounded-xl border border-emerald-200 bg-emerald-50 px-4 py-3 shadow-sm"
+      className="pointer-events-auto flex items-start gap-3 rounded-card border border-separator bg-card px-4 py-3 shadow-sm"
     >
-      <span className="mt-0.5 shrink-0 inline-flex h-5 w-5 items-center justify-center rounded-full bg-emerald-600 text-white">
+      <span className="mt-0.5 shrink-0 inline-flex h-5 w-5 items-center justify-center rounded-full bg-success text-white">
         <IconCheck className="h-3 w-3" />
       </span>
       <div className="min-w-0 flex-1 text-sm">
-        <p className="font-medium text-emerald-900">
+        <p className="font-medium text-label">
           Step done — nice work.{' '}
           {remaining > 0
             ? `${remaining} to go.`
@@ -2180,14 +2176,14 @@ function MomentumToast({
         {/* PER-CHAPTER MILESTONE (item 6): finishing a chapter's last task. The
             note describes the USER's action ("You have finished …") and never
             implies an authority's decision (no "approved"/"ready"/"all set"). */}
-        {chapterNote && <p className="mt-0.5 font-medium text-emerald-800">{chapterNote}</p>}
-        {milestone && <p className="mt-0.5 text-emerald-700">{milestone}</p>}
+        {chapterNote && <p className="mt-0.5 font-medium text-success">{chapterNote}</p>}
+        {milestone && <p className="mt-0.5 text-secondaryLabel">{milestone}</p>}
       </div>
       <button
         type="button"
         onClick={onDismiss}
         aria-label="Dismiss"
-        className="shrink-0 -mr-1 -mt-1 inline-flex h-7 w-7 items-center justify-center rounded-md text-emerald-700 hover:bg-emerald-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500"
+        className="shrink-0 -mr-2 -mt-2 inline-flex min-h-11 min-w-11 items-center justify-center rounded-md text-secondaryLabel hover:bg-surface hover:text-label focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
       >
         <IconX className="h-4 w-4" />
       </button>
@@ -2673,17 +2669,17 @@ export default function CorridorApp({ tasks, corridorTitle, originIso2, destinat
   if (phase === 'wizard') {
     return (
       <div className="flex-1 flex flex-col overflow-hidden">
-        <div className="shrink-0 bg-white border-b border-slate-200 px-4 sm:px-8 py-3 sm:py-4 flex items-center justify-between gap-3">
+        <div className="shrink-0 bg-white border-b border-separator px-4 sm:px-8 py-3 sm:py-4 flex items-center justify-between gap-3">
           <div className="min-w-0">
-            <p className="font-serif text-lg sm:text-xl font-bold text-slate-900">Relocation Guide</p>
-            <p className="text-xs sm:text-sm text-slate-500 mt-0.5 truncate">A few questions, then a plan made for your move — about 2 minutes.</p>
+            <p className="text-lg sm:text-xl font-semibold tracking-tight text-label">Relocation Guide</p>
+            <p className="text-xs sm:text-sm text-secondaryLabel mt-0.5 truncate">A few questions, then a plan made for your move — about 2 minutes.</p>
           </div>
           {currentIndex > 0 && (
-            <button type="button" onClick={handleReset} className="shrink-0 text-sm text-slate-500 hover:text-slate-700 font-medium whitespace-nowrap">Start over</button>
+            <button type="button" onClick={handleReset} className="shrink-0 text-sm text-secondaryLabel hover:text-label font-medium whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded">Start over</button>
           )}
         </div>
 
-        <div className="flex-1 min-h-0 bg-slate-50 flex flex-col items-center px-4 sm:px-6 py-3 sm:py-5">
+        <div className="flex-1 min-h-0 bg-surface flex flex-col items-center px-4 sm:px-6 py-3 sm:py-5">
           {/* Phase-based progress: three STABLE named phases whose count never
               grows when branch questions are inserted, so the bar only ever moves
               forward. The current phase fills proportionally to honest position. */}
@@ -2707,8 +2703,8 @@ export default function CorridorApp({ tasks, corridorTitle, originIso2, destinat
                 if (pi < curPi) fill = 100;
                 else if (pi === curPi) fill = phaseProgressPct;
                 return (
-                  <div key={p.id} className="h-1 flex-1 rounded-full bg-slate-200 overflow-hidden">
-                    <div className="h-full rounded-full bg-brand-600 transition-all duration-300" style={{ width: `${fill}%` }} />
+                  <div key={p.id} className="h-1 flex-1 rounded-full bg-separator overflow-hidden">
+                    <div className="h-full rounded-full bg-accent transition-all duration-300" style={{ width: `${fill}%` }} />
                   </div>
                 );
               })}
@@ -2722,52 +2718,52 @@ export default function CorridorApp({ tasks, corridorTitle, originIso2, destinat
               stays a centered single column and the card internals are unchanged. */}
           <div className="w-full max-w-xl lg:max-w-5xl flex-1 min-h-0 flex flex-col lg:grid lg:grid-cols-[1fr_minmax(0,36rem)] lg:items-stretch lg:gap-8">
             <aside className="hidden lg:flex lg:flex-col lg:justify-center lg:min-h-0 lg:pr-2">
-              <p className="font-serif text-2xl font-bold text-slate-900 leading-snug">Let's map out your move.</p>
-              <p className="mt-3 text-sm text-slate-600 leading-relaxed">
+              <p className="text-2xl font-semibold tracking-tight text-label leading-snug">Let's map out your move.</p>
+              <p className="mt-3 text-sm text-secondaryLabel leading-relaxed">
                 Tell us a little about your situation and we'll build a step-by-step plan for your
                 exact route — every fact traced to an official source.
               </p>
               {/* Trust points stay present, but quiet — small chips, not a checklist. */}
               <ul className="mt-6 flex flex-wrap gap-2">
-                <li className="inline-flex items-center gap-1.5 rounded-full bg-white border border-slate-200 px-2.5 py-1 text-xs text-slate-600">
-                  <svg aria-hidden="true" viewBox="0 0 20 20" fill="currentColor" className="h-3.5 w-3.5 shrink-0 text-brand-600"><path fillRule="evenodd" d="M9.661 2.237a.531.531 0 0 1 .678 0 11.947 11.947 0 0 0 7.078 2.749.5.5 0 0 1 .479.425c.069.52.104 1.05.104 1.59 0 5.162-3.26 9.563-7.834 11.256a.48.48 0 0 1-.332 0C5.26 16.564 2 12.163 2 7c0-.538.035-1.069.104-1.589a.5.5 0 0 1 .48-.425 11.947 11.947 0 0 0 7.077-2.75Zm4.196 5.954a.75.75 0 0 0-1.214-.882l-3.236 4.53-1.847-1.846a.75.75 0 0 0-1.06 1.06l2.5 2.5a.75.75 0 0 0 1.137-.089l3.72-5.273Z" clipRule="evenodd" /></svg>
+                <li className="inline-flex items-center gap-1.5 rounded-pill bg-white border border-separator px-2.5 py-1 text-xs text-secondaryLabel">
+                  <svg aria-hidden="true" viewBox="0 0 20 20" fill="currentColor" className="h-3.5 w-3.5 shrink-0 text-accent"><path fillRule="evenodd" d="M9.661 2.237a.531.531 0 0 1 .678 0 11.947 11.947 0 0 0 7.078 2.749.5.5 0 0 1 .479.425c.069.52.104 1.05.104 1.59 0 5.162-3.26 9.563-7.834 11.256a.48.48 0 0 1-.332 0C5.26 16.564 2 12.163 2 7c0-.538.035-1.069.104-1.589a.5.5 0 0 1 .48-.425 11.947 11.947 0 0 0 7.077-2.75Zm4.196 5.954a.75.75 0 0 0-1.214-.882l-3.236 4.53-1.847-1.846a.75.75 0 0 0-1.06 1.06l2.5 2.5a.75.75 0 0 0 1.137-.089l3.72-5.273Z" clipRule="evenodd" /></svg>
                   Traced to official sources
                 </li>
-                <li className="inline-flex items-center gap-1.5 rounded-full bg-white border border-slate-200 px-2.5 py-1 text-xs text-slate-600">
-                  <svg aria-hidden="true" viewBox="0 0 20 20" fill="currentColor" className="h-3.5 w-3.5 shrink-0 text-brand-600"><path fillRule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clipRule="evenodd" /></svg>
+                <li className="inline-flex items-center gap-1.5 rounded-pill bg-white border border-separator px-2.5 py-1 text-xs text-secondaryLabel">
+                  <svg aria-hidden="true" viewBox="0 0 20 20" fill="currentColor" className="h-3.5 w-3.5 shrink-0 text-accent"><path fillRule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clipRule="evenodd" /></svg>
                   Independently fact-checked
                 </li>
-                <li className="inline-flex items-center gap-1.5 rounded-full bg-white border border-slate-200 px-2.5 py-1 text-xs text-slate-600">
-                  <svg aria-hidden="true" viewBox="0 0 20 20" fill="currentColor" className="h-3.5 w-3.5 shrink-0 text-brand-600"><path fillRule="evenodd" d="M5.75 2a.75.75 0 0 1 .75.75V4h7V2.75a.75.75 0 0 1 1.5 0V4h.25A2.75 2.75 0 0 1 18 6.75v8.5A2.75 2.75 0 0 1 15.25 18H4.75A2.75 2.75 0 0 1 2 15.25v-8.5A2.75 2.75 0 0 1 4.75 4H5V2.75A.75.75 0 0 1 5.75 2Zm-1 5.5c-.69 0-1.25.56-1.25 1.25v6.5c0 .69.56 1.25 1.25 1.25h10.5c.69 0 1.25-.56 1.25-1.25v-6.5c0-.69-.56-1.25-1.25-1.25H4.75Z" clipRule="evenodd" /></svg>
+                <li className="inline-flex items-center gap-1.5 rounded-pill bg-white border border-separator px-2.5 py-1 text-xs text-secondaryLabel">
+                  <svg aria-hidden="true" viewBox="0 0 20 20" fill="currentColor" className="h-3.5 w-3.5 shrink-0 text-accent"><path fillRule="evenodd" d="M5.75 2a.75.75 0 0 1 .75.75V4h7V2.75a.75.75 0 0 1 1.5 0V4h.25A2.75 2.75 0 0 1 18 6.75v8.5A2.75 2.75 0 0 1 15.25 18H4.75A2.75 2.75 0 0 1 2 15.25v-8.5A2.75 2.75 0 0 1 4.75 4H5V2.75A.75.75 0 0 1 5.75 2Zm-1 5.5c-.69 0-1.25.56-1.25 1.25v6.5c0 .69.56 1.25 1.25 1.25h10.5c.69 0 1.25-.56 1.25-1.25v-6.5c0-.69-.56-1.25-1.25-1.25H4.75Z" clipRule="evenodd" /></svg>
                   Dated and re-checked
                 </li>
               </ul>
             </aside>
-            <div className="w-full max-h-full bg-white rounded-2xl shadow-sm border border-slate-100 flex flex-col overflow-hidden lg:min-h-0">
+            <div className="w-full max-h-full bg-card rounded-card shadow-sm border border-separator flex flex-col overflow-hidden lg:min-h-0">
               {/* Warm intro on EVERY breakpoint above the first country grid. On
                   lg+ the aside carries the warmth, so this in-card version only
                   shows below lg (where there is no aside). Shown on the very first
                   step only. */}
               {currentStep.id === STEPS[0].id && (
                 <div className="lg:hidden shrink-0 px-6 sm:px-8 pt-5 sm:pt-7 -mb-1">
-                  <p className="font-serif text-lg font-bold text-slate-900 leading-snug">Let's map out your move.</p>
-                  <p className="mt-1.5 text-sm text-slate-600 leading-relaxed">
+                  <p className="text-lg font-semibold tracking-tight text-label leading-snug">Let's map out your move.</p>
+                  <p className="mt-1.5 text-sm text-secondaryLabel leading-relaxed">
                     Tell us a little about your situation and we'll build a step-by-step plan for your
                     exact route — every fact traced to an official source.
                   </p>
                   <ul className="mt-3 flex flex-wrap gap-1.5">
-                    <li className="inline-flex items-center rounded-full bg-slate-50 border border-slate-200 px-2 py-0.5 text-[11px] text-slate-600">Traced to official sources</li>
-                    <li className="inline-flex items-center rounded-full bg-slate-50 border border-slate-200 px-2 py-0.5 text-[11px] text-slate-600">Independently fact-checked</li>
-                    <li className="inline-flex items-center rounded-full bg-slate-50 border border-slate-200 px-2 py-0.5 text-[11px] text-slate-600">Dated and re-checked</li>
+                    <li className="inline-flex items-center rounded-pill bg-surface border border-separator px-2 py-0.5 text-xs text-secondaryLabel">Traced to official sources</li>
+                    <li className="inline-flex items-center rounded-pill bg-surface border border-separator px-2 py-0.5 text-xs text-secondaryLabel">Independently fact-checked</li>
+                    <li className="inline-flex items-center rounded-pill bg-surface border border-separator px-2 py-0.5 text-xs text-secondaryLabel">Dated and re-checked</li>
                   </ul>
                 </div>
               )}
               <div className="shrink-0 px-6 sm:px-8 pt-5 sm:pt-7">
-                <p className="text-xs font-bold text-brand-700 uppercase tracking-widest mb-2 sm:mb-3">
+                <p className="text-xs font-semibold text-brand-700 uppercase tracking-widest mb-2 sm:mb-3">
                   {currentPhase.label}
                 </p>
-                <h2 ref={stepHeadingRef} tabIndex={-1} className="text-xl sm:text-2xl font-bold text-slate-900 mb-1 focus:outline-none">{resolve(currentStep.title)}</h2>
-                {currentStep.subtitle && <p className="text-sm text-slate-500">{resolve(currentStep.subtitle)}</p>}
+                <h2 ref={stepHeadingRef} tabIndex={-1} className="text-xl sm:text-2xl font-semibold tracking-tight text-label mb-1 focus:outline-none">{resolve(currentStep.title)}</h2>
+                {currentStep.subtitle && <p className="text-sm text-secondaryLabel">{resolve(currentStep.subtitle)}</p>}
               </div>
 
               <div className="flex-1 min-h-0 overflow-y-auto px-6 sm:px-8 py-4 space-y-4">
@@ -2844,8 +2840,8 @@ export default function CorridorApp({ tasks, corridorTitle, originIso2, destinat
                   return (
                     <div key={fi} className="space-y-1.5">
                       {field.label && (
-                        <label className="block text-sm font-medium text-slate-700">
-                          {field.label}{field.optional && <span className="text-slate-400 font-normal"> (optional)</span>}
+                        <label className="block text-sm font-medium text-label">
+                          {field.label}{field.optional && <span className="text-tertiaryLabel font-normal"> (optional)</span>}
                         </label>
                       )}
                       {field.textarea ? (
@@ -2854,7 +2850,7 @@ export default function CorridorApp({ tasks, corridorTitle, originIso2, destinat
                           placeholder={field.placeholder}
                           onChange={(e) => setAnswers((a) => field.set(a, e.target.value))}
                           rows={3}
-                          className="w-full border border-slate-200 rounded-xl px-4 py-3 text-slate-900 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none resize-none"
+                          className="w-full rounded-field border border-separator bg-white px-4 py-3 text-label placeholder:text-secondaryLabel focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent resize-none"
                         />
                       ) : (
                         <input
@@ -2862,7 +2858,7 @@ export default function CorridorApp({ tasks, corridorTitle, originIso2, destinat
                           value={value}
                           placeholder={field.placeholder}
                           onChange={(e) => setAnswers((a) => field.set(a, e.target.value))}
-                          className="w-full border border-slate-200 rounded-xl px-4 py-3 text-slate-900 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none"
+                          className="w-full rounded-field border border-separator bg-white px-4 py-3 text-label placeholder:text-secondaryLabel focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent"
                         />
                       )}
                     </div>
@@ -2879,8 +2875,8 @@ export default function CorridorApp({ tasks, corridorTitle, originIso2, destinat
                     (no animation). */}
                 {currentStep.id === 'motivation' && answers.motivation && routeCovered &&
                   routeLive && (
-                  <div role="status" className="flex items-start gap-2 rounded-lg border border-brand-100 bg-brand-50 px-4 py-3 text-sm text-brand-800">
-                    <svg aria-hidden="true" viewBox="0 0 20 20" fill="currentColor" className="mt-0.5 h-4 w-4 shrink-0 text-brand-600"><path fillRule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clipRule="evenodd" /></svg>
+                  <div role="status" className="flex items-start gap-2 rounded-field border border-separator bg-brand-50 px-4 py-3 text-sm text-brand-800">
+                    <svg aria-hidden="true" viewBox="0 0 20 20" fill="currentColor" className="mt-0.5 h-4 w-4 shrink-0 text-accent"><path fillRule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clipRule="evenodd" /></svg>
                     <span>
                       We'll focus your plan on the {motivationLabel(answers.motivation).toLowerCase()} route
                       {applicableTasks.length > 0 && (
@@ -2892,7 +2888,7 @@ export default function CorridorApp({ tasks, corridorTitle, originIso2, destinat
                 )}
 
                 {currentStep.id === 'motivation' && answers.motivation && !routeCovered && (
-                  <div className="rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-800">
+                  <div className="rounded-field border border-warning-border bg-warning-soft px-4 py-3 text-sm text-warning">
                     <strong>Heads up:</strong> we haven't verified the{' '}
                     {motivationLabel(answers.motivation).toLowerCase()} route for this corridor yet.
                     You can continue, but the current guide covers the {coveredLabel} route only —
@@ -2901,17 +2897,15 @@ export default function CorridorApp({ tasks, corridorTitle, originIso2, destinat
                 )}
               </div>
 
-              <div className="shrink-0 px-6 sm:px-8 py-3.5 sm:py-4 border-t border-slate-100 flex items-center gap-3">
+              <div className="shrink-0 px-6 sm:px-8 py-3.5 sm:py-4 border-t border-separator flex items-center gap-3">
                 {currentIndex > 0 && (
-                  <button type="button" onClick={handleBack} className="shrink-0 rounded-xl px-4 py-3 text-sm font-medium text-slate-600 hover:bg-slate-100 focus-visible:ring-2 focus-visible:ring-brand-500">← Back</button>
+                  <button type="button" onClick={handleBack} className="shrink-0 rounded-pill px-5 py-3 text-sm font-medium text-secondaryLabel transition-colors hover:bg-surface focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent">← Back</button>
                 )}
                 <button
                   type="button"
                   disabled={!ready}
                   onClick={handleContinue}
-                  className={`flex-1 rounded-xl py-3 font-medium text-white transition-colors focus-visible:ring-2 focus-visible:ring-brand-500 ${
-                    ready ? 'bg-brand-600 hover:bg-brand-700' : 'bg-brand-300 cursor-not-allowed'
-                  }`}
+                  className="flex-1 rounded-pill bg-accent py-3 font-medium text-white transition-colors hover:bg-accent-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {currentIndex === visibleSteps.length - 1 ? 'Build my relocation plan' : 'Continue'}
                 </button>
@@ -2922,12 +2916,12 @@ export default function CorridorApp({ tasks, corridorTitle, originIso2, destinat
           {/* Slim, calm reassurance line (replaces the old legal-heavy banner).
               The full disclaimer lives in the footer + the post-intake modal gate;
               the Impressum stays reachable here. */}
-          <p className="shrink-0 text-xs text-slate-500 text-center mt-3 max-w-md px-4">
+          <p className="shrink-0 text-xs text-secondaryLabel text-center mt-3 max-w-md px-4">
             Your answers stay on this device{' '}
             <span aria-hidden="true">·</span>{' '}
             Informational only — not legal advice{' '}
             <span aria-hidden="true">·</span>{' '}
-            <a href={IMPRESSUM_PATH} className="underline hover:text-slate-700">Impressum</a>
+            <a href={IMPRESSUM_PATH} className="underline hover:text-label focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded">Impressum</a>
           </p>
         </div>
       </div>
@@ -2939,32 +2933,32 @@ export default function CorridorApp({ tasks, corridorTitle, originIso2, destinat
   if (phase === 'waitlist' && answers.origin && answers.destination) {
     return (
       <div className="flex-1 flex flex-col overflow-hidden">
-        <div className="shrink-0 bg-white border-b border-slate-200 px-4 sm:px-8 py-3 sm:py-5 flex items-center justify-between gap-3 min-w-0">
+        <div className="shrink-0 bg-white border-b border-separator px-4 sm:px-8 py-3 sm:py-5 flex items-center justify-between gap-3 min-w-0">
           <div className="min-w-0">
-            <p className="text-base sm:text-xl font-bold text-slate-900 flex items-center gap-1.5 min-w-0">
+            <p className="text-base sm:text-xl font-semibold tracking-tight text-label flex items-center gap-1.5 min-w-0">
               <Flag iso={answers.origin} className="shrink-0" />
               <span className="truncate">{countryName(answers.origin)}</span>
-              <span className="shrink-0 text-slate-400">→</span>
+              <span className="shrink-0 text-tertiaryLabel">→</span>
               <Flag iso={answers.destination} className="shrink-0" />
               <span className="truncate">{countryName(answers.destination)}</span>
             </p>
-            <p className="text-xs sm:text-sm text-slate-500 mt-0.5 truncate">This route isn't live yet — join the launch waitlist</p>
+            <p className="text-xs sm:text-sm text-secondaryLabel mt-0.5 truncate">This route isn't live yet — join the launch waitlist</p>
           </div>
-          <button type="button" onClick={handleReset} className="shrink-0 text-sm text-brand-700 hover:text-brand-800 font-medium whitespace-nowrap focus-visible:ring-2 focus-visible:ring-brand-500">← Start over</button>
+          <button type="button" onClick={handleReset} className="shrink-0 text-sm text-brand-700 hover:text-accent-hover font-medium whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded">← Start over</button>
         </div>
 
         {/* Slim, calm caveat line (replaces the old gold/amber banner, per the
             founder's directive — the gold banner is gone everywhere). Mirrors the
             intake slim line; the full disclaimer lives in the footer + modal gate. */}
-        <div className="shrink-0 border-b border-slate-200 px-4 py-2 text-center">
-          <p className="text-xs text-slate-500">
+        <div className="shrink-0 border-b border-separator px-4 py-2 text-center">
+          <p className="text-xs text-secondaryLabel">
             Informational only — not legal advice{' '}
             <span aria-hidden="true">·</span>{' '}
-            <a href={IMPRESSUM_PATH} className="underline hover:text-slate-700">Impressum</a>
+            <a href={IMPRESSUM_PATH} className="underline hover:text-label focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded">Impressum</a>
           </p>
         </div>
 
-        <div className="flex-1 overflow-y-auto bg-slate-50">
+        <div className="flex-1 overflow-y-auto bg-surface">
           <WaitlistPanel
             origin={answers.origin}
             destination={answers.destination}
@@ -3024,12 +3018,12 @@ export default function CorridorApp({ tasks, corridorTitle, originIso2, destinat
 
   const mainPanel = allDone ? (
     <div className="flex-1 flex flex-col items-center justify-center text-center p-8">
-      <div className="w-14 h-14 rounded-full bg-green-100 flex items-center justify-center mb-4">
-        <svg className="w-7 h-7 text-green-600" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" /></svg>
+      <div className="w-14 h-14 rounded-full bg-brand-50 flex items-center justify-center mb-4">
+        <svg className="w-7 h-7 text-success" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" /></svg>
       </div>
-      <h2 ref={taskHeadingRef} tabIndex={-1} className="text-2xl font-bold text-slate-900 focus:outline-none">You've completed every step</h2>
-      <p className="text-slate-500 mt-2 max-w-sm">All {applicableTasks.length} tasks in your {corridorTitle} plan are marked done. You can revisit any step from your journey on the left.</p>
-      <p className="text-xs text-slate-600 mt-4 max-w-sm">
+      <h2 ref={taskHeadingRef} tabIndex={-1} className="text-2xl font-semibold tracking-tight text-label focus:outline-none">You've completed every step</h2>
+      <p className="text-secondaryLabel mt-2 max-w-sm">All {applicableTasks.length} tasks in your {corridorTitle} plan are marked done. You can revisit any step from your journey on the left.</p>
+      <p className="text-xs text-secondaryLabel mt-4 max-w-sm">
         This checklist tracks your progress only. Final decisions always rest with the
         authorities — keep official confirmations for every step.
       </p>
@@ -3051,7 +3045,7 @@ export default function CorridorApp({ tasks, corridorTitle, originIso2, destinat
       prerequisiteTitle={activeStatus === 'locked' ? prerequisiteTitleFor(activeTask) : null}
     />
   ) : (
-    <div className="flex-1 flex items-center justify-center text-slate-500 p-8">Select a step from your journey to begin.</div>
+    <div className="flex-1 flex items-center justify-center text-secondaryLabel p-8">Select a step from your journey to begin.</div>
   );
 
   // Post-intake gate: show the blocking disclaimer modal the first time the plan
@@ -3072,26 +3066,26 @@ export default function CorridorApp({ tasks, corridorTitle, originIso2, destinat
       // is the only thing the user can reach.
       style={showDisclaimerGate ? { pointerEvents: 'none' } : undefined}
     >
-      <div className="shrink-0 bg-white border-b border-slate-200 px-4 sm:px-8 py-3 sm:py-5 flex items-center justify-between gap-3 min-w-0">
+      <div className="shrink-0 bg-white border-b border-separator px-4 sm:px-8 py-3 sm:py-5 flex items-center justify-between gap-3 min-w-0">
         <div className="min-w-0">
-          <p className="text-base sm:text-xl font-bold text-slate-900 flex items-center gap-1.5 min-w-0">
+          <p className="text-base sm:text-xl font-semibold tracking-tight text-label flex items-center gap-1.5 min-w-0">
             {answers.origin && <Flag iso={answers.origin} className="shrink-0" />}
             {answers.origin && <span className="truncate">{countryName(answers.origin)}</span>}
-            <span className="shrink-0 text-slate-400">→</span>
+            <span className="shrink-0 text-tertiaryLabel">→</span>
             {answers.destination && <Flag iso={answers.destination} className="shrink-0" />}
             {answers.destination && <span className="truncate">{countryName(answers.destination)}</span>}
           </p>
-          <p className="text-xs sm:text-sm text-slate-500 mt-0.5 truncate">
+          <p className="text-xs sm:text-sm text-secondaryLabel mt-0.5 truncate">
             {routeCovered ? 'Your personalised relocation plan' : `${coveredLabel.charAt(0).toUpperCase()}${coveredLabel.slice(1)} route guide — your route isn't covered yet`}
           </p>
           {routeCovered && (
-            <span className="mt-1.5 inline-flex items-center gap-1 rounded-full bg-brand-50 px-2 py-0.5 text-[11px] font-medium text-brand-700">
+            <span className="mt-1.5 inline-flex items-center gap-1 rounded-pill bg-brand-50 px-2.5 py-0.5 text-xs font-semibold text-brand-700">
               <svg aria-hidden="true" viewBox="0 0 20 20" fill="currentColor" className="h-3.5 w-3.5"><path fillRule="evenodd" d="M9.661 2.237a.531.531 0 0 1 .678 0 11.947 11.947 0 0 0 7.078 2.749.5.5 0 0 1 .479.425c.069.52.104 1.05.104 1.59 0 5.162-3.26 9.563-7.834 11.256a.48.48 0 0 1-.332 0C5.26 16.564 2 12.163 2 7c0-.538.035-1.069.104-1.589a.5.5 0 0 1 .48-.425 11.947 11.947 0 0 0 7.077-2.75Zm4.196 5.954a.75.75 0 0 0-1.214-.882l-3.236 4.53-1.847-1.846a.75.75 0 0 0-1.06 1.06l2.5 2.5a.75.75 0 0 0 1.137-.089l3.72-5.273Z" clipRule="evenodd" /></svg>
               Verified against official sources
             </span>
           )}
         </div>
-        <button type="button" onClick={handleReset} className="shrink-0 text-sm text-brand-700 hover:text-brand-800 font-medium whitespace-nowrap focus-visible:ring-2 focus-visible:ring-brand-500">← Start over</button>
+        <button type="button" onClick={handleReset} className="shrink-0 text-sm text-brand-700 hover:text-accent-hover font-medium whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded">← Start over</button>
       </div>
 
       {/* The persistent "not legal advice" banner that used to frame the plan is
@@ -3099,9 +3093,9 @@ export default function CorridorApp({ tasks, corridorTitle, originIso2, destinat
           full disclaimer still lives in the site footer on every page. */}
 
       {!routeCovered && answers.motivation && (
-        <div className="shrink-0 bg-rose-50 border-b border-rose-100 px-4 py-2.5">
-          <p role="status" className="text-xs text-rose-800">
-            <strong>Your route isn't covered yet.</strong>{' '}
+        <div className="shrink-0 bg-surface border-b border-separator px-4 py-2.5">
+          <p role="status" className="text-xs text-label">
+            <strong className="text-danger">Your route isn't covered yet.</strong>{' '}
             Your answers point to the {motivationLabel(answers.motivation).toLowerCase()} route, but this
             guide's verified content covers the {coveredLabel} route only. The steps below describe
             the {coveredLabel} route and may not apply to your situation — treat them as background
@@ -3113,8 +3107,8 @@ export default function CorridorApp({ tasks, corridorTitle, originIso2, destinat
 
       {isMobile ? (
         <div className="flex-1 flex flex-col overflow-hidden">
-          <div className="shrink-0 border-b border-slate-200 bg-white px-4 py-3">
-            <button type="button" aria-expanded={mobilePanelOpen} onClick={() => setMobilePanelOpen((v) => !v)} className="w-full flex items-center justify-between text-sm font-medium text-slate-700">
+          <div className="shrink-0 border-b border-separator bg-white px-4 py-3">
+            <button type="button" aria-expanded={mobilePanelOpen} onClick={() => setMobilePanelOpen((v) => !v)} className="w-full flex items-center justify-between text-sm font-medium text-label focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded">
               <span>Your journey · {doneCount}/{applicableTasks.length} done</span>
               <span aria-hidden="true">{mobilePanelOpen ? '▲' : '▼'}</span>
             </button>
@@ -3128,27 +3122,27 @@ export default function CorridorApp({ tasks, corridorTitle, originIso2, destinat
       ) : (
         <div className="flex-1 flex overflow-hidden">
           {sidebarCollapsed ? (
-            <div className="shrink-0 border-r border-slate-200 bg-white pt-4">
+            <div className="shrink-0 border-r border-separator bg-white pt-4">
               <button
                 type="button"
                 aria-expanded={false}
                 aria-label="Show your plan panel"
                 title="Show your plan panel"
                 onClick={() => setSidebarCollapsed(false)}
-                className="mx-1 inline-flex min-h-11 items-center rounded-lg px-2 text-slate-500 hover:bg-slate-100 hover:text-slate-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
+                className="mx-1 inline-flex min-h-11 items-center rounded-field px-2 text-secondaryLabel hover:bg-surface hover:text-label focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
               >
                 <IconChevronDown className="h-5 w-5 -rotate-90" />
               </button>
             </div>
           ) : (
-            <aside className="w-[300px] shrink-0 border-r border-slate-200 bg-white overflow-y-auto px-5 py-6">
+            <aside className="w-[300px] shrink-0 border-r border-separator bg-white overflow-y-auto px-5 py-6">
               <div className="mb-3 flex justify-end">
                 <button
                   type="button"
                   aria-expanded={true}
                   aria-label="Hide your plan panel"
                   onClick={() => setSidebarCollapsed(true)}
-                  className="inline-flex min-h-11 items-center gap-1 rounded-lg px-2 text-xs font-medium text-slate-500 hover:bg-slate-100 hover:text-slate-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
+                  className="inline-flex min-h-11 items-center gap-1 rounded-field px-2 text-xs font-medium text-secondaryLabel hover:bg-surface hover:text-label focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
                 >
                   Hide <IconChevronDown className="h-4 w-4 rotate-90" />
                 </button>
@@ -3169,14 +3163,14 @@ export default function CorridorApp({ tasks, corridorTitle, originIso2, destinat
     {welcomeBack && !momentum && !showDisclaimerGate && (
       <div className="pointer-events-none fixed inset-x-0 bottom-4 z-40 flex justify-center px-4">
         <div className="pointer-events-auto w-full max-w-sm">
-          <div role="status" className="flex items-start gap-3 rounded-xl border border-brand-200 bg-white px-4 py-3 shadow-sm">
+          <div role="status" className="flex items-start gap-3 rounded-card border border-separator bg-card px-4 py-3 shadow-sm">
             <span className="mt-0.5 shrink-0 inline-flex h-5 w-5 items-center justify-center rounded-full bg-brand-100 text-brand-700">
               <IconPencil className="h-3 w-3" />
             </span>
             <div className="min-w-0 flex-1 text-sm">
-              <p className="font-medium text-slate-800">Welcome back</p>
-              <p className="mt-0.5 text-slate-600">
-                You left off at <span className="font-medium text-slate-800">{welcomeBack.title}</span>.{' '}
+              <p className="font-medium text-label">Welcome back</p>
+              <p className="mt-0.5 text-secondaryLabel">
+                You left off at <span className="font-medium text-label">{welcomeBack.title}</span>.{' '}
                 {welcomeBack.remaining} step{welcomeBack.remaining === 1 ? '' : 's'} remaining.
               </p>
             </div>
@@ -3184,7 +3178,7 @@ export default function CorridorApp({ tasks, corridorTitle, originIso2, destinat
               type="button"
               onClick={() => setWelcomeBack(null)}
               aria-label="Dismiss"
-              className="shrink-0 -mr-1 -mt-1 inline-flex h-7 w-7 items-center justify-center rounded-md text-slate-400 hover:bg-slate-100 hover:text-slate-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
+              className="shrink-0 -mr-2 -mt-2 inline-flex min-h-11 min-w-11 items-center justify-center rounded-md text-secondaryLabel hover:bg-surface hover:text-label focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
             >
               <IconX className="h-4 w-4" />
             </button>

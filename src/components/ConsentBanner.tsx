@@ -98,20 +98,20 @@ export default function ConsentBanner() {
         role="dialog"
         aria-modal="false"
         aria-labelledby="consent-title"
-        className="mx-auto max-w-3xl rounded-xl border border-slate-300 bg-white p-5 shadow-xl"
+        className="mx-auto max-w-3xl rounded-card border border-separator bg-card p-5 shadow-xl"
       >
-        <h2 id="consent-title" className="text-base font-semibold text-slate-900">
+        <h2 id="consent-title" className="text-base font-semibold tracking-tight text-label">
           Your privacy choices
         </h2>
 
         {view === 'banner' ? (
           <>
-            <p className="mt-2 text-sm text-slate-600">
+            <p className="mt-2 text-sm text-secondaryLabel">
               Your planner answers stay in your browser. We'd also like to measure usage to
               improve the guidance. Privacy-friendly, cookieless analytics run by default;
               optional cookie-based analytics and any future ads load only if you agree. See
               our{' '}
-              <a className="underline hover:text-slate-900" href="/cookie-policy">
+              <a className="text-link underline hover:text-accent-hover" href="/cookie-policy">
                 Cookie policy
               </a>
               .
@@ -120,21 +120,21 @@ export default function ConsentBanner() {
               <button
                 type="button"
                 onClick={() => setView('customise')}
-                className="rounded-md border border-slate-300 px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 focus-visible:ring-2 focus-visible:ring-brand-500"
+                className="rounded-pill border border-separator px-5 py-2 text-sm font-medium text-label hover:bg-surface focus-visible:ring-2 focus-visible:ring-accent"
               >
                 Customise
               </button>
               <button
                 type="button"
                 onClick={rejectAll}
-                className="rounded-md border border-slate-300 px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 focus-visible:ring-2 focus-visible:ring-brand-500"
+                className="rounded-pill border border-separator px-5 py-2 text-sm font-medium text-label hover:bg-surface focus-visible:ring-2 focus-visible:ring-accent"
               >
                 Reject non-essential
               </button>
               <button
                 type="button"
                 onClick={acceptAll}
-                className="rounded-md border border-brand-600 bg-brand-600 px-4 py-2 text-sm font-medium text-white hover:bg-brand-700 focus-visible:ring-2 focus-visible:ring-brand-500"
+                className="rounded-pill border border-accent bg-accent px-5 py-2 text-sm font-medium text-white hover:bg-accent-hover focus-visible:ring-2 focus-visible:ring-accent"
               >
                 Accept all
               </button>
@@ -142,7 +142,7 @@ export default function ConsentBanner() {
           </>
         ) : (
           <>
-            <p className="mt-2 text-sm text-slate-600">
+            <p className="mt-2 text-sm text-secondaryLabel">
               Choose which optional technologies to allow. You can change this any time from
               "Cookie settings" in the footer.
             </p>
@@ -153,11 +153,11 @@ export default function ConsentBanner() {
                   checked
                   disabled
                   aria-label="Strictly necessary (always on)"
-                  className="mt-1 h-4 w-4"
+                  className="mt-1 h-4 w-4 accent-accent"
                 />
                 <span className="text-sm">
-                  <span className="font-medium text-slate-900">Strictly necessary</span>
-                  <span className="block text-slate-600">
+                  <span className="font-medium text-label">Strictly necessary</span>
+                  <span className="block text-secondaryLabel">
                     Remembers your planner answers and these choices, on your device. Always on.
                   </span>
                 </span>
@@ -168,11 +168,11 @@ export default function ConsentBanner() {
                   type="checkbox"
                   checked={analytics}
                   onChange={(e) => setAnalytics(e.target.checked)}
-                  className="mt-1 h-4 w-4"
+                  className="mt-1 h-4 w-4 accent-accent"
                 />
                 <label htmlFor="consent-analytics" className="text-sm">
-                  <span className="font-medium text-slate-900">Analytics (cookies)</span>
-                  <span className="block text-slate-600">
+                  <span className="font-medium text-label">Analytics (cookies)</span>
+                  <span className="block text-secondaryLabel">
                     Google Analytics, to understand usage in more detail. Uses cookies.
                   </span>
                 </label>
@@ -183,11 +183,11 @@ export default function ConsentBanner() {
                   type="checkbox"
                   checked={advertising}
                   onChange={(e) => setAdvertising(e.target.checked)}
-                  className="mt-1 h-4 w-4"
+                  className="mt-1 h-4 w-4 accent-accent"
                 />
                 <label htmlFor="consent-ads" className="text-sm">
-                  <span className="font-medium text-slate-900">Advertising</span>
-                  <span className="block text-slate-600">
+                  <span className="font-medium text-label">Advertising</span>
+                  <span className="block text-secondaryLabel">
                     Ad cookies to help fund the site. Never shown beside legal or visa guidance.
                   </span>
                 </label>
@@ -197,14 +197,14 @@ export default function ConsentBanner() {
               <button
                 type="button"
                 onClick={rejectAll}
-                className="rounded-md border border-slate-300 px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 focus-visible:ring-2 focus-visible:ring-brand-500"
+                className="rounded-pill border border-separator px-5 py-2 text-sm font-medium text-label hover:bg-surface focus-visible:ring-2 focus-visible:ring-accent"
               >
                 Reject non-essential
               </button>
               <button
                 type="button"
                 onClick={savePrefs}
-                className="rounded-md border border-brand-600 bg-brand-600 px-4 py-2 text-sm font-medium text-white hover:bg-brand-700 focus-visible:ring-2 focus-visible:ring-brand-500"
+                className="rounded-pill border border-accent bg-accent px-5 py-2 text-sm font-medium text-white hover:bg-accent-hover focus-visible:ring-2 focus-visible:ring-accent"
               >
                 Save choices
               </button>

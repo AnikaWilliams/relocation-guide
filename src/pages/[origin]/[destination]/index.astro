@@ -179,7 +179,7 @@ const planScope = (appliesIf?: string): string => {
   </div>
 
   <noscript>
-    <div class="border-b border-amber-200 bg-amber-50 px-4 py-3 text-center text-sm text-amber-900">
+    <div class="border-b border-warning-border bg-warning-soft px-4 py-3 text-center text-sm text-warning">
       JavaScript is off, so the interactive planner above won't respond — the complete
       guide is published in full just below.
     </div>
@@ -189,13 +189,13 @@ const planScope = (appliesIf?: string): string => {
       enhancement: identical VERIFIED corridor data to what the app renders,
       genuinely visible to every visitor — crawlers index real content, readers
       can skim past the app, no cloaking. */}
-  <section id="full-guide" aria-label="The complete written guide">
+  <section id="full-guide" aria-label="The complete written guide" class="bg-surface">
       <article class="mx-auto max-w-2xl px-4 py-12">
         <header class="mb-8 space-y-4">
-          <h2 class="font-serif text-3xl font-bold text-slate-900">The complete guide: {corridor.title}</h2>
-          <p class="text-slate-600">{corridor.description}</p>
+          <h2 class="text-3xl font-semibold tracking-tight text-label">The complete guide: {corridor.title}</h2>
+          <p class="text-secondaryLabel">{corridor.description}</p>
           <Disclaimer />
-          <p class="text-sm text-slate-500">
+          <p class="text-sm text-tertiaryLabel">
             This is the <strong>complete reference</strong> for this corridor — every step for
             <em>every</em> route (work, study, family, and more). Your personalised planner above shows
             only the steps that match your answers, so it is usually shorter than this. Each step below
@@ -204,28 +204,28 @@ const planScope = (appliesIf?: string): string => {
         </header>
 
         {corridor.tasks.map((task, i) => (
-          <section class="mb-10 border-t border-slate-200 pt-8">
-            <h3 class="font-serif text-xl font-semibold text-slate-900">
+          <section class="mb-6 rounded-card border border-separator bg-card p-6">
+            <h3 class="text-xl font-semibold tracking-tight text-label">
               {i + 1}. {task.title}
             </h3>
-            <p class="mt-1 inline-flex items-center rounded-full bg-brand-50 px-2.5 py-0.5 text-xs font-semibold text-brand-700">
+            <p class="mt-2 inline-flex items-center rounded-pill bg-brand-50 px-2.5 py-0.5 text-xs font-semibold text-brand-700">
               For: {planScope(task.appliesIf)}
             </p>
-            <p class="mt-3 text-slate-700">{task.summary.text}</p>
-            <p class="mt-3 text-slate-700">{task.detail}</p>
+            <p class="mt-3 text-label">{task.summary.text}</p>
+            <p class="mt-3 text-label">{task.detail}</p>
 
             {task.warning && (
-              <p class="mt-3 rounded-md border border-amber-300 bg-amber-50 p-3 text-sm text-amber-900">
+              <p class="mt-3 rounded-field border border-warning-border bg-warning-soft p-4 text-sm text-warning">
                 {task.warning}
               </p>
             )}
 
-            <h4 class="mt-4 font-semibold text-slate-900">Steps</h4>
-            <ol class="mt-2 list-decimal space-y-2 pl-6 text-slate-700">
+            <h4 class="mt-4 font-semibold text-label">Steps</h4>
+            <ol class="mt-2 list-decimal space-y-2 pl-6 text-label">
               {task.steps.map((step) => (
                 <li>
                   {step.text}
-                  {step.tip && <span class="block text-sm text-slate-500">Tip: {step.tip}</span>}
+                  {step.tip && <span class="block text-sm text-secondaryLabel">Tip: {step.tip}</span>}
                   {step.links && step.links.length > 0 && (
                     <span class="block text-sm">
                       {step.links.map((link, j) => (
@@ -235,7 +235,7 @@ const planScope = (appliesIf?: string): string => {
                             href={link.sourceUrl}
                             target="_blank"
                             rel="noopener noreferrer"
-                            class="text-blue-700 underline"
+                            class="text-link underline hover:text-accent-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded"
                           >{link.text} ({link.sourceName})</a>
                         </>
                       ))}
@@ -247,19 +247,19 @@ const planScope = (appliesIf?: string): string => {
 
             {task.documents.length > 0 && (
               <>
-                <h4 class="mt-4 font-semibold text-slate-900">Documents</h4>
-                <ul class="mt-2 list-disc space-y-1 pl-6 text-slate-700">
+                <h4 class="mt-4 font-semibold text-label">Documents</h4>
+                <ul class="mt-2 list-disc space-y-1 pl-6 text-label">
                   {task.documents.map((doc) =>
                     typeof doc === 'string' ? (
                       <li>{doc}</li>
                     ) : (
                       <li>
                         {doc.name}
-                        {doc.description && <span class="text-slate-500"> — {doc.description}</span>}
+                        {doc.description && <span class="text-secondaryLabel"> — {doc.description}</span>}
                         {doc.form && (
                           <span class="block text-sm">
                             Form from {doc.form.sourceName}:{' '}
-                            <a href={doc.form.sourceUrl} target="_blank" rel="noopener noreferrer" class="text-blue-700 underline">{doc.form.text}</a>
+                            <a href={doc.form.sourceUrl} target="_blank" rel="noopener noreferrer" class="text-link underline hover:text-accent-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded">{doc.form.text}</a>
                           </span>
                         )}
                       </li>
@@ -270,19 +270,19 @@ const planScope = (appliesIf?: string): string => {
             )}
 
             {task.timeline && (
-              <p class="mt-4 text-slate-700">
+              <p class="mt-4 text-label">
                 <strong>Timeline:</strong> {task.timeline.text}{' '}
-                (<a href={task.timeline.sourceUrl} target="_blank" rel="noopener noreferrer" class="text-blue-700 underline">{task.timeline.sourceName}</a>)
+                (<a href={task.timeline.sourceUrl} target="_blank" rel="noopener noreferrer" class="text-link underline hover:text-accent-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded">{task.timeline.sourceName}</a>)
               </p>
             )}
             {task.cost && (
-              <p class="mt-2 text-slate-700">
+              <p class="mt-2 text-label">
                 <strong>Cost:</strong> {task.cost.text}{' '}
-                (<a href={task.cost.sourceUrl} target="_blank" rel="noopener noreferrer" class="text-blue-700 underline">{task.cost.sourceName}</a>)
+                (<a href={task.cost.sourceUrl} target="_blank" rel="noopener noreferrer" class="text-link underline hover:text-accent-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded">{task.cost.sourceName}</a>)
               </p>
             )}
             {task.localCostTimeline && !task.cost && !task.timeline && (
-              <p class="mt-2 text-slate-700">
+              <p class="mt-2 text-label">
                 <strong>Fees &amp; processing time:</strong>{' '}
                 {task.localCostTimeline === 'institution'
                   ? 'set by the educational institution, not at the federal level — confirm the exact application fee and timing directly with the institution.'
@@ -290,8 +290,8 @@ const planScope = (appliesIf?: string): string => {
               </p>
             )}
 
-            <p class="mt-4 text-sm text-slate-500">
-              Source: <a href={task.summary.sourceUrl} target="_blank" rel="noopener noreferrer" class="underline">{task.summary.sourceName}</a>
+            <p class="mt-4 text-sm text-tertiaryLabel">
+              Source: <a href={task.summary.sourceUrl} target="_blank" rel="noopener noreferrer" class="text-link underline hover:text-accent-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded">{task.summary.sourceName}</a>
               {task.summary.lastVerified && <> · Last verified {task.summary.lastVerified}</>}
             </p>
           </section>

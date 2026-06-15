@@ -1,12 +1,63 @@
-@import '@fontsource/lato/400.css';
-@import '@fontsource/lato/700.css';
-@import '@fontsource/eb-garamond/400.css';
-@import '@fontsource/eb-garamond/600.css';
-@import '@fontsource/eb-garamond/700.css';
+/*
+ * Apple web design language (ADR-0022, supersedes ADR-0019).
+ *
+ * EB Garamond + Lato are RETIRED: no @fontsource import, no web-font fetch.
+ * The SF system stack (defined in tailwind.config.mjs) needs no download.
+ * The font files remain on disk under node_modules but are unreferenced.
+ */
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/*
+ * Apple tokens as CSS custom properties. LIGHT MODE ONLY for now; the structure
+ * is dark-mode-ready (add a `.dark { … }` block later — do NOT build it yet).
+ * Tailwind reads these via the semantic color names in the config.
+ */
+:root {
+  /* Text / labels */
+  --color-label: #1d1d1f;
+  --color-secondary-label: #6e6e73;
+  /* tertiaryLabel darkened from Apple web #86868b (~3.6:1 on white — fails AA)
+   * to #6b6b70 so any MEANINGFUL text using it clears 4.5:1 with margin:
+   * 5.30:1 on white, 4.87:1 on surface (#f5f5f7), 4.68:1 on brand-50 (#e8f2fd).
+   * Placeholders moved off this token onto secondaryLabel (see config note). */
+  --color-tertiary-label: #6b6b70;
+
+  /* Tint / accent — Apple systemBlue (web) */
+  --color-accent: #0071e3;
+  --color-accent-hover: #0066cc;
+  --color-link: #0066cc;
+
+  /* Surfaces */
+  --color-surface: #f5f5f7;
+  --color-card: #ffffff;
+
+  /* Lines */
+  --color-separator: #d2d2d7;
+
+  /* Feedback */
+  --color-success: #248a3d; /* systemGreen, darkened for AA text on white */
+  --color-danger: #d70015; /* systemRed, darkened for AA text on white */
+  --color-warning: #7a5b00; /* soft-warning readable text */
+  --color-warning-soft: #fff8e6; /* soft-warning background */
+  --color-warning-border: #f0d488; /* soft-warning edge */
+}
+
+/* App-wide base: Apple white canvas, system font, primary label color. */
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    background-color: #ffffff;
+    color: var(--color-label);
+    font-family: theme('fontFamily.sans');
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+}
 
 @media (prefers-reduced-motion: reduce) {
   *,

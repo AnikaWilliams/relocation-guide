@@ -24,102 +24,114 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   title="Impressum / Legal notice — Relocation Guide"
   description="Legal notice (Impressum) identifying the operator of this website, as required under German and Swiss law."
 >
-  <!-- DRAFT banner — remove only after human lawyer sign-off -->
-  <aside
-    role="note"
-    aria-label="Draft status"
-    class="rounded-md border border-rose-300 bg-rose-50 p-4 text-sm text-rose-900"
-  >
-    <p>
-      <strong>DRAFT — not yet in force.</strong> This page contains placeholder values
-      in [BRACKETS] and has not been reviewed by a lawyer. It must not be treated as a
-      final legal document until the operator details are completed and a qualified
-      lawyer has approved the wording.
-    </p>
-  </aside>
+  <div class="mx-auto max-w-[680px]">
+    <!-- DRAFT banner — remove only after human lawyer sign-off -->
+    <aside
+      role="note"
+      aria-label="Draft status"
+      class="rounded-field border border-warning-border bg-warning-soft p-4 text-sm text-warning"
+    >
+      <p>
+        <strong class="font-semibold">DRAFT — not yet in force.</strong> This page contains
+        placeholder values in [BRACKETS] and has not been reviewed by a lawyer. It must not be
+        treated as a final legal document until the operator details are completed and a
+        qualified lawyer has approved the wording.
+      </p>
+    </aside>
 
-  <article class="prose prose-slate mt-8 max-w-2xl space-y-8">
-    <section class="space-y-3">
-      <h1 class="text-3xl font-bold">Impressum / Legal notice</h1>
-      <p class="text-slate-600">
-        Information in accordance with § 5 DDG (Germany) and Art. 3 para. 1 lit. s UWG
-        (Switzerland).
-      </p>
-    </section>
+    <article class="mt-10 space-y-12">
+      <section class="space-y-4">
+        <h1 class="text-3xl sm:text-4xl font-semibold tracking-tight text-label">
+          Impressum / Legal notice
+        </h1>
+        <p class="text-lg leading-relaxed text-secondaryLabel">
+          Information in accordance with § 5 DDG (Germany) and Art. 3 para. 1 lit. s UWG
+          (Switzerland).
+        </p>
+      </section>
 
-    <section class="space-y-2">
-      <h2 class="text-xl font-semibold">Website operator</h2>
-      <p class="text-slate-700">
-        [OPERATOR NAME]<br />
-        [LEGAL FORM, IF A COMPANY — e.g. Einzelunternehmen / GmbH / sole proprietor]<br />
-        [STREET ADDRESS — a physical, summonable address; a PO box alone is not
-        sufficient under German law]<br />
-        [POSTCODE, CITY]<br />
-        [COUNTRY]
-      </p>
-    </section>
+      <section class="space-y-3">
+        <h2 class="text-xl font-semibold tracking-tight text-label">Website operator</h2>
+        <p class="leading-relaxed text-secondaryLabel">
+          [OPERATOR NAME]<br />
+          [LEGAL FORM, IF A COMPANY — e.g. Einzelunternehmen / GmbH / sole proprietor]<br />
+          [STREET ADDRESS — a physical, summonable address; a PO box alone is not
+          sufficient under German law]<br />
+          [POSTCODE, CITY]<br />
+          [COUNTRY]
+        </p>
+      </section>
 
-    <section class="space-y-2">
-      <h2 class="text-xl font-semibold">Contact</h2>
-      <p class="text-slate-700">
-        Email: [CONTACT EMAIL — monitored mailbox enabling rapid, direct communication]<br />
-        [OPTIONAL: PHONE NUMBER — recommended for Germany]
-      </p>
-    </section>
+      <section class="space-y-3">
+        <h2 class="text-xl font-semibold tracking-tight text-label">Contact</h2>
+        <p class="leading-relaxed text-secondaryLabel">
+          Email: [CONTACT EMAIL — monitored mailbox enabling rapid, direct communication]<br />
+          [OPTIONAL: PHONE NUMBER — recommended for Germany]
+        </p>
+      </section>
 
-    <section class="space-y-2">
-      <h2 class="text-xl font-semibold">Person responsible for content</h2>
-      <p class="text-slate-700">
-        Responsible for journalistic-editorial content pursuant to § 18 Abs. 2 MStV
-        (Germany):
-      </p>
-      <p class="text-slate-700">
-        [RESPONSIBLE PERSON — full name; must be a natural person resident in the EU]<br />
-        [STREET ADDRESS]<br />
-        [POSTCODE, CITY]<br />
-        [COUNTRY]
-      </p>
-    </section>
+      <section class="space-y-3">
+        <h2 class="text-xl font-semibold tracking-tight text-label">
+          Person responsible for content
+        </h2>
+        <p class="leading-relaxed text-secondaryLabel">
+          Responsible for journalistic-editorial content pursuant to § 18 Abs. 2 MStV
+          (Germany):
+        </p>
+        <p class="leading-relaxed text-secondaryLabel">
+          [RESPONSIBLE PERSON — full name; must be a natural person resident in the EU]<br />
+          [STREET ADDRESS]<br />
+          [POSTCODE, CITY]<br />
+          [COUNTRY]
+        </p>
+      </section>
 
-    <section class="space-y-2">
-      <h2 class="text-xl font-semibold">Registrations and identifiers</h2>
-      <p class="text-slate-700">
-        [IF REGISTERED — Commercial register: REGISTER COURT / SWISS CANTONAL REGISTER,
-        REGISTRATION NUMBER]<br />
-        [IF APPLICABLE — German VAT ID (USt-IdNr.) per § 27a UStG: DE…]<br />
-        [IF APPLICABLE — Swiss enterprise identification number (UID): CHE-…]<br />
-        [DELETE THIS SECTION IF NONE APPLY — confirm with lawyer]
-      </p>
-    </section>
+      <section class="space-y-3">
+        <h2 class="text-xl font-semibold tracking-tight text-label">
+          Registrations and identifiers
+        </h2>
+        <p class="leading-relaxed text-secondaryLabel">
+          [IF REGISTERED — Commercial register: REGISTER COURT / SWISS CANTONAL REGISTER,
+          REGISTRATION NUMBER]<br />
+          [IF APPLICABLE — German VAT ID (USt-IdNr.) per § 27a UStG: DE…]<br />
+          [IF APPLICABLE — Swiss enterprise identification number (UID): CHE-…]<br />
+          [DELETE THIS SECTION IF NONE APPLY — confirm with lawyer]
+        </p>
+      </section>
 
-    <section class="space-y-2">
-      <h2 class="text-xl font-semibold">Consumer dispute resolution</h2>
-      <p class="text-slate-700">
-        [DRAFT — confirm with lawyer:] We are not willing or obliged to participate in
-        dispute resolution proceedings before a consumer arbitration board (§ 36 VSBG,
-        Germany).
-      </p>
-    </section>
+      <section class="space-y-3">
+        <h2 class="text-xl font-semibold tracking-tight text-label">
+          Consumer dispute resolution
+        </h2>
+        <p class="leading-relaxed text-secondaryLabel">
+          [DRAFT — confirm with lawyer:] We are not willing or obliged to participate in
+          dispute resolution proceedings before a consumer arbitration board (§ 36 VSBG,
+          Germany).
+        </p>
+      </section>
 
-    <section class="space-y-2">
-      <h2 class="text-xl font-semibold">Content and liability notice</h2>
-      <p class="text-slate-700">
-        This website provides general information about relocating between countries.
-        It is not legal or immigration advice, and no client or advisory relationship
-        is created by using it. Visa and immigration rules change frequently. Always
-        verify requirements with the official authority or a licensed immigration
-        adviser before taking action.
-      </p>
-      <p class="text-slate-700">
-        External links lead to third-party websites whose content we do not control.
-        Responsibility for linked content lies with the respective operator at the time
-        of linking. [DRAFT — lawyer to confirm liability wording for DE/CH.]
-      </p>
-    </section>
+      <section class="space-y-3">
+        <h2 class="text-xl font-semibold tracking-tight text-label">
+          Content and liability notice
+        </h2>
+        <p class="leading-relaxed text-secondaryLabel">
+          This website provides general information about relocating between countries.
+          It is not legal or immigration advice, and no client or advisory relationship
+          is created by using it. Visa and immigration rules change frequently. Always
+          verify requirements with the official authority or a licensed immigration
+          adviser before taking action.
+        </p>
+        <p class="leading-relaxed text-secondaryLabel">
+          External links lead to third-party websites whose content we do not control.
+          Responsibility for linked content lies with the respective operator at the time
+          of linking. [DRAFT — lawyer to confirm liability wording for DE/CH.]
+        </p>
+      </section>
 
-    <p class="text-sm text-slate-500">
-      Last updated: [DATE — set when placeholders are filled in]. Draft pending human
-      lawyer review.
-    </p>
-  </article>
+      <p class="text-sm text-tertiaryLabel">
+        Last updated: [DATE — set when placeholders are filled in]. Draft pending human
+        lawyer review.
+      </p>
+    </article>
+  </div>
 </BaseLayout>

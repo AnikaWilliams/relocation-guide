@@ -8,16 +8,19 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 // Placeholder — founder to replace with the real, monitored address at launch.
 const contactEmail = '[contact@yourdomain]';
+
+const linkClass =
+  'text-link underline hover:text-accent-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded';
 ---
 
 <BaseLayout
   title="Contact — Relocation Guide"
   description="How to reach Relocation Guide. Informational only — we can't provide individual legal or immigration advice."
 >
-  <article class="prose prose-slate max-w-2xl space-y-8">
-    <section class="space-y-3">
-      <h1 class="text-3xl font-bold">Contact</h1>
-      <p class="text-slate-600">
+  <article class="mx-auto max-w-[680px] space-y-12">
+    <section class="space-y-4">
+      <h1 class="text-3xl sm:text-4xl font-semibold tracking-tight text-label">Contact</h1>
+      <p class="text-lg leading-relaxed text-secondaryLabel">
         We're glad to hear from you &mdash; especially if you've spotted a fact that looks
         out of date.
       </p>
@@ -27,53 +30,55 @@ const contactEmail = '[contact@yourdomain]';
     <aside
       role="note"
       aria-label="Placeholder contact details"
-      class="rounded-md border border-amber-300 bg-amber-50 p-4 text-sm text-amber-900"
+      class="rounded-field border border-warning-border bg-warning-soft p-4 text-sm text-warning"
     >
       <p>
-        <strong>Placeholder.</strong> The address below is not yet live &mdash; the site
-        does not have a confirmed domain or mailbox. The founder will set the real,
-        monitored address before launch.
+        <strong class="font-semibold">Placeholder.</strong> The address below is not yet live
+        &mdash; the site does not have a confirmed domain or mailbox. The founder will set the
+        real, monitored address before launch.
       </p>
     </aside>
 
-    <section class="space-y-2">
-      <h2 class="text-xl font-semibold">Email us</h2>
-      <p class="text-slate-700">
+    <section class="space-y-3">
+      <h2 class="text-xl font-semibold tracking-tight text-label">Email us</h2>
+      <p class="leading-relaxed text-secondaryLabel">
         Write to
-        <a href={`mailto:${contactEmail}`} class="font-medium">{contactEmail}</a>.
+        <a href={`mailto:${contactEmail}`} class={`font-medium ${linkClass}`}>{contactEmail}</a>.
         We read every message, but please understand we may not be able to reply to each
         one individually.
       </p>
     </section>
 
-    <section class="space-y-2">
-      <h2 class="text-xl font-semibold">What we can and can't help with</h2>
-      <ul class="list-disc pl-6 text-slate-700">
+    <section class="space-y-3">
+      <h2 class="text-xl font-semibold tracking-tight text-label">
+        What we can and can't help with
+      </h2>
+      <ul class="list-disc space-y-2 pl-6 leading-relaxed text-secondaryLabel">
         <li>
-          <strong>Yes:</strong> corrections, broken links, out-of-date facts, and general
-          feedback on the guidance.
+          <strong class="font-semibold text-label">Yes:</strong> corrections, broken links,
+          out-of-date facts, and general feedback on the guidance.
         </li>
         <li>
-          <strong>No:</strong> individual legal or immigration advice. We're an
-          information site, not a law firm or licensed adviser, so we can't assess your
-          personal case. For that, contact the official authority or a licensed immigration
-          adviser.
+          <strong class="font-semibold text-label">No:</strong> individual legal or immigration
+          advice. We're an information site, not a law firm or licensed adviser, so we can't
+          assess your personal case. For that, contact the official authority or a licensed
+          immigration adviser.
         </li>
       </ul>
     </section>
 
-    <section class="space-y-2">
-      <h2 class="text-xl font-semibold">Reporting an inaccuracy</h2>
-      <p class="text-slate-700">
+    <section class="space-y-3">
+      <h2 class="text-xl font-semibold tracking-tight text-label">Reporting an inaccuracy</h2>
+      <p class="leading-relaxed text-secondaryLabel">
         If a step looks wrong, please include the corridor (for example, USA &rarr;
         Switzerland), the step name, and the official source you're comparing against. That
         lets us re-verify it quickly against the authority.
       </p>
     </section>
 
-    <p class="text-sm text-slate-500">
-      For who operates this site, see our <a href="/impressum">Impressum</a>. For how we
-      handle data, see our <a href="/privacy">Privacy policy</a>.
+    <p class="text-sm text-tertiaryLabel">
+      For who operates this site, see our <a href="/impressum" class={linkClass}>Impressum</a>.
+      For how we handle data, see our <a href="/privacy" class={linkClass}>Privacy policy</a>.
     </p>
   </article>
 </BaseLayout>

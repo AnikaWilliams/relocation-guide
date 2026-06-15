@@ -89,96 +89,106 @@ const inventory: StorageRow[] = [
   title="Cookie & storage policy — Relocation Guide"
   description="What this site stores in your browser and which technologies require your consent."
 >
-  <!-- DRAFT banner — remove only after human lawyer sign-off -->
-  <aside
-    role="note"
-    aria-label="Draft status"
-    class="rounded-md border border-rose-300 bg-rose-50 p-4 text-sm text-rose-900"
-  >
-    <p>
-      <strong>DRAFT — not yet in force.</strong> This policy contains placeholder values
-      in [BRACKETS] and has not been reviewed by a lawyer. Lifetimes and cookie names for
-      third-party tools must be confirmed against the providers' own documentation before
-      launch.
-    </p>
-  </aside>
-
-  <article class="prose prose-slate mt-8 max-w-3xl space-y-8">
-    <section class="space-y-3">
-      <h1 class="text-3xl font-bold">Cookie &amp; storage policy</h1>
-      <p class="text-slate-600">
-        This page lists everything Relocation Guide stores in your browser and explains
-        which items need your consent. See also our
-        <a href="/privacy">Privacy policy</a>.
+  <div class="mx-auto max-w-3xl">
+    <!-- DRAFT banner — remove only after human lawyer sign-off -->
+    <aside
+      role="note"
+      aria-label="Draft status"
+      class="rounded-field border border-warning-border bg-warning-soft p-4 text-sm text-warning"
+    >
+      <p>
+        <strong class="font-semibold">DRAFT — not yet in force.</strong> This policy contains
+        placeholder values in [BRACKETS] and has not been reviewed by a lawyer. Lifetimes and
+        cookie names for third-party tools must be confirmed against the providers' own
+        documentation before launch.
       </p>
-    </section>
+    </aside>
 
-    <section class="space-y-2">
-      <h2 class="text-xl font-semibold">Two kinds of storage</h2>
-      <p class="text-slate-700">
-        <strong>Strictly necessary</strong> storage makes the site work &mdash; it
-        remembers your planner answers and your cookie choices, on your device only. It
-        needs no consent. <strong>Optional</strong> technologies (analytics that use
-        cookies, and advertising) load <strong>only after you agree</strong> in the cookie
-        banner, and you can change your mind at any time.
-      </p>
-    </section>
+    <article class="mt-10 space-y-12">
+      <section class="max-w-[680px] space-y-4">
+        <h1 class="text-3xl sm:text-4xl font-semibold tracking-tight text-label">
+          Cookie &amp; storage policy
+        </h1>
+        <p class="text-lg leading-relaxed text-secondaryLabel">
+          This page lists everything Relocation Guide stores in your browser and explains
+          which items need your consent. See also our
+          <a
+            href="/privacy"
+            class="text-link underline hover:text-accent-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded"
+            >Privacy policy</a
+          >.
+        </p>
+      </section>
 
-    <section class="space-y-3">
-      <h2 class="text-xl font-semibold">What we store</h2>
-      <div class="overflow-x-auto">
-        <table class="w-full border-collapse text-left text-sm">
-          <thead>
-            <tr class="border-b border-slate-300 align-bottom">
-              <th class="py-2 pr-4 font-semibold">Name</th>
-              <th class="py-2 pr-4 font-semibold">Type</th>
-              <th class="py-2 pr-4 font-semibold">Purpose</th>
-              <th class="py-2 pr-4 font-semibold">Lifetime</th>
-              <th class="py-2 pr-4 font-semibold">Consent</th>
-              <th class="py-2 font-semibold">Status</th>
-            </tr>
-          </thead>
-          <tbody>
-            {inventory.map((row) => (
-              <tr class="border-b border-slate-200 align-top">
-                <td class="py-2 pr-4"><code class="text-xs">{row.name}</code></td>
-                <td class="py-2 pr-4 text-slate-700">{row.type}</td>
-                <td class="py-2 pr-4 text-slate-700">{row.purpose}</td>
-                <td class="py-2 pr-4 text-slate-700">{row.lifetime}</td>
-                <td class="py-2 pr-4 text-slate-700">{row.consent}</td>
-                <td class="py-2 text-slate-700">{row.status}</td>
+      <section class="max-w-[680px] space-y-3">
+        <h2 class="text-xl font-semibold tracking-tight text-label">Two kinds of storage</h2>
+        <p class="leading-relaxed text-secondaryLabel">
+          <strong class="font-semibold text-label">Strictly necessary</strong> storage makes the
+          site work &mdash; it remembers your planner answers and your cookie choices, on your
+          device only. It needs no consent.
+          <strong class="font-semibold text-label">Optional</strong> technologies (analytics that
+          use cookies, and advertising) load
+          <strong class="font-semibold text-label">only after you agree</strong> in the cookie
+          banner, and you can change your mind at any time.
+        </p>
+      </section>
+
+      <section class="space-y-4">
+        <h2 class="max-w-[680px] text-xl font-semibold tracking-tight text-label">What we store</h2>
+        <div class="overflow-x-auto rounded-card border border-separator">
+          <table class="w-full border-collapse text-left text-sm">
+            <thead>
+              <tr class="border-b border-separator bg-surface align-bottom">
+                <th class="px-4 py-3 font-semibold text-label">Name</th>
+                <th class="px-4 py-3 font-semibold text-label">Type</th>
+                <th class="px-4 py-3 font-semibold text-label">Purpose</th>
+                <th class="px-4 py-3 font-semibold text-label">Lifetime</th>
+                <th class="px-4 py-3 font-semibold text-label">Consent</th>
+                <th class="px-4 py-3 font-semibold text-label">Status</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-    </section>
+            </thead>
+            <tbody>
+              {inventory.map((row) => (
+                <tr class="border-b border-separator align-top last:border-b-0">
+                  <td class="px-4 py-3"><code class="rounded bg-surface px-1.5 py-0.5 text-xs text-label">{row.name}</code></td>
+                  <td class="px-4 py-3 text-secondaryLabel">{row.type}</td>
+                  <td class="px-4 py-3 text-secondaryLabel">{row.purpose}</td>
+                  <td class="px-4 py-3 text-secondaryLabel">{row.lifetime}</td>
+                  <td class="px-4 py-3 text-secondaryLabel">{row.consent}</td>
+                  <td class="px-4 py-3 text-secondaryLabel">{row.status}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
 
-    <section class="space-y-2">
-      <h2 class="text-xl font-semibold">Managing your choices</h2>
-      <ul class="list-disc pl-6 text-slate-700">
-        <li>
-          Use the <strong>cookie settings</strong> link in the footer to accept or reject
-          optional categories, or to change a previous choice.
-        </li>
-        <li>
-          Use the planner's <strong>"Start over"</strong> control to clear your saved
-          answers and progress.
-        </li>
-        <li>
-          You can also clear all of this site's storage through your browser's privacy
-          settings.
-        </li>
-      </ul>
-      <p class="text-slate-700">
-        Blocking strictly-necessary storage may stop the planner from remembering your
-        progress, but you can still read every step.
+      <section class="max-w-[680px] space-y-3">
+        <h2 class="text-xl font-semibold tracking-tight text-label">Managing your choices</h2>
+        <ul class="list-disc space-y-2 pl-6 leading-relaxed text-secondaryLabel">
+          <li>
+            Use the <strong class="font-semibold text-label">cookie settings</strong> link in the
+            footer to accept or reject optional categories, or to change a previous choice.
+          </li>
+          <li>
+            Use the planner's <strong class="font-semibold text-label">"Start over"</strong>
+            control to clear your saved answers and progress.
+          </li>
+          <li>
+            You can also clear all of this site's storage through your browser's privacy
+            settings.
+          </li>
+        </ul>
+        <p class="leading-relaxed text-secondaryLabel">
+          Blocking strictly-necessary storage may stop the planner from remembering your
+          progress, but you can still read every step.
+        </p>
+      </section>
+
+      <p class="max-w-[680px] text-sm text-tertiaryLabel">
+        Last updated: [DATE — set when placeholders are filled in]. Draft pending human
+        lawyer review.
       </p>
-    </section>
-
-    <p class="text-sm text-slate-500">
-      Last updated: [DATE — set when placeholders are filled in]. Draft pending human
-      lawyer review.
-    </p>
-  </article>
+    </article>
+  </div>
 </BaseLayout>
