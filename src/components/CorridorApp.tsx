@@ -2088,7 +2088,7 @@ function DisclaimerModal({ onAcknowledge }: { onAcknowledge: () => void }) {
       <div
         aria-hidden="true"
         className="absolute inset-0 backdrop-blur-md"
-        style={{ backgroundColor: 'rgba(29, 29, 31, 0.48)' }}
+        style={{ backgroundColor: 'rgba(29, 29, 31, 0.70)' }}
       />
       <div
         ref={dialogRef}
