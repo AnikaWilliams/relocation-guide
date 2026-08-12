@@ -122,5 +122,45 @@ export function compareChapters(a: Chapter, b: Chapter): number {
   return a.order - b.order;
 }
 
+/**
+ * One contiguous run of tasks that share the same authored chapter. Because
+ * runs are carved out of the dependency-respecting order, a chapter can in
+ * principle appear more than once (non-contiguous runs); `runKey` is unique
+ * per run so it is safe to use as a React key.
+ */
+export interface JourneyGroup<T> {
+  /** Unique per-run key (chapter ids may repeat across non-contiguous runs). */
+  runKey: string;
+  chapter: Chapter;
+  items: { task: T; stepIndex: number }[];
+}
+
+/**
+ * Group already-ordered tasks into authored chapters WITHOUT reordering the
+ * journey. The input is the dependency-respecting topological order (see
+ * `topoOrder` in `./journey`); we walk it top-to-bottom and start a new group
+ * whenever the chapter changes (contiguous runs). Sorting chapters first and
+ * then collecting every task per chapter would discard that topological order
+ * and can render a locked dependent ahead of its prerequisite. Each entry also
+ * carries the task's GLOBAL step index (1-based) so node labels can say
+ * "Step 3" against the whole journey, not within the chapter.
+ */
+export function groupTasksByChapter<T extends { category: string }>(
+  orderedTasks: T[],
+): JourneyGroup<T>[] {
+  const groups: JourneyGroup<T>[] = [];
+  let run = 0;
+  for (let i = 0; i < orderedTasks.length; i++) {
+    const task = orderedTasks[i];
+    const chapter = chapterForCategory(task.category);
+    const last = groups[groups.length - 1];
+    if (!last || last.chapter.id !== chapter.id) {
+      groups.push({ runKey: `${chapter.id}-${run++}`, chapter, items: [] });
+    }
+    groups[groups.length - 1].items.push({ task, stepIndex: i + 1 });
+  }
+  return groups;
+}
+
 /** Every category the schema enum can produce — exported for the exhaustiveness test. */
 export const ALL_CATEGORIES = CategoryEnum.options;

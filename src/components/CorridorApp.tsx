@@ -3,8 +3,8 @@ import { COUNTRY_OPTIONS, countryName, type CountryOption } from '../utils/count
 import { DISCLAIMER_LEAD, DISCLAIMER_BODY, DISCLAIMER_PROGRESS_NOTE, IMPRESSUM_PATH } from '../utils/disclaimer';
 import { CH_CANTONS, cantonName } from '../utils/cantons';
 import { flagUrl } from '../utils/flags';
-import { topoOrder, statusOf, currentTaskId, type TaskStatus } from '../utils/journey';
-import { chapterForCategory, compareChapters, type Chapter } from '../utils/journeyChapters';
+import { topoOrder, statusOf, currentTaskId, stateWordFor, type TaskStatus } from '../utils/journey';
+import { chapterForCategory, groupTasksByChapter } from '../utils/journeyChapters';
 import { evaluateAppliesIf, type AppliesIfContext } from '../utils/appliesIf';
 import { INTAKE_PARAM_KEYS, readIntakeParams, applyIntakeParams, intakeSearchString, hasIntakeParams } from '../utils/urlState';
 import { submitWaitlist, isValidEmail, alreadyOnWaitlist, type WaitlistStatus } from '../utils/waitlist';
@@ -1221,37 +1221,9 @@ function CantonPanel({ canton, data }: { canton: string; data: CantonData | unde
 }
 
 // ── Visual journey map (the connected, chapter-grouped "Your journey" path) ──
-
-/**
- * Group the already-ordered tasks into authored chapters WITHOUT reordering the
- * journey. We keep the existing topological order intact (it respects real
- * dependencies); a chapter "starts" at the first task whose chapter differs
- * from the previous task's. This means a chapter can in principle appear once
- * (the common case) and the path still reads top-to-bottom in dependency order.
- * Each entry also carries the task's GLOBAL step index (1-based) so node labels
- * can say "Step 3" against the whole journey, not within the chapter.
- */
-interface JourneyGroup {
-  chapter: Chapter;
-  items: { task: TaskData; stepIndex: number }[];
-}
-
-function groupTasksByChapter(orderedTasks: TaskData[]): JourneyGroup[] {
-  // Build chapter order from the chapters actually present, in authored order.
-  const present = new Map<string, Chapter>();
-  for (const t of orderedTasks) {
-    const ch = chapterForCategory(t.category);
-    if (!present.has(ch.id)) present.set(ch.id, ch);
-  }
-  const orderedChapters = [...present.values()].sort(compareChapters);
-
-  return orderedChapters.map((chapter) => ({
-    chapter,
-    items: orderedTasks
-      .map((task, i) => ({ task, stepIndex: i + 1 }))
-      .filter(({ task }) => chapterForCategory(task.category).id === chapter.id),
-  }));
-}
+// Grouping is done by `groupTasksByChapter` (utils/journeyChapters.ts) —
+// contiguous runs carved out of the dependency-respecting topological order,
+// so the path never renders a locked dependent ahead of its prerequisite.
 
 /** A single node on the visual path. Accessible name conveys step + state. */
 function JourneyNode({
@@ -1277,14 +1249,10 @@ function JourneyNode({
   const available = status === 'available';
 
   // Accessible name: state-first so screen-reader users hear what they can do.
-  // "current" is an emphasis layered on "available" — convey both.
-  const stateWord = done
-    ? 'done'
-    : isActive
-    ? 'current step, available'
-    : available
-    ? 'available'
-    : 'locked';
+  // Locked takes precedence (see `stateWordFor` in utils/journey.ts) so a
+  // selected locked node announces "current step, locked" — never "available",
+  // since its Mark-done is gated even though the node stays selectable.
+  const stateWord = stateWordFor(status, isActive);
   const lockHint =
     locked && prerequisiteTitle ? `, unlocks after: ${prerequisiteTitle}` : '';
   const docHint = docTotal > 0 ? `, ${docCompleted} of ${docTotal} documents handled` : '';
@@ -1404,12 +1372,10 @@ function JourneyNode({
 }
 
 /**
- * The signature visual journey: a vertical connected PATH of task nodes,
- * grouped under authored chapters. Every node's state is a faithful projection
- * of `statusFor(id)` + the active task id; the per-node meter projects
- * `docProgress`. Built with inline SVG/CSS only (no heavy deps); fully
- * keyboard-operable (each node is a button with an accessible name); the
- * connector / visual flourishes are aria-hidden; honours prefers-reduced-motion.
+ * The signature visual journey: a connected PATH of task nodes, grouped under
+ * authored chapters in dependency (topological) order. Grouping happens in
+ * `groupTasksByChapter` (see utils/journeyChapters.ts) — contiguous runs only,
+ * so the path never renders a locked dependent ahead of its prerequisite.
  */
 function JourneyMap({
   orderedTasks, statusFor, activeId, docState, prerequisiteTitleFor, reducedMotion, onSelect,
@@ -1434,7 +1400,7 @@ function JourneyMap({
           ({ task }) => statusFor(task.id) === 'done',
         ).length;
         return (
-          <section key={group.chapter.id} aria-label={group.chapter.label}>
+          <section key={group.runKey} aria-label={group.chapter.label}>
             <div className="mb-1.5 flex items-baseline justify-between gap-2 pl-9">
               <h3 className="text-xs font-semibold uppercase tracking-wide text-slate-500">
                 {group.chapter.label}
