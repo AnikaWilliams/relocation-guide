@@ -10,6 +10,18 @@ coming next. Newest updates are at the top.
 
 ---
 
+## 2026-06-14 — Plain English everywhere: the legal codes are gone from what you read
+
+**What changed.** We stripped the law-and-statute jargon out of everything you actually *read* in a Switzerland plan. No more "Art. 30 para. 1 let. b FNIA" or "Arts. 42-44" tucked inside the sentences — the steps, titles, summaries and warnings now say it in plain English ("this is a decision the canton makes at its discretion — you have no automatic right" instead of an article number). The official law sources did **not** disappear: they're moved into a "Sources & legal notes" dropdown on each step, so "Verified against official sources" still holds. We kept the real legal meaning exactly — whether something is your *right* or the authorities' *discretion* — only the code-numbers are gone.
+
+**Why it matters.** Article numbers make an anxious person feel they need a lawyer just to read the page. Plain language they can act on builds confidence — while the precise sources stay one tap away for anyone (including a lawyer) who wants to check.
+
+**What you'd notice today.** Plan steps read like plain advice; the legal citations now live behind a "Sources & legal notes" dropdown. (Switzerland route for now; the other countries to follow. Review copy — **not live**.)
+
+**What's next.** The same plain-language pass on the other 7 country guides.
+
+---
+
 ## 2026-06-14 — Your move now reads as a visible journey, not a flat to-do list
 
 **What changed.** The little "Your journey" list in the side panel is now a real **path you can see** — your steps strung along a line like stops on a route, grouped into clear stages ("Before you go", "Your permit", "After you arrive", "Settling in"). Each stop shows whether it's done (a tick), the one you're on (highlighted), open, or still locked. Locked stops now say *exactly* what unlocks them ("Unlocks after: register your address") instead of a blank padlock — and you can still read everything inside a locked step; you just can't tick it off until the step before it is done. Every step that needs documents shows a thin "gather-your-papers" bar that fills as you check them off (on the path and on the step itself). When you pick your reason for moving, we confirm in one line what that does to your plan. Returning visitors get a calm "Welcome back — you left off at…" note, and finishing a whole stage gives a quiet "you've finished Your permit" pat on the back. Crucially, **none of this is made up**: every tick, bar, and message just mirrors what you've actually done — no streaks, no countdowns, no points, and nothing that sounds like an official approval.

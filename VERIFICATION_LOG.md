@@ -499,3 +499,15 @@ Scope: independent re-verification (two-agent rule; verifier did NOT draft these
 | 2026-06-14 | us-ch | NOTE register at commune within 14 days (all 5 cantons) | fact-verifier (canton pipeline) | VERIFIED | https://www.ch.ch/en/housing/moving/notification-of-departure-and-registration/ | Server HTML (curl, HTTP 200) reads verbatim: "you are expected to register with your new commune of residence within 14 days of your move." WebFetch returned a soft-404 (caching artifact) — corroborated by prior 2026-06-09 run that read the same live content. Local register names (Einwohnerkontrolle / contrôle des habitants) are correct descriptive labels, not asserted by this federal source. |
 
 **Run totals (us-ch canton pipeline, 2026-06-14):** 12 / 12 VERIFIED of 12 claim definitions (covering all 20 per-canton instances). 0 FLAGGED, 0 UNVERIFIED. No content drift; no sourceUrl correction needed (researcher's URL-resolution fixes all held). All claims general-fact → reviewBy 2026-09-12 (no fees/quotas/numeric rates asserted, so no 30-day window). Two caveats logged (FDFA does not name every canton; ch.ch label is the newer "change of address" title) — both non-blocking and carried in the discrepancy notes to the researcher.
+
+---
+
+### us-ch (USA → Switzerland) — plain-language rewrite 2026-06-14
+
+Founder mandate "no legal jargon": the DEFAULT-VISIBLE prose of every us-ch task (title, summary/tldr, step text/tips, warnings, document descriptions) was rewritten by `content-researcher` to remove statute/act/article/code citations (FNIA, ASEO, VZAE, OASA, "Art. … para. … let. …", "Arts. 42-44", SR codes, "concubinage") while preserving the legal substance in plain English. No `sourceName`/`sourceUrl`/`status`/`lastVerified`/`verifiedBy`/`reviewBy`/`keyFacts`/`detail`/`cantons` were changed — the precise citations remain in the Reference/Sources folds and source links, so the prior source verifications stand and the build gate is unaffected.
+
+Two-agent re-confirmation (writer ≠ verifier, separate sessions):
+
+| date | corridor | claim | verifier | status | source | notes |
+|---|---|---|---|---|---|---|
+| 2026-06-14 | us-ch | Plain-language rewrite of all default-visible prose (15 tasks) — entitlement-vs-discretion register preserved | fact-verifier | VERIFIED | (no source change — re-confirmed against the unchanged 2026-06-12 verifications + each claim's own keyFacts/detail) | No statute jargon remains in the visible fields; meaning preserved with no overstatement (discretionary routes still read "may be granted / not a guaranteed right"; entitlement routes still read "a legal right"; the unmarried-partner "no automatic right" warning intact); provenance untouched. compliance-officer PASS (sources reachable in the fold; "verified against official sources" holds). |
