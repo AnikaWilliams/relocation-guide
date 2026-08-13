@@ -24,14 +24,14 @@ const appTasks: TaskData[] = corridor.tasks.map((t) => ({
   id: t.id,
   title: t.title,
   category: t.category,
-  summary: { text: t.summary.text, sourceUrl: t.summary.sourceUrl, sourceName: t.summary.sourceName },
+  summary: { text: t.summary.text, sourceUrl: t.summary.sourceUrl, sourceName: t.summary.sourceName, lastVerified: t.summary.lastVerified },
   tldr: t.tldr ? { text: t.tldr.text, sourceUrl: t.tldr.sourceUrl, sourceName: t.tldr.sourceName } : undefined,
   keyFacts: t.keyFacts?.map((f) => ({ label: f.label, text: f.text, sourceUrl: f.sourceUrl, sourceName: f.sourceName })),
   detail: t.detail,
   steps: t.steps.map((s) => ({
     text: s.text,
     tip: s.tip,
-    links: s.links?.map((l) => ({ text: l.text, sourceUrl: l.sourceUrl, sourceName: l.sourceName, cantonOffice: l.cantonOffice })),
+    links: s.links?.map((l) => ({ text: l.text, sourceUrl: l.sourceUrl, sourceName: l.sourceName, cantonOffice: l.cantonOffice, lastVerified: l.lastVerified })),
   })),
   documents: t.documents.map((d) =>
     typeof d === 'string'

@@ -2210,8 +2210,13 @@ export default function CorridorApp({ tasks, corridorTitle, originIso2, destinat
   const currentPhaseId = phaseOfStep(currentStep.id);
   const currentPhase = WIZARD_PHASES[phaseIndex(currentPhaseId)];
   const phaseProgressPct = (() => {
-    const stepsInPhase = visibleSteps.filter((s) => phaseOfStep(s.id) === currentPhaseId);
-    const idxInPhase = stepsInPhase.findIndex((s) => s.id === currentStep.id);
+    // Stable denominator: the phase's full step set, regardless of which branch
+    // questions the user's answers have revealed. Branch questions only appear
+    // after the step that reveals them, so the numerator (visible steps passed)
+    // stays monotonic and the bar never moves backward.
+    const stepsInPhase = STEPS.filter((s) => phaseOfStep(s.id) === currentPhaseId);
+    const visiblePhaseSteps = visibleSteps.filter((s) => phaseOfStep(s.id) === currentPhaseId);
+    const idxInPhase = visiblePhaseSteps.findIndex((s) => s.id === currentStep.id);
     if (stepsInPhase.length === 0) return 0;
     // Fill is "steps already passed" within the phase, out of the phase's steps,
     // nudged so the very first step of a phase still reads as started.
