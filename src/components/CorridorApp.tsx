@@ -3,7 +3,8 @@ import { COUNTRY_OPTIONS, countryName, type CountryOption } from '../utils/count
 import { DISCLAIMER_LEAD, DISCLAIMER_BODY, DISCLAIMER_PROGRESS_NOTE, IMPRESSUM_PATH } from '../utils/disclaimer';
 import { CH_CANTONS, cantonName } from '../utils/cantons';
 import { flagUrl } from '../utils/flags';
-import { topoOrder, statusOf, currentTaskId, type TaskStatus } from '../utils/journey';
+import { topoOrder, statusOf, currentTaskId, stateWordFor, type TaskStatus } from '../utils/journey';
+import { chapterForCategory, groupTasksByChapter } from '../utils/journeyChapters';
 import { evaluateAppliesIf, type AppliesIfContext } from '../utils/appliesIf';
 import { INTAKE_PARAM_KEYS, readIntakeParams, applyIntakeParams, intakeSearchString, hasIntakeParams } from '../utils/urlState';
 import { submitWaitlist, isValidEmail, alreadyOnWaitlist, type WaitlistStatus } from '../utils/waitlist';
@@ -484,6 +485,24 @@ function useIsMobile() {
     return () => mq.removeEventListener('change', handler);
   }, []);
   return isMobile;
+}
+
+/**
+ * True when the user has asked the OS to reduce motion. Every new animation in
+ * the journey map (the path-draw, node scale, milestone slide) is gated on this
+ * being `false`. Starts `false` so the server and first client render agree;
+ * corrected from matchMedia after mount.
+ */
+function usePrefersReducedMotion() {
+  const [reduced, setReduced] = useState(false);
+  useEffect(() => {
+    const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
+    setReduced(mq.matches);
+    const handler = (e: MediaQueryListEvent) => setReduced(e.matches);
+    mq.addEventListener('change', handler);
+    return () => mq.removeEventListener('change', handler);
+  }, []);
+  return reduced;
 }
 
 /** localStorage key recording that the user has read & acknowledged the
@@ -1002,16 +1021,6 @@ function buildRecap(a: Intake): { label: ReactNode; stepId: string }[] {
 
 // ── Journey sidebar (the "map + history") ────────────────────────────────────
 
-function StatusDot({ status }: { status: TaskStatus }) {
-  if (status === 'done') {
-    return <span className="shrink-0 w-5 h-5 rounded-full bg-green-100 text-green-600 flex items-center justify-center" aria-hidden="true"><IconCheck className="w-3 h-3" /></span>;
-  }
-  if (status === 'available') {
-    return <span className="shrink-0 w-5 h-5 rounded-full bg-blue-500 flex items-center justify-center" aria-hidden="true"><span className="w-1.5 h-1.5 rounded-full bg-white" /></span>;
-  }
-  return <span className="shrink-0 w-5 h-5 rounded-full bg-slate-100 text-slate-400 flex items-center justify-center" aria-hidden="true"><IconLock className="w-3 h-3" /></span>;
-}
-
 /**
  * Share the current plan URL (answers ride in the URL fragment — never sent to
  * servers). The pre-copy warning is compliance-required: the link encodes the
@@ -1211,8 +1220,227 @@ function CantonPanel({ canton, data }: { canton: string; data: CantonData | unde
   );
 }
 
+// ── Visual journey map (the connected, chapter-grouped "Your journey" path) ──
+// Grouping is done by `groupTasksByChapter` (utils/journeyChapters.ts) —
+// contiguous runs carved out of the dependency-respecting topological order,
+// so the path never renders a locked dependent ahead of its prerequisite.
+
+/** A single node on the visual path. Accessible name conveys step + state. */
+function JourneyNode({
+  task, stepIndex, totalSteps, status, isActive, isLast, docCompleted, docTotal,
+  prerequisiteTitle, reducedMotion, onSelect,
+}: {
+  task: TaskData;
+  stepIndex: number;
+  totalSteps: number;
+  status: TaskStatus;
+  isActive: boolean;
+  /** Last node overall — its connector tail is not drawn. */
+  isLast: boolean;
+  docCompleted: number;
+  docTotal: number;
+  /** Title of the specific prerequisite that gates a locked node (item 5). */
+  prerequisiteTitle: string | null;
+  reducedMotion: boolean;
+  onSelect: (id: string) => void;
+}) {
+  const done = status === 'done';
+  const locked = status === 'locked';
+  const available = status === 'available';
+
+  // Accessible name: state-first so screen-reader users hear what they can do.
+  // Locked takes precedence (see `stateWordFor` in utils/journey.ts) so a
+  // selected locked node announces "current step, locked" — never "available",
+  // since its Mark-done is gated even though the node stays selectable.
+  const stateWord = stateWordFor(status, isActive);
+  const lockHint =
+    locked && prerequisiteTitle ? `, unlocks after: ${prerequisiteTitle}` : '';
+  const docHint = docTotal > 0 ? `, ${docCompleted} of ${docTotal} documents handled` : '';
+  const accessibleName = `Step ${stepIndex} of ${totalSteps}, ${stateWord}: ${task.title}${lockHint}${docHint}`;
+
+  const docPct = docTotal > 0 ? Math.round((docCompleted / docTotal) * 100) : 0;
+
+  return (
+    <li className="relative">
+      <div className="flex items-stretch gap-3">
+        {/* Connector + node marker column (decorative — aria-hidden). The line
+            is a thin CSS rule behind the marker; the marker is an inline SVG. */}
+        <div className="relative flex w-6 shrink-0 flex-col items-center" aria-hidden="true">
+          {/* Connector tail to the next node (not on the last node). The fill is
+              solid for a done→done segment, faint otherwise — a quiet "progress
+              threading the path" cue, never an invented reward. */}
+          {!isLast && (
+            <span
+              className={`absolute left-1/2 top-6 -ml-px h-[calc(100%-0.5rem)] w-0.5 ${
+                done ? 'bg-emerald-400' : 'bg-slate-200'
+              }`}
+            />
+          )}
+          {/* Node marker. */}
+          <span
+            className={`relative z-10 mt-0.5 flex h-6 w-6 items-center justify-center rounded-full border-2 transition-transform ${
+              done
+                ? 'border-emerald-600 bg-emerald-600 text-white'
+                : isActive
+                ? 'border-brand-600 bg-white text-brand-700'
+                : available
+                ? 'border-blue-500 bg-white text-blue-600'
+                : 'border-slate-300 bg-slate-50 text-slate-400'
+            } ${isActive && !reducedMotion ? 'scale-110' : ''}`}
+          >
+            {done ? (
+              <IconCheck className="h-3.5 w-3.5" />
+            ) : locked ? (
+              <IconLock className="h-3 w-3" />
+            ) : (
+              <span className={`h-1.5 w-1.5 rounded-full ${isActive ? 'bg-brand-600' : 'bg-blue-500'}`} />
+            )}
+          </span>
+        </div>
+
+        {/* The clickable node body. AUTONOMY: locked nodes stay clickable so
+            their content is readable — only Mark-done is gated elsewhere. */}
+        <button
+          type="button"
+          aria-current={isActive ? 'step' : undefined}
+          aria-label={accessibleName}
+          onClick={() => onSelect(task.id)}
+          className={`group/node mb-2 min-w-0 flex-1 rounded-lg border px-3 py-2 text-left transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 ${
+            isActive
+              ? 'border-brand-300 bg-brand-50'
+              : done
+              ? 'border-transparent bg-transparent hover:bg-slate-50'
+              : 'border-transparent bg-transparent hover:bg-slate-50'
+          }`}
+        >
+          <span className="flex items-center gap-2">
+            <span className="text-[10px] font-semibold uppercase tracking-wide text-slate-400" aria-hidden="true">
+              Step {stepIndex}
+            </span>
+            {locked && (
+              <span className="inline-flex items-center gap-0.5 text-[10px] font-medium text-slate-400" aria-hidden="true">
+                <IconLock className="h-2.5 w-2.5" /> locked
+              </span>
+            )}
+          </span>
+          <span
+            className={`mt-0.5 block text-sm leading-snug ${
+              isActive
+                ? 'font-medium text-brand-700'
+                : locked
+                ? 'text-slate-500'
+                : done
+                ? 'text-slate-500'
+                : 'text-slate-700'
+            }`}
+          >
+            {task.title}
+          </span>
+
+          {/* HONEST WHY-LOCKED (item 5): name the specific prerequisite, not a
+              generic lock. Content stays readable; only Mark-done is gated. */}
+          {locked && prerequisiteTitle && (
+            <span className="mt-1 block text-[11px] text-slate-400">
+              Unlocks after: {prerequisiteTitle}
+            </span>
+          )}
+
+          {/* PER-NODE DOCUMENT METER: a thin fill = docProgress for this task.
+              Skipped docs already count as resolved upstream — we never show
+              optional/skipped as 'missing'. Hidden when the task has no docs. */}
+          {docTotal > 0 && (
+            <span className="mt-1.5 block">
+              <span className="flex items-center gap-1.5">
+                <span className="h-1 flex-1 overflow-hidden rounded-full bg-slate-200" aria-hidden="true">
+                  <span
+                    className={`block h-full rounded-full ${reducedMotion ? '' : 'transition-all duration-500'} ${
+                      docPct === 100 ? 'bg-emerald-500' : 'bg-blue-400'
+                    }`}
+                    style={{ width: `${docPct}%` }}
+                  />
+                </span>
+                <span className="shrink-0 text-[10px] tabular-nums text-slate-400" aria-hidden="true">
+                  {docCompleted}/{docTotal}
+                </span>
+              </span>
+            </span>
+          )}
+        </button>
+      </div>
+    </li>
+  );
+}
+
+/**
+ * The signature visual journey: a connected PATH of task nodes, grouped under
+ * authored chapters in dependency (topological) order. Grouping happens in
+ * `groupTasksByChapter` (see utils/journeyChapters.ts) — contiguous runs only,
+ * so the path never renders a locked dependent ahead of its prerequisite.
+ */
+function JourneyMap({
+  orderedTasks, statusFor, activeId, docState, prerequisiteTitleFor, reducedMotion, onSelect,
+}: {
+  orderedTasks: TaskData[];
+  statusFor: (id: string) => TaskStatus;
+  activeId: string | null;
+  docState: DocState;
+  /** Returns the title of the first incomplete prerequisite for a task, or null. */
+  prerequisiteTitleFor: (task: TaskData) => string | null;
+  reducedMotion: boolean;
+  onSelect: (id: string) => void;
+}) {
+  const groups = useMemo(() => groupTasksByChapter(orderedTasks), [orderedTasks]);
+  const totalSteps = orderedTasks.length;
+  const lastTaskId = orderedTasks[orderedTasks.length - 1]?.id ?? null;
+
+  return (
+    <nav aria-label="Your journey — steps grouped by stage" className="flex flex-col gap-4">
+      {groups.map((group) => {
+        const doneInChapter = group.items.filter(
+          ({ task }) => statusFor(task.id) === 'done',
+        ).length;
+        return (
+          <section key={group.runKey} aria-label={group.chapter.label}>
+            <div className="mb-1.5 flex items-baseline justify-between gap-2 pl-9">
+              <h3 className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+                {group.chapter.label}
+              </h3>
+              <span className="shrink-0 text-[10px] tabular-nums text-slate-400">
+                {doneInChapter}/{group.items.length}
+              </span>
+            </div>
+            <ol className="flex flex-col">
+              {group.items.map(({ task, stepIndex }) => {
+                const status = statusFor(task.id);
+                const { completed, total: docTotal } = docProgress(task, docState);
+                return (
+                  <JourneyNode
+                    key={task.id}
+                    task={task}
+                    stepIndex={stepIndex}
+                    totalSteps={totalSteps}
+                    status={status}
+                    isActive={activeId === task.id}
+                    isLast={task.id === lastTaskId}
+                    docCompleted={completed}
+                    docTotal={docTotal}
+                    prerequisiteTitle={status === 'locked' ? prerequisiteTitleFor(task) : null}
+                    reducedMotion={reducedMotion}
+                    onSelect={onSelect}
+                  />
+                );
+              })}
+            </ol>
+          </section>
+        );
+      })}
+    </nav>
+  );
+}
+
 function Sidebar({
-  orderedTasks, statusFor, activeId, onSelect, recap, onEdit, doneCount, total, docState, onToggleDoc, cantonPanel,
+  orderedTasks, statusFor, activeId, onSelect, recap, onEdit, doneCount, total, docState, cantonPanel,
+  prerequisiteTitleFor, reducedMotion,
 }: {
   orderedTasks: TaskData[];
   statusFor: (id: string) => TaskStatus;
@@ -1223,13 +1451,12 @@ function Sidebar({
   doneCount: number;
   total: number;
   docState: DocState;
-  onToggleDoc: (taskId: string, docName: string, mark: DocMark) => void;
   /** Rendered "Your canton" card (CH + canton chosen); null otherwise. */
   cantonPanel?: ReactNode;
+  /** Returns the title of the first incomplete prerequisite for a task, or null. */
+  prerequisiteTitleFor: (task: TaskData) => string | null;
+  reducedMotion: boolean;
 }) {
-  // Substeps: the active step auto-expands; any unlocked step can be toggled.
-  const [expandedId, setExpandedId] = useState<string | null>(null);
-  const shownExpandedId = expandedId ?? activeId;
   const pct = total > 0 ? Math.round((doneCount / total) * 100) : 0;
   return (
     <div className="flex flex-col gap-5">
@@ -1266,58 +1493,21 @@ function Sidebar({
       {cantonPanel}
 
       <div className="border-t border-slate-200 pt-4">
-        <h2 className="text-xs font-normal text-slate-500 mb-2.5">Your journey</h2>
-        <div className="flex flex-col">
-          {orderedTasks.map((t) => {
-            const status = statusFor(t.id);
-            const isActive = activeId === t.id;
-            const locked = status === 'locked';
-            const { completed, total: docTotal } = docProgress(t, docState);
-            const isExpanded = !locked && docTotal > 0 && shownExpandedId === t.id;
-            return (
-              <div key={t.id} className={`rounded-lg ${isActive ? 'bg-brand-50' : ''}`}>
-                <div className={`flex items-center gap-2.5 rounded-lg px-2 py-2 ${
-                  isActive ? '' : locked ? '' : 'hover:bg-slate-50'
-                }`}>
-                  <button
-                    type="button"
-                    disabled={locked}
-                    aria-current={isActive ? 'step' : undefined}
-                    onClick={() => onSelect(t.id)}
-                    className={`flex flex-1 items-center gap-2.5 rounded text-left min-w-0 focus-visible:ring-2 focus-visible:ring-brand-500 ${locked ? 'cursor-not-allowed' : ''}`}
-                  >
-                    <StatusDot status={status} />
-                    <span className={`text-sm leading-snug min-w-0 ${
-                      isActive ? 'font-medium text-brand-700' : locked ? 'text-slate-400' : status === 'done' ? 'text-slate-500' : 'text-slate-700'
-                    }`}>
-                      {status === 'done' && <span className="sr-only">Done: </span>}
-                      {locked && <span className="sr-only">Locked (finish earlier steps first): </span>}
-                      {t.title}
-                    </span>
-                  </button>
-                  {!locked && docTotal > 0 && (
-                    <button
-                      type="button"
-                      aria-expanded={isExpanded}
-                      aria-label={`Documents for "${t.title}" (${completed} of ${docTotal} handled)`}
-                      onClick={() => setExpandedId(isExpanded ? 'NONE' : t.id)}
-                      className="shrink-0 flex items-center gap-1 rounded px-1 py-0.5 text-[11px] text-slate-600 hover:text-slate-800 focus-visible:ring-2 focus-visible:ring-brand-500"
-                    >
-                      {completed}/{docTotal}
-                      <span aria-hidden="true">{isExpanded ? '▾' : '▸'}</span>
-                    </button>
-                  )}
-                </div>
-                {isExpanded && (
-                  <div className="ml-9 mr-2 pb-2">
-                    <p className="mb-1 text-[11px] text-slate-600">{completed}/{docTotal} documents</p>
-                    <DocChecklist task={t} docState={docState} onToggle={onToggleDoc} compact />
-                  </div>
-                )}
-              </div>
-            );
-          })}
-        </div>
+        <h2 className="text-xs font-normal text-slate-500 mb-3">Your journey</h2>
+        {/* SIGNATURE: the connected, chapter-grouped visual PATH. Every node's
+            state, the per-node document meter and the why-locked prerequisite
+            are faithful projections of statusFor / docProgress / dependsOn —
+            no invented copy or reward. Locked nodes stay clickable & readable;
+            only Mark-done is gated on the task card. */}
+        <JourneyMap
+          orderedTasks={orderedTasks}
+          statusFor={statusFor}
+          activeId={activeId}
+          docState={docState}
+          prerequisiteTitleFor={prerequisiteTitleFor}
+          reducedMotion={reducedMotion}
+          onSelect={onSelect}
+        />
       </div>
     </div>
   );
@@ -1327,7 +1517,7 @@ function Sidebar({
 
 function TaskCard({
   task, status, hasPrev, onBack, onMarkDone, onNext, headingRef, docState, onToggleDoc,
-  cantonOfficeClaim, selectedCantonName,
+  cantonOfficeClaim, selectedCantonName, reducedMotion, prerequisiteTitle,
 }: {
   task: TaskData;
   status: TaskStatus;
@@ -1343,8 +1533,12 @@ function TaskCard({
   cantonOfficeClaim: ClaimData | null;
   /** Display name of the selected canton, for the personalised link cue. */
   selectedCantonName?: string;
+  reducedMotion: boolean;
+  /** When this task is locked, the specific prerequisite that gates it (item 5). */
+  prerequisiteTitle?: string | null;
 }) {
   const done = status === 'done';
+  const locked = status === 'locked';
   const { completed: docsHandled, total: docsTotal } = docProgress(task, docState);
   const docsRemaining = docsTotal - docsHandled;
 
@@ -1377,10 +1571,14 @@ function TaskCard({
           <h2 ref={headingRef} tabIndex={-1} className="text-2xl font-bold text-slate-900 leading-snug focus:outline-none">{task.title}</h2>
           <span className="flex flex-wrap items-center gap-3">
             <span className={`inline-flex items-center gap-1.5 text-sm font-medium ${
-              done ? 'text-green-600' : 'text-blue-600'
+              done ? 'text-green-600' : locked ? 'text-slate-500' : 'text-blue-600'
             }`}>
-              <span className={`w-1.5 h-1.5 rounded-full ${done ? 'bg-green-500' : 'bg-blue-500'}`} />
-              {done ? 'Completed' : 'Ready to start'}
+              {locked ? (
+                <IconLock className="h-3.5 w-3.5" />
+              ) : (
+                <span className={`w-1.5 h-1.5 rounded-full ${done ? 'bg-green-500' : 'bg-blue-500'}`} />
+              )}
+              {done ? 'Completed' : locked ? 'Locked for now' : 'Ready to start'}
             </span>
             {docsTotal > 0 && (
               <span className="inline-flex items-center rounded-full bg-slate-100 px-2 py-0.5 text-xs font-medium text-slate-600">
@@ -1388,6 +1586,15 @@ function TaskCard({
               </span>
             )}
           </span>
+          {/* HONEST WHY-LOCKED on the card too: locked content stays fully
+              readable; this names the real prerequisite. Only Mark-done is gated
+              (see the footer). */}
+          {locked && prerequisiteTitle && (
+            <p className="text-sm text-slate-500">
+              You can read this step now. It unlocks once you finish{' '}
+              <span className="font-medium text-slate-700">{prerequisiteTitle}</span>.
+            </p>
+          )}
         </div>
 
         {/* ACTION FIRST (progressive disclosure). (a) one-line "what and why",
@@ -1477,6 +1684,20 @@ function TaskCard({
               <h3 className="font-semibold text-slate-900">Documents needed</h3>
               <span role="status" className="text-xs text-slate-500">{docsHandled}/{docsTotal} handled</span>
             </div>
+            {/* PER-TASK DOCUMENT METER (item 2): the same docProgress data as the
+                journey map, so the nearer-goal gradient is felt on the card too.
+                Skipped docs already count as handled upstream — never shown as
+                'missing'. Decorative bar (the count above is the AT label). */}
+            {docsTotal > 0 && (
+              <div className="mb-2.5 h-1 overflow-hidden rounded-full bg-slate-200" aria-hidden="true">
+                <div
+                  className={`h-full rounded-full ${reducedMotion ? '' : 'transition-all duration-500'} ${
+                    docsHandled >= docsTotal ? 'bg-emerald-500' : 'bg-blue-400'
+                  }`}
+                  style={{ width: `${docsTotal > 0 ? Math.round((docsHandled / docsTotal) * 100) : 0}%` }}
+                />
+              </div>
+            )}
             <DocChecklist task={task} docState={docState} onToggle={onToggleDoc} />
             <p className="mt-2 text-xs text-slate-600">
               Check off each document as you gather it — or skip ones that don't apply to your case.
@@ -1612,9 +1833,20 @@ function TaskCard({
       </div>
 
       <div className="shrink-0 px-6 sm:px-8 py-4 border-t border-slate-200 bg-white">
+        {/* Mark-done is gated for a LOCKED step (item 5) — the content above stays
+            fully readable, but you can't tick a step done before its real
+            prerequisite. We name the prerequisite rather than greying out
+            silently. */}
+        {locked && (
+          <p className="mb-2 text-xs text-slate-500 text-center">
+            {prerequisiteTitle
+              ? <>This step unlocks once you finish <span className="font-medium text-slate-700">{prerequisiteTitle}</span>. You can read everything here in the meantime.</>
+              : <>This step unlocks once you finish the steps it depends on. You can read everything here in the meantime.</>}
+          </p>
+        )}
         {/* Calmer gate: a helper near the checklist instead of a scolding line on
             a greyed button. Only shows when documents are still outstanding. */}
-        {!done && docsRemaining > 0 && (
+        {!done && !locked && docsRemaining > 0 && (
           <p className="mb-2 text-xs text-slate-500 text-center">
             A few documents to go — check the ones you have, skip what doesn't apply, and you can
             mark this step done.
@@ -1630,11 +1862,12 @@ function TaskCard({
           <button
             type="button"
             onClick={onMarkDone}
-            disabled={docsRemaining > 0}
+            disabled={locked || docsRemaining > 0}
+            aria-disabled={locked || docsRemaining > 0}
             className={`flex-1 rounded-xl py-3 font-medium text-white transition-colors focus-visible:ring-2 focus-visible:ring-brand-500 ${
-              docsRemaining > 0 ? 'bg-emerald-300 cursor-not-allowed' : 'bg-emerald-700 hover:bg-emerald-800'
+              locked || docsRemaining > 0 ? 'bg-emerald-300 cursor-not-allowed' : 'bg-emerald-700 hover:bg-emerald-800'
             }`}
-          >Mark done &amp; continue</button>
+          >{locked ? 'Locked until earlier steps are done' : 'Mark done & continue'}</button>
         )}
         </div>
       </div>
@@ -1894,12 +2127,14 @@ function DisclaimerModal({ onAcknowledge }: { onAcknowledge: () => void }) {
 /**
  * Brief, dismissible affirmation shown after the user marks a step done. Counts
  * ONLY the user's own real progress (no fabricated reassurance). Adds a quiet
- * milestone note as the plan crosses 25 / 50 / 75 %. Auto-dismisses; also
- * dismissible by the user.
+ * milestone note as the plan crosses 25 / 50 / 75 %. When the marked step was
+ * the LAST in its chapter, also shows a one-line, action-anchored chapter note
+ * (item 6) — phrased as the USER's own progress through that stage, never as an
+ * authority's verdict. Auto-dismisses; also dismissible by the user.
  */
 function MomentumToast({
-  remaining, pct, onDismiss,
-}: { remaining: number; pct: number; onDismiss: () => void }) {
+  remaining, pct, chapterNote, onDismiss,
+}: { remaining: number; pct: number; chapterNote: string | null; onDismiss: () => void }) {
   useEffect(() => {
     const t = setTimeout(onDismiss, 6000);
     return () => clearTimeout(t);
@@ -1926,6 +2161,10 @@ function MomentumToast({
             ? `${remaining} to go.`
             : 'That was the last one.'}
         </p>
+        {/* PER-CHAPTER MILESTONE (item 6): finishing a chapter's last task. The
+            note describes the USER's action ("You have finished …") and never
+            implies an authority's decision (no "approved"/"ready"/"all set"). */}
+        {chapterNote && <p className="mt-0.5 font-medium text-emerald-800">{chapterNote}</p>}
         {milestone && <p className="mt-0.5 text-emerald-700">{milestone}</p>}
       </div>
       <button
@@ -1961,9 +2200,14 @@ export default function CorridorApp({ tasks, corridorTitle, originIso2, destinat
   // The modal shows whenever we're in the plan phase and this is false.
   const [disclaimerAcked, setDisclaimerAcked] = useState<boolean | null>(null);
   // Momentum affirmation after marking a step done (calmer than a banner).
-  const [momentum, setMomentum] = useState<{ remaining: number; pct: number } | null>(null);
+  // `chapterNote` is set only when the marked step was the last in its chapter.
+  const [momentum, setMomentum] = useState<{ remaining: number; pct: number; chapterNote: string | null } | null>(null);
+  // Welcome-back continuity: a calm, dismissible note shown when returning to an
+  // in-progress plan. Set once after hydration; never re-shown after dismissal.
+  const [welcomeBack, setWelcomeBack] = useState<{ title: string; remaining: number } | null>(null);
 
   const isMobile = useIsMobile();
+  const reducedMotion = usePrefersReducedMotion();
 
   // F-10 focus management. Moving between wizard steps (or into the plan)
   // would otherwise drop keyboard focus to <body>: the focused Continue
@@ -2182,6 +2426,16 @@ export default function CorridorApp({ tasks, corridorTitle, originIso2, destinat
     return t ? statusOf(t, presentIds, doneIds) : 'locked';
   };
 
+  // HONEST WHY-LOCKED (item 5): the SPECIFIC prerequisite that gates a locked
+  // task — the title of its first present, not-yet-done dependency. Returns null
+  // when nothing real gates it (so the node shows no misleading note). Drives the
+  // "Unlocks after: {title}" cue on locked journey nodes.
+  const prerequisiteTitleFor = (task: TaskData): string | null => {
+    const blockerId = task.dependsOn.find((d) => presentIds.has(d) && !doneIds.has(d));
+    if (!blockerId) return null;
+    return applicableTasks.find((t) => t.id === blockerId)?.title ?? null;
+  };
+
   // Keep a valid focused task: on entry, after a restore, or when editing an
   // answer changes which tasks apply.
   useEffect(() => {
@@ -2191,6 +2445,28 @@ export default function CorridorApp({ tasks, corridorTitle, originIso2, destinat
       setActiveTaskId(currentTaskId(orderedTasks, doneIds) ?? orderedTasks[0]?.id ?? null);
     }
   }, [phase, activeTaskId, orderedTasks, doneIds]);
+
+  // WELCOME-BACK CONTINUITY (item 4): when a returning visitor lands on an
+  // in-progress plan (state restored from localStorage), show ONE calm,
+  // dismissible note naming where they left off and how many real steps remain.
+  // Pure projection of restored state — NO streak, NO countdown, NO "you'll lose
+  // progress", never shaming. Runs once, right after hydration; the ref guard
+  // keeps it from re-firing as state changes during the session. "In progress"
+  // means some steps are done but not all (a fresh wizard-finish or a brand-new
+  // cold link is not a "welcome back").
+  const welcomeBackChecked = useRef(false);
+  useEffect(() => {
+    if (!hydrated || welcomeBackChecked.current) return;
+    welcomeBackChecked.current = true;
+    if (phase !== 'app') return;
+    const total = applicableTasks.length;
+    const done = applicableTasks.filter((t) => doneIds.has(t.id)).length;
+    if (done === 0 || done >= total) return; // not mid-journey
+    const current = currentTaskId(orderedTasks, doneIds);
+    const currentTask = current ? applicableTasks.find((t) => t.id === current) : null;
+    if (!currentTask) return;
+    setWelcomeBack({ title: currentTask.title, remaining: Math.max(0, total - done) });
+  }, [hydrated, phase, applicableTasks, orderedTasks, doneIds]);
 
   // Coverage honesty: does this corridor's verified content cover the user's
   // route? If not, never present the plan as personalised — say so plainly.
@@ -2281,9 +2557,32 @@ export default function CorridorApp({ tasks, corridorTitle, originIso2, destinat
     const totalApplicable = applicableTasks.length;
     const remaining = Math.max(0, totalApplicable - doneApplicable);
     const pct = totalApplicable > 0 ? Math.round((doneApplicable / totalApplicable) * 100) : 0;
+
+    // PER-CHAPTER MILESTONE (item 6): if this task was the LAST not-done task in
+    // its chapter, surface a one-line, action-anchored note. Derived purely from
+    // the real chapter membership + the user's own completion — no invented copy.
+    // We describe the USER's action ("You have finished {chapter}") and the plain
+    // why; we NEVER imply an authority's decision.
+    const justDone = applicableTasks.find((t) => t.id === id);
+    let chapterNote: string | null = null;
+    if (justDone) {
+      const chapter = chapterForCategory(justDone.category);
+      const chapterTasks = applicableTasks.filter(
+        (t) => chapterForCategory(t.category).id === chapter.id,
+      );
+      const chapterAllDone = chapterTasks.every((t) => nextDone.has(t.id));
+      // Only when the chapter has >1 task is "finished a chapter" meaningful;
+      // a single-task chapter is already covered by the per-step toast.
+      if (chapterAllDone && chapterTasks.length > 1) {
+        chapterNote = `You have finished ${chapter.label} — ${chapter.why}.`;
+      }
+    }
+
     // Don't show the brief toast when the whole plan is finished — the all-done
     // panel already celebrates that.
-    setMomentum(remaining > 0 ? { remaining, pct } : null);
+    setMomentum(remaining > 0 ? { remaining, pct, chapterNote } : null);
+    // A new step done supersedes the welcome-back note.
+    setWelcomeBack(null);
     const next = currentTaskId(orderedTasks, nextDone);
     setActiveTaskId(next ?? id);
   }
@@ -2559,6 +2858,28 @@ export default function CorridorApp({ tasks, corridorTitle, originIso2, destinat
                   );
                 })}
 
+                {/* MOTIVATION MICRO-CONFIRMATION (item 3): once a reason is picked
+                    AND this corridor covers it, confirm what selecting it does to
+                    the plan — derived ONLY from the appliesIf machinery (the live
+                    applicableTasks count). Phrased as an ACTION on the plan ("we'll
+                    focus … on the {motivation} route"), never "here is everything
+                    you need" (no implied legal exhaustiveness). The count is the
+                    real projection of which steps now apply. Reduced-motion safe
+                    (no animation). */}
+                {currentStep.id === 'motivation' && answers.motivation && routeCovered &&
+                  routeLive && (
+                  <div role="status" className="flex items-start gap-2 rounded-lg border border-brand-100 bg-brand-50 px-4 py-3 text-sm text-brand-800">
+                    <svg aria-hidden="true" viewBox="0 0 20 20" fill="currentColor" className="mt-0.5 h-4 w-4 shrink-0 text-brand-600"><path fillRule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clipRule="evenodd" /></svg>
+                    <span>
+                      We'll focus your plan on the {motivationLabel(answers.motivation).toLowerCase()} route
+                      {applicableTasks.length > 0 && (
+                        <> — {applicableTasks.length} step{applicableTasks.length === 1 ? '' : 's'} tailored to it so far</>
+                      )}
+                      , and skip steps that don't apply. You can change this anytime.
+                    </span>
+                  </div>
+                )}
+
                 {currentStep.id === 'motivation' && answers.motivation && !routeCovered && (
                   <div className="rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-800">
                     <strong>Heads up:</strong> we haven't verified the{' '}
@@ -2684,8 +3005,9 @@ export default function CorridorApp({ tasks, corridorTitle, originIso2, destinat
       doneCount={doneCount}
       total={applicableTasks.length}
       docState={docState}
-      onToggleDoc={handleToggleDoc}
       cantonPanel={cantonPanel}
+      prerequisiteTitleFor={prerequisiteTitleFor}
+      reducedMotion={reducedMotion}
     />
   );
 
@@ -2714,6 +3036,8 @@ export default function CorridorApp({ tasks, corridorTitle, originIso2, destinat
       onToggleDoc={handleToggleDoc}
       cantonOfficeClaim={cantonOfficeClaim}
       selectedCantonName={selectedCantonName}
+      reducedMotion={reducedMotion}
+      prerequisiteTitle={activeStatus === 'locked' ? prerequisiteTitleFor(activeTask) : null}
     />
   ) : (
     <div className="flex-1 flex items-center justify-center text-slate-500 p-8">Select a step from your journey to begin.</div>
@@ -2826,13 +3150,45 @@ export default function CorridorApp({ tasks, corridorTitle, originIso2, destinat
       )}
     </div>
 
+    {/* WELCOME-BACK CONTINUITY (item 4) — a calm, dismissible note for returning
+        visitors with an in-progress plan. Projects only restored state (where you
+        left off + real steps remaining). NO streak, NO countdown, NO shaming.
+        Hidden once the user marks a step done (momentum supersedes it) and never
+        shown over the disclaimer gate. */}
+    {welcomeBack && !momentum && !showDisclaimerGate && (
+      <div className="pointer-events-none fixed inset-x-0 bottom-4 z-40 flex justify-center px-4">
+        <div className="pointer-events-auto w-full max-w-sm">
+          <div role="status" className="flex items-start gap-3 rounded-xl border border-brand-200 bg-white px-4 py-3 shadow-sm">
+            <span className="mt-0.5 shrink-0 inline-flex h-5 w-5 items-center justify-center rounded-full bg-brand-100 text-brand-700">
+              <IconPencil className="h-3 w-3" />
+            </span>
+            <div className="min-w-0 flex-1 text-sm">
+              <p className="font-medium text-slate-800">Welcome back</p>
+              <p className="mt-0.5 text-slate-600">
+                You left off at <span className="font-medium text-slate-800">{welcomeBack.title}</span>.{' '}
+                {welcomeBack.remaining} step{welcomeBack.remaining === 1 ? '' : 's'} remaining.
+              </p>
+            </div>
+            <button
+              type="button"
+              onClick={() => setWelcomeBack(null)}
+              aria-label="Dismiss"
+              className="shrink-0 -mr-1 -mt-1 inline-flex h-7 w-7 items-center justify-center rounded-md text-slate-400 hover:bg-slate-100 hover:text-slate-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
+            >
+              <IconX className="h-4 w-4" />
+            </button>
+          </div>
+        </div>
+      </div>
+    )}
+
     {/* Momentum affirmation (calmer than a banner) — only after the user marks a
         real step done; counts their own progress only. Sits above the plan, below
         the gate. */}
     {momentum && !showDisclaimerGate && (
       <div className="pointer-events-none fixed inset-x-0 bottom-4 z-40 flex justify-center px-4">
         <div className="w-full max-w-sm">
-          <MomentumToast remaining={momentum.remaining} pct={momentum.pct} onDismiss={() => setMomentum(null)} />
+          <MomentumToast remaining={momentum.remaining} pct={momentum.pct} chapterNote={momentum.chapterNote} onDismiss={() => setMomentum(null)} />
         </div>
       </div>
     )}

@@ -85,6 +85,23 @@ export function statusOf(
 }
 
 /**
+ * Accessible state word for a journey node (used in its screen-reader name).
+ * Locked takes precedence so a selected locked node is never announced as
+ * "available" — its completion is gated even though the node stays selectable.
+ * "current" is an emphasis layered on the state, not a state of its own.
+ */
+export function stateWordFor(status: TaskStatus, isActive: boolean): string {
+  switch (status) {
+    case 'done':
+      return 'done';
+    case 'locked':
+      return isActive ? 'current step, locked' : 'locked';
+    case 'available':
+      return isActive ? 'current step, available' : 'available';
+  }
+}
+
+/**
  * The "current" task: the first not-done, unlocked task in topological order.
  * Returns null when everything is done (or nothing is actionable).
  */

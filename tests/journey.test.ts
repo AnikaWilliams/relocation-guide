@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { topoOrder, statusOf, currentTaskId, type DependencyNode } from '../src/utils/journey';
+import { topoOrder, statusOf, currentTaskId, stateWordFor, type DependencyNode } from '../src/utils/journey';
 
 /** Minimal task graph: permit → visa → register → card; insurance is independent. */
 const tasks: DependencyNode[] = [
@@ -59,6 +59,23 @@ describe('statusOf', () => {
 
   it('treats a root task (no deps) as available', () => {
     expect(statusOf({ id: 'permit', dependsOn: [] }, present, new Set())).toBe('available');
+  });
+});
+
+describe('stateWordFor', () => {
+  it('announces a done task as done regardless of active state', () => {
+    expect(stateWordFor('done', false)).toBe('done');
+    expect(stateWordFor('done', true)).toBe('done');
+  });
+
+  it('gives locked precedence so a selected locked node is never "available"', () => {
+    expect(stateWordFor('locked', true)).toBe('current step, locked');
+    expect(stateWordFor('locked', false)).toBe('locked');
+  });
+
+  it('marks available nodes with the current-step emphasis when active', () => {
+    expect(stateWordFor('available', true)).toBe('current step, available');
+    expect(stateWordFor('available', false)).toBe('available');
   });
 });
 
