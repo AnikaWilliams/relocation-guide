@@ -33,7 +33,7 @@ export default {
         // ── Provenance status palette — Apple semantic system colors. Reused by
         //    the Provenance component and the build gate UI. Kept as a named scale.
         status: {
-          verified: withVar('--color-success', '#248a3d'), // systemGreen (AA text on white)
+          verified: withVar('--color-success', '#1a7431'), // systemGreen (AA text on white)
           unverified: withVar('--color-warning', '#7a5b00'), // soft-warning text
           flagged: withVar('--color-danger', '#d70015'), // systemRed (AA text on white)
           stale: withVar('--color-danger', '#d70015'),
@@ -56,7 +56,7 @@ export default {
         // Lines
         separator: withVar('--color-separator', '#d2d2d7'),
         // Feedback
-        success: withVar('--color-success', '#248a3d'),
+        success: withVar('--color-success', '#1a7431'),
         danger: withVar('--color-danger', '#d70015'),
         warning: {
           // "soft warning" — Apple-flavoured amber callout (bg + readable text)

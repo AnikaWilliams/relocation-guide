@@ -38,7 +38,7 @@
   --color-separator: #d2d2d7;
 
   /* Feedback */
-  --color-success: #248a3d; /* systemGreen, darkened for AA text on white */
+  --color-success: #1a7431; /* systemGreen, darkened for AA text on white (5.86:1) */
   --color-danger: #d70015; /* systemRed, darkened for AA text on white */
   --color-warning: #7a5b00; /* soft-warning readable text */
   --color-warning-soft: #fff8e6; /* soft-warning background */
