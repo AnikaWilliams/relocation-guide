@@ -9,131 +9,142 @@
  * Do NOT remove the draft banner until lawyer sign-off is recorded in DECISIONS.md.
  */
 import BaseLayout from '../layouts/BaseLayout.astro';
+
+const linkClass =
+  'text-link underline hover:text-accent-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded';
 ---
 
 <BaseLayout
   title="Terms of use — Relocation Guide"
   description="The terms governing your use of Relocation Guide. Informational only — not legal or immigration advice."
 >
-  <!-- DRAFT banner — remove only after human lawyer sign-off -->
-  <aside
-    role="note"
-    aria-label="Draft status"
-    class="rounded-md border border-rose-300 bg-rose-50 p-4 text-sm text-rose-900"
-  >
-    <p>
-      <strong>DRAFT — not yet in force.</strong> These terms contain placeholder values
-      in [BRACKETS] and have not been reviewed by a lawyer. They must not be relied upon
-      as a binding agreement until the operator details are completed and a qualified
-      lawyer has approved them.
-    </p>
-  </aside>
-
-  <article class="prose prose-slate mt-8 max-w-2xl space-y-8">
-    <section class="space-y-3">
-      <h1 class="text-3xl font-bold">Terms of use</h1>
-      <p class="text-slate-600">
-        These terms govern your use of Relocation Guide (the "site"), operated by
-        [OPERATOR NAME]. By using the site you agree to them. If you do not agree, please
-        do not use the site.
+  <div class="mx-auto max-w-[680px]">
+    <!-- DRAFT banner — remove only after human lawyer sign-off -->
+    <aside
+      role="note"
+      aria-label="Draft status"
+      class="rounded-field border border-warning-border bg-warning-soft p-4 text-sm text-warning"
+    >
+      <p>
+        <strong class="font-semibold">DRAFT — not yet in force.</strong> These terms contain
+        placeholder values in [BRACKETS] and have not been reviewed by a lawyer. They must not
+        be relied upon as a binding agreement until the operator details are completed and a
+        qualified lawyer has approved them.
       </p>
-    </section>
+    </aside>
 
-    <section class="space-y-2">
-      <h2 class="text-xl font-semibold">Information only — not legal advice</h2>
-      <p class="text-slate-700">
-        The site provides general, educational information about relocating between
-        countries. <strong>It is not legal, immigration, tax, or financial advice</strong>,
-        and using it does not create any advisory, client, or professional relationship.
-        We are not a law firm and not licensed immigration advisers. Always confirm your
-        situation with the relevant official authority or a licensed adviser before acting.
+    <article class="mt-10 space-y-12">
+      <section class="space-y-4">
+        <h1 class="text-3xl sm:text-4xl font-semibold tracking-tight text-label">Terms of use</h1>
+        <p class="text-lg leading-relaxed text-secondaryLabel">
+          These terms govern your use of Relocation Guide (the "site"), operated by
+          [OPERATOR NAME]. By using the site you agree to them. If you do not agree, please
+          do not use the site.
+        </p>
+      </section>
+
+      <section class="space-y-3">
+        <h2 class="text-xl font-semibold tracking-tight text-label">
+          Information only — not legal advice
+        </h2>
+        <p class="leading-relaxed text-secondaryLabel">
+          The site provides general, educational information about relocating between
+          countries.
+          <strong class="font-semibold text-label">
+            It is not legal, immigration, tax, or financial advice</strong>, and using it does
+          not create any advisory, client, or professional relationship. We are not a law firm
+          and not licensed immigration advisers. Always confirm your situation with the relevant
+          official authority or a licensed adviser before acting.
+        </p>
+      </section>
+
+      <section class="space-y-3">
+        <h2 class="text-xl font-semibold tracking-tight text-label">
+          Accuracy and official sources
+        </h2>
+        <p class="leading-relaxed text-secondaryLabel">
+          We work hard to trace each factual claim to an official source, to have it checked
+          by a separate reviewer, and to show you the source and the date it was last
+          verified. Even so, immigration rules change frequently and may change between our
+          last check and your reading. The official authority's current rules always take
+          precedence over anything on this site. Where we could not confirm a detail, we say
+          so and point you to the authority to confirm.
+        </p>
+      </section>
+
+      <section class="space-y-3">
+        <h2 class="text-xl font-semibold tracking-tight text-label">External links and forms</h2>
+        <p class="leading-relaxed text-secondaryLabel">
+          The site links to official authorities and third-party services so you can obtain
+          and submit official forms directly. We do not control those sites and are not
+          responsible for their content, availability, or processing of your data. We never
+          host official government forms ourselves &mdash; always obtain them from the issuing
+          authority.
+        </p>
+      </section>
+
+      <section class="space-y-3">
+        <h2 class="text-xl font-semibold tracking-tight text-label">Acceptable use</h2>
+        <ul class="list-disc space-y-2 pl-6 leading-relaxed text-secondaryLabel">
+          <li>Use the site for your own lawful, personal relocation planning.</li>
+          <li>Do not misuse the site, attempt to disrupt it, or scrape it at scale.</li>
+          <li>
+            Do not reproduce substantial parts of the content commercially without
+            permission. [Confirm licensing intent with counsel.]
+          </li>
+        </ul>
+      </section>
+
+      <section class="space-y-3">
+        <h2 class="text-xl font-semibold tracking-tight text-label">No warranty</h2>
+        <p class="leading-relaxed text-secondaryLabel">
+          The site is provided "as is" and "as available", without warranties of any kind to
+          the extent permitted by law, including as to accuracy, completeness, or fitness for
+          a particular purpose. [Lawyer to tailor warranty disclaimer to each jurisdiction;
+          consumer-protection law may limit exclusions.]
+        </p>
+      </section>
+
+      <section class="space-y-3">
+        <h2 class="text-xl font-semibold tracking-tight text-label">Limitation of liability</h2>
+        <p class="leading-relaxed text-secondaryLabel">
+          To the maximum extent permitted by law, we are not liable for any loss arising from
+          decisions you make based on the site. Nothing in these terms excludes liability that
+          cannot lawfully be excluded (for example, for death or personal injury caused by
+          negligence, or for fraud). [Lawyer to set the precise limitation, which differs by
+          jurisdiction and for consumers.]
+        </p>
+      </section>
+
+      <section class="space-y-3">
+        <h2 class="text-xl font-semibold tracking-tight text-label">Changes</h2>
+        <p class="leading-relaxed text-secondaryLabel">
+          We may update the site and these terms from time to time. Continued use after a
+          change means you accept the updated terms.
+        </p>
+      </section>
+
+      <section class="space-y-3">
+        <h2 class="text-xl font-semibold tracking-tight text-label">Governing law</h2>
+        <p class="leading-relaxed text-secondaryLabel">
+          These terms are governed by the laws of [JURISDICTION], without prejudice to any
+          mandatory consumer-protection rights you have where you live. [Lawyer to confirm
+          governing law and venue, accounting for EU/Swiss consumer rules.]
+        </p>
+      </section>
+
+      <section class="space-y-3">
+        <h2 class="text-xl font-semibold tracking-tight text-label">Contact</h2>
+        <p class="leading-relaxed text-secondaryLabel">
+          Questions about these terms: [CONTACT EMAIL]. Operator details are in our
+          <a href="/impressum" class={linkClass}>Impressum</a>.
+        </p>
+      </section>
+
+      <p class="text-sm text-tertiaryLabel">
+        Last updated: [DATE — set when placeholders are filled in]. Draft pending human
+        lawyer review.
       </p>
-    </section>
-
-    <section class="space-y-2">
-      <h2 class="text-xl font-semibold">Accuracy and official sources</h2>
-      <p class="text-slate-700">
-        We work hard to trace each factual claim to an official source, to have it checked
-        by a separate reviewer, and to show you the source and the date it was last
-        verified. Even so, immigration rules change frequently and may change between our
-        last check and your reading. The official authority's current rules always take
-        precedence over anything on this site. Where we could not confirm a detail, we say
-        so and point you to the authority to confirm.
-      </p>
-    </section>
-
-    <section class="space-y-2">
-      <h2 class="text-xl font-semibold">External links and forms</h2>
-      <p class="text-slate-700">
-        The site links to official authorities and third-party services so you can obtain
-        and submit official forms directly. We do not control those sites and are not
-        responsible for their content, availability, or processing of your data. We never
-        host official government forms ourselves &mdash; always obtain them from the issuing
-        authority.
-      </p>
-    </section>
-
-    <section class="space-y-2">
-      <h2 class="text-xl font-semibold">Acceptable use</h2>
-      <ul class="list-disc pl-6 text-slate-700">
-        <li>Use the site for your own lawful, personal relocation planning.</li>
-        <li>Do not misuse the site, attempt to disrupt it, or scrape it at scale.</li>
-        <li>
-          Do not reproduce substantial parts of the content commercially without
-          permission. [Confirm licensing intent with counsel.]
-        </li>
-      </ul>
-    </section>
-
-    <section class="space-y-2">
-      <h2 class="text-xl font-semibold">No warranty</h2>
-      <p class="text-slate-700">
-        The site is provided "as is" and "as available", without warranties of any kind to
-        the extent permitted by law, including as to accuracy, completeness, or fitness for
-        a particular purpose. [Lawyer to tailor warranty disclaimer to each jurisdiction;
-        consumer-protection law may limit exclusions.]
-      </p>
-    </section>
-
-    <section class="space-y-2">
-      <h2 class="text-xl font-semibold">Limitation of liability</h2>
-      <p class="text-slate-700">
-        To the maximum extent permitted by law, we are not liable for any loss arising from
-        decisions you make based on the site. Nothing in these terms excludes liability that
-        cannot lawfully be excluded (for example, for death or personal injury caused by
-        negligence, or for fraud). [Lawyer to set the precise limitation, which differs by
-        jurisdiction and for consumers.]
-      </p>
-    </section>
-
-    <section class="space-y-2">
-      <h2 class="text-xl font-semibold">Changes</h2>
-      <p class="text-slate-700">
-        We may update the site and these terms from time to time. Continued use after a
-        change means you accept the updated terms.
-      </p>
-    </section>
-
-    <section class="space-y-2">
-      <h2 class="text-xl font-semibold">Governing law</h2>
-      <p class="text-slate-700">
-        These terms are governed by the laws of [JURISDICTION], without prejudice to any
-        mandatory consumer-protection rights you have where you live. [Lawyer to confirm
-        governing law and venue, accounting for EU/Swiss consumer rules.]
-      </p>
-    </section>
-
-    <section class="space-y-2">
-      <h2 class="text-xl font-semibold">Contact</h2>
-      <p class="text-slate-700">
-        Questions about these terms: [CONTACT EMAIL]. Operator details are in our
-        <a href="/impressum">Impressum</a>.
-      </p>
-    </section>
-
-    <p class="text-sm text-slate-500">
-      Last updated: [DATE — set when placeholders are filled in]. Draft pending human
-      lawyer review.
-    </p>
-  </article>
+    </article>
+  </div>
 </BaseLayout>

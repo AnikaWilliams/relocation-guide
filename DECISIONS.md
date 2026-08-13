@@ -620,3 +620,26 @@ Add an optional **canton dimension**, scoped to Switzerland for now:
 ### Consequences
 - Canton selection works immediately via the fallback; authored cantons enrich the panel. Only VERIFIED canton claims may publish (gate-enforced). Scaffold verified: `astro check` 0 errors, 277 tests.
 - A future "add a canton" = add an entry to a corridor's `cantons` (like adding a task) — sourced + fact-verified + founder-gated. Non-CH corridors are unaffected (no canton step).
+
+---
+
+## ADR-0022 — Apple web design language (supersedes ADR-0019)
+
+**Date:** 2026-06-14
+**Status:** Accepted
+**Decided by:** Founder (Anika Williams) — requested an Apple-style reskin
+
+### Context
+The founder asked to move the customer-facing UI from the ADR-0019 "Trust & Authority" system (navy `#0F172A`, CTA `#0369A1`, self-hosted **EB Garamond** display + **Lato** body) to **Apple's web design language** — system font, Apple systemBlue accent, generous whitespace, pill CTAs, card radii. This is a visual-language change only; the accuracy/provenance/compliance machinery is untouched.
+
+### Decision
+Adopt the Apple web token set as the single foundation for all customer-facing UI. **Tokens (light):** label `#1d1d1f`, secondaryLabel `#6e6e73`, tertiaryLabel `#86868b`, accent/systemBlue `#0071e3` (hover `#0066cc`), surface `#f5f5f7`, card `#ffffff`, separator `#d2d2d7`, success `#34C759`/`#248a3d` (text), warning soft `#fff8e6` bg + `#7a5b00` text, danger `#FF3B30`/`#d70015` (text). Exposed as CSS custom properties in `global.css` and as semantic Tailwind names (`label`, `secondaryLabel`, `surface`, `card`, `separator`, `accent`, `link`, `success`, `danger`, `warning.soft`). Names are **dark-mode-ready** (CSS vars + `darkMode: 'class'`) but **only light values are defined — no dark theme is built yet.** **Typography:** the SF system stack (`-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', 'Helvetica Neue', Arial, system-ui, sans-serif`); heading weights up to 600 (Apple semibold). **EB Garamond + Lato retired** (no `@fontsource` import / `<link>` / preload remains; font files left on disk, unreferenced — zero web-font fetch). **Spacing/radii:** Apple rhythm — inputs `rounded-field` (12px), cards `rounded-card` (18px), primary CTAs `rounded-pill` (980px).
+
+### Implementation notes
+- **The legacy `brand-*` scale was REMAPPED in place to the Apple systemBlue family** rather than ripped out of ~80 call sites across `CorridorApp.tsx`, `index.astro`, and the corridor page. `brand-600` = `#0071e3` (white text 4.70:1, AA), `brand-700` = `#0066cc` (5.57:1), `brand-800` = `#0058b0`, `brand-900` = `#00428a`; light fills `brand-50/100` retuned to match. Every existing CTA/link/ring keeps working and now renders Apple blue. `font-serif` is aliased to the same SF stack so legacy display headings render without pulling a serif web font.
+- **Shared chrome restyled to the tokens:** `BaseLayout` (white canvas, system font, surface footer, separator borders), `Footer` (inline in BaseLayout), `Disclaimer` (soft-warning callout), `ConsentBanner` (card, pill buttons, accent focus rings, native `accent-color`). Content/links/ARIA/Impressum/height-publishing logic all unchanged.
+- Contrast re-verified at every used stop (AA): label on surface 15.46:1; secondaryLabel on white 5.07:1, on surface 4.66:1; white on accent 4.70:1; brand-700 link on brand-50 fill 4.92:1; soft-warning text on soft-warning bg 5.96:1.
+
+### Scope / caveats
+- **Styling only. All trust/content invariants preserved:** the "Verified against official sources" badge, per-task Source line + last-verified date, "not legal advice" notice, the focus-trapped post-intake disclaimer **modal gate**, the "Sources & legal notes" fold, footer Impressum, and the route-not-covered + Russia-sanctions notices all remain — only their classes changed. Zero `src/content/` edits; no claim/provenance/disclaimer wording changed; the no-JS static guide and SEO/zero-JS-default posture are intact. Astro's React-islands-only model is unchanged.
+- `frontend-engineer` is pinned to `claude-fable-5`, unavailable in this environment — implemented on Opus 4.8 (CLAUDE.md's designated fallback).

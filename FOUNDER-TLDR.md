@@ -10,6 +10,18 @@ coming next. Newest updates are at the top.
 
 ---
 
+## 2026-06-14 — The whole site got a clean, Apple-style redesign
+
+**What changed.** We re-dressed the *entire* website in Apple's design language — the same calm look-and-feel principles Apple uses on its own site. Clean typography using the system font your device already has (so there's nothing extra to download), Apple's restrained colour palette, lots of breathing room, rounded cards, and the signature pill-shaped buttons — across the home page, the questionnaire, the plan, and the legal pages. It's a fresh coat of paint only: every word, fact, source link, the "Verified against official sources" badge, the disclaimer pop-up, and the journey map all work exactly as before. We retired the old custom fonts, so the site fetches nothing from Google and loads a touch faster. We also tightened readability and tap-target sizes so it's easier to use for everyone.
+
+**Why it matters.** A calmer, more familiar, more professional look builds trust — which counts for a lot when people are making life-changing decisions on these pages — and the lighter setup helps speed and privacy.
+
+**What you'd notice today.** The site looks noticeably cleaner and more modern end to end — same content, much calmer presentation. (Review copy — **not live**.)
+
+**What's next.** Your review; a dark-mode version could follow.
+
+---
+
 ## 2026-06-14 — Plain English everywhere: the legal codes are gone from what you read
 
 **What changed.** We stripped the law-and-statute jargon out of everything you actually *read* in a Switzerland plan. No more "Art. 30 para. 1 let. b FNIA" or "Arts. 42-44" tucked inside the sentences — the steps, titles, summaries and warnings now say it in plain English ("this is a decision the canton makes at its discretion — you have no automatic right" instead of an article number). The official law sources did **not** disappear: they're moved into a "Sources & legal notes" dropdown on each step, so "Verified against official sources" still holds. We kept the real legal meaning exactly — whether something is your *right* or the authorities' *discretion* — only the code-numbers are gone.

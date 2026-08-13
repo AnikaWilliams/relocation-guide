@@ -10,33 +10,42 @@ corridors.sort((a, b) => corridorSlug(a).localeCompare(corridorSlug(b)));
   title="Relocation Guide — moving to Western Europe"
   description="Step-by-step relocation guidance by origin and destination country, sourced from official authorities."
 >
-  <section class="space-y-5 py-4 sm:py-8 lg:py-10">
-    <h1 class="font-serif text-4xl font-bold leading-tight text-slate-900 sm:text-5xl lg:text-6xl">
+  <section class="space-y-6 py-10 text-center sm:py-16 lg:py-20">
+    <h1 class="text-4xl font-semibold tracking-tight text-label sm:text-5xl lg:text-6xl">
       Relocation Guide
     </h1>
-    <p class="max-w-2xl text-lg leading-relaxed text-slate-600">
+    <p class="mx-auto max-w-2xl text-lg leading-relaxed text-secondaryLabel sm:text-xl">
       Practical, source-backed guidance for relocating to Western Europe, organised by
       your origin and destination country. Every fact is traced to an official source
       and dated.
     </p>
 
+    <div class="flex justify-center pt-2">
+      <a
+        href="#corridors"
+        class="rounded-pill bg-accent px-5 py-3 font-medium text-white transition-colors hover:bg-accent-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+      >
+        Start your plan
+      </a>
+    </div>
+
     {/* Trust row — restates the page's own truthful framing (sourced / verified /
         dated). Inline Heroicons, never emoji. */}
-    <ul class="flex flex-col gap-x-6 gap-y-2 text-sm font-medium text-slate-700 sm:flex-row sm:flex-wrap sm:items-center">
+    <ul class="flex flex-col items-center gap-x-6 gap-y-2 pt-2 text-sm font-medium text-secondaryLabel sm:flex-row sm:flex-wrap sm:justify-center">
       <li class="inline-flex items-center gap-2">
-        <svg class="h-5 w-5 shrink-0 text-brand-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+        <svg class="h-5 w-5 shrink-0 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
           <path stroke-linecap="round" stroke-linejoin="round" d="M11.998 2.25c2.39 1.62 5.18 2.4 7.5 2.4v6.6c0 4.66-3.02 7.86-7.5 10.5-4.48-2.64-7.5-5.84-7.5-10.5v-6.6c2.32 0 5.11-.78 7.5-2.4Z" />
         </svg>
         Traced to official sources
       </li>
       <li class="inline-flex items-center gap-2">
-        <svg class="h-5 w-5 shrink-0 text-brand-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+        <svg class="h-5 w-5 shrink-0 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
           <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
         </svg>
         Independently verified
       </li>
       <li class="inline-flex items-center gap-2">
-        <svg class="h-5 w-5 shrink-0 text-brand-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+        <svg class="h-5 w-5 shrink-0 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
           <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0V11.25A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5" />
         </svg>
         Dated and re-checked
@@ -44,27 +53,27 @@ corridors.sort((a, b) => corridorSlug(a).localeCompare(corridorSlug(b)));
     </ul>
   </section>
 
-  <section class="mt-10">
-    <h2 class="font-serif text-2xl font-semibold text-slate-900">Available corridors</h2>
+  <section id="corridors" class="mt-12 scroll-mt-8">
+    <h2 class="text-2xl font-semibold tracking-tight text-label">Available corridors</h2>
     {
       corridors.length === 0 ? (
-        <p class="mt-3 rounded-md border border-slate-200 bg-slate-50 p-4 text-slate-600">
+        <p class="mt-4 rounded-field border border-warning-border bg-warning-soft p-4 text-sm text-warning">
           No corridors are published yet. Content is in preparation and will appear here
           once it has passed verification and founder review.
         </p>
       ) : (
-        <ul class="mt-4 grid gap-3 sm:grid-cols-2">
+        <ul class="mt-6 grid gap-4 sm:grid-cols-2">
           {corridors.map((entry) => (
             <li>
               <a
                 href={`/${entry.data.originIso2}/${entry.data.destinationIso2}/`}
-                class="block rounded-lg border border-slate-200 p-4 hover:border-slate-400 hover:shadow-sm transition focus-visible:ring-2 focus-visible:ring-brand-500"
+                class="block h-full rounded-card border border-separator bg-card p-6 transition-colors hover:border-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
               >
-                <span class="font-medium">
+                <span class="block font-medium text-label">
                   {countryName(entry.data.originIso2)} &rarr;{' '}
                   {countryName(entry.data.destinationIso2)}
                 </span>
-                <span class="mt-1 block text-sm text-slate-600">{entry.data.description}</span>
+                <span class="mt-2 block text-sm leading-relaxed text-secondaryLabel">{entry.data.description}</span>
               </a>
             </li>
           ))}
